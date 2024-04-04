@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-cloudflare';
+import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { pagesToRender } from './src/lib/pagesList.js';
 
@@ -9,13 +9,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({
-            routes: {
-				include: ['/*'],
-				exclude: ['<all>']
-            },
-			concurrency: 1
-        }),
+		adapter: adapter(),
 		prerender: {
 			handleMissingId:"ignore",
 			entries: pagesToRender

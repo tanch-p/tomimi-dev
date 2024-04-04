@@ -1,0 +1,1 @@
+function n(t){const e=c=>{t.contains(c.target)||t.dispatchEvent(new CustomEvent("outclick"))};return document.addEventListener("click",e,!0),{destroy(){document.removeEventListener("click",e,!0)}}}export{n as c};

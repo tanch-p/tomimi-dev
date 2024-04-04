@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+		<link rel="manifest" href="../site.webmanifest" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="keywords"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		<meta property="og:site_name" content="tomimi.dev" />
+		<meta
+			property="article:tag"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		
+		<link href="../_app/immutable/assets/0.31476555.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/2.9cbe60f3.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/favicon.a4f9be35.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/11.88e2a185.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.315a0298.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.de62ce89.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.c5e91e64.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.eb4d2af8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/findStage.ced48b1e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/is_stages_list.29e53300.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.a48b2cba.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/Icon.612b5f0c.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.62cdf5e6.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.21e9093b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/favicon.e2aeb149.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/clickOutside.532dca22.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/11.771d8a89.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DraggableContainer.a612c0ec.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/translations.916dba18.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/TextParser.d6b059c8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.eaa444e6.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/languageHelpers.399b9b88.js"><title>Operator Recruit Helper / tomimi.dev - Integrated Strategies Helper for Arknights</title><!-- HEAD_svelte-1ifp8hp_START --><meta name="description" content="tomimi.dev - Integrated Strategies Helper for Arknights"><meta property="og:description" content="tomimi.dev - Integrated Strategies Helper for Arknights"><!-- HEAD_svelte-1ifp8hp_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+<div class="fixed max-w-[1280px] mx-auto inset-0 z-10 pointer-events-none"><button hidden class="absolute bottom-[90px] right-[20px] md:right-[40px] pointer-events-auto" id="scroll-top-button"><div class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]">
+
+
+<svg width="24" height="24" class="rotate-180"><use xlink:href="#down-arrow"></use></svg></div></button>
+	</div>
+
+
+<div style="display: none">
+	<svg><rect id="sq-blue" fill="#27a6f3" width="22" height="22"></rect><rect id="sq-outline" fill="none" stroke="gray" stroke-width="1.5" width="22" height="22"></rect><rect id="sq-white" fill="#f6f6f6" width="10" height="10"></rect><rect id="sq-outline-sm" fill="none" stroke="#acacac" stroke-width="1.5" width="10" height="10"></rect><symbol id="x-mark" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></symbol><symbol id="clock-icon" viewBox="0 0 24 24" fill="#bababa"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd"></path></symbol><symbol id="trash" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></symbol><symbol id="down-arrow" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#F2F2F2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75"></path></symbol><symbol id="right-arrow" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path></symbol><symbol id="icon-minus" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path></symbol><symbol id="icon-plus" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></symbol><symbol id="icon-language" viewBox="0 0 20 20"><path fill="#E2E2E2" d="M20 18h-1.44a.61.61 0 0 1-.4-.12.81.81 0 0 1-.23-.31L17 15h-5l-1 2.54a.77.77 0 0 1-.22.3.59.59 0 0 1-.4.14H9l4.55-11.47h1.89zm-3.53-4.31L14.89 9.5a11.62 11.62 0 0 1-.39-1.24q-.09.37-.19.69l-.19.56-1.58 4.19zm-6.3-1.58a13.43 13.43 0 0 1-2.91-1.41 11.46 11.46 0 0 0 2.81-5.37H12V4H7.31a4 4 0 0 0-.2-.56C6.87 2.79 6.6 2 6.6 2l-1.47.5s.4.89.6 1.5H0v1.33h2.15A11.23 11.23 0 0 0 5 10.7a17.19 17.19 0 0 1-5 2.1q.56.82.87 1.38a23.28 23.28 0 0 0 5.22-2.51 15.64 15.64 0 0 0 3.56 1.77zM3.63 5.33h4.91a8.11 8.11 0 0 1-2.45 4.45 9.11 9.11 0 0 1-2.46-4.45z"></path></symbol><symbol id="icon-list2" viewBox="0 0 32 32" fill="#ffffff"><path d="M12 2h20v4h-20v-4zM12 14h20v4h-20v-4zM12 26h20v4h-20v-4zM0 4c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM0 16c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM0 28c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4z"></path></symbol><symbol id="icon-list" viewBox="0 0 32 32" fill="#ffffff"><path d="M0 0h8v8h-8zM12 2h20v4h-20zM0 12h8v8h-8zM12 14h20v4h-20zM0 24h8v8h-8zM12 26h20v4h-20z"></path></symbol><symbol id="grid-view" viewBox="0 0 16 16" fill="#ffffff"><rect width="16" height="16" id="icon-bound" fill="none"></rect><path d="M1,1h4v4H1V1z M6,1h4v4H6V1z M11,1h4v4h-4V1z M1,6h4v4H1V6z M6,6h4v4H6V6z M11,6h4v4h-4V6z M1,11h4v4H1V11z M6,11h4v4H6V11z M11,11h4v4h-4V11z"></path></symbol><symbol id="layout-view" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></symbol></svg></div>
+<div><header class="bg-[#161417] text-near-white"><div class="grid grid-cols-3 items-center max-w-6xl mx-auto"><div><a href="/en" class="text svelte-dbcuwq"><span class="mx-1"><img src="/_app/immutable/assets/favicon.e511bc87.webp" width="32px" alt="favicon"></span>
+				<span class="hidden md:block">tomimi.dev</span></a></div>
+		<nav class="svelte-dbcuwq"><ul class="svelte-dbcuwq"><li class="svelte-dbcuwq"><a href="/en/about" class="svelte-dbcuwq">About</a></li>
+				<li class="svelte-dbcuwq"><a href="/en/credits" class="svelte-dbcuwq">Credits</a></li></ul></nav>
+		<div class="flex justify-end pr-2"><div class="relative"><button class="sm:py-1 px-2 hover:underline h-full"><span class="flex gap-x-1.5 svelte-t8499q">
+
+
+<svg width="20" height="20" class="mb-0.5"><use xlink:href="#icon-language"></use></svg>
+			EN</span></button>
+	
+</div></div></div>
+</header>
+
+	<main class="bg-neutral-800 min-h-screen text-near-white  svelte-z7rxhv">
+
+<div class="fixed max-w-[1280px] mx-auto inset-0 z-50 pointer-events-none"><button class="absolute bottom-[150px] right-[20px] md:right-[40px] pointer-events-auto" id="scroll-top-button" title="Clear All Filters"><div class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]">
+
+
+<svg width="24" height="24" class="stroke-white"><use xlink:href="#trash"></use></svg></div></button></div>
+<div class="chara pb-60 loading"><div class="sm:mx-10"><div class="max-w-5xl mx-auto pt-6 md:pt-10 pb-4 text-[0.75rem] md:text-[0.875rem] en"><div class="bg-near-white rounded-md p-3 md:p-4 text-almost-black"><h2 class="border-b text-center pb-1 md:pb-2">Settings</h2>
+	<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-3"><p class="md:py-[5px]">Filter Query Mode</p>
+		<div class="flex flex-wrap gap-2"><button class="filter-btn">OR
+				</button><button class="filter-btn active">AND
+				</button><button class="filter-btn">AND_STRICT
+				</button></div></div>
+	<div class="mt-4 max-w-[500px]"><p class="text-lg">AND - Specific Search</p>
+			<p class="">Queries by whether operator&#39;s talent/module + <span class="text-[#508407]">ALL skills</span>
+					is able to fulfill <span class="text-red-600">ALL</span> of the options (Excluding Basic Options)
+					selected.</p></div></div>
+			<div class="grid gap-5 text-almost-black mt-5"><div class="bg-near-white rounded-md p-3 md:p-4"><h2 class="border-b text-center pb-1 md:pb-2">Filter Options</h2>
+		<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-3"><p class="md:py-[5px] font-medium">Release Status</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">Global
+					</button><button class="filter-btn active">CN
+					</button></div>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">Rarity</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">★1
+					</button><button class="filter-btn">★2
+					</button><button class="filter-btn">★3
+					</button><button class="filter-btn">★4
+					</button><button class="filter-btn">★5
+					</button><button class="filter-btn">★6
+					</button></div>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">Class</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">Vanguard
+					</button><button class="filter-btn">Guard
+					</button><button class="filter-btn">Sniper
+					</button><button class="filter-btn">Defender
+					</button><button class="filter-btn">Medic
+					</button><button class="filter-btn">Supporter
+					</button><button class="filter-btn">Caster
+					</button><button class="filter-btn">Specialist
+					</button></div>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">Deployable Position</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">Melee
+					</button><button class="filter-btn">Ranged
+					</button><button class="filter-btn">ALL
+					</button></div>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">Damage Type</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">phys
+					</button><button class="filter-btn">arts
+					</button><button class="filter-btn">true
+					</button><button class="filter-btn">Elemental Damage
+					</button></div>
+			<p class="md:py-[5px] mt-2 md:mt-0 capitalize font-medium">block</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">0
+					</button><button class="filter-btn">1
+					</button><button class="filter-btn">2
+					</button><button class="filter-btn">3
+					</button><button class="filter-btn">4
+					</button><button class="filter-btn">5
+					</button></div>
+			<p class="md:py-[5px] mt-2 md:mt-0 capitalize font-medium">Others</p>
+			<div class="flex flex-wrap gap-2"><button class="filter-btn">Target Flying
+					</button><button class="filter-btn">Multi Target
+					</button><button class="filter-btn">AOE
+					</button></div></div>
+		
+<div class="relative mt-2"><button id="" class="block w-full relative p-3 hover:cursor-pointer border-b"><p class="text-center">Archetype</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	
+	<div></div></div>
+		
+<div class="relative mt-1.5"><button id="" class="block w-full relative p-3 hover:cursor-pointer border-b"><p class="text-center">Faction</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	
+	<div></div></div></div>
+	
+		<div class="bg-near-white rounded-md overflow-hidden">
+<div class="relative "><button id="enemy_debuff" class="block w-full relative p-3 hover:cursor-pointer "><p class="text-center">Enemy Debuff</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	<div slot="triangle" class="side-triangle absolute right-0 bottom-0 bg-[#FFA5AF] h-[60px] w-[60px] svelte-18583c6"></div>
+	<div><div slot="selected">
+				</div></div></div>
+		</div>
+		<div class="bg-near-white rounded-md overflow-hidden">
+<div class="relative "><button id="ally_buff" class="block w-full relative p-3 hover:cursor-pointer "><p class="text-center">Ally Buff</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	<div slot="triangle" class="side-triangle absolute right-0 bottom-0 bg-[#FFC89B] h-[60px] w-[60px] svelte-18583c6"></div>
+	<div><div slot="selected">
+				</div></div></div>
+		</div>
+		<div class="bg-near-white rounded-md overflow-hidden">
+<div class="relative "><button id="self_buff" class="block w-full relative p-3 hover:cursor-pointer "><p class="text-center">Self Buff</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	<div slot="triangle" class="side-triangle absolute right-0 bottom-0 bg-[#C0E6FA] h-[60px] w-[60px] svelte-18583c6"></div>
+	<div><div slot="selected">
+				</div></div></div>
+		</div>
+		<div class="bg-near-white rounded-md overflow-hidden">
+<div class="relative "><button id="others_tag" class="block w-full relative p-3 hover:cursor-pointer "><p class="text-center">Others</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	<div slot="triangle" class="side-triangle absolute right-0 bottom-0 bg-[#DAD4FF] h-[60px] w-[60px] svelte-18583c6"></div>
+	<div><div slot="selected">
+				</div></div></div>
+		</div>
+	<div class="bg-near-white rounded-md overflow-hidden">
+<div class="relative "><button id="" class="block w-full relative p-3 hover:cursor-pointer "><p class="text-center">Integrated Strategies</p>
+		
+
+
+<svg width="24" height="24" class="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"><use xlink:href="#icon-plus"></use></svg></button>
+	
+	<div><div slot="selected"></div></div></div></div>
+</div>
+			<div class="bg-near-white text-almost-black rounded-md p-3 md:p-4 mt-5"><p class="border-b text-center pb-1 md:pb-2">Sort By</p>
+	<div class="relative"><button class="absolute right-2 flex">
+
+
+<svg width="24" height="24" class="h-[18px] mt-[1px]"><use xlink:href="#trash"></use></svg>
+			Clear</button>
+		<div class="grid grid-cols-[minmax(75px,auto)_50px_1fr] gap-2 md:gap-3 mt-2 md:mt-3"><p>Option</p>
+			<p class="text-center">Priority</p>
+			<p></p>
+			<p class="py-[5px] capitalize">Release Date</p>
+				<p class="py-[5px] text-center">1</p>
+				<div class="flex flex-wrap gap-2"><button class="filter-btn">ASC</button>
+					<button class="filter-btn active">DESC</button>
+				</div><p class="py-[5px] capitalize">Rarity</p>
+				<p class="py-[5px] text-center">2</p>
+				<div class="flex flex-wrap gap-2"><button class="filter-btn">ASC</button>
+					<button class="filter-btn active">DESC</button>
+				</div><p class="py-[5px] capitalize">Class</p>
+				<p class="py-[5px] text-center"></p>
+				<div class="flex flex-wrap gap-2"><button class="filter-btn">ASC</button>
+					<button class="filter-btn">DESC</button>
+				</div></div></div>
+	<p class="mt-4 text-xs text-end">※Values used are the maximum values possible with modules included</p></div>
+			</div>
+		
+			<p class="text-center">Fetching Characters Data...</p>
+		</div>
+	<div class="fixed z-10 bottom-0 w-full p-2.5 pb-3 md:p-4 bg-[#333] text-near-white text-center text-base md:text-lg"><div class="max-w-[1200px] w-full mx-auto"><div class="relative "><!-- HTML_TAG_START -->Click on the filters above to begin!<!-- HTML_TAG_END --></div></div></div>
+	<div class="overlay svelte-18hgqip"><div class="popup text-near-white bg-neutral-800 bg-opacity-95 pb-12 no-scrollbar svelte-18hgqip"></div>
+</div></div>
+
+</main>
+
+	<footer></footer>
+</div>
+
+
+			
+			<script>
+				{
+					__sveltekit_20gs0p = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.315a0298.js"),
+						import("../_app/immutable/entry/app.eb4d2af8.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 11],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
