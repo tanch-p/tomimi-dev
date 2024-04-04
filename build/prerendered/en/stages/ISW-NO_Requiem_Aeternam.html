@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../../favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
+		<link rel="manifest" href="../../site.webmanifest" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="keywords"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		<meta property="og:site_name" content="tomimi.dev" />
+		<meta
+			property="article:tag"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		
+		<link href="../../_app/immutable/assets/0.24f670c0.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.8f988fb1.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/StageHeader.3973f08d.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/favicon.a4f9be35.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/DifficultySelect.9570ab64.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/MizukiNav.9ace6496.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/FooterBar.5f09de28.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.857cfc86.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.fef03e7a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.1f0531de.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.7ccf3300.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/findStage.42ea2f0f.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/is_stages_list.563af226.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.e83444a3.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.b7c1f64e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.a32293e5.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/14.ce26468c.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/StageHeader.91015f8c.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/translations.484a5201.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TogglePanel.2e17abfb.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/favicon.fcbdcad2.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DifficultySelect.e67278ae.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/MizukiNav.10bf95c1.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/FooterBar.e3cba1ee.js"><title>ISW-NO
+		Requiem_Aeternam / tomimi.dev - Integrated Strategies Helper for Arknights</title><!-- HEAD_svelte-1kp9jv8_START --><meta name="description" content="tomimi.dev - Integrated Strategies Helper for Arknights"><meta property="og:description" content="tomimi.dev - Integrated Strategies Helper for Arknights"><meta property="og:title" content="ISW-NO_Requiem_Aeternam"><meta property="og:url" content="https://tomimi.dev/en/stages/ISW-NO_Requiem_Aeternam"><!-- HEAD_svelte-1kp9jv8_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+<div class="layout  svelte-z7rxhv">
+
+<header class="sticky top-0 w-screen sm:w-full transition-none bg-neutral-800 text-near-white py-4 z-10"><div class="grid grid-cols-[50px_auto_50px] sm:grid-cols-[100px_auto_100px] max-w-7xl mx-auto px-2 sm:px-6 items-start"><div class="w-max"><a href="/en"><img src="/_app/immutable/assets/favicon.e511bc87.webp" width="32px" decoding="async" loading="lazy" alt="Home"></a></div>
+		<div class="mx-auto select-none"><button id="floor-options"><div class="flex justify-center items-center gap-x-1"><img src="data:image/webp;base64,UklGRtQCAABXRUJQVlA4WAoAAAAQAAAAGAAAGQAAQUxQSMIBAAANb8MokiQpVPVs8MMQ/n3tCRYiIi9+ZYQZupFGWYQZpNuRXjzvTS+ChAyRXoZZMhrGIPIB6dY2GZL0RWSWetbmeGaNsY01x3YpI+7/b/QaNxDR/8T/5Ca0KYrfcNMxQazWgF86dhY7slAgR1D8TOYtTaDg4oTKgF+Q4+z8ScfYx6no7KTQgJ/J4rTq7EHXlRk+lSCKnyOq256hpr6Ls1yVhJ8dYn2AOlUb+LQTSVD84AzCutLqhPjzvZs5oxY1kLHnpPZvt5+DNr6MxE4LBFNQRHGmubnF/b711cELmsVa5GLw1OId9Ry+9h+Wbw9l1x5t7VZ5VQpZTFerp2nYXIwOzvnLQ7i1vKl1ZQyfVP0Q9/J4qZGfG0Z1Y/T9WlULHBW914Mn9K18TfoRUrkyOnkMQTMQwxRaueC8kpIJmVKQxqvd0cA62XEfC+0ddbI//uRScEFDHc37IYxffVhyNd3btT/x4k6ROrUyP43m9kLr4zzVopx1+313qcV5iBWnJb/x3WcZo9Cjdx03KMoiQhCrT8pU84ZjsUKyQtI4YjSDVFoL2HmFVgEaOWN8VwmiYDJQDRWGEX5QKBTfFWr4pmgCAABWUDgg7AAAAFAGAJ0BKhkAGgA+bS6SRaQioZgEAEAGxLSAAh/Pi1+U/YA/VD/XcBAOrXoQ02nHSitB87tWTgZBPAAAAP7+hxnpaJUUwSwyhecZXmdH+fcR6eAH5s2rrx/gbLVapHmnJbU1ohzb5pTRBfuX7QG8LWILHn4tvgfvu1UzUAZwXXfHZ9kcyJwvAb9j6no/8jTilVv/wr5/5iHkaqncSrH84nHtuMcaWTCCA7Giv4848biLUMtX8/Z/6SLK/kGuf5YmQEm1UMjLmGi/uH3qF3+utoRyfjpN5nP+Taxdr4Jlis1qMQOpqEq4Z8s3oAAA" alt="floor-[object Object]">
+			<p>Raging Billows</p></div>
+		</button>
+	<div class="absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 invisible opacity-0 -translate-y-10"><div class="w-[70%] mx-auto py-3 mt-4"><div class="grid grid-cols-6"><button class="py-2 px-2 " type="button">1
+			</button><button class="py-2 px-2 " type="button">2
+			</button><button class="py-2 px-2 bg-gray-500" type="button">3
+			</button><button class="py-2 px-2 " type="button">4
+			</button><button class="py-2 px-2 " type="button">5
+			</button><button class="py-2 px-2 " type="button">6
+			</button></div>
+	<p class="text-center text-sm mt-4">※Entering &lt;Indigo Cradle> does not change floor count</p></div>
+	<div class="mx-auto mt-3 md:px-8"><hr class="border-neutral-600">
+		<div class="px-2 md:px-0"><p class="mt-4 font-medium text-lg text-red-400 text-center">The Call of We Many
+				</p>
+			<p class="font-normal text-sm text-near-white text-center">(Max 2)
+			</p>
+
+			<div class="flex flex-col gap-y-4 mt-2">
+<div id="Predation" class="grid grid-cols-[75px_auto] gap-x-2 hover:cursor-pointer hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,UklGRmYFAABXRUJQVlA4WAoAAAAQAAAAPgAAOwAAQUxQSBEFAAABB6egbSPnk/vnT3lPBBGRiW/yJs1Kk0UWA5lD5KKwl1mOIs2KzGaqzHIPira2HW+063neNxnX7RjV2LZt27Z+27Zt27ZtI8lzKG8yyZf06wlE9D81idCaMqAGFVqx7coxOKHVhHZHlyOBVhPaXHwCUWIWCoXkHTd4lJiFQkGef6kCIdY2nghH2Rvv9sETo9R7ooTqT78YgBKX0NQLIUpp/uqbaXghHmV4I0KkY+qfYR5OiMUxbTBKtGOj/bECJRZl9HyKKmfY3xtxQhFRShDqdralmCT0RvvrICpECXUDUYorF1dRVOjwjIULkwiRq8ahFPfc0I3iSv2bFm7rhCOiwwPdkCx5okE45bmzEaGoY8CXFl5uRMlX1ryBZBFySs47CY6Oz9VSimfybxY+nohTTnkefh1HngrtulUpOeXiGylNWPZvxn7ejgayjoG/3UGouOahRpTKc9/+6uNXbtgxps+YWz6pR8kXdVnNSRbPuv8tZZcmUYLjoJ1DWGDhBKH3W/bLS0998OMP3335+SONKPleiVY2WyZlT/REAmVv2j5CtyfeGE/iPru3FsU3T5/VSJRvWrDngnNPHtm3ft645q4dEoGd6UzKnvcoIyysxFFWLUyxz2oQSvHty2qn77z2hQ9/s9zvn7775HeWti97o9S+8GoXhKxjj92CktOsUIJQPW7tyTve/c9yP/1u1yFk27cj6Ix6lGN2PS2Q4JScVNRP23/9y4v6TVDUCUGovT/9wyTCYXuZFop6R6Gbde5dD955xWlHLvnUUnY5YZl9X0bLxQWv4uj/jBVm/k3bFsIY+2cuSixC308sYwUZ+/9MUfr9avtxxCI8auGnKw8eu/zhtz7/7I2bJiJK/Rd2IZ44PCtS9u5QhCDJ8uAI6pIM+s8uwhOH53JLLyLhExr6zZgzfmAZgrvawjYcMQjhTnulEg0Mv/d3y9hPL1x5cM/9afu2O0IMQrjbHiE4hn9vqX9TactL2y6EOES53p5wKGfbvxnLz9hvByUQT4Kz7KVyPJss/Lhv+sLNp99w761HBiDkxGsQWubZZu91w9Fm1/XjELKSULLzlzZWe3LigtICxzz7rAElX7wove978eY/LHxy/7lbpvUQ8iVQkmPiv5/2IQx7eJ9jxkUNaOB8+98y/2Qsl/n+nXvOWdHYKUmpnqX2aifhNvu/j7xkF+KVi+zvtF02asHKbQfOufb+p1986cVbT64a1KUdEeJ8cEGDD1xhV5Fk4x+PJ7q/bwfxSv2r9r/9sx6lwJX3GjJ6QCcKlQJlhf05HEWaqhj2+1c9UITKWywdUhvwGlzwwQlFhI6j586eOLixeeTZKduLknNMsdtxZFU4nMrYf4tw5MspCpTN7/zyh4W/v/v+P/tynQpZcUmW2HiEnDoWf2WZn6bgKUG56JsdPWu7T9x6/vUXrKxFyfPs/kgQ8pT+71jmm5EoRR0b36xEKJRAnuOiEzgKHN3vtfBxM54iQrvHpuMoRY+PRSkU9DILr1aiRAsDH8BRglA1FyFKhbMs3OMoIoy/BE9JyQqESFH2/WVn44gUBp+DJybHhn9sO44ooed5eEoTijuW/pxZhBIhdDmEIy7xzPzhz1F4oqpWo8TnGPr1R91RIjou9MSpNLz/WhlKYcepCHEqXd5+th1KQccxKLEK7R64K4GQ3zkgxOskXHwVQTglVULsLsm2sxIIeUL8okzfkqQVxdM0tg2tKZR1BAAAAFZQOCAuAAAAkAMAnQEqPwA8AD5tNphJJCMioSIIAIANiWkAABA3U1AFeIW5AAD++yGAAAAAAA==" alt="Predation" loading="lazy" decoding="async"></span>
+	<div class="flex flex-col"><p class="">Predation</p>
+		<p>On this floor, all your units and non-Boss units gain +50 ASPD, and your units receive -70% healing effectiveness</p></div></div>
+<div id="Proliferation" class="grid grid-cols-[75px_auto] gap-x-2 hover:cursor-pointer hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,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" alt="Proliferation" loading="lazy" decoding="async"></span>
+	<div class="flex flex-col"><p class="">Proliferation</p>
+		<p>Battles on this floor have a 30% chance to drop a Recruitment Voucher; all enemy units have +15 RES</p></div></div>
+<div id="One_Among_Many" class="grid grid-cols-[75px_auto] gap-x-2 hover:cursor-pointer hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,UklGRhoEAABXRUJQVlA4WAoAAAAQAAAARQAAOwAAQUxQSMQDAAABF8agkSQpdA/Bv+S5D5AQEXnxS5YYNpmhFpne1HKIhPBmw4OlobHIiOVVNnlzMCTsMuQ9MqWWF1C0ts2QJH1/RFQ1xrZt27Zt27Zt27Y9U1WZ+V1ZZCl7K/YCIvqfKEDNynAv6PX9czdoONa4QLseWuBUof5b2lv1oODUYGKKHnvDwGkMO5lKciEELhXq3qHn80ZVCBwaDEoyoM/WEDjUWMIkrc+ZcKlQ7RI92oAXBA412nuBZfpvPQicCaYx4Wc4DQquBMUn6DMd8Ag0XAnqpt4dO3nCnjr67X11CBwJxr1vKHETotnvsTBwdvhTK2hYQWNuRQyuSj9zM8RC4wivV4aCE4X+Cdqh0AZTPP7qCwMnBpuY4INasE2e8jcXwMBJDNfpW25Qeg+TlltgBS4Uxj9++eK5HTbjuX32/MlgaLiq07SJbdShfZOmtnlNKMmHaK3KogUZjf+H6FDqDhg4KD2wf1bfTL+e1SDIL92nTpgYNWHyyOoQZCk8pM9In3sQQ/6aDBid4BwYZClsvHflO3MCfnz8JHz8ch6KTB4tKFl1/vSZqNNnj3WGQm6f/V8DZic5QcqVhsWINlWr5KtcvkK6YjFyFJpvfM2A2QG/L9t36nh44sypfGc21EDk8if3H4SPnr96nfXm3W+GAbM9nnrKgNHBGFhR+VDZY7RvA+YkOWnc3avXoq7eONoAUTJ7X2bvwe8MGO3zcxdoFNDgJH1Gp3gKRlAGLYiMG50uwjiPYcAwsLQBw4CB5VzEpCwok6QVqv/4PGQzQ59XB55kKqBdOjrxpQ0UCio4PhNV7tO3yc5o+5VJnotj5S1oFLpFTGOEZ7kCMSyg/d4Nqmo/KBRcoHCcz5rDoOYdroWBgqDgWiBoypmIwWDi+1oIRcGBxIvQ6NU4lMaLMfByPRW3gsILqizavW3/rHUHtuzYcmjL9DW7tq+pBEGhBbKRdjTavWOKf7qgD+358hAU3GAId+sSzPL/cD6KZAWHQ6HwCg1vdoRG/Cbv1UIMrW+2hYIL06ySKSpBr98TUb6o2LSsAYEzQf1P3aDgUNTyA9t37ri498zundv3L6sOgRODU/Q9zsNkpixPQwucKPT8k+S5ytA7+Pf3WBi4ir2m7YdidP3ENzUhcLaGW6BsHMt4ABquBD04FAYKrb6MgsCVoNKrYwOHDR02YMe3qnC6mCmGPjfBpUY3egGtx14QuFOoc4cefX6oDYFDjaVMMsXVCgKHBv3+0E9wMDRcKlS6yp+8XQ8KTg1G/6M3DRqOBZ0mdlf47wAAVlA4IDAAAADQAwCdASpGADwAPm02mUmkIyKhIagAgA2JaQAADHThw4cOHDhwrAAA/vshgAAAAAA=" alt="One Among Many" loading="lazy" decoding="async"></span>
+	<div class="flex flex-col"><p class="">One Among Many</p>
+		<p>Battles on this floor grant +50% Command EXP; all enemy units have +50% DEF</p></div></div>
+<div id="Overgrowth" class="grid grid-cols-[75px_auto] gap-x-2 hover:cursor-pointer hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,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" alt="Overgrowth" loading="lazy" decoding="async"></span>
+	<div class="flex flex-col"><p class="">Overgrowth</p>
+		<p>After the end of each battle on this floor, gain 1 Max Life Point; however, Life Point and Shield losses are doubled</p></div></div></div></div></div></div></div>
+		<div class="hidden sm:flex justify-end"><div class="relative"><button class="sm:py-1 px-2 hover:underline h-full"><span class="flex gap-x-1.5 svelte-t8499q"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="mb-0.5"><title>language </title><path fill="#E2E2E2" d="M20 18h-1.44a.61.61 0 0 1-.4-.12.81.81 0 0 1-.23-.31L17 15h-5l-1 2.54a.77.77 0 0 1-.22.3.59.59 0 0 1-.4.14H9l4.55-11.47h1.89zm-3.53-4.31L14.89 9.5a11.62 11.62 0 0 1-.39-1.24q-.09.37-.19.69l-.19.56-1.58 4.19zm-6.3-1.58a13.43 13.43 0 0 1-2.91-1.41 11.46 11.46 0 0 0 2.81-5.37H12V4H7.31a4 4 0 0 0-.2-.56C6.87 2.79 6.6 2 6.6 2l-1.47.5s.4.89.6 1.5H0v1.33h2.15A11.23 11.23 0 0 0 5 10.7a17.19 17.19 0 0 1-5 2.1q.56.82.87 1.38a23.28 23.28 0 0 0 5.22-2.51 15.64 15.64 0 0 0 3.56 1.77zM3.63 5.33h4.91a8.11 8.11 0 0 1-2.45 4.45 9.11 9.11 0 0 1-2.46-4.45z"></path></svg>
+			EN</span></button>
+	
+</div></div></div></header>
+
+<main class="bg-neutral-800 text-near-white pb-32 pt-8 sm:pt-16 md:pb-28"><div class="w-screen sm:w-full max-w-7xl mx-auto"><div class="sm:px-6 mb-4"><h1 id="stage-title" class="px-2 sm:px-0 text-3xl">ISW-NO Requiem Aeternam</h1>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0"><p><span>Iberia is falling apart, and the Saint's life is coming to an end. He can no longer speak clearly, but as long as the aberrant sound within the sea still continues to ring, he will continue to fight. </span><br><span class="text-[#FF4C22]">This stage has &lt;Bushes> that prevent your units inside from being targeted by enemy ranged attacks.</span></p></div>
+
+	<div class="px-2 sm:px-0 mt-2.5"><p>Initial Cost - 10</p>
+		<p>Deploy Limit - 6</p>
+		
+		</div></div>
+
+<div class="sm:px-6 my-4"><h2 class="px-2 sm:px-0 text-subheading mt-4">Special Terrain</h2>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0"><table class="mt-4 sm:mx-auto"><thead><tr><th class="border border-gray-400 border-solid py-0.5 px-1.5 md:min-w-[50px]">name</th>
+					<th class="border border-gray-400 border-solid py-0.5 px-2.5 md:min-w-[50px] sm:text-left">description</th></tr></thead>
+			<tbody><tr><td class="border border-gray-400 px-2 py-1.5 text-center">Bush
+							</td>
+						<td class="border border-gray-400 px-2 py-1.5"><p>Allied units on this tile become invisible even when blocking enemies</p></td>
+					</tr></tbody></table></div></div>
+
+<div class="sm:px-6"><p class="px-2 sm:px-0 text-subheading mt-4">Enemy Routes</p>
+		<hr class="border-gray-500 my-1"></div>
+	<div class="my-2 sm:max-w-[40rem] mx-auto text-xl">
+		<div class=""><ul class="flex w-screen sm:w-full overflow-auto no-scrollbar font-bold text-lg text-white text-center select-none divide-x divide-gray-500 py-1">
+					
+					<li class="flex items-center justify-center min-w-[75px] w-full cursor-pointer py-1.5"><img src="/_app/immutable/assets/boss_icon.b6da7413.webp" height="50" width="50" alt="boss" decoding="async" class="">
+					</li>
+					
+					<li class="flex items-center justify-center min-w-[75px] w-full cursor-pointer py-1.5"><img src="/_app/immutable/assets/enemy_2038_sydonq.64517d22.webp" height="50" width="50" alt="doq" decoding="async" class="opacity-30">
+					</li></ul>
+		
+<iframe class=" svelte-2rpf2a" src="https://www.youtube-nocookie.com/embed/5UwVMWHd7qE?rel=0&amp;enablejsapi=1" frameborder="0" allowfullscreen></iframe></div></div>
+<div class="w-screen sm:w-full"></div>
+		
+<div class="max-w-screen sm:w-max sm:px-6 mt-4 mb-6 select-none hover:cursor-pointer hover:bg-neutral-700"><p class="px-2 sm:px-0 text-subheading">Regional Commission</p>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0 flex gap-x-1.5 sm:items-center mt-1.5"><input type="checkbox" class="accent-red-500 w-4 h-4 mt-1 sm:mt-0" >
+		For the next 4 battles, all enemies HP +30%, ATK +30%</div></div>
+		<div class="px-2 sm:px-6 select-none"><p class="text-subheading">Difficulty</p>
+	<div class="counter svelte-b27oxu"><button disabled aria-label="Decrease the counter by one" class="group svelte-b27oxu" id="diff-minus"><svg aria-hidden="true" viewBox="0 0 1 1" class="svelte-b27oxu"><path d="M0,0.5 L1,0.5" class="group-disabled:stroke-[#444] svelte-b27oxu"></path></svg></button>
+
+		<div class="counter-viewport select-none svelte-b27oxu"><div class="counter-digits svelte-b27oxu" style="transform: translate(0, 0%)"><strong class="hidden svelte-b27oxu" aria-hidden="true">1</strong>
+				<strong id="diff-count" class="svelte-b27oxu">0</strong></div></div>
+
+		<button  aria-label="Increase the counter by one" class="group svelte-b27oxu" id="diff-plus"><svg aria-hidden="true" viewBox="0 0 1 1" class="svelte-b27oxu"><path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" class="group-disabled:stroke-[#444] svelte-b27oxu"></path></svg></button></div>
+</div>
+		
+		<div class="min-h-screen"></div>
+		<div class="mt-8 sm:mt-16"><div class="max-w-4xl mx-auto"><table class="text-sm sm:text-base svelte-101gw7r"><tr class="floor1 svelte-101gw7r"><td rowspan="2" class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,UklGRmYDAABXRUJQVlA4WAoAAAAQAAAAQQAAYwAAQUxQSNoAAAABP6CgbRs2VhQF0P0TEQFuh/wB5bZtVcv+hO5kJzvZoTrU568jZ///J4Nv4RYi+s/IbSRFzjKd8A16r+2IdnEm2HR5LlhmajOw0tRlUEthqjB1EdR0ZSozdRBYaSoNajNMFaYug5oOU7mpg6CmS1OZsYK7CExd9Q2Qdq63cQFstrNqQLQH11Mi2oPPxCjqIZUtSESv/9aqtjN9B9o6WRPrIFxvCFXarkeavN4/3KJACb9Jso5aoIeugSbvgU/SjnuBLjr2BZpuL1RPiZQ17oSaLqpqJNiMXggAAFZQOCBmAgAAEA8AnQEqQgBkAD5tNJZIJCKiISO0CxiADYllANTpXD0e2L6RfL/6AHNJaih6AH7AdangAE0itjHNA81f8H3AP4l/NP9Z1zfQA/UcnKi+/tc5EiMBRQoVAv2xnFym5H56xpN6p0GHlImLB/qRJLhqieK7XD+xhstKcZ0ezMlCbJSQAP78SgzkNm33F8dqaxOb7NtWVL2dDBz4tCQcrzUFPQ4v6J6TW03dyoJg7whoVSXXo8nf5dHstnp8Cqhfj4OE3waopRJf5NY8PFY/Lfuh/vuyRKX9CSc65SbqCdGReZRJr3TOVB7u8dGvg+DzgiZgEu0bOp8lCQeqZjSeQmyOF4Pt1+v4qP/gFqDf4F39I11PnZ2xZnX+6yflPwU9++EW83xFF84kvJn8ia4ey0V4/xa7AhEh0liVPAb5tAIbVO4+9WHe1uS/+91o++r2Rn+nXVuc3mdC2vxnws0k9i4e1k8Qkvg99waF6umHi/IdUkMVtUbwoQIgEDQA9kOGB4MjSP/Kv/m34LQGf5HHRdHc8/HYRfSwYzhUMmO4co+YlCP5GSK1liRolAD7MojqT8/B7n+3tunY09ShLYX8pLpqJfRz77/HF8y0QlbP2ZrdJLzSQTQqcy4n/e/5cYOS8jiFWK9M+rd5CzigM5WH8sO+2H8/e37XsqGBB4u0WNA29fYwvk9097gQH/j6oXhw4Na4dvoYE5c8tSqMfBzmy99jRbUGfH3wjaQDci5P/wi3gz8rxJpSQFmuqW//9kpilL1wyY9X/2QpZqLYXZz9misPuqvz6Sga/vP440zPlWecxYzX8d/AAAA=" width="30px" alt="1" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2"></td>
+			<td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Cistern" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Cistern</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Insect_Infestation" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Insect Infestation</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Sniper_Squad" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Sniper Squad</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Symbiosis" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Symbiosis</div>
+</a>
+				</td>
+			<td rowspan="2" class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floor1 svelte-101gw7r"><td colspan="60"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Mutual_Aid" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Mutual Aid</div>
+</a>
+				</td></tr>
+		<tr class="floor2 svelte-101gw7r"><td rowspan="2" class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,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" width="30px" alt="2" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2"></td>
+			<td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Voiceless_Summons" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Voiceless Summons</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Leviathan's_Followers" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Leviathan's Followers</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Malady" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Malady</div>
+</a>
+				</td>
+			<td rowspan="2" class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floor2 svelte-101gw7r"><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Ebb" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Ebb</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Omen" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Omen</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Hunger_and_Thirst" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Hunger and Thirst</div>
+</a>
+				</td></tr>
+		<tr class="floor3 svelte-101gw7r"><td rowspan="4" class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,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" width="30px" alt="3" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2"></td>
+			<td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Crime_and_Punishment" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Crime and Punishment</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Troglodyte_Tribe" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Troglodyte Tribe</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Craft_Brewer_Killer" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Craft Brewer Killer</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Sanguinarch's_Legacy" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Sanguinarch's Legacy</div>
+</a>
+				</td>
+			<td rowspan="4" class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floor3 svelte-101gw7r"><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Precarious_Defense" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Precarious Defense</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_The_Nest" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">The Nest</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Vortex" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Vortex</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Looking_Forward,_Looking_Back" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Looking Forward, Looking Back</div>
+</a>
+				</td></tr>
+		<tr class="floor3 svelte-101gw7r"><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Requiem_Aeternam" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Requiem Aeternam</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Separation_and_Unity" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Separation and Unity</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Course_Correction" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Course Correction</div>
+</a>
+				</td></tr>
+		<tr class="floor3 svelte-101gw7r"><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Eternal_Wrath" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Eternal Wrath</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Two_Forms,_One_Heart" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Two Forms, One Heart</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Route_Revision" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Route Revision</div>
+</a>
+				</td></tr>
+		<tr class="floor4 svelte-101gw7r"><td rowspan="2" class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,UklGRooFAABXRUJQVlA4WAoAAAAQAAAAQQAAYwAAQUxQSF0BAAABP6CmbQM2VRQFMK9GRIBflQPObb1tG6jO6XPXrClzz9wzS25cU4H/bwHM9/l4yhTRfwdu20YSPbNnL2DSPkK2OcelsBnfCyGj1gmXK7VUCZW5mb0Lk2NdS0dCZDCbLmbAJe1KnUvBM/PvtcDZUU/ghNZG9NxA616dB4ETWzcCZwOtH91NFdHC3UwN9fz30WhKe+TNjXWstNFov7Qrpc2NtaO0wWhLWq+0mbFi6w9cLGFCLOEvWGaXwWJ9tISwBwrco9cJLLauYbGE3wWXaQ2LrUtc5jTEzf17DYutk+AypyEucxqiYusHwWVOQ1jmNITF1h0ufq8IO6tpKQ9C8DXYUqYnnArOsVonHHla1XEJcB3e5ZbwFeH5w84dkt+8Y4OzdrW8L0hLs47inloqKG4DVhQ3Y81wtcVx1ZlKSr9u8k4ONNfUyPEKiQZyuidYNlAk/7VmvJ3dKbI9AQAAAFZQOCAGBAAAUBcAnQEqQgBkAD5tMJRGpCMiIShY7ACADYljANEF717/eYF48rth+hjn/+gDnvfRV/pd8i9ADpRv8Bgm39E7Q7IB9aPzPCDtQbsl6q9LO8GmAfxjzHP8n7gPaD+Jf3H/d+4F/FP5V/uv7N2Y/2A9hP9Oz2hJHRANnhCy4ZxNsZCtLJ8fpygZe6BtOV/nhmqkqlW6Qd/c16rWlKNCQTniNAdXg78Kvq9tYoHoH2OXyOoNqGXGaPaWMh8LSaYklnPOR1IAAP78qAHz5tjzgQ5sHtesy8T3w6NER/g58T/C885mv6UMSeEd5H58+M+uN5xFoijhLwpdL0FCMRsc+yeqidpquwx7Kf5dZEEtHw6BzUXbmRzGZkzUXbIXa801PS9+5Q0OVFHQv9QbEmdLLFJRfxGPv12d1PDWF/Oq61WSxxncy5tsUeAVokXENL27dCK0UYdgSdv7wgQwak9+f81HEkPcHLXSPPFBAyWs8TrkP+IV/Bax+rkKezH7bETHV4VKFflmiAxcNvnJj7ztU7s3x4yrOTmq8pS8nQapw/KY8JLOSW3xA/5sFrzLmSWs14qeCeVYGI9zp0CRNxd5tiv9CZpJIuXTGPqBPaBo1ilv+g8/Mk3sBtFWTCrwu+4Tgz4TZP2aiHP86CBXdgOCQiMcUNloiu0aJVfMwbZgq8On6Fn9aeeGzE/fvzjzR2i8o15eeaceqxviNj5m6ssqroRvCTYaq5GxgHMXX5jwLs8+gRbhrmgDrcuVNlAdWQz6D/J9Lgi/J4PQZxMNHydANpVbmI98Aas841y6aGNAFZEBz9azjnAESGf9svZfVN31LziDVwbO21R+eayiOax+gAoGTCXD9yoO8HHAmAHXNtVEJCP3apOtBPzQb48LXL8C38+wtZTbHvoInDMdQbVfQ1NjRkMiDalr+igvCNSPn8cTZfJxZugEAhU7wrYUE3WOvky/CZGE68tj+teypWyeriSsNMXUvGI0GHhZ1wH92aIQuN1dT3B146zXZ+DLr8/n69PyE6KGW3ELJbrD3oYOfJfL32AVkii+RwCEVNj8i7EdLw/ubNkMEbgZxEezwAcnxf5BXPX+NEmFajQUKThRLmNOIQo0M0k4Dqp6CcztZpF7QThZH7y7UIJm03ILujpEFMVzVIQTMwoJqUJH9ejf0ax7cwDtxjlu9lKRwvR7W+9iHpOdC/gQA++D45ZxDRfdWTZu7q670a/+3tfcf2jYENnfSQuQxlHmVuYGIioycsNifnA3m16Nqg6D4nqtEsPCom4xNgIEXDTVzz7NUG7wuKFDt1g2sF4w5BRfi3LOnKYQCKOzrAMVSm/e/6d0HI3v8TFKA5dPqjAOJMb/wWTtKmBZe7EgAAAAAA==" width="30px" alt="4" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2"></td>
+			<td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Underground_Ascension" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Underground Ascension</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Blaze_of_Glory" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Blaze of Glory</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Territorial_Tendencies" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Territorial Tendencies</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Seacavern_Sandstorm" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Seacavern Sandstorm</div>
+</a>
+				</td>
+			<td rowspan="2" class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floor4 svelte-101gw7r"><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Nethersea_Brand_Land" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Nethersea Brand Land</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Hunting_Grounds" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Hunting Grounds</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_The_Revered_Abyss" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">The Revered Abyss</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Guns_and_Order" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Guns and Order</div>
+</a>
+				</td></tr>
+		<tr class="floor5 svelte-101gw7r"><td rowspan="3" class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,UklGRnwHAABXRUJQVlA4WAoAAAAQAAAAQQAAYwAAQUxQSPsBAAABP6CgbRs2VhQF0P0TEQFuh/wBV5Jt1cp6Gr+HxQ6pQ+qQOqRP782Re/7/stY+ez+LI/rvwG3bSJLRNebOTONi34CVoO37oBrAJMXUBK6rFFINpiki4jlmNUFjQsaETBgkv4ReZJPBMPklGLabV4MxrA2vDHuEXyOmbMGtbbFLuLUYNhZrwq1jsUP4NQO7noFNxBrwyrAt+DUDe56BTRfJ4NegYrrwSzY/4ddQNjtwq7dcFkje9iyStwjGPR9K3nE8eTOxRYpNpNvYIjcWC6Ub0/CmxCY0BWyh1OCZCcyRNmygocHzHIouBsQV/JJG+EJEROhC/NYjNof4pgORW0nu2ghoEOeZCM2QQb9WCMpnWRyGoAccReB2ufJgXEY8eeDv3xJKDz/KL9FwIPVIhZ6Z6hlvNCK6eY6pnC9AvtJldpidfP1fgOcAp34LwLYvN5lq/qiEy8yQbW7kkdRgD040Z0UmO7eOPVdmLfyamXj32OWDyIH0adzEWD65EuOPkbGQvWYXYF3Ty0eu9E3rMD75OImKhzXcFDKs1jL/y342jDske0nRWso2gGfdbhrDqIVfRorITAi3BEeCWzQVDRu+CYeKW7fMds1LZcDriaMxR5Vu0M+nJxzjKknq/urhW7BeC5707Yqn0qPjabEFYFhswK/eaQPoY+kEAAAAVlA4IFoFAADwGgCdASpCAGQAPm0wlEakIyIhKFOcmIANiUAZ1QhiqxkHQIwG2F/9fRPekb/J74B6AHSeYBh/Y+1z/B49DrF+f4a9qjdbOOf0n/M+ADKY/o/iweANQA/i/9V/4fsd/x/+78jv5N/e/9/9s32B/w/+bf8T+6ewB7BP139gr9PzlaE+Z36ddreAmWCH538ryOZ0Uh8kLf7Mpze3lSV/jTvkbc7gvT1oBaceGFn8xlh0RVl26k5WDA4sDPQTEKsMjW5T1WMke9+FwfbWldLa5aLxisxx2Lns7KGOG+ss4QoJ8AD+2u2i+FXbiNDViw71B3teK/Czca49DYneaD6c8G/o1ctiSUansknq/geUfaoMPkuuirP6aJgqNPn/ywRoSz9zEVL7n1sGc4vkCbkoBkEGK6HjVv5zH0QLq4BX/QpFDnrwQJg1aTzVPaAz8lOSN7PQnLae+n9BiyTuTmb2c8sucjcQbcu2T7sozwz9MaOdGjs/pHod4VMhEs+cOiX+PlbAfy9LbmEBHwMFInhntWW91OYwZ8tKiqWEt+7BtKqFnULjRwe1xPI/hB69UwWRq+T5KYnIGYIME+eNLZfv/XnfQe8xugvJD+HSBvFuCjHosoTbXNcBdx+pHtOiGLESXxxAVAvAYsJ+B2ccyhrlGTCl5nH6Ix6XE8cILBqRKWrD5Ns93Zy8fFbDAbqIyr0cd2l6vXwiTjWu2bbSyb98ZwSLF0z/XjJmk1QQZbaONxOlS0QDm1WHT3ZNuE3PfVou7YGpIVRM/WN2QeAVI0D74j5ZDp+LePelO/hFrnx7H1/CPpIMAXoSq2SDrQ/X/wwXTzH4sffFm7L672RG+J7LfQBY9G2w0geIy/M4xHwODRHGFwM8KvG1cPgHeZaoSliSzajVUY8rwmh3Szkc/N1LZ+eeW1gFQquHtyL1kAOGZ3nCbCcOqX91KnnjBHQ2251Pl3K6NiVHKTOgyDbsKHn8NYxySr2jdrDZzwY/ZnP0VRMzn6KkXv4Gr37HElDmH/yFghn/5ozMvjkHPT/xaZ9k18l6jr3NyNRoce9Tyq3o9Roynjw0epX5dYrhmSvPm51QozcFAG1qqRur39zOX+S2BX89jHxZyWB240WltA28jbUOgW1BRUGWVx2Qv2k/TyyceBBUrZLn/iwhQNoPrgCU6Ki8ziXHto73CLsFf5aEEDik71w17Zp9XmW69yU8zoHGpB4JcqE2MM5txXexoAF0Xwf375K+NV2H8HET3GMqXe5Gaf26WG8vuhLeK5NxfIFE3xGI7I0JMtVzHhSulE6lKoe1IavsWxJjIdQyYuAMAu1pYa0qHOJngrEgopvhr2tJdoVrWPJVGdTdM+9ac73ZepzST5Aw5/Oy3gPLjGRcuB0chYdLXO33fz0Pr3i5VFXNQof9y18flLD27eHYa3pqfLtBrWtE3WRIX32dgVqz7Uy+nf9Ant/q1M5FBB4zjKgjZhC8G36Wd+wgAtSAtkR9NZyQ7tkNF974PbynI66ZG866/OiRz5hMyUv+TQDl7tHGi0J+LeRtmF+MXNlL5tiUhf0nfhbiVhdsbX8nfyQXP4OaKG6HrOyDx+CBNlldgMewsWsiBd8ny7+0kifDnKPJ2kU5nKI98VIzKX9IlEfGzbT+F9lTrXzHikVQyX29pcw/UGSwbJboqD/rBmZBxUSSv1jJQTblISTOQe9CbJCRaCa2hh2OTJ0DoQo121oN9RXDfgELzdNf7zXV3Tu6o6JsITXs0u5Mq+bshpwoQ44AY6BDOGQzK9Jir3vqd+VoNxnsB4AO7thOkx6duU+uRhAnGrgOn+fQAANzowEgAA==" width="30px" alt="5" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2"></td>
+			<td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Mechanical_Menace" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Mechanical Menace</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_The_Faithful's_Utopia" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">The Faithful's Utopia</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Out_of_Control" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Out of Control</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_The_Piper's_Call" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">The Piper's Call</div>
+</a>
+				</td>
+			<td rowspan="3" class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floor5 svelte-101gw7r"><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Ubi_bona_somnia" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Ubi bona somnia</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Pool_of_Procreation" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Pool of Procreation</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_The_Spread" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">The Spread</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Ember_Phalanx" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Ember Phalanx</div>
+</a>
+				</td></tr>
+		<tr class="floor5 svelte-101gw7r"><td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Curse_of_Cognition" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Curse of Cognition</div>
+</a>
+				</td><td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_'Fate's_Favored_Child'" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">'Fate's Favored Child'</div>
+</a>
+				</td></tr>
+		<tr class="floor6 svelte-101gw7r"><td rowspan="2" class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,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" width="30px" alt="6" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2"></td>
+			<td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Water_and_Fire_Union" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Water and Fire Union</div>
+</a>
+				</td><td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Deep_Cognition" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Deep Cognition</div>
+</a>
+				</td>
+			<td rowspan="2" class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floor6 svelte-101gw7r"><td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Destiny_of_We_Many" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Destiny of We Many</div>
+</a>
+				</td><td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Glory_of_Humanity" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Glory of Humanity</div>
+</a>
+				</td></tr>
+		<tr class="floorEX svelte-101gw7r"><td class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,UklGRnIEAABXRUJQVlA4WAoAAAAQAAAAJgAAOgAAQUxQSLEBAAABZ8M2kiQnzO5rE4/8E30JhBAReT05NnFnemYKs4wCm/kRmeosGYs9M9zpsZsuM4QZrQdhBNiSJJu2+vro2rZt27Zt9f8/b6w1Z82+9wMi+p8QG+4+2mG0frzBvXGU3msfgt4reg9wHepn8NgM/4fBeSvc2mk8JRrvaGy3wuWR1uEtra0epF+j0wXSNV1R6FqicFkHMX+VQie8KQrLdRDKjig0IzihcFwOayBFYQDhYC2FS5gFZxQWYB1TeIVxT6EKwhKFqxIEFAohTlO4KYBPuwNpxihcwJ+lOYa0uxQQDDIcgkM3rWeELfRr4DRM46AMxiQb4NjGYL0S+ip6m3WIoHSaMUQwO0O/Aur6DYYpKCtOaSahaqimDU3dHgVoXiiMw73ojcIcFAcU5qE4p7AC97JrCvNwL3qlUAD3/AkKcSiOKQxAQ2ESqkVatVDSjEPNsAHaxhsGndDmndM/hTr2zrAPypwPmsXQfdKGjgJ07bSKoMylkQ11BoNMRJCkl4V/NPbFLUTQ8kx/GequHYYVUE7S2ofumzZ0FKBrpjUGZQONEairful3IoIBegP4KwAAAFZQOCCaAgAAcA8AnQEqJwA7AD5tMpZIJCKiISV4CZiADYlpABOgK7rfVl38CeLP/Af4DyM4R3qE5tHqb2Cv1m9LD1o/sV7C36X//8e2AN8sFb1tlkM/YAeNZ/Vhhf+36AQeklfzq48/l+MeIpreWc3UJ0U5tfBN96h2CIeQDD/kgzTVwKhbGtLwPMAAAP77ZMNMirwWOJop6hnbQ14hVhbSU+7MmcIfjHvAnsPktvxtroxMcpblUI5I5QlG32XIiIQCQpqK0RKgPYVWZJiuGXmmPaay5nZv6l+xRIi4UkHKnF857atggkrVqsc6OIh3/2YWfosukYcODnFEhIwzuPmqw3YXbiJ5zxtt6lfei6joW2DQSzZSbTnME4Or7gu/x/WLtfhAgG4OsRHQT2b/7pYLXOkWjEZHzeW53NgYHjNpiu4D4ay3Lq7QFXYaZJOdygdkpjm+AITrZBRYmq8kyM9+KNC2zXgIMI6r/c4xNtr6DI50t4pI8MNNkanIwk51V0c9hqzZzqvZqu3qeTDlRX3sbeP78LcPN9s4xeaIyXc7Oyqf6hopFJWvdR994c85rjzxMtTO4f+8HATLXGJhjJrYlQcHI53RfdEX1wFCLx+Le/5vvGtEjb83K//FU9k41MVKMeIvVmLhDB5Ie1C8TLDyYuzdXTTEb5XCx2qH7K0Sx8+evu0Lko5v/betUBtvUjMPNzFdBY2ifJgBypR7lwTvrFzS09SjoCBejldeF8Vlgxb1Qkyr20cOGqALwfLzXarQOOep+7jhkfKDH/FZ1JEwuGY3tRuOQKGaP5biAiambUtnILfFJSJLbx03gkuMzB1Sia0PSDKIX2DzA4GgLcTu3EHqqA1DbERNkC+XsLIUQBgc4LnQbCMNgyrNJx2AAAAA" width="30px" alt="?" class="mt-0.5 ml-0.5 sm:ml-2 py-1 sm:py-1.5"></td>
+			<td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Hunting_Group" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Hunting Group</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Chilling_Curse" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Chilling Curse</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Avoid_Unsafe_Roads" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Avoid Unsafe Roads</div>
+</a>
+				</td>
+			<td class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floorSP svelte-101gw7r"><td class="corner svelte-101gw7r" colspan="4"></td>
+			<td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DU_Indecisiveness" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Indecisiveness</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DU_Supervision_Site" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Supervision Site</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DU_Right_in_the_Kisser" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Right in the Kisser</div>
+</a>
+				</td><td colspan="15"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DU_Tail_Between_Legs" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Tail Between Legs</div>
+</a>
+				</td>
+			<td class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floorSP svelte-101gw7r"><td class="corner svelte-101gw7r" colspan="4"></td>
+			<td colspan="60"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DU_A_New_Day,_A_New_Duck" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">A New Day, A New Duck</div>
+</a>
+				</td>
+			<td class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floorSP svelte-101gw7r"><td class="corner svelte-101gw7r" colspan="4"></td>
+			<td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Reality" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Reality</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Fanatical_Flames" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Fanatical Flames</div>
+</a>
+				</td><td colspan="20"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_'Joy'_From_a_Box" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">'Joy' From a Box</div>
+</a>
+				</td>
+			<td class="corner svelte-101gw7r" colspan="4"></td></tr>
+		<tr class="floorSP svelte-101gw7r"><td class="corner svelte-101gw7r" colspan="4"><img src="data:image/webp;base64,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" width="40px" alt="?" class="mt-0.5 ml-0.5 sm:ml-2 py-1 sm:py-1.5"></td>
+			<td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Fishing_in_a_Dry_Pond" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">Fishing in a Dry Pond</div>
+</a>
+				</td><td colspan="30"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_See_the_Big_Picture" class="hover:text-sky-400"><div class="py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50">See the Big Picture</div>
+</a>
+				</td>
+			<td class="corner svelte-101gw7r" colspan="4"></td></tr></table>
+</div></div></div></main>
+
+<div class="fixed overflow-hidden bottom-0 w-full select-none z-[2]"><div class="relative transition-opacity duration-[50ms] ease-in-out select-none opacity-0 invisible">
+</div>
+	<div class="shadow-2xl shadow-gray-400 bg-neutral-900 w-full mt-4 fixed bottom-0 py-2"><div class="max-w-7xl mx-auto px-2 md:px-4"><div class="relative flex items-center h-16">
+				<div class="flex items-center py-[2px] bg-gradient-to-r from-[#333333] via-neutral-900 to-neutral-900 relative hover:cursor-pointer"><div class="flex items-center px-[6px] py-1 relative bg-[#313131]">
+						<img src="data:image/png;base64,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" alt="relic icon" loading="lazy" decoding="async"></div>
+					<div class="bg-neutral-900 min-w-[280px] w-[80vw] md:w-auto overflow-hidden h-14 gap-x-2 pl-1"><div class="flex gap-x-2 items-center">
+							</div></div></div></div></div></div></div>
+</div>
+
+
+			
+			<script>
+				{
+					__sveltekit_7zfqxn = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.857cfc86.js"),
+						import("../../_app/immutable/entry/app.7ccf3300.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 3, 14],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

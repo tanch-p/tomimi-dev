@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../../favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
+		<link rel="manifest" href="../../site.webmanifest" />
+		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="keywords"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		<meta property="og:site_name" content="tomimi.dev" />
+		<meta
+			property="article:tag"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		
+		<link href="../../_app/immutable/assets/0.31476555.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.8f988fb1.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/17.caf431a1.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/EnemyCount.b730f757.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/favicon.a4f9be35.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/DifficultySelect.9570ab64.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/NavTemp.0f019ee3.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.315a0298.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.de62ce89.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.c5e91e64.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.eb4d2af8.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/findStage.ced48b1e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/is_stages_list.29e53300.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.a48b2cba.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Icon.612b5f0c.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.62cdf5e6.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.f28cacc1.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/17.41e19446.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/EnemyCount.eaba31ce.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DraggableContainer.a612c0ec.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/translations.916dba18.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/boss_icon.7ef3456d.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TextParser.d6b059c8.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/favicon.e2aeb149.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/clickOutside.532dca22.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TogglePanel.9c3ce2d2.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.eaa444e6.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DifficultySelect.5131635b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/NavTemp.f18f3fb2.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/drops.f2db9299.js"><title>ISW-DF
+		Emergency_Lecture / tomimi.dev - Integrated Strategies Helper for Arknights</title><!-- HEAD_svelte-1kp9jv8_START --><meta name="description" content="tomimi.dev - Integrated Strategies Helper for Arknights"><meta property="og:description" content="tomimi.dev - Integrated Strategies Helper for Arknights"><meta property="og:title" content="ISW-DF_Emergency_Lecture"><meta property="og:url" content="https://tomimi.dev/en/stages/ISW-DF_Emergency_Lecture"><!-- HEAD_svelte-1kp9jv8_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+<div class="fixed max-w-[1280px] mx-auto inset-0 z-10 pointer-events-none"><button hidden class="absolute bottom-[150px] right-[20px] md:right-[40px] pointer-events-auto" id="scroll-top-button"><div class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]">
+
+
+<svg width="24" height="24" class="rotate-180"><use xlink:href="#down-arrow"></use></svg></div></button>
+	<button hidden class="absolute bottom-[90px] right-[20px] md:right-[40px] pointer-events-auto" id="scroll-btm-button"><div class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]">
+
+
+<svg width="24" height="24" class=""><use xlink:href="#down-arrow"></use></svg></div></button></div>
+
+
+<div style="display: none">
+	<svg><rect id="sq-blue" fill="#27a6f3" width="22" height="22"></rect><rect id="sq-outline" fill="none" stroke="gray" stroke-width="1.5" width="22" height="22"></rect><rect id="sq-white" fill="#f6f6f6" width="10" height="10"></rect><rect id="sq-outline-sm" fill="none" stroke="#acacac" stroke-width="1.5" width="10" height="10"></rect><symbol id="x-mark" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></symbol><symbol id="clock-icon" viewBox="0 0 24 24" fill="#bababa"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd"></path></symbol><symbol id="trash" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></symbol><symbol id="down-arrow" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#F2F2F2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75"></path></symbol><symbol id="right-arrow" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path></symbol><symbol id="icon-minus" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path></symbol><symbol id="icon-plus" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></symbol><symbol id="icon-language" viewBox="0 0 20 20"><path fill="#E2E2E2" d="M20 18h-1.44a.61.61 0 0 1-.4-.12.81.81 0 0 1-.23-.31L17 15h-5l-1 2.54a.77.77 0 0 1-.22.3.59.59 0 0 1-.4.14H9l4.55-11.47h1.89zm-3.53-4.31L14.89 9.5a11.62 11.62 0 0 1-.39-1.24q-.09.37-.19.69l-.19.56-1.58 4.19zm-6.3-1.58a13.43 13.43 0 0 1-2.91-1.41 11.46 11.46 0 0 0 2.81-5.37H12V4H7.31a4 4 0 0 0-.2-.56C6.87 2.79 6.6 2 6.6 2l-1.47.5s.4.89.6 1.5H0v1.33h2.15A11.23 11.23 0 0 0 5 10.7a17.19 17.19 0 0 1-5 2.1q.56.82.87 1.38a23.28 23.28 0 0 0 5.22-2.51 15.64 15.64 0 0 0 3.56 1.77zM3.63 5.33h4.91a8.11 8.11 0 0 1-2.45 4.45 9.11 9.11 0 0 1-2.46-4.45z"></path></symbol><symbol id="icon-list2" viewBox="0 0 32 32" fill="#ffffff"><path d="M12 2h20v4h-20v-4zM12 14h20v4h-20v-4zM12 26h20v4h-20v-4zM0 4c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM0 16c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM0 28c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4z"></path></symbol><symbol id="icon-list" viewBox="0 0 32 32" fill="#ffffff"><path d="M0 0h8v8h-8zM12 2h20v4h-20zM0 12h8v8h-8zM12 14h20v4h-20zM0 24h8v8h-8zM12 26h20v4h-20z"></path></symbol><symbol id="grid-view" viewBox="0 0 16 16" fill="#ffffff"><rect width="16" height="16" id="icon-bound" fill="none"></rect><path d="M1,1h4v4H1V1z M6,1h4v4H6V1z M11,1h4v4h-4V1z M1,6h4v4H1V6z M6,6h4v4H6V6z M11,6h4v4h-4V6z M1,11h4v4H1V11z M6,11h4v4H6V11z M11,11h4v4h-4V11z"></path></symbol><symbol id="layout-view" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></symbol></svg></div>
+<div class="layout  svelte-z7rxhv">
+
+<header class="sticky top-0 w-screen sm:w-full transition-none bg-neutral-800 text-near-white py-4 z-10"><div class="grid grid-cols-[50px_auto_50px] sm:grid-cols-[100px_auto_100px] max-w-7xl mx-auto px-2 sm:px-6 items-start"><div class="w-max"><a href="/en"><img src="/_app/immutable/assets/favicon.e511bc87.webp" width="32px" decoding="async" loading="lazy" alt="Home"></a></div>
+		<div class="self-center mx-auto select-none"><button id="floor-options"><p class="flex items-center justify-center relative text-center"><img class="h-[20px] mt-[1px]" src="data:image/webp;base64,UklGRiwBAABXRUJQVlA4WAoAAAAQAAAAGAAAGAAAQUxQSN8AAAAB98GojSRH22HS7/ij7WMREfmcZcCI0XlYqJEJixX/J4TjnLyNYWdElaHlR0CMZNu0Nd+2bRvP7638wzp7H1a9BCL6n0xj/SHcxruwg9/ZvW8T5rb+FF93VvHds75C93gFn+vIOuQH+l0hPZWTX2iFbGEk2yd7fafwJvucIR0fUdiTTeZILsYUB7JTkrcnig+yL+KGNiguy5fwqw6VH9k13jmlci77x/ZGC1QW5WuEt0D1RfbMwmiP6qGsx2mHhqFs8/uKhkfZtxZoWJJ/0DL7K9un6VKhR9v8TThhugAAAFZQOCAmAAAA0AIAnQEqGQAZAD6dSp9LJaQioagIALATiWkAAD2joAD+9xwAAAA=" alt="5"> Border of Truth</p>
+		</button>
+	<div class="absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 invisible opacity-0 -translate-y-10 svelte-1m8jsyt"><div class="w-[70%] mx-auto py-3 mt-4"><div class="grid grid-flow-col auto-cols-fr"><button class="py-2 px-2 " type="button">1
+			</button><button class="py-2 px-2 " type="button">2
+			</button><button class="py-2 px-2 " type="button">3
+			</button><button class="py-2 px-2 " type="button">4
+			</button><button class="py-2 px-2 bg-gray-500" type="button">5
+			</button><button class="py-2 px-2 " type="button">6
+			</button><button class="py-2 px-2 " type="button">7
+			</button></div>
+	<p class="text-center text-sm mt-4">※Entering &lt;Bizarre Fragment> does not change floor count</p></div>
+	<div class="mx-auto mt-3 md:px-8"><hr class="border-neutral-600">
+		<div class="px-2 md:px-0"><p class="mt-4 font-medium text-lg text-[#ff382e] text-center">Epoch (Formative)
+			</p>
+			<div class="flex flex-col gap-y-4 mt-2">
+<button class="grid grid-cols-[75px_auto] gap-x-2 text-start hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,UklGRlgHAABXRUJQVlA4WAoAAAAQAAAAVAAAOAAAQUxQSPUFAAABF+awbdtAOin/+6/sJmlniIj8uKRFRtoQaUPkIZFbZMSQP9IiEdmFeCiO9SOGpxQpOfKSlrFoGZGWNkQC/9v/r0/b/9+VO3RLqaZG6gZD1lJvg8y3MPc8i8xXp2FS94YZz7rCjOezijyf2cZSZ4+RcP3Lbnd5PBLkOPZrRP8T/zAvYPwoCxvaDl2A8aH0Zwp20rEijBul/1Kw038NwRR8VgA78xOModKdz8FO/38IovDWaQUTHpSNGDulvxLY6X+HIEq+Oa1g4oNSirFZUQIb7S00qmRIacjgYdg0k7BzMNorPGmF7S1UUoDVQ0pDBg/DxDMshXmvCqNdctQT2A8LRRXggyGlERs8DB3q5BbY+xiDuNcKs2C6KoAcGlIaHYNfQNczBRM+8B7GIu4tgPkWBUoODSmNQXkeOs0ETOw+xuZBEua5KujvsiHISvZB7xkW2MwXcFoxSnXvw/mYMZg49HfZEGQlr0AW/THcCvPDrYWwR3swSgszt+pglqUkAr0D+rtsCPI+d0GeGZZnoOsydbCt3gsYrVsZWQaTZAJ6RxXk1N8hyLd8CtI8/HAR9A+3YELrvQsYtfczchAmQolA4qcgZ/8KQfo4E7Jn+FfohZk6mIVDXglGuupmHO4OZj6GWcbjkCgh3YSmPKYpUeirAnuNVTBKr1LId8pNr6cEzhsZeQHmOGcgnG5EN8v3dFPeeVKYht6dfQnmNTbCqrlXEwp5L/P0CjgvZORT6Bf5OeSagEEJSDj7P5hwOgEnlhUlyL+kxzsKd21G1kLzOqSR1xiYThzKroQ5fQ02lszKKiUYQcnRnjjcTzNnoF9ktPEac2c3RyCvsRR6WpKSXaU0RlT8YSIMp+5WKSScZq5B3tPU/27pjMCco3e7ciImCvKas6MKbvR0KZz309HGNHPes3QikOrbHjsXQYcXLEVez90/PQdOlKcbYa/R7Y0y4J6l04kE9ZYQ9ETK78hvzo37HxbDvka5VQdZeI22N1oplFl0i++ZQ3RS1K/BnqB0It8bPD0DNsGM/PB+huZ0Q7TyZ8osOUUHC+SevFb2Fd047EfULyAvVaAeTzIVg41n6LSvUsUzpU8GZqF1gOZ6SLZ4Ep2GpXt+ou6HrR3StcivwKA6xeRGmGdpUw1KivXMvgGZVTZAczLk6Sjsin7q0zBDuhb5FmhIpJPevuWQj+nrkmKzZUAwQPP2Fk+iU7HorWPddI5gw7kheQcjbfzNk1/2MTj5StmA/g/Nz57US0f3Iwb8l1KF0djnaQZ1UQ9IDwdovfuGObYg4PEpRcitzKpX2zna+2tN4x7d0U25glxFU+c1tKUYmOYYtCKw/OXE1XvMiQRHlEwxsNzOEgRVXRu2TLV1MagRYebqYVAKjQy6ijyq7g7LHx3Nq5TM66L/1zAkyoDdNZR3d9OfroYk6b8zH/mseXvddLhd9JXCtNC3F+WelOMMfdUwB+lrRN7T34ZdRfcgnOt0HkDmexcgFXSTsJP/pJOCL46cbzMGo7poL8Cd8ID2OcjUnqOQwq10InA+pFMNt571yPU7UxFoNY+2FO6Ef9FchblwFFIoP9Mk4PuTphFuCeU2cnxInYBW0ka9A74J8hv1czBHBVIoZdQp+J+nTsF3mTqOoCLJ0CyDWXqfKUSqpaJs+eIF81QD5TTsDoHtoNTDp6SLsgTuWzR3EFR0kPYn2NcZS9CfUikJw65/BnYR44s69Onvk7q9rYFt8HXTnkfA63RjsE2opr9LrRKES6OyqVzWlC8SSByL6E+pplVw36L7OnxT6LsHX4y+eUqjkQH1MHH6GpSGU07fTbhTfqK/B74YnVXKIJym7zacDjrtysDppv8inC85bGn3FsL9kSYB94ms0PbNhhNi1s6B/xJN1lK2wEQpw5Z2cCLcjTQR+N7M0j4Nt2hb1myGP0KbtZR+mOjOL5P60B75slU3FcLXSYkh4GuaTvhDV7NyEgFTd9qTdr9swUgi7EQgTQT+okhWMDaxagQ2UrYgcPdmjIfZPe0ILpqGcfHZbPwjAQAAAFZQOCA8AQAAcAkAnQEqVQA5AD6dSqFMpaQjIiQVWSCwE4lpBnAARuzxQagH6pdQDyQBoUmq4xiGipoUEy+nkTVDM9Rfor2rAp/iQA26awY4iTNszAmvdwyJSRgAAP73qujF0YT1PXUw00FnAHmg0/i7lR2qKQhOxfqyRE2UoBWJu6LJT7UGK+7jFM8dby5t0zqroeKatCwf6Wkc0p/zyCm//ktv3hCJEsFQRB4J95v81iP0aHnw8bJU/feRvIsvhgorVjh69mS1qpgx6uc9jN7kym0ZK1KBxH1VvMU8nNaBPYhRlwXr+GVIBt04toBWzTfdva+wckKG9V814KYwuX611PSp8QgcozdHxXcPq80b/pklkX9zfubvUbipHvllD6DVtT9ACJl23ZJtjXi58Ycg6m9UO4U+0CldCpO5gFZFIAAAAA==" alt="Catastrophes" loading="lazy" decoding="async" class="invert"></span>
+	<div class="flex flex-col"><p class="">Catastrophes</p>
+		<p>More Spines of Epoch will appear; Spines of Epoch and Spikes of Weeping gain +100% Max HP</p></div></button>
+<button class="grid grid-cols-[75px_auto] gap-x-2 text-start hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,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" alt="King of Sarkaz" loading="lazy" decoding="async" class="invert"></span>
+	<div class="flex flex-col"><p class="">King of Sarkaz</p>
+		<p>Sarkaz enemies gain +20% ATK, Operators on Mark of Ages cannot actively retreat</p></div></button>
+<button class="grid grid-cols-[75px_auto] gap-x-2 text-start hover:bg-neutral-700"><span class="flex items-center justify-center"><img src="data:image/webp;base64,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" alt="Oddities" loading="lazy" decoding="async" class="invert"></span>
+	<div class="flex flex-col"><p class="">Oddities</p>
+		<p>Plans gain +1 toil; all enemies gain +20% HP</p></div></button></div></div></div>
+</div></div>
+		<div class="hidden sm:flex justify-end"><div class="relative"><button class="sm:py-1 px-2 hover:underline h-full"><span class="flex gap-x-1.5 svelte-t8499q">
+
+
+<svg width="20" height="20" class="mb-0.5"><use xlink:href="#icon-language"></use></svg>
+			EN</span></button>
+	
+</div></div></div></header>
+
+<main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28"><div class="w-screen sm:w-full max-w-7xl mx-auto"><div class="sm:px-6 mb-4"><h1 id="stage-title" class="px-2 sm:px-0 text-3xl">ISW-DF
+		Emergency Lecture</h1>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0"><div class="relative "><!-- HTML_TAG_START -->Everyone: stop at once, and put everything down. We will now begin an important course on ceremony operational safety, and attendance is mandatory.<br/><span class="text-[#FF4C22]">Allied units Redeployment Time reduced by 50%</span><!-- HTML_TAG_END --></div></div>
+
+	<p class="mt-2.5 px-2 sm:px-0">※Note to global players: You cannot summon "Portal" on boss stages until DLC1</p>
+
+	<div class="px-2 sm:px-0 mt-2.5"><p>Initial Cost - 0</p>
+		<p>Deploy Limit - 6</p>
+		<div class="flex gap-x-1 mt-4 sm:mt-2.5"><p class="whitespace-nowrap">Additional Info -</p>
+				<div><div class="relative "><!-- HTML_TAG_START -->Spines of Epoch: Normal - 0, Catastrophes +1<!-- HTML_TAG_END --></div></div></div>
+		</div>
+	<div class="flex gap-x-1 mt-4 sm:mt-2.5 px-2 sm:px-0"><p class="whitespace-nowrap"><span class="">Link</span>
+			-
+		</p>
+		<div class="flex flex-wrap items-center gap-2"><a href="https://www.youtube.com/results?search_query=Emergency_Lecture" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">Youtube</a>
+			<a href="https://map.ark-nights.com/map/ro4_b_4" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">PRTS.Map
+			</a></div></div></div>
+<div class="my-4">
+<div class="sm:px-6 "><div class="flex justify-between items-center px-2 sm:px-0 hover:cursor-pointer"><div class="flex items-center gap-x-3"><h2 class="text-subheading">Clear Rewards</h2>
+			</div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-plus"></use></svg></div>
+	<hr class="border-gray-500 my-1">
+	</div></div>
+<div class="sm:px-6 my-4"><h2 class="px-2 sm:px-0 text-subheading mt-4">Special Terrain</h2>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0"><table class="mt-4 sm:mx-auto"><thead><tr><th class="border border-gray-400 border-solid py-0.5 px-1.5 md:min-w-[50px]">name</th>
+					<th class="border border-gray-400 border-solid py-0.5 px-2.5 md:min-w-[50px] sm:text-left">description</th></tr></thead>
+			<tbody><tr><td class="min-w-[82px] border border-gray-400 px-2 py-1.5 text-center">Hole
+								</td>
+							<td class="border border-gray-400 px-2 py-1.5"><div class="relative "><!-- HTML_TAG_START -->A dangerous hole in the ground. Enemies that step on it will fall to their deaths<!-- HTML_TAG_END --></div></td>
+						</tr>
+				<tr><td class="min-w-[82px] border border-gray-400 px-2 py-1.5 text-center">Mark of Ages</td>
+						<td class="border border-gray-400 px-2 py-1.5"><div class="relative "><!-- HTML_TAG_START -->Deals 100 points of <div class="tooltip relative inline-block underline underline-offset-2 group leading-tight bg-[linear-gradient(to_top,#fff6,transparent_75%)]">Necrosis Damage<div class="tooltiptext absolute hidden peer group-hover:block bg-slate-200 text-[#222222] w-[220px] p-1.5 z-[1] rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">Necrosis Damage</h6><div class="mt-1">After Necrosis Damage reaches 1000, the affected unit cannot use skills for 15 seconds and every second loses 1 SP and takes 100 Arts damage</div></div></div> every second to all allied units within range.<span class="skilltag ignore_stealth">Ignore Stealth</span><span class="skilltag ignore_camou">Ignore Camouflage</span> <br/>During King of Sarkaz's Age, prevents allies within range from manually retreating. <br/>(The source of this effect is an <span class="text-red-400 font-semibold">enemy</span> and not environmental sources)<!-- HTML_TAG_END --></div></td></tr></tbody></table></div></div>
+
+<div class="max-w-[600px] w-full mx-auto px-3 sm:px-0"><img src="/images/stages/level_ro4_b_4.webp" width="600" height="338px" alt="level_rogue4_b-4" loading="lazy">
+
+		<div class="flex flex-wrap gap-x-4 gap-y-1.5 mt-1.5"><div class="flex"><img src="data:image/webp;base64,UklGRhACAABXRUJQVlA4WAoAAAAQAAAAFgAAFQAAQUxQSDEBAAABr8K4kSQnjMVD/tnuCxFCRORCcNYSRETdmFK09mHXDaXvNzrXwFQVGsQ38QsQY9tW1dy4B3eIu+Gu+e7Af5z+W7kPLyGi/0lbzj4faJ+bX3CWdieHkCJNuzIG2J7DStD2AngeDHshvAhtu4Oc9uE2BZQobZYgp31P8bVmiH6M1u8h57Wp0f1fmJ0QTpxWRcigaU9VBArskYCaIZmHnPdd9AKw3oPvgqc5KkEuzKkYuFiqQ9gG5GN+BhYTuO0FlmIQ6gPIJ0qFYKFAGy7As7ozHUO+kIzrYGMMV0XYtoQmwG+0ShhgpQPd1QOMHfD7Ma3FXPCoG7YUtEzw9yFtRCbgyRhhUwX/nNKWqAI2xn0F/HdBW6+q4IYBrpzTjusyluVb2nnyAf66pD0OXp+PaBMAAABWUDgguAAAANAFAJ0BKhcAFgA+nUadSyWjoqGoCACwE4lpAAgQLlY+S/sAHC3lQvtNqOMTBVSBH9hHzNHy2gAA/vaHwoolCe83b0CQuX4hN+HHk1WuelXIwnolJ2lZ7ReL5dfyu81sc5sWS2l+GDIgsni37ZZCubS+lfF0ffkbuP9V6P/eVN7IQRAKLitJt21gLtjcEFkUFl8yjTOIyjIu/FeXmOiPUr0B/cOWbM4U3cKlTm5MQYTsdaQ9EFgAAAA=" width="24px" height="24px" alt="calamity">
+					<p>Catastrophes</p></div>
+				</div></div>
+<div class="w-screen sm:w-full">
+</div>
+		<div class="px-2 sm:px-6 select-none mt-2.5"><p class="text-subheading">Difficulty</p>
+	<div class="counter svelte-b27oxu"><button disabled aria-label="Decrease the counter by one" class="group svelte-b27oxu" id="diff-minus"><svg aria-hidden="true" viewBox="0 0 1 1" class="svelte-b27oxu"><path d="M0,0.5 L1,0.5" class="group-disabled:stroke-[#444] svelte-b27oxu"></path></svg></button>
+
+		<div class="counter-viewport select-none svelte-b27oxu"><div class="counter-digits svelte-b27oxu" style="transform: translate(0, 0%)"><strong class="hidden svelte-b27oxu" aria-hidden="true">1</strong>
+				<strong id="diff-count" class="svelte-b27oxu">0</strong></div></div>
+
+		<button  aria-label="Increase the counter by one" class="group svelte-b27oxu" id="diff-plus"><svg aria-hidden="true" viewBox="0 0 1 1" class="svelte-b27oxu"><path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" class="group-disabled:stroke-[#444] svelte-b27oxu"></path></svg></button></div>
+</div>
+		
+<div class="sm:px-6 my-4"><div class="flex justify-between items-center px-2 sm:px-0 hover:cursor-pointer"><div class="flex items-center gap-x-3"><h2 class="text-subheading">Devices</h2>
+			<img src="/images/skill_icons/skill_icon_sktok_emp.webp" width="40" height="40" loading="lazy" alt=""></div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-plus"></use></svg></div>
+	<hr class="border-gray-500 my-1">
+	</div>
+		
+<div class="sm:px-6 "><div class="flex justify-between items-center px-2 sm:px-0 hover:cursor-pointer"><div class="flex items-center gap-x-3"><h2 class="text-subheading">Mods Check (for Debugging)</h2>
+			</div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-plus"></use></svg></div>
+	<hr class="border-gray-500 my-1">
+	</div>
+		
+<div class="sm:px-6 my-4"><div class="flex justify-between items-center px-2 sm:px-0 hover:cursor-pointer"><div class="flex items-center gap-x-3"><h2 class="text-subheading">Enemy Count (70)</h2>
+			</div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-minus"></use></svg></div>
+	<hr class="border-gray-500 my-1">
+	<div><div class="flex flex-wrap gap-x-3 gap-y-2 px-2.5 md:px-0">
+				<a href="#enemy_2080_skzlwy" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2080_skzlwy.webp" height="65" width="65" decoding="async" alt="FMT" title="Fremont, Enlightener of Minds">
+					<p><span class="text-xl ml-2">x</span>
+						<span>1</span></p>
+				</a>
+				<a href="#enemy_1242_ltsmag" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1242_ltsmag.webp" height="65" width="65" decoding="async" alt="LE9" title="Remnant Violinist">
+					<p><span class="text-xl ml-2">x</span>
+						<span>7</span></p>
+				</a>
+				<a href="#enemy_1243_ltswar" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1243_ltswar.webp" height="65" width="65" decoding="async" alt="LE11" title="Remnant Saxophonist">
+					<p><span class="text-xl ml-2">x</span>
+						<span>7</span></p>
+				</a>
+				<a href="#enemy_1377_ltnclo" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1377_ltnclo.webp" height="65" width="65" decoding="async" alt="OCS13" title="Remnant Orchestra Cellist">
+					<p><span class="text-xl ml-2">x</span>
+						<span>5</span></p>
+				</a>
+				<a href="#enemy_1372_ltntpt" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1372_ltntpt.webp" height="65" width="65" decoding="async" alt="OCS3" title="Remnant Orchestra Trumpeter">
+					<p><span class="text-xl ml-2">x</span>
+						<span>3</span></p>
+				</a>
+				<a href="#enemy_1376_ltndru_2" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1376_ltndru_2.webp" height="65" width="65" decoding="async" alt="OCS12" title="Witch King's Orchestra Drummer">
+					<p><span class="text-xl ml-2">x</span>
+						<span>3</span></p>
+				</a>
+				<a href="#enemy_1373_ltnhor" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1373_ltnhor.webp" height="65" width="65" decoding="async" alt="OCS5" title="Remnant Orchestra Hornist">
+					<p><span class="text-xl ml-2">x</span>
+						<span>1</span></p>
+				</a>
+				<a href="#enemy_2083_skzhg" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2083_skzhg.webp" height="65" width="65" decoding="async" alt="-" title="“放逐的黑棺”">
+					<p><span class="text-xl ml-2">x</span>
+						<span>0</span></p>
+				</a>
+				<a href="#enemy_2066_skzlcp" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2066_skzlcp.webp" height="65" width="65" decoding="async" alt="SFF4" title="Sarkaz Maze Spellweaver">
+					<p><span class="text-xl ml-2">x</span>
+						<span>3</span></p>
+				</a>
+				<a href="#enemy_2064_skzwdd" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2064_skzwdd.webp" height="65" width="65" decoding="async" alt="SFF2" title="Sarkaz Maze Returner">
+					<p><span class="text-xl ml-2">x</span>
+						<span>12</span></p>
+				</a>
+				<a href="#enemy_2064_skzwdd_a" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2064_skzwdd.webp" height="65" width="65" decoding="async" alt="SFF2" title="Sarkaz Maze Returner">
+					<p><span class="text-xl ml-2">x</span>
+						<span>6</span></p>
+				</a>
+				<a href="#enemy_1371_ltnflu" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1371_ltnflu.webp" height="65" width="65" decoding="async" alt="OCS1" title="Remnant Orchestra Flautist">
+					<p><span class="text-xl ml-2">x</span>
+						<span>20</span></p>
+				</a>
+				<a href="#enemy_1092_mdgint" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_1092_mdgint.webp" height="65" width="65" decoding="async" alt="L13" title="Mudrock Colossus">
+					<p><span class="text-xl ml-2">x</span>
+						<span>2</span></p>
+				</a>
+				<a href="#enemy_2090_skzjbc" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2090_skzjbc.webp" height="65" width="65" decoding="async" alt="SFF9" title="托生莲座">
+					<p><span class="text-xl ml-2">x</span>
+						<span>0</span></p>
+				</a>
+				<a href="#enemy_2070_skzfbx" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2070_skzfbx.webp" height="65" width="65" decoding="async" alt="SFF8" title="Lost Hovercraft">
+					<p><span class="text-xl ml-2">x</span>
+						<span>0</span></p>
+				</a>
+				<a href="#enemy_2065_skzjs" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2065_skzjs.webp" height="65" width="65" decoding="async" alt="SFF3" title="Dreadkaz">
+					<p><span class="text-xl ml-2">x</span>
+						<span>0</span></p>
+				</a>
+				<a href="#enemy_2067_skzcy" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2067_skzcy.webp" height="65" width="65" decoding="async" alt="SFF5" title="'Portal'">
+					<p><span class="text-xl ml-2">x</span>
+						<span>0</span></p>
+				</a>
+				<a href="#enemy_2091_skzgds" class="flex items-center pr-1.5 hover:bg-neutral-700"><img class="select-none" src="/images/enemy_icons/enemy_2091_skzgds.webp" height="65" width="65" decoding="async" alt="SFF10" title="“窗”">
+					<p><span class="text-xl ml-2">x</span>
+						<span>0</span></p>
+				</a></div></div></div>
+		<div class="sm:px-6"><div class="min-h-screen"></div>
+			<div class="min-h-screen"></div>
+			<div id="stageNav" class="mt-8 sm:mt-16 scroll-mt-20"><div class="max-w-6xl mx-auto"><table class="text-xs sm:text-base svelte-1w4agg"><tbody><tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,UklGRv4DAABXRUJQVlA4IPIDAACQFQCdASqKADAAPp1Gnkslo6KhpzVaqLATiUAYBAvJgxuNdvG6K+e/J8OTjnx3bnYB4yhJTj274AUeVRlOCavkJlR6x9fkPSXh3InLl3kT5EFpcY6rLpevw7tScy+tyttSbcUOk9sB0OLLmVXclAMnvU95n2y8PcwmLs6Ku8YEx7qBPJv6LwkU0WWMF6qj9q6r4UcCIfHvRbyAtv4RRf85u8ErQMiG+hG2zsqfcA2dN3sg5KeAAP7y1ziOEeZvc6/anys8EgNdOnVcoHF1PfcKqoFR/nmVMWExlcH1zS57XO6KQqWNORD4o/0/0CIP8vc0/3X9tmKqOi7oGg/O8FVNycKYFRkmTwC5KQqRoDvuLvFTRxWs1O/0sCB5ydCMSd7HIWb+uTwgmLLm+Mbm+qrDcxyRNXrc6SnBhTjPTZzzDTNHV3zUgOMw0g6T4LqqvwaADrvoupvn7CVkGerBEYoslum34hAzVcK5mMYJVFIatMGeKc9nqlFI1Ft0UF6qEhE2WwOJG8RxqT0OQ9QXutktSx/X+i8BCGispdutUExYtbdauqjrsO7J3e05YZIR0JOwYKcj//5dg8CVsBTyxcuh0u9mQ/cW33hYFm4aKiMnSPgaJYEWX/TVQMbw61d9ZDVISz/BrB2ws4Pdbk1gJDJ6QRNQHyIJvViunDoPv/PXye3Z/AWf0thzYmt1Ith6fUcWeRd2PHrc9A/whwtwADdRZd1HGeaETB42Z1h+oBvNtt6A2ixTLQN8Og5FQ7t6Gte0PIK63Bubs94QnL6YUibbn51vqlf1nx+H5XAm2wIozmX/YvsXkIpwQ7V83A467uQDYZ7yskOlccVylFnjeDiqOlTkRpiqT3s38/FupCYX6hXk0pTwi0AW8+zCifYUIDBacwFMtCQ6m0O4Ef2zWk9NPUGp138pZdgwXFzQmaXtFMs76Q5byXMxebF5aAvEt7oIgLzDvK9kBIKt1XMrfie6PvuLwgbP9wUvnuEhfyfC/gWJE9RL7W5WHKN+H9stdShgXYNNiuYbuDveVZFX5UYSFF84fu9Klw0bDa2mtx6gLcUXgAQPt9lGjavYdknBjxCCarVvLMfdYDuMRBwyJo3sZB7IktWNteFD/G6qUG12EaEyS4MncaP2QODwLJeZ1OpWfoBHFH75iO3lZbmyoOhx9M/dNQXASUQ7XEEPetEvdOznx9Y/Zs8/vO1w8TPLC9L22TnljpW55HTMCE83owUJJS+ZeLyr2Qat9VPbZupd2Bhz/7O/dwx34HmAjs9AxzkuMiSwxMHESK7PEygmM6fk2kRxAXHpo/yfI+iMEBzBgtlfyS+Bokg0AeIhvqYQiSDYAA==" alt="Combat Ops" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">1</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Bad_Neighbors"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Bad Neighbors</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Vermin"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Vermin</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Safety_Inspection"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Safety Inspection</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Hasty_Escape"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Hasty Escape</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="24" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_冰川期"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">冰川期</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">2</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Dissuasion_Seminar"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Dissuasion Seminar</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Temporary_Patchup"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Temporary Patchup</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Exhaust_Vents"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Exhaust Vents</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Furnace_Volunteers"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Furnace Volunteers</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Clear_the_Crowd"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Clear the Crowd</div>
+</a>
+								</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_卡兹瀑布"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">卡兹瀑布</div>
+</a>
+								</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_丛林密布"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">丛林密布</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">3</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Simulated_Skirmish"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Simulated Skirmish</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Bloodline_Debates"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Bloodline Debates</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Blotted_Sky"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Blotted Sky</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Morning_Labor"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Morning Labor</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Careless_Magic"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Careless Magic</div>
+</a>
+								</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Lottery_Fight"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Lottery Fight</div>
+</a>
+								</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_火力小队"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">火力小队</div>
+</a>
+								</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_机动队"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">机动队</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="3" class="svelte-1w4agg">4</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Epochal_Gaps"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Epochal Gaps</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Sordid_Surveillance"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Sordid Surveillance</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Past_The_Aquapit"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Past The Aquapit</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Crimson_Corridor"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Crimson Corridor</div>
+</a>
+							</td></tr>
+				
+					
+					<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Rules_of_Modern_Warfare"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Rules of Modern Warfare</div>
+</a>
+							</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Timeworn_Tensions"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Timeworn Tensions</div>
+</a>
+							</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Ghost_City"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Ghost City</div>
+</a>
+							</td></tr>
+					<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_神出鬼没"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">神出鬼没</div>
+</a>
+							</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_混沌"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">混沌</div>
+</a>
+							</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_争议频发"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">争议频发</div>
+</a>
+							</td>
+					</tr>
+				<tr><td colspan="2" rowspan="3" class="svelte-1w4agg">5</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Rogue_Mercenary"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Rogue Mercenary</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Land_Reclamation"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Land Reclamation</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Witch-Curse_Alliance"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Witch-Curse Alliance</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Passage_Blockade"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Passage Blockade</div>
+</a>
+							</td></tr>
+				
+					
+					<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Guiltless_Paradise"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Guiltless Paradise</div>
+</a>
+							</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Arial_Assault"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Arial Assault</div>
+</a>
+							</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Wrecked_Academy"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Wrecked Academy</div>
+</a>
+							</td></tr>
+					<tr><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_建制"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">建制</div>
+</a>
+							</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_莱茵卫士"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">莱茵卫士</div>
+</a>
+							</td>
+					</tr>
+			<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">6</td>
+				<td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Quest_For_Consensus"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Quest For Consensus</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Divine_Desire"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Divine Desire</div>
+</a>
+					</td></tr>
+			<tr><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_洞天福地"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">洞天福地</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_“外道”"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">“外道”</div>
+</a>
+					</td></tr>
+			
+			<tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,UklGRlIEAABXRUJQVlA4IEYEAACwFgCdASqKADAAPp1Cm0olo6Ihq9M8OLATiWwAuC3M/pPP2e+Q41qhCQG7Nvoh25vPX6Z1vPn+QxwjXf2kzJuFmngaU5wD2SHsQH5O7Cb+eWdHOro3d9x7YA1mRj5PQ58AAEWtWVVWs2P3zvzWrxTUB55KYc+0SrmGOydlkGL5IW4CBKkDOPIcVN2rJ/Pg1eHVadfTJ+KRAT2Z7FJZbjz5sc2WpP89Od+dRaOMamhsaw5c/lO3a0wi8DkUZIMAAP7wpGpwkqWN0S4D5uNReh7e2Gzyvn9hkfroyWcTrwln8GbW6ezfbA9W1VB2PjwlkqGdv4OBQWxm6EjScT/oGqOTDWV4w/nqkCx5OGC2dH/C8USggYPo1tDsSqk+eXzH2cwRN9ovue3uBhcvUpzvfDjHGTcPYpxYaEOkmiN3Lply/fW0/Nh3v1Q2PQuUeCP7LJIoHDJeOVSScM/m0hH0jLfVPunpXoKPQGkOX6uzqPOTbS3KnMVvcwROrCyB9Pq1lT8ZBdOMRtSESAeSjqRvExh0OXuvoH5d6t3+RkseYz5EHXYSSJLO9sZ7aqCoxVP3MUfcVttKnI2ge5xdSzv7pAmkbgCI+9Iz38GDfKA2hPwZxpo2k8LyfPvpF5YWke9zj6ab91cWOENOLibjhnjrQR9OdljF12RevzmT2VO40Z0A3XW8EF2hlM3zrF9FamB1AI80SRONriEMC0momu5ZizdVamQUfb8aDJyrgKRmvpBbPbPGs9+20eRfWIc1WRd5Q1rLJsbxA4cvNaZXdIos1V/lAa/05son7LMxxap33Y8/2+d8aDUOFbbvh/UyP7TaLMHcIhqpGEiybkm+ulvecUsjILPlmcH5lRcrZNs/NhdZleMT5x+hL3MyjYxftaNNE/AFq7wT6O+mBpnKtyOiBp+QIaPB2dGvT0NfaaY6F4xGJ9oMozFBzAHUJExGJ8oKOIMN15CFLyopImp/J/gd37Qsx+3aKkwnDy9sOhAAbTVog+WaNbQWwve64cySLc9+hZVHj73s0FT7l1oKXjSclON6NpH/3r+r44QY0X7Orig/9yPU18yIAH5+ScnTPO+v+ji1clHN8c8tbAh0Hq0IYrhzSci6z5UC8U8PeyAXfx1AD9gLXw5Ghk0nx/gih6EgVzOgGAHbbzi/x2EPeIv4AFSW4S8Wfec4F7yx9q95eLzV4DR83QGu+Yx4jCszHemaQZeyKb/Z5QCY5WoC83OtfGsXwO2W8u3duViB8/jvgkHEBrFjMDZKQtGA9etWb2cUjd61VxtP+OMkIfaxWppnfxkxFOFshhlhm1KtH/cdGdZmeScKBLHtd6vC8JG0AmOZOasJfOIDduLsHwFcQwVXKN0JO0drVc71pPM9B25D2DPLp3jmrHD79UVRioYoC/1Zh2QnN1Kgcf3ZOZ/HaLknf8nEmm2ELP9U44O4AW/WXKPQjOIagAAAAA==" alt="Boss" width="160px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="2" rowspan="3" class="svelte-1w4agg">3</td>
+				<td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_River_Watcher"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">River Watcher</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Silent_Guardian"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Silent Guardian</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Battle_of_Survival"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Battle of Survival</div>
+</a>
+					</td></tr>
+			<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Veil_of_Probability"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Veil of Probability</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Devoted_Warrior"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Devoted Warrior</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Decapitation"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Decapitation</div>
+</a>
+					</td></tr>
+			<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Courtyard_of_Farewells"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Courtyard of Farewells</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Brave_Souls_Marching"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Brave Souls Marching</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Under_The_Crown"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Under The Crown</div>
+</a>
+					</td></tr>
+			<tr><th colspan="2" rowspan="2" class="empty svelte-1w4agg">?</th>
+				<td colspan="24" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Victory_Rewind"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Victory Rewind</div>
+</a>
+					</td></tr>
+			<tr><td colspan="24" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ro4_b_9"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">「」</div>
+</a>
+					</td></tr>
+			<tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,UklGRvwEAABXRUJQVlA4IPAEAAAQGACdASqKADAAPp0+mkkloyIhL3O8ALATiWxpzky2mQRb5jzLLG/oN+3NDY59W+3X8yH7JetP6Kd4r9ADpT/78weV9N0km9LTvA2hg9dP7Yo5aKPVmN33kkFdzWwmjlkDy3lQZdtX4Z1FLaT/g/HIIxvoYLmpLPw0L3hxtBZqPrPMNy4yCGPBLfAe4kErvdrNSUcSXWgPgfNG0C4vZBtfFHc6xIrgjKWxkAtHv4O1hPknFbIVG0skLsvqdp2h/C0FUkjtqvBPTQAA/vkTVRqQp5S+KyMf6HTdP/3aaCAb2nf/qxx/yrP/N5X3dUdX8BJFeTXTVm248mv2b13SZHvZWb01qwk5e5dCA80i08V9b1IXJwqjf0sFk8xFAI2fbM5H9WD71MDgEzSN2XsY+hAuGcBX+X2I3ktZ8xQUzPkBZiNtTD+5NjDelPC0ZMT18ZaEek/Y4tRo4/WyF5AQzmbY46zW0fg/755D/pMJxO3tUU62m3Hza7BBQxdhGtJNuhL9K3hhahYP3+Edkyel9e5vYKX49MjY/VOG6OVR9lYzB+ATj1oa1agcE87zvFy1ZP6/aUfJkBcGNfqFqPa15CLjP8zR4L7wEqJdrEov9EOyGJPIB+mrw5jI1klygxxody+HoaMF4Y7GmxaWnCATNm5e/Q1cCETpOQTKk40pcTH2uSs8Er1VcBkXB9zJ0fxJ+/MQ/Fsv5B+r+A0CRZ58/tiL/O7WYOU9N8b2X0vCFVKLHYZgh5oLUg7ev/LYzUhZ9LzOpjPVEvXuSbTEQ4Ydi+O9N2ZKPSYKzFKqNnF5Uhn9Nnwg9Jiaj1cunU073M7C3XXLjH/Z0Zlk5s7BvX1wdSyraIr4EDicl7NKrLkOfl7QDYO5lg6n7hSMyCfs/zSqdpa2x/c/hAsMqRdH0lEnwC031Y2MSFUD4mw0SxkBiBQGC+wS2PZ9LGSw77JbmGH0xKIIGl9xFi4MWqPUnve54poHXg9HI5xPTmA9NcxK7a/4YIxcmp75icQMjFFFXVGIjHB5KcCOtBYDLyBEgyyHg/g+GvBpQzoxW/NSRHrvWo6K704uRkTrGSFLHpL4H/lXI2QHdsVgQ85q5Qq7fYkOOSfLzfH/HcnKxnmN9AZ0pFne9gWO/MCBHcGrBmtoebH60JJYdLavCXKd41GKO2mH1L8np1oULcHcOTfqvwx1aoCbdGpa5bzU9Lw6Uf1Bha4RTbylKdBx8cChV2jxa1Xkb+4S27lK4fvZsmRxli+R20wfvENbtl0p7wtFPmwROHxJM+2qJxIyre7O0IVeK8YtGkPM165BRuhY8kPLNtg5fqwM0zNxfPb2vbN354Ja5OJQ1DzAa4PgknUkcIwqD0g/Cz0hU0oSHwY467ZOJCNujzmGq7YjIS9WXqncB5B51Wa1WyC1lduB6ekWi+OYB+eaySzdDHNl8BY/cAI0cCyNU5BdGs4DLd/gWqv7sCcdsFxolJDA4HV9t78UoBtSSri7C8VsqOmQdaw529qk9SVJJNy0MD0H91o+xKlHbyaqTH/QLpLsQJ/R8nAZOBiNYOTRwTLI1uQ6PdoMeb0/xlZ4TkzEySe09xukym9Y4ze7eBXY1toCpfaFtTKRpD7eyHqmNT6vCwd7heEAT/i8XduzyKkfJXwt3WHuvZwndMfsacWSBgEHE0LkYs/OV3n/b4AXEAAA" alt="Boss" width="160px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">5</td>
+				<td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Emergency_Lecture"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5 active">Emergency Lecture</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Court_Visit"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Court Visit</div>
+</a>
+					</td></tr>
+			<tr><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_思维矫正"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">思维矫正</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_魂灵朝谒"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">魂灵朝谒</div>
+</a>
+					</td></tr>
+			<tr><td colspan="2" rowspan="1" class="svelte-1w4agg">6</td>
+				<td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_Holy_City"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Holy City</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_授法"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">授法</div>
+</a>
+					</td></tr>
+			<tr><td colspan="2" rowspan="1" class="svelte-1w4agg">6/7</td>
+				<td colspan="24" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-DF_不容拒绝"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">不容拒绝</div>
+</a>
+					</td></tr>
+
+			
+
+			<tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,UklGRlQFAABXRUJQVlA4IEgFAACQFwCdASqKADAAPp1GmUmlpCIhLRdKgLATiWpjPklmZgUeRPy32v6juUxstvNz2XnFb8BvPszb/Q1M1ASc1q1G72ISDfuoFD4typzMFflXtA6I5Hqu6ps9sWG1uksTyB4KMNdMjnTJLT32pJ+qLFNMIetL9Fv55JMAv9IFxVrN7dK2mm9KPCmabjFGB/5ZpTgC84EjkQ9bo85Mh1GVCnpsFKgR9uLdgiO5OqZAd/xi1ly5FnPbTUVdrp13IQlb7e+L1wI0AAD+7nCn0sIRLfSl3RzTZk9yYZSGL7eNaYeEybfdVptkJPLt9R8s7uuMteHNJGQz7E+UqyBWu4knX+D/wfr+qfj10Kn087X7WC01SWyE+AB7XAkja+liDmf4uM6BGY2LMWoRR0tGuwdy+uVRuC+PEwQA/oYJA4PBY+jBFkjffJ6ty3ipuSyeygcdRB5TRO6Nu6YY0T2Nfr2FZh68+BymeNN8kVQGQnbYQL4/2tU9fXHxtFs4tBrsQddSvlEW7nwyfpiPb0UokgO+54b8d6r+TTin2momJaz63m3pDPl0KhqMg2vg6Lf1mr0fDT8qREid82U+vB+0oxYLjsJp+P6uGj+xj5MeOkYvYiRdMYoDb3cNNbR2Am2fH0wRtTUV4B3U7DSY2mkdnbb2g6L+WoX8yYSMMY3Seo5kd6QSIuczgtGLTl8l3TIgw1Z4KDxYy7q5IB8+wJrhC0La4cnQqCPtXZdjxb9LOVi3k9dhMQpui0clRW1SylJ03/Oq7+hcj/ByYmn6Tv8oLT7w9XTADjAICDCrwmm/LDKm2noG1iS263/HTMowEjVkqHjBs6rgt3iViADxL82zEczn9f0DvcHTPR0TbRiQ44ENMPPhWKzrcFDNdjpjor0mGIfRP7hj5OogkWjXwpkX6rlnrnRYG4iWDxmX6t6jc+gFCIx3+++mCq8oa9/sbxTnAnzzvZHUxx3THpGozRSsebgiH5/QwBwelL978VYmWo3LoAwCCG4Qpr6GIkrL5ZjJieIshNbAdQuitDQGTTCXLh8BRqZ2Hz0N1IVPbEbudDkvqfffsSLaZCETqwHrUNvIlkZFhXHyqGDpwXlmJTD00vc9soh2TsRK+Yjino/y+E3UDhqDLgWwWwLFqFiztr9Ywz/UzKJO2DQux/QgqVKw5hp91xhwPNDZMki0DijbAbVEF23BrYAHE77Ii8GYgW2F0X1DGw6Hduf5KsT/Wc3Rbq9sj5RYp+gjCvmvnod57HIzZFPNKjKBdvSleuOS83yr7d+YBuFfI3hijrcsBVJhYi1tch0HEepYX8D02rLlq5fLt35u81dD/rBKqOMb5hxQ7DcE9nIbgLfGxp2cCdRr5UZP3VEL65VJb3kYXJOxjV5gKptsPdrgXkToCgtZrgrmqMwdxJxOlBDrI/+Ofq8a9r1jcbZJfvck5+vGLRr+0AqOPSKNFL54uz5I3UtiDiVBp9gwKecw64M00Z/NdkJIJXVV8Xpgz1MRYkRlFOj5cYR0vDxtgczMHhx+Rpov05A7U01Dv9wspxnpkP8Y49fbdIxZyP06/GJ4vdD3fV1ByWZD84DHRYZzDwR4U4FdEuKVey01IdLVj2TYiHDSRlDTcxBILrpmqKZsmRUMtNvlonRVslfsGu7Q3uILXNyyFi1/qYMU7eNubWXnO9hxnkbkx+FsskbD0W2JV6lbWXRrlEAlTpxncsu2TM4tPamr1o4lBXZMRFPWkoEvUAn5rTGbUI9z+ZToQj4PeINpig14GS75IUrFS7tAAfJuuKlRlfPdXWEh1xQex7RaHXo4AA==" alt="Encounter" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="2" rowspan="6" class="svelte-1w4agg">? </td>
+				<td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Failed_Dare"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Failed Dare</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Signal_Light"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Signal Light</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Illusory_Heist"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Illusory Heist</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Duck-Speed_Highway"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Duck-Speed Highway</div>
+</a>
+					</td></tr>
+			<tr><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Beside_The_Battlefield"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Beside The Battlefield</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Legacy"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Legacy</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Revenge_of_the_Toys"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Revenge of the Toys</div>
+</a>
+					</td></tr>
+			<tr><th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,UklGRjgFAABXRUJQVlA4ICwFAACQGgCdASqKADAAPp08mUgloyIhMJSeILATiWZiSVPAw4WOTRde4+G/sbetTb8c9D6Tt6Z3pa0AqBXKLQgz9vNVZk2Es7BlI3Rl7xKm6b/Pi/e1HowslSW9LGBfAs1gYXSDGIKdc8dC9u6E1EJ4F7nXDPgb4ioERLKFFC6K9r3ccR+OvHsGaqpsA7n/qZTPQgK8txg/rYVxfir3mvDElkj89i6i0rYpjTQ15edJ5t/rGY3O7cNdUXRD6B8gvIlXIUrPWH3LXc8EiCFpsrP/aQmZXSxktJ2DSHJAJblzgAD+8CW5I/2pV0gKmgoCd/kD3GfSbqATyT2I9AMzlaYOUNTPtKhrQFU8FMt1hOFPTT8CgOkQE2ne4nIXQX0sf9l61Z1olU2VNfT3kXlqDz5nx+arFHZ2b0QAzSbS8Jehts+h2a73kif5+6khDervpuLW/+y0H3wlV5GDAIWAi24jaQwfDijBxBtPAoSAnmHhEVOPkWSu9Dzp069vD8u6ATM14rx9XQpK3cXWpcL8Fq+Zp5/cdJDvpwGMfx1Cca3zqU2h43epImlA5E/Gu2Ar6a3RpBU5GcL7nSbl2mHgX6bmdksJ/O6nw91yPVhIfRYcoCNa9/hgGOoIJOICtBAzxC1zMPp7wG/C/4FADLRzkoSeUs55bzotfV45rxYMsIv92IykIelG9hhWKf+MSZ9RGp59ElmaiuUyWb9UABfzFNhefsR/vgjj6rpP3J+z4r5/ivqWT3RwvjNqvqXbcakbVHVfvq7WZCtOtgmCyQkyXcjyUOnJCSlfEp+pmkKFOoCXDeX9aARC+IN3ulFaa0fQi7B5xORHiqITe0a7qFQmTCiEUBnTwl4F/PmsUxbTHtRev6UlCKy8uSUEo8NCxoh0MI1bxqqdqS7nGnOEOyUH765sMAotCW/BF31yn+zfMRDiTMXEjhtCODPwCK2Soz3hAe1m9jywCHivRyNBOPoQ2jKF2Aoh5KCCUHW3MKe3Nbtdg/laMo/BC+SoeF/cvyoCXM1o7kTwXkgJwTAykPApN9s89KKPuwBtIU3CYafXOyGt8SiWFrR5hZqlfV9DJy5NJe3UEj0AVGSiik0t62Kldl3I6uYbG3OzLMkqVAIHw7+BoHZ9BW+U8KPCEAExy1O/OuR5q3+/N9tAEH6LLTm5pRaC7qAJCnBZf9E/DvfhPf2zBS+gPkLEZy//6zC/qv1h6GbYdO3rbCRsCxXXJaW+bF/6AjBNqoXh+Sk/tHvNK1UbwZQc5XH3KaxhBaNtTVnS374DD64jQMoQ8+nU3ZthBGNHktdFpmDv4CXH1aPt7VWTrqUWzZGEVJytZjxpTHvoEodnLHhyQf49Mw3o44Ik3HslmTXOXLhe8SCGhBVokzYTI0O4tzub1aone/VGTI/INk/HQX0llPqKOB8jM3hcGSiRdL19Pknhb0K+aTpyVbw+XYlNC+o++cK9rYGfhXu9ew4ovSzCBcMInpTZb1tevHqx3ErQ37ml05JxaT0hZ2luUi4gR7nM49sg0jclsy3Jtry/pfy/Z9nt/CTUGD0IIUPcvjnrFkBJ9DrWtGvwtCcqKT6XqmltGZinjE83SobigK0vHa+v8nglvs5XihCBJrY4Agd7/wEYvlXsSqsa3g9bvfcYAh1bV6cqGePwn+HVM6Uc/cjg8fk0psHOosHVApHSWLrHxX6RuoL+fz41hS9kXV7SNGeEv52koD0TSGfhlaQzeTCrUHZ34bM5NIYHNoP68dAcoXVvlpDDvygmYUAA" alt="Shop" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Property_Dispute"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Property Dispute</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-SP_Narrative_Offer"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Narrative Offer</div>
+</a>
+					</td></tr>
+			<tr><th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="FACE OFF" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Eye_For_an_Eye"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Eye For an Eye</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Narrow_Path"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Narrow Path</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_Twin_Gargoyles"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">Twin Gargoyles</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a data-sveltekit-preload-code="eager" href="/en/stages/ISW-NO_轻舟共渡"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer text-neutral-800 svelte-ghjpu5">轻舟共渡</div>
+</a>
+					</td></tr></tbody></table>
+</div></div></div></div></main>
+
+<div class="fixed overflow-hidden bottom-0 w-full select-none z-10"><div class="relative transition-opacity duration-[50ms] ease-in-out select-none opacity-0 invisible"></div>
+	<div class="shadow-2xl shadow-gray-400 bg-neutral-900 w-full mt-4 fixed bottom-0 py-2"><div class="max-w-7xl mx-auto px-2 md:px-4"><div class="relative flex items-center h-16">
+				<div class="flex items-center py-[2px] bg-gradient-to-r from-[#333333] via-neutral-900 to-neutral-900 relative hover:cursor-pointer"><div class="flex items-center px-[6px] py-1 relative bg-[#313131]">
+						<img src="data:image/png;base64,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" alt="relic icon" loading="lazy" decoding="async"></div>
+					<div class="bg-neutral-900 min-w-[280px] w-[80vw] md:w-auto overflow-hidden h-14 gap-x-2 pl-1"><div class="flex gap-x-2 items-center">
+							</div></div></div></div></div></div></div>
+</div>
+
+
+			
+			<script>
+				{
+					__sveltekit_20gs0p = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.315a0298.js"),
+						import("../../_app/immutable/entry/app.eb4d2af8.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 3, 17],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

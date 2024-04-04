@@ -1,0 +1,1 @@
+import{s as o}from"./is_stages_list.29e53300.js";function c(n,a){return o.filter(e=>e.tags.includes(a)).find(e=>{const{code:s,name_zh:t,name_ja:i,name_en:r}=e;return t==="「」"?n==="ro4_b_9":[s+"_"+t,s+"_"+i,s+"_"+r].includes(n)})}export{c as f};
