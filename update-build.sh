@@ -1,4 +1,5 @@
 git reset HEAD^
+git restore .
 git rebase main
 npm run build
 git add .
