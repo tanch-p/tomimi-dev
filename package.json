@@ -10,8 +10,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest run",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write .",
-    "prepare": "husky install"
+    "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
