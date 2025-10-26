@@ -128,7 +128,42 @@
 		"tooltip_ja": "敵全員の最大HP-20%",
 		"tooltip_en": "All enemy units have -20% HP."
 	},
-
+	{
+		"id": "rogue_5_relic_return_12",
+		"name_zh": "教母的信物",
+		"name_ja": "教母の印",
+		"name_en": "Godmother's Token",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.83,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的攻击力-17%",
+		"tooltip_ja": "敵全員の攻撃力-17%",
+		"tooltip_en": "All enemy units have -17% ATK."
+	},
+	{
+		"id": "rogue_5_relic_return_13",
+		"name_zh": "开裂的束缚带",
+		"name_ja": "裂けた拘束ベルト",
+		"name_en": "Fissured Restraints",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [{ "key": "atk", "value": 0.93, "mode": "mul" }]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的攻击力-7%",
+		"tooltip_ja": "敵全員の攻撃力-7%",
+		"tooltip_en": "All enemy units have -7% ATK."
+	},
 	{
 		"id": "rogue_5_copper_B_02",
 		"name_zh": "厉-西廉贞",
@@ -654,206 +689,6 @@
 						]
 					}
 				]
-			},
-			{
-				"suffix": "x3",
-				"effects": [
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					}
-				]
-			},
-			{
-				"suffix": "x4",
-				"effects": [
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					}
-				]
-			},
-			{
-				"suffix": "x5",
-				"effects": [
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					}
-				]
-			},
-			{
-				"suffix": "x6",
-				"effects": [
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					},
-					{
-						"targets": ["ALL"],
-						"mods": [
-							{
-								"key": "hp",
-								"value": 0.7,
-								"mode": "mul"
-							}
-						]
-					}
-				]
 			}
 		],
 		"tooltip_zh": "投出时，所有敌人最大生命值-30%。（下次投钱前变化为-大炎通宝）",
@@ -983,7 +818,7 @@
 						"key": "def",
 						"value": 2000.0,
 						"mode": "add",
-						"order":"initial"
+						"order": "initial"
 					}
 				]
 			}
@@ -999,7 +834,7 @@
 								"key": "def",
 								"value": 2000.0,
 								"mode": "add",
-								"order":"initial"
+								"order": "initial"
 							}
 						]
 					}
@@ -1015,7 +850,7 @@
 								"key": "def",
 								"value": -500,
 								"mode": "add",
-								"order":"initial"
+								"order": "initial"
 							}
 						]
 					}
@@ -1039,7 +874,7 @@
 						"key": "def",
 						"value": 2000.0,
 						"mode": "add",
-						"order":"initial"
+						"order": "initial"
 					}
 				]
 			}
@@ -1055,7 +890,7 @@
 								"key": "def",
 								"value": 2000.0,
 								"mode": "add",
-								"order":"initial"
+								"order": "initial"
 							}
 						]
 					}
@@ -1071,7 +906,7 @@
 								"key": "def",
 								"value": -750,
 								"mode": "add",
-								"order":"initial"
+								"order": "initial"
 							}
 						]
 					}
