@@ -1,0 +1,43 @@
+[
+	{
+		"fixed_date": null,
+		"video": null,
+		"desc": {
+			"zh": "易的屏障只有转阶段时有效果",
+			"ja": "「易」のバリアスキルは第二形態で一回のみ発動する",
+			"en": "「易」's barrier skill activates only once after entering 2nd form"
+		}
+	},
+	{
+		"fixed_date": null,
+		"video": "BV1ccHpzqE4F",
+		"desc": {
+			"zh": "“岁”不受到【敌方单位受到的伤害++】藏品的影响（复仇者、璀璨悲泣、Scout的狙击镜）",
+			"ja": "“岁”に「敵が受けるダメージ増加」の秘宝の効果がない（「アベンジャー」、「きらめく悲泣」、Scoutの狙撃スコープ",
+			"en": "'Sui' is not affected by relics that increase enemies damage taken (Avenger, Brilliant Lament, Scout's Scope)"
+		}
+	},
+	{
+		"fixed_date": null,
+		"video": "BV1yTu8zaEkD",
+		"desc": {
+			"zh": "狭路相逢里，如果便符进篮门，判定作战失败",
+			"ja": "隘路の衝突の作戦中、「便符」が防衛ラインに到達すると即負け",
+			"en": "In Face-Off, if【便符】enters Protection Objective, operation results in a loss"
+		}
+	},
+	{
+		"fixed_date": null,
+		"video": "BV1ms8BzyEDf",
+		"desc": {
+			"zh": "祸乱击杀敌人数量再进关卡的敌人数量不匹配",
+			"ja": "「祸乱」に再度入った敵数が前回倒した敵数と合わない",
+			"en": "In「祸乱」, enemy count after re-entering the node and having defeated enemies might be different"
+		}
+	},
+	{
+		"fixed_date": null,
+		"video": null,
+		"desc": { "zh": "薄礼一份“与我无关”燃烧弹会失去图层", "ja": "", "en": "" }
+	}
+]

@@ -520,7 +520,7 @@
 		"spareshot": "Spareshot",
 		"add_bullet": "Add Ammo",
 		"max_ammo": "Max Ammo",
-		"ammo_above_half":"Ammo > 50%",
+		"ammo_above_half": "Ammo > 50%",
 		"damage_scale_buff": "Damage Dealt",
 		"global_heal": "Global Heal",
 		"global_range": "Global Range",
@@ -786,7 +786,8 @@
 		"max_perm_msg": "As there are too many permutations {perm} to calculate, full random mode will be engaged.",
 		"zoom": "Zoom",
 		"allow_camera_move": "Allow camera movement",
-		"adjust_screen": "Adjust Screen Size"
+		"adjust_screen": "Adjust Screen Size",
+		"buglist": "Bug List"
 	},
 	"ja": {
 		"index": {
@@ -1308,7 +1309,7 @@
 		"spareshot": "弾丸節約",
 		"add_bullet": "弾丸補充",
 		"max_ammo": "装弾数",
-		"ammo_above_half":"装弾数半分以上",
+		"ammo_above_half": "装弾数半分以上",
 		"damage_scale_buff": "与ダメージ増加",
 		"global_heal": "全体回復",
 		"global_range": "攻撃範囲が戦場全体",
@@ -1574,7 +1575,8 @@
 		"max_perm_msg": "総順列数{perm}が多すぎるため、完全ランダムモードが使用されます。",
 		"zoom": "拡大率",
 		"spacing": "",
-		"adjust_screen": "スクリーン調整"
+		"adjust_screen": "スクリーン調整",
+		"buglist": "バグ一覧"
 	},
 	"zh": {
 		"index": {
@@ -2084,7 +2086,7 @@
 		"spareshot": "节弹",
 		"add_bullet": "补弹",
 		"max_ammo": "弹药上限",
-		"ammo_above_half":"弹药数量不少于一半",
+		"ammo_above_half": "弹药数量不少于一半",
 		"damage_scale_buff": "伤害提升",
 		"global_heal": "全体恢复",
 		"global_range": "全图攻击范围",
@@ -2349,6 +2351,7 @@
 		"max_perm_msg": "由于总排列数过多{perm}，将采用全随机模式",
 		"zoom": "放大倍率",
 		"spacing": "",
-		"adjust_screen": "调整屏幕"
+		"adjust_screen": "调整屏幕",
+		"buglist": "BUG一览"
 	}
 }
