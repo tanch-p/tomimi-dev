@@ -16,19 +16,24 @@
  "description_zh": "历史被当下所诱引，展现出了融合古今的往昔。",
  "description_ja": null,
  "description_en": null,
- "addInfo_zh": null,
+ "addInfo_zh": [
+  "雕伥每50s召唤一个“越长尘”"
+ ],
  "addInfo_ja": null,
  "addInfo_en": null,
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+30%，防御力+30%，生命值+50%",
-  "&lt;雕伥&gt;的生命值-50%?"
+  "躁怒谛兽替换为心涛",
+  "&lt;雕伥&gt;的生命值-50%"
  ],
  "eliteDesc_ja": [
   "敵全員の攻撃力+30%、防御力+30%、最大HP+50%",
+  "&lt;怒れる諦獣&gt;が&lt;心涛&gt;に替わる",
   "&lt;雕伥&gt;の最大HP-50%"
  ],
  "eliteDesc_en": [
   "All enemy units have +30% ATK, +30% DEF, +50% Max HP",
+  "&lt;Raging Di Beast&gt; is replaced by &lt;Heartbillow&gt;",
   "&lt;雕伥&gt; have -50% Max HP"
  ],
  "all_mods": [
@@ -43,6 +48,17 @@
      "valueStr": "copper_d"
     }
    ]
+  },
+  {
+   "targets": [
+    "trap_222_rgdysm"
+   ],
+   "special": {
+    "rgdysm_summon": {
+     "interval": 50.0,
+     "enemy_key": "enemy_1302_ymtro_2"
+    }
+   }
   }
  ],
  "n_mods": [

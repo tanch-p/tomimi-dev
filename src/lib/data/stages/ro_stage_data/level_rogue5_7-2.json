@@ -20,13 +20,16 @@
  "addInfo_ja": null,
  "addInfo_en": null,
  "eliteDesc_zh": [
-  "所有敌方单位的攻击力+20%，防御力+20%，生命值+20%"
+  "所有敌方单位的攻击力+20%，防御力+20%，生命值+20%",
+  "初始左下侵入点右侧三格额外刷新3个“废食”"
  ],
  "eliteDesc_ja": [
-  "敵全員の攻撃力+20%、防御力+20%、最大HP+20%"
+  "敵全員の攻撃力+20%、防御力+20%、最大HP+20%",
+  "戦闘開始時左下に追加で「廃食」3体が出現する"
  ],
  "eliteDesc_en": [
-  "All enemy units have +20% ATK, +20% DEF, +20% Max HP"
+  "All enemy units have +20% ATK, +20% DEF, +20% Max HP",
+  "Additional 3 &lt;'Fasting'&gt; appears at bottom left of map"
  ],
  "all_mods": [
   {

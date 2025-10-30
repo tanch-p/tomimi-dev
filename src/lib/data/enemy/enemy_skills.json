@@ -3452,6 +3452,30 @@
 			]
 		}
 	},
+	"dcolle_load": {
+		"tooltip": {
+			"en": [
+				"Picks up Blood Ambers within 0.5 tile radius, max 5","When affected by a Bloodcalling Altar's pulse wave, turns all carried Blood Ambers into Bloodborn Spawns","When defeated, drops the carried Blood Ambers"
+			],
+			"ja": ["自身の半径0.5以内の血珀を回収する（最大所持数5）","血の祭壇の衝撃波を受けた時、自身の回収した血珀の数だけ新生の血裔が召喚され、自身の血珀所持数は0になる","倒された時、持っていた血珀をその場にすべて召喚する"],
+			"zh": [
+				"已储存血珀未超过储存上限时，令进入自身0.5半径范围内的血珀退场，随后自身储存数+1",
+				"受唤血祭坛脉冲波影响时，根据自身已储存的血珀数量触发唤血祭坛的召唤效果，随后清空自身储存数",
+				"被击倒时根据储存数，在自身所在地块中心0.4边长正方形范围内随机位置以自身路径召唤相应数量的血珀"
+			]
+		}
+	},
+	"mmleak":{
+			"tooltip": {
+			"en": [
+				"Loses 3% of Max HP every second after coming into contact with a Stabilizer Chain"
+			],
+			"ja": ["セーフティチェーンに触れると、以降は毎秒最大HPの3%のダメージを受け続ける"],
+			"zh": [
+				"首次接触稳固锁链后，每秒流失最大生命值3%的生命值"
+			]
+		}
+	},
 	"dublinn_companion_guard": {
 		"tooltip": {
 			"en": [
@@ -4330,6 +4354,19 @@
 			"en": ["Flying Unit"],
 			"ja": ["飛行ユニット"],
 			"zh": ["飞行单位"]
+		}
+	},
+	"cbagen_1": {
+		"tooltip": {
+			"en": [
+				"Attacks reduce the target's block count by 1, or to 0 if the target is on a Gravity Switch, for 3 seconds{can_silence}"
+			],
+			"ja": [
+				"攻撃時、対象のブロック数を3秒間-1する。攻撃対象が重力誘導装置マスにいる時は、対象のブロック数を3秒間0にする{can_silence}"
+			],
+			"zh": [
+				"攻击命中我方单位时，使其阻挡数-1，若目标部署于重力感应机关所在地块时，使其阻挡数*0，持续3s{can_silence}"
+			]
 		}
 	},
 	"cbrokt_1": {
@@ -8979,7 +9016,9 @@
 		"tooltip": {
 			"en": ["【无为】"],
 			"ja": ["【无为】"],
-			"zh": ["【无为】战斗开始360s后/矩兽退场后，进入第二形态并激活场上所有的古雕伥（变成雕伥的外形）"]
+			"zh": [
+				"【无为】战斗开始360s后/矩兽退场后，进入第二形态并激活场上所有的古雕伥（变成雕伥的外形）"
+			]
 		}
 	},
 	"dyjsww_2": {
@@ -9037,6 +9076,109 @@
 			"zh": [
 				"锁定位于自身所占据的其中一行的1位我方干员发射直线弹道，对首个命中的干员造成攻击力100%的{arts}溅射伤害{ignore_camou}，并在其附近合法地面地块上部署1个古雕伥"
 			]
+		}
+	},
+	"vtmstr_1": {
+		"tooltip": {
+			"en": [
+				"When coming into contact with an Unequipped Blade, Protective Vest, or Assault Arts Unit, picks it up and obtain its corresponding effect; Maximum of one per Gear",
+				"While holding a Protective Vest, reduces damage taken from the rear by 80%"
+			],
+			"ja": ["装備を各種1つずつ所持できる", "防護ベストの生地所持中のダメージ軽減方向は背面"],
+			"zh": [
+				"可以拾取并最多保留3种每种各1个未装配刀片或防护背心或冲击式施术单元",
+				"装备防护背心时防御来自背面的伤害"
+			]
+		}
+	},
+	"vtmstr_take": {
+		"type": "skill",
+		"initCooldown": 10.0,
+		"cooldown": 5.0,
+		"suffix": { "en": "Levy", "ja": "徴収", "zh": "征收" },
+		"tooltip": {
+			"en": [
+				"When not possessing any of the 3 Gears, transfers the corresponding missing Gear from another nearby enemy holding it within 3 tile radius to self"
+			],
+			"ja": [
+				"自身が所持していない装備を所持している敵が、半径3.0以内にいると使用できる。対象の敵から装備を奪う"
+			],
+			"zh": [
+				"自身未持有未装配刀片或防护背心或冲击式施术单元可触发：选择半径3.0范围内至多3名正在持有而自身未持有未装配刀片或防护背心或冲击式施术单元的敌方单位，将该效果转移至自身"
+			]
+		}
+	},
+	"vtgear": {
+		"tooltip": {
+			"en": [
+				"Provides below buff when coming into contact with an operator or enemy and disappears thereafter"
+			],
+			"ja": ["味方オペレーターか装備を所持できる敵に触れると以下のバフを与え、自身は退場する"],
+			"zh": [
+				"选择部署于自身所在格的可选我方单位/进入自身所在格的敌方单位，令其拾取这件装备并获得以下增益，成功拾取后自身退场"
+			]
+		}
+	},
+	"vtswd_enemy": {
+		"tooltip": {
+			"en": [
+				"Enemy: Grants a barrier that absorbs 2000 damage. While barrier is active, grants +75% ATK"
+			],
+			"ja": ["敵：耐久値2000のバリアを獲得。バリアがある間、攻撃力+75%・戦慄中の被ダメージ+20%"],
+			"zh": [
+				"敌方持有时：受到战栗影响时受到的伤害+20%，攻击力+75%，获得2000屏障（该屏障耗尽时增益消失）"
+			]
+		}
+	},
+	"vtswd_ally": {
+		"tooltip": {
+			"en": ["Ally: grants +30% ATK"],
+			"ja": ["味方：攻撃力+30%"],
+			"zh": ["我方持有时：攻击力+30% "]
+		}
+	},
+	"vtshld_enemy": {
+		"tooltip": {
+			"en": [
+				"Enemy: Grants a barrier that absorbs 5000 damage. While barrier is active, reduces damage taken from a specific direction (varies with the enemy) by 80%"
+			],
+			"ja": [
+				"敵：耐久値5000のバリアを獲得。バリアがある間、特定方向から受ける全タイプのダメージ-80%・戦慄中の被ダメージ+20%"
+			],
+			"zh": [
+				"敌方持有时：受到战栗影响时受到的伤害+20%；生成单向护盾，受到来自盾侧的单位造成的伤害-80%，获得5000屏障（该屏障耗尽时增益消失）"
+			]
+		}
+	},
+	"vtshld_ally": {
+		"tooltip": {
+			"en": ["Ally: grants +30% DEF"],
+			"ja": ["味方：防御力+30%"],
+			"zh": ["我方持有时：防御力+30% "]
+		}
+	},
+	"vtwand_enemy": {
+		"tooltip": {
+			"en": [
+				"Enemy: Grants a barrier that absorbs 2000 damage. While barrier is active, attacks deal {arts} damage and next attack disarms target for 3s"
+			],
+			"ja": [
+				"敵：耐久値2000のバリアを獲得。バリアがある間、攻撃が{arts}ダメージに変化し、装備取得後の初回攻撃に3秒間攻撃・回復・スキル発動が出来なくなるデバフが追加される。また、戦慄中の被ダメージ+20%"
+			],
+			"zh": [
+				"敌方持有时：受到战栗影响时受到的伤害+20%；攻击造成{arts}伤害，首次攻击令目标缴械+沉默3s，获得2000屏障（该屏障耗尽时增益消失）"
+			]
+		}
+	},
+	"vtwand_ally": {
+		"tooltip": {
+			"en": [
+				"Ally: Attacks within 0.1 seconds after skill activation will deal additional 800 {arts} damage and Frightens the target for 10 seconds"
+			],
+			"ja": [
+				"味方：スキル発動後0.1秒以内の攻撃に、追加で800の{arts}ダメージを与え、対象を10秒間戦慄させる効果を付与"
+			],
+			"zh": ["我方持有时：触发技能后0.1s内攻击额外造成800{arts}伤害，并令目标战栗10s"]
 		}
 	}
 }

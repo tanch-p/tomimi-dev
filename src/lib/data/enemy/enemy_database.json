@@ -8301,7 +8301,7 @@
 		"key": "enemy_1104_lfkght",
 		"name_zh": "锋盔骑士团学徒",
 		"name_ja": "ブレードヘルム見習い騎士",
-		"name_en": "Bladehelm Knightclub Trainee",
+		"name_en": "Blade Helmet Knightclub Trainee",
 		"stats": [
 			{
 				"hp": 10000,
@@ -8344,7 +8344,7 @@
 		"key": "enemy_1104_lfkght_2",
 		"name_zh": "锋盔骑士团精锐",
 		"name_ja": "ブレードヘルム精鋭騎士",
-		"name_en": "Bladehelm Knightclub Elite",
+		"name_en": "Blade Helmet Knightclub Elite",
 		"stats": [
 			{
 				"hp": 13000,
@@ -27394,7 +27394,15 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -27828,7 +27836,15 @@
 					"atk_type": ["no_attack", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["no_attack", "infection", "BOSS"],
@@ -28280,7 +28296,15 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "animated", "BOSS"],
@@ -28567,7 +28591,14 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "originiumartscraft", "BOSS"],
@@ -28618,7 +28649,15 @@
 					"atk_type": ["no_attack", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["no_attack", "BOSS"],
@@ -30375,7 +30414,14 @@
 					"atk_type": ["no_attack"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "palsy"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"palsy"
+				]
 			}
 		],
 		"type": ["melee", "BOSS"],
@@ -33741,7 +33787,11 @@
 				"ms": 1.2,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "cbagen_1"
+					}
+				],
 				"special": []
 			}
 		],
@@ -33777,7 +33827,11 @@
 				"ms": 1.2,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "cbagen_1"
+					}
+				],
 				"special": []
 			}
 		],
@@ -34481,7 +34535,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["no_attack", "BOSS"],
@@ -35531,7 +35593,14 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "palsy"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"palsy"
+				]
 			}
 		],
 		"type": ["no_attack", "BOSS"],
@@ -35964,7 +36033,15 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "collapsal", "BOSS"],
@@ -36007,7 +36084,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["no_attack", "NORMAL"],
@@ -37360,7 +37445,21 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "taunt",
+						"value": 2
+					},
+					{
+						"key": "spnshd_aspd"
+					},
+					{
+						"key": "spnshd_block"
+					},
+					{
+						"key": "spawn_dseed"
+					}
+				],
 				"special": []
 			}
 		],
@@ -37539,7 +37638,7 @@
 		"id": "SSK7",
 		"key": "enemy_1365_spnwiz_2",
 		"name_zh": "萨卡兹骸骨漂泊术师长\n",
-		"name_ja": "サルカズ骸骨流浪術師長",
+		"name_ja": "サルカズ骨骸流浪術師長",
 		"name_en": "Sarkaz Boneguard Fluxcaster Captain",
 		"stats": [
 			{
@@ -37590,7 +37689,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"no_block"},{"key":"dcolle_load"}],
 				"special": []
 			}
 		],
@@ -37626,7 +37725,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"no_block"},{"key":"dcolle_load"}],
 				"special": []
 			}
 		],
@@ -37758,7 +37857,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["no_attack", "NORMAL"],
@@ -39389,7 +39496,15 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -40883,7 +40998,14 @@
 					"atk_type": ["raw", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["ELITE"],
@@ -40919,7 +41041,14 @@
 					"atk_type": ["raw", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["ELITE"],
@@ -40955,7 +41084,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "drone", "flying", "NORMAL"],
@@ -40991,7 +41127,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "drone", "flying", "NORMAL"],
@@ -41967,7 +42110,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "NORMAL"],
@@ -42011,7 +42161,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "NORMAL"],
@@ -42123,7 +42280,7 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"no_block"},{"key":"mmleak"}],
 				"special": []
 			}
 		],
@@ -42159,7 +42316,7 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"no_block"},{"key":"mmleak"}],
 				"special": []
 			}
 		],
@@ -42282,7 +42439,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "ELITE"],
@@ -42322,7 +42486,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "ELITE"],
@@ -43184,7 +43355,14 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["no_attack", "flying", "sarkaz", "ELITE"],
@@ -43224,7 +43402,14 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["no_attack", "flying", "sarkaz", "ELITE"],
@@ -45542,7 +45727,14 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "palsy"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"palsy"
+				]
 			}
 		],
 		"type": ["no_attack", "seamonster", "BOSS"],
@@ -47063,7 +47255,15 @@
 					"atk_type": ["no_attack"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["no_attack", "ELITE"],
@@ -47545,7 +47745,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			},
 			{
 				"title": "form",
@@ -47553,7 +47760,14 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			},
 			{
 				"title": "form",
@@ -47561,7 +47775,14 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "ranged", "sarkaz", "BOSS"],
@@ -47597,7 +47818,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack"],
@@ -47788,7 +48017,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "infection", "NORMAL"],
@@ -47824,7 +48061,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "infection", "NORMAL"],
@@ -49388,7 +49633,14 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "vtmstr_1"
+					},
+					{
+						"key": "vtmstr_take"
+					}
+				],
 				"special": []
 			}
 		],
@@ -49424,7 +49676,14 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "vtmstr_1"
+					},
+					{
+						"key": "vtmstr_take"
+					}
+				],
 				"special": []
 			}
 		],
@@ -49597,7 +49856,17 @@
 				"ms": 0.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "vtgear"
+					},
+					{
+						"key": "vtswd_enemy"
+					},
+					{
+						"key": "vtswd_ally"
+					}
+				],
 				"special": []
 			}
 		],
@@ -49633,7 +49902,17 @@
 				"ms": 0.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "vtgear"
+					},
+					{
+						"key": "vtshld_enemy"
+					},
+					{
+						"key": "vtshld_ally"
+					}
+				],
 				"special": []
 			}
 		],
@@ -49669,7 +49948,17 @@
 				"ms": 0.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "vtgear"
+					},
+					{
+						"key": "vtwand_enemy"
+					},
+					{
+						"key": "vtwand_ally"
+					}
+				],
 				"special": []
 			}
 		],
@@ -50012,7 +50301,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			},
 			{
 				"title": "skzjkl_2",
@@ -50020,7 +50316,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			},
 			{
 				"title": "skzjkl_3",
@@ -50028,7 +50331,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 2
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -50064,7 +50374,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "animated", "BOSS"],
@@ -50136,7 +50453,14 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -52361,7 +52685,14 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "levitate", "tremble", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -52490,7 +52821,15 @@
 					"atk_type": ["ranged", "true"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			},
 			{
 				"title": "form",
@@ -52498,7 +52837,15 @@
 					"atk_type": ["ranged", "true"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -52699,7 +53046,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -52751,7 +53105,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -52797,7 +53158,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble"
+				]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -53288,7 +53656,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "machine", "NORMAL"],
@@ -53325,7 +53701,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "NORMAL"],
@@ -54372,7 +54756,14 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "animated", "NORMAL"],
@@ -54413,7 +54804,14 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "animated", "NORMAL"],
@@ -54424,8 +54822,8 @@
 		"key": "enemy_10064_ftyzss",
 		"sortId": 952,
 		"name_zh": "巡游草叶",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ミマワリグサ",
+		"name_en": "Patrolling Foliage",
 		"stats": [
 			{
 				"hp": 6500,
@@ -54465,8 +54863,8 @@
 		"key": "enemy_10064_ftyzss_2",
 		"sortId": 953,
 		"name_zh": "巡游枯木",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ミマワリカブ",
+		"name_en": "Patrolling Witherbush",
 		"stats": [
 			{
 				"hp": 9000,
@@ -54506,8 +54904,8 @@
 		"key": "enemy_10065_ftzlc",
 		"sortId": 954,
 		"name_zh": "卷心籽",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "バクダンダネ",
+		"name_en": "Cabbage Seedling",
 		"stats": [
 			{
 				"hp": 3800,
@@ -54547,8 +54945,8 @@
 		"key": "enemy_10065_ftzlc_2",
 		"sortId": 955,
 		"name_zh": "卷心草",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "バクダンソウ",
+		"name_en": "Cabbage Weed",
 		"stats": [
 			{
 				"hp": 5000,
@@ -54584,8 +54982,8 @@
 		"key": "enemy_10066_ftxjl",
 		"sortId": 956,
 		"name_zh": "“巢穴”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「巣」",
+		"name_en": "'Nest'",
 		"stats": [
 			{
 				"hp": 9000,
@@ -54625,8 +55023,8 @@
 		"key": "enemy_10066_ftxjl_2",
 		"sortId": 957,
 		"name_zh": "“襁褓”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「おくるみ」",
+		"name_en": "'Cradle'",
 		"stats": [
 			{
 				"hp": 11000,
@@ -54666,8 +55064,8 @@
 		"key": "enemy_10067_ftsjc",
 		"sortId": 958,
 		"name_zh": "灼藤",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ホテリツル",
+		"name_en": "Burning Vine",
 		"stats": [
 			{
 				"hp": 13000,
@@ -54707,8 +55105,8 @@
 		"key": "enemy_10067_ftsjc_2",
 		"sortId": 959,
 		"name_zh": "灼芯",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ホテリエダ",
+		"name_en": "Burning Wick",
 		"stats": [
 			{
 				"hp": 15500,
@@ -54748,8 +55146,8 @@
 		"key": "enemy_10068_ftxsr",
 		"sortId": 960,
 		"name_zh": "指路芽",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ミチビキワカバ",
+		"name_en": "Guiding Sprout",
 		"stats": [
 			{
 				"hp": 5500,
@@ -54789,8 +55187,8 @@
 		"key": "enemy_10068_ftxsr_2",
 		"sortId": 961,
 		"name_zh": "指路草",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ミチビキソウ",
+		"name_en": "Guiding Shrub",
 		"stats": [
 			{
 				"hp": 7200,
@@ -54830,8 +55228,8 @@
 		"key": "enemy_10069_ftlsj",
 		"sortId": 962,
 		"name_zh": "树盾",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ツリーシールド",
+		"name_en": "Tree Shield",
 		"stats": [
 			{
 				"hp": 35000,
@@ -54867,8 +55265,8 @@
 		"key": "enemy_10069_ftlsj_2",
 		"sortId": 963,
 		"name_zh": "树墙",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ツリーウォール",
+		"name_en": "Tree Wall",
 		"stats": [
 			{
 				"hp": 45000,
@@ -54904,8 +55302,8 @@
 		"key": "enemy_10070_ftkbtt",
 		"sortId": 964,
 		"name_zh": "灰烬造物",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "灰燼の創造物",
+		"name_en": "Ash Creation",
 		"stats": [
 			{
 				"hp": 10000,
@@ -54951,8 +55349,8 @@
 		"key": "enemy_10070_ftkbtt_2",
 		"sortId": 965,
 		"name_zh": "灰烬艺术品",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "灰燼の芸術品",
+		"name_en": "Ash Artwork",
 		"stats": [
 			{
 				"hp": 12000,
@@ -54998,8 +55396,8 @@
 		"key": "enemy_10071_ftprg",
 		"sortId": 966,
 		"name_zh": "“终点”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「終着点」",
+		"name_en": "'End Point'",
 		"stats": [
 			{
 				"hp": 8500,
@@ -55042,8 +55440,8 @@
 		"key": "enemy_10071_ftprg_2",
 		"sortId": 967,
 		"name_zh": "“中点”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「中間点」",
+		"name_en": "'Middle Point'",
 		"stats": [
 			{
 				"hp": 10000,
@@ -55086,8 +55484,8 @@
 		"key": "enemy_10072_mpprhd",
 		"sortId": 968,
 		"name_zh": "侵入式调用",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "侵入式コールコマンド",
+		"name_en": "Intrusive Call",
 		"stats": [
 			{
 				"hp": 10000,
@@ -55136,8 +55534,8 @@
 		"key": "enemy_10073_mpcar",
 		"sortId": 969,
 		"name_zh": "迷茫的修理小助手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "混乱する修理ロボット",
+		"name_en": "Confused Maintenance Helper",
 		"stats": [
 			{
 				"hp": 2000,
@@ -55173,8 +55571,8 @@
 		"key": "enemy_10073_mpcar_2",
 		"sortId": 970,
 		"name_zh": "失控的修理小助手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "暴走する修理ロボット",
+		"name_en": "Rampaging Maintenance Helper",
 		"stats": [
 			{
 				"hp": 2500,
@@ -55210,8 +55608,8 @@
 		"key": "enemy_10074_mpcata",
 		"sortId": 971,
 		"name_zh": "冰镇饮料机",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "アイスドリンクマシン",
+		"name_en": "Cold Drink Machine",
 		"stats": [
 			{
 				"hp": 3000,
@@ -55247,8 +55645,8 @@
 		"key": "enemy_10074_mpcata_2",
 		"sortId": 972,
 		"name_zh": "加热饮料机",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ホットドリンクマシン",
+		"name_en": "Hot Drink Machine",
 		"stats": [
 			{
 				"hp": 3800,
@@ -55284,8 +55682,8 @@
 		"key": "enemy_10075_mpwrj",
 		"sortId": 973,
 		"name_zh": "无忧货运帮手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "安心輸送ヘルパー",
+		"name_en": "Worry-Free Cargo Helper",
 		"stats": [
 			{
 				"hp": 2500,
@@ -55325,8 +55723,8 @@
 		"key": "enemy_10075_mpwrj_2",
 		"sortId": 974,
 		"name_zh": "防爆货运帮手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "防爆輸送ヘルパー",
+		"name_en": "Blast-Proof Cargo Helper",
 		"stats": [
 			{
 				"hp": 3500,
@@ -55366,8 +55764,8 @@
 		"key": "enemy_10076_mpgrou",
 		"sortId": 975,
 		"name_zh": "“寒灾回响”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「寒災の残響」",
+		"name_en": "'Frozen Monstrosity's Echo'",
 		"stats": [
 			{
 				"hp": 7000,
@@ -55407,8 +55805,8 @@
 		"key": "enemy_10076_mpgrou_2",
 		"sortId": 976,
 		"name_zh": "“风雪中的影子”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「風雪の中の影」",
+		"name_en": "'Shadow in the Snow'",
 		"stats": [
 			{
 				"hp": 9000,
@@ -55448,8 +55846,8 @@
 		"key": "enemy_10077_mpbarr",
 		"sortId": 977,
 		"name_zh": "内测版自助出餐终端",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "セルフ配膳端末ベータ版",
+		"name_en": "Mockup Auto Meal Distributor",
 		"stats": [
 			{
 				"hp": 6000,
@@ -55489,8 +55887,8 @@
 		"key": "enemy_10077_mpbarr_2",
 		"sortId": 978,
 		"name_zh": "自助出餐终端原型机",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "セルフ配膳端末プロトタイプ",
+		"name_en": "Prototype Auto Meal Distributor",
 		"stats": [
 			{
 				"hp": 8000,
@@ -55530,8 +55928,8 @@
 		"key": "enemy_10078_mprein",
 		"sortId": 979,
 		"name_zh": "固化源石巨像",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "固体化源石巨像",
+		"name_en": "Solidified Originium Colossus",
 		"stats": [
 			{
 				"hp": 15000,
@@ -55571,8 +55969,8 @@
 		"key": "enemy_10078_mprein_2",
 		"sortId": 980,
 		"name_zh": "活性源石巨像",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "活性源石巨像",
+		"name_en": "Active Originium Colossus",
 		"stats": [
 			{
 				"hp": 16000,
@@ -55612,8 +56010,8 @@
 		"key": "enemy_10079_mpmage",
 		"sortId": 981,
 		"name_zh": "稳定态萨卡兹术师结晶",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "定常状態サルカズ術師結晶",
+		"name_en": "Stable Sarkaz Caster Crystal",
 		"stats": [
 			{
 				"hp": 8000,
@@ -55653,8 +56051,8 @@
 		"key": "enemy_10079_mpmage_2",
 		"sortId": 982,
 		"name_zh": "活性态萨卡兹术师结晶",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "活性状態サルカズ術師結晶",
+		"name_en": "Active Sarkaz Caster Crystal",
 		"stats": [
 			{
 				"hp": 10000,
@@ -55694,8 +56092,8 @@
 		"key": "enemy_10080_mpiced",
 		"sortId": 983,
 		"name_zh": "静滞虚幻·α",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "テイシバチα",
+		"name_en": "Static Oneiros α",
 		"stats": [
 			{
 				"hp": 3500,
@@ -55731,8 +56129,8 @@
 		"key": "enemy_10080_mpiced_2",
 		"sortId": 984,
 		"name_zh": "静滞虚幻·β",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "テイシバチβ",
+		"name_en": "Static Oneiros β",
 		"stats": [
 			{
 				"hp": 4500,
@@ -55768,8 +56166,8 @@
 		"key": "enemy_10081_mpplai",
 		"sortId": 985,
 		"name_zh": "转译基底·α",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "変換基底α",
+		"name_en": "Decode Basis α",
 		"stats": [
 			{
 				"hp": 2500,
@@ -55948,8 +56346,8 @@
 		"key": "enemy_10081_mpplai_2",
 		"sortId": 986,
 		"name_zh": "转译基底·β",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "変換基底β",
+		"name_en": "Decode Basis β",
 		"stats": [
 			{
 				"hp": 4000,
@@ -55985,8 +56383,8 @@
 		"key": "enemy_10082_mpweak",
 		"sortId": 987,
 		"name_zh": "弱化节点",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "弱体化ノード",
+		"name_en": "Weakening Node",
 		"stats": [
 			{
 				"hp": 10000,
@@ -56026,8 +56424,8 @@
 		"key": "enemy_10083_hlbird",
 		"sortId": 988,
 		"name_zh": "“萨科塔之翼”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの翼」",
+		"name_en": "'Wings of the Sankta'",
 		"stats": [
 			{
 				"hp": 1500,
@@ -56067,8 +56465,8 @@
 		"key": "enemy_10083_hlbird_2",
 		"sortId": 989,
 		"name_zh": "“萨科塔展翅”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの羽ばたき」",
+		"name_en": "'Flight of the Sankta'",
 		"stats": [
 			{
 				"hp": 2000,
@@ -56108,8 +56506,8 @@
 		"key": "enemy_10084_hlegle",
 		"sortId": 990,
 		"name_zh": "“萨科塔之眼”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの眼」",
+		"name_en": "'Eyes of the Sankta'",
 		"stats": [
 			{
 				"hp": 5500,
@@ -56152,8 +56550,8 @@
 		"key": "enemy_10084_hlegle_2",
 		"sortId": 991,
 		"name_zh": "“萨科塔见证”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの目配り」",
+		"name_en": "'Witness of the Sankta'",
 		"stats": [
 			{
 				"hp": 7200,
@@ -56196,8 +56594,8 @@
 		"key": "enemy_10085_hllevi",
 		"sortId": 992,
 		"name_zh": "“萨科塔之鳍”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタのひれ」",
+		"name_en": "'Flippers of the Sankta'",
 		"stats": [
 			{
 				"hp": 60000,
@@ -56240,8 +56638,8 @@
 		"key": "enemy_10085_hllevi_2",
 		"sortId": 993,
 		"name_zh": "“萨科塔昂首”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの仰け反り」",
+		"name_en": "'Pride of the Sankta'",
 		"stats": [
 			{
 				"hp": 80000,
@@ -56284,8 +56682,8 @@
 		"key": "enemy_10086_hltigr",
 		"sortId": 994,
 		"name_zh": "“萨科塔之爪”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの爪」",
+		"name_en": "'Claws of the Sankta'",
 		"stats": [
 			{
 				"hp": 25000,
@@ -56325,8 +56723,8 @@
 		"key": "enemy_10086_hltigr_2",
 		"sortId": 995,
 		"name_zh": "“萨科塔匍匐”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「サンクタの這いずり」",
+		"name_en": "'Crawl of the Sankta'",
 		"stats": [
 			{
 				"hp": 30000,
@@ -56366,8 +56764,8 @@
 		"key": "enemy_10087_hlchgr",
 		"sortId": 996,
 		"name_zh": "圣堂剑士",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "聖堂剣士",
+		"name_en": "Shrine Swordsman",
 		"stats": [
 			{
 				"hp": 6000,
@@ -56412,8 +56810,8 @@
 		"key": "enemy_10087_hlchgr_2",
 		"sortId": 997,
 		"name_zh": "精锐圣堂剑士",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "精鋭聖堂剣士",
+		"name_en": "Elite Shrine Swordsman",
 		"stats": [
 			{
 				"hp": 8000,
@@ -56458,8 +56856,8 @@
 		"key": "enemy_10088_hlsnip",
 		"sortId": 998,
 		"name_zh": "圣堂射手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "聖堂狙撃手",
+		"name_en": "Shrine Marksman",
 		"stats": [
 			{
 				"hp": 10000,
@@ -56507,8 +56905,8 @@
 		"key": "enemy_10088_hlsnip_2",
 		"sortId": 999,
 		"name_zh": "精锐圣堂射手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "精鋭聖堂狙撃手",
+		"name_en": "Elite Shrine Marksman",
 		"stats": [
 			{
 				"hp": 12500,
@@ -56556,8 +56954,8 @@
 		"key": "enemy_10089_hlsprt",
 		"sortId": 1000,
 		"name_zh": "圣堂保育员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "聖堂保育士",
+		"name_en": "Shrine Nurturer",
 		"stats": [
 			{
 				"hp": 8000,
@@ -56597,8 +56995,8 @@
 		"key": "enemy_10089_hlsprt_2",
 		"sortId": 1001,
 		"name_zh": "资深圣堂保育员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ベテラン聖堂保育士",
+		"name_en": "Veteran Shrine Nurturer",
 		"stats": [
 			{
 				"hp": 9500,
@@ -56642,8 +57040,8 @@
 		"key": "enemy_10090_hlgrd",
 		"sortId": 1002,
 		"name_zh": "圣堂布道员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "聖堂宣教師",
+		"name_en": "Shrine Preacher",
 		"stats": [
 			{
 				"hp": 16000,
@@ -56683,8 +57081,8 @@
 		"key": "enemy_10090_hlgrd_2",
 		"sortId": 1003,
 		"name_zh": "资深圣堂布道员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ベテラン聖堂宣教師",
+		"name_en": "Veteran Shrine Preacher",
 		"stats": [
 			{
 				"hp": 20000,
@@ -56724,8 +57122,8 @@
 		"key": "enemy_10091_hlsttu",
 		"sortId": 1004,
 		"name_zh": "圣徒像",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "聖徒像",
+		"name_en": "Saint Statue",
 		"stats": [
 			{
 				"hp": 40000,
@@ -56760,7 +57158,14 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "sleep", "levitate", "tremble", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"sleep",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "ELITE"],
@@ -56771,8 +57176,8 @@
 		"key": "enemy_10091_hlsttu_2",
 		"sortId": 1005,
 		"name_zh": "圣徒祈祷像",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "聖徒祈祷像",
+		"name_en": "Praying Saint Statue",
 		"stats": [
 			{
 				"hp": 50000,
@@ -56807,7 +57212,14 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "sleep", "levitate", "tremble", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"sleep",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "ELITE"],
@@ -56818,8 +57230,8 @@
 		"key": "enemy_10091_hlsttu_3",
 		"sortId": 1006,
 		"name_zh": "“牧首”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「総主教」",
+		"name_en": "'Matriarch'",
 		"stats": [
 			{
 				"hp": 75000,
@@ -56848,7 +57260,14 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "sleep", "levitate", "tremble", "fear", "attract"]
+				"status_immune": [
+					"stun",
+					"sleep",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
 			}
 		],
 		"type": ["ranged", "ELITE"],
@@ -57545,8 +57964,8 @@
 		"key": "enemy_3009_mpprss",
 		"sortId": 1025,
 		"name_zh": "EYESOFPRIESTESS",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "EYESOFPRIESTESS",
+		"name_en": "EYESOFPRIESTESS",
 		"stats": [
 			{
 				"hp": 10000,
@@ -57595,8 +58014,8 @@
 		"key": "enemy_4022_mushtm",
 		"sortId": 1095,
 		"name_zh": "战术队击球手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦術組ストライカー",
+		"name_en": "Tactical Team Shooter",
 		"stats": [
 			{
 				"hp": 25000,
@@ -57647,8 +58066,8 @@
 		"key": "enemy_4022_mushtm_2",
 		"sortId": 1096,
 		"name_zh": "战术队精英击球手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦術組精鋭ストライカー",
+		"name_en": "Elite Tactical Team Shooter",
 		"stats": [
 			{
 				"hp": 40000,
@@ -57699,8 +58118,8 @@
 		"key": "enemy_4023_mushtb",
 		"sortId": 1097,
 		"name_zh": "战术队守门员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦術組キーパー",
+		"name_en": "Tactical Team Goalie",
 		"stats": [
 			{
 				"hp": 30000,
@@ -57751,8 +58170,8 @@
 		"key": "enemy_4023_mushtb_2",
 		"sortId": 1098,
 		"name_zh": "战术队精英守门员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦術組精鋭キーパー",
+		"name_en": "Elite Tactical Team Goalie",
 		"stats": [
 			{
 				"hp": 45000,
@@ -57803,8 +58222,8 @@
 		"key": "enemy_4024_mushtg",
 		"sortId": 1099,
 		"name_zh": "战术队击人手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦術組エースキラー",
+		"name_en": "Tactical Team Hitter",
 		"stats": [
 			{
 				"hp": 25000,
@@ -57855,8 +58274,8 @@
 		"key": "enemy_4024_mushtg_2",
 		"sortId": 1100,
 		"name_zh": "战术队精英击人手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦術組精鋭エースキラー",
+		"name_en": "Elite Tactical Team Hitter",
 		"stats": [
 			{
 				"hp": 40000,
@@ -57907,8 +58326,8 @@
 		"key": "enemy_4025_muhrym",
 		"sortId": 1101,
 		"name_zh": "爱球会击球手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "愛球会ストライカー",
+		"name_en": "Ball Mania Club Shooter",
 		"stats": [
 			{
 				"hp": 18000,
@@ -57959,8 +58378,8 @@
 		"key": "enemy_4025_muhrym_2",
 		"sortId": 1102,
 		"name_zh": "爱球会荣誉击球手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "愛球会名誉ストライカー",
+		"name_en": "Ball Mania Club Honorary Shooter",
 		"stats": [
 			{
 				"hp": 39000,
@@ -58011,8 +58430,8 @@
 		"key": "enemy_4026_muhryb",
 		"sortId": 1103,
 		"name_zh": "爱球会守门员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "愛球会キーパー",
+		"name_en": "Ball Mania Club Goalie",
 		"stats": [
 			{
 				"hp": 25000,
@@ -58063,8 +58482,8 @@
 		"key": "enemy_4026_muhryb_2",
 		"sortId": 1104,
 		"name_zh": "爱球会荣誉守门员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "愛球会名誉キーパー",
+		"name_en": "Ball Mania Club Honorary Goalie",
 		"stats": [
 			{
 				"hp": 40000,
@@ -58115,8 +58534,8 @@
 		"key": "enemy_4027_muhryg",
 		"sortId": 1105,
 		"name_zh": "爱球会击人手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "愛球会エースキラー",
+		"name_en": "Ball Mania Club Hitter",
 		"stats": [
 			{
 				"hp": 25000,
@@ -58167,8 +58586,8 @@
 		"key": "enemy_4027_muhryg_2",
 		"sortId": 1106,
 		"name_zh": "爱球会荣誉击人手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "愛球会名誉エースキラー",
+		"name_en": "Ball Mania Club Honorary Hitter",
 		"stats": [
 			{
 				"hp": 36000,
@@ -58219,8 +58638,8 @@
 		"key": "enemy_4028_mukfum",
 		"sortId": 1107,
 		"name_zh": "球德联击球手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "公正連ストライカー",
+		"name_en": "Sportsmen United Shooter",
 		"stats": [
 			{
 				"hp": 30000,
@@ -58271,8 +58690,8 @@
 		"key": "enemy_4028_mukfum_2",
 		"sortId": 1108,
 		"name_zh": "球德联老牌击球手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "公正連古参ストライカー",
+		"name_en": "Sportsmen United Veteran Shooter",
 		"stats": [
 			{
 				"hp": 44000,
@@ -58323,8 +58742,8 @@
 		"key": "enemy_4029_mukfub",
 		"sortId": 1109,
 		"name_zh": "球德联守门员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "公正連キーパー",
+		"name_en": "Sportsmen United Goalie",
 		"stats": [
 			{
 				"hp": 30000,
@@ -58375,8 +58794,8 @@
 		"key": "enemy_4029_mukfub_2",
 		"sortId": 1110,
 		"name_zh": "球德联老牌守门员",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "公正連古参キーパー",
+		"name_en": "Sportsmen United Veteran Goalie",
 		"stats": [
 			{
 				"hp": 52000,
@@ -58427,8 +58846,8 @@
 		"key": "enemy_4030_mukfug",
 		"sortId": 1111,
 		"name_zh": "球德联击人手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "公正連エースキラー",
+		"name_en": "Sportsmen United Hitter",
 		"stats": [
 			{
 				"hp": 25000,
@@ -58479,8 +58898,8 @@
 		"key": "enemy_4030_mukfug_2",
 		"sortId": 1112,
 		"name_zh": "球德联老牌击人手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "公正連古参エースキラー",
+		"name_en": "Sportsmen United Veteran Hitter",
 		"stats": [
 			{
 				"hp": 42000,
@@ -58531,8 +58950,8 @@
 		"key": "enemy_4031_muftsn",
 		"sortId": 1113,
 		"name_zh": "漏气甲虫球",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "空気漏れ甲虫ボール",
+		"name_en": "Leaking Beetleball",
 		"stats": [
 			{
 				"hp": 1000,
@@ -58583,8 +59002,8 @@
 		"key": "enemy_4032_muftmg",
 		"sortId": 1114,
 		"name_zh": "膨胀甲虫球",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "膨張甲虫ボール",
+		"name_en": "Bloated Beetleball",
 		"stats": [
 			{
 				"hp": 1000,
@@ -58635,8 +59054,8 @@
 		"key": "enemy_4033_muftic",
 		"sortId": 1115,
 		"name_zh": "北境意志球",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "北境の意志ボール",
+		"name_en": "Will of the North Ball",
 		"stats": [
 			{
 				"hp": 1000,
@@ -58687,8 +59106,8 @@
 		"key": "enemy_4034_muftgl",
 		"sortId": 1116,
 		"name_zh": "底海滑动球",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "淵海のスライドボール",
+		"name_en": "Deep Sea Slider Ball",
 		"stats": [
 			{
 				"hp": 1000,
@@ -58739,8 +59158,8 @@
 		"key": "enemy_4035_mufbsa",
 		"sortId": 1117,
 		"name_zh": "巨力丰碑",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "怪力記念碑",
+		"name_en": "Monument to Force",
 		"stats": [
 			{
 				"hp": 1000000,
@@ -58776,8 +59195,8 @@
 		"key": "enemy_4036_mufbsb",
 		"sortId": 1118,
 		"name_zh": "坚韧丰碑",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "強靭記念碑",
+		"name_en": "Monument to Toughness",
 		"stats": [
 			{
 				"hp": 1000000,
@@ -58813,8 +59232,8 @@
 		"key": "enemy_4037_mufbsc",
 		"sortId": 1119,
 		"name_zh": "神射丰碑",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "百発百中記念碑",
+		"name_en": "Monument to Accuracy",
 		"stats": [
 			{
 				"hp": 1000000,
@@ -58850,8 +59269,8 @@
 		"key": "enemy_4038_mufbsd",
 		"sortId": 1120,
 		"name_zh": "热情丰碑",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "情熱記念碑",
+		"name_en": "Monument to Passion",
 		"stats": [
 			{
 				"hp": 1000000,
@@ -58887,8 +59306,8 @@
 		"key": "enemy_4039_mufbse",
 		"sortId": 1121,
 		"name_zh": "狂奔丰碑",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "狂走記念碑",
+		"name_en": "Monument to Swiftness",
 		"stats": [
 			{
 				"hp": 1000000,
@@ -58976,8 +59395,8 @@
 		"key": "enemy_1563_fthlgj",
 		"sortId": 1185,
 		"name_zh": "“万火归一”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「灯火の帰すところ」",
+		"name_en": "'All Flames Returned'",
 		"stats": [
 			{
 				"hp": 65000,
@@ -59028,8 +59447,8 @@
 		"key": "enemy_1564_mpprts",
 		"sortId": 1186,
 		"name_zh": "PRTS，“源代码”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "PRTS、「ソースコード」",
+		"name_en": "PRTS, Source Code",
 		"stats": [
 			{
 				"hp": 50000,
@@ -59089,8 +59508,8 @@
 		"key": "enemy_1565_mpprme",
 		"sortId": 1187,
 		"name_zh": "拟态机械",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "擬態機械",
+		"name_en": "Mimic Machine",
 		"stats": [
 			{
 				"hp": 25000,
@@ -59130,7 +59549,15 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "origen", "BOSS"],
@@ -59141,8 +59568,8 @@
 		"key": "enemy_1566_mpascl",
 		"sortId": 1188,
 		"name_zh": "“阿斯卡纶”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「アスカロン」",
+		"name_en": "'Ascalon'",
 		"stats": [
 			{
 				"hp": 10000,
@@ -59187,8 +59614,8 @@
 		"key": "enemy_1567_pope",
 		"sortId": 1189,
 		"name_zh": "“圣徒”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「聖徒」",
+		"name_en": "'Saint'",
 		"stats": [
 			{
 				"hp": 20000,
@@ -59213,7 +59640,14 @@
 					"atk_type": ["all", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["all", "BOSS"],
@@ -59276,8 +59710,8 @@
 		"key": "enemy_6029_solzac",
 		"sortId": 1277,
 		"name_zh": "“晨音”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「晨音」",
+		"name_en": "'Aubade'",
 		"stats": [
 			{
 				"hp": 60000,
@@ -59313,8 +59747,8 @@
 		"key": "enemy_6030_frgzac",
 		"sortId": 1278,
 		"name_zh": "“鸣啭”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「鳴囀」",
+		"name_en": "'Twitter'",
 		"stats": [
 			{
 				"hp": 25,
@@ -59350,8 +59784,8 @@
 		"key": "enemy_6031_visfrg",
 		"sortId": 1279,
 		"name_zh": "“木衣”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「木衣」",
+		"name_en": "'Woodthreads'",
 		"stats": [
 			{
 				"hp": 30,
@@ -59376,7 +59810,15 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear"
+				]
 			}
 		],
 		"type": ["no_attack", "animated", "NORMAL"],
@@ -59387,7 +59829,7 @@
 		"key": "enemy_8012_mcnd",
 		"sortId": 1304,
 		"name_zh": "文档",
-		"name_ja": "",
+		"name_ja": "ドキュメント",
 		"name_en": "",
 		"stats": [
 			{
@@ -59424,7 +59866,7 @@
 		"key": "enemy_8013_mcnrsh",
 		"sortId": 1305,
 		"name_zh": "叶毯",
-		"name_ja": "",
+		"name_ja": "リーフカーペット",
 		"name_en": "",
 		"stats": [
 			{
@@ -59461,7 +59903,7 @@
 		"key": "enemy_8014_mcnelp",
 		"sortId": 1306,
 		"name_zh": "秒表",
-		"name_ja": "",
+		"name_ja": "ストップウォッチ",
 		"name_en": "",
 		"stats": [
 			{
@@ -59498,7 +59940,7 @@
 		"key": "enemy_8015_mcnrhd",
 		"sortId": 1307,
 		"name_zh": "巨声",
-		"name_ja": "",
+		"name_ja": "アップロアー",
 		"name_en": "",
 		"stats": [
 			{
@@ -59535,7 +59977,7 @@
 		"key": "enemy_8010_mcnist",
 		"sortId": 1314,
 		"name_zh": "“Mechanist”，机械之心",
-		"name_ja": "",
+		"name_ja": "「Mechanist」・機械の心",
 		"name_en": "",
 		"stats": [
 			{
@@ -59572,7 +60014,7 @@
 		"key": "enemy_8010_mcnist_2",
 		"sortId": 1315,
 		"name_zh": "“Mechanist”，机械之心",
-		"name_ja": "",
+		"name_ja": "「Mechanist」・機械の心",
 		"name_en": "",
 		"stats": [
 			{
@@ -59609,7 +60051,7 @@
 		"key": "enemy_8010_mcnist_3",
 		"sortId": 1316,
 		"name_zh": "“Mechanist”，机械之心",
-		"name_ja": "",
+		"name_ja": "「Mechanist」・機械の心",
 		"name_en": "",
 		"stats": [
 			{
@@ -59646,7 +60088,7 @@
 		"key": "enemy_8011_mcndog",
 		"sortId": 1317,
 		"name_zh": "结构性原理",
-		"name_ja": "",
+		"name_ja": "構造性原理",
 		"name_en": "",
 		"stats": [
 			{
@@ -59683,7 +60125,7 @@
 		"key": "enemy_8011_mcndog_2",
 		"sortId": 1318,
 		"name_zh": "结构性原理",
-		"name_ja": "",
+		"name_ja": "構造性原理",
 		"name_en": "",
 		"stats": [
 			{
@@ -59720,7 +60162,7 @@
 		"key": "enemy_8011_mcndog_3",
 		"sortId": 1319,
 		"name_zh": "结构性原理",
-		"name_ja": "",
+		"name_ja": "構造性原理",
 		"name_en": "",
 		"stats": [
 			{
@@ -61863,7 +62305,14 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "ymgung_jump" }, { "key": "ymgung_condition" }],
+				"traits": [
+					{
+						"key": "ymgung_jump"
+					},
+					{
+						"key": "ymgung_condition"
+					}
+				],
 				"special": []
 			}
 		],
@@ -61874,7 +62323,14 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "NORMAL"],
@@ -61900,7 +62356,14 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "ymgung_jump" }, { "key": "ymgung_condition" }],
+				"traits": [
+					{
+						"key": "ymgung_jump"
+					},
+					{
+						"key": "ymgung_condition"
+					}
+				],
 				"special": []
 			}
 		],
@@ -61911,7 +62374,14 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "NORMAL"],
@@ -62011,7 +62481,14 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "ymghol_start" }, { "key": "ymghol_stealth_loss" }],
+				"traits": [
+					{
+						"key": "ymghol_start"
+					},
+					{
+						"key": "ymghol_stealth_loss"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62048,7 +62525,14 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "ymghol_start" }, { "key": "ymghol_stealth_loss" }],
+				"traits": [
+					{
+						"key": "ymghol_start"
+					},
+					{
+						"key": "ymghol_stealth_loss"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62086,9 +62570,15 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{ "key": "ymgtop_start" },
-					{ "key": "ymgtop_spin" },
-					{ "key": "ymgtop_spin_state" }
+					{
+						"key": "ymgtop_start"
+					},
+					{
+						"key": "ymgtop_spin"
+					},
+					{
+						"key": "ymgtop_spin_state"
+					}
 				],
 				"special": []
 			}
@@ -62127,9 +62617,15 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{ "key": "ymgtop_start" },
-					{ "key": "ymgtop_spin" },
-					{ "key": "ymgtop_spin_state" }
+					{
+						"key": "ymgtop_start"
+					},
+					{
+						"key": "ymgtop_spin"
+					},
+					{
+						"key": "ymgtop_spin_state"
+					}
 				],
 				"special": []
 			}
@@ -62167,7 +62663,14 @@
 				"ms": 0.2,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "ymggld_acc" }, { "key": "ymggld_fly" }],
+				"traits": [
+					{
+						"key": "ymggld_acc"
+					},
+					{
+						"key": "ymggld_fly"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62204,7 +62707,14 @@
 				"ms": 0.2,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "ymggld_acc" }, { "key": "ymggld_fly" }],
+				"traits": [
+					{
+						"key": "ymggld_acc"
+					},
+					{
+						"key": "ymggld_fly"
+					}
+				],
 				"special": []
 			}
 		],
@@ -63074,7 +63584,14 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["melee", "BOSS"],
@@ -63178,7 +63695,14 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -63516,15 +64040,42 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{"key":"appear_nowhere"},
-					{ "key": "self_bind" },
-					{ "key": "dyjsww_grow" },
-					{ "key": "dyjsww_teleport" },
-					{ "key": "dyjsww_end" }
+					{
+						"key": "appear_nowhere"
+					},
+					{
+						"key": "self_bind"
+					},
+					{
+						"key": "dyjsww_grow"
+					},
+					{
+						"key": "dyjsww_teleport"
+					},
+					{
+						"key": "dyjsww_end"
+					}
 				],
 				"special": [
-					[{ "key": "invincible_type2" }, { "key": "dyjsww_1" }, { "key": "dyjsww_shoot" }],
-					[{ "key": "dyjsww_2" }, { "key": "dyjsww_summon" }]
+					[
+						{
+							"key": "invincible_type2"
+						},
+						{
+							"key": "dyjsww_1"
+						},
+						{
+							"key": "dyjsww_shoot"
+						}
+					],
+					[
+						{
+							"key": "dyjsww_2"
+						},
+						{
+							"key": "dyjsww_summon"
+						}
+					]
 				],
 				"form_mods": [[], []]
 			}
@@ -63591,12 +64142,25 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{ "key": "dyjsfg_base" },
-					{ "key": "block", "value": 3 },
-					{ "key": "dyjsfg_res" },
-					{ "key": "dyjsfg_aoe" },
-					{ "key": "dyjsfg_hp50" },
-					{ "key": "dyjsfg_defeat" }
+					{
+						"key": "dyjsfg_base"
+					},
+					{
+						"key": "block",
+						"value": 3
+					},
+					{
+						"key": "dyjsfg_res"
+					},
+					{
+						"key": "dyjsfg_aoe"
+					},
+					{
+						"key": "dyjsfg_hp50"
+					},
+					{
+						"key": "dyjsfg_defeat"
+					}
 				],
 				"special": []
 			}
@@ -63634,7 +64198,14 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "hover" }, { "key": "dylnpp_reflect" }],
+				"traits": [
+					{
+						"key": "hover"
+					},
+					{
+						"key": "dylnpp_reflect"
+					}
+				],
 				"special": []
 			},
 			{
@@ -63649,7 +64220,14 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "hover" }, { "key": "dylnpp_reflect" }],
+				"traits": [
+					{
+						"key": "hover"
+					},
+					{
+						"key": "dylnpp_reflect"
+					}
+				],
 				"special": []
 			},
 			{
@@ -63664,7 +64242,14 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "hover" }, { "key": "dylnpp_reflect" }],
+				"traits": [
+					{
+						"key": "hover"
+					},
+					{
+						"key": "dylnpp_reflect"
+					}
+				],
 				"special": []
 			}
 		],
@@ -63786,7 +64371,14 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear"
+				]
 			}
 		],
 		"type": ["ranged", "machine", "BOSS"],

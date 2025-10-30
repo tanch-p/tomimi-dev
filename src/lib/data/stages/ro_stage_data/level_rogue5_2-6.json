@@ -16,17 +16,26 @@
  "description_zh": "曾经有位外国游客将一套玩具小人遗留在了园内，如今，它们已经在这里站稳了脚跟。",
  "description_ja": null,
  "description_en": null,
- "addInfo_zh": null,
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_zh": [
+  "雕伥每25s召唤一个特里蒙城防军"
+ ],
+ "addInfo_ja": [
+  "&lt;雕伥&gt;25秒毎に&lt;トリマウンツ都市防衛軍兵士&gt;を召喚する"
+ ],
+ "addInfo_en": [
+  "&lt;雕伥&gt; summons 1 &lt;Trimounts City Defender&gt; every 25s"
+ ],
  "eliteDesc_zh": [
-  "所有敌方单位的攻击力+20%，生命值+20%"
+  "所有敌方单位的攻击力+20%，生命值+20%",
+  "第二个弧光镜卫替换为“肇事者”量产型"
  ],
  "eliteDesc_ja": [
-  "敵全員の攻撃力+20%、最大HP+20%"
+  "敵全員の攻撃力+20%、最大HP+20%",
+  "2体目の&lt;アーク鏡衛&gt;が&lt;「トラブルメーカー」量産型&gt;に替わる"
  ],
  "eliteDesc_en": [
-  "All enemy units have +20% ATK, +20% Max HP"
+  "All enemy units have +20% ATK, +20% Max HP",
+  "2nd &lt;Arc Screenguard&gt; is replaced by &lt;'Offender' Production Model&gt;"
  ],
  "all_mods": [
   {
@@ -40,6 +49,17 @@
      "valueStr": "copper_d"
     }
    ]
+  },
+  {
+   "targets": [
+    "trap_222_rgdysm"
+   ],
+   "special": {
+    "rgdysm_summon": {
+     "interval": 25.0,
+     "enemy_key": "enemy_1326_cbagen"
+    }
+   }
   }
  ],
  "n_mods": [

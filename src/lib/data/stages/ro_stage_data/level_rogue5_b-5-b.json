@@ -16,13 +16,28 @@
  "description_zh": "当不可着墨的长卷遇上不可记述的过往。",
  "description_ja": null,
  "description_en": null,
- "addInfo_zh": null,
+ "addInfo_zh": [
+  "战斗中期，左侧场地左下化境地块与右上化境地块各自在相邻的不可部署地块刷新1个雕伥，每10s召唤一个除秽"
+ ],
  "addInfo_ja": null,
  "addInfo_en": null,
  "eliteDesc_zh": null,
  "eliteDesc_ja": null,
  "eliteDesc_en": null,
- "all_mods": null,
+ "all_mods": [
+  {
+   "targets": [
+    "trap_222_rgdysm#3",
+    "trap_222_rgdysm#4"
+   ],
+   "special": {
+    "rgdysm_summon": {
+     "interval": 10.0,
+     "enemy_key": "enemy_1390_dhsbr_2"
+    }
+   }
+  }
+ ],
  "n_mods": null,
  "elite_mods": null,
  "floors": [

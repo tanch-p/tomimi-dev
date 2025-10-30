@@ -20,13 +20,17 @@
  "addInfo_ja": null,
  "addInfo_en": null,
  "eliteDesc_zh": [
-  "所有敌方单位的攻击力+10%，生命值+20%"
+  "所有敌方单位的攻击力+10%，生命值+20%",
+  "最左侧的可部署地面处额外出现1个巡游草叶",
+  "保护目标右上一格处额外出现1个雕伥，每10s召唤一个便符"
  ],
  "eliteDesc_ja": [
-  "敵全員の攻撃力+10%、最大HP+20%"
+  "敵全員の攻撃力+10%、最大HP+20%",
+  "追加で1体の&lt;ミマワリグサ&gt;と&lt;雕伥&gt;が出現する"
  ],
  "eliteDesc_en": [
-  "All enemy units have +10% ATK, +20% Max HP"
+  "All enemy units have +10% ATK, +20% Max HP",
+  "Additional 1 &lt;'Patrolling Foliage'&gt; and 1 &lt;雕伥&gt; appears"
  ],
  "all_mods": [
   {
@@ -461,16 +465,6 @@
    "max_count": 3,
    "elite_min_count": 2,
    "elite_max_count": 3,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_10071_ftprg",
-   "prefabKey": "enemy_10071_ftprg",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
    "overwrittenData": null
   },
   {

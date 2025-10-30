@@ -20,7 +20,9 @@
  "addInfo_ja": null,
  "addInfo_en": null,
  "eliteDesc_zh": [
-  "所有敌方单位的攻击力+10%，防御力+10%，生命值+30%"
+  "所有敌方单位的攻击力+10%，防御力+10%，生命值+30%",
+  "可移动战术机库左侧两格额外出现2个道路障碍物",
+  "战斗开始后出现1个雕伥，每20s召唤一个感染者纠察官"
  ],
  "eliteDesc_ja": [
   "敵全員の攻撃力+10%、防御力+10%、最大HP+30%"
@@ -40,6 +42,17 @@
      "valueStr": "copper_d"
     }
    ]
+  },
+  {
+   "targets": [
+    "trap_222_rgdysm"
+   ],
+   "special": {
+    "rgdysm_summon": {
+     "interval": 20.0,
+     "enemy_key": "enemy_1107_uoffcr"
+    }
+   }
   }
  ],
  "n_mods": null,
