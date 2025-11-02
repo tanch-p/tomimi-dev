@@ -141,49 +141,51 @@
 						{@const min = Math.floor(t / 60)}
 						{@const sec = Math.floor(t % 60)}
 						{@const compiledActions = compileSpawnTimeActions(actions)}
-						<div class="grid grid-cols-[30px_1fr] gap-x-2 mt-4">
-							<p class="text-center mt-[15px]">
-								{min}:{#if sec < 10}0{/if}{sec}
-							</p>
-							<div class="flex flex-wrap">
-								{#each compiledActions as { key, count }}
-									{#if key !== ''}
-										{#if ['trap','char','token'].some(ele => key.includes(ele))}
-											<div class="relative">
-												{#if count > 1}
-													<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
-														x{count}
-													</p>
-												{/if}
-												<img
-													src="/images/chara_icons/{key}.webp"
-													width="50px"
-													height="50px"
-													alt={key}
-													class=""
-												/>
-											</div>
-										{:else}
-											{@const prefabKey = getImageForWaves(key, mapConfig)}
-											<div class="relative">
-												{#if count > 1}
-													<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
-														x{count}
-													</p>
-												{/if}
-												<img
-													src="/images/enemy_icons/{prefabKey}.webp"
-													width="50px"
-													height="50px"
-													alt={key}
-													class=""
-												/>
-											</div>
+						{#if compiledActions.length > 0}
+							<div class="grid grid-cols-[30px_1fr] gap-x-2 mt-4">
+								<p class="text-center mt-[15px]">
+									{min}:{#if sec < 10}0{/if}{sec}
+								</p>
+								<div class="flex flex-wrap">
+									{#each compiledActions as { key, count }}
+										{#if key !== ''}
+											{#if ['trap', 'char', 'token'].some((ele) => key.includes(ele))}
+												<div class="relative">
+													{#if count > 1}
+														<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
+															x{count}
+														</p>
+													{/if}
+													<img
+														src="/images/chara_icons/{key}.webp"
+														width="50px"
+														height="50px"
+														alt={key}
+														class=""
+													/>
+												</div>
+											{:else}
+												{@const prefabKey = getImageForWaves(key, mapConfig)}
+												<div class="relative">
+													{#if count > 1}
+														<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
+															x{count}
+														</p>
+													{/if}
+													<img
+														src="/images/enemy_icons/{prefabKey}.webp"
+														width="50px"
+														height="50px"
+														alt={key}
+														class=""
+													/>
+												</div>
+											{/if}
 										{/if}
-									{/if}
-								{/each}
+									{/each}
+								</div>
 							</div>
-						</div>
+						{/if}
 					{/each}
 					{#if timeline?.length > 0}
 						<div class="text-center mt-4 {language !== 'en' ? '-ml-2' : ''}">

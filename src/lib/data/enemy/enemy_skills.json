@@ -3597,6 +3597,21 @@
 			]
 		}
 	},
+	"skzfmf_evasion": {
+		"tooltip": {
+			"en": [
+				"[Military Training] - gains 80% {phys}/{arts} evasion",
+				"*Will not lose this effect or be stunned when hit by Londinium Artillery"
+			],
+			"ja": [
+				"【軍事訓練】→{phys}・{arts}回避率+80%",
+				"副砲が当たっても、回避効果が無効化されない、スタンもしない"
+			],
+			"zh": [
+				"【军事训练】：获得80%{phys}/{arts}闪避。受到<伦蒂尼姆城防副炮>的伤害也不会解除"
+			]
+		}
+	},
 	"manfred_focus": {
 		"tooltip": {
 			"en": [

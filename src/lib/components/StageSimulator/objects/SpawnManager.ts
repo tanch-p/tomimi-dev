@@ -253,7 +253,7 @@ export class SpawnManager {
 				this.activatePredefined(action);
 				break;
 			default:
-				console.warn(`Unknown action type: ${action.actionType}`);
+				break;
 		}
 	}
 

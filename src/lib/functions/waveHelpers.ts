@@ -361,7 +361,11 @@ const isCountableEnemy = (key: string, mapConfig: MapConfig) => {
 	return isCountable;
 };
 
-const isCountableAction = (key: string, mapConfig: MapConfig) => {
+const isCountableAction = (action, mapConfig: MapConfig) => {
+	const key = action.key;
+	if (!ACTION_TYPES_TO_PARSE.includes(action['actionType'])) {
+		return false;
+	}
 	if (['trap', 'char', 'token'].some((ele) => key.includes(ele))) return false;
 	if (key === '') return false;
 	if (ALWAYS_KILLED_KEYS.includes(key)) return false;
@@ -566,9 +570,6 @@ export const generateWaveTimeline = (
 			}
 
 			for (const action of fragment['actions']) {
-				if (!ACTION_TYPES_TO_PARSE.includes(action['actionType'])) {
-					continue;
-				}
 				if (action['randomSpawnGroupKey']) {
 					continue;
 				}
@@ -594,7 +595,7 @@ export const generateWaveTimeline = (
 					continue;
 				}
 				handleAction(action, spawns, waveBlockingSpawns, prevPhaseTime, enemyReplace);
-				if (isCountableAction(action.key, mapConfig)) {
+				if (isCountableAction(action, mapConfig)) {
 					totalCount += action['count'];
 				}
 			}
@@ -616,6 +617,7 @@ export const generateWaveTimeline = (
 			});
 		}
 	});
+	console.log(waveTimelines)
 	return { waves: waveTimelines, count: totalCount };
 };
 
@@ -634,9 +636,6 @@ export const generateBranchTimeline = (mapConfig, branchKey, branchIndex = -1, i
 		wave['fragments'].forEach((fragment) => {
 			prevPhaseTime += fragment['preDelay'] + interval;
 			for (const action of fragment['actions']) {
-				if (!ACTION_TYPES_TO_PARSE.includes(action['actionType'])) {
-					continue;
-				}
 				handleAction(action, spawns, {}, prevPhaseTime);
 			}
 		});
@@ -656,9 +655,6 @@ export const generateBranchTimeline = (mapConfig, branchKey, branchIndex = -1, i
 };
 
 const handleAction = (action, spawns, waveBlockingSpawns, prevPhaseTime, enemyReplace = {}) => {
-	if (action.key === '') {
-		return;
-	}
 	let enemyKey = action.key;
 	if (enemyReplace[action.key]) {
 		enemyKey = enemyReplace[action.key];
@@ -674,7 +670,8 @@ const handleAction = (action, spawns, waveBlockingSpawns, prevPhaseTime, enemyRe
 				spawns[spawnTime] = [];
 			}
 			spawns[spawnTime].push({
-				key: enemyKey
+				key: enemyKey,
+				actionType: action['actionType']
 			});
 
 			if (!waveBlockingSpawns[spawnTime]) {
@@ -688,7 +685,8 @@ const handleAction = (action, spawns, waveBlockingSpawns, prevPhaseTime, enemyRe
 			spawns[spawnTime] = [];
 		}
 		spawns[spawnTime].push({
-			key: enemyKey
+			key: enemyKey,
+			actionType: action['actionType']
 		});
 
 		if (!waveBlockingSpawns[spawnTime]) {
@@ -746,9 +744,6 @@ export const parseWaves = (
 				actions.push(action);
 			}
 			for (const action of fragment['actions']) {
-				if (!ACTION_TYPES_TO_PARSE.includes(action['actionType'])) {
-					continue;
-				}
 				if (
 					[
 						'level_rogue4_b-4',
@@ -917,6 +912,9 @@ export const getRandomChance = (weight, choice) => {
 export const compileSpawnTimeActions = (actions) => {
 	const holder = [];
 	for (const action of actions) {
+		if (!ACTION_TYPES_TO_PARSE.includes(action.actionType)) {
+			continue;
+		}
 		const item = holder.find((ele) => ele.key === action.key);
 		if (item) {
 			item.count += action.count || 1;
