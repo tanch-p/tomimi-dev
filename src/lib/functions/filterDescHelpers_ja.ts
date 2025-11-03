@@ -132,7 +132,8 @@ const HAVE_TAGS = [
 	'aspd_unrelated',
 	'starting_cost',
 	'global_range',
-	'heal_on_damage'
+	'heal_on_damage',
+	'bonus_lifepoint'
 ];
 const SKILL_HAVE_TAGS = [
 	'PASSIVE',
@@ -179,7 +180,8 @@ const SQUAD_TAGS = [
 	'CASTER',
 	'SPECIAL',
 	'cost_under_10',
-	'mujica'
+	'mujica',
+	"kjerag"
 ];
 const TYPE_TAGS = [
 	'flying',
@@ -197,7 +199,8 @@ const TYPE_TAGS = [
 	'type_tremble',
 	'blocked_enemy',
 	'no_block_enemy',
-	'self_no_block_enemy'
+	'self_no_block_enemy',
+	"not_moving"
 ];
 const SELF_HAVE = ['aoe'];
 

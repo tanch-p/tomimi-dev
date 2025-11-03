@@ -53,6 +53,7 @@ export const charaAssets = {
 	y: '/images/chara_assets/y.webp',
 	d: '/images/chara_assets/d.webp',
 	a: '/images/chara_assets/a.webp',
+	b: '/images/chara_assets/b.webp',
 	sp_cost: '/images/chara_assets/sp_cost.webp',
 	sp_start: '/images/chara_assets/sp_start.png',
 	solid_1: '/images/chara_assets/solid_1.webp',

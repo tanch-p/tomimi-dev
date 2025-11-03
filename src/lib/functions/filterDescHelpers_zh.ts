@@ -126,7 +126,8 @@ const HAVE_TAGS = [
 	'no_source',
 	'aspd_unrelated',
 	'starting_cost',
-	'global_range'
+	'global_range',
+	"bonus_lifepoint"
 ];
 const SKILL_HAVE_TAGS = [
 	'PASSIVE',
@@ -173,7 +174,8 @@ const SQUAD_TAGS = [
 	'CASTER',
 	'SPECIAL',
 	'cost_under_10',
-	'mujica'
+	'mujica',
+	"kjerag"
 ];
 const TYPE_TAGS = [
 	'flying',
@@ -191,7 +193,8 @@ const TYPE_TAGS = [
 	'type_tremble',
 	'blocked_enemy',
 	'no_block_enemy',
-	'self_no_block_enemy'
+	'self_no_block_enemy',
+	"not_moving"
 ];
 
 const getFilterDescCategory = (key) => {

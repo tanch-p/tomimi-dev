@@ -248,7 +248,8 @@
 		"siracusa",
 		"position_ranged",
 		"cost_under_10",
-		"mujica"
+		"mujica",
+		"kjerag"
 	],
 	"others_tag": [
 		"force",
@@ -266,7 +267,9 @@
 		"erase_projectile",
 		"reallocate_hp",
 		"heal_on_damage",
-		"permanentatk"
+		"permanentatk",
+		"enemy_damage_share",
+		"bonus_lifepoint"
 	],
 	"terrain": ["terrain_water"]
 }

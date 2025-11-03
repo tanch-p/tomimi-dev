@@ -124,6 +124,7 @@ const HAVE_TAGS = [
 	'no_source',
 	'aspd_unrelated',
 	'starting_cost',
+	'bonus_lifepoint',
 	'global_range',
 	'heal_on_damage',
 	'evasion',
@@ -179,7 +180,8 @@ const SQUAD_TAGS = [
 	'CASTER',
 	'SPECIAL',
 	'cost_under_10',
-	'mujica'
+	'mujica',
+	"kjerag"
 ];
 const TYPE_TAGS = [
 	'flying',
@@ -197,7 +199,8 @@ const TYPE_TAGS = [
 	'type_tremble',
 	'blocked_enemy',
 	'no_block_enemy',
-	'self_no_block_enemy'
+	'self_no_block_enemy',
+	"not_moving"
 ];
 
 const SP_TYPE_LIST = [

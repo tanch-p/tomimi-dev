@@ -54,6 +54,7 @@
             "token_barrier_active",
             "skill_2",
             "hp_lt_40",
+            "kjerag",
             "laiosteam",
             "aak_dmg",
             "TANK",
@@ -408,6 +409,10 @@
         "key":[],
         "value":[]
     },
+    "ct":{
+        "key":[],
+        "value":[]
+    },
     "root":{
         "key":[],
         "targets":[
@@ -477,10 +482,6 @@
         ],
         "prob":[]
     },
-    "ct":{
-        "key":[],
-        "value":[]
-    },
     "ally_block_up":{
         "key":[],
         "value":[],
@@ -510,13 +511,17 @@
         "targets":[
             1,
             99,
-            2
+            2,
+            6
         ],
         "value":[],
         "prob":[],
         "target_air":[
             "target_air",
             "not_target_air"
+        ],
+        "conditions":[
+            "when_attacked"
         ]
     },
     "aspd_down":{
@@ -743,7 +748,6 @@
     "cancel_stealth":{
         "key":[],
         "value":[],
-        "target_air":[],
         "conditions":[
             "visible_enemy_present"
         ]
@@ -772,6 +776,8 @@
             "self_enemy_block",
             "evasion",
             "first_hit",
+            "ELITE",
+            "BOSS",
             "skill_usage"
         ],
         "prob":[]

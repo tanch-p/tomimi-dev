@@ -134,7 +134,9 @@ const SEARCH_IN_TAGS = [
 	'min_aspd',
 	'permanentatk',
 	'ally_arts',
-	'mujica'
+	'mujica',
+	"kjerag",
+	"not_moving"
 ];
 const SEARCH_IN_BLACKBOARD = [
 	'max_target',
@@ -211,7 +213,9 @@ const SEARCH_IN_BLACKBOARD = [
 	'ally_max_ammo',
 	'liftoff',
 	"attract",
-	"palsy"
+	"palsy",
+	"bonus_lifepoint",
+	"enemy_damage_share"
 ];
 
 // keys not here will just use their respective key in translations
@@ -681,6 +685,7 @@ export const getSkillImgUrl = (skillId) => {
 		case 'skchr_svrash_1':
 		case 'skchr_huang_1':
 		case 'skchr_lessng_1':
+		case 'skchr_snhunt_1':
 			return 'skcom_powerstrike[3]';
 		case 'skchr_vigna_1':
 		case 'skchr_jesica_1':
@@ -876,7 +881,8 @@ export const getPrioritySortValues = (char, sortOptions, secFilters) => {
 					'sp_regen',
 					'force',
 					'max_target',
-					'ct'
+					'ct',
+					"bonus_lifepoint"
 				].includes(key)
 			) {
 				return value.toString();
