@@ -1,1 +1,0 @@
-const e=""+new URL("../assets/enemy_7001_blwzad.f3b65835.webp",import.meta.url).href;export{e as default};
