@@ -127,7 +127,8 @@ const HAVE_TAGS = [
 	'aspd_unrelated',
 	'starting_cost',
 	'global_range',
-	"bonus_lifepoint"
+	"bonus_lifepoint",
+	"sp_module"
 ];
 const SKILL_HAVE_TAGS = [
 	'PASSIVE',

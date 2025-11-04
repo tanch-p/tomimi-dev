@@ -327,7 +327,7 @@
 	{/each}
 	<div class="bg-near-white rounded-md overflow-hidden">
 		<CharaFilterToggle
-			title={translations[language].is_title}
+			title={translations[language].isw}
 			innerClassName="border-t px-3 md:px-4 pt-2 pb-3 md:pb-4"
 		>
 			<div

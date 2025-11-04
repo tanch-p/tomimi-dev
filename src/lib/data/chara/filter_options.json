@@ -252,6 +252,7 @@
 		"kjerag"
 	],
 	"others_tag": [
+		"sp_module",
 		"force",
 		"starting_cost",
 		"block_no_attack",

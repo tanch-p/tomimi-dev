@@ -144,7 +144,8 @@ const HAVE_TAGS = [
 	'ignore_stealth',
 	'def_penetrate',
 	'res_penetrate',
-	'reflect_dmg'
+	'reflect_dmg',
+	"sp_module"
 ];
 const SKILL_HAVE_TAGS = ['unlimited_duration', 'skill_invincible', 'skill_manual_off'];
 const PRIORITY_TAGS = [

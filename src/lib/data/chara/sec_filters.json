@@ -1,6 +1,5 @@
 {
     "ally_atk":{
-        "key":[],
         "value":[],
         "duration":[],
         "conditions":[
@@ -38,7 +37,6 @@
         ]
     },
     "ally_def":{
-        "key":[],
         "value":[],
         "duration":[],
         "conditions":[
@@ -66,7 +64,6 @@
         ]
     },
     "damage_scale":{
-        "key":[],
         "targets":[
             99,
             1,
@@ -114,7 +111,6 @@
         "prob":[]
     },
     "sleep":{
-        "key":[],
         "targets":[
             99,
             1,
@@ -133,7 +129,6 @@
         ]
     },
     "stun":{
-        "key":[],
         "targets":[
             99,
             1,
@@ -170,7 +165,6 @@
         "module":[]
     },
     "dmg_res":{
-        "key":[],
         "types":[
             "phys",
             "arts",
@@ -200,7 +194,6 @@
         ]
     },
     "atk_down":{
-        "key":[],
         "order":[
             "final_mul",
             "initial_mul",
@@ -226,11 +219,9 @@
         "target_air":[]
     },
     "respawn_time":{
-        "key":[],
         "value":[]
     },
     "max_hp":{
-        "key":[],
         "value":[],
         "duration":[],
         "conditions":[
@@ -238,7 +229,6 @@
         ]
     },
     "def":{
-        "key":[],
         "value":[],
         "duration":[],
         "conditions":[
@@ -251,7 +241,6 @@
         ]
     },
     "evasion":{
-        "key":[],
         "value":[],
         "types":[
             "arts",
@@ -270,7 +259,6 @@
         ]
     },
     "attack_speed":{
-        "key":[],
         "value":[],
         "conditions":[
             "self_no_block",
@@ -278,14 +266,12 @@
         ]
     },
     "heal_scale":{
-        "key":[],
         "value":[],
         "conditions":[
             "cost_under_10"
         ]
     },
     "block_no_attack":{
-        "key":[],
         "value":[],
         "conditions":[
             "token"
@@ -293,7 +279,6 @@
         "duration":[]
     },
     "ally_evasion":{
-        "key":[],
         "value":[],
         "duration":[],
         "types":[
@@ -309,11 +294,9 @@
         ]
     },
     "sp_stock":{
-        "key":[],
         "value":[]
     },
     "max_target":{
-        "key":[],
         "value":[],
         "prob":[],
         "conditions":[
@@ -321,7 +304,6 @@
         ]
     },
     "sluggish":{
-        "key":[],
         "targets":[
             1,
             99,
@@ -344,7 +326,6 @@
         "prob":[]
     },
     "ms_down":{
-        "key":[],
         "targets":[
             1,
             99,
@@ -378,7 +359,6 @@
         ]
     },
     "res_down":{
-        "key":[],
         "order":[
             "final_mul",
             "initial_add"
@@ -406,15 +386,12 @@
         ]
     },
     "res_penetrate":{
-        "key":[],
         "value":[]
     },
     "ct":{
-        "key":[],
         "value":[]
     },
     "root":{
-        "key":[],
         "targets":[
             1,
             99,
@@ -432,7 +409,6 @@
         ]
     },
     "def_down":{
-        "key":[],
         "order":[
             "final_mul",
             "final_add",
@@ -458,7 +434,6 @@
         ]
     },
     "sp_regen":{
-        "key":[],
         "value":[],
         "conditions":[
             "hp_gt_80",
@@ -467,7 +442,6 @@
         ]
     },
     "def_penetrate":{
-        "key":[],
         "value":[],
         "conditions":[
             "enemy_hp_lt_50",
@@ -483,12 +457,10 @@
         "prob":[]
     },
     "ally_block_up":{
-        "key":[],
         "value":[],
         "duration":[]
     },
     "silence":{
-        "key":[],
         "targets":[
             99,
             1,
@@ -507,7 +479,6 @@
         ]
     },
     "cold":{
-        "key":[],
         "targets":[
             1,
             99,
@@ -525,7 +496,6 @@
         ]
     },
     "aspd_down":{
-        "key":[],
         "targets":[
             1,
             99,
@@ -549,7 +519,6 @@
         "prob":[]
     },
     "sp_gain":{
-        "key":[],
         "value":[],
         "prob":[],
         "conditions":[
@@ -578,18 +547,15 @@
         ]
     },
     "receive_heal_scale":{
-        "key":[],
         "value":[],
         "conditions":[
             "hp_lt_50"
         ]
     },
     "block":{
-        "key":[],
         "value":[]
     },
     "force":{
-        "key":[],
         "value":[],
         "conditions":[
             "no_block_enemy",
@@ -597,7 +563,6 @@
         ]
     },
     "ally_heal_scale":{
-        "key":[],
         "value":[],
         "conditions":[
             "cost_under_10",
@@ -605,7 +570,6 @@
         ]
     },
     "res":{
-        "key":[],
         "value":[],
         "duration":[],
         "conditions":[
@@ -617,7 +581,6 @@
         ]
     },
     "reflect_dmg":{
-        "key":[],
         "dep_stat":[
             "def",
             "atk"
@@ -637,11 +600,9 @@
         ]
     },
     "taunt":{
-        "key":[],
         "value":[]
     },
     "ally_aspd":{
-        "key":[],
         "value":[],
         "conditions":[
             "SUPPORT",
@@ -662,7 +623,6 @@
         "prob":[]
     },
     "ally_shield":{
-        "key":[],
         "types":[
             "phys",
             "arts",
@@ -676,11 +636,9 @@
         ]
     },
     "liftoff":{
-        "key":[],
         "value":[]
     },
     "ally_sp_regen":{
-        "key":[],
         "value":[],
         "conditions":[
             "CASTER",
@@ -689,7 +647,6 @@
         ]
     },
     "ally_dmg_res":{
-        "key":[],
         "types":[
             "phys",
             "arts",
@@ -714,7 +671,6 @@
         ]
     },
     "ally_cost_down":{
-        "key":[],
         "value":[],
         "conditions":[
             "rightmost",
@@ -727,7 +683,6 @@
         ]
     },
     "ally_max_hp":{
-        "key":[],
         "value":[],
         "conditions":[
             "TANK",
@@ -746,14 +701,12 @@
         ]
     },
     "cancel_stealth":{
-        "key":[],
         "value":[],
         "conditions":[
             "visible_enemy_present"
         ]
     },
     "camouflage":{
-        "key":[],
         "value":[],
         "conditions":[
             "skill_active",
@@ -766,11 +719,9 @@
         ]
     },
     "trigger_time":{
-        "key":[],
         "value":[]
     },
     "tremble":{
-        "key":[],
         "value":[],
         "conditions":[
             "self_enemy_block",
@@ -783,7 +734,6 @@
         "prob":[]
     },
     "block_dmg":{
-        "key":[],
         "types":[
             "phys",
             "arts",
@@ -799,11 +749,9 @@
         ]
     },
     "undying":{
-        "key":[],
         "value":[]
     },
     "ally_damage_scale":{
-        "key":[],
         "value":[],
         "conditions":[
             "abyssal",
@@ -811,7 +759,6 @@
         ]
     },
     "shield":{
-        "key":[],
         "value":[],
         "conditions":[
             "fatal_damage",
@@ -819,7 +766,6 @@
         ]
     },
     "levitate":{
-        "key":[],
         "targets":[
             99,
             2,
@@ -837,22 +783,31 @@
         ],
         "prob":[]
     },
+    "palsy":{
+        "targets":[
+            1,
+            4
+        ],
+        "value":[],
+        "target_air":[],
+        "category":[
+            "neural_burst",
+            "others"
+        ]
+    },
     "max_ammo":{
-        "key":[],
         "value":[],
         "conditions":[
             "laterano"
         ]
     },
     "ally_max_ammo":{
-        "key":[],
         "value":[],
         "conditions":[
             "laterano"
         ]
     },
     "ally_sp_gain":{
-        "key":[],
         "value":[],
         "conditions":[
             "CASTER",
@@ -871,7 +826,6 @@
         "prob":[]
     },
     "ally_sp_stock":{
-        "key":[],
         "value":[],
         "conditions":[
             "CASTER",
@@ -880,7 +834,6 @@
         ]
     },
     "ally_reflect_dmg":{
-        "key":[],
         "dep_stat":[
             "atk"
         ],
@@ -895,11 +848,9 @@
         ]
     },
     "ally_taunt":{
-        "key":[],
         "value":[]
     },
     "ally_res":{
-        "key":[],
         "value":[],
         "conditions":[
             "ally_surrounding"
@@ -907,7 +858,6 @@
         "duration":[]
     },
     "ally_block_dmg":{
-        "key":[],
         "value":[],
         "types":[
             "phys",
@@ -919,14 +869,12 @@
         ]
     },
     "ally_camouflage":{
-        "key":[],
         "value":[],
         "conditions":[
             "hp_lt_50"
         ]
     },
     "stealth":{
-        "key":[],
         "value":[],
         "conditions":[
             "not_attacking",
@@ -935,7 +883,6 @@
         ]
     },
     "ally_def_penetrate":{
-        "key":[],
         "value":[],
         "module":[],
         "conditions":[
@@ -943,12 +890,10 @@
         ]
     },
     "ally_block_down":{
-        "key":[],
         "value":[],
         "duration":[]
     },
     "fear":{
-        "key":[],
         "targets":[
             99,
             1
@@ -957,8 +902,13 @@
         "target_air":[],
         "prob":[]
     },
+    "sp_module":{
+        "value":[
+            "isw",
+            "ra"
+        ]
+    },
     "hitrate_down":{
-        "key":[],
         "value":[],
         "types":[
             "phys",
@@ -968,19 +918,32 @@
         "module":[],
         "duration":[]
     },
+    "bonus_lifepoint":{
+        "value":[]
+    },
+    "attract":{
+        "value":[],
+        "targets":[
+            4,
+            99
+        ]
+    },
+    "enemy_damage_share":{
+        "damage_type":[
+            "arts"
+        ],
+        "value":[]
+    },
     "ally_undying":{
-        "key":[],
         "value":[],
         "conditions":[
             "mujica"
         ]
     },
     "heal_scale_down":{
-        "key":[],
         "value":[]
     },
     "add_bullet":{
-        "key":[],
         "value":[],
         "conditions":[
             "laterano",
@@ -988,7 +951,6 @@
         ]
     },
     "ally_res_penetrate":{
-        "key":[],
         "value":[],
         "conditions":[
             "mujica"

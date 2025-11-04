@@ -133,7 +133,8 @@ const HAVE_TAGS = [
 	'starting_cost',
 	'global_range',
 	'heal_on_damage',
-	'bonus_lifepoint'
+	'bonus_lifepoint',
+	"sp_module"
 ];
 const SKILL_HAVE_TAGS = [
 	'PASSIVE',

@@ -90,8 +90,8 @@ const SEARCH_IN_TAGS = [
 	'priority_highest_weight',
 	'priority_def_high',
 	'priority_def_low',
-	"priority_res_high",
-	"priority_res_low",
+	'priority_res_high',
+	'priority_res_low',
 	'priority_stun',
 	'priority_sleep',
 	'PIONEER',
@@ -135,8 +135,8 @@ const SEARCH_IN_TAGS = [
 	'permanentatk',
 	'ally_arts',
 	'mujica',
-	"kjerag",
-	"not_moving"
+	'kjerag',
+	'not_moving'
 ];
 const SEARCH_IN_BLACKBOARD = [
 	'max_target',
@@ -212,10 +212,11 @@ const SEARCH_IN_BLACKBOARD = [
 	'max_ammo',
 	'ally_max_ammo',
 	'liftoff',
-	"attract",
-	"palsy",
-	"bonus_lifepoint",
-	"enemy_damage_share"
+	'attract',
+	'palsy',
+	'bonus_lifepoint',
+	'enemy_damage_share',
+	'sp_module'
 ];
 
 // keys not here will just use their respective key in translations
@@ -859,7 +860,8 @@ export const getPrioritySortValues = (char, sortOptions, secFilters) => {
 	uniqueValues.sort((a, b) => (a - b) * order);
 	return uniqueValues
 		.map((value) => {
-			if (!value && key !== 'force') return;
+			if (['sp_module'].includes(key)) return;
+			if (!value && !['force'].includes(key)) return;
 			if (value === 999) return '-';
 			if (
 				['duration'].includes(subKey) ||
@@ -882,7 +884,7 @@ export const getPrioritySortValues = (char, sortOptions, secFilters) => {
 					'force',
 					'max_target',
 					'ct',
-					"bonus_lifepoint"
+					'bonus_lifepoint'
 				].includes(key)
 			) {
 				return value.toString();
@@ -988,7 +990,7 @@ export const createNormalFilterFunction = (list, secFilters, filterMode) => {
 			return acc;
 		}, []);
 	const secFiltersFunctions = list
-		.filter((val) => ['blackboard','spType'].includes(val.type))
+		.filter((val) => ['blackboard', 'spType'].includes(val.type))
 		.reduce((acc, { key }) => {
 			if (key === 'spType') {
 				const spTypeSecFilters = secFilters
@@ -1817,6 +1819,7 @@ export const createSecFilterFunction = (list) => {
 				case 'dep_stat':
 				case 'damage_type':
 				case 'order':
+				case 'value':
 					fn = (item) => selectedOptions.includes(item[subKey]);
 					break;
 				case 'value_type':

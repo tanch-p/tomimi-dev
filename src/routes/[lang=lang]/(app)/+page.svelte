@@ -16,7 +16,7 @@
 
 	$: language = data.language;
 	const is_banners = [
-			{ alt: 'rogue_yan', src: banner_sui, href: 'sui' },
+		{ alt: 'rogue_yan', src: banner_sui, href: 'sui' },
 		{ alt: 'rogue_skz', src: banner_sarkaz, href: 'sarkaz' },
 		{ alt: 'rogue_sami', src: banner_sami, href: 'sami' },
 		{ alt: 'rogue_mizuki', src: banner_mizuki, href: 'mizuki' },
@@ -36,7 +36,7 @@
 	<div class="h-[10vh]" />
 	<div class="w-screen sm:w-full max-w-7xl mx-auto pb-32">
 		<div class="flex flex-col items-center mx-auto gap-x-4 gap-y-8 px-2 sm:px-8 justify-center">
-			<FriendLinks {language}/>
+			<FriendLinks {language} />
 			<div
 				class="w-full md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6"
 			>
@@ -89,10 +89,10 @@
 			<div class="md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6">
 				<div class="flex items-center justify-center">
 					<span>
-						<img src={ISLogo} alt={translations[language].is_title} width="36" height="36" />
+						<img src={ISLogo} alt={translations[language].isw} width="36" height="36" />
 					</span>
 					<p class={`${language === 'en' ? 'text-sm font-bold' : 'font-semibold'}`}>
-						{translations[language].is_title}
+						{translations[language].isw}
 					</p>
 				</div>
 				<div class="flex flex-wrap w-full justify-center">
