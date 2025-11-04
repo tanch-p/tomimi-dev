@@ -1651,7 +1651,8 @@ export const getSortOptions = (key) => {
 			'tremble',
 			'fear',
 			'ally_cost_down',
-			'ally_block_dmg'
+			'ally_block_dmg',
+			'sp_module'
 		].includes(key):
 			break;
 		default:
