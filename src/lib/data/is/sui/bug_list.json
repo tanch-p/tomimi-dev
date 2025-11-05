@@ -37,6 +37,15 @@
 	},
 	{
 		"fixed_date": null,
+		"video": "BV1vn1pBTE8A",
+		"desc": {
+			"zh": "三层作战关卡去晦里，在特定位置的宝箱怪被攻击后的出现地点与装置位置不相同",
+			"ja": "3層作戦「去晦」での特定の位置にいる宝箱形敵が沸く場所が装置と違う",
+			"en": "On 3rd level's stage 「去晦」 chest enemy at a designated location spawns at a different location from the trap's"
+		}
+	},
+	{
+		"fixed_date": null,
 		"video": null,
 		"desc": { "zh": "薄礼一份“与我无关”燃烧弹会失去图层", "ja": "", "en": "" }
 	}
