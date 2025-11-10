@@ -8877,7 +8877,7 @@
 		}
 	},
 	"ymgtop_spin_state": {
-		"atk": { "multiplier": 1.2, "order": "initial" },
+		"atk": { "multiplier": 1.2 },
 		"suffix": { "en": "Spin", "ja": "回転", "zh": "旋转" },
 		"hits": null,
 		"dmg_element": "phys",
