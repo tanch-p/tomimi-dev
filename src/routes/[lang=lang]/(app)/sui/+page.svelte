@@ -11,6 +11,7 @@
 
 	export let data: PageData;
 	$: language = data.language;
+	const docLink = "https://docs.qq.com/sheet/DTGxyYk5QWFBEcmJx?tab=48nkmm";
 </script>
 
 <svelte:head>
@@ -31,7 +32,7 @@
 			/>
 		</div>
 		<div class="space-y-6">
-			<BugList list={suiBugList} {language} />
+			<BugList list={suiBugList} {language} {docLink}/>
 			<TogglePanel title={translations[language].how_to_use} isOpen={false}>
 				<HowToUse {language} rogueTopic={'rogue_yan'} />
 			</TogglePanel>
