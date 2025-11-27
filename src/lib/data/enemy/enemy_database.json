@@ -43442,7 +43442,7 @@
 			{
 				"title": null,
 				"normal_attack": {
-					"atk_type": ["melee", "arts"],
+					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
 				"status_immune": []
@@ -43485,7 +43485,7 @@
 			{
 				"title": null,
 				"normal_attack": {
-					"atk_type": ["melee", "arts"],
+					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
 				"status_immune": []
