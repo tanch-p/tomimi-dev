@@ -8,6 +8,7 @@
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
 	import BugList from '$lib/components/BugList.svelte';
 	import suiBugList from '$lib/data/is/sui/bug_list.json';
+	import Resources from '$lib/components/Resources.svelte';
 
 	export let data: PageData;
 	$: language = data.language;
@@ -32,6 +33,7 @@
 			/>
 		</div>
 		<div class="space-y-6">
+			<Resources {language}/>
 			<BugList list={suiBugList} {language} {docLink}/>
 			<TogglePanel title={translations[language].how_to_use} isOpen={false}>
 				<HowToUse {language} rogueTopic={'rogue_yan'} />

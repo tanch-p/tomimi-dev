@@ -8,6 +8,7 @@
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
 	import phBugList from '$lib/data/is/phantom/bug_list.json';
 	import BugList from '$lib/components/BugList.svelte';
+	import Resources from '$lib/components/Resources.svelte';
 
 	export let data: PageData;
 	$: language = data.language;
@@ -31,6 +32,7 @@
 			/>
 		</div>
 		<div class="space-y-6">
+			<Resources {language}/>
 			<BugList list={phBugList} {language} />
 			<TogglePanel title={translations[language].how_to_use}>
 				<HowToUse {language} rogueTopic={"rogue_phantom"}/>

@@ -792,7 +792,9 @@
 		"zoom": "Zoom",
 		"allow_camera_move": "Allow camera movement",
 		"adjust_screen": "Adjust Screen Size",
-		"buglist": "Bug List"
+		"buglist": "Bug List",
+		"resource":"Useful Resources",
+		"author":"A"
 	},
 	"ja": {
 		"index": {
@@ -1586,7 +1588,9 @@
 		"zoom": "拡大率",
 		"spacing": "",
 		"adjust_screen": "スクリーン調整",
-		"buglist": "バグ一覧"
+		"buglist": "バグ一覧",
+		"resource":"役立つ資料",
+		"author":"作者"
 	},
 	"zh": {
 		"index": {
@@ -2367,6 +2371,8 @@
 		"zoom": "放大倍率",
 		"spacing": "",
 		"adjust_screen": "调整屏幕",
-		"buglist": "BUG一览"
+		"buglist": "BUG一览",
+		"resource":"有用资源",
+		"author":"著"
 	}
 }

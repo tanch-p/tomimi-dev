@@ -6,6 +6,7 @@
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import HowToUse from '$lib/components/HowToUse.svelte';
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
+	import Resources from '$lib/components/Resources.svelte';
 
 	export let data: PageData;
 	$: language = data.language;
@@ -29,6 +30,7 @@
 			/>
 		</div>
 		<div class="space-y-6">
+			<Resources {language}/>
 			<TogglePanel title={translations[language].how_to_use} isOpen={true}>
 				<HowToUse {language} rogueTopic={'rogue_mizuki'} />
 			</TogglePanel>
