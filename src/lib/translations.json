@@ -430,6 +430,7 @@
 		"primguard": "Primal Guard",
 		"counsellor": "Counsellor(?)",
 		"mercenary": "Mercenary",
+		"skybreaker":"Skybreaker",
 		"nationId": "Nationality",
 		"rhodes": "Rhodes Island",
 		"kazimierz": "Kazimierz",
@@ -705,6 +706,7 @@
 		"crit_wound": "Critically Wounded",
 		"enemy_type_related": "Enemy Type Related",
 		"type_bonus": "Type Dmg Inc",
+		"ranged_enemy": "Ranged Enemy",
 		"self_block": "Self Blocked",
 		"blocked_enemy": "Blocked Enemy",
 		"self_no_block": "Self Not Blocked",
@@ -793,8 +795,8 @@
 		"allow_camera_move": "Allow camera movement",
 		"adjust_screen": "Adjust Screen Size",
 		"buglist": "Bug List",
-		"resource":"Useful Resources",
-		"author":"A"
+		"resource": "Useful Resources",
+		"author": "A"
 	},
 	"ja": {
 		"index": {
@@ -1226,6 +1228,7 @@
 		"primguard": "本源前衛",
 		"counsellor": "策師",
 		"mercenary": "傭兵",
+		"skybreaker":"裂空射手(?)",
 		"nationId": "出身地",
 		"rhodes": "ロドスアイランド",
 		"kazimierz": "カジミエーシュ",
@@ -1501,6 +1504,7 @@
 		"crit_wound": "重傷",
 		"enemy_type_related": "種別系",
 		"type_bonus": "特攻",
+		"ranged_enemy": "遠距離敵",
 		"self_block": "自身がブロックしている敵",
 		"blocked_enemy": "ブロックされている敵",
 		"self_no_block": "自身未ブロック時",
@@ -1589,8 +1593,8 @@
 		"spacing": "",
 		"adjust_screen": "スクリーン調整",
 		"buglist": "バグ一覧",
-		"resource":"役立つ資料",
-		"author":"作者"
+		"resource": "役立つ資料",
+		"author": "作者"
 	},
 	"zh": {
 		"index": {
@@ -2010,6 +2014,7 @@
 		"primguard": "本源近卫",
 		"counsellor": "策士",
 		"mercenary": "佣兵",
+		"skybreaker":"裂空炮手",
 		"nationId": "出身地",
 		"rhodes": "罗德岛",
 		"kazimierz": "卡西米尔",
@@ -2285,6 +2290,7 @@
 		"crit_wound": "重伤",
 		"enemy_type_related": "属性关联",
 		"type_bonus": "特攻",
+		"ranged_enemy": "远程敌人",
 		"self_block": "自身阻挡",
 		"blocked_enemy": "被阻挡的敌人",
 		"self_no_block": "自身未被阻挡",
@@ -2372,7 +2378,7 @@
 		"spacing": "",
 		"adjust_screen": "调整屏幕",
 		"buglist": "BUG一览",
-		"resource":"有用资源",
-		"author":"著"
+		"resource": "有用资源",
+		"author": "著"
 	}
 }
