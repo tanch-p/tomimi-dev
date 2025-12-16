@@ -169,6 +169,7 @@
     "aspd": 2.0,
     "spRecoveryPerSec": 1.0,
     "weight": 2,
+    "lifepoint": 1,
     "range": -1.0,
     "levelType": "ELITE",
     "talentBlackboard": [
