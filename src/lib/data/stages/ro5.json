@@ -2,44 +2,44 @@
 	"level_rogue5_b-1": {
 		"code": "ISW-NO",
 		"name_zh": "月华寒",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "月華の寒気",
+		"name_en": "Cold_Moonlight"
 	},
 	"level_rogue5_b-1-b": {
 		"code": "ISW-NO",
 		"name_zh": "夕娥忆",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "夕娥の記憶",
+		"name_en": "Memories_of_Dusk_Beauty"
 	},
 	"level_rogue5_b-2": {
 		"code": "ISW-NO",
 		"name_zh": "剑·刀·矛",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "剣・刀・矛",
+		"name_en": "Sword,_Glaive,_Spear"
 	},
 	"level_rogue5_b-2-b": {
 		"code": "ISW-NO",
 		"name_zh": "仁·义·武",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "仁・義・武",
+		"name_en": "Compassion,_Justice,_Valor"
 	},
 	"level_rogue5_b-3": {
 		"code": "ISW-NO",
 		"name_zh": "点化",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "教え導く",
+		"name_en": "Enlightenment"
 	},
 	"level_rogue5_b-3-b": {
 		"code": "ISW-NO",
 		"name_zh": "求道",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "求道",
+		"name_en": "Seeking_the_Way"
 	},
 	"level_rogue5_b-4": {
 		"code": "ISW-DF",
 		"name_zh": "破岁阵祀",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "歳破りし陣を祀る",
+		"name_en": "The_Suppression_of_Sui"
 	},
 	"level_rogue5_b-4-b": {
 		"code": "ISW-DF",
@@ -50,8 +50,8 @@
 	"level_rogue5_b-5": {
 		"code": "ISW-DF",
 		"name_zh": "昔字如烟",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "古き文字は煙の如し",
+		"name_en": "Words_Past_Like_Smoke"
 	},
 	"level_rogue5_b-5-b": {
 		"code": "ISW-DF",
@@ -62,8 +62,8 @@
 	"level_rogue5_b-6": {
 		"code": "ISW-DF",
 		"name_zh": "谋岁者",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "歳を謀る者",
+		"name_en": "The_Sui_Strategist"
 	},
 	"level_rogue5_b-7": {
 		"code": "ISW-DF",
@@ -74,116 +74,116 @@
 	"level_rogue5_t-1": {
 		"code": "ISW-SP",
 		"name_zh": "源源不断",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "底なし",
+		"name_en": "Steady_Stream"
 	},
 	"level_rogue5_t-2": {
 		"code": "ISW-SP",
 		"name_zh": "闪闪发光",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "きらきら輝いて",
+		"name_en": "Sparkling_Shine"
 	},
 	"level_rogue5_t-3": {
 		"code": "ISW-SP",
 		"name_zh": "循循善诱",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "商売禁止",
+		"name_en": "Reeducation"
 	},
 	"level_rogue5_t-4": {
 		"code": "ISW-SP",
 		"name_zh": "易易鸭鸭",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "良いカモ",
+		"name_en": "Duck_and_Yi"
 	},
 	"level_rogue5_t-5": {
 		"code": "ISW-SP",
 		"name_zh": "劫罚",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "劫罰",
+		"name_en": "Calamitous_Punishment"
 	},
 	"level_rogue5_t-6": {
 		"code": "ISW-SP",
 		"name_zh": "生百相",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "生ける百面相",
+		"name_en": "Of_Hundred_Forms"
 	},
 	"level_rogue5_t-7": {
 		"code": "ISW-DF",
 		"name_zh": "硕果累累",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "鈴なりの果実",
+		"name_en": "Feast_of_Fruit"
 	},
 	"level_rogue5_t-8": {
 		"code": "ISW-SP",
 		"name_zh": "以逸待劳",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "逸を以て労を待つ",
+		"name_en": "Biding_Time"
 	},
 	"level_rogue5_t-9-a": {
 		"code": "ISW-SP",
 		"name_zh": "喜从驮来",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "喜びは駄獣より来たる",
+		"name_en": "Joy_From_Burdenbeast"
 	},
 	"level_rogue5_t-9-b": {
 		"code": "ISW-SP",
 		"name_zh": "硅基伥的宴席",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "ケイ素器鬼の宴",
+		"name_en": "Silicon_Geist's_Banquet"
 	},
 	"level_rogue5_t-9-c": {
 		"code": "ISW-SP",
 		"name_zh": "彻底失控",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "完全制御不能",
+		"name_en": "Totally_Out_of_Control"
 	},
 	"level_rogue5_t-10": {
 		"code": "ISW-SP",
 		"name_zh": "为崖作伥",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "崖の下の器鬼",
+		"name_en": "Cliff_of_Geists"
 	},
 	"level_rogue5_ev-1": {
 		"code": "ISW-SP",
 		"name_zh": "神游天外",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "心ここにあらず",
+		"name_en": "Astral_Projection"
 	},
 	"level_rogue5_ev-2": {
 		"code": "ISW-SP",
 		"name_zh": "作壁上观",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "高みの見物",
+		"name_en": "Sit_Back_and_Watch"
 	},
 	"level_rogue5_d-1": {
 		"code": "ISW-NO",
 		"name_zh": "夕江对擂",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "夕江にて対擂す",
+		"name_en": "Bout_by_the_Dusk_River"
 	},
 	"level_rogue5_d-1-b": {
 		"code": "ISW-NO",
 		"name_zh": "夕江对擂",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "夕江にて対擂す",
+		"name_en": "Bout_by_the_Dusk_River"
 	},
 	"level_rogue5_d-2": {
 		"code": "ISW-NO",
 		"name_zh": "南武群英会",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "南武群英会",
+		"name_en": "Heroes_of_Nanwu"
 	},
 	"level_rogue5_d-2-b": {
 		"code": "ISW-NO",
 		"name_zh": "南武群英会",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "南武群英会",
+		"name_en": "Heroes_of_Nanwu"
 	},
 	"level_rogue5_d-2-c": {
 		"code": "ISW-NO",
 		"name_zh": "南武群英会",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "南武群英会",
+		"name_en": "Heroes_of_Nanwu"
 	},
 	"level_rogue5_d-3": {
 		"code": "ISW-NO",
@@ -200,194 +200,194 @@
 	"level_rogue5_fs-1": {
 		"code": "ISW-NO",
 		"name_zh": "谤天(双)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "謗天(双)",
+		"name_en": "Slandering_Heaven_(2)"
 	},
 	"level_rogue5_fs-1b": {
 		"code": "ISW-NO",
 		"name_zh": "谤天(单)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "謗天(単)",
+		"name_en": "Slandering_Heaven_(1)"
 	},
 	"level_rogue5_fs-2": {
 		"code": "ISW-NO",
 		"name_zh": "迎雷(双)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "迎雷(双)",		
+		"name_en": "Amidst_Thunder_(2)"
 	},
 	"level_rogue5_fs-2b": {
 		"code": "ISW-NO",
 		"name_zh": "迎雷(单)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "迎雷(単)",		
+		"name_en":  "Amidst_Thunder_(1)"
 	},
 	"level_rogue5_fs-3": {
 		"code": "ISW-NO",
 		"name_zh": "蔑震(双)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "蔑震(双)",		
+		"name_en": "Defying_Quakes_(2)"
 	},
 	"level_rogue5_fs-3b": {
 		"code": "ISW-NO",
 		"name_zh": "蔑震(单)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "蔑震(単)",		
+		"name_en": "Defying_Quakes_(2)"
 	},
 	"level_rogue5_fs-4": {
 		"code": "ISW-NO",
 		"name_zh": "赴陨(双)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "赴隕(双)",		
+		"name_en": "To_the_Fall_(2)"
 	},
 	"level_rogue5_fs-4b": {
 		"code": "ISW-NO",
 		"name_zh": "赴陨(单)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "赴隕(単)",		
+		"name_en": "To_the_Fall_(1)"
 	},
 	"level_rogue5_fs-5": {
 		"code": "ISW-NO",
 		"name_zh": "斥洪(双)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "斥洪(双)",		
+		"name_en": "Against_the_Flood_(2)"
 	},
 	"level_rogue5_fs-5b": {
 		"code": "ISW-NO",
 		"name_zh": "斥洪(单)",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "斥洪(単)",		
+		"name_en": "Against_the_Flood_(1)"
 	},
 	"level_rogue5_dv-5": {
 		"code": "ISW-NO",
 		"name_zh": "分明",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "明瞭",
+		"name_en": "Clarity"
 	},
 	"level_rogue5_sv-1": {
 		"code": "ISW-NO",
 		"name_zh": "地有四难",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "地に四難有り",
+		"name_en": "The_Four_Difficulties"
 	},
 	"level_rogue5_sv-1-b": {
 		"code": "ISW-NO",
 		"name_zh": "地有四难_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "地に四難有り_b",
+		"name_en": "The_Four_Difficulties_b"
 	},
 	"level_rogue5_sv-2": {
 		"code": "ISW-NO",
 		"name_zh": "凭器_a",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "器頼み_a",
+		"name_en": "Ware-User_a"
 	},
 	"level_rogue5_sv-2-b": {
 		"code": "ISW-NO",
 		"name_zh": "凭器_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "器頼み_b",
+		"name_en": "Ware-User_b"
 	},
 	"level_rogue5_sv-2-c": {
 		"code": "ISW-NO",
 		"name_zh": "凭器_c",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "器頼み_c",
+		"name_en": "Ware-User_c"
 	},
 	"level_rogue5_sv-3": {
 		"code": "ISW-NO",
 		"name_zh": "忘形",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "我を忘れる",
+		"name_en": "To_Forget_Oneself"
 	},
 	"level_rogue5_sv-3-b": {
 		"code": "ISW-NO",
 		"name_zh": "忘形_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "我を忘れる_b",
+		"name_en": "To_Forget_Oneself_b"
 	},
 	"level_rogue5_sv-4": {
 		"code": "ISW-NO",
 		"name_zh": "贪妄",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "貪欲にして妄執",
+		"name_en": "Avarice"
 	},
 	"level_rogue5_sv-5": {
 		"code": "ISW-NO",
 		"name_zh": "奇谭",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "奇譚",
+		"name_en": "Strange_Tales"
 	},
 	"level_rogue5_sv-5-b": {
 		"code": "ISW-NO",
 		"name_zh": "奇谭_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "奇譚_b",
+		"name_en": "Strange_Tales_b"
 	},
 	"level_rogue5_sv-6": {
 		"code": "ISW-NO",
 		"name_zh": "破局",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "局面打破",
+		"name_en": "Breakthrough"
 	},
 	"level_rogue5_sv-6-b": {
 		"code": "ISW-NO",
 		"name_zh": "破局_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "局面打破_b",
+		"name_en": "Breakthrough_b"
 	},
 	"level_rogue5_sv-7": {
 		"code": "ISW-NO",
 		"name_zh": "不鉴",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "教訓とせず",
+		"name_en": "Unreflecting"
 	},
 	"level_rogue5_sv-7-b": {
 		"code": "ISW-NO",
 		"name_zh": "不鉴_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "教訓とせず_b",
+		"name_en": "Unreflecting_b"
 	},
 	"level_rogue5_sv-8": {
 		"code": "ISW-NO",
 		"name_zh": "靡靡之音",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "退廃の音",
+		"name_en": "Frivolous_Tunes"
 	},
 	"level_rogue5_sv-8-b": {
 		"code": "ISW-NO",
 		"name_zh": "靡靡之音_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "退廃の音_b",
+		"name_en": "Frivolous_Tunes_b"
 	},
 	"level_rogue5_sv-9": {
 		"code": "ISW-NO",
 		"name_zh": "愠怒_a",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "憤怒_a",
+		"name_en": "Inner_Rage_a"
 	},
 	"level_rogue5_sv-9-b": {
 		"code": "ISW-NO",
 		"name_zh": "愠怒_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "憤怒_b",
+		"name_en": "Inner_Rage_b"
 	},
 	"level_rogue5_sv-9-c": {
 		"code": "ISW-NO",
 		"name_zh": "愠怒_c",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "憤怒_c",
+		"name_en": "Inner_Rage_c"
 	},
 	"level_rogue5_sv-10": {
 		"code": "ISW-NO",
 		"name_zh": "迷惘",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "迷い",
+		"name_en": "Confusion"
 	},
 	"level_rogue5_sv-10-b": {
 		"code": "ISW-NO",
 		"name_zh": "迷惘_b",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "迷い_b",
+		"name_en": "Confusion_b"
 	},
 	"level_rogue5_sv-11": {
 		"code": "ISW-NO",
@@ -500,26 +500,26 @@
 	"level_rogue5_1-1": {
 		"code": "ISW-NO",
 		"name_zh": "狡鼷三窟",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "鼷獣の巣穴",
+		"name_en": "Whack-A-Mus"
 	},
 	"level_rogue5_1-2": {
 		"code": "ISW-NO",
 		"name_zh": "赶集",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "露店市場へ",
+		"name_en": "To_Market"
 	},
 	"level_rogue5_1-3": {
 		"code": "ISW-NO",
 		"name_zh": "正经生意",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "まともな商売",
+		"name_en": "Serious_Business"
 	},
 	"level_rogue5_1-4": {
 		"code": "ISW-NO",
 		"name_zh": "老戏骨",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "老練の役者",
+		"name_en": "Veteran_Actor"
 	},
 	"level_rogue5_1-5": {
 		"code": "ISW-NO",
@@ -536,26 +536,26 @@
 	"level_rogue5_2-1": {
 		"code": "ISW-NO",
 		"name_zh": "有教无类",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "教え有りて類無し",
+		"name_en": "Learning_for_All"
 	},
 	"level_rogue5_2-2": {
 		"code": "ISW-NO",
 		"name_zh": "飞来横祸",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "飛来する災い",
+		"name_en": "Look_Out_Above"
 	},
 	"level_rogue5_2-3": {
 		"code": "ISW-NO",
 		"name_zh": "所守者，义",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "守りしものは義なり",
+		"name_en": "Guardian_of_Justice"
 	},
 	"level_rogue5_2-4": {
 		"code": "ISW-NO",
 		"name_zh": "明抢暗偷",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "強盗と泥棒",
+		"name_en": "Daylight_Robbery"
 	},
 	"level_rogue5_2-5": {
 		"code": "ISW-NO",
@@ -572,116 +572,116 @@
 	"level_rogue5_3-1": {
 		"code": "ISW-NO",
 		"name_zh": "啖之以利",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "甘い誘い",
+		"name_en": "Hook,_Line,_and_Sinker"
 	},
 	"level_rogue5_3-2": {
 		"code": "ISW-NO",
 		"name_zh": "长驱不复",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "ひたすらな前進",
+		"name_en": "Stopping_the_Advance"
 	},
 	"level_rogue5_3-3": {
 		"code": "ISW-NO",
 		"name_zh": "背山面水",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "後方に山、前方に水",
+		"name_en": "Feng_Shui"
 	},
 	"level_rogue5_3-4": {
 		"code": "ISW-NO",
 		"name_zh": "去晦",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "邪気払い",
+		"name_en": "Away,_Hui!"
 	},
 	"level_rogue5_3-5": {
 		"code": "ISW-NO",
 		"name_zh": "落叶归根",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "落葉の帰る場所",
+		"name_en": "Return_to_Your_Roots"
 	},
 	"level_rogue5_4-1": {
 		"code": "ISW-NO",
 		"name_zh": "山海必争",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "山海の争い",
+		"name_en": "Shanhaizhong_Scramble"
 	},
 	"level_rogue5_4-2": {
 		"code": "ISW-NO",
 		"name_zh": "贪饵",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "食い意地",
+		"name_en": "Sugared_Bait"
 	},
 	"level_rogue5_4-3": {
 		"code": "ISW-NO",
 		"name_zh": "识文",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "文字を知る",
+		"name_en": "Cultured"
 	},
 	"level_rogue5_4-4": {
 		"code": "ISW-NO",
 		"name_zh": "赶场戏班",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "舞台への出演",
+		"name_en": "Take_the_Stage"
 	},
 	"level_rogue5_4-5": {
 		"code": "ISW-NO",
 		"name_zh": "峥嵘战功",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "輝かしい戦功",
+		"name_en": "Exemplary_Service"
 	},
 	"level_rogue5_4-6": {
 		"code": "ISW-NO",
 		"name_zh": "暗箭难防",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "闇討ちは防ぎ難し",
+		"name_en": "Beware_the_Shadows"
 	},
 	"level_rogue5_5-1": {
 		"code": "ISW-NO",
 		"name_zh": "青山不语",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "青嶺は語らず",
+		"name_en": "Green_Hills_Speak_Not"
 	},
 	"level_rogue5_5-2": {
 		"code": "ISW-NO",
 		"name_zh": "离域检查",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "退場検査",
+		"name_en": "Departing_Inspection"
 	},
 	"level_rogue5_5-3": {
 		"code": "ISW-NO",
 		"name_zh": "薄礼一份",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "ささやかな謝礼",
+		"name_en": "A_Humble_Gift"
 	},
 	"level_rogue5_5-4": {
 		"code": "ISW-NO",
 		"name_zh": "往事喑哑",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "過去の沈黙",
+		"name_en": "Muted_Past"
 	},
 	"level_rogue5_5-5": {
 		"code": "ISW-NO",
 		"name_zh": "邙山镇地方志",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "邙山町郷土誌",
+		"name_en": "Mangshan_Town_Records"
 	},
 	"level_rogue5_5-6": {
 		"code": "ISW-NO",
 		"name_zh": "不成烟火",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "煙火に成らず",
+		"name_en": "Unlit_Sparks"
 	},
 	"level_rogue5_6-1": {
 		"code": "ISW-NO",
 		"name_zh": "炎灼",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "灼熱の炎",
+		"name_en": "Inferno"
 	},
 	"level_rogue5_6-2": {
 		"code": "ISW-NO",
 		"name_zh": "人镇",
-		"name_ja": null,
-		"name_en": null
+		"name_ja": "人により鎮める",
+		"name_en": "Garrison"
 	},
 	"level_rogue5_7-1": {
 		"code": "ISW-NO",

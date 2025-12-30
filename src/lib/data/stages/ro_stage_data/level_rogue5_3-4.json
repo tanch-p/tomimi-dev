@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "去晦",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "邪気払い",
+ "name_en": "Away,_Hui!",
  "description_zh": "园中规矩，每到月初便持火例行“去晦”之务。至于被烧的究竟是什么，最好别过问。\n<@rolv.rem>场地中有可以阻挡敌人行进路线的<碎石></>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+40%，防御力+20%，生命值+40%",
   "净浊之焰的攻击力额外提升至150%",
   "战斗开始时额外出现1个雕伥，每15s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力+40%、防御力+20%",
+  "&lt;浄化の炎&gt;の攻撃力さらに+50%",
+  "戦場最上部に「彫鬼」が出現、15秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +40% ATK, +20% DEF and +40% Max HP",
+  "&lt;Purifying Flames&gt; have additional +50% ATK",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Talisman&gt; every 15s"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "识文",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "文字を知る",
+ "name_en": "Cultured",
  "description_zh": "此地的海嗣都在涂涂画画，这让你松了口气。而后你就看到了墙上的“天涯何处无芳”——以及歪歪斜斜、遍布各处、各式各样的“草”。",
  "description_ja": null,
  "description_en": null,
@@ -20,15 +20,31 @@
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现",
   "雕伥每20s召唤一个微核沉积者"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる",
+  "彫鬼は20秒ごとに&lt;小核のデポジッター&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier",
+  "Statuegeist summons 1 &lt;Exocellular Depositor&gt; every 20s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "微核沉积者的生命值额外提升至150%，雕伥的生命值额外提升至200%",
   "复核洋流使者被替换为异光体洋流使者"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "&lt;小核のデポジッター&gt;の最大HPさらに+50%",
+  "「彫鬼」の最大HPさらに+100%",
+  "すべての&lt;複核のヘラルド&gt;が&lt;異光体ヘラルド&gt;に変化"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+  "All &lt;Exocellular Depositor&gt; have additional +50% Max HP",
+  "All &lt;Statuegeist&gt; have additional +100% Max HP",
+  "All &lt;Multicellular Herald&gt; are replaced with &lt;Allotropic Herald&gt;"
+ ],
  "all_mods": [
   {
    "targets": [

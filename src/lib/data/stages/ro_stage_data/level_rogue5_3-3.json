@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "背山面水",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "後方に山、前方に水",
+ "name_en": "Feng_Shui",
  "description_zh": "伥心惶惶，四处乱窜。细观此景——开门见山，路出反弓，源石虫都待不住！也该为它们调一调风水布局了。\n<@rolv.rem>提供部署以后可以阻挡敌人的行进路线的<障碍物>。</>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;鸭爵&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力+30%，生命值+60%",
   "额外出现1个墨浪、1个心涛",
   "战斗开始时额外出现1个雕伥，每15s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+60%、攻撃力・防御力+30%",
+  "追加で&lt;墨浪&gt;1体と&lt;心涛&gt;が出現",
+  "防衛ライン左下に「彫鬼」が出現、15秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +30% ATK, +30% DEF and +60% Max HP",
+  "Additional 1 &lt;Inkwave&gt; and 1 &lt;Heartbillow&gt; appear",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Talisman&gt; every 15s"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "邙山镇地方志",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "邙山町郷土誌",
+ "name_en": "Mangshan_Town_Records",
  "description_zh": "“百器......苏醒......沿街奔袭......灾祸......毁......”余下字迹，皆为暗红色旧渍所覆盖，无法看清。",
  "description_ja": null,
  "description_en": null,
@@ -20,15 +20,29 @@
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现",
   "雕伥每20s召唤一个便符"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる",
+  "彫鬼は20秒ごとに便符一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier",
+  "Statuegeist summons 1 Talisman every 20s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+30%，生命值+50%",
   "雕伥的生命值额外提升至200%",
   "额外出现3个狂暴宿主掷骨手"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力+30%",
+  "「彫鬼」の最大HPさらに+100%",
+  "&lt;狂化寄生投骨兵&gt;3体が追加で出現"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +30% ATK and +50% Max HP",
+  "All &lt;Statuegeist&gt; have additional +100% Max HP",
+  "Additional 3 &lt;Enraged Possessed Bonethrower&gt; appear"
+ ],
  "all_mods": [
   {
    "targets": [

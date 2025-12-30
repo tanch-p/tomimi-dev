@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "落叶归根",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "落葉の帰る場所",
+ "name_en": "Return_to_Your_Roots",
  "description_zh": "时移世易，钢铁之城崛起。家乡早已不在，但它们总想摸索出一条归乡路。\n<@lv.item><盾与墙></>遮挡我方单位的视野",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "战斗开始时额外出现2个&lt;盾与墙&gt;",
   "战斗开始时额外出现1个雕伥，每20s召唤一个卷心籽"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "配置不可マスに「盾と壁」2つが出現",
+  "戦場左上の囲障の左に「彫鬼」が出現、20秒ごとに&lt;バクダンダネ&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+  "Additional 2 &lt;Shield and Wall&gt; appears",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Cabbage Seedling&gt; every 20s"
+ ],
  "all_mods": [
   {
    "targets": [

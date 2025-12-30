@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-SP",
  "name_zh": "循循善诱",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "商売禁止",
+ "name_en": "Reeducation",
  "description_zh": "界园内严禁无证经商，正好抓这鼠辈去做典型案例。",
  "description_ja": null,
  "description_en": null,
@@ -23,8 +23,14 @@
   "所有敌方单位的攻击力+20%，生命值+50%",
   "额外出现1个高普尼克"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力+20%",
+  "追加で&lt;ゴプニク&gt;1体が出現"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK and +50% Max HP",
+  "Additional 1 &lt;Gopnik&gt; appears"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

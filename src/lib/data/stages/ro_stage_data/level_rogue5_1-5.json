@@ -26,11 +26,11 @@
  ],
  "eliteDesc_ja": [
   "敵全員の攻撃力+10%、最大HP+20%",
-  "追加で1体の&lt;ミマワリグサ&gt;と&lt;雕伥&gt;が出現する"
+  "追加で1体の&lt;ミマワリグサ&gt;と&lt;彫鬼&gt;が出現する、10秒ごとに便符を召喚する"
  ],
  "eliteDesc_en": [
   "All enemy units have +10% ATK, +20% Max HP",
-  "Additional 1 &lt;'Patrolling Foliage'&gt; and 1 &lt;雕伥&gt; appears"
+  "Additional 1 &lt;'Patrolling Foliage'&gt; and 1 &lt;Statuegeist&gt; appears, summons 1 Talisman every 10s"
  ],
  "all_mods": [
   {

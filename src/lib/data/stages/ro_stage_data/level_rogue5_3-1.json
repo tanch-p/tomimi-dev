@@ -11,22 +11,32 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "啖之以利",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "甘い誘い",
+ "name_en": "Hook,_Line,_and_Sinker",
  "description_zh": "于界园中才能看到这些绝迹的似兽。因贪欲被诱入园中，多年来却也不愁吃喝。易与似兽皆觉自己得了便宜。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+20%，防御力+20%，生命值+20%，移动速度+50%",
   "战斗开始时额外出现1个雕伥，每50s召唤一个$似兽$"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%、移動速度+50%",
+  "戦場中央に「彫鬼」が出現、50秒ごとに&lt;似獣&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF, +20% Max HP and +50% Movespeed",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Pseudomut&gt; every 50s"
+ ],
  "all_mods": [
   {
    "targets": [

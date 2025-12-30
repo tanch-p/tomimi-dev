@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "正经生意",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "まともな商売",
+ "name_en": "Serious_Business",
  "description_zh": "要守住生意，靠的可不只是一张嘴。只不过，鲍老板对你的来意似乎有些误会？\n<@rolv.rem>场地中有阻挡敌人的<城防路障></>",
  "description_ja": null,
  "description_en": null,
@@ -20,14 +20,26 @@
   "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现",
   "雕伥每25s召唤一个源石虫·β"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる",
+  "彫鬼は25秒ごとに&lt;オリジムシβ&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier",
+  "Statuegeist summons 1 Originium Slug β every 20s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+10%，生命值+50%",
   "大鲍勃的生命值额外提升至120%，路线待机时间减半"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力+10%",
+  "&lt;Big Bob&gt;の最大HPさらに+20%、侵攻ルート待機時間半減"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK and +50% Max HP",
+  "&lt;Big Bob&gt; has additional +20% Max HP, movement route's waiting time halved"
+ ],
  "all_mods": [
   {
    "targets": [

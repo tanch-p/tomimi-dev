@@ -27394,15 +27394,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -27836,15 +27828,7 @@
 					"atk_type": ["no_attack", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["no_attack", "infection", "BOSS"],
@@ -28296,15 +28280,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "animated", "BOSS"],
@@ -28591,14 +28567,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["ranged", "originiumartscraft", "BOSS"],
@@ -28649,15 +28618,7 @@
 					"atk_type": ["no_attack", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["no_attack", "BOSS"],
@@ -30414,14 +30375,7 @@
 					"atk_type": ["no_attack"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"palsy"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "palsy"]
 			}
 		],
 		"type": ["melee", "BOSS"],
@@ -34535,15 +34489,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["no_attack", "BOSS"],
@@ -35593,14 +35539,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"palsy"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "palsy"]
 			}
 		],
 		"type": ["no_attack", "BOSS"],
@@ -36033,15 +35972,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "collapsal", "BOSS"],
@@ -36084,15 +36015,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["no_attack", "NORMAL"],
@@ -37689,7 +37612,14 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"no_block"},{"key":"dcolle_load"}],
+				"traits": [
+					{
+						"key": "no_block"
+					},
+					{
+						"key": "dcolle_load"
+					}
+				],
 				"special": []
 			}
 		],
@@ -37725,7 +37655,14 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"no_block"},{"key":"dcolle_load"}],
+				"traits": [
+					{
+						"key": "no_block"
+					},
+					{
+						"key": "dcolle_load"
+					}
+				],
 				"special": []
 			}
 		],
@@ -37857,15 +37794,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["no_attack", "NORMAL"],
@@ -39496,15 +39425,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -40998,14 +40919,7 @@
 					"atk_type": ["raw", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["ELITE"],
@@ -41041,14 +40955,7 @@
 					"atk_type": ["raw", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["ELITE"],
@@ -41084,14 +40991,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "drone", "flying", "NORMAL"],
@@ -41127,14 +41027,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "drone", "flying", "NORMAL"],
@@ -42110,14 +42003,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "NORMAL"],
@@ -42161,14 +42047,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "NORMAL"],
@@ -42280,7 +42159,14 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"no_block"},{"key":"mmleak"}],
+				"traits": [
+					{
+						"key": "no_block"
+					},
+					{
+						"key": "mmleak"
+					}
+				],
 				"special": []
 			}
 		],
@@ -42316,7 +42202,14 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"no_block"},{"key":"mmleak"}],
+				"traits": [
+					{
+						"key": "no_block"
+					},
+					{
+						"key": "mmleak"
+					}
+				],
 				"special": []
 			}
 		],
@@ -42439,14 +42332,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "ELITE"],
@@ -42486,14 +42372,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "ELITE"],
@@ -43355,14 +43234,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["no_attack", "flying", "sarkaz", "ELITE"],
@@ -43402,14 +43274,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["no_attack", "flying", "sarkaz", "ELITE"],
@@ -45727,14 +45592,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"palsy"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "palsy"]
 			}
 		],
 		"type": ["no_attack", "seamonster", "BOSS"],
@@ -47255,15 +47113,7 @@
 					"atk_type": ["no_attack"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
 			}
 		],
 		"type": ["no_attack", "ELITE"],
@@ -47745,14 +47595,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			},
 			{
 				"title": "form",
@@ -47760,14 +47603,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			},
 			{
 				"title": "form",
@@ -47775,14 +47611,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "ranged", "sarkaz", "BOSS"],
@@ -47818,15 +47647,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["no_attack"],
@@ -48017,15 +47838,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["no_attack", "infection", "NORMAL"],
@@ -48061,15 +47874,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["no_attack", "infection", "NORMAL"],
@@ -50301,14 +50106,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			},
 			{
 				"title": "skzjkl_2",
@@ -50316,14 +50114,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			},
 			{
 				"title": "skzjkl_3",
@@ -50331,14 +50122,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 2
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -50374,14 +50158,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "animated", "BOSS"],
@@ -50453,14 +50230,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -52685,14 +52455,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"levitate",
-					"tremble",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "silence", "levitate", "tremble", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -52821,15 +52584,7 @@
 					"atk_type": ["ranged", "true"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			},
 			{
 				"title": "form",
@@ -52837,15 +52592,7 @@
 					"atk_type": ["ranged", "true"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -53046,14 +52793,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -53105,14 +52845,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -53158,14 +52891,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
 			}
 		],
 		"type": ["melee", "sarkaz", "BOSS"],
@@ -53656,15 +53382,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["no_attack", "machine", "NORMAL"],
@@ -53701,15 +53419,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["no_attack", "NORMAL"],
@@ -54756,14 +54466,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["no_attack", "animated", "NORMAL"],
@@ -54804,14 +54507,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["no_attack", "animated", "NORMAL"],
@@ -57158,14 +56854,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"sleep",
-					"levitate",
-					"tremble",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "sleep", "levitate", "tremble", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "ELITE"],
@@ -57212,14 +56901,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"sleep",
-					"levitate",
-					"tremble",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "sleep", "levitate", "tremble", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "ELITE"],
@@ -57260,14 +56942,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"sleep",
-					"levitate",
-					"tremble",
-					"fear",
-					"attract"
-				]
+				"status_immune": ["stun", "sleep", "levitate", "tremble", "fear", "attract"]
 			}
 		],
 		"type": ["ranged", "ELITE"],
@@ -57278,8 +56953,8 @@
 		"key": "enemy_10094_crstf",
 		"sortId": 1007,
 		"name_zh": "临时收音师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "臨時録音技師",
+		"name_en": "Audio Technician",
 		"stats": [
 			{
 				"hp": 4000,
@@ -57315,8 +56990,8 @@
 		"key": "enemy_10094_crstf_2",
 		"sortId": 1008,
 		"name_zh": "执拗的收音师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "執拗な録音技師",
+		"name_en": "Audio Engineer",
 		"stats": [
 			{
 				"hp": 5000,
@@ -57352,8 +57027,8 @@
 		"key": "enemy_10095_crgst",
 		"sortId": 1009,
 		"name_zh": "加戏群演",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "出しゃばりエキストラ",
+		"name_en": "Zealous Extra",
 		"stats": [
 			{
 				"hp": 8000,
@@ -57389,8 +57064,8 @@
 		"key": "enemy_10095_crgst_2",
 		"sortId": 1010,
 		"name_zh": "沉浸艺术的群演",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "芸術に浸るエキストラ",
+		"name_en": "Artistic Extra",
 		"stats": [
 			{
 				"hp": 9000,
@@ -57426,8 +57101,8 @@
 		"key": "enemy_10096_crprp",
 		"sortId": 1011,
 		"name_zh": "疲倦道具师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "くたびれた機材係",
+		"name_en": "Tired Prop Technician",
 		"stats": [
 			{
 				"hp": 8000,
@@ -57463,8 +57138,8 @@
 		"key": "enemy_10096_crprp_2",
 		"sortId": 1012,
 		"name_zh": "渴求瞩目的道具师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "目立ちたがりの機材係",
+		"name_en": "Attention-Seeking Prop Technician",
 		"stats": [
 			{
 				"hp": 9500,
@@ -57500,8 +57175,8 @@
 		"key": "enemy_10097_crshd",
 		"sortId": 1013,
 		"name_zh": "心虚设计师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "後ろめたいデザイナー",
+		"name_en": "Uneasy Designer",
 		"stats": [
 			{
 				"hp": 10000,
@@ -57537,8 +57212,8 @@
 		"key": "enemy_10097_crshd_2",
 		"sortId": 1014,
 		"name_zh": "顺从内心的设计师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "本心に従うデザイナー",
+		"name_en": "Anguished Designer",
 		"stats": [
 			{
 				"hp": 13000,
@@ -57574,8 +57249,8 @@
 		"key": "enemy_10098_crhro",
 		"sortId": 1015,
 		"name_zh": "主角阵营角色",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "主役側の脇役",
+		"name_en": "Hero's Sidekick",
 		"stats": [
 			{
 				"hp": 15000,
@@ -57611,8 +57286,8 @@
 		"key": "enemy_10098_crhro_2",
 		"sortId": 1016,
 		"name_zh": "命定的主角",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "定められし主役",
+		"name_en": "Destined Hero",
 		"stats": [
 			{
 				"hp": 18000,
@@ -57648,8 +57323,8 @@
 		"key": "enemy_10099_crvln",
 		"sortId": 1017,
 		"name_zh": "反派阵营角色",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "悪役側の脇役",
+		"name_en": "Villain's Minion",
 		"stats": [
 			{
 				"hp": 15000,
@@ -57685,8 +57360,8 @@
 		"key": "enemy_10099_crvln_2",
 		"sortId": 1018,
 		"name_zh": "命定的反派",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "定められし悪役",
+		"name_en": "Destined Villain",
 		"stats": [
 			{
 				"hp": 17000,
@@ -57722,8 +57397,8 @@
 		"key": "enemy_10100_crrol",
 		"sortId": 1019,
 		"name_zh": "灵活假人",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "素早いマネキン",
+		"name_en": "Nimble Mannequin",
 		"stats": [
 			{
 				"hp": 80000,
@@ -57759,8 +57434,8 @@
 		"key": "enemy_10100_crrol_2",
 		"sortId": 1020,
 		"name_zh": "意识自由的假人",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "自我を持つマネキン",
+		"name_en": "Sentient Mannequin",
 		"stats": [
 			{
 				"hp": 95000,
@@ -57796,8 +57471,8 @@
 		"key": "enemy_10101_crgun",
 		"sortId": 1021,
 		"name_zh": "不满摄影师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "不満げなカメラマン",
+		"name_en": "Unhappy Cameraman",
 		"stats": [
 			{
 				"hp": 35000,
@@ -57833,8 +57508,8 @@
 		"key": "enemy_10101_crgun_2",
 		"sortId": 1022,
 		"name_zh": "宣泄暴力的摄影师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "暴力的なカメラマン",
+		"name_en": "Violent Cameraman",
 		"stats": [
 			{
 				"hp": 45000,
@@ -57870,8 +57545,8 @@
 		"key": "enemy_10102_crblt",
 		"sortId": 1023,
 		"name_zh": "报废的胶卷",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "お蔵入りのビデオテープ",
+		"name_en": "Scrapped Film",
 		"stats": [
 			{
 				"hp": 6,
@@ -57917,8 +57592,8 @@
 		"key": "enemy_10102_crblt_2",
 		"sortId": 1024,
 		"name_zh": "彻底报废的胶卷",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "廃棄処分のビデオテープ",
+		"name_en": "Completely Scrapped Film",
 		"stats": [
 			{
 				"hp": 10,
@@ -59549,15 +59224,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["ranged", "origen", "BOSS"],
@@ -59640,14 +59307,7 @@
 					"atk_type": ["all", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["all", "BOSS"],
@@ -59658,8 +59318,8 @@
 		"key": "enemy_1568_dirctr",
 		"sortId": 1190,
 		"name_zh": "“酒神”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「Tragodia」",
+		"name_en": "'Tragodia'",
 		"stats": [
 			{
 				"hp": 75000,
@@ -59810,15 +59470,7 @@
 					"atk_type": ["no_attack", null],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"tremble",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
 			}
 		],
 		"type": ["no_attack", "animated", "NORMAL"],
@@ -59830,7 +59482,7 @@
 		"sortId": 1304,
 		"name_zh": "文档",
 		"name_ja": "ドキュメント",
-		"name_en": "",
+		"name_en": "Document",
 		"stats": [
 			{
 				"hp": 60000,
@@ -59867,7 +59519,7 @@
 		"sortId": 1305,
 		"name_zh": "叶毯",
 		"name_ja": "リーフカーペット",
-		"name_en": "",
+		"name_en": "Leafcarpet",
 		"stats": [
 			{
 				"hp": 100000,
@@ -59904,7 +59556,7 @@
 		"sortId": 1306,
 		"name_zh": "秒表",
 		"name_ja": "ストップウォッチ",
-		"name_en": "",
+		"name_en": "Stopwatch",
 		"stats": [
 			{
 				"hp": 70000,
@@ -59941,7 +59593,7 @@
 		"sortId": 1307,
 		"name_zh": "巨声",
 		"name_ja": "アップロアー",
-		"name_en": "",
+		"name_en": "Uproar",
 		"stats": [
 			{
 				"hp": 30000,
@@ -59978,7 +59630,7 @@
 		"sortId": 1314,
 		"name_zh": "“Mechanist”，机械之心",
 		"name_ja": "「Mechanist」・機械の心",
-		"name_en": "",
+		"name_en": "Mechanist, Mechanical Mind",
 		"stats": [
 			{
 				"hp": 60000,
@@ -60015,7 +59667,7 @@
 		"sortId": 1315,
 		"name_zh": "“Mechanist”，机械之心",
 		"name_ja": "「Mechanist」・機械の心",
-		"name_en": "",
+		"name_en": "Mechanist, Mechanical Mind",
 		"stats": [
 			{
 				"hp": 70000,
@@ -60052,7 +59704,7 @@
 		"sortId": 1316,
 		"name_zh": "“Mechanist”，机械之心",
 		"name_ja": "「Mechanist」・機械の心",
-		"name_en": "",
+		"name_en": "Mechanist, Mechanical Mind",
 		"stats": [
 			{
 				"hp": 80000,
@@ -60089,7 +59741,7 @@
 		"sortId": 1317,
 		"name_zh": "结构性原理",
 		"name_ja": "構造性原理",
-		"name_en": "",
+		"name_en": "Structural Principle",
 		"stats": [
 			{
 				"hp": 40000,
@@ -60126,7 +59778,7 @@
 		"sortId": 1318,
 		"name_zh": "结构性原理",
 		"name_ja": "構造性原理",
-		"name_en": "",
+		"name_en": "Structural Principle",
 		"stats": [
 			{
 				"hp": 60000,
@@ -60163,7 +59815,7 @@
 		"sortId": 1319,
 		"name_zh": "结构性原理",
 		"name_ja": "構造性原理",
-		"name_en": "",
+		"name_en": "Structural Principle",
 		"stats": [
 			{
 				"hp": 80000,
@@ -60240,8 +59892,8 @@
 		"key": "enemy_2101_dyspll",
 		"sortId": 1064,
 		"name_zh": "便符",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "便符",
+		"name_en": "Talisman",
 		"stats": [
 			{
 				"hp": 12,
@@ -60287,8 +59939,8 @@
 		"key": "enemy_2102_dytmbr",
 		"sortId": 1065,
 		"name_zh": "皮书生",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "皮書生",
+		"name_en": "Shadow Scholar",
 		"stats": [
 			{
 				"hp": 13000,
@@ -60328,8 +59980,8 @@
 		"key": "enemy_2103_dykens",
 		"sortId": 1066,
 		"name_zh": "平剑客",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "平剣客",
+		"name_en": "Bottle Swordsman",
 		"stats": [
 			{
 				"hp": 14000,
@@ -60372,8 +60024,8 @@
 		"key": "enemy_2104_dycast",
 		"sortId": 1067,
 		"name_zh": "靳天师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "靳天師",
+		"name_en": "Mirror Tianshi",
 		"stats": [
 			{
 				"hp": 16000,
@@ -60413,8 +60065,8 @@
 		"key": "enemy_2105_dyrnge",
 		"sortId": 1068,
 		"name_zh": "似兽",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "似獣",
+		"name_en": "Pseudomut",
 		"stats": [
 			{
 				"hp": 35000,
@@ -60454,8 +60106,8 @@
 		"key": "enemy_2106_dyremy",
 		"sortId": 1069,
 		"name_zh": "怪葫芦",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "奇妙なひょうたん",
+		"name_en": "Strange Gourd",
 		"stats": [
 			{
 				"hp": 12000,
@@ -60545,8 +60197,8 @@
 		"key": "enemy_2107_dycant",
 		"sortId": 1253,
 		"name_zh": "坎某人",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "キャノット",
+		"name_en": "Can Doe",
 		"stats": [
 			{
 				"hp": 60000,
@@ -60601,8 +60253,8 @@
 		"key": "enemy_2108_dypryg",
 		"sortId": 1254,
 		"name_zh": "夕娥",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "夕娥",
+		"name_en": "Dusk Beauty",
 		"stats": [
 			{
 				"hp": 36000,
@@ -60654,8 +60306,8 @@
 		"key": "enemy_2109_dypry2",
 		"sortId": 1255,
 		"name_zh": "双月共主",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "双月の同君",
+		"name_en": "Lady of the Twin Moons",
 		"stats": [
 			{
 				"hp": 40000,
@@ -60708,8 +60360,8 @@
 		"key": "enemy_2110_dyyrzf",
 		"sortId": 1258,
 		"name_zh": "炭长矛",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "炭長矛",
+		"name_en": "Ash Spear",
 		"stats": [
 			{
 				"hp": 100000,
@@ -60756,8 +60408,8 @@
 		"key": "enemy_2111_dyyrz2",
 		"sortId": 1261,
 		"name_zh": "桓君",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "桓君",
+		"name_en": "Lord Huan",
 		"stats": [
 			{
 				"hp": 100000,
@@ -60804,8 +60456,8 @@
 		"key": "enemy_2112_dyhlgy",
 		"sortId": 1257,
 		"name_zh": "枣大刀",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "棗大刀",
+		"name_en": "Crimson Crescent Blade",
 		"stats": [
 			{
 				"hp": 35000,
@@ -60852,8 +60504,8 @@
 		"key": "enemy_2113_dyhlg2",
 		"sortId": 1260,
 		"name_zh": "文衡君",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "文衡君",
+		"name_en": "Lord Wenheng",
 		"stats": [
 			{
 				"hp": 24000,
@@ -60900,8 +60552,8 @@
 		"key": "enemy_2114_dylbgg",
 		"sortId": 1256,
 		"name_zh": "玉双剑",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "玉双剣",
+		"name_en": "Jade Twin-Swords",
 		"stats": [
 			{
 				"hp": 16000,
@@ -60948,8 +60600,8 @@
 		"key": "enemy_2115_dylbg2",
 		"sortId": 1259,
 		"name_zh": "昭烈君",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "昭烈君",
+		"name_en": "Lord Zhaolie",
 		"stats": [
 			{
 				"hp": 42000,
@@ -60996,8 +60648,8 @@
 		"key": "enemy_2116_dyyysg",
 		"sortId": 1262,
 		"name_zh": "师祖",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "師祖",
+		"name_en": "Revered Grandmaster",
 		"stats": [
 			{
 				"hp": 60000,
@@ -61043,8 +60695,8 @@
 		"key": "enemy_2117_dyyys2",
 		"sortId": 1263,
 		"name_zh": "太公",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "太公",
+		"name_en": "Grand Duke",
 		"stats": [
 			{
 				"hp": 60000,
@@ -61096,8 +60748,8 @@
 		"key": "enemy_2118_dylbhm",
 		"sortId": 1264,
 		"name_zh": "易",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "易",
+		"name_en": "Yi",
 		"stats": [
 			{
 				"hp": 150000,
@@ -61172,8 +60824,8 @@
 		"key": "enemy_2119_dyshhj",
 		"sortId": 1265,
 		"name_zh": "“岁”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「歳」",
+		"name_en": "'Sui'",
 		"stats": [
 			{
 				"hp": 560000,
@@ -61234,8 +60886,8 @@
 		"key": "enemy_2119_dyshhj_2",
 		"sortId": 1266,
 		"name_zh": "“岁躯”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「歳躯」",
+		"name_en": "'Body of Sui'",
 		"stats": [
 			{
 				"hp": 240000,
@@ -61296,8 +60948,8 @@
 		"key": "enemy_2120_dywqgs",
 		"sortId": 1267,
 		"name_zh": "“望”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「望」",
+		"name_en": "Wang",
 		"stats": [
 			{
 				"hp": 200000,
@@ -61417,8 +61069,8 @@
 		"key": "enemy_2121_dyspl2",
 		"sortId": null,
 		"name_zh": "受符",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "受符",
+		"name_en": "With Talisman",
 		"stats": [
 			{
 				"hp": 12,
@@ -61474,8 +61126,8 @@
 		"key": "enemy_2122_dybgzd",
 		"sortId": 1070,
 		"name_zh": "梁",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "梁",
+		"name_en": "Liang",
 		"stats": [
 			{
 				"hp": 10,
@@ -62323,14 +61975,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["ranged", "NORMAL"],
@@ -62374,14 +62019,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["ranged", "NORMAL"],
@@ -63584,14 +63222,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["melee", "BOSS"],
@@ -63695,14 +63326,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -64371,14 +63995,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": [
-					"stun",
-					"silence",
-					"sleep",
-					"freeze",
-					"levitate",
-					"fear"
-				]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
 			}
 		],
 		"type": ["ranged", "machine", "BOSS"],

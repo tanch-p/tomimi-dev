@@ -3704,8 +3704,18 @@
         "key": "level_rogue4_7-2",
         "topic": "rogue_skz"
     },
-    "ISW-NO_月华寒": {
+        "ISW-NO_月华寒": {
         "lang": "zh",
+        "key": "level_rogue5_b-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_月華の寒気": {
+        "lang": "ja",
+        "key": "level_rogue5_b-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Cold_Moonlight": {
+        "lang": "en",
         "key": "level_rogue5_b-1",
         "topic": "rogue_yan"
     },
@@ -3714,8 +3724,28 @@
         "key": "level_rogue5_b-1-b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_夕娥の記憶": {
+        "lang": "ja",
+        "key": "level_rogue5_b-1-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Memories_of_Dusk_Beauty": {
+        "lang": "en",
+        "key": "level_rogue5_b-1-b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_剑·刀·矛": {
         "lang": "zh",
+        "key": "level_rogue5_b-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_剣・刀・矛": {
+        "lang": "ja",
+        "key": "level_rogue5_b-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Sword,_Glaive,_Spear": {
+        "lang": "en",
         "key": "level_rogue5_b-2",
         "topic": "rogue_yan"
     },
@@ -3724,13 +3754,38 @@
         "key": "level_rogue5_b-2-b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_仁・義・武": {
+        "lang": "ja",
+        "key": "level_rogue5_b-2-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Compassion,_Justice,_Valor": {
+        "lang": "en",
+        "key": "level_rogue5_b-2-b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_点化": {
         "lang": "zh",
         "key": "level_rogue5_b-3",
         "topic": "rogue_yan"
     },
+    "ISW-NO_教え導く": {
+        "lang": "ja",
+        "key": "level_rogue5_b-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Enlightenment": {
+        "lang": "en",
+        "key": "level_rogue5_b-3",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_求道": {
-        "lang": "zh",
+        "lang": "ja",
+        "key": "level_rogue5_b-3-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Seeking_the_Way": {
+        "lang": "en",
         "key": "level_rogue5_b-3-b",
         "topic": "rogue_yan"
     },
@@ -3739,13 +3794,38 @@
         "key": "level_rogue5_b-4",
         "topic": "rogue_yan"
     },
+    "ISW-DF_歳破りし陣を祀る": {
+        "lang": "ja",
+        "key": "level_rogue5_b-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_The_Suppression_of_Sui": {
+        "lang": "en",
+        "key": "level_rogue5_b-4",
+        "topic": "rogue_yan"
+    },
     "ISW-DF_天数将易": {
         "lang": "zh",
         "key": "level_rogue5_b-4-b",
         "topic": "rogue_yan"
     },
+    "ISW-DF_None": {
+        "lang": "en",
+        "key": "level_rogue5_b-7",
+        "topic": "rogue_yan"
+    },
     "ISW-DF_昔字如烟": {
         "lang": "zh",
+        "key": "level_rogue5_b-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_古き文字は煙の如し": {
+        "lang": "ja",
+        "key": "level_rogue5_b-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_Words_Past_Like_Smoke": {
+        "lang": "en",
         "key": "level_rogue5_b-5",
         "topic": "rogue_yan"
     },
@@ -3759,6 +3839,16 @@
         "key": "level_rogue5_b-6",
         "topic": "rogue_yan"
     },
+    "ISW-DF_歳を謀る者": {
+        "lang": "ja",
+        "key": "level_rogue5_b-6",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_The_Sui_Strategist": {
+        "lang": "en",
+        "key": "level_rogue5_b-6",
+        "topic": "rogue_yan"
+    },
     "ISW-DF_末狩": {
         "lang": "zh",
         "key": "level_rogue5_b-7",
@@ -3769,8 +3859,28 @@
         "key": "level_rogue5_t-1",
         "topic": "rogue_yan"
     },
+    "ISW-SP_底なし": {
+        "lang": "ja",
+        "key": "level_rogue5_t-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Steady_Stream": {
+        "lang": "en",
+        "key": "level_rogue5_t-1",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_闪闪发光": {
         "lang": "zh",
+        "key": "level_rogue5_t-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_きらきら輝いて": {
+        "lang": "ja",
+        "key": "level_rogue5_t-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Sparkling_Shine": {
+        "lang": "en",
         "key": "level_rogue5_t-2",
         "topic": "rogue_yan"
     },
@@ -3779,8 +3889,28 @@
         "key": "level_rogue5_t-3",
         "topic": "rogue_yan"
     },
+    "ISW-SP_商売禁止": {
+        "lang": "ja",
+        "key": "level_rogue5_t-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Reeducation": {
+        "lang": "en",
+        "key": "level_rogue5_t-3",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_易易鸭鸭": {
         "lang": "zh",
+        "key": "level_rogue5_t-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_良いカモ": {
+        "lang": "ja",
+        "key": "level_rogue5_t-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Duck_and_Yi": {
+        "lang": "en",
         "key": "level_rogue5_t-4",
         "topic": "rogue_yan"
     },
@@ -3789,8 +3919,28 @@
         "key": "level_rogue5_t-5",
         "topic": "rogue_yan"
     },
+    "ISW-SP_劫罰": {
+        "lang": "ja",
+        "key": "level_rogue5_t-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Calamitous_Punishment": {
+        "lang": "en",
+        "key": "level_rogue5_t-5",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_生百相": {
         "lang": "zh",
+        "key": "level_rogue5_t-6",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_生ける百面相": {
+        "lang": "ja",
+        "key": "level_rogue5_t-6",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Of_Hundred_Forms": {
+        "lang": "en",
         "key": "level_rogue5_t-6",
         "topic": "rogue_yan"
     },
@@ -3799,8 +3949,28 @@
         "key": "level_rogue5_t-7",
         "topic": "rogue_yan"
     },
+    "ISW-DF_鈴なりの果実": {
+        "lang": "ja",
+        "key": "level_rogue5_t-7",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_Feast_of_Fruit": {
+        "lang": "en",
+        "key": "level_rogue5_t-7",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_以逸待劳": {
         "lang": "zh",
+        "key": "level_rogue5_t-8",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_逸を以て労を待つ": {
+        "lang": "ja",
+        "key": "level_rogue5_t-8",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Biding_Time": {
+        "lang": "en",
         "key": "level_rogue5_t-8",
         "topic": "rogue_yan"
     },
@@ -3809,8 +3979,28 @@
         "key": "level_rogue5_t-9-a",
         "topic": "rogue_yan"
     },
+    "ISW-SP_喜びは駄獣より来たる": {
+        "lang": "ja",
+        "key": "level_rogue5_t-9-a",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Joy_From_Burdenbeast": {
+        "lang": "en",
+        "key": "level_rogue5_t-9-a",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_硅基伥的宴席": {
         "lang": "zh",
+        "key": "level_rogue5_t-9-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_ケイ素器鬼の宴": {
+        "lang": "ja",
+        "key": "level_rogue5_t-9-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Silicon_Geist's_Banquet": {
+        "lang": "en",
         "key": "level_rogue5_t-9-b",
         "topic": "rogue_yan"
     },
@@ -3819,8 +4009,28 @@
         "key": "level_rogue5_t-9-c",
         "topic": "rogue_yan"
     },
+    "ISW-SP_完全制御不能": {
+        "lang": "ja",
+        "key": "level_rogue5_t-9-c",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Totally_Out_of_Control": {
+        "lang": "en",
+        "key": "level_rogue5_t-9-c",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_为崖作伥": {
         "lang": "zh",
+        "key": "level_rogue5_t-10",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_崖の下の器鬼": {
+        "lang": "ja",
+        "key": "level_rogue5_t-10",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Cliff_of_Geists": {
+        "lang": "en",
         "key": "level_rogue5_t-10",
         "topic": "rogue_yan"
     },
@@ -3829,24 +4039,64 @@
         "key": "level_rogue5_ev-1",
         "topic": "rogue_yan"
     },
+    "ISW-SP_心ここにあらず": {
+        "lang": "ja",
+        "key": "level_rogue5_ev-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Astral_Projection": {
+        "lang": "en",
+        "key": "level_rogue5_ev-1",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_作壁上观": {
         "lang": "zh",
         "key": "level_rogue5_ev-2",
         "topic": "rogue_yan"
     },
+    "ISW-SP_高みの見物": {
+        "lang": "ja",
+        "key": "level_rogue5_ev-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-SP_Sit_Back_and_Watch": {
+        "lang": "en",
+        "key": "level_rogue5_ev-2",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_夕江对擂": {
         "lang": "zh",
-        "key": "level_rogue5_d-1",
+        "key": "level_rogue5_d-1-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_夕江にて対擂す": {
+        "lang": "ja",
+        "key": "level_rogue5_d-1-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Bout_by_the_Dusk_River": {
+        "lang": "en",
+        "key": "level_rogue5_d-1-b",
         "topic": "rogue_yan"
     },
     "ISW-NO_南武群英会": {
-        "lang": "zh",
-        "key": "level_rogue5_d-2",
+        "lang": "ja",
+        "key": "level_rogue5_d-2-c",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Heroes_of_Nanwu": {
+        "lang": "en",
+        "key": "level_rogue5_d-2-c",
         "topic": "rogue_yan"
     },
     "ISW-NO_夕江诀": {
         "lang": "zh",
         "key": "level_rogue5_d-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_None": {
+        "lang": "en",
+        "key": "level_rogue5_7-2",
         "topic": "rogue_yan"
     },
     "ISW-NO_南武约": {
@@ -3859,13 +4109,38 @@
         "key": "level_rogue5_fs-1",
         "topic": "rogue_yan"
     },
+    "ISW-NO_謗天(双)": {
+        "lang": "ja",
+        "key": "level_rogue5_fs-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Slandering_Heaven_(2)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-1",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_谤天(单)": {
         "lang": "zh",
         "key": "level_rogue5_fs-1b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_謗天(単)": {
+        "lang": "ja",
+        "key": "level_rogue5_fs-1b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Slandering_Heaven_(1)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-1b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_迎雷(双)": {
-        "lang": "zh",
+        "lang": "ja",
+        "key": "level_rogue5_fs-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Amidst_Thunder_(2)": {
+        "lang": "en",
         "key": "level_rogue5_fs-2",
         "topic": "rogue_yan"
     },
@@ -3874,13 +4149,33 @@
         "key": "level_rogue5_fs-2b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_迎雷(単)": {
+        "lang": "ja",
+        "key": "level_rogue5_fs-2b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Amidst_Thunder_(1)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-2b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_蔑震(双)": {
-        "lang": "zh",
+        "lang": "ja",
         "key": "level_rogue5_fs-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Defying_Quakes_(2)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-3b",
         "topic": "rogue_yan"
     },
     "ISW-NO_蔑震(单)": {
         "lang": "zh",
+        "key": "level_rogue5_fs-3b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_蔑震(単)": {
+        "lang": "ja",
         "key": "level_rogue5_fs-3b",
         "topic": "rogue_yan"
     },
@@ -3889,13 +4184,38 @@
         "key": "level_rogue5_fs-4",
         "topic": "rogue_yan"
     },
+    "ISW-NO_赴隕(双)": {
+        "lang": "ja",
+        "key": "level_rogue5_fs-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_To_the_Fall_(2)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-4",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_赴陨(单)": {
         "lang": "zh",
         "key": "level_rogue5_fs-4b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_赴隕(単)": {
+        "lang": "ja",
+        "key": "level_rogue5_fs-4b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_To_the_Fall_(1)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-4b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_斥洪(双)": {
-        "lang": "zh",
+        "lang": "ja",
+        "key": "level_rogue5_fs-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Against_the_Flood_(2)": {
+        "lang": "en",
         "key": "level_rogue5_fs-5",
         "topic": "rogue_yan"
     },
@@ -3904,8 +4224,28 @@
         "key": "level_rogue5_fs-5b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_斥洪(単)": {
+        "lang": "ja",
+        "key": "level_rogue5_fs-5b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Against_the_Flood_(1)": {
+        "lang": "en",
+        "key": "level_rogue5_fs-5b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_分明": {
         "lang": "zh",
+        "key": "level_rogue5_dv-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_明瞭": {
+        "lang": "ja",
+        "key": "level_rogue5_dv-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Clarity": {
+        "lang": "en",
         "key": "level_rogue5_dv-5",
         "topic": "rogue_yan"
     },
@@ -3914,8 +4254,28 @@
         "key": "level_rogue5_sv-1",
         "topic": "rogue_yan"
     },
+    "ISW-NO_地に四難有り": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_The_Four_Difficulties": {
+        "lang": "en",
+        "key": "level_rogue5_sv-1",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_地有四难_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-1-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_地に四難有り_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-1-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_The_Four_Difficulties_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-1-b",
         "topic": "rogue_yan"
     },
@@ -3924,8 +4284,28 @@
         "key": "level_rogue5_sv-2",
         "topic": "rogue_yan"
     },
+    "ISW-NO_器頼み_a": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Ware-User_a": {
+        "lang": "en",
+        "key": "level_rogue5_sv-2",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_凭器_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-2-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_器頼み_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-2-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Ware-User_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-2-b",
         "topic": "rogue_yan"
     },
@@ -3934,8 +4314,28 @@
         "key": "level_rogue5_sv-2-c",
         "topic": "rogue_yan"
     },
+    "ISW-NO_器頼み_c": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-2-c",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Ware-User_c": {
+        "lang": "en",
+        "key": "level_rogue5_sv-2-c",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_忘形": {
         "lang": "zh",
+        "key": "level_rogue5_sv-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_我を忘れる": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_To_Forget_Oneself": {
+        "lang": "en",
         "key": "level_rogue5_sv-3",
         "topic": "rogue_yan"
     },
@@ -3944,8 +4344,28 @@
         "key": "level_rogue5_sv-3-b",
         "topic": "rogue_yan"
     },
+    "ISW-NO_我を忘れる_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-3-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_To_Forget_Oneself_b": {
+        "lang": "en",
+        "key": "level_rogue5_sv-3-b",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_贪妄": {
         "lang": "zh",
+        "key": "level_rogue5_sv-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_貪欲にして妄執": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Avarice": {
+        "lang": "en",
         "key": "level_rogue5_sv-4",
         "topic": "rogue_yan"
     },
@@ -3954,8 +4374,28 @@
         "key": "level_rogue5_sv-5",
         "topic": "rogue_yan"
     },
+    "ISW-NO_奇譚": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Strange_Tales": {
+        "lang": "en",
+        "key": "level_rogue5_sv-5",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_奇谭_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-5-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_奇譚_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-5-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Strange_Tales_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-5-b",
         "topic": "rogue_yan"
     },
@@ -3964,8 +4404,28 @@
         "key": "level_rogue5_sv-6",
         "topic": "rogue_yan"
     },
+    "ISW-NO_局面打破": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-6",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Breakthrough": {
+        "lang": "en",
+        "key": "level_rogue5_sv-6",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_破局_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-6-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_局面打破_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-6-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Breakthrough_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-6-b",
         "topic": "rogue_yan"
     },
@@ -3974,8 +4434,28 @@
         "key": "level_rogue5_sv-7",
         "topic": "rogue_yan"
     },
+    "ISW-NO_教訓とせず": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-7",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Unreflecting": {
+        "lang": "en",
+        "key": "level_rogue5_sv-7",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_不鉴_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-7-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_教訓とせず_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-7-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Unreflecting_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-7-b",
         "topic": "rogue_yan"
     },
@@ -3984,8 +4464,28 @@
         "key": "level_rogue5_sv-8",
         "topic": "rogue_yan"
     },
+    "ISW-NO_退廃の音": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-8",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Frivolous_Tunes": {
+        "lang": "en",
+        "key": "level_rogue5_sv-8",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_靡靡之音_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-8-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_退廃の音_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-8-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Frivolous_Tunes_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-8-b",
         "topic": "rogue_yan"
     },
@@ -3994,8 +4494,28 @@
         "key": "level_rogue5_sv-9",
         "topic": "rogue_yan"
     },
+    "ISW-NO_憤怒_a": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-9",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Inner_Rage_a": {
+        "lang": "en",
+        "key": "level_rogue5_sv-9",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_愠怒_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-9-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_憤怒_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-9-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Inner_Rage_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-9-b",
         "topic": "rogue_yan"
     },
@@ -4004,13 +4524,43 @@
         "key": "level_rogue5_sv-9-c",
         "topic": "rogue_yan"
     },
+    "ISW-NO_憤怒_c": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-9-c",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Inner_Rage_c": {
+        "lang": "en",
+        "key": "level_rogue5_sv-9-c",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_迷惘": {
         "lang": "zh",
         "key": "level_rogue5_sv-10",
         "topic": "rogue_yan"
     },
+    "ISW-NO_迷い": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-10",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Confusion": {
+        "lang": "en",
+        "key": "level_rogue5_sv-10",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_迷惘_b": {
         "lang": "zh",
+        "key": "level_rogue5_sv-10-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_迷い_b": {
+        "lang": "ja",
+        "key": "level_rogue5_sv-10-b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Confusion_b": {
+        "lang": "en",
         "key": "level_rogue5_sv-10-b",
         "topic": "rogue_yan"
     },
@@ -4109,8 +4659,28 @@
         "key": "level_rogue5_1-1",
         "topic": "rogue_yan"
     },
+    "ISW-NO_鼷獣の巣穴": {
+        "lang": "ja",
+        "key": "level_rogue5_1-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Whack-A-Mus": {
+        "lang": "en",
+        "key": "level_rogue5_1-1",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_赶集": {
         "lang": "zh",
+        "key": "level_rogue5_1-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_露店市場へ": {
+        "lang": "ja",
+        "key": "level_rogue5_1-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_To_Market": {
+        "lang": "en",
         "key": "level_rogue5_1-2",
         "topic": "rogue_yan"
     },
@@ -4119,8 +4689,28 @@
         "key": "level_rogue5_1-3",
         "topic": "rogue_yan"
     },
+    "ISW-NO_まともな商売": {
+        "lang": "ja",
+        "key": "level_rogue5_1-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Serious_Business": {
+        "lang": "en",
+        "key": "level_rogue5_1-3",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_老戏骨": {
         "lang": "zh",
+        "key": "level_rogue5_1-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_老練の役者": {
+        "lang": "ja",
+        "key": "level_rogue5_1-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Veteran_Actor": {
+        "lang": "en",
         "key": "level_rogue5_1-4",
         "topic": "rogue_yan"
     },
@@ -4139,8 +4729,28 @@
         "key": "level_rogue5_2-1",
         "topic": "rogue_yan"
     },
+    "ISW-NO_教え有りて類無し": {
+        "lang": "ja",
+        "key": "level_rogue5_2-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Learning_for_All": {
+        "lang": "en",
+        "key": "level_rogue5_2-1",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_飞来横祸": {
         "lang": "zh",
+        "key": "level_rogue5_2-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_飛来する災い": {
+        "lang": "ja",
+        "key": "level_rogue5_2-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Look_Out_Above": {
+        "lang": "en",
         "key": "level_rogue5_2-2",
         "topic": "rogue_yan"
     },
@@ -4149,8 +4759,28 @@
         "key": "level_rogue5_2-3",
         "topic": "rogue_yan"
     },
+    "ISW-NO_守りしものは義なり": {
+        "lang": "ja",
+        "key": "level_rogue5_2-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Guardian_of_Justice": {
+        "lang": "en",
+        "key": "level_rogue5_2-3",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_明抢暗偷": {
         "lang": "zh",
+        "key": "level_rogue5_2-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_強盗と泥棒": {
+        "lang": "ja",
+        "key": "level_rogue5_2-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Daylight_Robbery": {
+        "lang": "en",
         "key": "level_rogue5_2-4",
         "topic": "rogue_yan"
     },
@@ -4169,8 +4799,28 @@
         "key": "level_rogue5_3-1",
         "topic": "rogue_yan"
     },
+    "ISW-NO_甘い誘い": {
+        "lang": "ja",
+        "key": "level_rogue5_3-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Hook,_Line,_and_Sinker": {
+        "lang": "en",
+        "key": "level_rogue5_3-1",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_长驱不复": {
         "lang": "zh",
+        "key": "level_rogue5_3-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_ひたすらな前進": {
+        "lang": "ja",
+        "key": "level_rogue5_3-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Stopping_the_Advance": {
+        "lang": "en",
         "key": "level_rogue5_3-2",
         "topic": "rogue_yan"
     },
@@ -4179,8 +4829,28 @@
         "key": "level_rogue5_3-3",
         "topic": "rogue_yan"
     },
+    "ISW-NO_後方に山、前方に水": {
+        "lang": "ja",
+        "key": "level_rogue5_3-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Feng_Shui": {
+        "lang": "en",
+        "key": "level_rogue5_3-3",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_去晦": {
         "lang": "zh",
+        "key": "level_rogue5_3-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_邪気払い": {
+        "lang": "ja",
+        "key": "level_rogue5_3-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Away,_Hui!": {
+        "lang": "en",
         "key": "level_rogue5_3-4",
         "topic": "rogue_yan"
     },
@@ -4189,8 +4859,28 @@
         "key": "level_rogue5_3-5",
         "topic": "rogue_yan"
     },
+    "ISW-NO_落葉の帰る場所": {
+        "lang": "ja",
+        "key": "level_rogue5_3-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Return_to_Your_Roots": {
+        "lang": "en",
+        "key": "level_rogue5_3-5",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_山海必争": {
         "lang": "zh",
+        "key": "level_rogue5_4-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_山海の争い": {
+        "lang": "ja",
+        "key": "level_rogue5_4-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Shanhaizhong_Scramble": {
+        "lang": "en",
         "key": "level_rogue5_4-1",
         "topic": "rogue_yan"
     },
@@ -4199,8 +4889,28 @@
         "key": "level_rogue5_4-2",
         "topic": "rogue_yan"
     },
+    "ISW-NO_食い意地": {
+        "lang": "ja",
+        "key": "level_rogue5_4-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Sugared_Bait": {
+        "lang": "en",
+        "key": "level_rogue5_4-2",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_识文": {
         "lang": "zh",
+        "key": "level_rogue5_4-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_文字を知る": {
+        "lang": "ja",
+        "key": "level_rogue5_4-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Cultured": {
+        "lang": "en",
         "key": "level_rogue5_4-3",
         "topic": "rogue_yan"
     },
@@ -4209,8 +4919,28 @@
         "key": "level_rogue5_4-4",
         "topic": "rogue_yan"
     },
+    "ISW-NO_舞台への出演": {
+        "lang": "ja",
+        "key": "level_rogue5_4-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Take_the_Stage": {
+        "lang": "en",
+        "key": "level_rogue5_4-4",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_峥嵘战功": {
         "lang": "zh",
+        "key": "level_rogue5_4-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_輝かしい戦功": {
+        "lang": "ja",
+        "key": "level_rogue5_4-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Exemplary_Service": {
+        "lang": "en",
         "key": "level_rogue5_4-5",
         "topic": "rogue_yan"
     },
@@ -4219,8 +4949,28 @@
         "key": "level_rogue5_4-6",
         "topic": "rogue_yan"
     },
+    "ISW-NO_闇討ちは防ぎ難し": {
+        "lang": "ja",
+        "key": "level_rogue5_4-6",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Beware_the_Shadows": {
+        "lang": "en",
+        "key": "level_rogue5_4-6",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_青山不语": {
         "lang": "zh",
+        "key": "level_rogue5_5-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_青嶺は語らず": {
+        "lang": "ja",
+        "key": "level_rogue5_5-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Green_Hills_Speak_Not": {
+        "lang": "en",
         "key": "level_rogue5_5-1",
         "topic": "rogue_yan"
     },
@@ -4229,8 +4979,28 @@
         "key": "level_rogue5_5-2",
         "topic": "rogue_yan"
     },
+    "ISW-NO_退場検査": {
+        "lang": "ja",
+        "key": "level_rogue5_5-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Departing_Inspection": {
+        "lang": "en",
+        "key": "level_rogue5_5-2",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_薄礼一份": {
         "lang": "zh",
+        "key": "level_rogue5_5-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_ささやかな謝礼": {
+        "lang": "ja",
+        "key": "level_rogue5_5-3",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_A_Humble_Gift": {
+        "lang": "en",
         "key": "level_rogue5_5-3",
         "topic": "rogue_yan"
     },
@@ -4239,8 +5009,28 @@
         "key": "level_rogue5_5-4",
         "topic": "rogue_yan"
     },
+    "ISW-NO_過去の沈黙": {
+        "lang": "ja",
+        "key": "level_rogue5_5-4",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Muted_Past": {
+        "lang": "en",
+        "key": "level_rogue5_5-4",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_邙山镇地方志": {
         "lang": "zh",
+        "key": "level_rogue5_5-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_邙山町郷土誌": {
+        "lang": "ja",
+        "key": "level_rogue5_5-5",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Mangshan_Town_Records": {
+        "lang": "en",
         "key": "level_rogue5_5-5",
         "topic": "rogue_yan"
     },
@@ -4249,13 +5039,43 @@
         "key": "level_rogue5_5-6",
         "topic": "rogue_yan"
     },
+    "ISW-NO_煙火に成らず": {
+        "lang": "ja",
+        "key": "level_rogue5_5-6",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Unlit_Sparks": {
+        "lang": "en",
+        "key": "level_rogue5_5-6",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_炎灼": {
         "lang": "zh",
         "key": "level_rogue5_6-1",
         "topic": "rogue_yan"
     },
+    "ISW-NO_灼熱の炎": {
+        "lang": "ja",
+        "key": "level_rogue5_6-1",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Inferno": {
+        "lang": "en",
+        "key": "level_rogue5_6-1",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_人镇": {
         "lang": "zh",
+        "key": "level_rogue5_6-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_人により鎮める": {
+        "lang": "ja",
+        "key": "level_rogue5_6-2",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Garrison": {
+        "lang": "en",
         "key": "level_rogue5_6-2",
         "topic": "rogue_yan"
     },

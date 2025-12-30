@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "往事喑哑",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "過去の沈黙",
+ "name_en": "Muted_Past",
  "description_zh": "弹不出音的破烂吉他换给易后却在他手中奏响了最本真的曲调，萨卡兹们为了抢回这段旋律，从西边一路追着他进了园子。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力+20%，生命值+50%，重量+1",
   "战斗开始时额外出现10个自由佣兵“主音吉他”",
   "战斗开始时于化境地块随机出现2个雕伥，每15s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力・防御力+20%、重量ランク+1",
+  "戦場左上と右上エリアに&lt;フリー傭兵「リードギター」&gt;12体が出現",
+  "追加で「彫鬼」が2つ出現、15秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF, +50% Max HP and Weight +1",
+  "Additional 12 &lt;Rogue Mercenary 'Lead Guitar'&gt; appear at the start",
+  "Additional 2 Statuegeist appears and summons 1 &lt;Talisman&gt; every 15s"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-SP",
  "name_zh": "源源不断",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "底なし",
+ "name_en": "Steady_Stream",
  "description_zh": "这熊霸乱丢的食物残渣吸引来许多源石虫，赶紧来个人告诉他，在界园不要乱扔垃圾！\n<@rolv.rem>场地中有可以阻挡敌人行进路线的<碎石></>\n<@rolv.rem>场地中有夺取后可以治疗友方单位并对敌方造成法术伤害的<\"留声机\"></>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "普通作战 - “留声机”所需技力增加至150"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "通常作戦 - 「L-44『蓄音機』」の必要SPが150に増加"
+ ],
+ "addInfo_en": [
+  "Normal - &lt;Gramophones&gt; skill activation SP cost increased to 150"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，生命值+20%",
   "高普尼克的额外攻击力提升至120%，生命值提升至200%",
   "“留声机”所需技力增加至200"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力+20%",
+  "&lt;ゴプニク&gt;の最大HPさらに+100%、攻撃力+20%",
+  "「L-44『蓄音機』」の必要SPが200に増加"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK and +20% Max HP",
+  "&lt;Gopnik&gt; has additional +20% ATK and +100% Max HP",
+  "&lt;Gramophones&gt; skill activation SP cost increased to 200"
+ ],
  "all_mods": null,
  "n_mods": [
   {

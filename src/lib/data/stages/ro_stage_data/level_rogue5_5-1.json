@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "青山不语",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "青嶺は語らず",
+ "name_en": "Green_Hills_Speak_Not",
  "description_zh": "“你压着我了。”此处似乎并无易的藏品，但山石众多，正好坐下休憩。“你压着我了！”声音又响起，你四处张望，与身下巨石对上了视线。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;鸭爵&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+50%，防御力+20%，生命值+50%",
   "“偷闲”和“得意”的生命值额外提升至200%",
   "战斗开始时额外出现1个雕伥，每15s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力+50%、防御力+20%",
+  "&lt;「ヤマツミ」&gt;と&lt;「オニビ」&gt;の最大HPさらに+100%",
+  "戦場中央に「彫鬼」が出現、15秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +50% ATK, +20% DEF and +50% Max HP",
+  "All &lt;'Lazy'&gt; and &lt;'Smarty'&gt; have additional +100% Max HP",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Talisman&gt; every 15s"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

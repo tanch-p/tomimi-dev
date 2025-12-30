@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "赶场戏班",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "舞台への出演",
+ "name_en": "Take_the_Stage",
  "description_zh": "即便是人们已不常看戏的年代，它们仍执着地认为自己还有待出演的场子要赶。有的伥无法走出自己的时代，这点倒与人无异。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;鸭爵&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+30%",
   "战斗开始时额外在地图左下出现一个爆炸追寻者",
   "战斗开始时额外出现2个雕伥，每20s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+30%",
+  "&lt;爆発探求者&gt;1体が右側通路に初期配置",
+  "戦場下通路に「彫鬼」2つが出現、20秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +30% ATK, +30% DEF and +30% Max HP",
+  "Additional 1 &lt;Explosion Chaser&gt; appears at the start",
+  "Additional 2 Statuegeist appears and summons 1 &lt;Talisman&gt; every 20s"
+ ],
  "all_mods": [
   {
    "targets": [

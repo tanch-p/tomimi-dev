@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "薄礼一份",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "ささやかな謝礼",
+ "name_en": "A_Humble_Gift",
  "description_zh": "弟弟要收哥哥托人送来的货，这自然没有问题。可他们一个叫易，一个叫绩，那往山上送的东西，秉烛人没有不查的理。",
  "description_ja": null,
  "description_en": null,
@@ -20,14 +20,26 @@
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现",
   "雕伥每20s召唤一个便符"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
+  "彫鬼は20秒ごとに便符一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
+  "Statuegeist summons 1 Talisman every 20s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "战斗开始时额外出现2个暴走食虫花"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "&lt;暴走食虫花&gt;2体が中央の通路に初期配置"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF, and +20% Max HP",
+  "Additional 2 &lt;Raging Slug Eater&gt; appear at the start"
+ ],
  "all_mods": [
   {
    "targets": [

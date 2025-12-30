@@ -1790,11 +1790,11 @@
 	},
 	"sktok_fttreant_1": {
 		"name_zh": "生长",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "生長",
+		"name_en": "Growth",
 		"desc_zh": "每隔15秒向周围4格的<草毯>生长<树丛>",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "15秒ごとに隣接4マスの＜芝生＞に＜茂み＞を群生させる",
+		"desc_en": "Every 15s, a <Meadow> on the 4 surrounding tiles grows into a <Thicket>",
 		"hasIcon": false,
 		"skillType": "AUTO",
 		"durationType": "NONE",
@@ -1818,8 +1818,8 @@
 	"fttreant_sp": {
 		"tooltip": {
 			"zh": ["攻击范围内不存在未部署单位的<草毯>时，不回复技力"],
-			"ja": [""],
-			"en": [""]
+			"ja": ["攻撃範囲内に未配置の<芝生>が存在しない場合、技力を回復しない"],
+			"en": ["Does not recover SP if no <Meadow> is present within range"]
 		}
 	},
 	"fttreant_reveal": {
@@ -1827,17 +1827,17 @@
 			"zh": [
 				"攻击范围内存在我方干员时，自身退场并召唤树盾/树墙（根据关卡配置决定），并令其流失生命值至与自身退场前的生命比例相等"
 			],
-			"ja": [""],
-			"en": [""]
+			"ja": ["隣接4マスにオペレーターを配置すると＜ツリーシールド＞か＜ツリーウォール＞に変化する"],
+			"en": ["Turns into a <Tree Shield> or <Tree Wall> when a friendly unit is deployed in the adjacent 4 tiles"]
 		}
 	},
 	"sktok_cjgtow_1": {
 		"name_zh": "灶火起",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "火を入れる",
+		"name_en": "Light Stove",
 		"desc_zh": "召唤“人间烟火”对沿途所有敌方单位造成真实伤害",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "「人間煙火」を召喚し、接触した敵全員に確定ダメージを与える",
+		"desc_en": "Summons 'Sapid Auspice' to deal True damage to all enemies in its path",
 		"skillType": "MANUAL",
 		"durationType": "NONE",
 		"spType": 8,
@@ -1869,11 +1869,11 @@
 	},
 	"sktok_cjbtow_1": {
 		"name_zh": "灶火灭",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "火を落とす",
+		"name_en": "Extinguish Stove",
 		"desc_zh": "召唤“饮露餐风”对所有沿途我方单位造成真实伤害",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "「飲露餐風」を召喚し、接触した味方全員に確定ダメージを与える",
+		"desc_en": "Summons 'Vapid Blight' to deal True damage to all allied units in its path",
 		"skillType": "AUTO",
 		"durationType": "NONE",
 		"spType": 8,
@@ -1906,10 +1906,10 @@
 	"dychss_1": {
 		"name_zh": "瑕",
 		"name_ja": "瑕",
-		"name_en": "瑕",
+		"name_en": "Flaw",
 		"desc_zh": "对周围4格的我方单位造成攻击力100%的{arts}伤害；周围4格每有一名我方单位，受到的伤害提高50%；处于“望”周围时，变换形态并且攻击造成眩晕",
-		"desc_ja": "",
-		"desc_en": ""
+		"desc_ja": "周囲4マスの味方ユニットに攻撃力100%の{arts}ダメージを与える；周囲4マスの味方1体につき、物理/術の被ダメージ+50%（4回まで累積）；「望」の周囲にいる場合、形態を変え攻撃でスタンを付与する",
+		"desc_en": "Deals 100% of ATK as {arts} damage on friendly units in adjacent 4 tiles; Receives 50% more damage for each friendly unit in adjacent tiles. When within range of Wang, transforms and inflicts Stun upon attack"
 	},
 	"sktok_roadblock": {
 		"skillId": "sktok_roadblock",
@@ -2162,11 +2162,11 @@
 	},
 	"sktok_rgdysm_1": {
 		"name_zh": "雕伥",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "彫鬼",
+		"name_en": "Statuegeist",
 		"desc_zh": "消耗20点部署费用，使雕伥把嘴闭上一段时间，并停止吐出敌人",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "コストを20消費して彫像器鬼の口を一定時間塞ぎ、敵の吐き出しを停止させる",
+		"desc_en": "Consumes 20 DP to force the Statuegeist to close its mouth and stopping spawning enemies for a period of time",
 		"skillType": "MANUAL",
 		"durationType": "NONE",
 		"spType": 8,
@@ -2215,7 +2215,7 @@
 			"zh": ["每隔<v.interval>秒根据地图预定路径召唤一个<v.enemy_key>；技能结束时立刻进行召唤"],
 			"ja": ["<v.interval>毎に<v.enemy_key>を召喚する；スキルが終わるとすぐ召喚を行う"],
 			"en": [
-				"Summons <v.enemy> every <v.interval> seconds; Immediately carries out summon when skill ends"
+				"Summons <v.enemy_key> every <v.interval> seconds; Immediately carries out summon when skill ends"
 			]
 		}
 	},
@@ -2226,43 +2226,43 @@
 			"zh": ["激活后，每隔<v.interval>秒根据地图预定路径召唤一个<v.enemy_key>；技能结束时立刻进行召唤"],
 			"ja": ["活性化後、<v.interval>毎に<v.enemy_key>を召喚する；スキルが終わるとすぐ召喚を行う"],
 			"en": [
-				"After activation, summons <v.enemy> every <v.interval> seconds; Immediately carries out summon when skill ends"
+				"After activation, summons <v.enemy_key> every <v.interval> seconds; Immediately carries out summon when skill ends"
 			]
 		}
 	},
 	"rgdysm_gold": {
 		"name_zh": "雕伥",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "彫鬼",
+		"name_en": "Statuegeist",
 		"desc_zh": "击破额外获得4源石锭",
 		"desc_ja": "倒すと源石錐4個が貰える",
 		"desc_en": "Drops 4 gold upon defeat"
 	},
 	"rgdysm_buff": {
 		"name_zh": "EnemyAura",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "EnemyAura",
+		"name_en": "EnemyAura",
 		"desc_zh": "经过雕伥自身周围四格的敌人获得增益BUFF，攻击速度+50、移动速度+50%，持续15s（必须离开范围再次进入才能再次获取加成BUFF）。\n具有增益BUFF的敌人受到伤害时，若伤害来源并非具有标记BUFF的我方单位，受到的物理/法术伤害将降低75%",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "彫鬼の周囲4マス以内の敵はバフを獲得する：攻撃速度+50、移動速度+50%、15秒持続（効果範囲を離れて再進入することでバフを再獲得可能）。\nバフ状態の敵がダメージを受けた際、そのダメージ源がマーキングバフを持つ味方ユニットでない場合、受ける物理/術ダメージが75%減少する。",
+		"desc_en": "Grants a buff to enemies within skill range, granting ASPD +50, Movespeed +50% for 15s (target must re-enter skill range in order to receive buff benefits again\nEnemies with this buff receive 75% less damage from unmarked friendly units",
 		"rangeId": "x-5"
 	},
 	"rgdysm_buff_char": {
 		"name_zh": "CharAura",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "CharAura",
+		"name_en": "CharAura",
 		"desc_zh": "对范围内的我方单位提供标记BUFF（受可选性影响，无法无视迷彩）",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "範囲内の味方ユニットにマーキングバフを付与する（迷彩無視）",
+		"desc_en": "Grants a marking buff to friendly units within range (ignores camouflage)",
 		"rangeId": "x-5"
 	},
 	"sktok_dydfst_1": {
 		"name_zh": "谤天",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "謗天",
+		"name_en": "Slandering Heaven",
 		"desc_zh": "每隔一段时间，对明烛台上的干员劈下落雷，对目标及目标周围四格的我方单位造成1000点法术伤害。落雷每劈下一次，下一次造成的伤害会增加25％",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "一定時間ごとに、明燭台の上にいるオペレーターに落雷させ、対象とその隣接4マス内の味方ユニットに1000の術ダメージを与える。落雷するたびに、次の落雷の与ダメージ+25%",
+		"desc_en": "Calls down lightning on the Operator atop the Candle Stand at regular intervals, dealing 1000 Arts damage to the target and allied units in the 4 tiles around the target; each lightning strike causes the next strike to deal 25% more damage",
 		"skillType": "AUTO",
 		"durationType": "NONE",
 		"spType": "INCREASE_WITH_TIME",
@@ -2293,11 +2293,11 @@
 	},
 	"sktok_dydfst_2": {
 		"name_zh": "迎雷",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "迎雷",
+		"name_en": "Amidst Thunder",
 		"desc_zh": "每隔一段时间，对明烛台上的干员劈下落雷，对该干员造成其40％最大生命值的真实伤害",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "一定時間ごとに、明燭台の上にいるオペレーターに落雷させ、対象にオペレーター自身の最大HPの40%の確定ダメージを与える",
+		"desc_en": "Calls down lightning on the Operator atop the Candle Stand at regular intervals, dealing 40% of the target's Max HP as True damage",
 		"skillType": "AUTO",
 		"durationType": "NONE",
 		"spType": "INCREASE_WITH_TIME",
@@ -2328,11 +2328,11 @@
 	},
 	"sktok_dydfst_3": {
 		"name_zh": "蔑震",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "蔑震",
+		"name_en": "Defying Quakes",
 		"desc_zh": "每隔一段时间，对明烛台上的干员劈下落雷，对该干员造成其100％攻击力的物理伤害",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "一定時間ごとに、明燭台の上にいるオペレーターに落雷させ、対象にオペレーター自身の攻撃力の100%の物理ダメージを与える",
+		"desc_en": "Calls down lightning on the Operator atop the Candle Stand at regular intervals, dealing 100% of the target's ATK as Physical damage",
 		"skillType": "AUTO",
 		"durationType": "NONE",
 		"spType": "INCREASE_WITH_TIME",
@@ -2363,11 +2363,11 @@
 	},
 	"sktok_dydfst_4": {
 		"name_zh": "赴陨",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "赴隕",
+		"name_en": "To the Fall",
 		"desc_zh": "对明烛台上的干员造成600点法术伤害，每有4点源石锭，额外造成1次伤害",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "明燭台の上にいるオペレーターに600の術ダメージを与え、所持中の源石錐4個につき、追加でもう1回ダメージを与える",
+		"desc_en": "Deals 600 Arts damage to the Operator atop the Candle Stand; for every 4 Originium Ingots owned, deals 1 additional instance of damage",
 		"skillType": "AUTO",
 		"durationType": "NONE",
 		"spType": "INCREASE_WITH_TIME",
@@ -2406,11 +2406,11 @@
 	},
 	"sktok_dydfst_5": {
 		"name_zh": "斥洪",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "斥洪",
+		"name_en": "Against the Flood",
 		"desc_zh": "明烛台上的干员更容易受到攻击，且受到的物理和法术伤害增加50%",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "明燭台の上にいるオペレーターは敵に狙われやすくなり、かつ受ける物理・術ダメージ+50%",
+		"desc_en": "The Operator atop the Candle Stand is more likely to be attacked, and takes 50% more Physical and Arts damage",
 		"skillType": "AUTO",
 		"durationType": "NONE",
 		"spType": "INCREASE_WITH_TIME",
@@ -2441,11 +2441,11 @@
 	},
 	"sktok_dynbox": {
 		"name_zh": "诱人珍宝",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "財宝のいざない",
+		"name_en": "Alluring Treasures",
 		"desc_zh": "击破额外获得2源石锭",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "倒されると戦闘勝利報酬に源石錐を2個追加",
+		"desc_en": "Gives +2 Originium Ingots when defeated",
 		"skillType": "PASSIVE",
 		"durationType": "NONE",
 		"spType": 8,
@@ -2467,11 +2467,11 @@
 	},
 	"sktok_dyrbox": {
 		"name_zh": "刺人珍宝",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "財宝に刺あり",
+		"name_en": "Spiky Treasures",
 		"desc_zh": "反弹部分受到的伤害，击破额外获得5源石锭",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "被ダメージの一部を攻撃してきた対象にも与える\n倒されると戦闘勝利報酬に源石錐を4個追加",
+		"desc_en": "Reflect some damage taken, gives +4 Originium Ingots when defeated",
 		"skillType": "PASSIVE",
 		"durationType": "NONE",
 		"spType": 8,
@@ -2493,11 +2493,11 @@
 	},
 	"sktok_dysbox": {
 		"name_zh": "极诱人珍宝",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "財宝の蕩めき",
+		"name_en": "Really Alluring Treasures",
 		"desc_zh": "击破额外获得10源石锭",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "倒されると戦闘勝利報酬に源石錐を10個追加",
+		"desc_en": "Gives +10 Originium Ingots when defeated",
 		"skillType": "PASSIVE",
 		"durationType": "NONE",
 		"spType": 8,
@@ -2525,11 +2525,11 @@
 	},
 	"sktok_radian_3": {
 		"name_zh": "手牵手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "ハンドインハンド",
+		"name_en": "Hand in Hand",
 		"desc_zh": "※作为地图装置出现的桑特拉也可以发动协同攻击或引发其他桑特拉发动协同攻击，但不会响应电弧的技能也不视为电弧的召唤物",
-		"desc_ja": "",
-		"desc_en": "",
+		"desc_ja": "他のサントラと連携攻撃発動できるが、レイディアンのスキルには効果なし、レイディアンの召喚物とカウントされない",
+		"desc_en": "Can synchronise with other <Center>s to attack but not recognised as Raidian's summon and is not affected by Raidian's skill",
 		"skillType": "PASSIVE",
 		"durationType": "NONE",
 		"spType": 8,

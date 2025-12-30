@@ -3455,9 +3455,15 @@
 	"dcolle_load": {
 		"tooltip": {
 			"en": [
-				"Picks up Blood Ambers within 0.5 tile radius, max 5","When affected by a Bloodcalling Altar's pulse wave, turns all carried Blood Ambers into Bloodborn Spawns","When defeated, drops the carried Blood Ambers"
+				"Picks up Blood Ambers within 0.5 tile radius, max 5",
+				"When affected by a Bloodcalling Altar's pulse wave, turns all carried Blood Ambers into Bloodborn Spawns",
+				"When defeated, drops the carried Blood Ambers"
 			],
-			"ja": ["自身の半径0.5以内の血珀を回収する（最大所持数5）","血の祭壇の衝撃波を受けた時、自身の回収した血珀の数だけ新生の血裔が召喚され、自身の血珀所持数は0になる","倒された時、持っていた血珀をその場にすべて召喚する"],
+			"ja": [
+				"自身の半径0.5以内の血珀を回収する（最大所持数5）",
+				"血の祭壇の衝撃波を受けた時、自身の回収した血珀の数だけ新生の血裔が召喚され、自身の血珀所持数は0になる",
+				"倒された時、持っていた血珀をその場にすべて召喚する"
+			],
 			"zh": [
 				"已储存血珀未超过储存上限时，令进入自身0.5半径范围内的血珀退场，随后自身储存数+1",
 				"受唤血祭坛脉冲波影响时，根据自身已储存的血珀数量触发唤血祭坛的召唤效果，随后清空自身储存数",
@@ -3465,15 +3471,11 @@
 			]
 		}
 	},
-	"mmleak":{
-			"tooltip": {
-			"en": [
-				"Loses 3% of Max HP every second after coming into contact with a Stabilizer Chain"
-			],
+	"mmleak": {
+		"tooltip": {
+			"en": ["Loses 3% of Max HP every second after coming into contact with a Stabilizer Chain"],
 			"ja": ["セーフティチェーンに触れると、以降は毎秒最大HPの3%のダメージを受け続ける"],
-			"zh": [
-				"首次接触稳固锁链后，每秒流失最大生命值3%的生命值"
-			]
+			"zh": ["首次接触稳固锁链后，每秒流失最大生命值3%的生命值"]
 		}
 	},
 	"dublinn_companion_guard": {
@@ -3607,9 +3609,7 @@
 				"【軍事訓練】→{phys}・{arts}回避率+80%",
 				"副砲が当たっても、回避効果が無効化されない、スタンもしない"
 			],
-			"zh": [
-				"【军事训练】：获得80%{phys}/{arts}闪避。受到<伦蒂尼姆城防副炮>的伤害也不会解除"
-			]
+			"zh": ["【军事训练】：获得80%{phys}/{arts}闪避。受到<伦蒂尼姆城防副炮>的伤害也不会解除"]
 		}
 	},
 	"manfred_focus": {
@@ -5904,7 +5904,7 @@
 		"dmg_element": "phys",
 		"tooltip": {
 			"en": [
-				"<ba.straightshot>Straight Shot</> - Fires 3 bolts in succession towards the target, each dealing 100% ATK as {phys} damage{ignore_camou}{"
+				"<ba.straightshot>Straight Shot</> - Fires 3 bolts in succession towards the target, each dealing 100% ATK as {phys} damage{ignore_camou}"
 			],
 			"ja": [
 				"<ba.straightshot>直線射撃</>：対象の方向に3本の矢を発射。それぞれの矢は、最初に触れた対象に攻撃力の100%の{phys}ダメージを与える{ignore_camou}"
@@ -7522,8 +7522,8 @@
 	},
 	"spawn_cjgfod": {
 		"tooltip": {
-			"en": ["Spawns 1 饮啄 when defeated"],
-			"ja": ["死亡すると、饮啄を1体召喚する"],
+			"en": ["Spawns 1 Sapidity when defeated"],
+			"ja": ["死亡すると、飲啄を1体召喚する"],
 			"zh": ["被击倒后在自身位置以自身路径召唤1个饮啄"]
 		}
 	},
@@ -7533,15 +7533,15 @@
 		"cooldown": 10,
 		"suffix": { "en": "Summon", "ja": "集合命令", "zh": "厌生哀叹" },
 		"tooltip": {
-			"en": ["Spawns 1 无谓 on the spot"],
-			"ja": ["自身のいるマスに无谓を召喚する"],
+			"en": ["Spawns 1 Vapidity on the spot"],
+			"ja": ["自身のいるマスに無謂を召喚する"],
 			"zh": ["在自身位置以自身路径召唤1个无谓"]
 		}
 	},
 	"cjman": {
 		"tooltip": {
-			"en": ["Can use long-ranged attacks to attack 饮啄 within 1 tile radius"],
-			"ja": ["饮啄に対して遠距離攻撃を行う"],
+			"en": ["Can use long-ranged attacks to attack Sapidity within 1 tile radius"],
+			"ja": ["飲啄に対して遠距離攻撃を行う"],
 			"zh": ["可以对半径1.0范围内的饮啄进行远程攻击"]
 		}
 	},
@@ -7572,15 +7572,15 @@
 	},
 	"cjlon_0": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Invincible, has no normal attack, cannot be blocked"],
+			"ja": ["無敵。通常攻撃せず、ブロック不可"],
 			"zh": ["非首要目标，无敌，免疫传送，无法被阻挡，不进行普通攻击"]
 		}
 	},
 	"cjglon": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Deals 100% ATK as {true} damage to all enemies within 1.5 tile radius and defeats 'Vapid Blight'"],
+			"ja": ["半径1.5以内の敵に、攻撃力の100%の{true}ダメージを与える","「飲露餐風」に触れた場合、相手を消滅させる"],
 			"zh": [
 				"出场后沿预设路径移动，对进入自身半径1.5范围内的敌方单位造成攻击力100%的{true}伤害，并强制击倒范围内的“饮露餐风”"
 			]
@@ -7588,8 +7588,8 @@
 	},
 	"cjblon": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Deals 100% ATK as {true} damage to all allied units within 1.5 tile radius{ignore_camou}"],
+			"ja": ["半径1.5以内の味方に、攻撃力の100%の{true}ダメージを与える{ignore_camou}"],
 			"zh": [
 				"出场后沿预设路径移动，对进入自身半径1.5范围内的我方单位造成攻击力100%的{true}伤害{ignore_camou}"
 			]
@@ -7597,22 +7597,22 @@
 	},
 	"cjbfod": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Moves toward the Derelict Stove or Gluttony","When defeated, spawns a Sapidity on the spot"],
+			"ja": ["破棄された竃台に向かって移動し、半径1.3以内に入ると退場して破棄された竃台のSP+1","倒されると、飲啄に変化する"],
 			"zh": ["被召唤而出场后追踪废弃火灶/无餍移动"]
 		}
 	},
 	"cjgfod": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Moves toward the Stove","When defeated, spawns a Vapidity on the spot"],
+			"ja": ["竃台に向かって移動し、半径1.3以内に入ると退場して竃台のSP+1","倒されると、無謂に変化する"],
 			"zh": ["被召唤而出场后追踪火灶移动；被击倒后在自身位置以自身路径召唤1个无谓"]
 		}
 	},
 	"ftyzss_1": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When the Patrolling Foliage enters the attack range of a friendly unit, turns into 3 Cabbage Seedlings on the spot"],
+			"ja": ["味方の攻撃範囲に入ると、自身は退場してバクダンダネ×3を召喚する"],
 			"zh": [
 				"进入我方有效视野范围内后显现原形：自身立即退场，并在0.7s后在以自身为中心，边长0.4的正方形区域内召唤3只卷心籽"
 			]
@@ -7624,8 +7624,8 @@
 		"suffix": { "en": "💥", "ja": "💥", "zh": "💥" },
 		"hits": 1,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Becomes ignited when next to a Burning Vine or Burning Wick","Explodes when defeated while ignited, dealing 200% of ATK as {arts} damage to nearby friendly units"],
+			"ja": ["ホテリツル系のいるマスに入ると発火する","発火中に死亡すると、半径1.25以内の味方全員に攻撃力の200%の{arts}ダメージを与える{can_silence}"],
 			"zh": [
 				"进入灼藤/灼芯周围后被点燃",
 				"被点燃而死亡时，对周围的我方单位造成攻击力200%的{arts}伤害{can_silence}"
@@ -7641,8 +7641,8 @@
 		"atkup": 80,
 		"duration": 30,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["HP and ATK linearly increases over time while outside the line of sight of a friendly unit, up to +<v.hpup>% HP and +<v.atkup>% ATK after 30 seconds"],
+			"ja": ["味方の攻撃範囲外にいると、最大HPと攻撃力が徐々に上昇する。30秒経過で上限に達し、最大HP+<v.hpup>%・攻撃力+<v.atkup>%。"],
 			"zh": [
 				"位于我方单位有效视野范围外时，部分属性在<v.duration>s线性提升，最高提升至：最大生命值+<v.hpup>%、攻击力+<v.atkup>%",
 				"位于我方单位有效视野范围内时，上述属性暂停提升 "
@@ -7654,8 +7654,8 @@
 		"suffix": { "en": "MAX", "ja": "MAX", "zh": "满层" },
 		"hits": 1,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Until the Burning Vine attacks for the first time, ATK linearly increases over time, up to +200% after 50 seconds","The first attack also damages friendly units in the adjacent 4 tiles to the target and deals 25% ATK as {ba.dt.burning}","Thereafter attacks deal 20% of ATK as {ba.dt.burning}"],
+			"ja": ["初回攻撃するまで攻撃力が徐々に上昇する。50秒経過で上限に達し、攻撃力+200%","初回攻撃時、対象と周囲8マスに攻撃力の100%の{arts}ダメージと攻撃力の25%の{ba.dt.burning}を与える","以降は攻撃力上昇が消滅し、通常攻撃時に追加で攻撃力の20%の灼熱損傷を与える"],
 			"zh": [
 				"攻击力在50s内线性提升至+200%；首次攻击时对目标及其周围8格造成攻击力100%的{arts}伤害与攻击力25%的{ba.dt.burning}",
 				"此后攻击力加成失效，每次攻击附加攻击力20%的{ba.dt.burning}"
@@ -7664,22 +7664,22 @@
 	},
 	"ftxsr_retreat": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Turns into a Thicket when entering a Meadow"],
+			"ja": ["芝生マスに入ると退場し、そのマスに茂みを召喚する"],
 			"zh": ["位于未部署单位的<草毯>地形时，退场并在所在格召唤树丛"]
 		}
 	},
 	"ftkbtt_reveal": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["While within the attack range of a friendly unit, the Ash Creation reverts into its true form and does not attack"],
+			"ja": ["味方の攻撃範囲内にいる間は正体を現し、攻撃しなくなる"],
 			"zh": ["位于我方有效视野范围内时显露原形，无法进行攻击"]
 		}
 	},
 	"ftprg_init": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Initially appears as an Incursion Point","Does not move, cannot be blocked and is invincible while disguised","Summons additional enemies that are not included in the total enemy count periodically"],
+			"ja": ["敵出現地点に擬態して登場する。擬態中は無敵で、移動せずブロック不可","擬態中は自身のマスから敵を召喚し続ける。この敵は撃破数にカウントされない"],
 			"zh": [
 				"初始处于伪装状态：无敌，不可阻挡，自缚，隐藏自身模型，重写自身所在地块为不可部署，激活隐藏敌人"
 			]
@@ -7687,17 +7687,17 @@
 	},
 	"ftprg_end": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["~6 seconds after summons are completed, or upon entering line of sight of friendly units, ends disguise permanently"],
+			"ja": ["決められた敵をすべて召喚してから6秒経過するか、味方の攻撃範囲に入ると擬態は解除される。"],
 			"zh": ["隐藏敌人召唤完毕约6s后或进入我方有效视野范围内时，退出伪装状态，上述效果永久失效"]
 		}
 	},
 	"mpwrj_explode": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Explodes when a friendly unit enters the Worry-Free Cargo Helper's attack range, dealing 100% of ATK as {arts} damage all friendly units within its attack range{can_silence}"],
+			"ja": ["攻撃範囲内に対象がいると自爆し、攻撃範囲内の味方全員に攻撃力の100%の{arts}ダメージを与える{can_silence}"],
 			"zh": [
-				"首次攻击时自爆：对攻击目标与攻击半径内其他我方单位造成攻击力100%的{arts}伤害，随后自身死亡（受沉默影响时，无法进行攻击）"
+				"首次攻击时自爆：对攻击目标与攻击半径内其他我方单位造成攻击力100%的{arts}伤害，随后自身死亡（受沉默影响时，无法进行攻击）{can_silence}"
 			]
 		}
 	},
@@ -7721,10 +7721,10 @@
 	},
 	"mpmage_seal": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["After 5 seconds, channels on the DP counter in the HUD for up to 30 seconds, during which the automatic DP generation is disabled{once_only}{can_silence}"],
+			"ja": ["初動5秒、所持コストのUIを30秒間束縛し、コストの自然回復速度を0にする{once_only}{can_silence}"],
 			"zh": [
-				"初动5s，对终端上的部署费用持续施法：发射持续30s的锁链弹道{once_only}",
+				"初动5s，对终端上的部署费用持续施法：发射持续30s的锁链弹道{once_only}{can_silence}",
 				"锁链抵达后：费用自然回复速度变为0"
 			]
 		}
@@ -7781,15 +7781,15 @@
 	},
 	"hl_fear": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When HP falls below 50%, Movespeed is increased to 150% and becomes Feared for 5 seconds"],
+			"ja": ["初めてHPが50%以下になると、5秒間恐怖状態になり、移動速度が150%に上昇"],
 			"zh": ["生命值首次低于50%时，对自身施加持续5s的恐惧，在5s内移动速度提升至150%"]
 		}
 	},
 	"hlegle_ammo": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When attacking, if the target has ammo for an ammunition-based skill, the attack deals no damage but the target loses 1 ammo"],
+			"ja": ["弾薬のある味方を攻撃する時はダメージを与えず、代わりに弾数-1"],
 			"zh": ["进行攻击时，若目标至少存在1发弹药，则当次攻击不造成伤害，而是改为令其弹药-1 "]
 		}
 	},
@@ -7797,7 +7797,7 @@
 		"type": "skill",
 		"initCooldown": 20,
 		"cooldown": 40,
-		"suffix": { "en": "Pray", "ja": "祈祷", "zh": "祈祷邀约" },
+		"suffix": { "en": "Pray", "ja": "我に力を！", "zh": "祈祷邀约" },
 		"tooltip": {
 			"en": ["Reduces ASPD of all friendly units by 30 for 15s{ignore_camou}"],
 			"ja": ["味方全体に15秒攻撃速度-30のデバフを掛ける{ignore_camou}"],
@@ -7809,8 +7809,8 @@
 		"hits": null,
 		"atk": { "multiplier": 1, "order": "initial" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Consumes 1 ammo to gain ATK +20% and Movespeed +20% (max 10 stacks)","This skill can only be used once every 6s"],
+			"ja": ["弾薬を1消費し、自身の攻撃力と移動速度を+20%する（10回まで）","このスキルは6秒に1回使用できる"],
 			"zh": [
 				"消耗1SP触发：获得1层攻击力+20%增益和1层移动速度+20%增益",
 				"该技能每6s可触发一次，最多触发10次"
@@ -7822,8 +7822,8 @@
 		"hits": null,
 		"atk": { "multiplier": 1.75, "order": "initial" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Consumes 1 ammo to gain ATK +25% and Movespeed +25% (max 10 stacks)","This skill can only be used once every 6s"],
+			"ja": ["弾薬を1消費し、自身の攻撃力と移動速度を+25%する（10回まで）","このスキルは6秒に1回使用できる"],
 			"zh": [
 				"消耗1SP触发：获得1层攻击力+25%增益和1层移动速度+25%增益",
 				"该技能每6s可触发一次，最多触发15次"
@@ -7832,8 +7832,8 @@
 	},
 	"hlsnip_attack": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Only attacks while having ammo; each attack consumes 1 ammo"],
+			"ja": ["通常攻撃は弾薬を1消費する。弾薬がない時は攻撃できない","攻撃から4秒間は【リロード】できない"],
 			"zh": [
 				"消耗1SP触发：进行一次攻击，造成攻击力100%的物理伤害",
 				"※触发后4s内无法发动【装填】",
@@ -7843,9 +7843,9 @@
 	},
 	"hlsnip_reload": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
-			"zh": ["SP为0时可触发：在10s内持续尝试为铳械装弹，装弹完成后获得1SP", "※该技能每8s可触发1次"]
+			"en": ["After 4 seconds, channels for 10 seconds before reloading 1 ammo{can_silence}"],
+			"ja": ["弾薬が0の時に使用{can_silence}","10秒かけてリロードを行い、終了時に弾薬+1"],
+			"zh": ["SP为0时可触发：在10s内持续尝试为铳械装弹，装弹完成后获得1SP{can_silence}", "※该技能每8s可触发1次"]
 		}
 	},
 	"hlsprt_heal": {
@@ -7857,8 +7857,8 @@
 		"dmg_element": "heal",
 		"suffix": { "en": "Heal", "ja": "治療", "zh": "治疗" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Heals the HP of up to 3 nearby enemies for <v.atk.multiplier>% of ATK within 2.5 tile radius and replenishes 1 SP","Prioritizes targets with highest SP usage"],
+			"ja": ["半径2.5以内の敵3体のHPを、自身の攻撃力の200%分回復し、弾薬+1","弾薬の消費が多い敵を優先する"],
 			"zh": [
 				"治疗半径2.5范围内最多<v.value>个敌方单位相当于自身攻击力<v.atk.multiplier>%的生命值，并使其获得1SP",
 				"※优先选择已消耗SP最多的单位"
@@ -7869,23 +7869,24 @@
 		"type": "skill",
 		"initCooldown": 0,
 		"cooldown": 10,
-		"suffix": { "en": "Skill", "ja": "技", "zh": "幼教·哄睡技巧" },
+		"suffix": { "en": "Skill", "ja": "幼児教育：寝かしつけ", "zh": "幼教·哄睡技巧" },
 		"atk": { "multiplier": 0.5 },
 		"dmg_element": "arts",
 		"hits": 8,
+		"can_silence":true,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Targets a friendly unit within attack range and channels for 8 seconds, during which the target receives {arts} damage equal to 50% ATK every second. If the target is on a Dream Tile and are dreaming, they will also lose 3 Wakefulness every second"],
+			"ja": ["詠唱状態に入り、味方1体に8秒間、毎秒攻撃力の50%の{arts}ダメージを与える","夢見のタイルにいる味方が対象なら、効果中は夢見のタイルのSPが毎秒-3される"],
 			"zh": [
-				"锁定攻击范围内的1名我方单位持续施法：每秒对其造成攻击力50%的法术伤害，持续8s",
+				"锁定攻击范围内的1名我方单位持续施法：每秒对其造成攻击力50%的{arts}伤害，持续8s",
 				"若目标已被入梦砖附着，施法期间每秒令相应入梦砖减少3SP"
 			]
 		}
 	},
 	"hlsttu_barrier": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Every second, other nearby enemies within a radius of 2.5 gains a Barrier that absorbs {phys}/{arts} damage equal to 2% of their maximum HP, up to 50%"],
+			"ja": ["半径2.5以内の敵は、毎秒最大HPの2%の{phys}・{arts}ダメージバリアを得る（最大HPの50%まで累積）","聖徒像系はこの効果の対象外"],
 			"zh": [
 				"半径2.5范围内的每个除圣徒像/圣徒祈祷像/“牧首”/入梦砖外的敌方单位每1s获得其最大生命值2%的{phys}/{arts}屏障（同类效果可叠加，总量不超过其最大生命值的50%）"
 			]
@@ -8070,12 +8071,16 @@
 		"type": "skill",
 		"initCooldown": 10,
 		"cooldown": 15,
-		"suffix": { "en": "Fish", "ja": "愿者上钩", "zh": "愿者上钩" },
+		"suffix": { "en": "Fishing", "ja": "自ら針にかかる", "zh": "愿者上钩" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Targets a random Vagary Tile and hooks at it with the following effects:",
+				"If hook hits a friendly unit, they will be <ba.addash>Moved</> into a random tile within the surrounding 8 tiles to the Revered Grandmaster",
+				"If hook hits an enemy, that enemy will be teleported to the Revered Grandmaster's position, has their route changed, and gains Movespeed +100% and ASPD +50"
+			],
+			"ja": ["ランダムな化境マス3つに釣り針を設置","味方が釣られた場合、自身の周囲8マスのいずれかに<ba.addash>移動</>させる","敵が釣られた場合、自身のいるマスに移動させ、移動ルートを変更し、攻撃速度+50・移動速度+100%"],
 			"zh": [
-				"随机选择一个化境地块垂钓，钓到我方干员或敌方单位时强制再部署到自身周围的地块；若钓到的目标为敌方单位，使其获得以下效果：攻击速度+50，移动速度+100%，行动路径改变"
+				"随机选择一个化境地块垂钓，钓到我方干员或敌方单位时<ba.addash>强制再部署</>到自身周围的地块；若钓到的目标为敌方单位，使其获得以下效果：攻击速度+50，移动速度+100%，行动路径改变"
 			]
 		}
 	},
@@ -8083,18 +8088,18 @@
 		"type": "skill",
 		"initCooldown": 3,
 		"cooldown": 15,
-		"suffix": { "en": "Summon", "ja": "勿扰清静", "zh": "勿扰清静" },
+		"suffix": { "en": "Summon", "ja": "邪魔をしないで", "zh": "勿扰清静" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Summons a stationary Talisman on the surrounding 8 tiles which do not have a Talisman on them already"],
+			"ja": ["周囲8マスの便符がいないマスに、移動しない便符を1体ずつ召喚する"],
 			"zh": ["在自身周围8格中心各召唤1个便符"]
 		}
 	},
 	"dyyysg_end": {
 		"standby": 999,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["After <v.standby>s, deducts 5 lifepoints and leaves the battlefield"],
+			"ja": ["出現から<v.standby>秒経過すると退場する（耐久値-5）"],
 			"zh": ["出场<v.standby>s后，消失并扣除5目标生命值"]
 		}
 	},
@@ -8102,10 +8107,14 @@
 		"type": "skill",
 		"initCooldown": 10,
 		"cooldown": 15,
-		"suffix": { "en": "Fish", "ja": "愿者上钩", "zh": "愿者上钩" },
+		"suffix": { "en": "Fishing", "ja": "自ら針にかかる", "zh": "愿者上钩" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Targets a random Vagary Tile and hooks at it with the following effects:",
+				"If hook hits a friendly unit, they will be <ba.addash>Moved</> into a random tile within the surrounding 8 tiles to the Revered Grandmaster",
+				"If hook hits an enemy, that enemy will be teleported to the Revered Grandmaster's position, has their route changed, and gains HP +50%, ATK +50%"
+			],
+			"ja": ["ランダムな化境マス3つに釣り針を設置","味方が釣られた場合、自身の周囲8マスのいずれかに<ba.addash>移動</>させる","敵が釣られた場合、自身のいるマスに移動させ、移動ルートを変更し、HP・攻撃力+50%"],
 			"zh": [
 				"随机选择三个化境地块垂钓，钓到我方干员或敌方单位时强制移动到自身周围的地块；若钓到的目标为敌方单位，使其获得以下效果：最大生命值+50%，攻击力+50%，行动路径改变"
 			]
@@ -8127,8 +8136,8 @@
 	"yan_statue_standby": {
 		"standby": 30,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Spawns as a statue, during which is invincible, does not move/attack. After <v.standby>s becomes unsealed"],
+			"ja": ["彫像として封印されており、この間は行動せず無敵。<v.standby>秒経過すると封印が解除される"],
 			"zh": ["以石化状态出场，无敌，无法移动，出场<v.standby>秒后解除石化状态"]
 		}
 	},
@@ -8136,11 +8145,11 @@
 		"value_1": 150,
 		"value_2": 200,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+						"en": ["While blocked, damage taken by both self and the blocking unit is increased to <v.value_1>% {phys}/{arts}. If Jade Twin-Swords is on the map, the damage amplification of only the blocking unit is increased to <v.value_2>%"],
+			"ja": ["ブロック中、自身とブロックした味方が受ける物理/術ダメージが<v.value_1>%に上昇する","封印解除後の玉双剣が存在している時は、ブロックした味方の受ける物理/術ダメージのみ<v.value_2>%に上昇する"],
 			"zh": [
 				"被阻挡时，自身与阻挡单位受到的物理/法术伤害提升至<v.value_1>%；",
-				"非石化的玉双剑在场时该效果改为提升至<v.value_2>%"
+				"非石化的玉双剑在场时、阻挡单位受到的物理/法术伤害改为提升至<v.value_2>%"
 			]
 		}
 	},
@@ -8148,11 +8157,11 @@
 		"value_1": 150,
 		"value_2": 200,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["While blocked, damage taken by both self and the blocking unit is increased to <v.value_1>% {phys}/{arts}. If Lord Zhaolie is on the map, the damage amplification of only the blocking unit is increased to <v.value_2>%"],
+			"ja": ["ブロック中、自身とブロックした味方が受ける物理/術ダメージが<v.value_1>%に上昇する","封印解除後の昭烈君が存在している時は、ブロックした味方の受ける物理/術ダメージのみ<v.value_2>%に上昇する"],
 			"zh": [
 				"被阻挡时，自身与阻挡单位受到的物理/法术伤害提升至<v.value_1>%；",
-				"非石化的昭烈君在场时该效果改为提升至<v.value_2>%"
+				"非石化的昭烈君在场时、阻挡单位受到的物理/法术伤害改为提升至<v.value_2>%"
 			]
 		}
 	},
@@ -8163,12 +8172,13 @@
 		"atk": { "multiplier": 0.8 },
 		"dmg_element": "phys",
 		"hits": 1,
-		"suffix": { "en": "WindMove", "ja": "单刀赴会", "zh": "单刀赴会" },
+		"suffix": { "en": "WindMove", "ja": "単刀赴会", "zh": "单刀赴会" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+					"en": ["Only used when blocked","For 2 seconds (4 seconds if an unsealed Jade Twin-Swords is on the map), cannot be blocked, gains Movespeed +200%, deals 80% of ATK as {phys} damage to all friendly units within 1.2 tile radius"],
+			"ja": ["ブロック時に使用可能","2秒間、移動速度+200%・ブロック不可状態になり、半径1.2以内の味方全員に毎秒攻撃力の80%の{phys}ダメージを与える","封印解除後の昭烈君が存在している時に使用した場合、持続時間が4秒になる"],
+
 			"zh": [
-				"移动速度+200%，获得不可阻挡，每秒对半径1.2范围内的我方单位造成攻击力80%的{phys}伤害，持续2s",
+				"仅未被阻挡时可触发：移动速度+200%，获得不可阻挡，每秒对半径1.2范围内的我方单位造成攻击力80%的{phys}伤害，持续2s",
 				"非石化的玉双剑在场时，持续时间增加至4s"
 			]
 		}
@@ -8182,10 +8192,10 @@
 		"hits": 1,
 		"suffix": { "en": "WindMove", "ja": "单刀赴会", "zh": "单刀赴会" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Only used when blocked","For 2 seconds (4 seconds if an unsealed Lord Zhaolie is on the map), cannot be blocked, gains Movespeed +200%, deals 80% of ATK as {phys} damage to all friendly units within 1.2 tile radius"],
+			"ja": ["ブロック時に使用可能","2秒間、移動速度+200%・ブロック不可状態になり、半径1.2以内の味方全員に毎秒攻撃力の80%の{phys}ダメージを与える","封印解除後の昭烈君が存在している時に使用した場合、持続時間が4秒になる"],
 			"zh": [
-				"移动速度+200%，获得不可阻挡，每秒对半径1.2范围内的我方单位造成攻击力80%的{phys}伤害，持续2s",
+				"仅未被阻挡时可触发：移动速度+200%，获得不可阻挡，每秒对半径1.2范围内的我方单位造成攻击力80%的{phys}伤害，持续2s",
 				"非石化的昭烈君在场时，持续时间增加至4s"
 			]
 		}
@@ -8193,8 +8203,8 @@
 	"dylbgg_dmg_res": {
 		"value": 40,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+		"en": ["If Ash Spear and Crimson Crescent Blade are on the map, self receives <v.value> less {phys}/{arts} damage"],
+			"ja": ["棗大刀と炭長矛が存在している時、自身の受ける物理/術ダメージ-<v.value>%"],
 			"zh": ["炭长矛与枣大刀在场时，自身受到的物理/法术伤害-<v.value>%"]
 		}
 	},
@@ -8204,21 +8214,21 @@
 		"initCooldown": 20,
 		"cooldown": 20,
 		"value": 500,
-		"suffix": { "en": "Heal", "ja": "以德服人", "zh": "以德服人" },
+		"suffix": { "en": "Heal", "ja": "徳を以って人を服す", "zh": "以德服人" },
 		"dmg_element": "heal",
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Can only be used when not being blocked","Chooses the one with the lowest HP between Ash Spear, Crimson Crescent Blade and self, and restores their HP by <v.atk.multiplier>% of the Jade Twin-Swords's ATK as well as removing all Negative Statuses"],
+			"ja": ["ブロックしていない時のみ使用可能","自身/棗大刀/炭長矛のうち、最もHP割合が低い味方のHPを自身の攻撃力の<v.atk.multiplier>%分回復し、レジスト可能な状態異常を解除する"],
 			"zh": [
-				"治疗<炭长矛>与<枣大刀>及自身三者中生命值最低的一位自身攻击力<v.atk.multiplier>%的生命值，并清除目标的异常状态"
+				"仅未被阻挡时可触发：治疗<炭长矛>与<枣大刀>及自身三者中生命值最低的一位自身攻击力<v.atk.multiplier>%的生命值，并清除目标的异常状态"
 			]
 		}
 	},
 	"dylbg2_dmg_res": {
 		"value": 40,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["If Lord Huan and Lord Wenheng are on the map, self receives <v.value> less {phys}/{arts} damage"],
+			"ja": ["文衡君と桓君が存在している時、自身の受ける物理/術ダメージ-<v.value>%"],
 			"zh": ["桓君与文衡君在场时，自身受到的物理/法术伤害-<v.value>%"]
 		}
 	},
@@ -8228,20 +8238,21 @@
 		"initCooldown": 20,
 		"cooldown": 20,
 		"value": 500,
-		"suffix": { "en": "Heal", "ja": "以德服人", "zh": "以德服人" },
+		"suffix": { "en": "Heal", "ja": "徳を以って人を服す", "zh": "以德服人" },
 		"dmg_element": "heal",
 		"tooltip": {
-			"en": [],
-			"ja": [],
+	"en": ["Can only be used when not being blocked","Chooses the one with the lowest HP between Lord Huan, Lord Wenheng and self, and restores their HP by <v.atk.multiplier>% of the Jade Twin-Swords's ATK as well as removing all Negative Statuses"],
+			"ja": ["ブロックしていない時のみ使用可能","自身/文衡君/桓君のうち、最もHP割合が低い味方のHPを自身の攻撃力の<v.atk.multiplier>%分回復し、レジスト可能な状態異常を解除する"],
 			"zh": [
-				"治疗<桓君>与<文衡君>及自身三者中生命值最低的一位自身攻击力<v.atk.multiplier>%的生命值，并清除目标的异常状态"
+				"仅未被阻挡时可触发：治疗<桓君>与<文衡君>及自身三者中生命值最低的一位自身攻击力<v.atk.multiplier>%的生命值，并清除目标的异常状态"
 			]
 		}
 	},
 	"defeat_trap_loot": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Drops a deployable device when defeated"
+			],
+			"ja": ["倒されると配置可能な装置をあげる"],
 			"zh": ["死亡时给予我方可部署装置"]
 		}
 	},
@@ -8280,25 +8291,25 @@
 	},
 	"dusk_1": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Does not attack, move, is invincible. Leaves battlefield together with 'Free'"],
+			"ja": ["出演用敵、攻撃・移動しない、「自在」といっしょに消える"],
 			"zh": ["演出用敌人，不攻击，无敌，移动时瞬移至路径终点", "会随“自在”一起退场"]
 		}
 	},
 	"dytmbr_eat": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When HP falls below 40%, absorbs a nearby Talisman within a radius of 1.5 to restore 60% HP{once_only}"],
+			"ja": ["HP40%以下で、半径1.5以内に便符がいる時に一度だけ使用可能。便符1体を即死させ、自身のHPを60%回復する{once_only}"],
 			"zh": [
 				"生命值不高于40%且半径1.5范围内存在便符时可触发1次",
-				"吸收自身半径1.5范围内的1个便符，治疗自身最大生命值60%的生命值 "
+				"吸收自身半径1.5范围内的1个便符，治疗自身最大生命值60%的生命值{once_only}"
 			]
 		}
 	},
 	"dyspll_apply": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Attack summons 1 'With Talisman' at target's position then is defeated"],
+			"ja": ["攻撃後、味方の位置に「受符」を召喚し、直後死亡する"],
 			"zh": ["首次攻击时在目标所在位置召唤1个受符，随后自身死亡"]
 		}
 	},
@@ -8307,31 +8318,39 @@
 		"value": 0,
 		"v_range": 0.0,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Possesses target and prevents skill activation, ATK is decreased to <v.p_atk>% of initial value",
+				"Does 100% of ATK as {arts} damage every second to target",
+				"If no target is available, retreats immediately."
+			],
+			"ja": [
+				"付着:味方に付着する、攻撃力が元の<v.p_atk>%になる",
+				"付着中はその味方に毎秒攻撃力の100%の{arts}ダメージを与え、スキルの使用を封じる",
+				"付着対象がいなくなった場合、即座に退場する"
+			],
 			"zh": [
 				"附着：附着对象无法开启技能，攻击力变为原本的<v.p_atk>%",
-				"出现时以及后续每秒尝试选取附着对象，每次选取成功时对目标造成攻击力100%的法术伤害",
+				"出现时以及后续每秒尝试选取附着对象，每次选取成功时对目标造成攻击力100%的{arts}伤害",
 				"无法选取到目标时，自身立刻退场"
 			]
 		}
 	},
 	"dykens_summon": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["If SP > 0, Attacks spawn a Talisman on the target's position if target is not possessed by one already"],
+			"ja": ["SPがある時、攻撃した味方に便符が付着していなければ、対象に便符を付着させる"],
 			"zh": ["若自身SP大于0，每次攻击额外消耗1SP，在目标所在位置召唤1个受符"]
 		}
 	},
 	"dycast_summon": {
 		"initCooldown": 20,
 		"cooldown": 20,
-		"suffix": { "en": "Skill", "ja": "指摘", "zh": "指指点点" },
+		"suffix": { "en": "Skill", "ja": "指指点点", "zh": "指指点点" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Targets a friendly unit and deals 100% ATK as {arts} damage to the target while throwing a Talisman that flies toward them; if the target leaves the map while the Talisman is mid-flight, it will remain on the target's position","The Talisman gains Movespeed +100% for 2 seconds"],
+			"ja": ["マップ上の便符が付着していない味方に攻撃力の100%の{arts}ダメージを与え、自身の位置からその味方のマスまで移動する便符を1体召喚する","この便符は2秒間、移動速度+100%"],
 			"zh": [
-				"选择场上仇恨值最高的我方单位所在地块为路径终点，对其造成攻击力100%的{arts}伤害，以自身位置为路径起点召唤一个便符"
+				"选择场上仇恨值最高的我方单位所在地块为路径终点，对其造成攻击力100%的{arts}伤害，以自身位置为路径起点召唤一个便符","被召唤的便符持有2秒移动速度+100%的增益，会停驻在路径终点※技能持续2秒 "
 			]
 		}
 	},
@@ -8339,8 +8358,8 @@
 		"def": { "fixed": -1500, "order": "initial" },
 		"suffix": { "en": "Hover", "ja": "低空浮揚", "zh": "近地悬浮" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When blocked for the first time, devours the blocking unit, gaining Low-Altitude Hovering and has DEF -1500","When defeated while Hover, the devoured operator will be redeployed on the spot in the same direction as before if the tile is deployable, otherwise the Operator can be redeployed instantly"],
+			"ja": ["初めてブロックされた時、ブロックした味方を強制撤退させる","飲み込んだ後は低空浮揚状態になり、防御力-1500","飲み込んだ個体が死亡すると、そのマスに飲み込まれたオペレーターが元の向きのまま再配置される(配置できないマスなら再配置は行われない)"],
 			"zh": [
 				"首次被阻挡时将阻挡者强制击倒并吞噬，随后获得近地悬浮，防御力-1500",
 				"近地悬浮期间被击倒时，尽可能将被吞噬的单位部署在自身所在位置"
@@ -8353,8 +8372,8 @@
 		"suffix": { "en": "MAX", "ja": "MAX", "zh": "满层" },
 		"hits": null,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Gains Max HP +15%, ATK +15% for every 3 gold possessed upon entering the stage (max 10 stacks)"],
+			"ja": ["プレイヤーが所持している源石錐3個につき、HPと攻撃力+15%（10回/30個まで累積）"],
 			"zh": [
 				"进入战斗时每持有的3源石锭使自身获得攻击力+15%、最大生命值+15%的增益（最多叠加至10层）"
 			]
@@ -8453,7 +8472,7 @@
 	},
 	"dycant_potion_effect_3": {
 		"tooltip": {
-			"en": ["Selects all operators and summons 受符 at their position"],
+			"en": ["Selects all operators and summons Talisman at their position"],
 			"ja": ["効果③→全オペーレターの位置に受符を召喚する"],
 			"zh": ["③在场上每个干员的位置召唤受符"]
 		}
@@ -8461,24 +8480,25 @@
 	"dycant_transform": {
 		"value": 10,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Turns all Statuegeist on the map into Pseudomut after <v.value> seconds"],
+			"ja": ["出現から<v.value>秒後、マップ上の装置<彫鬼>を似獣に変化させる"
+			],
 			"zh": ["登场<v.value>s后将雕伥变为似兽"]
 		}
 	},
 	"dypryg_hover_evasion": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["While Hover, gains 50% {phys}/{arts} evasion"],
+			"ja": ["低空浮揚中は、物理・術回避率+50%"],
 			"zh": ["近地悬浮期间获得50%物理/法术闪避"]
 		}
 	},
 	"dypryg_hover_recover": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When grounded, absorbs a Talisman within 0.8 tile radius, recovers 20% HP and regains Low-Altitude Hovering","When Hover, range is increased to 1.0 tile radius"],
+			"ja": ["地上にいる時、半径0.8以内の便符1体を吸収し、自身のHPを20%回復。その後、低空浮揚状態に戻る","低空浮揚中は、半径1.0以内の便符を吸収し、自身のHPを20%回復"],
 			"zh": [
-				"非近地悬浮期间，半径0.8范围内存在便符时可触发：将其吸收，治疗自身最大生命值20%的生命值，并重新获得近地悬浮"
+				"非近地悬浮期间，半径0.8范围内存在便符时可触发：将其吸收，治疗自身最大生命值20%的生命值，并重新获得近地悬浮","地悬浮期间范围改为半径1.0"
 			]
 		}
 	},
@@ -8487,27 +8507,27 @@
 		"cooldown": 15.0,
 		"initCooldown": 10.0,
 		"value": 1,
-		"suffix": { "en": "寻夫执念", "ja": "寻夫执念", "zh": "寻夫执念" },
+		"suffix": { "en": "Summon", "ja": "夫探しの執念", "zh": "寻夫执念" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Targets <v.value> random Vagary Tile and spawns a Talisman there"],
+			"ja": ["ランダムな化境マスを<v.value>つ選び、便符を1体召喚する"],
 			"zh": ["选择随机的<v.value>个化境地块，在其中心召唤1个便符"]
 		}
 	},
 	"dypry2_hover_range": {
 		"skillRange": 3,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When Hover, Attack range is increased to 200%"],
+			"ja": ["低空浮揚中は攻撃範囲が200%になる"],
 			"zh": ["近地悬浮期间攻击半径增加至200%"]
 		}
 	},
 	"dypry2_hover_recover": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+					"en": ["When grounded, absorbs a Talisman within 0.8 tile radius, recovers 20% HP, gains ASPD +50 and regains Low-Altitude Hovering","When Hover, range is increased to 1.0 tile radius"],
+			"ja": ["地上にいる時、半径0.8以内の便符1体を吸収し、自身のHPを20%回復、攻撃速度+50。その後、低空浮揚状態に戻る","低空浮揚中は、半径1.0以内の便符を吸収し、自身のHPを20%回復"],
 			"zh": [
-				"非近地悬浮期间，半径0.8范围内存在便符时可触发：将其吸收，在10s内攻击速度+50，并重新获得近地悬浮"
+				"非近地悬浮期间，半径0.8范围内存在便符时可触发：将其吸收，在10s内攻击速度+50，并重新获得近地悬浮","地悬浮期间范围改为半径1.0"
 			]
 		}
 	},
@@ -8515,15 +8535,20 @@
 		"type": "skill",
 		"cooldown": 20.0,
 		"initCooldown": 20.0,
-		"suffix": { "en": "相合", "ja": "相合", "zh": "相合" },
+		"suffix": { "en": "Amalgam", "ja": "相合", "zh": "相合" },
 		"value": 100,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Checks the Hui/Ming attributes of all friendly units on the map; if most of them has a matching attribute with Yi, switch own attribute",
+				"Amalgam now also grants Yi a Barrier for 15 seconds that absorbs {phys} damage equal to his Max HP"
+			],
+			"ja": [
+				"マップ上で対象にできるオペレーター全員の【明】【晦】属性をチェック。属性を持つオペレーターの過半数が自身と同じ属性だった場合、自身を反対属性に変化させる",
+				"第二形態では属性変化時、自身に最大HPの100%の耐久値を持つ{phys}ダメージバリアを付与する効果が追加（15秒持続）"
+			],
 			"zh": [
-				"反转自身的晦明属性",
-				"第二形态下，还会获得持续15s的自身最大生命值<v.value>%的屏障",
-				"※目前只有转阶段时有效果(22/07最终确认)"
+				"查看场上所有可选我方干员的晦明属性，若自身晦明属性与多数相同，反转自身晦明属性（数量相等时不反转）",
+				"若自身处于第二形态，成功反转晦明属性后，额外获得持续15s的可吸收相当于自身最大生命值100%{phys}伤害的屏障"
 			]
 		}
 	},
@@ -8531,10 +8556,16 @@
 		"type": "skill",
 		"cooldown": 25.0,
 		"initCooldown": 25.0,
-		"suffix": { "en": "承梁", "ja": "承梁", "zh": "承梁" },
+		"suffix": { "en": "Summon Liangs", "ja": "承梁", "zh": "承梁" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Stops moving and channels for 18 seconds, during which a Liang is spawned in each of the three rows on the left and right edges of the map centered at Yi's position every 6 seconds",
+				"In Second Form, expands to 5 rows"
+			],
+			"ja": [
+				"自身のいる行と隣接する上下の行（計3行）に、左右から梁を6秒ごとに3回召喚する",
+				"第二形態では梁が出現するのが、自身のいる行と隣接する上下2行（計5行）に拡大"
+			],
 			"zh": [
 				"持续施法18s：每6s一次，在自身所在行及其向上/向下各1行，从场地左侧召唤向右移动的【明】属性的梁，从场地右侧召唤向左移动的【晦】属性的梁",
 				"每次每行各召唤一只梁",
@@ -8544,8 +8575,14 @@
 	},
 	"dylbhm_yinyang_bonus": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When attacking units on melee/ranged tiles of opposing attribute, ATK is increased to 140%/180%",
+				"When attacking units on melee/ranged tiles of same attribute, ATK is decreased to 60%/80%"
+			],
+			"ja": [
+				"同属性への攻撃倍率は、地上の味方には60%・高台の味方には80%",
+				"反対属性への攻撃倍率は、地上の味方には140%・高台の味方には180%"
+			],
 			"zh": [
 				"对同属性的地面/高台单位进行攻击时，攻击倍率降低至60%/80%；对异属性的地面/高台单位进行攻击时，攻击倍率提升至140/180%"
 			]
@@ -8553,15 +8590,19 @@
 	},
 	"dylbhm_revive": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When defeated, revives over 20 seconds and enters the Second Form, with 30s of invincibility"
+			],
+			"ja": ["HPが0になると、20秒かけてHPを100%回復。第二形態へ移行し、30秒間無敵"],
 			"zh": ["被击倒后进行持续20s的重生，恢复100%生命值，随后进入第二形态并获得30s无敌"]
 		}
 	},
 	"dylbhm_invert_element_all": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Immediately switches the Hui/Ming attributes of all Marks of Hui and Ming on the map"
+			],
+			"ja": ["移行後、マップ上の晦明の印をすべて反転させる"],
 			"zh": ["立即反转全场晦明之印的属性"]
 		}
 	},
@@ -8573,8 +8614,14 @@
 		"suffix": { "en": "Appear", "ja": "撼山河", "zh": "撼山河" },
 		"value": 30,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Slams foot on marked unit, sealing surrounding tiles for 20s, and forces friendly units on sealed tiles to retreat and set their redeployment time to <v.value>s",
+				"Thereafter activates 'Shake the Mountains', dealing 100% of ATK as {phys} damage to all friendly units{ignore_camou}",
+				"Foot remains for 21s"
+			],
+			"ja": [
+				"マーキングした味方のマスに出現し、マーキングした味方と周囲8マスを20秒間封印された地面に変え、これによって強制撤退した味方の再配置時間を<v.value>秒にする。その後【撼山河】で地面を叩き、マップ上の味方全員に攻撃力の100%の{phys}ダメージを3回与える{ignore_camou}"
+			],
 			"zh": [
 				"向被标记的单位踩下，21s内自身变为地面单位，令目标及其周围8格的单位强制撤退(不包括装置)，受影响的干员此次再部署时间重写为<v.value>s；20s内受影响地块变为封印的地面(召唤物不会被重写，23/08/2025最终确认)",
 				"随后拍击地面三次，每次对全场的我方单位造成攻击力100%的{phys}伤害{ignore_camou}",
@@ -8584,8 +8631,12 @@
 	},
 	"dyshhj_build_sp": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"While there are at least 6 friendly units on the map, Sleepless's SP recovery is increased by +1.5"
+			],
+			"ja": [
+				"マップ上にオペレーター/召喚ユニットが6体以上いる時、SP回復速度+1.5（マーキングが雷を纏う）"
+			],
 			"zh": ["若场上存在6位以上的我方单位（包括召唤物），技力自然回复速度+1.5"]
 		}
 	},
@@ -8594,10 +8645,17 @@
 		"initSp": 5,
 		"spCost": 50,
 		"skillType": "INCREASE_WITH_TIME",
-		"suffix": { "en": "Appear", "ja": "不寐", "zh": "不寐" },
+		"suffix": { "en": "Sleepless", "ja": "不寐", "zh": "不寐" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Slams foot on marked unit, sealing surrounding tiles for 20s, and forces friendly units on sealed tiles to retreat and set their redeployment time to 30s",
+				"Foot remains for 21s"
+			],
+			"ja": [
+				"マーキングした味方のマスに出現し、マーキングした味方と周囲8マスを20秒間封印された地面に変え、これによって強制撤退した味方の再配置時間を30秒にする",
+				"使用中、このスキルのSPは回復しない",
+				"使用から21秒後、再びマップ外へ戻る"
+			],
 			"zh": [
 				"向被标记的单位踩下，21s内自身变为地面单位，令目标及其周围8格的单位强制撤退(不包括装置)，受影响的干员此次再部署时间重写为30s(召唤物不会被重写，23/08/2025最终确认)；20s内受影响地块变为封印的地面",
 				"持续时间结束后消失退场"
@@ -8606,8 +8664,15 @@
 	},
 	"dyshhj_default": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Normally absent on the map",
+				"Marks the friendly unit to be targeted by Sleepless skill",
+				"Priority: most other friendlies in the surrounding 8 tiles > closest to the bottom of the map > closest to the left side of the map"
+			],
+			"ja": [
+				"通常時はマップ上に存在しない。マーキングした味方（歳の顔のマークが表示される）に【不寐】を発動してからしばらくはマップ上に留まる",
+				"マーキングの優先順位は、周囲8マスの味方数が最も多い味方>最もマップの下段にいる味方>最もマップの左列にいる味方の順"
+			],
 			"zh": [
 				"常态不存在于场上，离场期间持续标记身边我方单位数最多的>位于地图下方行＞地图左侧列的我方单位"
 			]
@@ -8615,15 +8680,25 @@
 	},
 	"dyshhj_end": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"After 600s has lapsed, activates Sleepless and deducts 50 lifepoints thereafter leaves the battlefield"
+			],
+			"ja": [
+				"戦闘開始から600秒経つと、時間切れとしての【不寐】を使用",
+				"マップ上のランダムな味方のマスに出現し、マーキングした味方と周囲8マスの味方を強制撤退させ、これらの味方の再配置時間を30秒にして退場する（耐久値-50）"
+			],
 			"zh": ["战斗经过600s后，发动一次【不寐】且扣除50目标生命值，随后退场"]
 		}
 	},
 	"dyshhj_force": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When HP falls below 50%, immediately uses a special version of Sleepless that forces all friendly units to retreat, and Sui's foot remains for 11 seconds"
+			],
+			"ja": [
+				"HPが50%以下になると特殊な【不寐】を使用、マーキングした味方と周囲8マスを10秒間封印された地面に変え、マップ上の味方全員を強制撤退させる。",
+				"使用から11秒後、再びマップ外へ戻る"
+			],
 			"zh": [
 				"生命值低于50%时发动【不寐】：向被标记的单位踩下(若不处于飞行状态则直接执行后续效果)，11s内自身变为地面单位，令全场我方单位强制撤退；10s内受影响地块变为封印的地面",
 				"落地时间结束时自身重新起飞，暂时脱离战场"
@@ -8632,8 +8707,10 @@
 	},
 	"dyshh2_hp50": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Becomes defeated when hen HP falls below 50%, automaticall adding the relic 'Carved Inkstick Remnant' to your inventory"
+			],
+			"ja": ["HP50%以下にすると倒した扱いになり、自動に秘宝「墨化の残碑」を獲得する"],
 			"zh": ["首次生命值低于50%时立刻退场并不再出现，本次战斗结束时自动获得收藏品【墨化残碑】"]
 		}
 	},
@@ -8661,17 +8738,23 @@
 		"type": "skill",
 		"initCooldown": 25.0,
 		"cooldown": 25.0,
-		"suffix": { "en": "落", "ja": "落", "zh": "落" },
+		"suffix": { "en": "Placement", "ja": "落", "zh": "落" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Deploys a Flaw on any available tile. Prioritises adjacent 4 tiles to a friendly unit"
+			],
+			"ja": ["ランダムな配置可能マスに瑕を1体召喚する。味方がいれば、その周囲4マスを優先して選ぶ"],
 			"zh": ["随机选择1个未部署的可部署地块，部署1枚瑕", "※优先选择我方单位周围四格的地块"]
 		}
 	},
 	"dywqgs_plant_seed_passive": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Grants all friendly units [Placement (Deploy)] buff - when deploying a unit, deploys a 'Flaw' in one of the 4 adjacent deployable tiles around it"
+			],
+			"ja": [
+				"【落（配置）】- 味方を配置するたび、その周囲4マスの配置可能マスのどれかに装置<瑕>を1体召喚する"
+			],
 			"zh": [
 				"【给予全场我方单位【落(部署)】：获得此效果时，随机选择周围四格的1个未部署的可部署地块，部署1枚瑕",
 				"若有地块被瑕与地图边界地形完全包围，则这些地块将<ba.chessconquer>失气</>"
@@ -8683,12 +8766,14 @@
 		"initCooldown": 1.0,
 		"cooldown": 1.0,
 		"atk": { "multiplier": 1, "order": "initial" },
-		"suffix": { "en": "征", "ja": "征", "zh": "征" },
+		"suffix": { "en": "Ladder", "ja": "征", "zh": "征" },
 		"hits": null,
 		"dmg_element": null,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"If there is at least one <ba.chessconquer>Emptied</> unit on the map, enters Ladder form; after 10s reverts form"
+			],
+			"ja": ["失気状態のマスに味方がいると10秒間、征形態に移行"],
 			"zh": [
 				"场上存在受<ba.chessconquer>失气</>影响的我方单位时触发：切换为征形态，10秒后或被击倒时切回"
 			]
@@ -8696,15 +8781,20 @@
 	},
 	"dywqgs_standby": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Invincible, does not move or attack, after 40s enters First Form"],
+			"ja": ["無敵で、移動・通常攻撃しない。40秒後に第一形態へ移行"],
 			"zh": ["无敌，无法移动，不进行普通攻击，出场40s后进入第一形态"]
 		}
 	},
 	"dywqgs_activate": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Buffs Flaws within 1.6 tile radius, granting 2% HP recovery every second and allowing them to use their basic attack, each attack does 100% of ATK as {arts} damage to adjacent 4 tiles and inflicts 1s stun"
+			],
+			"ja": [
+				"半径1.6以内の瑕は【活性化】状態となり、毎秒HPが2%回復する",
+				"【活性化】した瑕は通常攻撃を行えるようになり、周囲4マスの味方1体に攻撃力の100%の術ダメージを与え、1秒スタンさせる"
+			],
 			"zh": [
 				"自身周围半径1.6范围的瑕被激活：被激活的瑕每秒回复最大生命值2%的生命值，并可以进行普通攻击，每次攻击对其周围4格的目标造成其攻击力100%的{arts}伤害和1s晕眩"
 			]
@@ -8712,15 +8802,24 @@
 	},
 	"dywqgs_resist": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
-			"zh": ["自身周围存在瑕时，受到的物理/法术伤害-20%（最多4层），并获得20%抵抗（最多4层）"]
+			"en": [
+				"Gains 20% {phys}/{arts} damage reduction and 20% <ba.resist>Resist</> for every buffed Flaw (max 4 stacks)"
+			],
+			"ja": [
+				"【活性化】中の瑕1つにつき、「望」の{phys}/{arts}の被ダメージ-20%、レジスト可能な状態異常の有効時間-20%（4層まで重複）"
+			],
+			"zh": ["自身周围存在瑕时，受到的{phys}/{arts}伤害-20%（最多4层），并获得20%抵抗（最多4层）"]
 		}
 	},
 	"dywqgs_revive": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Revives over 30 seconds when defeated in the First Form, during which Wang cannot deploy new Flaws, and enters the Second Form",
+				"When entering the Second Form, selects a random tile that has no friendly unit on it and places Flaws in the adjacent 4 tiles"
+			],
+			"ja": [
+				"HPが0になると、30秒かけてHPを100%回復。移行直前、味方が配置されていないマスを1つ選び、その周囲4マスの配置可能マスすべてに瑕を召喚して第二形態へ移行"
+			],
 			"zh": [
 				"被击倒后进行持续30s的重生，回复100%生命值，重生结束后进入第二形态",
 				"重生期间每30s选择1个未受<ba.chessconquer>失气</>影响且未部署我方单位的可部署地块，在其周围四格未部署的可部署地块处各部署1枚瑕",
@@ -8730,8 +8829,13 @@
 	},
 	"dywqgs_2_summon": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When entering the Second Form and whenever Ladder expires, deploys a Flaw on one of the adjacent 4 tiles to each friendly unit on the map"
+			],
+			"ja": [
+				"移行直後、マップ上の味方全員に【落（配置）】を発動する",
+				"【征】の形態移行から戻ってきた時もこの効果は発動する"
+			],
 			"zh": [
 				"进入该形态时，使全场我方单位额外获得一次【落(部署)】",
 				"（从征形态切回第二形态也会触发此效果，包括被击倒时的切回）"
@@ -8740,29 +8844,35 @@
 	},
 	"dywqgs_2_surround": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["<ba.chessconquer>Emptied</> tiles spawns a Talisman every 20 seconds"],
+			"ja": ["失気状態の空きマスがあれば、そこから20秒ごとに便符を召喚する"],
 			"zh": ["受<ba.chessconquer>失气</>影响的地块每20s召唤1个便符"]
 		}
 	},
 	"dywqgs_2_lose": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Is automatically defeated when there are no Flaws on the map"],
+			"ja": ["マップ上に瑕が無くなると死亡する"],
 			"zh": ["场上不存在瑕时，自身立即退场"]
 		}
 	},
 	"dywqgs_conquer_enter": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Can only be activated through 'Ladder'"],
+			"ja": ["【征】のみで状態移行可能"],
 			"zh": ["仅可通过【征】进入"]
 		}
 	},
 	"dywqgs_conquer_buff": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Does not move, cannot be blocked, gains ASPD +100",
+				"Attack range becomes global and Attacks can hit up to three targets, prioritising units on Emptied tiles, dealing 0% of ATK as damage"
+			],
+			"ja": [
+				"移動不可・ブロック不可・攻撃速度+100、攻撃範囲がマップ全体になり、3体同時攻撃を行う",
+				"失気状態のマスにいる味方を優先的に攻撃する、攻撃力の0%のダメージを与える"
+			],
 			"zh": [
 				"自缚，无法被阻挡，攻击速度+100",
 				"攻击范围变为全场，可同时攻击3个目标，优先攻击<ba.chessconquer>失气</>状态的我方单位，每次攻击造成攻击力0%的{arts}伤害"
@@ -8771,8 +8881,12 @@
 	},
 	"dywqgs_conquer_atk": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Instantly defeats summons on <ba.chessconquer>Emptied</> tiles, otherwise deals 100% of ATK as {arts} damage to friendly units on Emptied tiles"
+			],
+			"ja": [
+				"失気状態のマスにいる召喚ユニットを攻撃すると強制撤退させ、それ以外なら対象と周囲4マスに攻撃力の100%の{arts}ダメージを与える"
+			],
 			"zh": [
 				"攻击<ba.chessconquer>失气</>状态的我方单位时，若其职业为召唤物则令其强制撤退，否则额外对目标及其周围半径1.0范围内的所有我方单位造成一次攻击力100%的{arts}伤害"
 			]
@@ -8951,8 +9065,8 @@
 		"dmg_element": "arts",
 		"skillRange": 3.5,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["DLC1 Rare Enemy"],
+			"ja": ["DLC1隠し敵"],
 			"zh": [
 				"每受到第15次伤害，对自身半径3.5范围内的我方单位造成攻击力300%的{arts}伤害，并令其晕眩15s"
 			]

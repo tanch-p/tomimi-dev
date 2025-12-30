@@ -2,8 +2,8 @@
 	{
 		"id": "rogue_5_wrath_8_a",
 		"name_zh": "申铸",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "申鋳",
+		"name_en": "Shen-Chu",
 		"iconId": "rogue_5_wrath_8",
 		"level": 1,
 		"effects": [
@@ -26,14 +26,14 @@
 			}
 		],
 		"tooltip_zh": "所有【化物】敌人生命值、攻击力+10％",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "全ての敵【化物】の最大HP・攻撃力+10%",
+		"tooltip_en": "All [Apparitions] enemies have +10% HP and ATK"
 	},
 	{
 		"id": "rogue_5_wrath_8_b",
 		"name_zh": "申铸",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "申鋳",
+		"name_en": "Shen-Chu",
 		"iconId": "rogue_5_wrath_8",
 		"level": 2,
 		"effects": [
@@ -56,14 +56,14 @@
 			}
 		],
 		"tooltip_zh": "所有【化物】敌人生命值、攻击力+20％",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "全ての敵【化物】の最大HP・攻撃力+20%",
+		"tooltip_en": "All [Apparitions] enemies have +20% HP and ATK"
 	},
 	{
 		"id": "rogue_5_wrath_8_c",
 		"name_zh": "申铸",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "申鋳",
+		"name_en": "Shen-Chu",
 		"iconId": "rogue_5_wrath_8",
 		"level": 3,
 		"effects": [
@@ -86,7 +86,7 @@
 			}
 		],
 		"tooltip_zh": "所有【化物】敌人生命值、攻击力+30％",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "全ての敵【化物】の最大HP・攻撃力+30%",
+		"tooltip_en": "All [Apparitions] enemies have +30% HP and ATK"
 	}
 ]

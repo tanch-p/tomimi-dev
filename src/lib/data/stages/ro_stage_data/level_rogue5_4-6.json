@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "暗箭难防",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "闇討ちは防ぎ難し",
+ "name_en": "Beware_the_Shadows",
  "description_zh": "左右两条道，均有“安全须知”。提及的明贼似不难防，却有一条令人不安：小心阴影中的■■。字迹模糊，难以辨识。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+10%，防御力+20%，生命值+20%，移动速度+20%",
   "战斗开始时额外出现2个灰烬造物",
   "战斗开始时额外出现1个雕伥，每20s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・防御力・移動速度+20%、攻撃力+10%",
+  "&lt;灰燼の創造物&gt;2体が戦場中央に初期配置",
+  "戦場左下に「彫鬼」が出現、20秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK, +20% DEF, +20% Max HP and +20% Movespeed",
+  "Additional 2 &lt;Ash Creation&gt; appear at the start",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Talisman&gt; every 20s"
+ ],
  "all_mods": [
   {
    "targets": [

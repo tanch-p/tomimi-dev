@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "离域检查",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "退場検査",
+ "name_en": "Departing_Inspection",
  "description_zh": "对离开禁入区域的游客，司岁台将安排额外检查，确保你还是你，离开的只有你。",
  "description_ja": null,
  "description_en": null,
@@ -21,18 +21,28 @@
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现"
  ],
  "addInfo_ja": [
-  "初期コスト上限が50になる"
+  "初期コスト上限が50になる",
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる"
  ],
  "addInfo_en": [
-  "Starting Max Cost is 50"
+  "Starting Max Cost capped at 50",
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier"
  ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "部分寻路密探长有50%概率被替换为武装密探长",
   "战斗开始时额外出现1个雕伥，每30s召唤一个萨卡兹悖谬谍报长"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "&lt;偵察密偵隊長&gt;が50%の確率で&lt;武装密偵隊長&gt;に変化",
+  "追加で「彫鬼」が出現、30秒ごとに&lt;サルカズ悖理諜報隊長&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF, and +20% Max HP",
+  "All &lt;Pathfinder Spymaster&gt; have 50% chance of being replaced with &lt;Armed Spymaster&gt;",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Sarkaz Absurdist Operative Leader&gt; every 30s"
+ ],
  "all_mods": [
   {
    "targets": [

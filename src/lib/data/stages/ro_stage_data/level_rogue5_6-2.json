@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "人镇",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "人により鎮める",
+ "name_en": "Garrison",
  "description_zh": "岁陵之上建城以聚来客。以八方运势为镇，唯余一口，设仪削势。”\n<@lv.item><作战专用掩体></>可遮挡敌人视线使其无法“直击”",
  "description_ja": null,
  "description_en": null,
@@ -20,15 +20,29 @@
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现",
   "雕伥每60s召唤一个竞赛级沙滩车"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる",
+  "彫鬼は60秒ごとに&lt;レーシングサンドバギー&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier",
+  "Statuegeist summons 1 &lt;Competitive-Grade Beach Buggy&gt; every 60s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+20%，防御力+20%，生命值+20%",
   "重弩猎杀者被替换为战线突破者",
   "战斗开始时地图左右侧都出现3个马特奥的近卫"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "&lt;マッテオの近衛兵&gt;3体が追加で初期配置される",
+  "すべての&lt;重型クロスボウ猛襲者&gt;が&lt;戦線突破兵&gt;に変化"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+  "All &lt;Heavy Crossbowman Hunter&gt; are replaced with &lt;Battleline Breacher&gt;",
+  "Additional 3 &lt;Mateo's Guard&gt; appear at the start"
+ ],
  "all_mods": [
   {
    "targets": [

@@ -11,23 +11,33 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "明抢暗偷",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "強盗と泥棒",
+ "name_en": "Daylight_Robbery",
  "description_zh": "江湖规矩，打赢我俩，东西都归你——盗贼双子正义凛然，试图掩护那些正偷偷溜走的同伙。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "血腥厨子路线发生变化",
   "战斗开始时额外出现1个雕伥，每15s召唤一个寻险水手"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "戦場右上または左下に「彫鬼」が出現、15秒ごとに&lt;冒険水夫&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Risk-seeking Sailor&gt; every 15s"
+ ],
  "all_mods": [
   {
    "targets": [

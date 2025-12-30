@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-SP",
  "name_zh": "闪闪发光",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "きらきら輝いて",
+ "name_en": "Sparkling_Shine",
  "description_zh": "别以为靠虫子打掩护就能逃走，抓住那狗子！",
  "description_ja": null,
  "description_en": null,
@@ -22,8 +22,12 @@
  "eliteDesc_zh": [
   "流泪小子生命值提升至150%，攻击能使我方单位晕眩8s"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "&lt;涙目の坊や&gt;の最大HPが150%に増加、通常攻撃で8秒間スタンさせる"
+ ],
+ "eliteDesc_en": [
+  "&lt;Crying Thief&gt; has +50% Max HP, attack's stun duration increased to 8s"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [],

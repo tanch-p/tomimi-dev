@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "飞来横祸",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "飛来する災い",
+ "name_en": "Look_Out_Above",
  "description_zh": "满天飞的鬣犄兽与四处奔逃的角兽将园内搅得一团乱。那台引起骚乱的投掷机从何而来？角落里巧手的伥拍拍身上的木屑，满意离去。\n<@lv.item><盐坨子炮></>周期性发射炮弹造成物理溅射伤害，可以将周围1名重量小于等于3的地面敌人传送至爆炸中心",
  "description_ja": null,
  "description_en": null,
@@ -20,14 +20,26 @@
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现",
   "雕伥每15s召唤一个鬣犄兽"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
+  "彫鬼は15秒ごとに&lt;タテガミツキ&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
+  "Statuegeist summons 1 Oxmane every 15s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "战斗开始时额外出现1个雕伥，每30s召唤一个鬣犄兽"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "初期配置の「彫鬼」右上に彫鬼が追加で出現、30秒ごとに&lt;タテガミツキ&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Oxmane&gt; every 30s"
+ ],
  "all_mods": [
   {
    "targets": [

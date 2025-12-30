@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "山海必争",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "山海の争い",
+ "name_en": "Shanhaizhong_Scramble",
  "description_zh": "“八个不要”已犯四条，于是，走路路不通，寻物物不见，混入园中的山海众被伥“教了规矩”。把他们提溜去司岁台前，还是先帮他们脱困吧。\n<@rolv.rem>场地中有阻挡敌人的<城防路障></>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+20%",
   "提亚卡乌勇士和提亚卡乌冠军的攻击力额外提升至150%",
   "战斗开始时额外出现1个雕伥，每30s召唤一个提亚卡乌好战者"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+20%",
+  "&lt;ティアカウ勇士&gt;と&lt;ティアカウチャンピオン&gt;の攻撃力さらに+50%",
+  "都市防衛柵の間に「彫鬼」が出現、30秒ごとに&lt;ティアカウ猛攻兵&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+  "&lt;Tiacauh Brave&gt; and &lt;Tiacauh Champion&gt; have additional +50% ATK",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Tiacauh Fanatic&gt; every 30s"
+ ],
  "all_mods": [
   {
    "targets": [

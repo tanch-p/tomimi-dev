@@ -11,22 +11,32 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "所守者，义",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "守りしものは義なり",
+ "name_en": "Guardian_of_Justice",
  "description_zh": "侠士为一场对决等了十年，直至一小童前来：“别等了，十年前那人就死了。看，我找你这么多年，都长这么大了。”语毕消失不见，只留一把佩刀在地。\n<@rolv.rem>场地中有夺取后可以治疗友方单位并对敌方造成法术伤害的<\"留声机\"></>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，生命值+20%",
   "一个平剑客被替换为泥岩巨像"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力+20%",
+  "&lt;平剣客&gt;1体が&lt;マドロックの巨像&gt;に変化"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK and +20% Max HP",
+  "1 &lt;Bottle Swordsman&gt; is replaced with &lt;Mudrock Colossus&gt;"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

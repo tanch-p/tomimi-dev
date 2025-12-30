@@ -11,16 +11,20 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "忘形",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "我を忘れる",
+ "name_en": "To_Forget_Oneself",
  "description_zh": "世上有两种得意：一种高高在上，有恃无恐；一种从口而出，真假难辨。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "雕伥每25s召唤一个魂灵涡流"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "彫鬼は25秒ごとに&lt;ソウルボルテックス&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Statuegeist summons 1 Soul Maelstrom every 25s"
+ ],
  "eliteDesc_zh": null,
  "eliteDesc_ja": null,
  "eliteDesc_en": null,

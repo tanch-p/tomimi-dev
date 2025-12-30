@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-DF",
  "name_zh": "硕果累累",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "鈴なりの果実",
+ "name_en": "Feast_of_Fruit",
  "description_zh": "天地精华结成的果实都囤积在这里，由食肉作物层层看守。它们没等来栽种的农人，只等来了你。\n<@lv.item><树丛></>不会受到攻击，遮挡我方单位的视野",
  "description_ja": null,
  "description_en": null,
@@ -21,10 +21,18 @@
  "addInfo_en": null,
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+20%，防御力+20%，生命值+50%",
-  "战斗开始时额外出现6个暴走食虫花"
+  "战斗开始时额外出现6个暴走食虫花",
+  "中心的不可部署格刷新怪葫芦"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力・防御力+20%",
+  "&lt;暴走食虫花&gt;6体が初期配置される",
+  "戦場中央に&lt;奇妙なひょうたん&gt;が出現"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +50% Max HP",
+  "Additional 6 &lt;Raging Slug Eater&gt; appears at the start"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

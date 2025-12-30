@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "有教无类",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "教え有りて類無し",
+ "name_en": "Learning_for_All",
  "description_zh": "修葺工地上，工人们津津有味地听“天师”讲课。“人而不学，与伥何异！”途经此处的你被那位义正词严的“天师”训斥着拉入了“课堂”。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;鸭爵&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力+20%，生命值+50%",
   "战斗开始时额外出现1个雕伥，每15s召唤一个便符",
   "战斗开始时左下额外出现一个靳天师"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力・防御力+20%",
+  "戦場左下に&lt;靳天師&gt;1体が初期配置",
+  "敵出現地点右下に「彫鬼」が出現、15秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +50% Max HP",
+  "Additional 1 &lt;Mirror Tianshi&gt; appears at the start",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Talisman&gt; every 15s"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

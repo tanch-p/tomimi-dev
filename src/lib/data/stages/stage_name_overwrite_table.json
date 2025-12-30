@@ -2,187 +2,187 @@
   "level_rogue5_fs-1": {
     "code": "ISW-NO",
     "name_zh": "谤天(双)",
-    "name_ja": null,
-    "name_en": null
+		"name_ja": "謗天(双)",
+		"name_en": "Slandering_Heaven_(2)"
   },
   "level_rogue5_fs-1b": {
     "code": "ISW-NO",
     "name_zh": "谤天(单)",
-    "name_ja": null,
-    "name_en": null
+		"name_ja": "謗天(単)",
+		"name_en": "Slandering_Heaven_(1)"
   },
   "level_rogue5_fs-2": {
     "code": "ISW-NO",
     "name_zh": "迎雷(双)",
-    "name_ja": null,
-    "name_en": null
+		"name_ja": "迎雷(双)",		
+		"name_en": "Amidst_Thunder_(2)"
   },
   "level_rogue5_fs-2b": {
     "code": "ISW-NO",
     "name_zh": "迎雷(单)",
-    "name_ja": null,
-    "name_en": null
+  	"name_ja": "迎雷(単)",		
+		"name_en":  "Amidst_Thunder_(1)"
   },
   "level_rogue5_fs-3": {
     "code": "ISW-NO",
     "name_zh": "蔑震(双)",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "蔑震(双)",		
+		"name_en": "Defying_Quakes_(2)"
   },
   "level_rogue5_fs-3b": {
     "code": "ISW-NO",
     "name_zh": "蔑震(单)",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "蔑震(単)",		
+		"name_en": "Defying_Quakes_(2)"
   },
   "level_rogue5_fs-4": {
     "code": "ISW-NO",
     "name_zh": "赴陨(双)",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "赴隕(双)",		
+		"name_en": "To_the_Fall_(2)"
   },
   "level_rogue5_fs-4b": {
     "code": "ISW-NO",
     "name_zh": "赴陨(单)",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "赴隕(単)",		
+		"name_en": "To_the_Fall_(1)"
   },
   "level_rogue5_fs-5": {
     "code": "ISW-NO",
     "name_zh": "斥洪(双)",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "斥洪(双)",		
+		"name_en": "Against_the_Flood_(2)"
   },
   "level_rogue5_fs-5b": {
     "code": "ISW-NO",
     "name_zh": "斥洪(单)",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "斥洪(単)",		
+		"name_en": "Against_the_Flood_(1)"
   },
   "level_rogue5_sv-1": {
     "code": "ISW-NO",
     "name_zh": "地有四难",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "地に四難有り",
+		"name_en": "The_Four_Difficulties"
   },
   "level_rogue5_sv-1-b": {
     "code": "ISW-NO",
     "name_zh": "地有四难_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "地に四難有り_b",
+		"name_en": "The_Four_Difficulties_b"
   },
   "level_rogue5_sv-2": {
     "code": "ISW-NO",
     "name_zh": "凭器_a",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "器頼み_a",
+		"name_en": "Ware-User_a"
   },
   "level_rogue5_sv-2-b": {
     "code": "ISW-NO",
     "name_zh": "凭器_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "器頼み_b",
+		"name_en": "Ware-User_b"
   },
   "level_rogue5_sv-2-c": {
     "code": "ISW-NO",
     "name_zh": "凭器_c",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "器頼み_c",
+		"name_en": "Ware-User_c"
   },
   "level_rogue5_sv-3": {
     "code": "ISW-NO",
     "name_zh": "忘形",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "我を忘れる",
+		"name_en": "To_Forget_Oneself"
   },
   "level_rogue5_sv-3-b": {
     "code": "ISW-NO",
     "name_zh": "忘形_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "我を忘れる_b",
+		"name_en": "To_Forget_Oneself_b"
   },
   "level_rogue5_sv-4": {
     "code": "ISW-NO",
     "name_zh": "贪妄",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "貪欲にして妄執",
+		"name_en": "Avarice"
   },
   "level_rogue5_sv-5": {
     "code": "ISW-NO",
     "name_zh": "奇谭",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "奇譚",
+		"name_en": "Strange_Tales"
   },
   "level_rogue5_sv-5-b": {
     "code": "ISW-NO",
     "name_zh": "奇谭_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "奇譚_b",
+		"name_en": "Strange_Tales_b"
   },
   "level_rogue5_sv-6": {
     "code": "ISW-NO",
     "name_zh": "破局",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "局面打破",
+		"name_en": "Breakthrough"
   },
   "level_rogue5_sv-6-b": {
     "code": "ISW-NO",
     "name_zh": "破局_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "局面打破_b",
+		"name_en": "Breakthrough_b"
   },
   "level_rogue5_sv-7": {
     "code": "ISW-NO",
     "name_zh": "不鉴",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "教訓とせず",
+		"name_en": "Unreflecting"
   },
   "level_rogue5_sv-7-b": {
     "code": "ISW-NO",
     "name_zh": "不鉴_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "教訓とせず_b",
+		"name_en": "Unreflecting_b"
   },
   "level_rogue5_sv-8": {
     "code": "ISW-NO",
     "name_zh": "靡靡之音",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "退廃の音",
+		"name_en": "Frivolous_Tunes"
   },
   "level_rogue5_sv-8-b": {
     "code": "ISW-NO",
     "name_zh": "靡靡之音_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "退廃の音_b",
+		"name_en": "Frivolous_Tunes_b"
   },
   "level_rogue5_sv-9": {
     "code": "ISW-NO",
     "name_zh": "愠怒_a",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "憤怒_a",
+		"name_en": "Inner_Rage_a"
   },
   "level_rogue5_sv-9-b": {
     "code": "ISW-NO",
     "name_zh": "愠怒_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "憤怒_b",
+		"name_en": "Inner_Rage_b"
   },
   "level_rogue5_sv-9-c": {
     "code": "ISW-NO",
     "name_zh": "愠怒_c",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "憤怒_c",
+		"name_en": "Inner_Rage_c"
   },
   "level_rogue5_sv-10": {
     "code": "ISW-NO",
     "name_zh": "迷惘",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "迷い",
+		"name_en": "Confusion"
   },
   "level_rogue5_sv-10-b": {
     "code": "ISW-NO",
     "name_zh": "迷惘_b",
-    "name_ja": null,
-    "name_en": null
+    "name_ja": "迷い_b",
+		"name_en": "Confusion_b"
   }
 }

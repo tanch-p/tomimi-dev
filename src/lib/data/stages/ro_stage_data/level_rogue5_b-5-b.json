@@ -19,8 +19,12 @@
  "addInfo_zh": [
   "战斗中期，左侧场地左下化境地块与右上化境地块各自在相邻的不可部署地块刷新1个雕伥，每10s召唤一个除秽"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "戦闘中盤、追加で彫鬼二体が出現、10秒ごとに&lt;除穢&gt;を召喚する"
+ ],
+ "addInfo_en": [
+  "Halfway through the battle, additional 2 Statuegeist appear, summons &lt;Expelled Filth&gt; every 10s"
+ ],
  "eliteDesc_zh": null,
  "eliteDesc_ja": null,
  "eliteDesc_en": null,

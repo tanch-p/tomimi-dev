@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "狡鼷三窟",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "鼷獣の巣穴",
+ "name_en": "Whack-A-Mus",
  "description_zh": "传说，界园里的鼷兽喜啃古籍诗书。有游客吟出酸诗俗句，听到阴暗处的嘻嘻嘲笑，追之则匿迹穴中，勃然大怒与之大战。",
  "description_ja": null,
  "description_en": null,
@@ -20,14 +20,26 @@
   "【鸭爵金币】固定出现&lt;鸭爵&gt;，且提早出现",
   "雕伥每10s召唤一个便符"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる",
+  "彫鬼は10秒ごとに便符一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier",
+  "Statuegeist summons 1 Talisman every 10s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+10%，生命值+20%",
   "额外出现2个田鼷力士"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+20%、攻撃力+10%",
+  "追加で&lt;剛力田鼷&gt;2体が出現"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK and +30% Max HP",
+  "Additional 2 &lt;Fieldmus Bruiser&gt; appears"
+ ],
  "all_mods": [
   {
    "targets": [

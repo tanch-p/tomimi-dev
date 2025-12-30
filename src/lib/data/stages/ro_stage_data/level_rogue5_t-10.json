@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-SP",
  "name_zh": "为崖作伥",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "崖の下の器鬼",
+ "name_en": "Cliff_of_Geists",
  "description_zh": "经过此处天险之地的人总是怒气冲冲，丝毫不肯退缩，殊不知绝壁两边尽是失足落崖的伥怪，这没来由的怒气，正是它们的杰作。",
  "description_ja": null,
  "description_en": null,
@@ -20,7 +20,7 @@
   "每个掉进坑的敌人获得3源石锭"
  ],
  "addInfo_ja": [
-  "穴に落ちた敵1体につき源石錐3個を獲得"
+  "敵を落とし穴に落下させると、1体ごとにステージ報酬の源石錐+3"
  ],
  "addInfo_en": [
   "Receive 3 Originium Ingots for every enemy fallen into Hole"
@@ -28,8 +28,12 @@
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+50%，生命值+100%"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+100%、攻撃力+50%"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +50% ATK and +100% Max HP"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

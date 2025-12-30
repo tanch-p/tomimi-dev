@@ -19,8 +19,12 @@
  "addInfo_zh": [
   "雕伥每50s召唤一个“越长尘”"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "彫鬼は50秒ごとに&lt;「長塵」&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Statuegeist summons 1 'Sand Voyager' every 50s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+30%，防御力+30%，生命值+50%",
   "躁怒谛兽替换为心涛",
@@ -34,7 +38,7 @@
  "eliteDesc_en": [
   "All enemy units have +30% ATK, +30% DEF, +50% Max HP",
   "&lt;Raging Di Beast&gt; is replaced by &lt;Heartbillow&gt;",
-  "&lt;雕伥&gt; have -50% Max HP"
+  "All Statuegeists have -50% Max HP"
  ],
  "all_mods": [
   {

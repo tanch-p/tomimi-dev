@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-SP",
  "name_zh": "以逸待劳",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "逸を以て労を待つ",
+ "name_en": "Biding_Time",
  "description_zh": "电弧在进行侦察作业时会布下“岗哨”与大部队串联到一起，没有讯息与事件逃得过她的罗网。",
  "description_ja": null,
  "description_en": null,
@@ -23,8 +23,14 @@
   "所有敌方单位的攻击力，防御力，生命值+10%",
   "战斗开始时额外部署8个桑特拉"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+10%",
+  "「サントラ」8体が追加で初期配置される"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK, +10% DEF and +10% Max HP",
+  "Additional 8 &lt;Center&gt; appear at the start"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

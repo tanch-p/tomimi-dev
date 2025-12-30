@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "峥嵘战功",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "輝かしい戦功",
+ "name_en": "Exemplary_Service",
  "description_zh": "一身铠甲的怪人枕山而眠，十年来纹丝不动。你路过其身侧，忽觉黄沙漫天，回过神来已立身钢铁城门之前。兵临城下，战鼓震天，昔日战功是梦亦是牢笼。\n<@rolv.rem>场地中有阻挡敌人的<城防路障></>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+20%，防御力+20%，生命值+30%",
   "清明和堂皇的生命值额外提升至200%",
   "战斗开始时额外出现2个雕伥，每15s召唤一个便符"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+30%、攻撃力・防御力+20%",
+  "&lt;清明&gt;と&lt;堂皇&gt;の最大HPさらに+100%",
+  "戦場左エリアに「彫鬼」2つが出現、15秒ごとに&lt;便符&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK, +20% DEF and +30% Max HP",
+  "All &lt;Clarity&gt; and &lt;Magnificence&gt; havev additional +100% Max HP",
+  "Additional 2 Statuegeist appears and summons 1 &lt;Talisman&gt; every 15s"
+ ],
  "all_mods": [
   {
    "targets": [

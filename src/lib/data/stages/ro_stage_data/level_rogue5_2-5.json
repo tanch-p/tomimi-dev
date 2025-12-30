@@ -25,10 +25,14 @@
   "战斗开始后出现1个雕伥，每20s召唤一个感染者纠察官"
  ],
  "eliteDesc_ja": [
-  "敵全員の攻撃力+10%、防御力+10%、最大HP+30%"
+  "敵全員の攻撃力+10%、防御力+10%、最大HP+30%",
+  "追加で道路障害物2個が出現",
+  "追加で「彫鬼」が出現、20秒ごとに&lt;感染者監視官&gt;を召喚する"
  ],
  "eliteDesc_en": [
-  "All enemy units have +10% ATK, +10% DEF, +30% Max HP"
+  "All enemy units have +10% ATK, +10% DEF, +30% Max HP",
+  "Additional 2 &lt;Static Roadblock&gt; appears",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Infected Patrol Captain&gt; every 20s"
  ],
  "all_mods": [
   {

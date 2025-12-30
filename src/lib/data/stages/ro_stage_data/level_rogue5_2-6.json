@@ -20,10 +20,10 @@
   "雕伥每25s召唤一个特里蒙城防军"
  ],
  "addInfo_ja": [
-  "&lt;雕伥&gt;25秒毎に&lt;トリマウンツ都市防衛軍兵士&gt;を召喚する"
+  "彫鬼は25秒ごとに&lt;トリマウンツ都市防衛軍兵士&gt;を召喚する"
  ],
  "addInfo_en": [
-  "&lt;雕伥&gt; summons 1 &lt;Trimounts City Defender&gt; every 25s"
+  "Statuegesit summons 1 &lt;Trimounts City Defender&gt; every 25s"
  ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+20%，生命值+20%",

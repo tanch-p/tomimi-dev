@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "赶集",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "露店市場へ",
+ "name_en": "To_Market",
  "description_zh": "偶见人群方方正正地列在空地。问之，答：“去赶集。”铜锣一响，摇摇晃晃行走起来，路遇障碍则除之。见者无不心惊。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;流泪小子&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+10%，防御力+20%，生命值+50%",
   "2个速射轻弩手被替换为重弩突袭者",
   "战斗开始时额外出现1个雕伥，每30s召唤一个速射轻弩手"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力+10%、防御力+20%",
+  "&lt;軽型クロスボウ速射手&gt;のうち2体が&lt;重型クロスボウ強襲者&gt;に変化",
+  "敵出現地点の間に「彫鬼」が出現、30秒ごとに&lt;軽型クロスボウ速射手&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK, +20% DEF and +50% Max HP",
+  "2 &lt;Light Rapid Crossbowman&gt; is replaced with &lt;Heavy Crossbowman Ambusher&gt;",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Light Rapid Crossbowman&gt; every 30s"
+ ],
  "all_mods": [
   {
    "targets": [

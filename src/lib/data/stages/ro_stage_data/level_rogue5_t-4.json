@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-SP",
  "name_zh": "易易鸭鸭",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "良いカモ",
+ "name_en": "Duck_and_Yi",
  "description_zh": "这上架的鸭子一定暗中和易做了什么买卖，赶紧从实招来！",
  "description_ja": null,
  "description_en": null,
@@ -24,8 +24,16 @@
   "出现更多敌人",
   "所有角色型单位基础再部署时间提升至150%"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力+10%",
+  "敵がたくさん追加される",
+  "味方全員の再配置時間+50%"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK and +10% Max HP",
+  "Additional many enemies appear",
+  "All operators have redeployment time increased by 50%"
+ ],
  "all_mods": null,
  "n_mods": null,
  "elite_mods": [

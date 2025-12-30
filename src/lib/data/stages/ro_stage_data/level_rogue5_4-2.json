@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "贪饵",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "食い意地",
+ "name_en": "Sugared_Bait",
  "description_zh": "投喂了池鳞，竟被弹射出八丈远！为了让池鳞满意，这些游客吸取教训，积极反思——决定奋力研制更大、更香甜的饵。\n<@rolv.rem>场地中有夺取后回复周围友方单位技力的<“冰淇淋机”></>\n<@rolv.rem>场地中有阻挡敌人的<城防路障></>",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力，防御力，生命值+40%",
   "糖果车和节日零食车的攻击力和生命值额外提升至150%",
   "战斗开始时额外出现1个雕伥，每15s召唤一个节日零食车"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP・攻撃力・防御力+40%",
+  "&lt;祝祭のおやつカート&gt;の最大HPさらに+50%",
+  "戦場中央下段エリアに「彫鬼」が出現、15秒ごとに&lt;祝祭のおやつカート&gt;を召喚する"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +40% ATK, +40% DEF and +40% Max HP",
+  "&lt;Carnevale Snack Cart&gt; has additional +50% Max HP",
+  "Additional 1 Statuegeist appears and summons 1 &lt;Carnevale Snack Cart&gt; every 15s"
+ ],
  "all_mods": [
   {
    "targets": [

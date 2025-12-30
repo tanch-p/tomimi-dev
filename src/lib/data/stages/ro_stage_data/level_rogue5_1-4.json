@@ -11,23 +11,35 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "老戏骨",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "老練の役者",
+ "name_en": "Veteran_Actor",
  "description_zh": "你被热情地邀来看戏，却见戏院已是人去楼空。破败的戏台上忽然响起了唱曲声，似在挽留你，却让此景更显诡异。",
  "description_ja": null,
  "description_en": null,
  "addInfo_zh": [
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+10%，生命值+20%",
   "战斗开始时额外出现1个雕伥，每25s召唤一个“阿咬”",
   "战斗开始时2个“阿咬”被替换为皮书生"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+20%、攻撃力+10%",
+  "防衛ライン左に「彫鬼」が出現、25秒ごとに&lt;「クヒツム」&gt;を召喚する",
+  "初期配置の&lt;「クヒツム」&gt;2体が&lt;皮書生&gt;に変化"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +10% ATK and +20% Max HP",
+  "Additional 1 Statuegeist appears and summons 1 &lt;'Bitey'&gt; every 25s",
+  "2 &lt;'Bitey'&gt; at the start are replaced with &lt;Shadow Scholar&gt;"
+ ],
  "all_mods": [
   {
    "targets": [

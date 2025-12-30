@@ -11,8 +11,8 @@
  "costIncreaseTime": 1.0,
  "code": "ISW-NO",
  "name_zh": "长驱不复",
- "name_ja": null,
- "name_en": null,
+ "name_ja": "ひたすらな前進",
+ "name_en": "Stopping_the_Advance",
  "description_zh": "此地转不过身，扭不过头。于是想要追逐尾巴的兽只好不停向前奔跑，不仅把所有挡路的东西撞了个稀烂，也让一旁的雕伥张嘴笑了好久。",
  "description_ja": null,
  "description_en": null,
@@ -20,14 +20,26 @@
   "【鸭爵金币】固定出现&lt;圆仔&gt;，且提早出现",
   "雕伥每30s召唤一个角兽"
  ],
- "addInfo_ja": null,
- "addInfo_en": null,
+ "addInfo_ja": [
+  "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
+  "彫鬼は30秒ごとに&lt;ツノシゲミ&gt;一体を召喚する"
+ ],
+ "addInfo_en": [
+  "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
+  "Statuegeist summons 1 Hornbeast every 30s"
+ ],
  "eliteDesc_zh": [
   "所有敌方单位的攻击力+20%，生命值+50%",
   "凶豕兽被替换为狂暴凶豕兽"
  ],
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
+ "eliteDesc_ja": [
+  "敵全員の最大HP+50%、攻撃力+20%",
+  "すべての&lt;キバタケリ&gt;が&lt;猛進キバタケリ&gt;に変化"
+ ],
+ "eliteDesc_en": [
+  "All enemy units have +20% ATK and +50% Max HP",
+  "All &lt;Direswine&gt; is replaced with &lt;Raging Direswine&gt;"
+ ],
  "all_mods": [
   {
    "targets": [

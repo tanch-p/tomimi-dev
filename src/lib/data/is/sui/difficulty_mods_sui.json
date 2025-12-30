@@ -286,8 +286,16 @@
 						"value": 20,
 						"v_range": 1.1,
 						"tooltip": {
-							"en": [],
-							"ja": [],
+							"en": [
+								"Possesses target and prevents skill activation, ATK is decreased to <v.p_atk>% of initial value",
+								"Does 100% of ATK as {arts} damage and <v.value>% of ATK as {ba.dt.burning} every second to target and friendly units in adjacent 4 tiles",
+								"If no target is available, retreats immediately."
+							],
+							"ja": [
+								"付着:味方に付着する、攻撃力が元の<v.p_atk>%になる",
+								"付着中はその味方と隣接4マスにいるユニットに毎秒攻撃力の100%の{arts}ダメージと攻撃力の<v.value>%の{ba.dt.burning}を与え、スキルの使用を封じる",
+								"付着対象がいなくなった場合、即座に退場する"
+							],
 							"zh": [
 								"附着：附着对象无法开启技能，攻击力变为原本的<v.p_atk>%",
 								"出现时以及后续每秒尝试选取附着对象，每次选取成功时对目标及其十字范围(半径<v.v_range>?)内的我方单位造成攻击力100%的法术伤害与攻击力<v.value>%的{ba.dt.burning}",

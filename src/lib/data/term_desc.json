@@ -406,39 +406,39 @@
 	},
 	"ba.physicfragile": {
 		"termId": "ba.physicfragile",
-		"name_zh": "物理脆弱",
-		"name_en": null,
-		"name_ja": null,
-		"desc_zh": "受到的物理伤害提升相应比例（同名效果取最高）",
-		"desc_en": null,
-		"desc_ja": null
+      "name_zh": "物理脆弱",
+        "name_en": "Physical Fragility",
+        "name_ja": "対物理脆弱",
+        "desc_zh": "受到的物理伤害提升相应比例（同名效果取最高）",
+        "desc_en": "Amplifies all Physical damage taken by the corresponding amount (only the strongest effect of this type applies)",
+        "desc_ja": "物理の被ダメージが効果値分上昇（同名の状態は効果値が高いほうのみ適用）"
 	},
 	"ba.dt.neural2": {
 		"termId": "ba.dt.neural2",
-		"name_zh": "神经损伤·我方",
-		"name_en": null,
-		"name_ja": null,
-		"desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到6000点元素伤害且获得3层<ba.palsy>麻痹</>。10秒冷却",
-		"desc_en": null,
-		"desc_ja": null
+        "name_zh": "神经损伤·我方",
+        "name_en": "Nervous Impairment - Player",
+        "name_ja": "神経損傷・味方",
+        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到6000点元素伤害且获得3层<$ba.palsy>麻痹</>。10秒冷却",
+        "desc_en": "Explodes when at max (1000 for Normal and Elite, 2000 for Leaders), dealing 6000 Elemental Damage and inflicting 3 stacks of <$ba.palsy>Paralysis</>. 10s cooldown.",
+        "desc_ja": "損傷が一定値（通常の敵及び【エリート】は1000、敵【ボス】は2000）蓄積すると爆発し、対象は即時に6000の元素ダメージを受け、かつ<$ba.palsy>麻痺</>効果が3回分付与される。効果発動後、10秒後再発動可能になる"
 	},
 	"ba.palsy": {
 		"termId": "ba.palsy",
-		"name_zh": "麻痹",
-		"name_en": null,
-		"name_ja": null,
-		"desc_zh": "每层麻痹可以使敌人在普通攻击时打断本次攻击，上限3层；麻痹未被消耗时持续时间无限，拥有抵抗的单位每5秒流失1层",
-		"desc_en": null,
-		"desc_ja": null
+        "name_zh": "麻痹",
+        "name_en": "Paralysis",
+        "name_ja": "麻痺",
+        "desc_zh": "每层麻痹可以使敌人在普通攻击时打断本次攻击，上限3层；麻痹未被消耗时持续时间无限，拥有抵抗的单位每5秒流失1层",
+        "desc_en": "Each stack of Paralysis can interrupt an enemy when it attempts to perform a normal attack, max 3 stacks; Paralysis has unlimited duration when not consumed, but units with status resistance lose 1 stack every 5s",
+        "desc_ja": "通常攻撃時に1回分消費され、その攻撃をキャンセルする。最大3回分まで重複可能で、消費されない限り消えない。レジストを持つユニットは5秒ごとに1回分減少"
 	},
 	"ba.addbullet": {
 		"termId": "ba.addbullet",
-		"name_zh": "补弹",
-		"name_en": null,
-		"name_ja": null,
-		"desc_zh": "为其他人的弹药类技能补充弹药。单次弹药类技能的持续时间内，最多被补充该次技能所装有弹药数量上限的弹药",
-		"desc_en": null,
-		"desc_ja": null
+        "name_zh": "补弹",
+        "name_en": "Replenish",
+        "name_ja": "補弾",
+        "desc_zh": "为其他人的弹药类技能补充弹药。单次弹药类技能的持续时间内，最多被补充该次技能所装有弹药数量上限的弹药",
+        "desc_en": "Replenishes ammo for other Operators' ammo-type skills; an ammo-type skill can only be replenished up to its max ammo capacity during a single activation of that skill",
+        "desc_ja": "他オペレーターの弾薬消費系スキルの弾薬を補充する。対象が一度の弾薬消費系スキル発動中に受けられる給弾数は、累計でそのスキルの弾薬上限と同数まで"
 	},
 	"ba.straightshot": {
 		"termId": "ba.straightshot",
@@ -464,7 +464,7 @@
 		"name_en": "失气",
 		"name_ja": "失气",
 		"desc_zh": "被地图边界，保护目标，侵入点及瑕所形成的，横纵方向上的封闭区域效果，封闭区域内的我方单位将进入失气状态\n失气：其中的我方单位持续晕眩，不可主动撤退\n如果一个我方单位只通过上下左右移动而使自身周围四格存在一个不包含其他我方单位和瑕的地块，则该单位不视为处于失气状态",
-		"desc_en": "If an area is fully enclosed by map boundaries, protection objective, infiltration point and 瑕, units inside it will be affected by 失气.\n失气 - Units inside the enclosed area are stunned, cannot be manually retreated",
+		"desc_en": "If an area is fully enclosed by map boundaries, protection objective, infiltration point and 'Flaw', units inside it will be affected by 'Emptied' status.\n'Emptied - Units inside the enclosed area are stunned, cannot be manually retreated",
 		"desc_ja": "マップ境界、防衛ライン、侵入ポイントと瑕に完全に包囲されたエリアの味方ユニットが失气状態に入る。失气状態のユニットは手動撤退不可、スタンされる。"
 	},
 	"ba.spy": {

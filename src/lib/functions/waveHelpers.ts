@@ -199,7 +199,7 @@ export const getOptions = (
 					{
 						key: 'shadow',
 						src: '/images/enemy_icons/enemy_2093_skzams.webp',
-						name: { zh: '终曲合声', ja: '终曲合声', en: '终曲合声' }[language]
+						name: { zh: '终曲合声', ja: '終曲のコーラス', en: 'Finale Cadence' }[language]
 					}
 				]
 			);
@@ -220,12 +220,12 @@ export const getOptions = (
 					{
 						key: 'copper_b',
 						src: '/images/relics/rogue_5_relic_final_3.webp',
-						name: { zh: '隐蝶墨', ja: '隐蝶墨', en: '隐蝶墨' }[language]
+						name: { zh: '隐蝶墨', ja: '隠蝶墨', en: 'Ink of the Hidden Butterfly' }[language]
 					},
 					{
 						key: 'copper_r',
 						src: '/images/relics/rogue_5_copper_S_1.webp',
-						name: { zh: '花-鸭爵金币', ja: '花-鸭爵金币', en: '花-鸭爵金币' }[language]
+						name: { zh: '花-鸭爵金币', ja: '鴨爵の金幣', en: 'Duck Coin' }[language]
 					}
 				]
 			);
@@ -617,7 +617,6 @@ export const generateWaveTimeline = (
 			});
 		}
 	});
-	console.log(waveTimelines)
 	return { waves: waveTimelines, count: totalCount };
 };
 

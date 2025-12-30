@@ -223,7 +223,7 @@ export const parseValues = (
 			text = text.replace(
 				string,
 				addOverwrittenHighlight(
-					(isPercent ? Math.round(skill[key] * 100) : toReplace).toString(),
+					(isPercent ? Math.round(skill[key] * 100) : toReplace)?.toString(),
 					skill,
 					key
 				)

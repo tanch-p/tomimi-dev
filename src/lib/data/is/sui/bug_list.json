@@ -5,7 +5,7 @@
 		"desc": {
 			"zh": "易的屏障只有转阶段时有效果",
 			"ja": "「易」のバリアスキルは第二形態で一回のみ発動する",
-			"en": "「易」's barrier skill activates only once after entering 2nd form"
+			"en": "Yi's barrier skill activates only once after entering 2nd form"
 		}
 	},
 	{
@@ -13,7 +13,7 @@
 		"video": "BV1ccHpzqE4F",
 		"desc": {
 			"zh": "“岁”不受到【敌方单位受到的伤害++】藏品的影响（复仇者、璀璨悲泣、Scout的狙击镜）",
-			"ja": "“岁”に「敵が受けるダメージ増加」の秘宝の効果がない（「アベンジャー」、「きらめく悲泣」、Scoutの狙撃スコープ",
+			"ja": "“歳”に「敵が受けるダメージ増加」の秘宝の効果がない（「アベンジャー」、「きらめく悲泣」、Scoutの狙撃スコープ",
 			"en": "'Sui' is not affected by relics that increase enemies damage taken (Avenger, Brilliant Lament, Scout's Scope)"
 		}
 	},
@@ -23,16 +23,16 @@
 		"desc": {
 			"zh": "狭路相逢里，如果便符进篮门，判定作战失败",
 			"ja": "隘路の衝突の作戦中、「便符」が防衛ラインに到達すると即負け",
-			"en": "In Face-Off, if【便符】enters Protection Objective, operation results in a loss"
+			"en": "In Face-Off nodes, if Talisman enters Protection Objective, operation results in a loss"
 		}
 	},
 	{
 		"fixed_date": null,
 		"video": "BV1ms8BzyEDf",
 		"desc": {
-			"zh": "祸乱击杀敌人数量再进关卡的敌人数量不匹配",
-			"ja": "「祸乱」に再度入った敵数が前回倒した敵数と合わない",
-			"en": "In「祸乱」, enemy count after re-entering the node and having defeated enemies might be different"
+			"zh": "祸乱击杀敌人数量再进关卡时有时候会出现敌人数量不匹配",
+			"ja": "「禍乱」に再度入った敵数が前回倒した敵数と合わないときがある",
+			"en": "In Turmoil nodes, enemy count after having defeated enemies and re-entering the node might be different"
 		}
 	},
 	{
@@ -40,8 +40,8 @@
 		"video": "BV1vn1pBTE8A",
 		"desc": {
 			"zh": "三层作战关卡去晦里，在特定位置的宝箱怪被攻击后的出现地点与装置位置不相同",
-			"ja": "3層作戦「去晦」での特定の位置にいる宝箱形敵が沸く場所が装置と違う",
-			"en": "On 3rd level's stage 「去晦」 chest enemy at a designated location spawns at a different location from the trap's"
+			"ja": "3層作戦「邪気払い」での特定の位置にいる宝箱形敵が沸く場所が装置と違う",
+			"en": "On 3rd level's stage 「Away, Hui!」 chest enemy at a designated location spawns at a different location from the trap's"
 		}
 	},
 	{

@@ -167,8 +167,8 @@
 	{
 		"id": "rogue_5_copper_B_02",
 		"name_zh": "厉-西廉贞",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "西の廉貞",
+		"name_en": "Risk: West Lianzhen Mt.",
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -308,14 +308,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，精英及领袖敌人的生命值、攻击力+10%，在险路恶敌及岁兽残识中攻击力、生命值额外+20％",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の最大HP・攻撃力+10%。【悪路凶敵】及び【歳獣の残識】では追加で+20%",
+		"tooltip_en": "Elite and boss enemies have +20% HP and ATK, and an additional 20% in Sui's Remnant Consciousness and Dreadful Foes"
 	},
 	{
 		"id": "rogue_5_copper_B_03",
 		"name_zh": "厉-北刺面",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "北の刺面",
+		"name_en": "Risk: Northern Sting",
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -415,14 +415,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，精英及领袖敌人的移动速度+10%，在险路恶敌及岁兽残识中移动速度额外+20％",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の移動速度+10%、【悪路凶敵】及び【歳獣の残識】では追加で+20%",
+		"tooltip_en": "Elite and boss enemies have +10% MSPD and an additional 20% in Sui's Remnant Consciousness and Dreadful Foes"
 	},
 	{
 		"id": "rogue_5_copper_B_04",
 		"name_zh": "厉-南见山",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "南に山を見る",
+		"name_en": "Risk: Southern Mounts",
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -522,14 +522,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，精英及领袖敌人的防御力+15%，在险路恶敌及岁兽残识中防御力额外+35％",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の防御力+15%。【悪路凶敵】及び【歳獣の残識】では追加で+35%",
+		"tooltip_en": "Elite and Boss enemies have +15% DEF and an additional +35% in Sui's Remnant Consciousness and Dreadful Foes"
 	},
 	{
 		"id": "rogue_5_copper_B_05",
 		"name_zh": "厉-东缺角",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "東の欠角",
+		"name_en": "Risk: Eastern Gap",
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -629,14 +629,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，精英及领袖敌人的法术抗性+10，在险路恶敌及岁兽残识中法术抗性额外+20",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の術耐性+10。【悪路凶敵】及び【歳獣の残識】では追加で+20",
+		"tooltip_en": "Elite and boss enemies have +10 RES and an additional +20 in Sui's Remnant Consciousness and Dreadful Foes"
 	},
 	{
 		"id": "rogue_5_copper_B_10",
 		"name_zh": "衡-投木炎延",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "投木炎延",
+		"name_en": "Bal: Wood Feeds Flame",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -692,14 +692,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有敌人最大生命值-30%。（下次投钱前变化为-大炎通宝）",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての敵の最大HP-30%（次の振り銭時に「大炎通宝」に変化する）",
+		"tooltip_en": "Enemies have -30% HP but turns into a Dayan Tongbao before the next coin toss"
 	},
 	{
 		"id": "rogue_5_copper_F_15",
 		"name_zh": "厉-战血流",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "戦にて血流る",
+		"name_en": "Risk: Bloodshed Spill",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -713,14 +713,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有敌方单位的最大生命值-45%，我方单位的最大生命值-25%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての敵の最大HP-45%、味方の最大HP-25%",
+		"tooltip_en": "Friendly units have -25% HP but enemies have -45% HP"
 	},
 	{
 		"id": "rogue_5_copper_F_16",
 		"name_zh": "厉-遇良弈",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "良弈に遇う",
+		"name_en": "Risk: Weiqi Chance",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -734,14 +734,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有敌方单位的攻击力+25%，我方单位的攻击力+60%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての敵の攻撃力+25%、味方の攻撃力+60%",
+		"tooltip_en": "Friendly units have +60% ATK but enemies have +25% ATK"
 	},
 	{
 		"id": "rogue_5_copper_F_17",
 		"name_zh": "厉-隐市忧",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "隠市の憂",
+		"name_en": "Risk: City Concern",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -755,14 +755,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有我方单位获得55%的物理法术闪避，所有敌人攻击速度+25",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての味方の物理・術回避+55%、全ての敵の攻撃速度+25",
+		"tooltip_en": "Friendly units gain 50% Physical/Arts Dodge but enemies have +25 ASPD"
 	},
 	{
 		"id": "rogue_5_copper_F_19",
 		"name_zh": "厉-两江春",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "両江の春",
+		"name_en": "Risk: Two-Rivers Spring",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -776,14 +776,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有敌人的最大生命值+50%，但受到阻挡时每秒受到5%当前生命值的法术伤害",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての敵の最大HP+50%、代わりにブロックされている間、1秒ごとに残りHPの5%の術ダメージを受ける",
+		"tooltip_en": "Enemies have +50% HP but takes 5% of their maximum HP as Arts damage every second while blocked"
 	},
 	{
 		"id": "rogue_5_copper_R_09",
 		"name_zh": "厉-黑子伏",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "黒石伏す",
+		"name_en": "Risk: Sinister Stealth",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -802,14 +802,14 @@
 			}
 		],
 		"tooltip_zh": "位于钱盒内时，战斗后获得的指挥经验+30%；投出时，所有敌人的移动速度+30%，攻击力+30%。（下次投钱前变化为-大炎通宝）",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "銭匣内にある場合、戦闘勝利時の指揮経験値の獲得量+30%。振り出されると、全ての敵の移動速度・攻撃力+30%（次の振り銭時に「大炎通宝」に変化する）",
+		"tooltip_en": "+30% Command EXP accrual while in the Coffer. Enemies have +30% ATK and DEF after being tossed"
 	},
 	{
 		"id": "rogue_5_copper_U_1",
 		"name_zh": "厉-移山难",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "山を移すこと難し",
+		"name_en": "Risk: Moving Mounts Hard",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -858,14 +858,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-100（最多叠加25次），可在筹谋中升级",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての敵の防御力+2000、代わりにダメージを受けるたびに防御力-100（最大25回まで重複可能）。【画策】でアップグレード可能",
+		"tooltip_en": "Enemies have +2000 DEF and -100 DEF whenever they take damage (stacks up to 25 times)"
 	},
 	{
 		"id": "rogue_5_copper_U_2",
 		"name_zh": "衡-移山繁",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "山を移すこと繁わし",
+		"name_en": "Bal: Moving Mounts",
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -914,14 +914,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-150（最多叠加25次）",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、全ての敵の防御力+2000、代わりにダメージを受けるたびに防御力-150（最大25回まで重複可能）",
+		"tooltip_en": "Enemies have +2000 DEF and -150 DEF whenever they take damage (stacks up to 25 times)"
 	},
 	{
 		"id": "rogue_5_copper_S_1",
 		"name_zh": "花-鸭爵金币",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "鴨爵の金幣",
+		"name_en": "Flower: Duck Coin",
 		"effects": [
 			{
 				"targets": ["enemy_2085_skzjxd"],
@@ -970,14 +970,14 @@
 			}
 		],
 		"tooltip_zh": "投出时，使非险路恶敌战斗中必定出现一名属性大幅度提升的鸭爵（生命+150%，移动速+150%）、高普尼克（生命+200%，攻击力+150%）、流泪小子（生命+150%，移动速度+150%）或圆仔（生命+200%，移动速度+150%）。",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "振り出されると、通常作戦及び緊急作戦に必ずステータスが大幅に上昇した＜ダック卿＞(最大HP+150%、移動速度+150%)/＜ゴプニク＞(最大HP+200%、攻撃力+150%)/＜涙目の坊や＞(最大HP+150%、移動速度+150%)/＜マルッコ＞(最大HP+200%、移動速度+150%)のいずれかが出現",
+		"tooltip_en": "Spawns the Crying Thief (Max HP +150%, Movespeed +150%)/Duck Lord (Max HP +150%, Movespeed +150%)/Fatty (Max HP +200%, Movespeed +150%)/Gopnik (Max HP +200%, ATK +150%) with greatly increased stats in (Emergency) Operations, but turns into a Dayan Tongbao before the next coin toss."
 	},
 	{
 		"id": "rogue_5_copper_R_05",
 		"name_zh": "厉-安硕鼷",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "碩鼷を安める",
+		"name_en": "Risk: Content Megamus",
 		"effects": [
 			{
 				"targets": ["trap_222_rgdysm"],
@@ -992,7 +992,7 @@
 			}
 		],
 		"tooltip_zh": "投出时，击败雕伥后，额外获得票券。但雕伥最大生命值+200%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip_ja": "＜彫鬼＞の最大HP+200%、撃破すると遊覧券+1",
+		"tooltip_en": "Statuegeists have +200% HP and drops +1 Coupon when destroyed."
 	}
 ]
