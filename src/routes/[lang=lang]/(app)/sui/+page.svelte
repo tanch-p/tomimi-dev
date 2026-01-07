@@ -33,7 +33,7 @@
 			/>
 		</div>
 		<div class="space-y-6">
-			<Resources {language}/>
+			<Resources {language} rogueTopic={'rogue_yan'}/>
 			<BugList list={suiBugList} {language} {docLink}/>
 			<TogglePanel title={translations[language].how_to_use} isOpen={false}>
 				<HowToUse {language} rogueTopic={'rogue_yan'} />

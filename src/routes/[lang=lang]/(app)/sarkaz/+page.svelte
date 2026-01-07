@@ -32,7 +32,7 @@
 			/>
 		</div>
 		<div class="space-y-6">
-			<Resources {language}/>
+			<Resources {language} rogueTopic={'rogue_skz'}/>
 			<TogglePanel title={translations[language].how_to_use} isOpen={true}>
 				<HowToUse {language} rogueTopic={'rogue_skz'} />
 			</TogglePanel>
