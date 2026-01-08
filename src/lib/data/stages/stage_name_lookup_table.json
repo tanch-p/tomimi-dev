@@ -4166,7 +4166,7 @@
     },
     "ISW-NO_Defying_Quakes_(2)": {
         "lang": "en",
-        "key": "level_rogue5_fs-3b",
+        "key": "level_rogue5_fs-3",
         "topic": "rogue_yan"
     },
     "ISW-NO_蔑震(单)": {
@@ -4176,6 +4176,11 @@
     },
     "ISW-NO_蔑震(単)": {
         "lang": "ja",
+        "key": "level_rogue5_fs-3b",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_Defying_Quakes_(1)": {
+        "lang": "en",
         "key": "level_rogue5_fs-3b",
         "topic": "rogue_yan"
     },
