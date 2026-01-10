@@ -418,9 +418,9 @@
         "name_zh": "神经损伤·我方",
         "name_en": "Nervous Impairment - Player",
         "name_ja": "神経損傷・味方",
-        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到6000点元素伤害且获得3层<$ba.palsy>麻痹</>。10秒冷却",
-        "desc_en": "Explodes when at max (1000 for Normal and Elite, 2000 for Leaders), dealing 6000 Elemental Damage and inflicting 3 stacks of <$ba.palsy>Paralysis</>. 10s cooldown.",
-        "desc_ja": "損傷が一定値（通常の敵及び【エリート】は1000、敵【ボス】は2000）蓄積すると爆発し、対象は即時に6000の元素ダメージを受け、かつ<$ba.palsy>麻痺</>効果が3回分付与される。効果発動後、10秒後再発動可能になる"
+        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到6000点元素伤害且获得3层<ba.palsy>麻痹</>。10秒冷却",
+        "desc_en": "Explodes when at max (1000 for Normal and Elite, 2000 for Leaders), dealing 6000 Elemental Damage and inflicting 3 stacks of <ba.palsy>Paralysis</>. 10s cooldown.",
+        "desc_ja": "損傷が一定値（通常の敵及び【エリート】は1000、敵【ボス】は2000）蓄積すると爆発し、対象は即時に6000の元素ダメージを受け、かつ<ba.palsy>麻痺</>効果が3回分付与される。効果発動後、10秒後再発動可能になる"
 	},
 	"ba.palsy": {
 		"termId": "ba.palsy",
