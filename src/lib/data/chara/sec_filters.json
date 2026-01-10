@@ -14,6 +14,7 @@
             "kazimierz",
             "token_barrier_active",
             "skill_1",
+            "heal",
             "INCREASE_WHEN_ATTACK",
             "SNIPER",
             "student",
@@ -125,6 +126,7 @@
             "not_target_air"
         ],
         "conditions":[
+            "blocked",
             "same_tile",
             "deploy"
         ]
@@ -160,6 +162,8 @@
             "stun_or_freeze",
             "token_hp_lt_50",
             "charged",
+            "blocked_enemy",
+            "first_hit",
             "splash",
             "deploy"
         ],
@@ -620,6 +624,9 @@
             "kazimierz",
             "token",
             "aak_dmg",
+            "minos",
+            "sargon",
+            "hp_gt_50",
             "enemy_on_grass_tile",
             "within_attack_range"
         ],
@@ -663,6 +670,7 @@
             "hp_lt_60",
             "hp_gt_70",
             "hp_gt_60",
+            "hp_less_than_self",
             "enemy_sarkaz",
             "hp_lt_30",
             "position_ranged",
@@ -673,7 +681,8 @@
             "protect",
             "others",
             "substitute"
-        ]
+        ],
+        "module":[]
     },
     "ally_cost_down":{
         "value":[],
@@ -760,6 +769,7 @@
         "value":[],
         "conditions":[
             "abyssal",
+            "minos",
             "ally_behind"
         ]
     },
