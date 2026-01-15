@@ -2,7 +2,13 @@
 	import type { Language, MapConfig } from "$lib/types";
     import translations from "$lib/translations.json"
 
-    export let mapConfig:MapConfig, stageName:string,language:Language
+	interface Props {
+		mapConfig: MapConfig;
+		stageName: string;
+		language: Language;
+	}
+
+	let { mapConfig, stageName, language }: Props = $props();
 
 </script>
 

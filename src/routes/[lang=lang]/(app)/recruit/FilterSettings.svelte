@@ -4,7 +4,11 @@
 	import { filterModeStore } from './stores';
 	import { setLocalStorage } from '$lib/functions/lib';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const updateFilterMode = (val) => {
 		filterModeStore.set(val);
@@ -23,7 +27,7 @@
 				<button
 					class="filter-btn"
 					class:active={$filterModeStore === value}
-					on:click={() => updateFilterMode(value)}
+					onclick={() => updateFilterMode(value)}
 				>
 					{value}
 				</button>

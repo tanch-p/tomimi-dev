@@ -4,10 +4,30 @@
 	import EnemyHandbookDisplay from './EnemyHandbookDisplay.svelte';
 	import EnemyDesktopViewController from './EnemyDesktopViewController.svelte';
 
-	export let enemies: Enemy[], language: Language, statMods, specialMods, otherBuffsList, mapConfig;
+	interface Props {
+		enemies: Enemy[];
+		language: Language;
+		statMods: any;
+		specialMods: any;
+		otherBuffsList: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemies,
+		language,
+		statMods,
+		specialMods,
+		otherBuffsList,
+		mapConfig
+	}: Props = $props();
 </script>
 
 <MediaQuery>
-	<EnemyHandbookDisplay {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig} slot="mobile" />
-	<EnemyDesktopViewController {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig} slot="pc" />
+	{#snippet mobile()}
+		<EnemyHandbookDisplay {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig}  />
+	{/snippet}
+	{#snippet pc()}
+		<EnemyDesktopViewController {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig}  />
+	{/snippet}
 </MediaQuery>

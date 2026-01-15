@@ -2,9 +2,15 @@
 	import type { Enemy, Language } from '$lib/types';
 	import { getFormTitle } from '$lib/functions/lib';
 
-	export let enemy: Enemy, row: number, language: Language;
+	interface Props {
+		enemy: Enemy;
+		row: number;
+		language: Language;
+	}
 
-	$: formTitle = getFormTitle(enemy?.forms?.[row]?.title, row, language);
+	let { enemy, row, language }: Props = $props();
+
+	let formTitle = $derived(getFormTitle(enemy?.forms?.[row]?.title, row, language));
 </script>
 
 {#if formTitle}

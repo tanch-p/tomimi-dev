@@ -3,7 +3,13 @@
 	import TitleBlock from './TitleBlock.svelte';
 	import translations from '$lib/translations.json';
 
-	export let list, docLink = null, language: Language;
+	interface Props {
+		list: any;
+		docLink?: any;
+		language: Language;
+	}
+
+	let { list, docLink = null, language }: Props = $props();
 
 	const moreBugs = {
 		zh: `想查看更多或反馈bug，可以在这里查看`,

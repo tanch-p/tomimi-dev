@@ -12,9 +12,13 @@
 	import toolsLogo from '$lib/images/CRA-X.webp';
 	import FriendLinks from '$lib/components/FriendLinks.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: language = data.language;
+	let { data }: Props = $props();
+
+	let language = $derived(data.language);
 	const is_banners = [
 		{ alt: 'rogue_yan', src: banner_sui, href: 'sui' },
 		{ alt: 'rogue_skz', src: banner_sarkaz, href: 'sarkaz' },
@@ -33,12 +37,12 @@
 </svelte:head>
 
 <section>
-	<div class="h-[10vh]" />
+	<div class="h-[10vh]"></div>
 	<div class="w-screen sm:w-full max-w-7xl mx-auto pb-32">
 		<div class="flex flex-col items-center mx-auto gap-x-4 gap-y-8 px-2 sm:px-8 justify-center">
-			<FriendLinks {language} />
+			<!-- <FriendLinks {language} /> -->
 			<div
-				class="w-full md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6"
+				class="w-full md:w-150 bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6"
 			>
 				<div class="flex items-center justify-center">
 					<span>
@@ -86,7 +90,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6">
+			<div class="md:w-150 bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6">
 				<div class="flex items-center justify-center">
 					<span>
 						<img src={ISLogo} alt={translations[language].isw} width="36" height="36" />

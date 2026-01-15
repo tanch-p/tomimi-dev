@@ -9,16 +9,28 @@
 	import OtherBuffs from './OtherBuffs.svelte';
 	import { isEquals } from '$lib/functions/lib';
 
-	export let enemy: Enemy,
-		index: number,
+	interface Props {
+		enemy: Enemy;
+		index: number;
+		filteredTableHeaders: any;
+		language: Language;
+		statMods: StatMods;
+		specialMods: any;
+		otherBuffsList: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemy,
+		index,
 		filteredTableHeaders,
-		language: Language,
-		statMods: StatMods,
+		language,
+		statMods,
 		specialMods,
 		otherBuffsList,
-		mapConfig;
+		mapConfig
+	}: Props = $props();
 
-	$: maxRowSpan = enemy.forms.length;
 	function textAlign(statKey: string) {
 		switch (statKey) {
 			case 'hp':
@@ -33,7 +45,6 @@
 				return 'text-center py-1 px-1';
 		}
 	}
-	$: multispanKeys = getMultispanKeys(enemy?.forms);
 
 	const SHARE_HP_FORMS = ['prisoner_imprisoned', 'rage', 'normal_state'];
 
@@ -56,6 +67,8 @@
 
 		return statKeys;
 	};
+	let maxRowSpan = $derived(enemy.forms.length);
+	let multispanKeys = $derived(getMultispanKeys(enemy?.forms));
 </script>
 
 <!-- {@debug enemy} -->

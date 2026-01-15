@@ -12,7 +12,11 @@
 	import StageNavRow from '$lib/components/StageNavRow.svelte';
 	import dlc1Portal from '$lib/images/is/sui/node_spZone_1.webp';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	let allNormalStages = [
 		[
@@ -120,7 +124,7 @@
 	<table class="text-xs sm:text-base">
 		<tbody>
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -216,7 +220,7 @@
 			</tr>
 			<!-- boss -->
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -277,7 +281,7 @@
 			<!-- encounter -->
 
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img

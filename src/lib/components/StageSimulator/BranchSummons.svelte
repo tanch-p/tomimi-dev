@@ -8,11 +8,21 @@
 
 	const BRANCHES_TO_IGNORE = ['skzjkl_stage_2', 'amiy_blink_1', 'amiy_blink_2'];
 
-	export let mapConfig: MapConfig,
-		game: Game,
-		language: Language,
-		branchKey: string,
+	interface Props {
+		mapConfig: MapConfig;
+		game: Game;
+		language: Language;
+		branchKey: string;
 		branchIndex: number;
+	}
+
+	let {
+		mapConfig,
+		game,
+		language,
+		branchKey = $bindable(),
+		branchIndex = $bindable()
+	}: Props = $props();
 
 	const branches = Object.keys(mapConfig.branches)
 		.filter((key) => !BRANCHES_TO_IGNORE.includes(key))
@@ -28,7 +38,7 @@
 </script>
 
 <div
-	class="absolute right-4 top-24 z-[2] w-[120px] overflow-y-auto max-h-[80%] bg-neutral-800 bg-opacity-80"
+	class="absolute right-4 top-24 z-2 w-[120px] overflow-y-auto max-h-[80%] bg-neutral-800 bg-opacity-80"
 >
 	<div>
 		<div class="flex items-center gap-x-1.5 pl-1 pr-0.5 border-b border-slate-600 text-end">

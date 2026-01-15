@@ -9,7 +9,12 @@
 	import portal from '$lib/images/is/node_portal.webp';
 	import { portalMods } from './stores';
 
-	export let optionsOpen: boolean, language: Language;
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+	}
+
+	let { optionsOpen, language }: Props = $props();
 	const portalDesc = {
 		en: 'All enemies have Movement Speed -50%, but gain DEF +800, RES +30 and Weight level +1.',
 		ja: '敵全員の移動速度50%減少、重量ランク1増加、防御力800増加、術耐性30増加',
@@ -27,7 +32,7 @@
 		}
 	];
 
-	let portalSelected = false;
+	let portalSelected = $state(false);
 	portalMods.subscribe((value) => {
 		portalSelected = Boolean(value);
 	});
@@ -41,7 +46,7 @@
 </script>
 
 <div
-	class={`absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh_-_160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 ${
+	class={`absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh-160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 ${
 		optionsOpen ? 'opacity-90 translate-y-0' : 'invisible opacity-0 -translate-y-10'
 	}`}
 >
@@ -57,7 +62,7 @@
 				class={`grid grid-cols-[75px_auto] gap-x-2 mt-2 hover:cursor-pointer text-start ${
 					portalSelected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 				}`}
-				on:click={handlePortalClick}
+				onclick={handlePortalClick}
 			>
 				<div class="relative flex items-center justify-center">
 					<img
@@ -65,10 +70,10 @@
 						alt={translations[language].sami_portal}
 						loading="lazy"
 						decoding="async"
-						class="z-[1]"
+						class="z-1"
 					/>
 					{#if portalSelected}
-						<div class="absolute w-[55px] h-[55px] portal-active" />
+						<div class="absolute w-[55px] h-[55px] portal-active"></div>
 					{/if}
 				</div>
 				<div class="flex flex-col">

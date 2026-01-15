@@ -15,13 +15,31 @@
 	import OtherBuffs from './OtherBuffs.svelte';
 	import DraggableContainer from './DraggableContainer.svelte';
 
-	export let enemy: Enemy, language: Language, statMods:StatMods, specialMods, otherBuffsList, mode, mapConfig;
+	interface Props {
+		enemy: Enemy;
+		language: Language;
+		statMods: StatMods;
+		specialMods: any;
+		otherBuffsList: any;
+		mode: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemy,
+		language,
+		statMods,
+		specialMods,
+		otherBuffsList,
+		mode,
+		mapConfig
+	}: Props = $props();
 
 	const enemyLevels = ['NORMAL', 'ELITE', 'BOSS'];
 
-	let formIndex = 0;
+	let formIndex = $state(0);
 
-	$: statusImmuneList = getStatusImmune(enemy, enemy.forms[formIndex].status_immune, $specialMods);
+	let statusImmuneList = $derived(getStatusImmune(enemy, enemy.forms[formIndex].status_immune, $specialMods));
 </script>
 
 <div id={enemy.stageId} class="scroll-mt-16 px-2 bg-neutral-900 bg-opacity-40">
@@ -51,7 +69,7 @@
 		<div class="flex items-center mt-0.5">
 			<p class="text-xs text-center bg-almost-black py-0.5 w-12">{enemy.id}</p>
 			{#if enemy.overwritten}
-				<p class="text-xs text-center bg-[#981313] py-0.5 w-[1.75rem]">Sp.</p>
+				<p class="text-xs text-center bg-[#981313] py-0.5 w-7">Sp.</p>
 			{/if}
 			<p class="ml-1.5 font-semibold">{enemy[`name_${language}`]}</p>
 		</div>
@@ -65,7 +83,7 @@
 						width="28px"
 						height="28px"
 						alt=""
-						class="z-[1]"
+						class="z-1"
 					/>
 					<span class={`text-2xl font-bold ${isBlue ? 'text-[#0288c4]' : 'text-red-600'}`}>
 						{enemy.forms[formIndex].stats.lifepoint}
@@ -109,7 +127,7 @@
 								class={`text-sm py-1 px-2 ${
 									formIndex === index ? 'bg-almost-black' : 'opacity-60'
 								}`}
-								on:click={() => (formIndex = index)}
+								onclick={() => (formIndex = index)}
 							>
 								{getFormTitle(form.title, index, language)}
 							</button>

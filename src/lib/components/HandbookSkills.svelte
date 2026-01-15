@@ -4,7 +4,23 @@
 	import RangeParser from './RangeParser.svelte';
 	import Remark from './Remark.svelte';
 
-	export let enemy: Enemy, skills, language: Language, statusImmuneList, formIndex, mapConfig;
+	interface Props {
+		enemy: Enemy;
+		skills: any;
+		language: Language;
+		statusImmuneList: any;
+		formIndex: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemy,
+		skills,
+		language,
+		statusImmuneList,
+		formIndex,
+		mapConfig
+	}: Props = $props();
 </script>
 
 {#if skills.length > 0}

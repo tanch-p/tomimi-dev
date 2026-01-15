@@ -1,4 +1,4 @@
-import ISStages from './data/stages/stage_name_lookup_table.json' assert { type: 'json' };
+import ISStages from './data/stages/stage_name_lookup_table.json' with { type: 'json' };
 
 const LANGUAGES = ['en', 'ja', 'zh'];
 const PAGES = ['about', 'donate', 'laoli', 'recruit', 'mizuki', 'phantom', 'sarkaz', 'sami'];

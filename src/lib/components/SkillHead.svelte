@@ -3,12 +3,22 @@
 	import translations from '$lib/translations.json';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { getFormTitle } from '$lib/functions/lib';
-	export let entity: Enemy | Trap,
-		skill: Skill,
-		language: Language,
+	interface Props {
+		entity: Enemy | Trap;
+		skill: Skill;
+		language: Language;
+		mode?: string;
+		statusImmuneList?: StatusImmune[];
+	}
+
+	let {
+		entity,
+		skill,
+		language,
 		mode = 'table',
-		statusImmuneList: StatusImmune[] = [];
-	$: skillType = skill.skillType || 'COOLDOWN';
+		statusImmuneList = []
+	}: Props = $props();
+	let skillType = $derived(skill.skillType || 'COOLDOWN');
 </script>
 
 <div class="flex flex-wrap items-center mb-0.5">
@@ -28,7 +38,7 @@
 		</div>
 	{:else}
 		<div class="flex items-center gap-x-1 rounded-[5px] text-sm bg-[#434343]">
-			<div class="grid grid-cols-[9px_1fr] gap-x-[1px] items-center pl-[4px] p-0.5">
+			<div class="grid grid-cols-[9px_1fr] gap-x-px items-center pl-[4px] p-0.5">
 				<img src={charaAssets.sp_start} alt="start" />
 				<p
 					class="leading-tight {skill?.overwrittenKeys?.includes('initSp')
@@ -54,7 +64,7 @@
 		{translations[language][skillType]}
 	</p>
 	{#if skill.can_silence && !statusImmuneList.includes('silence')}
-		<span class="skilltag can_silence !ml-0">{translations[language].can_silence}</span>
+		<span class="skilltag can_silence ml-0!">{translations[language].can_silence}</span>
 	{/if}
 </div>
 {#if entity.forms.length > 1 && skill.formIndexes}

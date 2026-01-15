@@ -3,12 +3,25 @@
 	import Icon from './Icon.svelte';
 	import { setLocalStorage } from '$lib/functions/lib';
 
-	export let title = 'title',
+	interface Props {
+		title?: string;
+		key?: string;
+		isOpen?: boolean;
+		size?: string;
+		className?: string;
+		titleIcon?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		title = 'title',
 		key = '',
-		isOpen = false,
+		isOpen = $bindable(false),
 		size = 'large',
 		className = '',
-		titleIcon = '';
+		titleIcon = '',
+		children
+	}: Props = $props();
 
 	const toggle = () => {
 		isOpen = !isOpen;
@@ -19,7 +32,7 @@
 </script>
 
 <div class="sm:px-6 {className}">
-	<button class="flex justify-between items-center w-full px-2 sm:px-0" on:click={toggle}>
+	<button class="flex justify-between items-center w-full px-2 sm:px-0" onclick={toggle}>
 		<div class="flex items-center gap-x-3">
 			<h2 class={`${size === 'subheading' ? 'text-subheading' : 'text-3xl'}`}>{title}</h2>
 			{#if titleIcon}
@@ -34,8 +47,8 @@
 	</button>
 	<hr class="border-gray-500 my-1" />
 	{#if isOpen}
-		<div transition:slide|local={{ duration: 300 }}>
-			<slot>No children given</slot>
+		<div transition:slide={{ duration: 300 }}>
+			{#if children}{@render children()}{:else}No children given{/if}
 		</div>
 	{/if}
 </div>

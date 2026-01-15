@@ -4,8 +4,11 @@
 	import ActionBlock from './ActionBlock.svelte';
 	import StunBlock from './StunBlock.svelte';
 
-	export let data: PageData;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const creditsRoll = [
 		{
@@ -46,43 +49,16 @@
 		}
 	];
 
-	let aspdInc = 0;
-	let rounds = 20;
-	let talentInset = 0;
-	let resolution = 2;
-	let initialTalentActivated = true;
-	let doqHP50 = false;
-	let moduleLevel = 3;
+	let aspdInc = $state(0);
+	let rounds = $state(20);
+	let talentInset = $state(0);
+	let resolution = $state(2);
+	let initialTalentActivated = $state(true);
+	let doqHP50 = $state(false);
+	let moduleLevel = $state(3);
 
-	$: f0 = Math.round((1 / ((100 + aspdInc) / 100)) * 14);
-	$: Fnormal = Math.round((1 / ((100 + aspdInc) / 100)) * 30);
-	$: Fcold = Math.round((1 / ((100 - 30 + aspdInc) / 100)) * 30);
 
-	$: freezeDuration = doqHP50 ? 120 : 60;
 
-	$: results = getFreezeTimings(
-		rounds,
-		f0,
-		Fcold,
-		freezeDuration,
-		initialTalentActivated,
-		talentInset,
-		moduleLevel
-	);
-	$: freezeTimings = results.freezeIndexes; //used for debug
-	$: fValues = results.fValues;
-	$: costReductions = results.costContainer;
-	$: costReductionPerMinute = costReductions.reduce(
-		(acc, curr, i) => {
-			const insertIndex = Math.floor(i / 20);
-			if (!acc[insertIndex]) {
-				acc[insertIndex] = 0;
-			}
-			acc[insertIndex] = acc[insertIndex] + curr;
-			return acc;
-		},
-		[0]
-	);
 	function getEnemyLockFrame() {
 		return Math.floor(Math.random() * 3);
 	}
@@ -164,7 +140,7 @@
 
 		return { freezeIndexes, costContainer, fValues };
 	}
-	let timer: NodeJS.Timeout;
+	let timer: NodeJS.Timeout = $state();
 	let initialTimeout = 300;
 	let minTimeout = 50;
 	function startDecrement(timeout: number) {
@@ -183,6 +159,34 @@
 			}, timeout);
 		}
 	}
+	let language = $derived(data.language);
+	let f0 = $derived(Math.round((1 / ((100 + aspdInc) / 100)) * 14));
+	let Fnormal = $derived(Math.round((1 / ((100 + aspdInc) / 100)) * 30));
+	let Fcold = $derived(Math.round((1 / ((100 - 30 + aspdInc) / 100)) * 30));
+	let freezeDuration = $derived(doqHP50 ? 120 : 60);
+	let results = $derived(getFreezeTimings(
+		rounds,
+		f0,
+		Fcold,
+		freezeDuration,
+		initialTalentActivated,
+		talentInset,
+		moduleLevel
+	));
+	let freezeTimings = $derived(results.freezeIndexes); //used for debug
+	let fValues = $derived(results.fValues);
+	let costReductions = $derived(results.costContainer);
+	let costReductionPerMinute = $derived(costReductions.reduce(
+		(acc, curr, i) => {
+			const insertIndex = Math.floor(i / 20);
+			if (!acc[insertIndex]) {
+				acc[insertIndex] = 0;
+			}
+			acc[insertIndex] = acc[insertIndex] + curr;
+			return acc;
+		},
+		[0]
+	));
 </script>
 
 <svelte:head>
@@ -226,7 +230,7 @@
 				<span class="text-right pr-2">{translations[language].laoli_module_lvl}</span>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
-					on:click={() => (moduleLevel -= 1)}
+					onclick={() => (moduleLevel -= 1)}
 					disabled={moduleLevel <= 0}
 				>
 					－
@@ -241,7 +245,7 @@
 				/>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
-					on:click={() => (moduleLevel += 1)}
+					onclick={() => (moduleLevel += 1)}
 					disabled={moduleLevel >= 3}
 				>
 					＋
@@ -265,7 +269,7 @@
 				<span class="text-right pr-2">{translations[language].laoli_f0}(F0)</span>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
-					on:click={() => (f0 -= 1)}
+					onclick={() => (f0 -= 1)}
 					disabled={f0 <= 0}
 				>
 					－
@@ -273,7 +277,7 @@
 				<input class="text-center" type="number" bind:value={f0} min="0" max="14" step="1" />
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
-					on:click={() => (f0 += 1)}
+					onclick={() => (f0 += 1)}
 					disabled={f0 >= 18}
 				>
 					＋
@@ -284,10 +288,10 @@
 				<span class="text-right pr-2">{translations[language].laoli_fCold}(F1,F2)</span>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
-					on:mousedown={() => startDecrement(initialTimeout)}
-					on:mouseup={() => clearTimeout(timer)}
-					on:mouseleave={() => clearTimeout(timer)}
-					on:click={() => (Fcold -= 1)}
+					onmousedown={() => startDecrement(initialTimeout)}
+					onmouseup={() => clearTimeout(timer)}
+					onmouseleave={() => clearTimeout(timer)}
+					onclick={() => (Fcold -= 1)}
 					disabled={Fcold <= 1}
 				>
 					－
@@ -295,10 +299,10 @@
 				<input class="text-center" type="number" bind:value={Fcold} min="0" max="60" step="1" />
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
-					on:mousedown={() => startIncrement(initialTimeout)}
-					on:mouseup={() => clearTimeout(timer)}
-					on:mouseleave={() => clearTimeout(timer)}
-					on:click={() => (Fcold += 1)}
+					onmousedown={() => startIncrement(initialTimeout)}
+					onmouseup={() => clearTimeout(timer)}
+					onmouseleave={() => clearTimeout(timer)}
+					onclick={() => (Fcold += 1)}
 					disabled={Fcold >= 80}
 				>
 					＋
@@ -333,7 +337,7 @@
 								index % 2 === 0 ? 'bg-neutral-900' : 'bg-gray-600'
 							}`}
 							style={`width:${90 * resolution}px`}
-						/>
+						></div>
 					</div>
 				{/each}
 			</div>
@@ -344,25 +348,25 @@
 			class="flex flex-col md:flex-row md:flex-wrap justify-evenly gap-y-2.5 rounded border bg-slate-200 py-2.5 px-3 md:px-0"
 		>
 			<div class="flex items-center gap-x-2">
-				<div class="h-4 w-4 bg-[#fdfc01]" />
+				<div class="h-4 w-4 bg-[#fdfc01]"></div>
 				<span> {translations[language].laoli_f0} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
-				<div class="h-4 w-4 bg-[#f8cc47]" />
-				<div class="h-4 w-4 bg-[#f28b00]" />
+				<div class="h-4 w-4 bg-[#f8cc47]"></div>
+				<div class="h-4 w-4 bg-[#f28b00]"></div>
 				<span> {translations[language].laoli_fCold} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
-				<div class="h-4 w-4 bg-[#34c2e6]" />
+				<div class="h-4 w-4 bg-[#34c2e6]"></div>
 				<span> {translations[language].laoli_freeze_duration} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
-				<div class="h-4 w-4 bg-neutral-900" />
-				<div class="h-4 w-4 bg-gray-600" />
+				<div class="h-4 w-4 bg-neutral-900"></div>
+				<div class="h-4 w-4 bg-gray-600"></div>
 				<span>{translations[language].laoli_talent}</span>
 			</div>
 			<div class="flex items-center gap-x-2">
-				<div class="h-4 w-4 bg-[#8d2828]" />
+				<div class="h-4 w-4 bg-[#8d2828]"></div>
 				<span> {translations[language].laoli_stun_duration} </span>
 			</div>
 		</div>
@@ -419,20 +423,20 @@
 		grid-template-columns: 140px auto auto auto auto;
 		width: max-content;
 	}
-	label:has(input[type='range']) {
+	label:has(:global(input[type='range'])) {
 		display: grid;
 		grid-template-columns: 140px 60px 40px 150px 40px;
 		width: max-content;
 		align-items: center;
 	}
-	label:has(input[type='range']) input[type='number'] {
+	label:has(:global(input[type='range'])) input[type='number'] {
 		padding-left: 8px;
 	}
 	input[type='number'] {
 		width: 60px;
 	}
 	@media only screen and (max-width: 640px) {
-		label:has(input[type='range']) {
+		label:has(:global(input[type='range'])) {
 			display: grid;
 			grid-template-columns: 140px 60px 30px 100px 30px;
 			width: max-content;

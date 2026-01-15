@@ -1,5 +1,5 @@
-<script>
-	export let resolution, freezeDuration, fValues;
+<script lang="ts">
+	let { resolution, freezeDuration, fValues } = $props();
 </script>
 
 <div class="flex w-max">

@@ -7,7 +7,12 @@
 	import wrath_8 from '$lib/images/is/sui/rogue_5_wrath_8.webp';
 	import { difficulty, activeFloorEffects } from './stores';
 
-	export let optionsOpen: boolean, language: Language;
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+	}
+
+	let { optionsOpen, language }: Props = $props();
 
 	const lookup = {
 		rogue_5_wrath_8: wrath_8,
@@ -15,8 +20,8 @@
 	suiTimeList.forEach((option) => {
 		option.src = lookup[option.iconId];
 	});
-	let options = [];
-	let level = 1;
+	let options = $state([]);
+	let level = $state(1);
 
 	difficulty.subscribe((n) => {
 		switch (true) {
@@ -42,7 +47,7 @@
 </script>
 
 <div
-	class={`absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh_-_160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 ${
+	class={`absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh-160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 ${
 		optionsOpen ? 'opacity-90 translate-y-0' : 'invisible opacity-0 -translate-y-10'
 	}`}
 >

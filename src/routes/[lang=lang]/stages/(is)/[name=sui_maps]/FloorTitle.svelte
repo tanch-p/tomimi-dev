@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Language } from '$lib/types';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
@@ -14,9 +16,14 @@
 
 	import Icon from '$lib/components/Icon.svelte';
 
-	export let stageFloors: number[], language: Language;
+	interface Props {
+		stageFloors: number[];
+		language: Language;
+	}
 
-	let optionsOpen = false;
+	let { stageFloors, language }: Props = $props();
+
+	let optionsOpen = $state(false);
 
 	const floorIcons = [floor1, floor2, floor3, floor4, floor5, floor6];
 
@@ -26,14 +33,16 @@
 			activeFloorEffects.set([]);
 		}
 	}
-	$: updateFloor(stageFloors);
+	run(() => {
+		updateFloor(stageFloors);
+	});
 </script>
 
-<div use:clickOutside on:outclick={() => (optionsOpen = false)} class="mx-auto select-none">
+<div use:clickOutside onoutclick={() => (optionsOpen = false)} class="mx-auto select-none">
 	<button
 		id="floor-options"
 		class="px-3 py-0.5 md:hover:bg-neutral-500"
-		on:click={() => (optionsOpen = !optionsOpen)}
+		onclick={() => (optionsOpen = !optionsOpen)}
 	>
 		<div class="flex justify-center items-center gap-x-1">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />
@@ -56,7 +65,7 @@
 						/>
 						<img
 							src={effect.src}
-							class="absolute z-[1] -inset-[9999px] m-auto max-h-[150%]"
+							class="absolute z-1 -inset-[9999px] m-auto max-h-[150%]"
 							alt={effect['name_zh']}
 						/>
 					</div>

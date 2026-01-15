@@ -1,14 +1,28 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Language, RogueTopic } from '$lib/types';
 	import { spring } from 'svelte/motion';
 	import translations from '$lib/translations.json';
 	import { setLocalStorage } from '$lib/functions/lib.js';
 
-	export let language: Language,
+	interface Props {
+		language: Language;
+		difficulty: any;
+		rogueTopic: RogueTopic;
+		maxDiff?: number;
+		mode?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		language,
 		difficulty,
-		rogueTopic: RogueTopic,
+		rogueTopic,
 		maxDiff = 15,
-		mode = 'normal';
+		mode = 'normal',
+		children
+	}: Props = $props();
 
 	const getStorageKey = (rogueTopic) => {
 		switch (rogueTopic) {
@@ -27,20 +41,18 @@
 		difficulty.update(() => n);
 		setLocalStorage(getStorageKey(rogueTopic), n.toString());
 	}
-	let selectedDifficulty: number;
+	let selectedDifficulty: number = $state();
 	difficulty.subscribe((value) => {
 		selectedDifficulty = value;
 	});
 
 	const displayed_count = spring();
-	$: displayed_count.set(selectedDifficulty);
-	$: offset = modulo($displayed_count, 1);
 
 	function modulo(n: number, m: number) {
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
-	let timer: NodeJS.Timeout;
+	let timer: NodeJS.Timeout = $state();
 	let initialTimeout = 300;
 	let minTimeout = 100;
 	function startDecrement(timeout: number) {
@@ -59,18 +71,22 @@
 			}, timeout);
 		}
 	}
+	run(() => {
+		displayed_count.set(selectedDifficulty);
+	});
+	let offset = $derived(modulo($displayed_count, 1));
 </script>
 
 <div class="px-2 sm:px-6 select-none mt-2.5">
 	<p class="text-subheading">{translations[language].difficulty}</p>
-	<slot/>
+	{@render children?.()}
 	{#if mode === 'normal'}
 		<div class="counter">
 			<button
-				on:mousedown={() => startDecrement(initialTimeout)}
-				on:mouseup={() => clearTimeout(timer)}
-				on:mouseleave={() => clearTimeout(timer)}
-				on:click={() => updateDifficulty(selectedDifficulty - 1)}
+				onmousedown={() => startDecrement(initialTimeout)}
+				onmouseup={() => clearTimeout(timer)}
+				onmouseleave={() => clearTimeout(timer)}
+				onclick={() => updateDifficulty(selectedDifficulty - 1)}
 				disabled={selectedDifficulty <= 0}
 				aria-label="Decrease the counter by one"
 				class="group"
@@ -89,10 +105,10 @@
 			</div>
 
 			<button
-				on:mousedown={() => startIncrement(initialTimeout)}
-				on:mouseup={() => clearTimeout(timer)}
-				on:mouseleave={() => clearTimeout(timer)}
-				on:click={() => updateDifficulty(selectedDifficulty + 1)}
+				onmousedown={() => startIncrement(initialTimeout)}
+				onmouseup={() => clearTimeout(timer)}
+				onmouseleave={() => clearTimeout(timer)}
+				onclick={() => updateDifficulty(selectedDifficulty + 1)}
 				disabled={selectedDifficulty >= maxDiff}
 				aria-label="Increase the counter by one"
 				class="group"

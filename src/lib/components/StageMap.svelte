@@ -5,9 +5,21 @@
 	import skz_calamity from '$lib/images/is/sarkaz/skz_calamity.webp';
 	import unknown from '$lib/images/is/skz_unknown.webp';
 	import { getStageImg } from '$lib/functions/lib';
-	export let mapConfig, rogueTopic: RogueTopic, language: Language, eliteMode;
+	interface Props {
+		mapConfig: any;
+		rogueTopic: RogueTopic;
+		language: Language;
+		eliteMode: any;
+	}
 
-	let index = 0;
+	let {
+		mapConfig,
+		rogueTopic,
+		language,
+		eliteMode
+	}: Props = $props();
+
+	let index = $state(0);
 
 	const stagesWithMultipleImgs = ['level_rogue4_4-1'];
 	const stagesWithRNG = [
@@ -43,7 +55,7 @@
 				class="grid grid-flow-col auto-cols-fr font-bold text-lg text-near-white text-center select-none divide-x divide-gray-500 py-1"
 			>
 				{#each multipleImgLookup[mapConfig.levelId] as { key }, i}
-					<button class={index === i ? '' : 'text-gray-400'} on:click={() => (index = i)}
+					<button class={index === i ? '' : 'text-gray-400'} onclick={() => (index = i)}
 						>{key}</button
 					>
 				{/each}

@@ -5,10 +5,17 @@
 	import kofiBadge from '$lib/images/kofi_badge_beige.png';
 	import afdian from '$lib/images/afdian.jpg';
 
-	export let data: PageData, language: Language;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+		language: Language;
+	}
 
-	const sponsors = ['瓦楞纸', 'Yannick', 'Somebody', 'ithy', 'fafa', '复恐匆匆', 'sunlazy','银河Aquila','辰伊光','爱发电用户_DyPR','火心子',"所谓之人"].sort();
+	let { data, language = $bindable() }: Props = $props();
+	run(() => {
+		language = data.language;
+	});
+
+	const sponsors = ['瓦楞纸', 'Yannick', 'Somebody', 'ithy', 'fafa', '复恐匆匆', 'sunlazy','银河Aquila','辰伊光','爱发电用户_DyPR','火心子',"所谓之人","爱发电用户_84EC","凶兽咆哮","阿谛亚","爱发电用户_116dc"].sort();
 </script>
 
 <svelte:head>

@@ -7,7 +7,11 @@
 	import translations from '$lib/translations.json';
 	import romanNumerals from '$lib/roman_numerals.json';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	let allNormalStages = [
 		['与虫为伴', '驯兽小屋', '礼炮小队', '意外', '死斗'],
@@ -41,7 +45,7 @@
 	<table class="text-xs sm:text-base">
 		<tbody>
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -95,7 +99,7 @@
 
 			<!-- boss -->
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -149,7 +153,7 @@
 			<!-- encounter -->
 
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img

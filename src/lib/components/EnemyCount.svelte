@@ -4,11 +4,21 @@
 	import TogglePanel from './TogglePanel.svelte';
 	import { BONUS_ENEMY_KEYS } from '$lib/functions/lib';
 
-	export let mapConfig: MapConfig,
-		enemies,
-		eliteMode: boolean,
-		language: Language,
+	interface Props {
+		mapConfig: MapConfig;
+		enemies: any;
+		eliteMode: boolean;
+		language: Language;
 		rogueTopic: RogueTopic;
+	}
+
+	let {
+		mapConfig,
+		enemies,
+		eliteMode,
+		language,
+		rogueTopic
+	}: Props = $props();
 
 	function getMinMaxCount(id, eliteMode) {
 		const data = mapConfig.enemies.find((enemy) => id === enemy.id);

@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import ro5 from '$lib/data/stages/ro5.json';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
-	export let levelId: string, language: Language;
+	interface Props {
+		levelId: string;
+		language: Language;
+	}
+
+	let { levelId, language }: Props = $props();
 
 	const stagesToHide = [
 		'level_rogue5_b-4-b',
@@ -37,13 +42,13 @@
 		'level_rogue5_7-2'
 	];
 
-	$: currentLevel = $page?.data?.mapConfig?.levelId;
+	let currentLevel = $derived(page?.data?.mapConfig?.levelId);
 	const stageInfo = ro5[levelId];
 	if (!stageInfo) {
 		throw new Error(`${levelId} is not found!`);
 	}
-	$: name = stageInfo[`name_${language}`] || stageInfo['name_zh'];
-	$: stageUrl = stageInfo.code + '_' + name;
+	let name = $derived(stageInfo[`name_${language}`] || stageInfo['name_zh']);
+	let stageUrl = $derived(stageInfo.code + '_' + name);
 </script>
 
 <a href={`/${language}/stages/${stageUrl}`}>

@@ -3,7 +3,12 @@
 	import LanguageSwitcher from './LanguageSwitcher.svelte';
 	import favicon from '$lib/images/favicon.webp';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+		floorTitle?: import('svelte').Snippet;
+	}
+
+	let { language, floorTitle }: Props = $props();
 </script>
 
 <header
@@ -17,9 +22,9 @@
 				<img src={favicon} width="32px" decoding="async" loading="lazy" alt="Home" />
 			</a>
 		</div>
-		<slot name="floorTitle">
-			<div />
-		</slot>
+		{#if floorTitle}{@render floorTitle()}{:else}
+			<div></div>
+		{/if}
 		<div class="hidden sm:flex justify-end">
 			<LanguageSwitcher />
 		</div>

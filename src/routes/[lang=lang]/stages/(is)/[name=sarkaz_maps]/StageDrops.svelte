@@ -10,11 +10,23 @@
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
-	export let mapConfig, rogueTopic: string, language: Language, selectedFloor;
+	interface Props {
+		mapConfig: any;
+		rogueTopic: string;
+		language: Language;
+		selectedFloor: any;
+	}
 
-	let dropData;
+	let {
+		mapConfig,
+		rogueTopic,
+		language,
+		selectedFloor
+	}: Props = $props();
 
-	$: dropData = drops[rogueTopic][mapConfig.id];
+	let dropData = $derived(drops[rogueTopic][mapConfig.id]);
+
+	
 </script>
 
 {#if dropData}
@@ -32,7 +44,7 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th colspan="2" class="noborder border-t border-l" />
+							<th colspan="2" class="noborder border-t border-l"></th>
 							<th>
 								<div class="flex items-center justify-center">
 									<img
@@ -63,7 +75,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td />
+							<td></td>
 							<td> {translations[language].exp}</td>
 							<td colspan="1">
 								{dropData?.exp?.[0]}
@@ -89,7 +101,7 @@
 							{/if}
 						</tr>
 						<tr>
-							<td />
+							<td></td>
 							<td> {translations[language].ro4_fragment}*</td>
 							<td colspan="2">
 								<div>2 - 33%</div>

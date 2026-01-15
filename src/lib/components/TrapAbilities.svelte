@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Language, MapConfig, Trap } from '$lib/types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import translations from '$lib/translations.json';
 	import TextParser from './TextParser.svelte';
 	import TrapSkill from './TrapSkill.svelte';
@@ -9,18 +9,27 @@
 	import RangeParser from './RangeParser.svelte';
 	import { getTrapSpecialSkill } from '$lib/functions/trapHelpers';
 
-	export let trap: Trap,
+	interface Props {
+		trap: Trap;
+		mode?: string;
+		specialMods: any;
+		mapConfig: MapConfig;
+	}
+
+	let {
+		trap,
 		mode = 'handbook',
 		specialMods,
-		mapConfig: MapConfig;
-	let language: Language;
-	$: language = $page.data.language;
+		mapConfig
+	}: Props = $props();
+	let language: Language = $derived(page.data.language);
+	
 </script>
 
 {#if trap.desc}
 	{#if mode === 'handbook'}
 		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-			{translations[language].trait}<span class="font-normal" />
+			{translations[language].trait}<span class="font-normal"></span>
 		</p>
 	{/if}
 	<ul class="list-disc pl-4 {mode === 'handbook' ? 'py-1' : ''}">
@@ -32,7 +41,7 @@
 {#if trap.special.length > 0}
 	{#if mode === 'handbook'}
 		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-			{translations[language].handbook_mechanics}<span class="font-normal" />
+			{translations[language].handbook_mechanics}<span class="font-normal"></span>
 		</p>
 	{/if}
 	<ul class="list-disc pl-4 py-1">
@@ -80,7 +89,7 @@
 		{#each trap.talents as talent}
 			<li>
 				{#if mode === 'handbook'}
-					<p class="py-[1px] px-2 mt-1.5 w-max bg-[#d4d4d4] rounded-md font-medium text-[#333]">
+					<p class="py-px px-2 mt-1.5 w-max bg-[#d4d4d4] rounded-md font-medium text-[#333]">
 						{talent.name}
 					</p>
 				{/if}

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { pruneExtraEnemies } from '$lib/functions/lib';
 	import { applyMods } from '$lib/functions/statHelpers';
 	import { applyTrapMods, filterTraps } from '$lib/functions/trapHelpers';
@@ -10,7 +12,8 @@
 	import { GameConfig } from './StageSimulator/objects/GameConfig';
 	import TrapContainer from './TrapContainer.svelte';
 
-	export let language,
+	let {
+		language,
 		traps,
 		enemies,
 		otherBuffsList,
@@ -22,16 +25,20 @@
 		rogueTopic,
 		selectedRelics,
 		difficulty,
-		otherStores = {};
+		otherStores = {},
+		nav
+	} = $props();
 
-	$: moddedEnemies = applyMods(enemies, $statMods, $specialMods);
-	$: moddedTraps = applyTrapMods(traps, $statMods, $specialMods);
+	let moddedEnemies = $derived(applyMods(enemies, $statMods, $specialMods));
+	let moddedTraps = $derived(applyTrapMods(traps, $statMods, $specialMods));
 	eliteMode.subscribe((v) => (GameConfig.eliteMode = v));
 	specialMods.subscribe((v) => (GameConfig.specialMods = v));
 
-	$: if (mapConfig) {
-		eliteMode.set(false);
-	}
+	run(() => {
+		if (mapConfig) {
+			eliteMode.set(false);
+		}
+	});
 
 	onDestroy(() => {
 		runes.set(null);
@@ -51,17 +58,19 @@
 		{otherStores}
 		{difficulty}
 	>
-		<EliteToggle
-			slot="eliteMods"
-			inWaveOptions={true}
-			{eliteMode}
-			{runes}
-			mapNormalMods={mapConfig.n_mods}
-			mapEliteMods={mapConfig.elite_mods}
-			{rogueTopic}
-			{selectedRelics}
-			stageId={mapConfig.levelId}
-		/>
+		{#snippet eliteMods()}
+				<EliteToggle
+				
+				inWaveOptions={true}
+				{eliteMode}
+				{runes}
+				mapNormalMods={mapConfig.n_mods}
+				mapEliteMods={mapConfig.elite_mods}
+				{rogueTopic}
+				{selectedRelics}
+				stageId={mapConfig.levelId}
+			/>
+			{/snippet}
 	</EnemyWaves>
 {/await}
 <TrapContainer
@@ -98,6 +107,6 @@
 		{mapConfig}
 	/>
 	<div id="stageNav" class="mt-8 sm:mt-16 scroll-mt-20">
-		<slot name="nav" />
+		{@render nav?.()}
 	</div>
 </div>

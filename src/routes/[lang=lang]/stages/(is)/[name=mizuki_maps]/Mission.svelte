@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Language } from '$lib/types';
 	import translations from '$lib/translations.json';
 	import { missionMods } from './stores.js';
@@ -12,17 +14,23 @@
 			]
 		}
 	];
-	let selected = false;
+	let selected = $state(false);
 
-	$: selected ? missionMods.set(missionModEffects) : missionMods.set(null);
+	run(() => {
+		selected ? missionMods.set(missionModEffects) : missionMods.set(null);
+	});
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 </script>
 
 <button
 	id="mission"
 	class={`max-w-screen sm:w-max sm:px-6 mt-4 mb-6 select-none hover:cursor-pointer hover:bg-neutral-700 text-start`}
-	on:click={() => {
+	onclick={() => {
 		selected = !selected;
 	}}
 >

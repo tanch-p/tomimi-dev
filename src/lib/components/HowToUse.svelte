@@ -4,7 +4,12 @@
 	import floorHelp from '$lib/images/others/floor_title_help.webp';
 	import relicHelp from '$lib/images/others/relic_help.webp';
 
-	export let language: Language, rogueTopic: string;
+	interface Props {
+		language: Language;
+		rogueTopic: string;
+	}
+
+	let { language, rogueTopic }: Props = $props();
 </script>
 
 <div class="px-2">

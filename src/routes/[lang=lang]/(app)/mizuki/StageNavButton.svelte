@@ -1,19 +1,24 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import ro2 from "$lib/data/stages/ro2.json"
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
-	export let stageName: string, language: Language;
+	interface Props {
+		stageName: string;
+		language: Language;
+	}
 
-	$: currentStageName = $page?.data?.mapConfig?.name_zh;
+	let { stageName, language }: Props = $props();
+
+	let currentStageName = $derived(page?.data?.mapConfig?.name_zh);
 
 	const stageInfo = ro2[stageName];
 	if (!stageInfo) {
 		throw new Error(`${stageName} is not found!`);
 	}
-	$: stageUrl = stageInfo.code + '_' + (stageInfo[`name_${language}`] || stageInfo['name_zh']);
+	let stageUrl = $derived(stageInfo.code + '_' + (stageInfo[`name_${language}`] || stageInfo['name_zh']));
 
-	$: name = stageInfo[`name_${language}`] || stageInfo['name_zh'];
+	let name = $derived(stageInfo[`name_${language}`] || stageInfo['name_zh']);
 </script>
 
 <a

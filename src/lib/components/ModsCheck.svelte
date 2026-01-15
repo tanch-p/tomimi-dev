@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Enemy, Language } from '$lib/types';
 	import translations from '$lib/translations.json';
 	import TogglePanel from './TogglePanel.svelte';
@@ -6,19 +8,31 @@
 	import DraggableContainer from './DraggableContainer.svelte';
 	import ModsCheckStatTable from './ModsCheckStatTable.svelte';
 
-	export let language: Language, enemies: Enemy[], mapConfig;
-	let enemyIndex = 0;
-	let formIndex = 0;
-	let enemy = enemies?.[0];
+	interface Props {
+		language: Language;
+		enemies: Enemy[];
+		mapConfig: any;
+	}
 
-	$: if (mapConfig) {
-		enemyIndex = 0;
-	}
-	$: if (enemyIndex > -1) {
-		formIndex = 0;
-	}
-	$: listToShow = enemies?.filter((enemy) => enemy?.modsList?.some((mods) => mods?.length > 0)) || [];
-	$: enemy = listToShow[enemyIndex];
+	let { language, enemies, mapConfig }: Props = $props();
+	let enemyIndex = $state(0);
+	let formIndex = $state(0);
+	let enemy = $state(enemies?.[0]);
+
+	run(() => {
+		if (mapConfig) {
+			enemyIndex = 0;
+		}
+	});
+	run(() => {
+		if (enemyIndex > -1) {
+			formIndex = 0;
+		}
+	});
+	let listToShow = $derived(enemies?.filter((enemy) => enemy?.modsList?.some((mods) => mods?.length > 0)) || []);
+	run(() => {
+		enemy = listToShow[enemyIndex];
+	});
 
 </script>
 
@@ -33,7 +47,7 @@
 				class="flex w-max min-w-full font-bold text-lg text-white text-center select-none py-1 border-b border-b-gray-500"
 			>
 				{#each listToShow as enemy, i}
-					<button on:click={() => (enemyIndex = i)} class="px-1">
+					<button onclick={() => (enemyIndex = i)} class="px-1">
 						<img
 							class="pointer-events-none {i !== enemyIndex ? 'brightness-50' : ''}"
 							src={`/images/enemy_icons/${enemy.key}.webp`}
@@ -81,7 +95,7 @@
 						<button
 							data-id="form-{index + 1}"
 							class={`text-sm py-1 px-2 ${formIndex === index ? 'bg-almost-black' : 'opacity-60'}`}
-							on:click={() => (formIndex = index)}
+							onclick={() => (formIndex = index)}
 						>
 							{getFormTitle(form.title, index, language)}
 						</button>

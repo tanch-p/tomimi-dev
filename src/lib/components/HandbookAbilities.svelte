@@ -7,11 +7,27 @@
 	import HandbookSkills from './HandbookSkills.svelte';
 	import { isEquals } from '$lib/functions/lib';
 
-	export let enemy: Enemy, language: Language, specialMods, statusImmuneList, formIndex, mapConfig;
-	$: traits = getEnemySkills(enemy, enemy.traits, 0, $specialMods, 'trait').filter(
+	interface Props {
+		enemy: Enemy;
+		language: Language;
+		specialMods: any;
+		statusImmuneList: any;
+		formIndex: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemy,
+		language,
+		specialMods,
+		statusImmuneList,
+		formIndex,
+		mapConfig
+	}: Props = $props();
+	let traits = $derived(getEnemySkills(enemy, enemy.traits, 0, $specialMods, 'trait').filter(
 		(skill) => skill.type !== 'skill'
-	);
-	$: skills = getHandbookEnemySkills(enemy, $specialMods);
+	));
+	let skills = $derived(getHandbookEnemySkills(enemy, $specialMods));
 </script>
 
 <HandbookSkills {enemy} {skills} {language} {statusImmuneList} {formIndex} {mapConfig} />

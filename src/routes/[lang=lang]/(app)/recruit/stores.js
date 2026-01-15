@@ -12,7 +12,7 @@ import {
 	createStrictFilterFunction,
 	createNormalFilterFunction,
 	createSecFilterFunction
-} from '$lib/functions/charaHelpers';
+} from '$lib/functions/chara/charaHelpers';
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../../stores';
 

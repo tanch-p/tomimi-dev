@@ -2,13 +2,17 @@
 	import type { Language } from '$lib/types';
 	import translations from '$lib/translations.json';
 	import { secFiltersStore } from './stores';
-	import { getOptionTranslation } from '$lib/functions/charaHelpers';
+	import { getOptionTranslation } from '$lib/functions/chara/charaHelpers';
 	import { parseConditions } from '$lib/functions/languageHelpers';
 	import Icon from '$lib/components/Icon.svelte';
 	import CharaFilterToggle from './CharaFilterToggle.svelte';
 	import FilterOptionsToggle from './FilterOptionsToggle.svelte';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const updateSecFilters = (key, subKey, value, type = 'options') => {
 		secFiltersStore.update((list) => {
@@ -70,8 +74,8 @@
 			<div class="flex flex-wrap sm:grid grid-cols-2 gap-3">
 				{#each $secFiltersStore as { key, list }}
 					<div class="relative w-full rounded border p-3 bg-gray-200">
-						<button class="absolute flex right-2" on:click={() => reset(key)}>
-							<Icon name="trash" className="h-[18px] mt-[1px]" />
+						<button class="absolute flex right-2" onclick={() => reset(key)}>
+							<Icon name="trash" className="h-[18px] mt-px" />
 							{translations[language].filter_reset}
 						</button>
 						<p class="sm:text-center capitalize text-[#006EA1]">
@@ -96,7 +100,7 @@
 										</span>
 										<button
 											class="text-lg bg-gray-300 hover:bg-gray-400 rounded px-3"
-											on:click={() => updateSecFilters(key, subKey, sign, 'sign')}
+											onclick={() => updateSecFilters(key, subKey, sign, 'sign')}
 										>
 											{#if sign === 'gte'}
 												&ge;
@@ -107,7 +111,7 @@
 										<input
 											class="w-[50px] pl-1.5"
 											value="0"
-											on:input={(v) =>
+											oninput={(v) =>
 												updateSecFilters(key, subKey, v.currentTarget.value, 'value')}
 											type="number"
 											pattern="[0-9]*"
@@ -133,7 +137,7 @@
 													id="sec-{value}"
 													class="filter-btn"
 													class:active={selected}
-													on:click={() => updateSecFilters(key, subKey, value, type)}
+													onclick={() => updateSecFilters(key, subKey, value, type)}
 												>
 													{parseConditions(value, language)}
 												</button>

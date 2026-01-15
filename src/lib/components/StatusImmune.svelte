@@ -1,9 +1,15 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import translations from '$lib/translations.json';
-	export let statusImmuneList, language: Language, mode: 'handbook' | 'table';
+	interface Props {
+		statusImmuneList: any;
+		language: Language;
+		mode: 'handbook' | 'table';
+	}
 
-	$: statusImmuneTexts = translations[language].status_immune;
+	let { statusImmuneList, language, mode }: Props = $props();
+
+	let statusImmuneTexts = $derived(translations[language].status_immune);
 </script>
 
 {#if statusImmuneList.length > 0}

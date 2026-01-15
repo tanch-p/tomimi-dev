@@ -3,14 +3,19 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
 
-	export let className: string = '',
-		showArrows = false;
+	interface Props {
+		className?: string;
+		showArrows?: boolean;
+		children?: import('svelte').Snippet;
+	}
 
-	let container: HTMLDivElement;
-	let overflow = {
+	let { className = '', showArrows = false, children }: Props = $props();
+
+	let container: HTMLDivElement = $state();
+	let overflow = $state({
 		left: false,
 		right: false
-	};
+	});
 
 	function getHorizontalOverflow(element: HTMLDivElement) {
 		const maxScrollLeft = element.scrollWidth - element.clientWidth;
@@ -46,20 +51,20 @@
 	{#if showArrows && overflow.left}
 		<button
 			class="absolute left-0 top-1/3"
-			on:click={() => container.scrollBy({ left: -100, behavior: 'smooth' })}
+			onclick={() => container.scrollBy({ left: -100, behavior: 'smooth' })}
 		>
 			<Icon name="left-chevron" className="w-6 h-6 mr-1.5" />
 		</button>
 	{/if}
 	<div
 		bind:this={container}
-		on:scroll={() => getHorizontalOverflow(container)}
+		onscroll={() => getHorizontalOverflow(container)}
 		class="draggable-container-wrapper overflow-x-auto overflow-y-visible h-full {className}"
 	>
-		<slot />
+		{@render children?.()}
 	</div>
 	{#if showArrows && overflow.right}
-		<button class="absolute right-0 top-1/3" on:click={() => container.scrollBy({ left: 100, behavior: 'smooth' })}>
+		<button class="absolute right-0 top-1/3" onclick={() => container.scrollBy({ left: 100, behavior: 'smooth' })}>
 			<Icon name="left-chevron" className="w-6 h-6 ml-2.5 rotate-180" />
 		</button>
 	{/if}

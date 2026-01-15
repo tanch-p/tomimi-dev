@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { run } from 'svelte/legacy';
+
+	import { page } from '$app/state';
 	import type { Language } from '$lib/types';
 	import translations from '$lib/translations.json';
 	import termDesc from '$lib/data/term_desc.json';
@@ -7,11 +9,19 @@
 
 	const HTML_TAGS = ['span', 'br', 'div', 'h4', 'h5', 'h6'];
 
-	// note to self do not ever use <text> for special parsing usage when using inner HTML...
-	export let line: string,
-		className: string = '';
-	let language: Language = 'zh';
-	$: language = $page.data.language;
+	
+	interface Props {
+		// note to self do not ever use <text> for special parsing usage when using inner HTML...
+		line: string;
+		// note to self do not ever use <text> for special parsing usage when using inner HTML...
+		className?: string;
+	}
+
+	let { line, className = '' }: Props = $props();
+	let language: Language = $state('zh');
+	run(() => {
+		language = page.data.language;
+	});
 	const tagPatterns = [
 		'can_silence',
 		'ignore_camou',
@@ -81,14 +91,14 @@
 				desc2.push(
 					`<div class="tooltiptext absolute opacity-0 pointer-events-none ${peerClass} hover:pointer-events-auto hover:opacity-100 top-[54px] bg-slate-300 text-[#222222] w-[220px] ${
 						language === 'en' ? 'min-h-[150px]' : ' min-h-[100px]'
-					} p-1.5 z-[1] rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${content}</h6><div class="mt-1">${
+					} p-1.5 z-1 rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${content}</h6><div class="mt-1">${
 						termDesc[pattern][`desc_${language}`] || termDesc[pattern][`desc_zh`]
 					}</div></div>`
 				);
 				return `<div class="${peerDesc} relative inline-block underline underline-offset-2">${content}</div>`;
 			}
 		});
-		return `<div class="tooltip relative inline-block underline underline-offset-2 group leading-tight bg-[linear-gradient(to_top,#fff6,transparent_75%)]">${content}<div class="tooltiptext absolute hidden peer group-hover:block bg-slate-200 text-[#222222] w-[220px] p-1.5 z-[1] rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${name}</h6><div class="mt-1">${desc}</div></div>${desc2.join(
+		return `<div class="tooltip relative inline-block underline underline-offset-2 group leading-tight bg-[linear-gradient(to_top,#fff6,transparent_75%)]">${content}<div class="tooltiptext absolute hidden peer group-hover:block bg-slate-200 text-[#222222] w-[220px] p-1.5 z-1 rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${name}</h6><div class="mt-1">${desc}</div></div>${desc2.join(
 			''
 		)}</div>`;
 	}

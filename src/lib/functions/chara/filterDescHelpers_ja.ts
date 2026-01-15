@@ -1,7 +1,7 @@
 import type { Language } from '$lib/types';
 import translations from '$lib/translations.json';
 import relics from '$lib/data/chara/relics_chara.json';
-import { formatArray } from './languageHelpers';
+import { formatArray } from '../languageHelpers';
 import { getDisplayKey } from './charaHelpers';
 
 const DAMAGE_TYPE_KEYS = ['phys', 'arts', 'true', 'ele_dmg'];

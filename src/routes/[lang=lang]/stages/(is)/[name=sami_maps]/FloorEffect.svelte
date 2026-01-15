@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import { activeChaosEffects } from './stores';
-	export let effect, language: Language;
+	interface Props {
+		effect: any;
+		language: Language;
+	}
 
-	let selected = false;
+	let { effect, language }: Props = $props();
+
+	let selected = $state(false);
 
 	activeChaosEffects.subscribe((list) => {
 		selected = Boolean(list.find((ele) => ele.id === effect.id));
@@ -27,15 +32,15 @@
 			return (list = [...list, effect]);
 		});
 	}
-	$: name = effect[`outerName_${language}`] || effect[`outerName_zh`];
+	let name = $derived(effect[`outerName_${language}`] || effect[`outerName_zh`]);
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <button
 	class={`grid grid-cols-[75px_auto] gap-x-2 text-start ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
 >
 	<span class="flex items-center justify-center">
 		<img src={effect.src} alt={name} loading="lazy" decoding="async" class="" />

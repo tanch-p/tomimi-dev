@@ -6,7 +6,11 @@
 	import encounter from '$lib/images/is/sami/sami_encounter.webp';
 	import translations from '$lib/translations.json';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	let allNormalStages = [
 		['死囚之夜', '度假村冤魂', '苔手', '待宰的兽群','事不过四'],
@@ -34,7 +38,7 @@
 	<table class="text-xs sm:text-base">
 		<tbody>
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -88,7 +92,7 @@
 
 			<!-- boss -->
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -156,7 +160,7 @@
 			<!-- encounter -->
 
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img

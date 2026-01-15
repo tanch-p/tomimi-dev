@@ -15,17 +15,22 @@
 		getModuleNewTalent,
 		getSkillRangeId,
 		getAttackRangeId
-	} from '$lib/functions/charaHelpers';
+	} from '$lib/functions/chara/charaHelpers';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import RangeParser from '$lib/components/RangeParser.svelte';
 	import CharaTokens from './CharaTokens.svelte';
 	import DraggableContainer from '$lib/components/DraggableContainer.svelte';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const statKeys = ['hp', 'respawnTime', 'atk', 'cost', 'def', 'blockCnt', 'res', 'aspd'];
-	$: hasModule = ['TIER_4', 'TIER_5', 'TIER_6'].includes($selectedChara?.rarity);
-	$: moduleStage = 2;
+	let hasModule = $derived(['TIER_4', 'TIER_5', 'TIER_6'].includes($selectedChara?.rarity));
+	let moduleStage = $state(2);
+	
 
 	selectedChara.subscribe((val) => {
 		if (!val) {
@@ -44,7 +49,7 @@
 		class:visible={$selectedChara}
 		class="popup text-near-white bg-neutral-800 bg-opacity-95 pb-12 no-scrollbar"
 		use:clickOutside
-		on:outclick={() => selectedChara.set(null)}
+		onoutclick={() => selectedChara.set(null)}
 	>
 		{#if $selectedChara}
 			{@const phase = ['TIER_1', 'TIER_2'].includes($selectedChara.rarity)
@@ -79,7 +84,7 @@
 				<div class="grid grid-cols-[70px_1fr] gap-x-2 items-center px-1 mt-3">
 					<div class="flex flex-col items-center justify-evenly h-full">
 						<div class="border-2 border-[#ffd800] rounded-full h-[60px] w-[60px] text-center">
-							<p class="text-[10px] mt-[1px] tracking-widest">LV</p>
+							<p class="text-[10px] mt-px tracking-widest">LV</p>
 							<p class="-mt-2 text-4xl">{$selectedChara.stats.level}</p>
 						</div>
 						<img src={charaAssets['phase'][phase]} width="50" alt="E{phase}" />
@@ -87,7 +92,7 @@
 							<div class="relative group">
 								<img src={charaAssets.potential[5]} width="60" alt="p5" />
 								<div
-									class="absolute hidden group-hover:block top-[-50%] left-[100%] bg-neutral-700 text-near-white w-max py-1.5 px-2 z-[1] rounded-md text-sm shadow-md"
+									class="absolute hidden group-hover:block top-[-50%] left-full bg-neutral-700 text-near-white w-max py-1.5 px-2 z-1 rounded-md text-sm shadow-md"
 								>
 									{#each $selectedChara.potential as pot}
 										<p>{pot.desc}</p>
@@ -189,7 +194,7 @@
 						</p>
 						<div class="mt-4 px-4">
 							{#if $selectedChara.uniequip.length === 0}
-								<div class="module none" />
+								<div class="module none"></div>
 							{:else}
 								<DraggableContainer
 									className="overflow-y-visible no-scrollbar snap-proximity snap-x "
@@ -203,7 +208,7 @@
 												<button
 													class:active={$moduleIndex === idx}
 													class="module flex-col snap-center shrink-0"
-													on:click={() => moduleIndex.set(idx)}
+													onclick={() => moduleIndex.set(idx)}
 												>
 													<div class="grid place-items-center h-[48px]">
 														<img
@@ -231,8 +236,8 @@
 												{#if idx !== 0}
 													{#if $moduleIndex === idx}
 														<button
-															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-[1px] px-4"
-															on:click={() => {
+															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-px px-4"
+															onclick={() => {
 																if (moduleStage === 2) return (moduleStage = 0);
 																return (moduleStage += 1);
 															}}
@@ -248,7 +253,7 @@
 														</button>
 													{:else}
 														<div
-															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-[1px] px-4"
+															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-px px-4"
 														>
 															<p class="text-[#7d7d7d] font-bold text-sm">STAGE</p>
 															<div class="w-[11px] ml-1.5 mt-0.5">
@@ -291,13 +296,13 @@
 							$selectedChara.uniequip[$moduleIndex],
 							moduleStage
 						)}
-						<p class="py-[1px] px-2 mt-4 w-max bg-[#f9f9f9] rounded-md font-medium text-[#333]">
+						<p class="py-px px-2 mt-4 w-max bg-[#f9f9f9] rounded-md font-medium text-[#333]">
 							{talent.name}
 						</p>
 						<TextParser className="mt-1" line={moduleTalentDesc || talent.desc} />
 					{/each}
 					{#if newTalent}
-						<p class="py-[1px] px-2 mt-4 w-max bg-[#f9f9f9] rounded-md font-medium text-[#333]">
+						<p class="py-px px-2 mt-4 w-max bg-[#f9f9f9] rounded-md font-medium text-[#333]">
 							{newTalent.name}
 						</p>
 						<TextParser className="mt-1" line={newTalent.desc} />

@@ -2,8 +2,12 @@
 	import type { PageData } from './$types';
 	import translations from '$lib/translations.json';
 
-	export let data: PageData;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let language = $derived(data.language);
 </script>
 
 <svelte:head>

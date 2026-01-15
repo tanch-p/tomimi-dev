@@ -3,9 +3,14 @@
 	import { activeFloorEffects } from './stores';
 	import wrath_bg from '$lib/images/is/sui/wrath_bad_back.webp';
 
-	export let effect, language: Language;
+	interface Props {
+		effect: any;
+		language: Language;
+	}
 
-	let selected = false;
+	let { effect, language }: Props = $props();
+
+	let selected = $state(false);
 
 	activeFloorEffects.subscribe((list) => {
 		selected = Boolean(list.find((ele) => ele.id === effect.id));
@@ -24,7 +29,7 @@
 			activeFloorEffects.update((list) => (list = list.filter((ele) => ele.id !== effect.id)));
 		}
 	}
-	$: name = effect[`name_${language}`] || effect[`name_zh`];
+	let name = $derived(effect[`name_${language}`] || effect[`name_zh`]);
 </script>
 
 <button
@@ -32,11 +37,11 @@
 	class={`grid grid-cols-[75px_auto] items-center gap-x-2 text-start ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
 >
 	<div class="relative flex items-center justify-center rounded-full h-7 overflow-hidden">
 		<img src={wrath_bg} class="absolute z-0 -inset-[9999px] m-auto h-full" alt="" />
-		<img src={effect.src} alt={name} loading="lazy" decoding="async" class="absolute z-[1]"/>
+		<img src={effect.src} alt={name} loading="lazy" decoding="async" class="absolute z-1"/>
 	</div>
 	<div class="flex flex-col">
 		<p class={`${selected ? 'text-[#ff382e] font-semibold' : ''}`}>

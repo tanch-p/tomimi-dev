@@ -2,15 +2,15 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { GameConfig } from './objects/GameConfig';
 
-	export let game, simulatedData;
+	let { game, simulatedData } = $props();
 
-	$: totalTime = (Object?.keys(simulatedData?.t)?.length ?? 1) - 1;
+	let totalTime = $derived((Object?.keys(simulatedData?.t)?.length ?? 1) - 1);
 
-	let seekbarElement, progressElement;
-	let progress = 0;
-	let tooltipPosition = 0;
-	let tooltipTime = '00:00';
-	let isHover = false;
+	let seekbarElement = $state(), progressElement = $state();
+	let progress = $state(0);
+	let tooltipPosition = $state(0);
+	let tooltipTime = $state('00:00');
+	let isHover = $state(false);
 	let isDragging = false;
 
 	// Format time from seconds to MM:SS
@@ -151,17 +151,17 @@
 </script>
 
 <div
-	class="group absolute z-[1] bottom-[10px] md:bottom-[20px] left-1/2 -translate-x-1/2 flex items-center justify-center w-full max-w-[70vw] sm:max-w-[70%]"
+	class="group absolute z-1 bottom-[10px] md:bottom-[20px] left-1/2 -translate-x-1/2 flex items-center justify-center w-full max-w-[70vw] sm:max-w-[70%]"
 >
-	<div class="absolute top-1/2 -translate-y-2/3 bg-[rgba(0,0,0,0.5)] w-full h-[40px] opacity-0" />
+	<div class="absolute top-1/2 -translate-y-2/3 bg-[rgba(0,0,0,0.5)] w-full h-[40px] opacity-0"></div>
 	<div
 		class="relative w-full cursor-pointer select-none touch-none"
 		bind:this={seekbarElement}
-		on:mousemove={handleMouseMove}
-		on:mousedown={handleMouseDown}
-		on:touchstart={handleMouseDown}
-		on:mouseenter={handleMouseEnter}
-		on:mouseleave={handleMouseLeave}
+		onmousemove={handleMouseMove}
+		onmousedown={handleMouseDown}
+		ontouchstart={handleMouseDown}
+		onmouseenter={handleMouseEnter}
+		onmouseleave={handleMouseLeave}
 	>
 		<div
 			class="relative w-full bg-[#e6e6e6] overflow-hidden rounded h-[2px] group-hover:h-[6px] transition-[height]"
@@ -170,11 +170,11 @@
 				class="h-full bg-[#ff3e00] rounded relative"
 				bind:this={progressElement}
 				style="width: {progress}%;"
-			/>
+			></div>
 		</div>
 		<div
 			hidden={!isHover}
-			class="absolute top-[-30px] z-[2] -translate-x-1/2 bg-[rgba(0,0,0,0.7)] rounded px-2 py-1 text-xs text-white select-none touch-none"
+			class="absolute top-[-30px] z-2 -translate-x-1/2 bg-[rgba(0,0,0,0.7)] rounded px-2 py-1 text-xs text-white select-none touch-none"
 			style="left: {tooltipPosition}px;"
 		>
 			{tooltipTime}
@@ -182,15 +182,15 @@
 		{#each simulatedData?.enemiesToHighlight as { t, key }}
 			{@const left = calculateLeftPosFromTime(t, seekbarElement)}
 			<div
-				class="absolute top-[-55px] z-[1] -translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity select-none"
+				class="absolute top-[-55px] z-1 -translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity select-none"
 				style="left: {left}px;"
 			>
 				<img src="/images/enemy_icons/{key}.webp" width="50px" height="50px" alt={key} />
 			</div>
 			<div
-				class="absolute z-[1] -translate-x-1/2 top-1/2 -translate-y-1/2 h-[6px] w-[2px] bg-gray-800 transition-[width] group-hover:w-[4px]"
+				class="absolute z-1 -translate-x-1/2 top-1/2 -translate-y-1/2 h-[6px] w-[2px] bg-gray-800 transition-[width] group-hover:w-[4px]"
 				style="left: {left}px;"
-			/>
+			></div>
 		{/each}
 	</div>
 </div>

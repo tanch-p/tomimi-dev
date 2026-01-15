@@ -1,7 +1,7 @@
 import type { Language } from '$lib/types';
 import filterOptions from '$lib/data/chara/filter_options.json';
 import translations from '$lib/translations.json';
-import { decompressGzipToJson } from './lib';
+import { decompressGzipToJson } from '../lib';
 
 const SEARCH_IN_TAGS = [
 	'phys',

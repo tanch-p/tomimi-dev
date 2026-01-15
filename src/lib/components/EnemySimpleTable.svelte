@@ -5,8 +5,24 @@
 	import EnemyTableOptions from './EnemyTableOptions.svelte';
 	import translations from '$lib/translations.json';
 	import Tooltip from './Tooltip.svelte';
-	export let enemies: Enemy[], language: Language, statMods:StatMods, specialMods,otherBuffsList, mapConfig;
-	$: filteredTableHeaders = $tableHeaders.filter(({ key, show }) => show);
+	interface Props {
+		enemies: Enemy[];
+		language: Language;
+		statMods: StatMods;
+		specialMods: any;
+		otherBuffsList: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemies,
+		language,
+		statMods,
+		specialMods,
+		otherBuffsList,
+		mapConfig
+	}: Props = $props();
+	let filteredTableHeaders = $derived($tableHeaders.filter(({ key, show }) => show));
 
 	const tooltips = { e_hp: 'tooltip_ehp' };
 </script>

@@ -1,7 +1,11 @@
 <script lang="ts">
 	import translations from '$lib/translations.json';
 
-	export let language: string;
+	interface Props {
+		language: string;
+	}
+
+	let { language }: Props = $props();
 
 	const dailyStages = [
 		{ name: '迷雾战区', m: 10, d: 1, href: '迷雾战区_12-1' },

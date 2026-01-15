@@ -4,14 +4,25 @@
 	import translations from '$lib/translations.json';
 	import { getStatSkillValue } from '$lib/functions/statHelpers';
 
-	export let entity: Enemy | Trap,
-		formIndex: number,
-		skills: Skill[],
-		stat: StatKey,
-		statValue: number,
+	interface Props {
+		entity: Enemy | Trap;
+		formIndex: number;
+		skills: Skill[];
+		stat: StatKey;
+		statValue: number;
 		language: Language;
-	$: separator = language === 'en' ? '/' : '・';
-	$: skillsToParse = skills
+	}
+
+	let {
+		entity,
+		formIndex,
+		skills,
+		stat,
+		statValue,
+		language
+	}: Props = $props();
+	let separator = $derived(language === 'en' ? '/' : '・');
+	let skillsToParse = $derived(skills
 		.map((skill) => {
 			if (skill.remove) return;
 			if (skill[stat]) {
@@ -30,7 +41,7 @@
 			}
 			return;
 		})
-		.filter(Boolean);
+		.filter(Boolean));
 </script>
 
 {#each skillsToParse as skill}

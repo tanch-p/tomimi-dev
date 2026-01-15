@@ -1,14 +1,28 @@
 <script lang="ts">
 	import type { Language, MapConfig, Skill, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import { getSkillImgUrl } from '$lib/functions/charaHelpers';
+	import { getSkillImgUrl } from '$lib/functions/chara/charaHelpers';
 	import RangeParser from './RangeParser.svelte';
 	import translations from '$lib/translations.json';
 	import TextParser from './TextParser.svelte';
 	import Icon from './Icon.svelte';
 	import { parseValues } from '$lib/functions/skillHelpers';
 
-	export let trap: Trap, skill: Skill, language: Language, mode, mapConfig: MapConfig;
+	interface Props {
+		trap: Trap;
+		skill: Skill;
+		language: Language;
+		mode: any;
+		mapConfig: MapConfig;
+	}
+
+	let {
+		trap,
+		skill,
+		language,
+		mode,
+		mapConfig
+	}: Props = $props();
 </script>
 
 {#if mode === 'handbook'}
@@ -28,13 +42,13 @@
 					<div class="absolute flex -bottom-0.5 -right-0.5">
 						{#if skill.spData?.initSp}
 							<div
-								class="grid grid-cols-[10px_1fr] items-center gap-x-[1px] bg-[#434343] pl-[4px] pr-[1px]"
+								class="grid grid-cols-[10px_1fr] items-center gap-x-px bg-[#434343] pl-[4px] pr-px"
 							>
 								<img src={charaAssets.sp_start} alt="start" />
 								<p class="leading-tight">{skill.spData?.initSp}</p>
 							</div>
 						{/if}
-						<div class="ml-1 grid grid-cols-[14px_1fr] items-center bg-[#434343] pr-[1px]">
+						<div class="ml-1 grid grid-cols-[14px_1fr] items-center bg-[#434343] pr-px">
 							<img src={charaAssets.sp_cost} alt="cost" />
 							<p class="leading-tight">{skill.spData?.spCost}</p>
 						</div>
@@ -82,7 +96,7 @@
 				<div class="flex h-max self-center">
 					{#if skill.spData?.initSp}
 						<div
-							class="grid grid-cols-[10px_1fr] gap-x-[1px] items-center bg-[#434343] pl-[4px] p-0.5"
+							class="grid grid-cols-[10px_1fr] gap-x-px items-center bg-[#434343] pl-[4px] p-0.5"
 						>
 							<img src={charaAssets.sp_start} alt="start" />
 							<p class="leading-tight">{skill.spData?.initSp}</p>

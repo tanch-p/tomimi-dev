@@ -7,12 +7,21 @@
 		updateOtherBuffsList
 	} from '$lib/functions/lib';
 
-	export let language: Language,
+	interface Props {
+		language: Language;
+		otherBuffsList: any;
+		entity: any;
+		mode?: string;
+	}
+
+	let {
+		language,
 		otherBuffsList,
 		entity,
-		mode = 'handbook';
+		mode = 'handbook'
+	}: Props = $props();
 
-	$: applicableBuffsList = getApplicableBuffsList($otherBuffsList, entity);
+	let applicableBuffsList = $derived(getApplicableBuffsList($otherBuffsList, entity));
 </script>
 
 {#if applicableBuffsList?.length > 0}
@@ -30,7 +39,7 @@
 				id="{entity.key}-buff-{buff.key}"
 				class:brightness-50={currentCount === 0}
 				class="flex flex-col items-center gap-y-1"
-				on:click={() => updateOtherBuffsList(otherBuffsList, buff.key, entity.key)}
+				onclick={() => updateOtherBuffsList(otherBuffsList, buff.key, entity.key)}
 			>
 				<div class="relative">
 					{#if buff.maxCount > 1 && currentCount > 0}
@@ -38,7 +47,7 @@
 					{/if}
 					{#if ['n18_mzk', 'n14_phcs'].includes(buff.key)}
 						<div class="relative flex justify-center items-center w-[54px] h-[54px]">
-							<div class="absolute n18_mzk" />
+							<div class="absolute n18_mzk"></div>
 							<span class="text-sm">{buff.name}</span>
 						</div>
 					{:else}

@@ -1,19 +1,24 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import ro3 from "$lib/data/stages/ro3.json"
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
-	export let stageName: string, language: Language;
+	interface Props {
+		stageName: string;
+		language: Language;
+	}
 
-	$: currentStageName = $page?.data?.mapConfig?.name_zh;
+	let { stageName, language }: Props = $props();
+
+	let currentStageName = $derived(page?.data?.mapConfig?.name_zh);
 
 	const stageInfo = ro3[stageName];
 	if (!stageInfo) {
 		throw new Error(`${stageName} is not found!`);
 	}
 	const stagesToHide = [];
-	$: name = stageInfo[`name_${language}`] || stageInfo['name_zh'];
-	$: stageUrl = stageInfo.code + '_' + name;
+	let name = $derived(stageInfo[`name_${language}`] || stageInfo['name_zh']);
+	let stageUrl = $derived(stageInfo.code + '_' + name);
 </script>
 
 <a href={`/${language}/stages/${stageUrl}`}>

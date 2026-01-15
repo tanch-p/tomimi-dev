@@ -9,14 +9,25 @@
 	import { isChestBranch } from '$lib/functions/waveHelpers';
 	import TextParser from '../TextParser.svelte';
 
-	export let mapConfig: MapConfig,
-		game: Game,
-		language: Language,
-		key: string,
-		branchKey: string,
+	interface Props {
+		mapConfig: MapConfig;
+		game: Game;
+		language: Language;
+		key: string;
+		branchKey: string;
 		branchIndex: number;
+	}
 
-	let isOpen = false;
+	let {
+		mapConfig,
+		game,
+		language,
+		key,
+		branchKey = $bindable(),
+		branchIndex = $bindable()
+	}: Props = $props();
+
+	let isOpen = $state(false);
 	const branchExtraInfo = branchInfo?.[mapConfig.levelId]?.[key];
 	const branchType = branchExtraInfo?.type;
 	const branchRandom = branchExtraInfo?.isRandom || false;
@@ -44,7 +55,7 @@
 <div class="">
 	<button
 		class="flex items-center gap-x-1.5 justify-between bg-neutral-600 w-full px-2 py-0.5 text-xs text-end text-near-white hover:bg-near-white hover:text-gray-900 transition-all whitespace-nowrap"
-		on:click={() => handleTitleClick(key)}
+		onclick={() => handleTitleClick(key)}
 	>
 		{#if hasMultipleOptions}
 			{#if isOpen}
@@ -53,17 +64,17 @@
 				<Icon name="icon-plus" className="w-3 h-3 shrink-0" />
 			{/if}
 		{:else}
-			<Icon name="left-chevron" className="w-3 h-3 mt-[1px] shrink-0" />
+			<Icon name="left-chevron" className="w-3 h-3 mt-px shrink-0" />
 		{/if}
 		<span>{title}</span>
 	</button>
 	{#if isOpen}
-		<div transition:slide|local={{ duration: 300 }}>
+		<div transition:slide={{ duration: 300 }}>
 			<div class="mt-1.5 flex flex-wrap gap-2 w-full">
 				{#each mapConfig?.branches?.[key]?.phases as _, index}
 					<button
 						class="flex items-center justify-center bg-neutral-600 w-[14px] h-[20px] px-2 py-0.5 text-xs text-near-white hover:bg-near-white hover:text-gray-900 transition-all"
-						on:click={() => handleBranchSummon(key, index)}
+						onclick={() => handleBranchSummon(key, index)}
 					>
 						{index + 1}
 					</button>

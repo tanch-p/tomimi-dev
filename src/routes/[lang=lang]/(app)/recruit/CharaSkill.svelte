@@ -5,16 +5,26 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import RangeParser from '$lib/components/RangeParser.svelte';
-	import { getSkillImgUrl } from '$lib/functions/charaHelpers';
+	import { getSkillImgUrl } from '$lib/functions/chara/charaHelpers';
 
-	export let skill,
-		language: Language,
+	interface Props {
+		skill: any;
+		language: Language;
+		rangeId: any;
+		overrideRangeId: any;
+		layout?: string;
+	}
+
+	let {
+		skill,
+		language,
 		rangeId,
 		overrideRangeId,
-		layout = 'default';
+		layout = 'default'
+	}: Props = $props();
 
 	const hasMastery = skill.levels.length > 1;
-	let mastery: number = hasMastery ? 3 : 0;
+	let mastery: number = $state(hasMastery ? 3 : 0);
 
 	function getMasteryLvl(mastery: number) {
 		if (!hasMastery) return mastery;
@@ -37,12 +47,12 @@
 				{#if skill.skillType !== 'PASSIVE'}
 					<div class="absolute flex -bottom-0.5 -right-0.5">
 						{#if skill.levels?.[mastery]?.spData?.initSp}
-							<div class="grid grid-cols-[11px_1fr] items-center bg-[#434343] pl-[4px] pr-[1px]">
+							<div class="grid grid-cols-[11px_1fr] items-center bg-[#434343] pl-[4px] pr-px">
 								<img src={charaAssets.sp_start} alt="" />
 								<p class="text-[20px] leading-tight">{skill.levels?.[mastery]?.spData?.initSp}</p>
 							</div>
 						{/if}
-						<div class="ml-1 grid grid-cols-[16px_1fr] items-center bg-[#434343] pr-[1px]">
+						<div class="ml-1 grid grid-cols-[16px_1fr] items-center bg-[#434343] pr-px">
 							<img src={charaAssets.sp_cost} alt="" />
 							<p class="text-[20px] leading-tight">{skill.levels?.[mastery]?.spData?.spCost}</p>
 						</div>
@@ -59,7 +69,7 @@
 			<button
 				class:cursor-default={!hasMastery}
 				class="grid grid-cols-[1fr_30px] w-max mt-1.5"
-				on:click={() => (mastery = getMasteryLvl(mastery))}
+				onclick={() => (mastery = getMasteryLvl(mastery))}
 			>
 				<div class="flex items-center border border-[#3e3e3e] bg-[#272727] pl-2 pr-1 h-[24px]">
 					<p class="leading-tight">RANK</p>
@@ -103,7 +113,7 @@
 			<button
 				class:cursor-default={!hasMastery}
 				class="relative flex items-center justify-center w-[70px] h-[70px] shadow-md"
-				on:click={() => (mastery = getMasteryLvl(mastery))}
+				onclick={() => (mastery = getMasteryLvl(mastery))}
 			>
 				<img
 					src="/images/skill_icons/skill_icon_{getSkillImgUrl(skill.skillId)}.webp"
@@ -121,7 +131,7 @@
 					/>
 				{:else}
 					<div
-						class="absolute top-[-1px] left-[-1px] flex items-center justify-center w-[16px] h-[16px] bg-[#131313]"
+						class="absolute -top-px -left-px flex items-center justify-center w-[16px] h-[16px] bg-[#131313]"
 					>
 						<img src={charaAssets.solid_7} width="7" alt="7" />
 					</div>
@@ -130,7 +140,7 @@
 					<div class="absolute flex -bottom-0.5 -right-0.5 shadow-md text-near-white">
 						{#if skill.levels?.[mastery]?.spData?.initSp}
 							<div
-								class="grid grid-cols-[9px_1fr] items-center border-r border-black bg-[#434343] pl-[4px] pr-[1px]"
+								class="grid grid-cols-[9px_1fr] items-center border-r border-black bg-[#434343] pl-[4px] pr-px"
 							>
 								<img src={charaAssets.sp_start} alt="" />
 								<p class="text-sm leading-tight">
@@ -138,7 +148,7 @@
 								</p>
 							</div>
 						{/if}
-						<div class="grid grid-cols-[12px_1fr] items-center bg-[#434343] pr-[1px]">
+						<div class="grid grid-cols-[12px_1fr] items-center bg-[#434343] pr-px">
 							<img src={charaAssets.sp_cost} alt="" />
 							<p class="text-sm leading-tight">
 								{skill.levels?.[mastery]?.spData?.spCost}

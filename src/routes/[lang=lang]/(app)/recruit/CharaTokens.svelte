@@ -11,9 +11,23 @@
 		getTokenModuleTalent,
 		getTokenModuleTrait,
 		getTokenPosition
-	} from '$lib/functions/charaHelpers';
+	} from '$lib/functions/chara/charaHelpers';
 
-	export let tokens, chara, moduleIndex, moduleStage, language: Language;
+	interface Props {
+		tokens: any;
+		chara: any;
+		moduleIndex: any;
+		moduleStage: any;
+		language: Language;
+	}
+
+	let {
+		tokens,
+		chara,
+		moduleIndex,
+		moduleStage,
+		language
+	}: Props = $props();
 
 	const tokensWithoutIcon = [
 		'token_10012_rosmon_shield',
@@ -23,7 +37,7 @@
 	];
 	const statKeys = ['hp', 'respawnTime', 'atk', 'cost', 'def', 'blockCnt', 'res', 'aspd'];
 
-	let tokenSkillIndex = 0;
+	let tokenSkillIndex = $state(0);
 	const tokenToSkill1to1Linked = chara.tokens.length === chara.skills.length;
 	const tokenToSkillManyLinked = chara.tokens[0].skills.length === chara.skills.length;
 </script>
@@ -34,9 +48,9 @@
 {#if tokenToSkill1to1Linked || tokenToSkillManyLinked}
 	<div class="flex justify-evenly mt-6">
 		{#each chara.skills as skill, skillIdx}
-			<button class="relative" on:click={() => (tokenSkillIndex = skillIdx)}>
+			<button class="relative" onclick={() => (tokenSkillIndex = skillIdx)}>
 				{#if tokenSkillIndex === skillIdx}
-					<div class="absolute w-full h-full border-[3px] border-[#0098dc]" />
+					<div class="absolute w-full h-full border-[3px] border-[#0098dc]"></div>
 				{/if}
 				<img
 					src="/images/skill_icons/skill_icon_{getSkillImgUrl(skill.skillId)}.webp"
@@ -90,7 +104,7 @@
 					<div
 						class="grid grid-cols-[20px_1fr] items-center gap-x-2 bg-[#161616] bg-opacity-80 h-[25px]"
 					>
-						<div class="flex items-center bg-[#444] h-full px-[1px]">
+						<div class="flex items-center bg-[#444] h-full px-px">
 							<img src={charaAssets[statKey]} width="18px" height="18px" alt="" />
 						</div>
 						<p class="text-near-white whitespace-nowrap">
@@ -117,7 +131,7 @@
 						chara.uniequip[moduleIndex],
 						moduleStage
 					)}
-					<p class="py-[1px] px-2 mt-4 w-max bg-[#f9f9f9] rounded-md font-medium text-[#333]">
+					<p class="py-px px-2 mt-4 w-max bg-[#f9f9f9] rounded-md font-medium text-[#333]">
 						{talent.name}
 					</p>
 					<TextParser className="mt-1" line={moduleTalentDesc || talent.desc} />
@@ -143,13 +157,13 @@
 								<div class="absolute flex -bottom-0.5 -right-0.5">
 									{#if skill?.spData?.spCost}
 										<div
-											class="grid grid-cols-[11px_1fr] items-center bg-[#434343] pl-[4px] pr-[1px]"
+											class="grid grid-cols-[11px_1fr] items-center bg-[#434343] pl-[4px] pr-px"
 										>
 											<img src={charaAssets.sp_start} alt="" />
 											<p class="text-[20px] leading-tight">{skill?.spData?.initSp}</p>
 										</div>
 
-										<div class="ml-1 grid grid-cols-[16px_1fr] items-center bg-[#434343] pr-[1px]">
+										<div class="ml-1 grid grid-cols-[16px_1fr] items-center bg-[#434343] pr-px">
 											<img src={charaAssets.sp_cost} alt="" />
 											<p class="text-[20px] leading-tight">{skill?.spData?.spCost}</p>
 										</div>

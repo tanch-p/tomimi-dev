@@ -7,7 +7,25 @@
 	import StatusImmune from './StatusImmune.svelte';
 	import TrapAbilities from './TrapAbilities.svelte';
 
-	export let trap: Trap, tableHeaders, index, language: Language, specialMods, otherBuffsList,mapConfig:MapConfig;
+	interface Props {
+		trap: Trap;
+		tableHeaders: any;
+		index: any;
+		language: Language;
+		specialMods: any;
+		otherBuffsList: any;
+		mapConfig: MapConfig;
+	}
+
+	let {
+		trap,
+		tableHeaders,
+		index,
+		language,
+		specialMods,
+		otherBuffsList,
+		mapConfig
+	}: Props = $props();
 </script>
 
 <tr id={trap.key} class={`scroll-mt-24 ${index % 2 === 1 ? ' bg-[#333333]' : 'bg-neutral-800'}`}>

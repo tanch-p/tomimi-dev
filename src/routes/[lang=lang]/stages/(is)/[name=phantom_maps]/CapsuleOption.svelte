@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { capsule } from './stores';
-	export let effect, language: string;
+	interface Props {
+		effect: any;
+		language: string;
+	}
 
-	let selected = false;
+	let { effect, language }: Props = $props();
+
+	let selected = $state(false);
 
 	capsule.subscribe((ele) => {
 		selected = ele?.id === effect.id;
@@ -18,7 +23,7 @@
 	class={`grid grid-cols-[75px_auto] gap-x-2 text-start ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
 >
 	<img
 		src={effect.src}

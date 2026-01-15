@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { PageData } from './$types';
 	import type { Language } from '$lib/types';
 	import banner_sarkaz from '$lib/images/banner_sarkaz_800px.webp';
@@ -10,8 +12,15 @@
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
 	import Resources from '$lib/components/Resources.svelte';
 
-	export let data: PageData, language: Language;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+		language: Language;
+	}
+
+	let { data, language = $bindable() }: Props = $props();
+	run(() => {
+		language = data.language;
+	});
 </script>
 
 <svelte:head>

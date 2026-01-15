@@ -4,7 +4,11 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import translations from '$lib/translations.json';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const reset = () => {
 		filtersStore.update((list) =>
@@ -28,7 +32,7 @@
 <div class="fixed max-w-[1280px] mx-auto inset-0 z-50 pointer-events-none">
 	<button
 		class="absolute bottom-[150px] right-[20px] md:right-[40px] pointer-events-auto"
-		on:click={() => reset()}
+		onclick={() => reset()}
 		id="scroll-top-button"
 		title={translations[language].filter_reset_button}
 	>

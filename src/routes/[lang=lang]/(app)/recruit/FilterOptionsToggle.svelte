@@ -1,11 +1,20 @@
 <script lang="ts">
 	import { parseConditions } from '$lib/functions/languageHelpers';
 	import translations from '$lib/translations.json';
-	//only used for conditions for now
+	
 
-	export let options, updateFunc, language;
+	interface Props {
+		//only used for conditions for now
+		options: any;
+		//only used for conditions for now
+		updateFunc: any;
+		//only used for conditions for now
+		language: any;
+	}
 
-	let showMore = false;
+	let { options, updateFunc, language }: Props = $props();
+
+	let showMore = $state(false);
 </script>
 
 {#each options as { value, selected }, i}
@@ -13,13 +22,13 @@
 		hidden={!showMore ? i > 3 : false}
 		class="filter-btn"
 		class:active={selected}
-		on:click={() => updateFunc(value)}
+		onclick={() => updateFunc(value)}
 	>
 		{parseConditions(value, language)}
 	</button>
 {/each}
 {#if !showMore}
-	<button class="ml-2 text-xs hover:text-blue-500" on:click={() => (showMore = !showMore)}
+	<button class="ml-2 text-xs hover:text-blue-500" onclick={() => (showMore = !showMore)}
 		>{translations[language].show_more}&nbsp;&gt;</button
 	>
 {/if}

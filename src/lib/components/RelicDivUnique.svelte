@@ -2,12 +2,18 @@
 	import type { Language } from '$lib/types';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
 	import TextParser from './TextParser.svelte';
-	export let relic, language: Language, selectedUniqueRelic;
+	interface Props {
+		relic: any;
+		language: Language;
+		selectedUniqueRelic: any;
+	}
 
-	$: name = relic[`name_${language}`] || relic[`name_zh`];
-	$: tooltip = relic[`tooltip_${language}`] || relic[`tooltip_zh`];
+	let { relic = $bindable(), language, selectedUniqueRelic }: Props = $props();
 
-	let selected = false;
+	let name = $derived(relic[`name_${language}`] || relic[`name_zh`]);
+	let tooltip = $derived(relic[`tooltip_${language}`] || relic[`tooltip_zh`]);
+
+	let selected = $state(false);
 	relic.count = relic?.count || 0;
 
 	selectedUniqueRelic.subscribe((item) => {
@@ -42,12 +48,12 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
 	class={`relic grid grid-cols-[75px_auto] sm:grid-cols-[95px_auto] gap-x-2 ${
 		selected ? 'bg-neutral-800' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
 >
 	<img
 		src="/images/relics/{relicLookup[relic.id]}.webp"

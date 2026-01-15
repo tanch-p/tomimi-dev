@@ -60,7 +60,11 @@
 		rogue_4_fragment_F_24:rogue_4_fragment_F_24
 	};
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 </script>
 
 <TogglePanel title={translations[language].skz_fragment_combine_list} isOpen={false}>

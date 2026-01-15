@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { PageProps } from './$types';
 	import type { Language } from '$lib/types';
 	import { filters, globalCheck, sortFunction } from './stores';
-	import { getCharaList } from '$lib/functions/charaHelpers';
+	import { getCharaList } from '$lib/functions/chara/charaHelpers';
 	import DisplayContainer from './ResultsContainer.svelte';
 	import CharaFilter from './CharaFilter.svelte';
 	import CharaFilterDesc from './CharaFilterDesc.svelte';
@@ -13,12 +13,11 @@
 	import ClearButton from './ClearButton.svelte';
 	import Settings from './FilterSettings.svelte';
 
-	export let data: PageData;
-
-	let language: Language;
-	$: language = data.language;
+	let { data }: PageProps = $props();
+	let language: Language = $derived(data.language);
+	
 	let loading = true;
-	let characters = [];
+	let characters = $state([]);
 
 	const loadData = async (language:Language) => {
 		characters = await getCharaList(language);

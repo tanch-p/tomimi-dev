@@ -1,99 +1,130 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-div {
-	touch-action: manipulation;
-}
+@theme {
+	--color-hallu-red: #4b0505;
+	--color-ph-bg: #131313;
+	--color-phys-hl: #ffb082;
+	--color-arts-hl: #a7c2fc;
+	--color-true-hl: #ff99ca;
+	--color-heal-hl: #a4f9a4;
+	--color-near-white: #f2f2f2;
+	--color-almost-black: #121111;
 
-.chara .filter-btn {
-	min-width: 68px;
-	padding: 0.25rem 0.75rem;
-	border: 1px solid rgb(209 213 219);
-	height: 30px;
-	background-color: rgb(242 242 242);
-	text-transform: capitalize;
-	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-.chara .filter-btn.active {
-	background-color: rgb(2 132 199);
-	color: rgb(242 242 242);
-	border: 1px solid transparent;
-}
-@media only screen and (max-width: 640px) {
-	.chara .filter-btn {
-		min-width: 56px;
-		padding: 0.25rem 0.5rem;
-		border: 1px solid rgb(209 213 219);
-	}
-}
-.n18_mzk {
-	border-radius: 100%;
-	border: 3px solid firebrick;
-	width: 40px;
-	height: 40px;
-	transform: rotate3d(1, -1, 1, 55deg);
+	--font-size-subheading: 1.375rem;
 }
 
-.side-triangle {
+@utility side-triangle {
 	clip-path: polygon(100% 0, 0% 100%, 100% 100%);
 }
-li.list-cross {
-	position: relative;
-	list-style: none;
-}
-.list-cross::after {
-	content: url('../src/lib/images/is/list_x.svg');
-	position: absolute;
-	top: 6px;
-	left: -19px; 
-	/* changed to -19px on 22/01/2025, previously was -23px */
-}
 
-.skilltag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 0.8rem;
-	width: max-content;
-	border-radius: 5px;
-	line-height: 1.25rem;
-	padding: 0 4px;
-	margin-left: 4px;
-}
-.PASSIVE,
-.skilltag.can_silence {
-	background-color: #737373;
-}
-.COOLDOWN {
-	background-color: #2678b7;
-}
-.INCREASE_WHEN_ATTACK {
-	background-color: #fc793e;
-}
-.INCREASE_WHEN_TAKEN_DAMAGE {
-	background-color: #ffb400;
-}
-.INCREASE_WITH_TIME {
-	background-color: #8ec31f;
-}
-.skilltag.ignore_stealth {
-	background-color: #204d91;
-}
-.skilltag.ignore_camou {
-	background-color: #265624;
-}
-.skilltag.once_only {
-	background-color: #737373;
-}
-
-@media (orientation: landscape) {
-	body {
-	  width: 100%;
-	  margin-left: 0;
-	  margin-right: 0;
-	  padding-left: 0;
-	  padding-right: 0;
-	  overflow-x: hidden;
+@layer base {
+	div {
+		touch-action: manipulation;
 	}
-  }
+
+	button{
+		@apply cursor-pointer;
+	}
+}
+
+@layer components {
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.chara .filter-btn {
+		min-width: 68px;
+		padding: 0.25rem 0.75rem;
+		border: 1px solid rgb(209 213 219);
+		height: 30px;
+		background-color: rgb(242 242 242);
+		text-transform: capitalize;
+		box-shadow:
+			0 4px 6px -1px rgb(0 0 0 / 0.1),
+			0 2px 4px -2px rgb(0 0 0 / 0.1);
+	}
+	.chara .filter-btn.active {
+		background-color: rgb(2 132 199);
+		color: rgb(242 242 242);
+		border: 1px solid transparent;
+	}
+	@media only screen and (max-width: 640px) {
+		.chara .filter-btn {
+			min-width: 56px;
+			padding: 0.25rem 0.5rem;
+			border: 1px solid rgb(209 213 219);
+		}
+	}
+
+	.n18_mzk {
+		border-radius: 100%;
+		border: 3px solid firebrick;
+		width: 40px;
+		height: 40px;
+		transform: rotate3d(1, -1, 1, 55deg);
+	}
+
+	li.list-cross {
+		position: relative;
+		list-style: none;
+	}
+	.list-cross::after {
+		content: url("../src/lib/images/is/list_x.svg");
+		position: absolute;
+		top: 6px;
+		left: -19px;
+		/* changed to -19px on 22/01/2025, previously was -23px */
+	}
+
+	.skilltag {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.8rem;
+		width: max-content;
+		border-radius: 5px;
+		line-height: 1.25rem;
+		padding: 0 4px;
+		margin-left: 4px;
+	}
+	.PASSIVE,
+	.skilltag.can_silence {
+		background-color: #737373;
+	}
+	.COOLDOWN {
+		background-color: #2678b7;
+	}
+	.INCREASE_WHEN_ATTACK {
+		background-color: #fc793e;
+	}
+	.INCREASE_WHEN_TAKEN_DAMAGE {
+		background-color: #ffb400;
+	}
+	.INCREASE_WITH_TIME {
+		background-color: #8ec31f;
+	}
+	.skilltag.ignore_stealth {
+		background-color: #204d91;
+	}
+	.skilltag.ignore_camou {
+		background-color: #265624;
+	}
+	.skilltag.once_only {
+		background-color: #737373;
+	}
+
+	@media (orientation: landscape) {
+		body {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 0;
+			padding-right: 0;
+			overflow-x: hidden;
+		}
+	}
+}

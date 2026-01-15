@@ -4,7 +4,19 @@
 	import spTerrainList from '$lib/sp_terrain_list.json';
 	import SpTerrainDesc from './SpTerrainDesc.svelte';
 	import { getSkzdwzDesc } from '$lib/functions/rogueHelpers';
-	export let spTerrain, rogueTopic: RogueTopic, difficulty, language: Language;
+	interface Props {
+		spTerrain: any;
+		rogueTopic: RogueTopic;
+		difficulty: any;
+		language: Language;
+	}
+
+	let {
+		spTerrain,
+		rogueTopic,
+		difficulty,
+		language
+	}: Props = $props();
 </script>
 
 <div class="sm:px-6 my-4">

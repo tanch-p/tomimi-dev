@@ -5,8 +5,24 @@
 	import translations from '$lib/translations.json';
 	import EnemyHandbookDisplay from './EnemyHandbookDisplay.svelte';
 
-	export let enemies: Enemy[], language: Language, statMods, specialMods, otherBuffsList, mapConfig;
-	let displayMode = 'table';
+	interface Props {
+		enemies: Enemy[];
+		language: Language;
+		statMods: any;
+		specialMods: any;
+		otherBuffsList: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemies,
+		language,
+		statMods,
+		specialMods,
+		otherBuffsList,
+		mapConfig
+	}: Props = $props();
+	let displayMode = $state('table');
 </script>
 
 <div class="grid grid-cols-2 place-items-center h-[58px] mt-3">
@@ -15,7 +31,7 @@
 		'table'
 			? ''
 			: 'brightness-50'}"
-		on:click={() => (displayMode = 'table')}
+		onclick={() => (displayMode = 'table')}
 	>
 		<Icon name="icon-list" size={22} />
 
@@ -26,7 +42,7 @@
 		'handbook'
 			? ''
 			: 'brightness-50'}"
-		on:click={() => (displayMode = 'handbook')}
+		onclick={() => (displayMode = 'handbook')}
 	>
 		<Icon name="layout-view" size={28} />
 		<span class="text-lg">{translations[language].handbook_view}</span>

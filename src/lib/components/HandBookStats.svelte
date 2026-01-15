@@ -11,10 +11,19 @@
 	import eleResIcon from '$lib/images/is/ele_res.webp';
 	import Tooltip from './Tooltip.svelte';
 
-	export let enemy: Enemy,
-		language: Language,
-		formIndex: number,
-		mode = 'mobile';
+	interface Props {
+		enemy: Enemy;
+		language: Language;
+		formIndex: number;
+		mode?: string;
+	}
+
+	let {
+		enemy,
+		language,
+		formIndex,
+		mode = 'mobile'
+	}: Props = $props();
 
 	const statKeyIcons = {
 		hp: hpIcon,

@@ -7,10 +7,24 @@
 	import translations from '$lib/translations.json';
 	import { isEquals } from '$lib/functions/lib';
 
-	export let enemy: Enemy, row: number, language: Language, specialMods, mapConfig;
-	$: traits = getEnemySkills(enemy, enemy.traits, row, $specialMods, 'trait');
-	$: specialList = getEnemySkills(enemy, enemy.forms[row].special, row, $specialMods, 'special');
-	$: statusImmuneList = getStatusImmune(enemy, enemy.forms[row].status_immune, $specialMods);
+	interface Props {
+		enemy: Enemy;
+		row: number;
+		language: Language;
+		specialMods: any;
+		mapConfig: any;
+	}
+
+	let {
+		enemy,
+		row,
+		language,
+		specialMods,
+		mapConfig
+	}: Props = $props();
+	let traits = $derived(getEnemySkills(enemy, enemy.traits, row, $specialMods, 'trait'));
+	let specialList = $derived(getEnemySkills(enemy, enemy.forms[row].special, row, $specialMods, 'special'));
+	let statusImmuneList = $derived(getStatusImmune(enemy, enemy.forms[row].status_immune, $specialMods));
 </script>
 
 <div>

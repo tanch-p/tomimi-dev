@@ -2,33 +2,50 @@
 	import { slide } from 'svelte/transition';
 	import Icon from '$lib/components/Icon.svelte';
 
-	export let title = 'title',
-		isOpen = false,
-		id='',
+	interface Props {
+		title?: string;
+		isOpen?: boolean;
+		id?: string;
+		className?: string;
+		titleClassName?: string;
+		innerClassName?: string;
+		triangle?: import('svelte').Snippet;
+		children?: import('svelte').Snippet;
+		selected?: import('svelte').Snippet;
+	}
+
+	let {
+		title = 'title',
+		isOpen = $bindable(false),
+		id = '',
 		className = '',
 		titleClassName = '',
-		innerClassName = '';
+		innerClassName = '',
+		triangle,
+		children,
+		selected
+	}: Props = $props();
 
 	const toggle = () => (isOpen = !isOpen);
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div class="relative {className}">
-	<button {id} class="block w-full relative p-3 hover:cursor-pointer {titleClassName}" on:click={toggle}>
+	<button {id} class="block w-full relative p-3 hover:cursor-pointer {titleClassName}" onclick={toggle}>
 		<p class={`text-center`}>{title}</p>
 		<Icon
 			name={isOpen ? 'icon-minus' : 'icon-plus'}
-			className="absolute z-[1] right-2 top-[50%] -translate-y-[50%] w-4 h-4"
+			className="absolute z-1 right-2 top-[50%] -translate-y-[50%] w-4 h-4"
 		/>
 	</button>
-	<slot name="triangle"/>
+	{@render triangle?.()}
 	{#if isOpen}
-		<div transition:slide|local={{ duration: 300 }} class="relative {innerClassName}">
-			<slot>No children given</slot>
+		<div transition:slide={{ duration: 300 }} class="relative {innerClassName}">
+			{#if children}{@render children()}{:else}No children given{/if}
 		</div>
 	{:else}
-		<div transition:slide|local={{ duration: 300 }}>
-			<slot name="selected" />
+		<div transition:slide={{ duration: 300 }}>
+			{@render selected?.()}
 		</div>
 	{/if}
 </div>

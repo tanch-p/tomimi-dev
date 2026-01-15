@@ -8,21 +8,33 @@
 	import spriteCost from '$lib/images/is/sprite_cost.webp';
 	import SeekBar from './SeekBar.svelte';
 
-	export let game,
-		initialCost,
-		language: Language,
-		count: number,
-		randomSeeds,
-		simulatedData,
-		maxCost = 99;
+	interface Props {
+		game: any;
+		initialCost: any;
+		language: Language;
+		count: number;
+		randomSeeds: any;
+		simulatedData: any;
+		maxCost?: number;
+	}
 
-	let card = GameConfig.tokenCard,
-		totalTime = 0,
-		min = 0,
-		sec = 0,
+	let {
+		game,
+		initialCost,
+		language,
+		count,
+		randomSeeds = $bindable(),
+		simulatedData,
+		maxCost = 99
+	}: Props = $props();
+
+	let card = $state(GameConfig.tokenCard),
+		totalTime = $state(0),
+		min = $state(0),
+		sec = $state(0),
 		unsubscribeFns = [],
-		isPaused = false,
-		simMode = 'wave_normal';
+		isPaused = $state(false),
+		simMode = $state('wave_normal');
 
 	function handleSpeedFactor() {
 		switch (GameConfig.speedFactor) {
@@ -80,40 +92,40 @@
 {#if simulatedData && simMode === 'wave_normal'}
 	<SeekBar {game} {simulatedData} />
 {/if}
-<div class="absolute z-[1] right-4 flex gap-x-2 md:gap-x-4 mt-4">
+<div class="absolute z-1 right-4 flex gap-x-2 md:gap-x-4 mt-4">
 	<button
 		class="interface w-[45px] h-[45px] md:w-[60px] md:h-[60px] shadow-lg"
-		on:click={handleReset}
+		onclick={handleReset}
 	>
-		<Icon name="refresh-icon" className="rotate-[185deg]" size={28} />
+		<Icon name="refresh-icon" className="rotate-185" size={28} />
 	</button>
 	<button
 		class="interface w-[45px] h-[45px] md:w-[60px] md:h-[60px] shadow-lg"
-		on:click={handleSpeedFactor}
+		onclick={handleSpeedFactor}
 	>
 		<div class="">
 			<div class="flex justify-center text-2xl leading-[26px]">{GameConfig.speedFactor}X</div>
 			<div class="flex justify-center pl-1">
 				{#each Array.from(Array(Math.min(3, GameConfig.speedFactor))) as _, i}
 					<div
-						class="border-l-[11px] border-l-white border-y-[6px] border-y-transparent {i > 0
+						class="border-l-11 border-l-white border-y-[6px] border-y-transparent {i > 0
 							? '-ml-0.5'
 							: ''}"
-					/>
+					></div>
 				{/each}
 			</div>
 		</div>
 	</button>
 	<button
 		class="interface w-[45px] h-[45px] md:w-[60px] md:h-[60px] shadow-lg"
-		on:click={handlePause}
+		onclick={handlePause}
 	>
 		{#if isPaused}
-			<div class="border-l-[22px] border-l-white border-y-[11px] border-y-transparent" />
+			<div class="border-l-22 border-l-white border-y-11 border-y-transparent"></div>
 		{:else}
 			<div class="flex justify-center gap-1.5">
-				<div class="bg-white h-[22px] w-[8px]" />
-				<div class="bg-white h-[22px] w-[8px]" />
+				<div class="bg-white h-[22px] w-[8px]"></div>
+				<div class="bg-white h-[22px] w-[8px]"></div>
 			</div>
 		{/if}
 	</button>
@@ -143,7 +155,7 @@
 	{#if card?.count > 0}
 		<button
 			class="relative border border-[#ffffff80] {card.selected ? '' : 'opacity-50'}"
-			on:click={() => {
+			onclick={() => {
 				GameConfig.setValue('tokenCard', { ...card, selected: !card.selected });
 			}}
 		>
@@ -159,7 +171,7 @@
 
 {#if isPaused}
 	<div
-		class="absolute z-[0] inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 pointer-events-none"
+		class="absolute z-0 inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 pointer-events-none"
 	>
 		<p class="text-2xl">{GameConfig.state === 'end' ? 'ENDED' : 'PAUSE'}</p>
 		{#if language === 'zh'}<p class="text-sm">----暂停中----</p>{/if}

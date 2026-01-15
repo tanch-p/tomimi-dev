@@ -3,13 +3,25 @@
 	import EnemyHandbookDetails from './EnemyHandbookDetails.svelte';
 	import bossIcon from '$lib/images/is/boss_icon.webp';
 
-	export let enemies: Enemy[],
-		language: Language,
+	interface Props {
+		enemies: Enemy[];
+		language: Language;
+		statMods: any;
+		specialMods: any;
+		otherBuffsList: any;
+		mode?: string;
+		mapConfig: any;
+	}
+
+	let {
+		enemies,
+		language,
 		statMods,
 		specialMods,
 		otherBuffsList,
 		mode = 'mobile',
-		mapConfig;
+		mapConfig
+	}: Props = $props();
 </script>
 
 <div class="grid grid-cols-[75px_auto] md:grid-cols-[85px_auto] md:justify-center md:mt-4">
@@ -45,7 +57,7 @@
 	<div class="flex flex-col md:max-w-[550px]">
 		{#each enemies as enemy, index (enemy.stageId)}
 			{#if index !== 0}
-				<div class="bg-neutral-700 mx-1 h-0.5" />
+				<div class="bg-neutral-700 mx-1 h-0.5"></div>
 			{/if}
 			<EnemyHandbookDetails {enemy} {language} {statMods} {specialMods} {otherBuffsList} {mode} {mapConfig}/>
 		{/each}

@@ -11,11 +11,23 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let openOverlay: boolean,
-		language: Language,
-		rogueTopic: RogueTopic,
+	interface Props {
+		openOverlay: boolean;
+		language: Language;
+		rogueTopic: RogueTopic;
+		selectedRelics: any;
+		selectedUniqueRelic: any;
+		uniqueRelics?: import('svelte').Snippet;
+	}
+
+	let {
+		openOverlay,
+		language,
+		rogueTopic,
 		selectedRelics,
-		selectedUniqueRelic;
+		selectedUniqueRelic,
+		uniqueRelics
+	}: Props = $props();
 
 	function handleOverlayClick(e) {
 		if (!e.target.className.includes('relic') && !e.target.id.includes('reset')) {
@@ -38,22 +50,22 @@
 				return [];
 		}
 	};
-	$: relicsList = getRelicsList(rogueTopic);
+	let relicsList = $derived(getRelicsList(rogueTopic));
 </script>
 
 <div
-	class={`relative transition-opacity duration-[50ms] ease-in-out select-none ${
+	class={`relative transition-opacity duration-50 ease-in-out select-none ${
 		openOverlay ? 'opacity-100' : 'opacity-0 invisible'
 	}`}
 >
 	{#if openOverlay}
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div
 			class="fixed inset-0 bg-ph-bg bg-opacity-90 overflow-y-scroll no-scrollbar"
-			on:click={handleOverlayClick}
+			onclick={handleOverlayClick}
 		>
 			<div class="w-full max-w-7xl mx-auto py-36">
-				<slot name="uniqueRelics" />
+				{@render uniqueRelics?.()}
 				{#if relicsList.length > 0}
 					<div
 						class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 w-full overflow-x-auto md:overflow-visible my-auto mx-auto px-4 sm:px-24"
@@ -68,7 +80,7 @@
 				<button
 					id="reset"
 					class="block rounded-xl bg-neutral-700 text-near-white px-16 py-2 mt-12 mx-auto w-min hover:cursor-pointer hover:bg-neutral-600 whitespace-nowrap"
-					on:click={() => {
+					onclick={() => {
 						selectedRelics.set([]);
 						if (selectedUniqueRelic !== null) {
 							selectedUniqueRelic.set(null);

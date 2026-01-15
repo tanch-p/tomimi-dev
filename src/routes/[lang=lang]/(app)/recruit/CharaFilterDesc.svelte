@@ -2,17 +2,21 @@
 	import type { Language } from '$lib/types';
 	import translations from '$lib/translations.json';
 	import { filterDescStore } from './stores';
-	import { getDisplayKey } from '$lib/functions/charaHelpers';
+	import { getDisplayKey } from '$lib/functions/chara/charaHelpers';
 	import TextParser from '$lib/components/TextParser.svelte';
-	import { generateSkillDesc as generateSkillDesc_zh } from '$lib/functions/filterDescHelpers_zh';
-	import { generateSkillDesc as generateSkillDesc_ja } from '$lib/functions/filterDescHelpers_ja';
-	import { generateSkillDesc as generateSkillDesc_en } from '$lib/functions/filterDescHelpers_en';
+	import { generateSkillDesc as generateSkillDesc_zh } from '$lib/functions/chara/filterDescHelpers_zh';
+	import { generateSkillDesc as generateSkillDesc_ja } from '$lib/functions/chara/filterDescHelpers_ja';
+	import { generateSkillDesc as generateSkillDesc_en } from '$lib/functions/chara/filterDescHelpers_en';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
 
-	$: defaultLine = translations[language].chara_filter_start;
+	let { language }: Props = $props();
 
-	$: line = defaultLine;
+	let defaultLine = $derived(translations[language].chara_filter_start);
+
+	let line = $derived(defaultLine);
 
 	const generateDescFunc = (
 		activeOptions,

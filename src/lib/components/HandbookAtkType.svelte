@@ -3,9 +3,15 @@
 	import translations from '$lib/translations.json';
 	import { getDmgEleHighlight, getNormalAtk } from '$lib/functions/parseAtkType';
 
-	export let enemy: Enemy, language: Language, formIndex: number;
+	interface Props {
+		enemy: Enemy;
+		language: Language;
+		formIndex: number;
+	}
 
-	$: attack = getNormalAtk(enemy, formIndex);
+	let { enemy, language, formIndex }: Props = $props();
+
+	let attack = $derived(getNormalAtk(enemy, formIndex));
 </script>
 
 {#if attack.atk_type[0] !== 'raw'}
@@ -18,5 +24,5 @@
 		{/if}
 	</p>
 {:else}
-	<span/>
+	<span></span>
 {/if}

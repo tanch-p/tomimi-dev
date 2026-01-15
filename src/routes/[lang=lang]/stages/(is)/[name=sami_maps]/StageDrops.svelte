@@ -13,11 +13,23 @@
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
-	export let mapConfig, rogueTopic: string, language: Language, selectedFloor;
+	interface Props {
+		mapConfig: any;
+		rogueTopic: string;
+		language: Language;
+		selectedFloor: any;
+	}
+
+	let {
+		mapConfig,
+		rogueTopic,
+		language,
+		selectedFloor
+	}: Props = $props();
 	const stagesToExclude = ['ro3_b_7', 'ro3_b_7_b'];
-	$: isBossStage = mapConfig.id.includes('_b_');
-	$: isEventStage = mapConfig.id.includes('_ev_') || mapConfig.id.includes('_t_');
-	$: isCombatStage = !isBossStage && !isEventStage;
+	let isBossStage = $derived(mapConfig.id.includes('_b_'));
+	let isEventStage = $derived(mapConfig.id.includes('_ev_') || mapConfig.id.includes('_t_'));
+	let isCombatStage = $derived(!isBossStage && !isEventStage);
 </script>
 
 {#if !stagesToExclude.includes(mapConfig.id)}
@@ -36,7 +48,7 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th colspan="2" class="noborder border-t border-l" />
+								<th colspan="2" class="noborder border-t border-l"></th>
 								<th>
 									<div class="flex items-center justify-center">
 										<img
@@ -107,7 +119,7 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td />
+								<td></td>
 								<td> {translations[language].exp}</td>
 								<td colspan="2">{drops[rogueTopic].combat.exp[$selectedFloor - 1]}</td>
 								<td colspan="2">{drops[rogueTopic].elite.exp[$selectedFloor - 1]}</td>
@@ -169,7 +181,7 @@
 					<table class="border-collapse">
 						<thead>
 							<tr>
-								<th colspan="2" class="noborder border-t border-l" />
+								<th colspan="2" class="noborder border-t border-l"></th>
 								<th>
 									<div class="flex items-center justify-center">
 										<img
@@ -207,7 +219,7 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td />
+								<td></td>
 								<td> {translations[language].exp}</td>
 								<td colspan="2">{drops[rogueTopic][mapConfig.id].exp}</td>
 							</tr>

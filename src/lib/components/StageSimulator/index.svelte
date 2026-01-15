@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Enemy, Language, MapConfig } from '$lib/types';
 	import { onDestroy, onMount } from 'svelte';
 	import { Game } from './objects/Game';
@@ -12,27 +14,32 @@
 	import BranchSummons from './BranchSummons.svelte';
 	import { generateBranchTimeline } from '$lib/functions/waveHelpers';
 
-	export let timeline,
-		mapConfig: MapConfig,
+	interface Props {
+		timeline: any;
+		mapConfig: MapConfig;
+		waveData: any;
+		language: Language;
+		enemies: Enemy[];
+		randomSeeds: any;
+	}
+
+	let {
+		timeline,
+		mapConfig,
 		waveData,
-		language: Language,
-		enemies: Enemy[],
-		randomSeeds;
+		language,
+		enemies,
+		randomSeeds = $bindable()
+	}: Props = $props();
 
-	let simMode = 'wave_normal',
-		branchKey = null,
-		branchIndex = -1;
+	let simMode = $state('wave_normal'),
+		branchKey = $state(null),
+		branchIndex = $state(-1);
 	let assetManager = AssetManager.getInstance(),
-		canvasElement: HTMLCanvasElement,
-		game: Game,
-		simulatedData;
+		canvasElement: HTMLCanvasElement = $state(),
+		game: Game = $state(),
+		simulatedData = $state();
 
-	$: if (timeline) {
-		resetGame();
-	}
-	$: if (waveData) {
-		simulatedData = getSimulatedData(mapConfig, waveData, enemies);
-	}
 
 	function resetGame() {
 		if (game) {
@@ -72,6 +79,16 @@
 			game.cleanup();
 		}
 	});
+	run(() => {
+		if (timeline) {
+			resetGame();
+		}
+	});
+	run(() => {
+		if (waveData) {
+			simulatedData = getSimulatedData(mapConfig, waveData, enemies);
+		}
+	});
 </script>
 
 <Settings {game} {mapConfig} />
@@ -102,7 +119,7 @@
 		<!-- {:catch error} -->
 		<!-- <p class="text-center">An error occured while loading: <br />{error.message}</p> -->
 	{/await}
-	<canvas bind:this={canvasElement} />
+	<canvas bind:this={canvasElement}></canvas>
 </div>
 
 <style>

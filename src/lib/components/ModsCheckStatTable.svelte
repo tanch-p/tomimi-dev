@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Enemy, Language } from '$lib/types';
 	import translations from '$lib/translations.json';
 	import DraggableContainer from './DraggableContainer.svelte';
@@ -26,37 +28,19 @@
 		ms: 5
 	};
 
-	export let language: Language, enemy: Enemy, formIndex: number;
-
-	let statIndex = 0;
-
-	$: if (formIndex > -1 || enemy) {
-		if (!statsToShow[statIndex]) {
-			statIndex = 0;
-		}
+	interface Props {
+		language: Language;
+		enemy: Enemy;
+		formIndex: number;
 	}
 
-	$: statsToShow = enemy.modsList[formIndex]
-		.reduce((acc, curr) => {
-			for (const mod of curr.mods) {
-				if (['range', 'dmg_res','weight'].includes(mod?.key)) continue;
-				let key = mod?.key;
-				if (key === 'atk_interval') {
-					key = 'aspd';
-				}
-				if (!acc.includes(key)) {
-					acc.push(key);
-				}
-			}
-			return acc;
-		}, [])
-		.sort((a, b) => STATS_SORT_WEIGHTS[a] - STATS_SORT_WEIGHTS[b]);
+	let { language, enemy, formIndex }: Props = $props();
 
-	$: statKey = statsToShow[statIndex];
+	let statIndex = $state(0);
 
-	$: runeMods = getRunes(enemy.modsList[formIndex], statKey);
-	$: otherMods = getOtherMods(enemy.modsList[formIndex], statKey);
-	$: atkIntervalMods = getAtkIntervalMods(enemy.modsList[formIndex]);
+
+
+
 
 	function getRunes(modsList, statKey) {
 		const list = [];
@@ -138,16 +122,42 @@
 				return charaAssets[key];
 		}
 	}
+	let statsToShow = $derived(enemy.modsList[formIndex]
+		.reduce((acc, curr) => {
+			for (const mod of curr.mods) {
+				if (['range', 'dmg_res','weight'].includes(mod?.key)) continue;
+				let key = mod?.key;
+				if (key === 'atk_interval') {
+					key = 'aspd';
+				}
+				if (!acc.includes(key)) {
+					acc.push(key);
+				}
+			}
+			return acc;
+		}, [])
+		.sort((a, b) => STATS_SORT_WEIGHTS[a] - STATS_SORT_WEIGHTS[b]));
+	run(() => {
+		if (formIndex > -1 || enemy) {
+			if (!statsToShow[statIndex]) {
+				statIndex = 0;
+			}
+		}
+	});
+	let statKey = $derived(statsToShow[statIndex]);
+	let runeMods = $derived(getRunes(enemy.modsList[formIndex], statKey));
+	let otherMods = $derived(getOtherMods(enemy.modsList[formIndex], statKey));
+	let atkIntervalMods = $derived(getAtkIntervalMods(enemy.modsList[formIndex]));
 </script>
 
-<div class="grid grid-cols-[auto,1fr] mt-2.5">
+<div class="grid grid-cols-[auto_1fr] mt-2.5">
 	<div class="border-r border-gray-500 pr-3 whitespace-nowrap">
 		{#each statsToShow as key, i}
 			<button
 				class="flex items-center gap-x-1.5 px-2 py-1 text-start {statIndex === i
 					? 'bg-neutral-500'
 					: ''}"
-				on:click={() => (statIndex = i)}
+				onclick={() => (statIndex = i)}
 			>
 				<img
 					src={getImgSrc(STATS_KEY_TABLE[key])}

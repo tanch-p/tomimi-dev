@@ -1,11 +1,16 @@
 <script lang="ts">
 	import type {Language} from "$lib/types"
 	import translations from '$lib/translations.json';
-	export let normalAttack, language: Language;
-	$: atk_type = normalAttack.atk_type;
-	$: hits = normalAttack.hits;
-	$: separator = language === 'en' ? '/' : '・';
-	$: hasAtkElement = atk_type[0] !== 'raw' && atk_type[0] !== 'no_attack';
+	interface Props {
+		normalAttack: any;
+		language: Language;
+	}
+
+	let { normalAttack, language }: Props = $props();
+	let atk_type = $derived(normalAttack.atk_type);
+	let hits = $derived(normalAttack.hits);
+	let separator = $derived(language === 'en' ? '/' : '・');
+	let hasAtkElement = $derived(atk_type[0] !== 'raw' && atk_type[0] !== 'no_attack');
 </script>
 
 <!-- {@debug normalAttack} -->

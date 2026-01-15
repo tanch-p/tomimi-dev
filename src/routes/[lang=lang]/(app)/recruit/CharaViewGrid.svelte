@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { selectedChara, moduleIndex, sortOptions, secFilters } from './stores';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import { getPrioritySortValues } from '$lib/functions/charaHelpers';
-	export let chara;
+	import { getPrioritySortValues } from '$lib/functions/chara/charaHelpers';
+	let { chara } = $props();
 
-	$: equip = chara.activeModuleIndex && chara.uniequip?.[chara.activeModuleIndex];
+	let equip = $derived(chara.activeModuleIndex && chara.uniequip?.[chara.activeModuleIndex]);
 
-	$: values = getPrioritySortValues(chara, $sortOptions, $secFilters);
+	let values = $derived(getPrioritySortValues(chara, $sortOptions, $secFilters));
 
 	const handleClick = (chara) => {
 		selectedChara.set(chara);
@@ -15,7 +15,7 @@
 </script>
 
 <button
-	on:click={() => handleClick(chara)}
+	onclick={() => handleClick(chara)}
 	class="relative select-none border border-gray-600 border-opacity-50"
 >
 	<div class="relative">
@@ -52,7 +52,7 @@
 			<div
 				class="absolute -right-1 -top-1 w-[40px] h-[40px] bg-center bg-cover"
 				style="background-image: url(/images/color_equip_icons/{typeIcon}.webp);"
-			/>
+			></div>
 		{/if}
 		<img
 			src={`/images/chara_icons/${chara.id}.webp`}

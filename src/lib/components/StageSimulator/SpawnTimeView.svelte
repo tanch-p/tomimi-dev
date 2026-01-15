@@ -1,25 +1,37 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Language } from '$lib/types';
 	import { GameConfig } from './objects/GameConfig';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { wavePrefixSuffix } from '$lib/functions/languageHelpers';
 	import { onDestroy, onMount } from 'svelte';
 	import translations from '$lib/translations.json';
 	import { compileSpawnTimeActions, getImageForWaves } from '$lib/functions/waveHelpers';
 
-	export let waves, mapConfig, branchKey, branchIndex: number;
+	interface Props {
+		waves: any;
+		mapConfig: any;
+		branchKey: any;
+		branchIndex: number;
+	}
 
-	let timelineContainer: HTMLDivElement, actionsContainer: HTMLDivElement;
-	let currWaveIndex = 0;
-	let waveElapsedTime = 0;
-	let language: Language;
-	let showTimeline = true;
-	let index = -1;
-	let prevIndexSize = 0;
-	let simMode = 'wave_normal';
+	let {
+		waves,
+		mapConfig,
+		branchKey,
+		branchIndex
+	}: Props = $props();
 
-	$: language = $page.data.language;
-	$: GameConfig.showTimeline.subscribe((v) => (showTimeline = v));
+	let timelineContainer: HTMLDivElement = $state(), actionsContainer: HTMLDivElement = $state();
+	let currWaveIndex = $state(0);
+	let waveElapsedTime = $state(0);
+	let language: Language = $derived(page.data.language);
+	let showTimeline = $state(true);
+	let index = $state(-1);
+	let prevIndexSize = $state(0);
+	let simMode = $state('wave_normal');
+
 
 	// Sync class -> store
 	const unsubscribeFns = [];
@@ -70,10 +82,7 @@
 		unsubscribeFns.forEach((fn) => fn());
 	});
 
-	$: prevIndexSize = getPrevActionsSize(currWaveIndex);
-	$: index = updateActionIndex(waveElapsedTime, prevIndexSize);
 
-	$: trackAndScrollContainer(index);
 
 	function updateActionIndex(waveElapsedTime: number, prevIndexSize: number) {
 		const currActionIndex = getCurrActionIndex(waveElapsedTime);
@@ -115,6 +124,19 @@
 		}
 		return timeline.length - 1;
 	}
+	
+	run(() => {
+		GameConfig.showTimeline.subscribe((v) => (showTimeline = v));
+	});
+	run(() => {
+		prevIndexSize = getPrevActionsSize(currWaveIndex);
+	});
+	run(() => {
+		index = updateActionIndex(waveElapsedTime, prevIndexSize);
+	});
+	run(() => {
+		trackAndScrollContainer(index);
+	});
 </script>
 
 {#if waves}

@@ -1,14 +1,18 @@
 <script lang="ts">
 	import type { Language, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import translations from '$lib/translations.json';
-	export let trap: Trap;
+	interface Props {
+		trap: Trap;
+	}
 
-	let language: Language;
-	$: language = $page.data.language;
+	let { trap }: Props = $props();
 
-	$: statKeys = ['hp', 'blockCnt', 'atk', 'aspd', 'def', 'res'];
+	let language: Language = $derived(page.data.language);
+	
+
+	let statKeys = $derived(['hp', 'blockCnt', 'atk', 'aspd', 'def', 'res']);
 </script>
 
 <div>

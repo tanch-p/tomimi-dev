@@ -1,12 +1,10 @@
-import type { PageLoad } from './$types';
-import type { Language } from '$lib/types';
+import type { PageLoad } from "./$types";
 
-export const load = (async ({ params }) => {
-	const language: Language = params.lang;
+export const load: PageLoad = async ({ params }) => {
 	return {
-		language,
+		language: params.lang,
 	};
-}) satisfies PageLoad;
+};
 
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production

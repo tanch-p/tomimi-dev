@@ -10,8 +10,12 @@
 	import suiBugList from '$lib/data/is/sui/bug_list.json';
 	import Resources from '$lib/components/Resources.svelte';
 
-	export let data: PageData;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let language = $derived(data.language);
 	const docLink = "https://docs.qq.com/sheet/DTGxyYk5QWFBEcmJx?tab=48nkmm";
 </script>
 

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { generateWaveTimeline } from '$lib/functions/waveHelpers';
-import ro3_b6 from '../lib/data/stages/ro_stage_data/level_rogue3_b-6.json' assert { type: 'json' };
-import ro5_b5b from '../lib/data/stages/ro_stage_data/level_rogue5_b-5-b.json' assert { type: 'json' };
+import ro3_b6 from '../lib/data/stages/ro_stage_data/level_rogue3_b-6.json' with { type: 'json' }
+import ro5_b5b from '../lib/data/stages/ro_stage_data/level_rogue5_b-5-b.json'with { type: 'json' }
 
 const expectedResults = {
 	rogue3_b6: {

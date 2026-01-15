@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Language, MapConfig, Trap } from '$lib/types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import translations from '$lib/translations.json';
 	import StatusImmune from './StatusImmune.svelte';
 	import TrapStats from './TrapStats.svelte';
@@ -8,9 +8,21 @@
 	import TrapAbilities from './TrapAbilities.svelte';
 	import OtherBuffs from './OtherBuffs.svelte';
 
-	export let trap: Trap, otherBuffsList, specialMods, mapConfig:MapConfig;
-	let language: Language;
-	$: language = $page.data.language;
+	interface Props {
+		trap: Trap;
+		otherBuffsList: any;
+		specialMods: any;
+		mapConfig: MapConfig;
+	}
+
+	let {
+		trap,
+		otherBuffsList,
+		specialMods,
+		mapConfig
+	}: Props = $props();
+	let language: Language = $derived(page.data.language);
+	
 </script>
 
 <div
@@ -20,7 +32,7 @@
 	<div class="relative pt-3">
 		<div class="flex items-center">
 			{#if trap.overwritten}
-				<p class="text-xs text-center bg-[#981313] py-0.5 w-[1.75rem]">Sp.</p>
+				<p class="text-xs text-center bg-[#981313] py-0.5 w-7">Sp.</p>
 			{/if}
 			<p class="ml-1 font-semibold">{trap.name}</p>
 		</div>

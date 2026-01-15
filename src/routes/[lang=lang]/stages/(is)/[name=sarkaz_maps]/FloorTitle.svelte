@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import type { Language } from '$lib/types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
 	import { selectedFloor, disasterEffects, difficultyMode } from './stores';
@@ -30,25 +32,32 @@
 		rogue_4_disaster_5: disaster_5
 	};
 
-	export let stageFloors: number[], language: Language;
-	let optionsOpen = false;
-	let floor6Index = 5;
-
-	$: if ($page.data.mapConfig) {
-		switch ($page.data.mapConfig.levelId) {
-			case 'level_rogue4_b-7':
-			case 'level_rogue4_7-1':
-			case 'level_rogue4_7-2':
-				floor6Index = 7;
-				break;
-			case 'level_rogue4_b-8':
-				floor6Index = 6;
-				break;
-			default:
-				floor6Index = 5;
-				break;
-		}
+	interface Props {
+		stageFloors: number[];
+		language: Language;
 	}
+
+	let { stageFloors, language }: Props = $props();
+	let optionsOpen = $state(false);
+	let floor6Index = $state(5);
+
+	run(() => {
+		if (page.data.mapConfig) {
+			switch (page.data.mapConfig.levelId) {
+				case 'level_rogue4_b-7':
+				case 'level_rogue4_7-1':
+				case 'level_rogue4_7-2':
+					floor6Index = 7;
+					break;
+				case 'level_rogue4_b-8':
+					floor6Index = 6;
+					break;
+				default:
+					floor6Index = 5;
+					break;
+			}
+		}
+	});
 	page.subscribe(({ data }) => updateFloor(data?.mapConfig?.floors));
 	difficultyMode.subscribe(() => updateFloor(stageFloors));
 	function updateFloor(floors: number[]) {
@@ -56,13 +65,13 @@
 		if ($difficultyMode !== 'normal') {
 			//语奇终无
 			if (
-				$page.data.mapConfig.id.includes('_ev_') ||
-				$page.data.mapConfig.id.includes('_duel_') ||
-				$page.data.mapConfig.id.includes('_t_')
+				page.data.mapConfig.id.includes('_ev_') ||
+				page.data.mapConfig.id.includes('_duel_') ||
+				page.data.mapConfig.id.includes('_t_')
 			) {
 				return;
 			}
-			if ($page.data.mapConfig.id.includes('_e_')) {
+			if (page.data.mapConfig.id.includes('_e_')) {
 				const floor = Math.min(...floors);
 				if (floor > 5) {
 					selectedFloor.set(Math.min(...floors));
@@ -81,14 +90,14 @@
 
 <div
 	use:clickOutside
-	on:outclick={() => (optionsOpen = false)}
+	onoutclick={() => (optionsOpen = false)}
 	class="self-center mx-auto select-none"
 >
-	<button id="floor-options" class="px-3 py-0.5 md:hover:bg-neutral-500" on:click={() => (optionsOpen = !optionsOpen)}>
+	<button id="floor-options" class="px-3 py-0.5 md:hover:bg-neutral-500" onclick={() => (optionsOpen = !optionsOpen)}>
 		<p class="flex items-center justify-center relative text-center">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />
 			<img
-				class="h-[20px] mt-[1px]"
+				class="h-[20px] mt-px"
 				src={lookup[`roman_${$selectedFloor}`]}
 				alt={$selectedFloor}
 			/>&nbsp;{$selectedFloor === 6
