@@ -31634,6 +31634,9 @@
 				"traits": [
 					{
 						"key": "mhshep_1"
+					},
+					{
+						"key": "standby"
 					}
 				],
 				"special": []
@@ -60106,7 +60109,7 @@
 		"key": "enemy_2106_dyremy",
 		"sortId": 1069,
 		"name_zh": "怪葫芦",
-		"name_ja": "奇妙なひょうたん",
+		"name_ja": "怪瓢箪",
 		"name_en": "Strange Gourd",
 		"stats": [
 			{
@@ -60597,7 +60600,7 @@
 	},
 	"enemy_2115_dylbg2": {
 		"id": "ZLJ",
-		"key": "enemy_2115_dylbg2",
+	"key": "enemy_2115_dylbg2",
 		"sortId": 1259,
 		"name_zh": "昭烈君",
 		"name_ja": "昭烈君",
@@ -60949,7 +60952,7 @@
 		"sortId": 1267,
 		"name_zh": "“望”",
 		"name_ja": "「望」",
-		"name_en": "Wang",
+		"name_en": "'Wang'",
 		"stats": [
 			{
 				"hp": 200000,
@@ -61774,8 +61777,8 @@
 		"key": "enemy_10111_ymgpck",
 		"sortId": 1025,
 		"name_zh": "“某种天命”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「ある種の天命」",
+		"name_en": "'Certain Fates'",
 		"stats": [
 			{
 				"hp": 1000,
@@ -61821,8 +61824,8 @@
 		"key": "enemy_10111_ymgpck_2",
 		"sortId": 1026,
 		"name_zh": "“某种天命”",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「ある種の天命」",
+		"name_en": "'Certain Fates'",
 		"stats": [
 			{
 				"hp": 1000,
@@ -61868,8 +61871,8 @@
 		"key": "enemy_10112_ymgds",
 		"sortId": 1027,
 		"name_zh": "冒失的小弟",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "そそっかしい舎弟",
+		"name_en": "Careless Underling",
 		"stats": [
 			{
 				"hp": 5000,
@@ -61905,8 +61908,8 @@
 		"key": "enemy_10112_ymgds_2",
 		"sortId": 1028,
 		"name_zh": "资深的小弟",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "古参の舎弟",
+		"name_en": "Veteran Underling",
 		"stats": [
 			{
 				"hp": 6000,
@@ -61942,8 +61945,8 @@
 		"key": "enemy_10113_ymgung",
 		"sortId": 1029,
 		"name_zh": "雷遁忍者",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "雷遁忍者",
+		"name_en": "Raiton Ninja",
 		"stats": [
 			{
 				"hp": 5000,
@@ -61986,8 +61989,8 @@
 		"key": "enemy_10113_ymgung_2",
 		"sortId": 1030,
 		"name_zh": "雷遁宗师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "雷遁宗師",
+		"name_en": "Raiton Master",
 		"stats": [
 			{
 				"hp": 7000,
@@ -62030,8 +62033,8 @@
 		"key": "enemy_10114_ymgsld",
 		"sortId": 1031,
 		"name_zh": "悲观的大哥",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "悲観的な兄貴分",
+		"name_en": "Pessimistic Oath-Brother",
 		"stats": [
 			{
 				"hp": 10000,
@@ -62067,8 +62070,8 @@
 		"key": "enemy_10114_ymgsld_2",
 		"sortId": 1032,
 		"name_zh": "绝望的大哥",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "絶望した兄貴分",
+		"name_en": "Desperate Oath-Brother",
 		"stats": [
 			{
 				"hp": 20000,
@@ -62104,8 +62107,8 @@
 		"key": "enemy_10115_ymghol",
 		"sortId": 1033,
 		"name_zh": "土遁忍者",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "土遁忍者",
+		"name_en": "Doton Ninja",
 		"stats": [
 			{
 				"hp": 8000,
@@ -62148,8 +62151,8 @@
 		"key": "enemy_10115_ymghol_2",
 		"sortId": 1034,
 		"name_zh": "土遁宗师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "土遁宗師",
+		"name_en": "Doton Master",
 		"stats": [
 			{
 				"hp": 10000,
@@ -62192,8 +62195,8 @@
 		"key": "enemy_10116_ymgtop",
 		"sortId": 1035,
 		"name_zh": "水遁忍者",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "水遁忍者",
+		"name_en": "Suiton Ninja",
 		"stats": [
 			{
 				"hp": 10000,
@@ -62239,8 +62242,8 @@
 		"key": "enemy_10116_ymgtop_2",
 		"sortId": 1036,
 		"name_zh": "水遁宗师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "水遁宗師",
+		"name_en": "Suiton Master",
 		"stats": [
 			{
 				"hp": 12000,
@@ -62286,8 +62289,8 @@
 		"key": "enemy_10117_ymggld",
 		"sortId": 1037,
 		"name_zh": "风遁忍者",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "風遁忍者",
+		"name_en": "Fuuton Ninja",
 		"stats": [
 			{
 				"hp": 8000,
@@ -62330,8 +62333,8 @@
 		"key": "enemy_10117_ymggld_2",
 		"sortId": 1038,
 		"name_zh": "风遁宗师",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "風遁宗師",
+		"name_en": "Fuuton Master",
 		"stats": [
 			{
 				"hp": 12000,
@@ -62374,8 +62377,8 @@
 		"key": "enemy_10118_ymgprc",
 		"sortId": 1039,
 		"name_zh": "澪",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "澪",
+		"name_en": "Mio",
 		"stats": [
 			{
 				"hp": 50000,
@@ -62411,8 +62414,8 @@
 		"key": "enemy_10119_ymgbxm",
 		"sortId": 1040,
 		"name_zh": "压力舒缓帮手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "モヤモヤナクナール",
+		"name_en": "Stress-Relief Helper",
 		"stats": [
 			{
 				"hp": 35000,
@@ -62448,8 +62451,8 @@
 		"key": "enemy_10119_ymgbxm_2",
 		"sortId": 1041,
 		"name_zh": "压力归零帮手",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "イライラナクナール",
+		"name_en": "Zero-Stress Helper",
 		"stats": [
 			{
 				"hp": 50000,
@@ -62500,7 +62503,17 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "no_block"
+					},
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62537,7 +62550,17 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "no_block"
+					},
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62574,7 +62597,14 @@
 				"ms": 0.75,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "uasnip_unblocked"
+					},
+					{
+						"key": "uasnip_worker"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62611,7 +62641,14 @@
 				"ms": 0.75,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "uasnip_unblocked"
+					},
+					{
+						"key": "uasnip_worker"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62648,7 +62685,17 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "splash"
+					},
+					{
+						"key": "uacann_fire"
+					},
+					{
+						"key": "uacann_command"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62685,7 +62732,18 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "splash"
+					},
+					{
+						"key": "uacann_fire",
+						"value": 150
+					},
+					{
+						"key": "uacann_command"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62722,7 +62780,19 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "block",
+						"value": 3
+					},
+					{
+						"key": "mcreep_fight",
+						"value": 3
+					},
+					{
+						"key": "uareap_bombard"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62796,7 +62866,18 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight",
+						"value": 3
+					},
+					{
+						"key": "uashield_command"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62833,7 +62914,18 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight",
+						"value": 3
+					},
+					{
+						"key": "uashield_command"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62944,7 +63036,20 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight"
+					},
+					{
+						"key": "rkbomb_1"
+					},
+					{
+						"key": "rkbomb_2"
+					}
+				],
 				"special": []
 			}
 		],
@@ -62981,7 +63086,20 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight"
+					},
+					{
+						"key": "rkbomb_1"
+					},
+					{
+						"key": "rkbomb_2"
+					}
+				],
 				"special": []
 			}
 		],
@@ -63018,7 +63136,20 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight"
+					},
+					{
+						"key": "rkmbst_1"
+					},
+					{
+						"key": "rkmbst_2"
+					}
+				],
 				"special": []
 			}
 		],
@@ -63055,7 +63186,20 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "attack_mcreep"
+					},
+					{
+						"key": "mcreep_fight"
+					},
+					{
+						"key": "rkmbst_1"
+					},
+					{
+						"key": "rkmbst_2"
+					}
+				],
 				"special": []
 			}
 		],
@@ -63181,8 +63325,8 @@
 		"key": "enemy_1570_ymgscm",
 		"sortId": 1270,
 		"name_zh": "三船光平",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "三船光平",
+		"name_en": "Kouhei Mifune",
 		"stats": [
 			{
 				"hp": 60000,
@@ -63248,8 +63392,39 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
-				"special": []
+				"traits": [
+					{
+						"key": "mirbst_base"
+					}
+				],
+				"special": [
+					[
+						{
+							"key": "mirbst_1_hit"
+						},
+						{
+							"key": "mirbst_1_invul"
+						},
+						{
+							"key": "mirbst_1_fury"
+						},
+						{
+							"key": "mirbst_1_fury_end"
+						}
+					],
+					[
+						{
+							"key": "multi_target",
+							"value": 3
+						},
+						{
+							"key": "mirbst_2_rock"
+						},
+						{
+							"key": "mirbst_2_fury"
+						}
+					]
+				]
 			},
 			{
 				"hp": 200000,
@@ -63263,13 +63438,52 @@
 				"ms": 0.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
-				"special": []
+				"traits": [
+					{
+						"key": "mirbst_base"
+					}
+				],
+				"special": [
+					[
+						{
+							"key": "mirbst_1_hit"
+						},
+						{
+							"key": "mirbst_1_invul"
+						},
+						{
+							"key": "mirbst_1_fury"
+						},
+						{
+							"key": "mirbst_1_fury_end"
+						}
+					],
+					[
+						{
+							"key": "multi_target",
+							"value": 3
+						},
+						{
+							"key": "mirbst_2_rock"
+						},
+						{
+							"key": "mirbst_2_fury"
+						}
+					]
+				]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "form",
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["sleep", "fear"]
+			},
+			{
+				"title": "form",
 				"normal_attack": {
 					"atk_type": ["melee", "phys"],
 					"hits": 1
@@ -63910,7 +64124,17 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "mcreep_1"
+					},
+					{
+						"key": "mcreep_fear"
+					},
+					{
+						"key": "mcreep_heal"
+					}
+				],
 				"special": []
 			}
 		],
@@ -63969,8 +64193,8 @@
 		"key": "enemy_6032_fxdjj",
 		"sortId": 1379,
 		"name_zh": "“绝对安保”试做型",
-		"name_ja": "",
-		"name_en": "",
+		"name_ja": "「絶対警備」試作型",
+		"name_en": "'Absolute Security' Prototype",
 		"stats": [
 			{
 				"hp": 70000,
@@ -63999,6 +64223,4518 @@
 			}
 		],
 		"type": ["ranged", "machine", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_10138_xdsnow": {
+		"id": "KL01",
+		"key": "enemy_10138_xdsnow",
+		"sortId": 1075,
+		"name_zh": "雪孩子",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5500,
+				"atk": 200,
+				"def": 200,
+				"res": 10.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10138_xdsnow_2": {
+		"id": "KL02",
+		"key": "enemy_10138_xdsnow_2",
+		"sortId": 1076,
+		"name_zh": "雪顽童",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 7000,
+				"atk": 300,
+				"def": 200,
+				"res": 10.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10139_xdseal": {
+		"id": "KL03",
+		"key": "enemy_10139_xdseal",
+		"sortId": 1077,
+		"name_zh": "蓬松雪球",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5500,
+				"atk": 200,
+				"def": 200,
+				"res": 10.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10139_xdseal_2": {
+		"id": "KL04",
+		"key": "enemy_10139_xdseal_2",
+		"sortId": 1078,
+		"name_zh": "夜色雪球",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 7000,
+				"atk": 300,
+				"def": 200,
+				"res": 10.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10140_xdbird": {
+		"id": "KL05",
+		"key": "enemy_10140_xdbird",
+		"sortId": 1079,
+		"name_zh": "洞栖雪灵",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 4500,
+				"atk": 200,
+				"def": 100,
+				"res": 10.0,
+				"aspd": 3.0,
+				"range": 2.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10140_xdbird_2": {
+		"id": "KL06",
+		"key": "enemy_10140_xdbird_2",
+		"sortId": 1080,
+		"name_zh": "山谷雪灵",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 6000,
+				"atk": 300,
+				"def": 150,
+				"res": 15.0,
+				"aspd": 3.0,
+				"range": 2.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10141_xdpeng": {
+		"id": "KL07",
+		"key": "enemy_10141_xdpeng",
+		"sortId": 1081,
+		"name_zh": "抱蛋羽兽",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 7500,
+				"atk": 300,
+				"def": 150,
+				"res": 15.0,
+				"aspd": 3.5,
+				"range": 1.5,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.7,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10141_xdpeng_2": {
+		"id": "KL08",
+		"key": "enemy_10141_xdpeng_2",
+		"sortId": 1082,
+		"name_zh": "拥霜羽兽",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 10000,
+				"atk": 400,
+				"def": 200,
+				"res": 20.0,
+				"aspd": 3.5,
+				"range": 1.5,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.7,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10142_xdturt": {
+		"id": "KL09",
+		"key": "enemy_10142_xdturt",
+		"sortId": 1083,
+		"name_zh": "翻身甲",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 8000,
+				"atk": 500,
+				"def": 3200,
+				"res": 80.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10142_xdturt_2": {
+		"id": "KL10",
+		"key": "enemy_10142_xdturt_2",
+		"sortId": 1084,
+		"name_zh": "坚冰翻身甲",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 10000,
+				"atk": 700,
+				"def": 3200,
+				"res": 80.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10143_xdmush": {
+		"id": "KL11",
+		"key": "enemy_10143_xdmush",
+		"sortId": 1085,
+		"name_zh": "小雪伞",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 12000,
+				"atk": 500,
+				"def": 600,
+				"res": 0.0,
+				"aspd": 3.5,
+				"range": 1.5,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10143_xdmush_2": {
+		"id": "KL12",
+		"key": "enemy_10143_xdmush_2",
+		"sortId": 1086,
+		"name_zh": "焕生雪伞",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 18000,
+				"atk": 800,
+				"def": 800,
+				"res": 0.0,
+				"aspd": 3.5,
+				"range": 1.5,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10144_xdelk": {
+		"id": "KL13",
+		"key": "enemy_10144_xdelk",
+		"sortId": 1087,
+		"name_zh": "巨角卢鲁",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 15000,
+				"atk": 800,
+				"def": 500,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.7,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["fear", "attract"]
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10144_xdelk_2": {
+		"id": "KL14",
+		"key": "enemy_10144_xdelk_2",
+		"sortId": 1088,
+		"name_zh": "乌顶巨角卢鲁",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 20000,
+				"atk": 1000,
+				"def": 800,
+				"res": 30.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.7,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["fear", "attract"]
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10145_xdrock": {
+		"id": "KL15",
+		"key": "enemy_10145_xdrock",
+		"sortId": 1089,
+		"name_zh": "伊斯贝塔",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 20000,
+				"atk": 1500,
+				"def": 2500,
+				"res": 80.0,
+				"aspd": 7.0,
+				"range": 1.5,
+				"weight": 5,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10145_xdrock_2": {
+		"id": "KL16",
+		"key": "enemy_10145_xdrock_2",
+		"sortId": 1090,
+		"name_zh": "斯托斯贝塔",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 24000,
+				"atk": 1500,
+				"def": 3000,
+				"res": 80.0,
+				"aspd": 7.0,
+				"range": 1.5,
+				"weight": 5,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10146_nscola": {
+		"id": "AS01",
+		"key": "enemy_10146_nscola",
+		"sortId": 1091,
+		"name_zh": "开天汽水瓶",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5000,
+				"atk": 350,
+				"def": 100,
+				"res": 10.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10146_nscola_2": {
+		"id": "AS02",
+		"key": "enemy_10146_nscola_2",
+		"sortId": 1092,
+		"name_zh": "开天汽水瓶·酸辣味",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 6500,
+				"atk": 400,
+				"def": 100,
+				"res": 10.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10147_nsbomb": {
+		"id": "AS03",
+		"key": "enemy_10147_nsbomb",
+		"sortId": 1093,
+		"name_zh": "遮天面包机",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 7000,
+				"atk": 330,
+				"def": 300,
+				"res": 20.0,
+				"aspd": 2.5,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10147_nsbomb_2": {
+		"id": "AS04",
+		"key": "enemy_10147_nsbomb_2",
+		"sortId": 1094,
+		"name_zh": "遮天面包机·果酱款",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 9000,
+				"atk": 400,
+				"def": 300,
+				"res": 20.0,
+				"aspd": 2.5,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10148_nsmos": {
+		"id": "AS05",
+		"key": "enemy_10148_nsmos",
+		"sortId": 1095,
+		"name_zh": "啸天吸尘器",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 6000,
+				"atk": 200,
+				"def": 200,
+				"res": 50.0,
+				"aspd": 1.0,
+				"range": 0.3,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10148_nsmos_2": {
+		"id": "AS06",
+		"key": "enemy_10148_nsmos_2",
+		"sortId": 1096,
+		"name_zh": "啸天吸尘器·大力版",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 7000,
+				"atk": 250,
+				"def": 200,
+				"res": 50.0,
+				"aspd": 1.0,
+				"range": 0.3,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10149_nscan": {
+		"id": "AS07",
+		"key": "enemy_10149_nscan",
+		"sortId": 1097,
+		"name_zh": "掀天汽水桶",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 11000,
+				"atk": 550,
+				"def": 400,
+				"res": 10.0,
+				"aspd": 3.5,
+				"range": -1.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10149_nscan_2": {
+		"id": "AS08",
+		"key": "enemy_10149_nscan_2",
+		"sortId": 1098,
+		"name_zh": "掀天汽水桶·家庭装",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 13000,
+				"atk": 650,
+				"def": 400,
+				"res": 10.0,
+				"aspd": 3.5,
+				"range": -1.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10150_nsheat": {
+		"id": "AS09",
+		"key": "enemy_10150_nsheat",
+		"sortId": 1099,
+		"name_zh": "炙烤螺旋桨",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 15000,
+				"atk": 360,
+				"def": 200,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10150_nsheat_2": {
+		"id": "AS10",
+		"key": "enemy_10150_nsheat_2",
+		"sortId": 1100,
+		"name_zh": "焦香螺旋桨",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 20000,
+				"atk": 480,
+				"def": 200,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10151_nspace": {
+		"id": "AS11",
+		"key": "enemy_10151_nspace",
+		"sortId": 1101,
+		"name_zh": "行天卫生间",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 15000,
+				"atk": 800,
+				"def": 1000,
+				"res": 0.0,
+				"aspd": 4.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10151_nspace_2": {
+		"id": "AS12",
+		"key": "enemy_10151_nspace_2",
+		"sortId": 1102,
+		"name_zh": "行天救护车",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 18000,
+				"atk": 900,
+				"def": 1200,
+				"res": 0.0,
+				"aspd": 4.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10152_nstree": {
+		"id": "AS13",
+		"key": "enemy_10152_nstree",
+		"sortId": 1103,
+		"name_zh": "“自由的树”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 40000,
+				"atk": 2500,
+				"def": 600,
+				"res": 30.0,
+				"aspd": 5.5,
+				"range": 1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10152_nstree_2": {
+		"id": "AS14",
+		"key": "enemy_10152_nstree_2",
+		"sortId": 1104,
+		"name_zh": "“逐日的树”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 50000,
+				"atk": 3000,
+				"def": 600,
+				"res": 30.0,
+				"aspd": 5.5,
+				"range": 1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10153_nsblon": {
+		"id": "AS15",
+		"key": "enemy_10153_nsblon",
+		"sortId": 1105,
+		"name_zh": "热气球",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 8000,
+				"atk": 0,
+				"def": 0,
+				"res": 60.0,
+				"aspd": 1.0,
+				"range": 1.0,
+				"weight": 0,
+				"lifepoint": 0,
+				"ms": 1.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["no_attack", "drone", "flying", "NORMAL"],
+		"notCountInTotal": true
+	},
+	"enemy_10153_nsblon_2": {
+		"id": "AS16",
+		"key": "enemy_10153_nsblon_2",
+		"sortId": 1106,
+		"name_zh": "强力热气球",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 10000,
+				"atk": 0,
+				"def": 0,
+				"res": 60.0,
+				"aspd": 1.0,
+				"range": 1.0,
+				"weight": 0,
+				"lifepoint": 0,
+				"ms": 1.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["no_attack", "drone", "flying", "NORMAL"],
+		"notCountInTotal": true
+	},
+	"enemy_10154_mnmblx": {
+		"id": "MIN01",
+		"key": "enemy_10154_mnmblx",
+		"sortId": 1107,
+		"name_zh": "“英雄的呼唤”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 3,
+				"atk": 100,
+				"def": 100,
+				"res": 0.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.2,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": ["fear", "attract"]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10155_mntjsd": {
+		"id": "MIN02",
+		"key": "enemy_10155_mntjsd",
+		"sortId": 1108,
+		"name_zh": "投矛的士兵",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 4200,
+				"atk": 360,
+				"def": 100,
+				"res": 10.0,
+				"aspd": 2.5,
+				"range": 2.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["all", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["all", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10155_mntjsd_2": {
+		"id": "MIN03",
+		"key": "enemy_10155_mntjsd_2",
+		"sortId": 1109,
+		"name_zh": "投矛的勇士",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5400,
+				"atk": 450,
+				"def": 150,
+				"res": 10.0,
+				"aspd": 2.5,
+				"range": 2.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["all", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["all", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10156_mncrer": {
+		"id": "MIN04",
+		"key": "enemy_10156_mncrer",
+		"sortId": 1110,
+		"name_zh": "新手祭司学徒",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 4000,
+				"atk": 300,
+				"def": 100,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10156_mncrer_2": {
+		"id": "MIN05",
+		"key": "enemy_10156_mncrer_2",
+		"sortId": 1111,
+		"name_zh": "见习祭司学徒",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5500,
+				"atk": 360,
+				"def": 100,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10157_mnggyl": {
+		"id": "MIN06",
+		"key": "enemy_10157_mnggyl",
+		"sortId": 1112,
+		"name_zh": "疑问的雕像",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 6000,
+				"atk": 450,
+				"def": 600,
+				"res": 50.0,
+				"aspd": 4.0,
+				"range": 1.5,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.75,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10157_mnggyl_2": {
+		"id": "MIN07",
+		"key": "enemy_10157_mnggyl_2",
+		"sortId": 1113,
+		"name_zh": "失望的雕像",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 8000,
+				"atk": 550,
+				"def": 800,
+				"res": 60.0,
+				"aspd": 4.0,
+				"range": 1.5,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.75,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10158_mnzeno": {
+		"id": "MIN08",
+		"key": "enemy_10158_mnzeno",
+		"sortId": 1114,
+		"name_zh": "小跑的斐迪庇第斯",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 8000,
+				"atk": 100,
+				"def": 200,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10158_mnzeno_2": {
+		"id": "MIN09",
+		"key": "enemy_10158_mnzeno_2",
+		"sortId": 1115,
+		"name_zh": "狂奔的斐迪庇第斯",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 9600,
+				"atk": 100,
+				"def": 300,
+				"res": 25.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10159_mntrjn": {
+		"id": "MIN10",
+		"key": "enemy_10159_mntrjn",
+		"sortId": 1116,
+		"name_zh": "伊利昂的木驮兽",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 28000,
+				"atk": 100,
+				"def": 600,
+				"res": 10.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 6,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["no_attack", "machine", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10159_mntrjn_2": {
+		"id": "MIN11",
+		"key": "enemy_10159_mntrjn_2",
+		"sortId": 1117,
+		"name_zh": "伊利昂的铁驮兽",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 32000,
+				"atk": 100,
+				"def": 600,
+				"res": 10.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 6,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["no_attack", "machine", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10160_mnlaur": {
+		"id": "MIN12",
+		"key": "enemy_10160_mnlaur",
+		"sortId": 1118,
+		"name_zh": "传唱喜剧的诗人",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 8000,
+				"atk": 600,
+				"def": 150,
+				"res": 40.0,
+				"aspd": 2.5,
+				"range": 2.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10160_mnlaur_2": {
+		"id": "MIN13",
+		"key": "enemy_10160_mnlaur_2",
+		"sortId": 1119,
+		"name_zh": "传唱悲剧的诗人",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 10000,
+				"atk": 800,
+				"def": 150,
+				"res": 40.0,
+				"aspd": 2.5,
+				"range": 2.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_10161_mnserv": {
+		"id": "MIN14",
+		"key": "enemy_10161_mnserv",
+		"sortId": 1120,
+		"name_zh": "英雄的理想",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 22000,
+				"atk": 1100,
+				"def": 330,
+				"res": 50.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.7,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10161_mnserv_2": {
+		"id": "MIN15",
+		"key": "enemy_10161_mnserv_2",
+		"sortId": 1121,
+		"name_zh": "英雄的气概",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 25000,
+				"atk": 1250,
+				"def": 360,
+				"res": 50.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.7,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10162_mnctpt": {
+		"id": "MIN16",
+		"key": "enemy_10162_mnctpt",
+		"sortId": 1122,
+		"name_zh": "自制投石机",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 16000,
+				"atk": 750,
+				"def": 800,
+				"res": 0.0,
+				"aspd": 7.0,
+				"range": 4.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10162_mnctpt_2": {
+		"id": "MIN17",
+		"key": "enemy_10162_mnctpt_2",
+		"sortId": 1123,
+		"name_zh": "翻新投石机",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 18000,
+				"atk": 1000,
+				"def": 800,
+				"res": 0.0,
+				"aspd": 7.0,
+				"range": 4.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10163_mnctur": {
+		"id": "MIN18",
+		"key": "enemy_10163_mnctur",
+		"sortId": 1124,
+		"name_zh": "帕拉杜利斯",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 40000,
+				"atk": 1700,
+				"def": 1000,
+				"res": 30.0,
+				"aspd": 4.0,
+				"range": -1.0,
+				"weight": 5,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["fear", "attract"]
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_10163_mnctur_2": {
+		"id": "MIN19",
+		"key": "enemy_10163_mnctur_2",
+		"sortId": 1125,
+		"name_zh": "神勇的帕拉杜利斯",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 44000,
+				"atk": 1900,
+				"def": 1600,
+				"res": 30.0,
+				"aspd": 4.0,
+				"range": -1.0,
+				"weight": 5,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["fear", "attract"]
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_1574_xdagt": {
+		"id": "KL",
+		"key": "enemy_1574_xdagt",
+		"sortId": 1331,
+		"name_zh": "披挂冰雪的少女",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 125000,
+				"atk": 600,
+				"def": 600,
+				"res": 40.0,
+				"aspd": 7.0,
+				"range": -1.0,
+				"weight": 10,
+				"lifepoint": 2,
+				"ms": 0.1,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 150000,
+				"atk": 750,
+				"def": 750,
+				"res": 40.0,
+				"aspd": 7.0,
+				"range": -1.0,
+				"weight": 10,
+				"lifepoint": 2,
+				"ms": 0.1,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_1575_xdmon": {
+		"id": "Kj",
+		"key": "enemy_1575_xdmon",
+		"sortId": 1332,
+		"name_zh": "耶拉冈德",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 125000,
+				"atk": 600,
+				"def": 600,
+				"res": 40.0,
+				"aspd": 7.0,
+				"range": -1.0,
+				"weight": 10,
+				"lifepoint": 1,
+				"ms": 0.1,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 150000,
+				"atk": 750,
+				"def": 750,
+				"res": 40.0,
+				"aspd": 7.0,
+				"range": -1.0,
+				"weight": 10,
+				"lifepoint": 1,
+				"ms": 0.1,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_1576_spbell": {
+		"id": "KL",
+		"key": "enemy_1576_spbell",
+		"sortId": 1333,
+		"name_zh": "喀兰圣女",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 10000,
+				"atk": 1000,
+				"def": 250,
+				"res": 15.0,
+				"aspd": 5.0,
+				"range": 10.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": true
+	},
+	"enemy_1577_iceball": {
+		"id": "FR",
+		"key": "enemy_1577_iceball",
+		"sortId": 1334,
+		"name_zh": "“寒意”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5000,
+				"atk": 750,
+				"def": 200,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.2,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 7000,
+				"atk": 750,
+				"def": 200,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.2,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_1578_icecage": {
+		"id": "KL",
+		"key": "enemy_1578_icecage",
+		"sortId": 1335,
+		"name_zh": "圣女雪衣",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 15000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 20000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_1579_nstmom": {
+		"id": "VOV",
+		"key": "enemy_1579_nstmom",
+		"sortId": 1336,
+		"name_zh": "女妖河谷的拂哀菈",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 70000,
+				"atk": 1200,
+				"def": 2000,
+				"res": 50.0,
+				"aspd": 6.0,
+				"range": -1.0,
+				"weight": 5,
+				"lifepoint": 2,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 110000,
+				"atk": 1700,
+				"def": 2400,
+				"res": 50.0,
+				"aspd": 6.0,
+				"range": -1.0,
+				"weight": 5,
+				"lifepoint": 2,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["silence", "sleep"]
+			}
+		],
+		"type": ["melee", "sarkaz", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_1580_mnchrn": {
+		"id": "XAN",
+		"key": "enemy_1580_mnchrn",
+		"sortId": 1337,
+		"name_zh": "赞索斯，复仇者",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 90000,
+				"atk": 1200,
+				"def": 800,
+				"res": 30.0,
+				"aspd": 3.6,
+				"range": 1.1,
+				"weight": 7,
+				"lifepoint": 2,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 115000,
+				"atk": 1400,
+				"def": 1100,
+				"res": 30.0,
+				"aspd": 3.6,
+				"range": 1.1,
+				"weight": 7,
+				"lifepoint": 2,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["melee", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_1581_mnchrs": {
+		"id": "XAN",
+		"key": "enemy_1581_mnchrs",
+		"sortId": 1338,
+		"name_zh": "“无数的伊萨科斯”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 90000,
+				"atk": 900,
+				"def": 300,
+				"res": 30.0,
+				"aspd": 3.6,
+				"range": 1.1,
+				"weight": 7,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 115000,
+				"atk": 1050,
+				"def": 420,
+				"res": 30.0,
+				"aspd": 3.6,
+				"range": 1.1,
+				"weight": 7,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["melee", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_2001_duckmi_2": {
+		"id": "DLD",
+		"key": "enemy_2001_duckmi_2",
+		"sortId": 1131,
+		"name_zh": "鸭爵",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 6000,
+				"atk": 100,
+				"def": 200,
+				"res": 30.0,
+				"aspd": 1.0,
+				"range": 0.0,
+				"weight": 3,
+				"lifepoint": 0,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["no_attack", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_2002_bearmi_2": {
+		"id": "GPN",
+		"key": "enemy_2002_bearmi_2",
+		"sortId": 1133,
+		"name_zh": "高普尼克",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 11000,
+				"atk": 1600,
+				"def": 200,
+				"res": 50.0,
+				"aspd": 3.5,
+				"range": 0.0,
+				"weight": 4,
+				"lifepoint": 0,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "freeze", "levitate"]
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_2034_sythef_2": {
+		"id": "THF",
+		"key": "enemy_2034_sythef_2",
+		"sortId": 1135,
+		"name_zh": "流泪小子",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 4500,
+				"atk": 300,
+				"def": 150,
+				"res": 20.0,
+				"aspd": 2.0,
+				"range": 0.0,
+				"weight": 2,
+				"lifepoint": 0,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_2085_skzjxd_2": {
+		"id": "FAT",
+		"key": "enemy_2085_skzjxd_2",
+		"sortId": 1137,
+		"name_zh": "圆仔",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 13000,
+				"atk": 500,
+				"def": 0,
+				"res": 50.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 5,
+				"lifepoint": 0,
+				"ms": 0.35,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": ["silence"]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_2126_dycyue": {
+		"id": "SQ",
+		"key": "enemy_2126_dycyue",
+		"sortId": 1412,
+		"name_zh": "朔壳",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 500000,
+				"atk": 1800,
+				"def": 2500,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.5,
+				"weight": 9,
+				"lifepoint": 50,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [
+					{
+						"key": "dycyue_summon_body"
+					},
+					{
+						"key": "dycyue_card"
+					},
+					{
+						"key": "dycyue_summon_sword"
+					},
+					{
+						"key": "dycyue_evasion"
+					},
+					{
+						"key": "dycyue_defeat"
+					}
+				],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate"]
+			}
+		],
+		"type": ["ranged", "animated", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_2127_dysuih": {
+		"id": "WQH",
+		"key": "enemy_2127_dysuih",
+		"sortId": 1413,
+		"name_zh": "妄躯",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 500000,
+				"atk": 2400,
+				"def": 3000,
+				"res": 60.0,
+				"aspd": 5.0,
+				"range": 2.5,
+				"weight": 13,
+				"lifepoint": 50,
+				"ms": 0.75,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [
+					{
+						"key": "dysuih_end"
+					},
+					{
+						"key": "dysuih_summon_body"
+					},
+					{
+						"key": "dysuih_card"
+					},
+					{
+						"key": "dysuih_fire_1"
+					},
+					{
+						"key": "dysuih_fire_2"
+					},
+					{
+						"key": "dysuih_stun"
+					},
+					{
+						"key": "dysuih_1"
+					},
+					{
+						"key": "dysuih_2"
+					},
+					{
+						"key": "dysuih_atk"
+					},
+					{
+						"key": "dysuih_3"
+					},
+					{
+						"key": "dysuih_4"
+					}
+				],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "animated", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_2128_dysuib": {
+		"id": "WQH",
+		"key": "enemy_2128_dysuib",
+		"sortId": 1411,
+		"name_zh": "身形",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 80000,
+				"atk": 200,
+				"def": 1000,
+				"res": 30.0,
+				"aspd": 5.0,
+				"range": 2.5,
+				"weight": 13,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [
+					{
+						"key": "dysuib_1"
+					},
+					{
+						"key": "dysuib_2"
+					},
+					{
+						"key": "dysuib_reflect"
+					},
+					{
+						"key": "dysuib_3"
+					},
+					{
+						"key": "dysuib_4"
+					},
+					{
+						"key": "dysuib_summon"
+					}
+				],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "animated", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_2129_dylong": {
+		"id": "YH",
+		"key": "enemy_2129_dylong",
+		"sortId": 1179,
+		"name_zh": "怨骸",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 40000,
+				"atk": 600,
+				"def": 500,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": 2.5,
+				"weight": 5,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "animated", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_2130_dyswrd": {
+		"id": "LA",
+		"key": "enemy_2130_dyswrd",
+		"sortId": 1180,
+		"name_zh": "敛傲",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 20000,
+				"atk": 1800,
+				"def": 500,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": 1.3,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [
+					{
+						"key": "dyswrd_1"
+					},
+					{
+						"key": "dy_end"
+					}
+				],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["ranged", "flying", "animated", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_2131_dyfire": {
+		"id": "YN",
+		"key": "enemy_2131_dyfire",
+		"sortId": 1181,
+		"name_zh": "愠怒",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 20000,
+				"atk": 1800,
+				"def": 500,
+				"res": 20.0,
+				"aspd": 5.0,
+				"range": 1.3,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [
+					{
+						"key": "dyswrd_1"
+					},
+					{
+						"key": "dy_end"
+					}
+				],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["ranged", "animated", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4040_mugoal": {
+		"id": "IB56",
+		"key": "enemy_4040_mugoal",
+		"sortId": 1240,
+		"name_zh": "终点信标塔",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 1000,
+				"atk": 100,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4041_mundr": {
+		"id": "IB57",
+		"key": "enemy_4041_mundr",
+		"sortId": 1241,
+		"name_zh": "红宝石飞翼",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 600,
+				"atk": 100,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy"
+				]
+			}
+		],
+		"type": ["no_attack", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4042_murdr": {
+		"id": "IB58",
+		"key": "enemy_4042_murdr",
+		"sortId": 1242,
+		"name_zh": "蓝宝石飞翼",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 2000,
+				"atk": 100,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy"
+				]
+			}
+		],
+		"type": ["no_attack", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4043_muedr": {
+		"id": "IB59",
+		"key": "enemy_4043_muedr",
+		"sortId": 1243,
+		"name_zh": "钻石飞翼",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 3000,
+				"atk": 100,
+				"def": 100,
+				"res": 10.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy"
+				]
+			}
+		],
+		"type": ["no_attack", "drone", "flying", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4044_mutdek": {
+		"id": "IB60",
+		"key": "enemy_4044_mutdek",
+		"sortId": 1244,
+		"name_zh": "物资浮板",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 1200,
+				"atk": 100,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4045_murtre": {
+		"id": "IB61",
+		"key": "enemy_4045_murtre",
+		"sortId": 1245,
+		"name_zh": "沉水物资箱",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 5000,
+				"atk": 0,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4046_muobst": {
+		"id": "IB62",
+		"key": "enemy_4046_muobst",
+		"sortId": 1246,
+		"name_zh": "定点浮标",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 1000,
+				"atk": 100,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4047_mustak": {
+		"id": "IB63",
+		"key": "enemy_4047_mustak",
+		"sortId": 1247,
+		"name_zh": "火盆浮标",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 1000,
+				"atk": 500,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["none", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["none", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4048_mubarn": {
+		"id": "IB64",
+		"key": "enemy_4048_mubarn",
+		"sortId": 1248,
+		"name_zh": "盐水健身客",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 2100,
+				"atk": 260,
+				"def": 380,
+				"res": 0.0,
+				"aspd": 2.5,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4048_mubarn_2": {
+		"id": "IB65",
+		"key": "enemy_4048_mubarn_2",
+		"sortId": 1249,
+		"name_zh": "“超级钳”盐水健身客",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 3000,
+				"atk": 340,
+				"def": 460,
+				"res": 0.0,
+				"aspd": 2.5,
+				"range": -1.0,
+				"weight": 0,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_4049_muston": {
+		"id": "IB66",
+		"key": "enemy_4049_muston",
+		"sortId": 1250,
+		"name_zh": "引浪兽",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 40000,
+				"atk": 600,
+				"def": 500,
+				"res": 55.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4049_muston_2": {
+		"id": "IB67",
+		"key": "enemy_4049_muston_2",
+		"sortId": 1251,
+		"name_zh": "“水上明珠”引浪兽",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 58000,
+				"atk": 600,
+				"def": 650,
+				"res": 60.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["no_attack", null],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["no_attack", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4050_mubbar": {
+		"id": "IB68",
+		"key": "enemy_4050_mubbar",
+		"sortId": 1252,
+		"name_zh": "深水大力士",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 26000,
+				"atk": 540,
+				"def": 950,
+				"res": 0.0,
+				"aspd": 6.0,
+				"range": 3.5,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["all", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["all", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4050_mubbar_2": {
+		"id": "IB69",
+		"key": "enemy_4050_mubbar_2",
+		"sortId": 1253,
+		"name_zh": "“举重王”深水大力士",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 32000,
+				"atk": 680,
+				"def": 1200,
+				"res": 0.0,
+				"aspd": 6.0,
+				"range": 3.5,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["all", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["all", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4051_mublow": {
+		"id": "IB70",
+		"key": "enemy_4051_mublow",
+		"sortId": 1254,
+		"name_zh": "潮风操控者",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 32000,
+				"atk": 550,
+				"def": 200,
+				"res": 65.0,
+				"aspd": 3.0,
+				"range": 3.5,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 1.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4051_mublow_2": {
+		"id": "IB71",
+		"key": "enemy_4051_mublow_2",
+		"sortId": 1255,
+		"name_zh": "“风向标”潮风操控者",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 38000,
+				"atk": 660,
+				"def": 300,
+				"res": 65.0,
+				"aspd": 3.0,
+				"range": 3.5,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 1.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4052_mulaze": {
+		"id": "IB72",
+		"key": "enemy_4052_mulaze",
+		"sortId": 1256,
+		"name_zh": "眩光记录员",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 29000,
+				"atk": 730,
+				"def": 600,
+				"res": 50.0,
+				"aspd": 3.0,
+				"range": 3.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.9,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_4052_mulaze_2": {
+		"id": "IB73",
+		"key": "enemy_4052_mulaze_2",
+		"sortId": 1257,
+		"name_zh": "“裁决者”眩光记录员",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 36000,
+				"atk": 830,
+				"def": 750,
+				"res": 50.0,
+				"aspd": 3.0,
+				"range": 3.0,
+				"weight": 3,
+				"lifepoint": 1,
+				"ms": 0.9,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "drone", "flying", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_6033_skagod": {
+		"id": "DL33",
+		"key": "enemy_6033_skagod",
+		"sortId": 1449,
+		"name_zh": "冰滚兽 ",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 80000,
+				"atk": 800,
+				"def": 1000,
+				"res": 20.0,
+				"aspd": 4.0,
+				"range": -1.0,
+				"weight": 6,
+				"lifepoint": 3,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9006_actoxi": {
+		"id": "SP01",
+		"key": "enemy_9006_actoxi",
+		"sortId": 1538,
+		"name_zh": "假想敌：蚀裂",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 15000,
+				"atk": 400,
+				"def": 400,
+				"res": 10.0,
+				"aspd": 1.5,
+				"range": -1.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.6,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9007_acelem": {
+		"id": "SP02",
+		"key": "enemy_9007_acelem",
+		"sortId": 1539,
+		"name_zh": "假想敌：淤困",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 36000,
+				"atk": 600,
+				"def": 200,
+				"res": 40.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 1,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["none", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["none", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9008_acbunn": {
+		"id": "SP03",
+		"key": "enemy_9008_acbunn",
+		"sortId": 1540,
+		"name_zh": "假想敌：骨刺",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 12000,
+				"atk": 360,
+				"def": 300,
+				"res": 60.0,
+				"aspd": 4.0,
+				"range": 2.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9009_acfort": {
+		"id": "SP04",
+		"key": "enemy_9009_acfort",
+		"sortId": 1541,
+		"name_zh": "假想敌：黑云",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 24000,
+				"atk": 500,
+				"def": 150,
+				"res": 20.0,
+				"aspd": 3.0,
+				"range": 2.5,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9010_acpupp": {
+		"id": "SP05",
+		"key": "enemy_9010_acpupp",
+		"sortId": 1542,
+		"name_zh": "假想敌：再生",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 12000,
+				"atk": 1100,
+				"def": 300,
+				"res": 40.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9011_acrefr": {
+		"id": "SP06",
+		"key": "enemy_9011_acrefr",
+		"sortId": 1543,
+		"name_zh": "假想敌：镜膜",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 18000,
+				"atk": 1000,
+				"def": 600,
+				"res": 0.0,
+				"aspd": 5.5,
+				"range": -1.0,
+				"weight": 4,
+				"lifepoint": 1,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "origen", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_9012_acloon": {
+		"id": "SP07",
+		"key": "enemy_9012_acloon",
+		"sortId": 1544,
+		"name_zh": "\"炎佑\"",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 12000,
+				"atk": 600,
+				"def": 200,
+				"res": 0.0,
+				"aspd": 2.5,
+				"range": 2.0,
+				"weight": 10,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["ranged", "machine", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9013_acstmk": {
+		"id": "SP08",
+		"key": "enemy_9013_acstmk",
+		"sortId": 1545,
+		"name_zh": "假想敌：胄",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 600000,
+				"atk": 650,
+				"def": 1000,
+				"res": 25.0,
+				"aspd": 4.0,
+				"range": 8.0,
+				"weight": 10,
+				"lifepoint": 2,
+				"ms": 0.1,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "machine", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9013_acstmk_2": {
+		"id": "SP08",
+		"key": "enemy_9013_acstmk_2",
+		"sortId": 1556,
+		"name_zh": "假想敌：胄",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 1200000,
+				"atk": 750,
+				"def": 1200,
+				"res": 30.0,
+				"aspd": 4.0,
+				"range": 8.0,
+				"weight": 10,
+				"lifepoint": 2,
+				"ms": 0.1,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "machine", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9014_acstma": {
+		"id": "SP09",
+		"key": "enemy_9014_acstma",
+		"sortId": 1546,
+		"name_zh": "“斩胄之剑”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 240000,
+				"atk": 300,
+				"def": 400,
+				"res": 80.0,
+				"aspd": 6.0,
+				"range": 1.6,
+				"weight": 5,
+				"lifepoint": 0,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["all", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["all", "machine", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9015_acstmb": {
+		"id": "SP10",
+		"key": "enemy_9015_acstmb",
+		"sortId": 1547,
+		"name_zh": "“破胄之锤”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 250000,
+				"atk": 350,
+				"def": 3500,
+				"res": 10.0,
+				"aspd": 8.0,
+				"range": 1.6,
+				"weight": 5,
+				"lifepoint": 0,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["all", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["all", "machine", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9016_acstmr": {
+		"id": "SP11",
+		"key": "enemy_9016_acstmr",
+		"sortId": 1548,
+		"name_zh": "刺胄之弹",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 8,
+				"atk": 0,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 1.0,
+				"range": -1.0,
+				"weight": 2,
+				"lifepoint": 0,
+				"ms": 0.5,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["none", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			}
+		],
+		"type": ["none", "machine", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_9017_achunt": {
+		"id": "SP12",
+		"key": "enemy_9017_achunt",
+		"sortId": 1549,
+		"name_zh": "假想敌：铳",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 120000,
+				"atk": 750,
+				"def": 1100,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 8,
+				"lifepoint": 2,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy"
+				]
+			}
+		],
+		"type": ["ranged", "origen", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9017_achunt_2": {
+		"id": "SP12",
+		"key": "enemy_9017_achunt_2",
+		"sortId": 1557,
+		"name_zh": "假想敌：铳",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 120000,
+				"atk": 750,
+				"def": 1100,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 8,
+				"lifepoint": 2,
+				"ms": 0.4,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"palsy"
+				]
+			}
+		],
+		"type": ["ranged", "origen", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9018_actrpa": {
+		"id": "SP13",
+		"key": "enemy_9018_actrpa",
+		"sortId": 1550,
+		"name_zh": "“碎铳之簧”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 2500000,
+				"atk": 600,
+				"def": 1100,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 3,
+				"lifepoint": 0,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["freeze"]
+			}
+		],
+		"type": ["ranged", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9019_actrpb": {
+		"id": "SP14",
+		"key": "enemy_9019_actrpb",
+		"sortId": 1551,
+		"name_zh": "“碎铳之簧”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 2500000,
+				"atk": 600,
+				"def": 1100,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 3,
+				"lifepoint": 0,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["freeze"]
+			}
+		],
+		"type": ["ranged", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9020_actrpc": {
+		"id": "SP15",
+		"key": "enemy_9020_actrpc",
+		"sortId": 1552,
+		"name_zh": "“碎铳之簧”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 2500000,
+				"atk": 600,
+				"def": 1100,
+				"res": 60.0,
+				"aspd": 4.5,
+				"range": 2.0,
+				"weight": 3,
+				"lifepoint": 0,
+				"ms": 0.3,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["freeze"]
+			}
+		],
+		"type": ["ranged", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9021_acduml": {
+		"id": "SP16",
+		"key": "enemy_9021_acduml",
+		"sortId": 1553,
+		"name_zh": "假想敌：管",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 85000,
+				"atk": 300,
+				"def": 700,
+				"res": 50.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 7,
+				"lifepoint": 2,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+			}
+		],
+		"type": ["ranged", "origen", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9021_acduml_2": {
+		"id": "SP16",
+		"key": "enemy_9021_acduml_2",
+		"sortId": 1558,
+		"name_zh": "假想敌：管",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 85000,
+				"atk": 300,
+				"def": 700,
+				"res": 50.0,
+				"aspd": 3.0,
+				"range": -1.0,
+				"weight": 7,
+				"lifepoint": 2,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+			}
+		],
+		"type": ["ranged", "origen", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9022_acdumm": {
+		"id": "SP17",
+		"key": "enemy_9022_acdumm",
+		"sortId": 1554,
+		"name_zh": "假想敌：弦",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 85000,
+				"atk": 120,
+				"def": 700,
+				"res": 50.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 7,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			},
+			{
+				"hp": 85000,
+				"atk": 120,
+				"def": 700,
+				"res": 50.0,
+				"aspd": 5.0,
+				"range": -1.0,
+				"weight": 7,
+				"lifepoint": 1,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear"]
+			}
+		],
+		"type": ["ranged", "origen", "ELITE"],
+		"notCountInTotal": false
+	},
+	"enemy_9023_acdums": {
+		"id": "SP18",
+		"key": "enemy_9023_acdums",
+		"sortId": 1555,
+		"name_zh": "“裂管之音”/“断弦之音”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 10,
+				"atk": 200,
+				"def": 0,
+				"res": 0.0,
+				"aspd": 4.0,
+				"range": -1.0,
+				"weight": 2,
+				"lifepoint": 1,
+				"ms": 0.8,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["melee", "arts"],
+					"hits": 1
+				},
+				"status_immune": []
+			}
+		],
+		"type": ["melee", "origen", "NORMAL"],
+		"notCountInTotal": false
+	},
+	"enemy_9032_aclionk": {
+		"id": "ALS",
+		"key": "enemy_9032_aclionk",
+		"sortId": 1559,
+		"name_zh": "阿利斯泰尔，帝国余晖",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 81000,
+				"atk": 820,
+				"def": 1030,
+				"res": 20.0,
+				"aspd": 8.2,
+				"range": 3.4,
+				"weight": 10,
+				"lifepoint": 2,
+				"ms": 0.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "phys"],
+					"hits": 1
+				},
+				"status_immune": ["levitate", "fear", "attract"]
+			}
+		],
+		"type": ["ranged", "BOSS"],
+		"notCountInTotal": false
+	},
+	"enemy_9033_acdeer": {
+		"id": "SAM",
+		"key": "enemy_9033_acdeer",
+		"sortId": 1560,
+		"name_zh": "“萨米的意志”",
+		"name_ja": "",
+		"name_en": "",
+		"stats": [
+			{
+				"hp": 240000,
+				"atk": 800,
+				"def": 800,
+				"res": 40.0,
+				"aspd": 6.0,
+				"range": -1.0,
+				"weight": 10,
+				"lifepoint": 2,
+				"ms": 1.0,
+				"epDamageResistance": 0.0,
+				"epResistance": 0.0,
+				"traits": [],
+				"special": []
+			}
+		],
+		"forms": [
+			{
+				"title": null,
+				"normal_attack": {
+					"atk_type": ["ranged", "arts"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"attract"
+				]
+			}
+		],
+		"type": ["ranged", "BOSS"],
 		"notCountInTotal": false
 	}
 }

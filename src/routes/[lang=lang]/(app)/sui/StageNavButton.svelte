@@ -13,6 +13,9 @@
 		'level_rogue5_d-4',
 		'level_rogue5_sv-11',
 		'level_rogue5_sv-12',
+		'level_rogue5_sv-13',
+		'level_rogue5_sv-14',
+		'level_rogue5_sv-15',
 		'level_rogue5_sv-1_dlc1',
 		'level_rogue5_sv-1-b_dlc1',
 		'level_rogue5_sv-3_dlc1',
@@ -33,6 +36,9 @@
 		'level_rogue5_1-6',
 		'level_rogue5_2-5',
 		'level_rogue5_2-6',
+		'level_rogue5_3-6',
+		'level_rogue5_4-7',
+		'level_rogue5_5-7',
 		'level_rogue5_7-1',
 		'level_rogue5_7-2'
 	];

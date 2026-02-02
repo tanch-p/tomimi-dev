@@ -310,5 +310,106 @@
 			"atk": 1.15,
 			"hp": 1.15
 		}
+	},
+	{
+		"difficulty": 16,
+		"ruleDesc": "所有敌人攻击速度+20；“后兽”生命值提升，“矩兽”攻击力提升，“后兽”召唤的敌人有所不同",
+		"addDesc": "每进入新的一层，所有敌人攻击力和生命值额外+18%\\n岁时已至入髓",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "aspd",
+						"value": 1.2,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["enemy_2123_dyjsww"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 2,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["enemy_2124_dyjsfg"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 2,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"floorBuff": {
+			"atk": 1.18,
+			"hp": 1.18
+		}
+	},
+	{
+		"difficulty": 17,
+		"ruleDesc": "领袖敌人攻击力+20％；燃烛时招募及进阶干员减少希望变为1；“醉生”“谋炎”效果增强，“敛傲”“愠怒”攻击力提升",
+		"addDesc": "每进入新的一层，所有敌人攻击力和生命值额外+21%\\n岁时已至入髓",
+		"effects": [
+			{
+				"targets": ["BOSS"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 1.2,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["enemy_2130_dyswrd", "enemy_2131_dyfire"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 2,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"floorBuff": {
+			"atk": 1.21,
+			"hp": 1.21
+		}
+	},
+	{
+		"difficulty": 18,
+		"ruleDesc": "重新投钱会消耗更多的票券；部分战斗中出现额外的敌人；“朔壳”闪避所有非自身阻挡单位的物理和法术伤害",
+		"addDesc": "每进入新的一层，所有敌人攻击力和生命值额外+25%\\n岁时已至入髓",
+		"effects": [
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "extra_enemy"
+					}
+				]
+			},
+			{
+				"targets": ["enemy_2126_dycyue"],
+				"special": {
+					"dycyue_evasion": {
+						"value": 100
+					}
+				}
+			}
+		],
+		"floorBuff": {
+			"atk": 1.25,
+			"hp": 1.25
+		}
 	}
 ]

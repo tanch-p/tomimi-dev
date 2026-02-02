@@ -89,9 +89,9 @@ const cases = [
 
 test.each(cases)('SPFA: %s routeIndex %i', async (levelId, routeIndex, expected) => {
 	const mapConfig = await import(`../lib/data/stages/ro_stage_data/level_${levelId}.json`);
-	const mazeLayout = generateMaze(mapConfig.mapData.map, mapConfig.mapData.tiles);
+	const mazeLayout = generateMaze(mapConfig?.mapData.map, mapConfig?.mapData.tiles);
 	const pathFinder = new SPFA(mazeLayout);
-	const route = convertMovementConfig(mapConfig.routes[routeIndex], mazeLayout);
+	const route = convertMovementConfig(mapConfig?.routes[routeIndex], mazeLayout);
 	const actions = [
 		...route.checkpoints.map((cp) => {
 			return { ...cp, pathType: 'cp' };

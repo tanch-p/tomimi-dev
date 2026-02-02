@@ -36,7 +36,8 @@
 			'level_rogue5_3-2',
 			'level_rogue5_3-3',
 			'level_rogue5_3-4',
-			'level_rogue5_3-5'
+			'level_rogue5_3-5',
+			'level_rogue5_3-6'
 		],
 		[
 			'level_rogue5_4-1',
@@ -44,7 +45,8 @@
 			'level_rogue5_4-3',
 			'level_rogue5_4-4',
 			'level_rogue5_4-5',
-			'level_rogue5_4-6'
+			'level_rogue5_4-6',
+			'level_rogue5_4-7'
 		],
 		[
 			'level_rogue5_5-1',
@@ -52,7 +54,8 @@
 			'level_rogue5_5-3',
 			'level_rogue5_5-4',
 			'level_rogue5_5-5',
-			'level_rogue5_5-6'
+			'level_rogue5_5-6',
+			'level_rogue5_5-7'
 		]
 	];
 
@@ -63,6 +66,7 @@
 	let floor5b = ['level_rogue5_b-4', 'level_rogue5_b-5'];
 	let floor5bAlt = ['level_rogue5_b-4-b', 'level_rogue5_b-5-b'];
 	let floor6b = ['level_rogue5_b-6', 'level_rogue5_b-7'];
+		let floor7b = ['level_rogue5_b-9-a', 'level_rogue5_b-10'];
 	let du = ['level_rogue5_t-1', 'level_rogue5_t-2', 'level_rogue5_t-3', 'level_rogue5_t-4'];
 	let encount1 = ['level_rogue5_t-5', 'level_rogue5_t-6', 'level_rogue5_t-7', 'level_rogue5_t-8'];
 	let encount2 = [
@@ -93,6 +97,7 @@
 	let sv9 = ['level_rogue5_sv-9', 'level_rogue5_sv-9-b', 'level_rogue5_sv-9-c'];
 	let sv4 = ['level_rogue5_sv-4'];
 	let sv_dlc1 = ['level_rogue5_sv-11', 'level_rogue5_sv-12'];
+	let sv_dlc2 = ['level_rogue5_sv-13', 'level_rogue5_sv-14', 'level_rogue5_sv-15'];
 	//max per row = 4
 
 	let dlc1_svRow1 = [
@@ -264,11 +269,23 @@
 				{/each}
 			</tr>
 			<tr>
-				<td colspan="2" rowspan="1">
-					{6}
-				</td>
+				<td colspan="2" rowspan="1"> 6 </td>
 				{#each floor6b as stageName}
 					<td colspan={Math.floor(24 / floor6b.length)}>
+						<StageNavButton levelId={stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr>
+				<td colspan="2" rowspan="1"> ? </td>
+				<td colspan={24}>
+					<StageNavButton levelId={'level_rogue5_b-8'} {language} />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rowspan="1"> 6/7 </td>
+				{#each floor7b as stageName}
+					<td colspan={Math.floor(24 / floor7b.length)}>
 						<StageNavButton levelId={stageName} {language} />
 					</td>
 				{/each}
@@ -291,7 +308,7 @@
 				</th>
 			</tr>
 			<tr>
-				<td colspan="2" rowspan="23"> ? </td>
+				<td colspan="2" rowspan="24"> ? </td>
 				{#each du as stageName}
 					<td colspan={Math.floor(24 / du.length)}>
 						<StageNavButton levelId={stageName} {language} />
@@ -367,6 +384,7 @@
 			<StageNavRow items={sv2} {language} />
 			<StageNavRow items={sv9} {language} />
 			<StageNavRow items={sv_dlc1} {language} />
+			<StageNavRow items={sv_dlc2} {language} />
 			<StageNavRow items={sv4} {language} />
 			<tr>
 				<td colspan="2" rowspan="23"> 6 </td>

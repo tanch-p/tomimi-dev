@@ -48,10 +48,10 @@ export class TileManager {
 			case 'tile_telout':
 				boxGroup.add(
 					this.createTeleport(
-						blackboard.direction,
+						blackboard?.direction || "left",
 						tileName,
-						blackboard.colorIndex,
-						blackboard.type
+						blackboard?.colorIndex,
+						blackboard?.type
 					)
 				);
 				return boxGroup;

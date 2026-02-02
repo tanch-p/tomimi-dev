@@ -18,6 +18,8 @@ export const getSpineMetaData = (key, skel) => {
 			height = 130;
 			break;
 	}
+	if(Number.isNaN(width)) width = 50;
+	if(Number.isNaN(height)) height = 50;
 	return { width, height };
 };
 
@@ -141,6 +143,7 @@ export function getIdleAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_2113_dyhlg2':
 		case 'enemy_2114_dylbgg':
 		case 'enemy_2115_dylbg2':
+		case 'enemy_10127_rkmbst':
 			return 'A_Idle';
 
 		case 'enemy_1418_mmkonm':
@@ -165,6 +168,7 @@ export function getIdleAnimName(key: string, skelData: spine.SkeletonData) {
 
 		case 'enemy_1267_nhpbr':
 		case 'enemy_1267_nhpbr_2':
+		case 'enemy_10123_uareap':
 			return 'F_Idle';
 	}
 	return 'Default';
@@ -229,6 +233,7 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_1388_wingnt':
 		case 'enemy_2092_skzamy':
 		case 'enemy_2105_dyrnge':
+		case 'enemy_10127_rkmbst':
 			return 'A_Move';
 		case 'enemy_10058_cjfrog':
 		case 'enemy_10058_cjfrog_2':
@@ -274,6 +279,7 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 
 		case 'enemy_1267_nhpbr':
 		case 'enemy_1267_nhpbr_2':
+		case 'enemy_10123_uareap':
 			return 'F_Move';
 
 		default:

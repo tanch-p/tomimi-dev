@@ -14,7 +14,7 @@
 
 	let dropData;
 
-	$: dropData = drops[rogueTopic][mapConfig.id];
+	$: dropData = drops[rogueTopic][mapConfig?.id];
 </script>
 
 {#if dropData}

@@ -35,7 +35,7 @@
 	let floor6Index = 5;
 
 	$: if ($page.data.mapConfig) {
-		switch ($page.data.mapConfig.levelId) {
+		switch ($page.data.mapConfig?.levelId) {
 			case 'level_rogue4_b-7':
 			case 'level_rogue4_7-1':
 			case 'level_rogue4_7-2':
@@ -56,13 +56,13 @@
 		if ($difficultyMode !== 'normal') {
 			//语奇终无
 			if (
-				$page.data.mapConfig.id.includes('_ev_') ||
-				$page.data.mapConfig.id.includes('_duel_') ||
-				$page.data.mapConfig.id.includes('_t_')
+				$page.data.mapConfig?.id.includes('_ev_') ||
+				$page.data.mapConfig?.id.includes('_duel_') ||
+				$page.data.mapConfig?.id.includes('_t_')
 			) {
 				return;
 			}
-			if ($page.data.mapConfig.id.includes('_e_')) {
+			if ($page.data.mapConfig?.id.includes('_e_')) {
 				const floor = Math.min(...floors);
 				if (floor > 5) {
 					selectedFloor.set(Math.min(...floors));

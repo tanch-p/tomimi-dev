@@ -440,6 +440,10 @@ export const getStatSkillValue = (
 };
 
 export const checkIsTarget = (entity: Enemy | Trap | EnemyDBEntry, target: string): boolean => {
+	if (target.includes('exclude:')) {
+		const list = target.replace('exclude:', '').split('|');
+		return !list.includes(entity.key);
+	}
 	if (target.includes('&')) {
 		const targets = target.split('&');
 		return targets.reduce((acc, curr) => {

@@ -41,6 +41,8 @@ import {
   DeformTimeline,
   DrawOrderTimeline,
   EventTimeline,
+  ColorTimeline,
+  TwoColorTimeline,
 } from "./Animation.js";
 import { BoneData, TransformMode } from "./BoneData.js";
 import { EventData } from "./EventData.js";
@@ -57,6 +59,7 @@ import { SkeletonData } from "./SkeletonData.js";
 import { Skin } from "./Skin.js";
 import { TransformConstraintData } from "./TransformConstraintData.js";
 import { Utils, Color } from "./Utils.js";
+import { SlotData } from "./SlotData.js";
 /** Loads skeleton data in the Spine JSON format.
  *
  * See [Spine JSON format](http://esotericsoftware.com/spine-json-format) and

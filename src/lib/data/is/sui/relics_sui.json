@@ -1,5 +1,56 @@
 [
 	{
+        "id": "rogue_5_relic_final_9",
+        "name_zh": "不赦",
+        "name_ja": "",
+        "name_en": "",
+        "effects": [
+            {
+                "targets": [
+                    "exclude:enemy_1196_msfyin|enemy_1196_msfyin_2|enemy_1198_msfshu|enemy_1198_msfshu_2|enemy_1200_msfjin|enemy_1200_msfjin_2|enemy_1202_msfzhi|enemy_1202_msfzhi_2|enemy_1204_msfhu|enemy_1204_msfhu_2|enemy_1206_msfpin|enemy_1206_msfpin_2|enemy_1208_msfji|enemy_1208_msfji_2|enemy_1210_msfden|enemy_1210_msfden_2|enemy_10059_cjgfod|enemy_10060_cjbfod|enemy_2121_dyspl2|enemy_2101_dyspll"
+                ],
+                "mods": [
+                    {
+                        "key": "hp",
+                        "value": 1.5,
+                        "mode": "mul"
+                    },
+                   {
+                        "key": "def",
+                        "value": 1.5,
+                        "mode": "mul"
+                    }
+                ]
+            }
+        ],
+        "tooltip_zh": "所有敌方单位的生命值、防御力+50％，使“宿傲”和部分“身形”获得持续召唤敌人的能力",
+        "tooltip_ja": "",
+        "tooltip_en": ""
+    },
+    {
+        "id": "rogue_5_relic_final_10",
+        "name_zh": "不息",
+        "name_ja": "",
+        "name_en": "",
+        "effects": [
+            {
+                "targets": [
+                    "ALL"
+                ],
+                "mods": [
+                    {
+                        "key": "atk",
+                        "value": 1.3,
+                        "mode": "mul"
+                    }
+                ]
+            }
+        ],
+        "tooltip_zh": "所有敌方单位的攻击力+30％；【伺烛客】及其召唤物在非岁兽残识作战时攻击力、生命值-10％，每进入新的一层，额外-10％。进入“来去处”时，额外-50％",
+        "tooltip_ja": "",
+        "tooltip_en": ""
+    },
+	{
 		"id": "rogue_5_relic_final_5",
 		"name_zh": "无封长盒",
 		"name_ja": "",
@@ -994,5 +1045,18 @@
 		"tooltip_zh": "投出时，击败雕伥后，额外获得票券。但雕伥最大生命值+200%",
 		"tooltip_ja": "＜彫鬼＞の最大HP+200%、撃破すると遊覧券+1",
 		"tooltip_en": "Statuegeists have +200% HP and drops +1 Coupon when destroyed."
-	}
+	},
+	{
+        "id": "rogue_5_copper_E_07",
+        "name_zh": "厉-南武盛景",
+        "name_ja": "",
+        "name_en": "",
+        "effects": [{
+				"targets": ["ALL"],
+				"mods": [{ "key": "atk", "value": 1.2, "mode": "mul" }]
+			}],
+        "tooltip_zh": "投出时，敌方单位攻击力+20％。携带期间每经过一个战斗节点，失去时可获得一个收藏品（最多获得5个）",
+        "tooltip_ja": "",
+        "tooltip_en": ""
+    }
 ]

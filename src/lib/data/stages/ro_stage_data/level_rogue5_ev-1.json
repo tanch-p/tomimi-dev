@@ -1,3014 +1,3023 @@
 {
- "id": "ro5_ev_1",
- "levelId": "level_rogue5_ev-1",
- "tags": [
-  "rogue_yan"
- ],
- "category": null,
- "characterLimit": 6,
- "initialCost": 10,
- "maxCost": 99,
- "costIncreaseTime": 1.0,
- "code": "ISW-SP",
- "name_zh": "神游天外",
- "name_ja": "心ここにあらず",
- "name_en": "Astral_Projection",
- "description_zh": "为什么梦中也有这位好商人，他是来赠送珍宝的吗？为什么笑纳了这些馈赠，他反而不开心？",
- "description_ja": null,
- "description_en": null,
- "addInfo_zh": null,
- "addInfo_ja": null,
- "addInfo_en": null,
- "eliteDesc_zh": null,
- "eliteDesc_ja": null,
- "eliteDesc_en": null,
- "all_mods": null,
- "n_mods": null,
- "elite_mods": null,
- "floors": [
-  1,
-  2,
-  3
- ],
- "sp_terrain": null,
- "sp_enemy": null,
- "n_count": [
-  31
- ],
- "e_count": null,
- "traps": [
-  {
-   "key": "trap_223_dynbox",
-   "alias": "trap_223_dynbox#1",
-   "pos": {
-    "row": 5,
-    "col": 5
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": true,
-   "overrideSkillBlackboard": null
-  },
-  {
-   "key": "trap_223_dynbox",
-   "alias": "trap_223_dynbox#3",
-   "pos": {
-    "row": 3,
-    "col": 5
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": true,
-   "overrideSkillBlackboard": [
-    {
-     "key": "atk_scale",
-     "value": 0.4,
-     "valueStr": null
-    }
-   ]
-  },
-  {
-   "key": "trap_225_dysbox",
-   "alias": "trap_225_dysbox#1",
-   "pos": {
-    "row": 4,
-    "col": 9
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": true,
-   "overrideSkillBlackboard": [
-    {
-     "key": "enemy_key",
-     "value": 0.0,
-     "valueStr": "enemy_2106_dyremy"
-    }
-   ]
-  },
-  {
-   "key": "trap_223_dynbox",
-   "alias": "trap_223_dynbox#2",
-   "pos": {
-    "row": 3,
-    "col": 6
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": true,
-   "overrideSkillBlackboard": null
-  },
-  {
-   "key": "trap_223_dynbox",
-   "alias": "trap_223_dynbox#4",
-   "pos": {
-    "row": 2,
-    "col": 6
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": true,
-   "overrideSkillBlackboard": [
-    {
-     "key": "atk_scale",
-     "value": 0.4,
-     "valueStr": null
-    }
-   ]
-  },
-  {
-   "key": "trap_225_dysbox",
-   "alias": "trap_225_dysbox#2",
-   "pos": {
-    "row": 1,
-    "col": 9
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": true,
-   "overrideSkillBlackboard": [
-    {
-     "key": "enemy_key",
-     "value": 0.0,
-     "valueStr": "enemy_2106_dyremy"
-    }
-   ]
-  },
-  {
-   "key": "trap_222_rgdysm",
-   "alias": "trap_222_rgdysm#1",
-   "pos": {
-    "row": 3,
-    "col": 2
-   },
-   "direction": "UP",
-   "level": 1,
-   "skillIndex": 0,
-   "mainSkillLvl": 1,
-   "hidden": false,
-   "overrideSkillBlackboard": [
-    {
-     "key": "talent@interval",
-     "value": 15.0,
-     "valueStr": null
-    },
-    {
-     "key": "attack@enemy_key",
-     "value": 0.0,
-     "valueStr": "enemy_2101_dyspll"
-    },
-    {
-     "key": "enemy_key",
-     "value": 0.0,
-     "valueStr": "enemy_2101_dyspll"
-    },
-    {
-     "key": "attack@is_unharmful",
-     "value": 1.0,
-     "valueStr": null
-    }
-   ]
-  }
- ],
- "token_cards": [],
- "systems": {
-  "level_predefine_tokens_random_spawn_on_tile": {
-   "tiles": {
-    "tile_dygmny_1": [
-     {
-      "pos": {
-       "row": 2,
-       "col": 2
-      },
-      "blackboard": [
-       {
-        "key": "branch_id",
-        "value": 0.0,
-        "valueStr": "num3"
-       }
-      ]
-     },
-     {
-      "pos": {
-       "row": 3,
-       "col": 2
-      },
-      "blackboard": [
-       {
-        "key": "branch_id",
-        "value": 0.0,
-        "valueStr": "num1"
-       },
-       {
-        "key": "action_index",
-        "value": 0.0,
-        "valueStr": null
-       },
-       {
-        "key": "value",
-        "value": 1.0,
-        "valueStr": null
-       }
-      ]
-     }
-    ],
-    "tile_dygmny_2": [
-     {
-      "pos": {
-       "row": 2,
-       "col": 5
-      },
-      "blackboard": null
-     },
-     {
-      "pos": {
-       "row": 2,
-       "col": 6
-      },
-      "blackboard": null
-     },
-     {
-      "pos": {
-       "row": 3,
-       "col": 5
-      },
-      "blackboard": null
-     },
-     {
-      "pos": {
-       "row": 3,
-       "col": 6
-      },
-      "blackboard": null
-     }
-    ],
-    "tile_dygmny_3": [
-     {
-      "pos": {
-       "row": 2,
-       "col": 4
-      },
-      "blackboard": null
-     },
-     {
-      "pos": {
-       "row": 2,
-       "col": 7
-      },
-      "blackboard": null
-     },
-     {
-      "pos": {
-       "row": 3,
-       "col": 4
-      },
-      "blackboard": null
-     },
-     {
-      "pos": {
-       "row": 3,
-       "col": 7
-      },
-      "blackboard": null
-     }
-    ]
-   },
-   "trap_225_dysbox": [
-    "tile_dygmny_1"
-   ],
-   "trap_222_rgdysm#1": [
-    "tile_dygmny_2"
-   ],
-   "trap_222_rgdysm#2": [
-    "tile_dygmny_2"
-   ],
-   "trap_224_dyrbox": [
-    "tile_dygmny_3",
-    "tile_dygmny_2",
-    "tile_dygmny_1"
-   ],
-   "trap_223_dynbox": [
-    "tile_dygmny_3",
-    "tile_dygmny_2",
-    "tile_dygmny_1"
-   ]
-  }
+ "name": {
+  "zh": "神游天外",
+  "ja": "心ここにあらず",
+  "en": "Astral_Projection"
  },
- "enemies": [
+ "data": [
   {
-   "id": "enemy_2101_dyspll",
-   "prefabKey": "enemy_2101_dyspll",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2107_dycant",
-   "prefabKey": "enemy_2107_dycant",
-   "level": 0,
-   "min_count": 1,
-   "max_count": 1,
-   "elite_min_count": 1,
-   "elite_max_count": 1,
-   "overwrittenData": {
-    "lifepoint": 0,
-    "talentBlackboard": [
-     {
-      "key": "dycant_transform",
-      "value": 158
-     }
-    ]
-   }
-  },
-  {
-   "id": "enemy_2085_skzjxd",
-   "prefabKey": "enemy_2085_skzjxd",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2121_dyspl2",
-   "prefabKey": "enemy_2121_dyspl2",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2034_sythef",
-   "prefabKey": "enemy_2034_sythef",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2001_duckmi",
-   "prefabKey": "enemy_2001_duckmi",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2002_bearmi",
-   "prefabKey": "enemy_2002_bearmi",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_10007_trspsb",
-   "prefabKey": "enemy_10007_trspsb",
-   "level": 0,
-   "min_count": 2,
-   "max_count": 2,
-   "elite_min_count": 2,
-   "elite_max_count": 2,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_1123_spsbr",
-   "prefabKey": "enemy_1123_spsbr",
-   "level": 0,
-   "min_count": 22,
-   "max_count": 22,
-   "elite_min_count": 22,
-   "elite_max_count": 22,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_1072_dlancer",
-   "prefabKey": "enemy_1072_dlancer",
-   "level": 0,
-   "min_count": 6,
-   "max_count": 6,
-   "elite_min_count": 6,
-   "elite_max_count": 6,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2105_dyrnge",
-   "prefabKey": "enemy_2105_dyrnge",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2119_dyshhj_2",
-   "prefabKey": "enemy_2119_dyshhj_2",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  },
-  {
-   "id": "enemy_2106_dyremy",
-   "prefabKey": "enemy_2106_dyremy",
-   "level": 0,
-   "min_count": 0,
-   "max_count": 0,
-   "elite_min_count": 0,
-   "elite_max_count": 0,
-   "overwrittenData": null
-  }
- ],
- "routes": [
-  {
-   "motionMode": "E_NUM",
-   "startPosition": {
-    "row": 0,
-    "col": 0
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 0
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": null,
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 5,
-    "col": 2
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 9
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 2
-     },
-     "reachOffset": {
-      "x": -0.44,
-      "y": 0.25
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 150.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 2
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 9
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
+   "id": "ro5_ev_1",
+   "levelId": "level_rogue5_ev-1",
+   "tags": [
+    "rogue_yan"
    ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 1,
-    "col": 2
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 9
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 1,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": -0.46,
-      "y": -0.32
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 150.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 2
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 9
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 5
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 6
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 1,
-      "col": 5
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 1,
-      "col": 6
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 6
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 5
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 1,
-      "col": 5
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 1,
-      "col": 6
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 1
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 8
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 3.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 8
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 3
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 10
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 3.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 10
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 1
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 8
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 8
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 3
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 10
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 10
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "FLY",
-   "startPosition": {
-    "row": 6,
-    "col": 1
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 8
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 45,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 8.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 8
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 1
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 8
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 10.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 8
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 6,
-    "col": 1
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 8
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 3
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 5,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 1
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 10.0,
-     "position": {
-      "row": -1,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
-      "col": 8
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  }
- ],
- "mapData": {
-  "map": [
-   [
-    72,
-    73,
-    74,
-    75,
-    76,
-    77,
-    78,
-    79,
-    80,
-    81,
-    82,
-    83
-   ],
-   [
-    60,
-    61,
-    62,
-    63,
-    64,
-    65,
-    66,
-    67,
-    68,
-    69,
-    70,
-    71
-   ],
-   [
-    48,
-    49,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    56,
-    57,
-    58,
-    59
-   ],
-   [
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    42,
-    43,
-    44,
-    45,
-    46,
-    47
-   ],
-   [
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-    32,
-    33,
-    34,
-    35
-   ],
-   [
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23
-   ],
-   [
-    0,
+   "category": null,
+   "characterLimit": 6,
+   "initialCost": 10,
+   "maxCost": 99,
+   "costIncreaseTime": 1.0,
+   "code": "ISW-SP",
+   "name_zh": "神游天外",
+   "name_ja": "心ここにあらず",
+   "name_en": "Astral_Projection",
+   "description_zh": "为什么梦中也有这位好商人，他是来赠送珍宝的吗？为什么笑纳了这些馈赠，他反而不开心？",
+   "description_ja": "夢の中にもこの人の良い商人がいるのはどういう訳だろう？彼は珍しい宝を贈るために来たのだろうか？喜んでそれらの贈り物を受け取ったのに、何故彼はかえって不機嫌になってしまったのだろう？",
+   "description_en": "Why is this good merchant in your dream? Is he here to give you a treasure or two? Why isn't he happy to accept these presents you offer him?",
+   "addInfo_zh": null,
+   "addInfo_ja": null,
+   "addInfo_en": null,
+   "eliteDesc_zh": null,
+   "eliteDesc_ja": null,
+   "eliteDesc_en": null,
+   "all_mods": null,
+   "n_mods": null,
+   "elite_mods": null,
+   "floors": [
     1,
     2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11
-   ]
-  ],
-  "tiles": [
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
+    3
    ],
-   [
-    "tile_telin",
-    0,
-    0,
+   "sp_terrain": null,
+   "sp_enemy": null,
+   "n_count": [
+    31
+   ],
+   "e_count": null,
+   "traps": [
     {
-     "colorIndex": 0,
-     "direction": "down",
-     "type": "arrow"
-    },
-    0
-   ],
-   [
-    "tile_telin",
-    0,
-    0,
-    {
-     "colorIndex": 0,
-     "direction": "down",
-     "type": "arrow"
-    },
-    0
-   ],
-   [
-    "tile_telin",
-    0,
-    0,
-    {
-     "colorIndex": 0,
-     "direction": "down",
-     "type": "arrow"
-    },
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_start",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_end",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_end",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_end",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_wall",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_wall",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_1",
-    0,
-    0,
-    {
-     "branch_id": 0.0
-    },
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_3",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_dygmny_2",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_2",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_3",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_1",
-    0,
-    0,
-    {
-     "branch_id": 0.0,
-     "action_index": 0.0,
-     "value": 1.0
-    },
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_3",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_dygmny_2",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_2",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_dygmny_3",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_wall",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_wall",
-    1,
-    1,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_road",
-    0,
-    0,
-    null,
-    1
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_floor",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_start",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_start",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_start",
-    0,
-    0,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ],
-   [
-    "tile_telout",
-    0,
-    0,
-    {
-     "colorIndex": 0,
-     "direction": "up",
-     "type": "arrow"
-    },
-    0
-   ],
-   [
-    "tile_telout",
-    0,
-    0,
-    {
-     "colorIndex": 0,
-     "direction": "up",
-     "type": "arrow"
-    },
-    0
-   ],
-   [
-    "tile_telout",
-    0,
-    0,
-    {
-     "colorIndex": 0,
-     "direction": "up",
-     "type": "arrow"
-    },
-    0
-   ],
-   [
-    "tile_forbidden",
-    1,
-    1,
-    null,
-    0
-   ]
-  ]
- },
- "extra_routes": [
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 3,
-    "col": 2
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 9
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 2
+     "key": "trap_223_dynbox",
+     "alias": "trap_223_dynbox#1",
+     "pos": {
+      "row": 5,
+      "col": 5
      },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": true,
+     "overrideSkillBlackboard": null
     },
     {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 0
+     "key": "trap_223_dynbox",
+     "alias": "trap_223_dynbox#3",
+     "pos": {
+      "row": 3,
+      "col": 5
      },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": true,
+     "overrideSkillBlackboard": [
+      {
+       "key": "atk_scale",
+       "value": 0.4,
+       "valueStr": null
+      }
+     ]
     },
     {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 6.0,
-     "position": {
-      "row": 0,
-      "col": 0
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    },
-    {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
+     "key": "trap_225_dysbox",
+     "alias": "trap_225_dysbox#1",
+     "pos": {
+      "row": 4,
       "col": 9
      },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
-    }
-   ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  },
-  {
-   "motionMode": "WALK",
-   "startPosition": {
-    "row": 2,
-    "col": 2
-   },
-   "endPosition": {
-    "row": 0,
-    "col": 9
-   },
-   "spawnRandomRange": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "spawnOffset": {
-    "x": 0.0,
-    "y": 0.0
-   },
-   "checkpoints": [
-    {
-     "type": "MOVE",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 2
-     },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": true,
+     "overrideSkillBlackboard": [
+      {
+       "key": "enemy_key",
+       "value": 0.0,
+       "valueStr": "enemy_2106_dyremy"
+      }
+     ]
     },
     {
-     "type": "DISAPPEAR",
-     "time": 0.0,
-     "position": {
-      "row": 0,
-      "col": 0
+     "key": "trap_223_dynbox",
+     "alias": "trap_223_dynbox#2",
+     "pos": {
+      "row": 3,
+      "col": 6
      },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": true,
+     "overrideSkillBlackboard": null
     },
     {
-     "type": "WAIT_FOR_SECONDS",
-     "time": 6.0,
-     "position": {
-      "row": 0,
-      "col": 0
+     "key": "trap_223_dynbox",
+     "alias": "trap_223_dynbox#4",
+     "pos": {
+      "row": 2,
+      "col": 6
      },
-     "reachOffset": {
-      "x": 0.0,
-      "y": 0.0
-     },
-     "reachDistance": 0.0
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": true,
+     "overrideSkillBlackboard": [
+      {
+       "key": "atk_scale",
+       "value": 0.4,
+       "valueStr": null
+      }
+     ]
     },
     {
-     "type": "APPEAR_AT_POS",
-     "time": 0.0,
-     "position": {
-      "row": 6,
+     "key": "trap_225_dysbox",
+     "alias": "trap_225_dysbox#2",
+     "pos": {
+      "row": 1,
       "col": 9
      },
-     "reachOffset": {
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": true,
+     "overrideSkillBlackboard": [
+      {
+       "key": "enemy_key",
+       "value": 0.0,
+       "valueStr": "enemy_2106_dyremy"
+      }
+     ]
+    },
+    {
+     "key": "trap_222_rgdysm",
+     "alias": "trap_222_rgdysm#1",
+     "pos": {
+      "row": 3,
+      "col": 2
+     },
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": false,
+     "overrideSkillBlackboard": [
+      {
+       "key": "talent@interval",
+       "value": 15.0,
+       "valueStr": null
+      },
+      {
+       "key": "attack@enemy_key",
+       "value": 0.0,
+       "valueStr": "enemy_2101_dyspll"
+      },
+      {
+       "key": "enemy_key",
+       "value": 0.0,
+       "valueStr": "enemy_2101_dyspll"
+      },
+      {
+       "key": "attack@is_unharmful",
+       "value": 1.0,
+       "valueStr": null
+      }
+     ]
+    }
+   ],
+   "token_cards": [],
+   "systems": {
+    "level_predefine_tokens_random_spawn_on_tile": {
+     "tiles": {
+      "tile_dygmny_1": [
+       {
+        "pos": {
+         "row": 2,
+         "col": 2
+        },
+        "blackboard": [
+         {
+          "key": "branch_id",
+          "value": 0.0,
+          "valueStr": "num3"
+         }
+        ]
+       },
+       {
+        "pos": {
+         "row": 3,
+         "col": 2
+        },
+        "blackboard": [
+         {
+          "key": "branch_id",
+          "value": 0.0,
+          "valueStr": "num1"
+         },
+         {
+          "key": "action_index",
+          "value": 0.0,
+          "valueStr": null
+         },
+         {
+          "key": "value",
+          "value": 1.0,
+          "valueStr": null
+         }
+        ]
+       }
+      ],
+      "tile_dygmny_2": [
+       {
+        "pos": {
+         "row": 2,
+         "col": 5
+        },
+        "blackboard": null
+       },
+       {
+        "pos": {
+         "row": 2,
+         "col": 6
+        },
+        "blackboard": null
+       },
+       {
+        "pos": {
+         "row": 3,
+         "col": 5
+        },
+        "blackboard": null
+       },
+       {
+        "pos": {
+         "row": 3,
+         "col": 6
+        },
+        "blackboard": null
+       }
+      ],
+      "tile_dygmny_3": [
+       {
+        "pos": {
+         "row": 2,
+         "col": 4
+        },
+        "blackboard": null
+       },
+       {
+        "pos": {
+         "row": 2,
+         "col": 7
+        },
+        "blackboard": null
+       },
+       {
+        "pos": {
+         "row": 3,
+         "col": 4
+        },
+        "blackboard": null
+       },
+       {
+        "pos": {
+         "row": 3,
+         "col": 7
+        },
+        "blackboard": null
+       }
+      ]
+     },
+     "trap_225_dysbox": [
+      "tile_dygmny_1"
+     ],
+     "trap_222_rgdysm#1": [
+      "tile_dygmny_2"
+     ],
+     "trap_222_rgdysm#2": [
+      "tile_dygmny_2"
+     ],
+     "trap_224_dyrbox": [
+      "tile_dygmny_3",
+      "tile_dygmny_2",
+      "tile_dygmny_1"
+     ],
+     "trap_223_dynbox": [
+      "tile_dygmny_3",
+      "tile_dygmny_2",
+      "tile_dygmny_1"
+     ]
+    }
+   },
+   "enemies": [
+    {
+     "id": "enemy_2101_dyspll",
+     "prefabKey": "enemy_2101_dyspll",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2107_dycant",
+     "prefabKey": "enemy_2107_dycant",
+     "level": 0,
+     "min_count": 1,
+     "max_count": 1,
+     "elite_min_count": 1,
+     "elite_max_count": 1,
+     "overwrittenData": {
+      "lifepoint": 0,
+      "talentBlackboard": [
+       {
+        "key": "dycant_transform",
+        "value": 158
+       }
+      ]
+     }
+    },
+    {
+     "id": "enemy_2085_skzjxd",
+     "prefabKey": "enemy_2085_skzjxd",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2121_dyspl2",
+     "prefabKey": "enemy_2121_dyspl2",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2034_sythef",
+     "prefabKey": "enemy_2034_sythef",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2001_duckmi",
+     "prefabKey": "enemy_2001_duckmi",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2002_bearmi",
+     "prefabKey": "enemy_2002_bearmi",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_10007_trspsb",
+     "prefabKey": "enemy_10007_trspsb",
+     "level": 0,
+     "min_count": 2,
+     "max_count": 2,
+     "elite_min_count": 2,
+     "elite_max_count": 2,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_1123_spsbr",
+     "prefabKey": "enemy_1123_spsbr",
+     "level": 0,
+     "min_count": 22,
+     "max_count": 22,
+     "elite_min_count": 22,
+     "elite_max_count": 22,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_1072_dlancer",
+     "prefabKey": "enemy_1072_dlancer",
+     "level": 0,
+     "min_count": 6,
+     "max_count": 6,
+     "elite_min_count": 6,
+     "elite_max_count": 6,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2105_dyrnge",
+     "prefabKey": "enemy_2105_dyrnge",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2119_dyshhj_2",
+     "prefabKey": "enemy_2119_dyshhj_2",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    },
+    {
+     "id": "enemy_2106_dyremy",
+     "prefabKey": "enemy_2106_dyremy",
+     "level": 0,
+     "min_count": 0,
+     "max_count": 0,
+     "elite_min_count": 0,
+     "elite_max_count": 0,
+     "overwrittenData": null
+    }
+   ],
+   "routes": [
+    {
+     "motionMode": "E_NUM",
+     "startPosition": {
+      "row": 0,
+      "col": 0
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 0
+     },
+     "spawnRandomRange": {
       "x": 0.0,
       "y": 0.0
      },
-     "reachDistance": 0.0
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": null,
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 5,
+      "col": 2
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 9
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 2
+       },
+       "reachOffset": {
+        "x": -0.44,
+        "y": 0.25
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 150.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 2
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 9
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 1,
+      "col": 2
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 9
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 1,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": -0.46,
+        "y": -0.32
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 150.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 2
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 9
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 5
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 6
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 1,
+        "col": 5
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 1,
+        "col": 6
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 6
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 5
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 1,
+        "col": 5
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 1,
+        "col": 6
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 1
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 8
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 3.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 8
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 3
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 10
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 3.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 10
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 1
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 8
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 8
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 3
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 10
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 10
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "FLY",
+     "startPosition": {
+      "row": 6,
+      "col": 1
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 8
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 45,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 8.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 8
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 1
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 8
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 10.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 8
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 6,
+      "col": 1
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 8
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 3
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 5,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 1
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 10.0,
+       "position": {
+        "row": -1,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 8
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
     }
    ],
-   "allowDiagonalMove": true,
-   "visitEveryTileCenter": false,
-   "visitEveryNodeCenter": false,
-   "visitEveryCheckPoint": false
-  }
- ],
- "branches": {
-  "num1": {
-   "phases": [
-    {
-     "preDelay": 0.0,
-     "actions": [
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2101_dyspll",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2101_dyspll",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false
-      }
+   "mapData": {
+    "map": [
+     [
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83
+     ],
+     [
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71
+     ],
+     [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+     ],
+     [
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+     ],
+     [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+     ],
+     [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+     ],
+     [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
      ]
-    }
-   ]
-  },
-  "num3": {
-   "phases": [
-    {
-     "preDelay": 0.0,
-     "actions": [
+    ],
+    "tiles": [
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_telin",
+      0,
+      0,
       {
-       "actionType": "SPAWN",
-       "key": "enemy_2106_dyremy",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 1,
-       "autoPreviewRoute": false
-      }
+       "colorIndex": 0,
+       "direction": "down",
+       "type": "arrow"
+      },
+      0
+     ],
+     [
+      "tile_telin",
+      0,
+      0,
+      {
+       "colorIndex": 0,
+       "direction": "down",
+       "type": "arrow"
+      },
+      0
+     ],
+     [
+      "tile_telin",
+      0,
+      0,
+      {
+       "colorIndex": 0,
+       "direction": "down",
+       "type": "arrow"
+      },
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_start",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_end",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_end",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_end",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_wall",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_wall",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_1",
+      0,
+      0,
+      {
+       "branch_id": 0.0
+      },
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_3",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_dygmny_2",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_2",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_3",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_1",
+      0,
+      0,
+      {
+       "branch_id": 0.0,
+       "action_index": 0.0,
+       "value": 1.0
+      },
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_3",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_dygmny_2",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_2",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_dygmny_3",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_wall",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_wall",
+      1,
+      1,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_road",
+      0,
+      0,
+      null,
+      1
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_floor",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_start",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_start",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_start",
+      0,
+      0,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
+     ],
+     [
+      "tile_telout",
+      0,
+      0,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
+      0
+     ],
+     [
+      "tile_telout",
+      0,
+      0,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
+      0
+     ],
+     [
+      "tile_telout",
+      0,
+      0,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
+      0
+     ],
+     [
+      "tile_forbidden",
+      1,
+      1,
+      null,
+      0
      ]
-    }
-   ]
-  }
- },
- "NORMAL": {
-  "groupKey": null,
-  "max_permutations": 1,
-  "permutations": [
-   {}
-  ]
- },
- "ELITE": {
-  "groupKey": null,
-  "max_permutations": 1,
-  "permutations": [
-   {}
-  ]
- },
- "waves": [
-  {
-   "preDelay": 0.0,
-   "postDelay": 0.0,
-   "maxTimeWaitingForNextWave": 10.0,
-   "fragments": [
+    ]
+   },
+   "extra_routes": [
     {
-     "preDelay": 0.0,
-     "actions": [
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 3,
+      "col": 2
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 9
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
       {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 850,
-       "dontBlockWave": false
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 2
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
       },
       {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_223_dynbox#1",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 105,
-       "dontBlockWave": false
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
       },
       {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_225_dysbox#1",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 15,
-       "dontBlockWave": false
+       "type": "WAIT_FOR_SECONDS",
+       "time": 6.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
       },
       {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_223_dynbox#3",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 85,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t2",
-       "randomSpawnGroupPackKey": null,
-       "weight": 850,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_223_dynbox#2",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t2",
-       "randomSpawnGroupPackKey": null,
-       "weight": 105,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_223_dynbox#4",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t2",
-       "randomSpawnGroupPackKey": null,
-       "weight": 85,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_225_dysbox#2",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "t2",
-       "randomSpawnGroupPackKey": null,
-       "weight": 15,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "ACTIVATE_PREDEFINED",
-       "key": "trap_222_rgdysm#1",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 9
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
       }
-     ]
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
+    },
+    {
+     "motionMode": "WALK",
+     "startPosition": {
+      "row": 2,
+      "col": 2
+     },
+     "endPosition": {
+      "row": 0,
+      "col": 9
+     },
+     "spawnRandomRange": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "spawnOffset": {
+      "x": 0.0,
+      "y": 0.0
+     },
+     "checkpoints": [
+      {
+       "type": "MOVE",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 2
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "DISAPPEAR",
+       "time": 0.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "WAIT_FOR_SECONDS",
+       "time": 6.0,
+       "position": {
+        "row": 0,
+        "col": 0
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      },
+      {
+       "type": "APPEAR_AT_POS",
+       "time": 0.0,
+       "position": {
+        "row": 6,
+        "col": 9
+       },
+       "reachOffset": {
+        "x": 0.0,
+        "y": 0.0
+       },
+       "reachDistance": 0.0
+      }
+     ],
+     "allowDiagonalMove": true,
+     "visitEveryTileCenter": false,
+     "visitEveryNodeCenter": false,
+     "visitEveryCheckPoint": false
     }
    ],
-   "advancedWaveTag": null
-  },
-  {
-   "preDelay": 0.0,
-   "postDelay": 0.0,
-   "maxTimeWaitingForNextWave": -1.0,
-   "fragments": [
+   "branches": {
+    "num1": {
+     "phases": [
+      {
+       "preDelay": 0.0,
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2101_dyspll",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2101_dyspll",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false
+        }
+       ]
+      }
+     ]
+    },
+    "num3": {
+     "phases": [
+      {
+       "preDelay": 0.0,
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2106_dyremy",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 1,
+         "autoPreviewRoute": false
+        }
+       ]
+      }
+     ]
+    }
+   },
+   "NORMAL": {
+    "groupKey": null,
+    "max_permutations": 1,
+    "permutations": [
+     {}
+    ]
+   },
+   "ELITE": {
+    "groupKey": null,
+    "max_permutations": 1,
+    "permutations": [
+     {}
+    ]
+   },
+   "waves": [
     {
      "preDelay": 0.0,
-     "actions": [
+     "postDelay": 0.0,
+     "maxTimeWaitingForNextWave": 10.0,
+     "fragments": [
       {
-       "actionType": "SPAWN",
-       "key": "enemy_10007_trspsb",
-       "count": 1,
        "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 1,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
+       "actions": [
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 850,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_223_dynbox#1",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 105,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_225_dysbox#1",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 15,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_223_dynbox#3",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 85,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t2",
+         "randomSpawnGroupPackKey": null,
+         "weight": 850,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_223_dynbox#2",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t2",
+         "randomSpawnGroupPackKey": null,
+         "weight": 105,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_223_dynbox#4",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t2",
+         "randomSpawnGroupPackKey": null,
+         "weight": 85,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_225_dysbox#2",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "t2",
+         "randomSpawnGroupPackKey": null,
+         "weight": 15,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "ACTIVATE_PREDEFINED",
+         "key": "trap_222_rgdysm#1",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        }
+       ]
+      }
+     ],
+     "advancedWaveTag": null
+    },
+    {
+     "preDelay": 0.0,
+     "postDelay": 0.0,
+     "maxTimeWaitingForNextWave": -1.0,
+     "fragments": [
+      {
+       "preDelay": 0.0,
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_10007_trspsb",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 1,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "DISPLAY_ENEMY_INFO",
+         "key": "enemy_10007_trspsb",
+         "count": 1,
+         "preDelay": 5.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_10007_trspsb",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 2,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2107_dycant",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 3,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        }
+       ]
       },
       {
-       "actionType": "DISPLAY_ENEMY_INFO",
-       "key": "enemy_10007_trspsb",
-       "count": 1,
        "preDelay": 5.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 7.0,
+         "interval": 1.0,
+         "routeIndex": 4,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 14.0,
+         "interval": 1.0,
+         "routeIndex": 5,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        }
+       ]
       },
       {
-       "actionType": "SPAWN",
-       "key": "enemy_10007_trspsb",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 2,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2107_dycant",
-       "count": 1,
-       "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 3,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      }
-     ]
-    },
-    {
-     "preDelay": 5.0,
-     "actions": [
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 7.0,
-       "interval": 1.0,
-       "routeIndex": 4,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 14.0,
-       "interval": 1.0,
-       "routeIndex": 5,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      }
-     ]
-    },
-    {
-     "preDelay": 5.0,
-     "actions": [
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
        "preDelay": 5.0,
-       "interval": 1.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 5.0,
+         "interval": 1.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 9.0,
+         "interval": 1.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 12.0,
+         "interval": 1.0,
+         "routeIndex": 7,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 2,
+         "preDelay": 21.0,
+         "interval": 8.0,
+         "routeIndex": 7,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 2,
+         "preDelay": 23.0,
+         "interval": 12.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        }
+       ]
       },
       {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 9.0,
-       "interval": 1.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
+       "preDelay": 10.0,
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2119_dyshhj_2",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 8,
+         "autoPreviewRoute": false,
+         "hiddenGroup": "copper_b",
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": true
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 7.0,
+         "interval": 1.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 1,
+         "preDelay": 8.0,
+         "interval": 1.0,
+         "routeIndex": 7,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 3,
+         "preDelay": 16.0,
+         "interval": 5.0,
+         "routeIndex": 7,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 3,
+         "preDelay": 15.0,
+         "interval": 10.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        }
+       ]
       },
       {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 12.0,
-       "interval": 1.0,
-       "routeIndex": 7,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 2,
-       "preDelay": 21.0,
-       "interval": 8.0,
-       "routeIndex": 7,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 2,
-       "preDelay": 23.0,
-       "interval": 12.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
+       "preDelay": 5.0,
+       "actions": [
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1072_dlancer",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 4,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 2,
+         "preDelay": 12.0,
+         "interval": 12.0,
+         "routeIndex": 7,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1123_spsbr",
+         "count": 2,
+         "preDelay": 20.0,
+         "interval": 12.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1072_dlancer",
+         "count": 2,
+         "preDelay": 16.0,
+         "interval": 10.0,
+         "routeIndex": 6,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1072_dlancer",
+         "count": 1,
+         "preDelay": 8.0,
+         "interval": 1.0,
+         "routeIndex": 5,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_1072_dlancer",
+         "count": 2,
+         "preDelay": 21.0,
+         "interval": 10.0,
+         "routeIndex": 7,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": null,
+         "randomSpawnGroupPackKey": null,
+         "weight": 0,
+         "dontBlockWave": false
+        }
+       ]
       }
-     ]
+     ],
+     "advancedWaveTag": null
     },
-    {
-     "preDelay": 10.0,
-     "actions": [
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2119_dyshhj_2",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 8,
-       "autoPreviewRoute": false,
-       "hiddenGroup": "copper_b",
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": true
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 7.0,
-       "interval": 1.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 1,
-       "preDelay": 8.0,
-       "interval": 1.0,
-       "routeIndex": 7,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 3,
-       "preDelay": 16.0,
-       "interval": 5.0,
-       "routeIndex": 7,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 3,
-       "preDelay": 15.0,
-       "interval": 10.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      }
-     ]
-    },
-    {
-     "preDelay": 5.0,
-     "actions": [
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1072_dlancer",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 4,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 2,
-       "preDelay": 12.0,
-       "interval": 12.0,
-       "routeIndex": 7,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1123_spsbr",
-       "count": 2,
-       "preDelay": 20.0,
-       "interval": 12.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1072_dlancer",
-       "count": 2,
-       "preDelay": 16.0,
-       "interval": 10.0,
-       "routeIndex": 6,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1072_dlancer",
-       "count": 1,
-       "preDelay": 8.0,
-       "interval": 1.0,
-       "routeIndex": 5,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_1072_dlancer",
-       "count": 2,
-       "preDelay": 21.0,
-       "interval": 10.0,
-       "routeIndex": 7,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": null,
-       "randomSpawnGroupPackKey": null,
-       "weight": 0,
-       "dontBlockWave": false
-      }
-     ]
-    }
-   ],
-   "advancedWaveTag": null
-  },
-  {
-   "preDelay": 0.0,
-   "postDelay": 0.0,
-   "maxTimeWaitingForNextWave": -1.0,
-   "fragments": [
     {
      "preDelay": 0.0,
-     "actions": [
+     "postDelay": 0.0,
+     "maxTimeWaitingForNextWave": -1.0,
+     "fragments": [
       {
-       "actionType": "EMPTY",
-       "key": "",
-       "count": 1,
        "preDelay": 0.0,
-       "interval": 1.0,
-       "routeIndex": 0,
-       "autoPreviewRoute": false,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "g1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 85,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2085_skzjxd",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 9,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "g1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 5,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2002_bearmi",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 9,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "g1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 5,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2034_sythef",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 9,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "g1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 5,
-       "dontBlockWave": false
-      },
-      {
-       "actionType": "SPAWN",
-       "key": "enemy_2001_duckmi",
-       "count": 1,
-       "preDelay": 3.0,
-       "interval": 1.0,
-       "routeIndex": 10,
-       "autoPreviewRoute": true,
-       "hiddenGroup": null,
-       "randomSpawnGroupKey": "g1",
-       "randomSpawnGroupPackKey": null,
-       "weight": 5,
-       "dontBlockWave": false
+       "actions": [
+        {
+         "actionType": "EMPTY",
+         "key": "",
+         "count": 1,
+         "preDelay": 0.0,
+         "interval": 1.0,
+         "routeIndex": 0,
+         "autoPreviewRoute": false,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "g1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 85,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2085_skzjxd",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 9,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "g1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 5,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2002_bearmi",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 9,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "g1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 5,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2034_sythef",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 9,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "g1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 5,
+         "dontBlockWave": false
+        },
+        {
+         "actionType": "SPAWN",
+         "key": "enemy_2001_duckmi",
+         "count": 1,
+         "preDelay": 3.0,
+         "interval": 1.0,
+         "routeIndex": 10,
+         "autoPreviewRoute": true,
+         "hiddenGroup": null,
+         "randomSpawnGroupKey": "g1",
+         "randomSpawnGroupPackKey": null,
+         "weight": 5,
+         "dontBlockWave": false
+        }
+       ]
       }
-     ]
+     ],
+     "advancedWaveTag": null
     }
    ],
-   "advancedWaveTag": null
+   "bonus": {
+    "type": "wave",
+    "wave_index": 2,
+    "frag_index": -1
+   }
   }
- ],
- "bonus": {
-  "type": "wave",
-  "wave_index": 2,
-  "frag_index": -1
- }
+ ]
 }

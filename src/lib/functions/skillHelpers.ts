@@ -213,7 +213,7 @@ export const parseValues = (
 				const stageId = skill[key];
 				let enemy = enemyDb[stageId];
 				if (!enemy) {
-					const item = mapConfig.enemies.find((ele) => ele.id === stageId);
+					const item = mapConfig?.enemies.find((ele) => ele.id === stageId);
 					if (item) {
 						enemy = enemyDb[item.prefabKey];
 					}

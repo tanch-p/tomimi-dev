@@ -5,11 +5,11 @@
 
 	export let language: Language;
 	
-	const floors = new Array(6);
+	const floors = new Array(7);
 </script>
 
 <div class="w-[70%] mx-auto py-3 mt-4">
-	<div class="grid grid-cols-6">
+	<div class="grid grid-cols-7">
 		{#each floors as _, i}
 			<button
 				on:click={() => selectedFloor.set(i + 1)}

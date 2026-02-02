@@ -58,7 +58,7 @@ export const getOptions = (
 ) => {
 	const options = [];
 	const list = [];
-	for (const wave of mapConfig.waves) {
+	for (const wave of mapConfig?.waves) {
 		for (const fragment of wave.fragments) {
 			for (const action of fragment.actions) {
 				if (action.actionType === 'ACTIVATE_PREDEFINED') {
@@ -77,7 +77,7 @@ export const getOptions = (
 					name: translations[language].treasure
 				});
 			}
-			if (mapConfig.elite_mods) {
+			if (mapConfig?.elite_mods) {
 				options.push({
 					key: 'extra',
 					src: '',
@@ -86,7 +86,7 @@ export const getOptions = (
 			}
 			if (
 				['level_rogue1_b-6', 'level_rogue1_b-7', 'level_rogue1_b-8', 'level_rogue1_b-9'].includes(
-					mapConfig.levelId
+					mapConfig?.levelId
 				)
 			) {
 				options.push({
@@ -309,7 +309,7 @@ const packHasGroupInFragment = (actions, packKey) => {
 
 export const getBaseCount = (mapConfig, eliteMode) => {
 	let totalCount = 0;
-	mapConfig.waves.forEach((wave, waveIdx) => {
+	mapConfig?.waves.forEach((wave, waveIdx) => {
 		wave['fragments'].forEach((fragment, fragIndex) => {
 			for (const action of fragment['actions']) {
 				if (action['actionType'] !== 'SPAWN') {
@@ -330,7 +330,7 @@ export const getBaseCount = (mapConfig, eliteMode) => {
 						'level_rogue4_b-4-b',
 						'level_rogue4_b-5',
 						'level_rogue4_b-5-b'
-					].includes(mapConfig.levelId) &&
+					].includes(mapConfig?.levelId) &&
 					action.key === 'enemy_2090_skzjbc' &&
 					!eliteMode
 				) {
@@ -347,7 +347,7 @@ export const getBaseCount = (mapConfig, eliteMode) => {
 
 const isCountableEnemy = (key: string, mapConfig: MapConfig) => {
 	let enemyKey = key;
-	const enemyRef = mapConfig.enemies.find((ele) => ele.id === key || ele.prefabKey === key);
+	const enemyRef = mapConfig?.enemies.find((ele) => ele.id === key || ele.prefabKey === key);
 	if (enemyRef) {
 		enemyKey = enemyRef.prefabKey;
 	}
@@ -383,9 +383,9 @@ export const getEnemyCountPermutations = (
 	baseCount
 ) => {
 	const key = eliteMode ? 'ELITE' : 'NORMAL';
-	const permutations = mapConfig[key].permutations;
-	const bonus = mapConfig.bonus;
-	const countToAdd = mapConfig.waves.reduce((acc, wave, waveIdx) => {
+	const permutations = mapConfig?.[key].permutations;
+	const bonus = mapConfig?.bonus;
+	const countToAdd = mapConfig?.waves.reduce((acc, wave, waveIdx) => {
 		if (bonus?.type === 'wave' && waveIdx === bonus.wave_index) return acc;
 		wave.fragments.forEach((fragment, i) => {
 			if (bonus?.type === 'fragment' && waveIdx === bonus.wave_index && i === bonus.frag_index)
@@ -408,7 +408,7 @@ export const getEnemyCountPermutations = (
 	// [{ "w0f1": { "g1": 0 }, "w0f4": { "g1": 0 } }]
 	const list = permutations.map((permutation) => {
 		let permutationCount = 0;
-		mapConfig.waves.forEach((wave, waveIdx) => {
+		mapConfig?.waves.forEach((wave, waveIdx) => {
 			if (bonus?.type === 'wave' && waveIdx === bonus.wave_index) return; //added in for ro5 stages
 			wave['fragments'].forEach((fragment, fragIndex) => {
 				const packedGroups = getRandomGroups(fragment, hiddenGroups);
@@ -523,7 +523,7 @@ export const generateWaveTimeline = (
 ) => {
 	if (!permutation) return;
 	let randomSeedIndex = 0;
-	const enemyReplace = eliteMode ? mapConfig.elite_runes?.enemy_replace || {} : {};
+	const enemyReplace = eliteMode ? mapConfig?.elite_runes?.enemy_replace || {} : {};
 	let totalCount = 0;
 	const waveTimelines = [];
 	const { waves } = mapConfig;
@@ -544,14 +544,14 @@ export const generateWaveTimeline = (
 				}
 				let choice = permutation?.[key]?.[groupKey];
 				if (choice == undefined) {
-					const isBonusGroup = mapConfig.bonus
-						? key === `w${mapConfig.bonus.wave_index}f${Math.max(0, mapConfig.bonus.frag_index)}`
+					const isBonusGroup = mapConfig?.bonus
+						? key === `w${mapConfig?.bonus.wave_index}f${Math.max(0, mapConfig?.bonus.frag_index)}`
 						: false;
 					choice = getPredefinedChoiceIndex(
 						list,
 						hiddenGroups,
 						bonusKey,
-						isBonusGroup ? mapConfig.bonus : null
+						isBonusGroup ? mapConfig?.bonus : null
 					);
 					if (choice == undefined) {
 						choice = Math.floor(randomSeeds[randomSeedIndex] * list.length);
@@ -585,7 +585,7 @@ export const generateWaveTimeline = (
 						'level_rogue4_b-4-b',
 						'level_rogue4_b-5',
 						'level_rogue4_b-5-b'
-					].includes(mapConfig.levelId) &&
+					].includes(mapConfig?.levelId) &&
 					action.key === 'enemy_2090_skzjbc' &&
 					!eliteMode
 				) {
@@ -605,7 +605,7 @@ export const generateWaveTimeline = (
 		});
 		const myKeys = Object.keys(spawns).map(Number);
 		if (
-			!(['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig.levelId) && myKeys.length === 0)
+			!(['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId) && myKeys.length === 0)
 		) {
 			myKeys.sort((a, b) => a - b);
 			const spawnList = myKeys.map((key) => ({ t: key, actions: spawns[key] }));
@@ -704,7 +704,7 @@ export const parseWaves = (
 	bonusKey
 ) => {
 	let randomSeedIndex = 0;
-	const waves = structuredClone(mapConfig.waves);
+	const waves = structuredClone(mapConfig?.waves);
 	waves.forEach((wave, waveIdx) => {
 		const fragments = [];
 		wave['fragments'].forEach((fragment, fragIndex) => {
@@ -721,14 +721,14 @@ export const parseWaves = (
 				}
 				let choice = permutation?.[key]?.[groupKey];
 				if (choice == undefined) {
-					const isBonusGroup = mapConfig.bonus
-						? key === `w${mapConfig.bonus.wave_index}f${Math.max(0, mapConfig.bonus.frag_index)}`
+					const isBonusGroup = mapConfig?.bonus
+						? key === `w${mapConfig?.bonus.wave_index}f${Math.max(0, mapConfig?.bonus.frag_index)}`
 						: false;
 					choice = getPredefinedChoiceIndex(
 						list,
 						hiddenGroups,
 						bonusKey,
-						isBonusGroup ? mapConfig.bonus : null
+						isBonusGroup ? mapConfig?.bonus : null
 					);
 					if (choice == undefined) {
 						choice = Math.floor(randomSeeds[randomSeedIndex] * list.length);
@@ -749,7 +749,7 @@ export const parseWaves = (
 						'level_rogue4_b-4-b',
 						'level_rogue4_b-5',
 						'level_rogue4_b-5-b'
-					].includes(mapConfig.levelId) &&
+					].includes(mapConfig?.levelId) &&
 					action.key === 'enemy_2090_skzjbc' &&
 					!eliteMode
 				) {
@@ -848,7 +848,7 @@ export const compileHiddenGroups = (
 	rogueTopic: RogueTopic,
 	relics
 ) => {
-	const modeKey = eliteMode ? mapConfig['ELITE'].groupKey : mapConfig['NORMAL'].groupKey;
+	const modeKey = eliteMode ? mapConfig?.['ELITE'].groupKey : mapConfig?.['NORMAL'].groupKey;
 	let groups = structuredClone(hiddenGroups);
 	if (modeKey) {
 		groups = [...groups, modeKey];
@@ -860,13 +860,13 @@ export const compileHiddenGroups = (
 };
 
 export const initialisePermGroupsChoices = (mapConfig, eliteMode: boolean, hidden_groups) => {
-	const modeKey = eliteMode ? mapConfig['ELITE'].groupKey : mapConfig['NORMAL'].groupKey;
+	const modeKey = eliteMode ? mapConfig?.['ELITE'].groupKey : mapConfig?.['NORMAL'].groupKey;
 	const hiddenGroups = structuredClone(hidden_groups);
 	if (modeKey) {
 		hiddenGroups.push(modeKey);
 	}
 	const permutation = {};
-	mapConfig.waves.forEach((wave, waveIdx) => {
+	mapConfig?.waves.forEach((wave, waveIdx) => {
 		wave.fragments.forEach((fragment, fragIdx) => {
 			const key = `w${waveIdx}f${fragIdx}`;
 			const groups = {};
@@ -943,7 +943,7 @@ export const getBonusEnemies = (rogueTopic: RogueTopic) => {
 
 export const getImageForWaves = (key, mapConfig) => {
 	if (key.includes('skzamj') || key.includes('skzamf')) {
-		const enemy = mapConfig.enemies.find((enemy) => enemy.id === key);
+		const enemy = mapConfig?.enemies.find((enemy) => enemy.id === key);
 		const transformKey = enemy.overwrittenData.talentBlackboard
 			.find((ele) => ele.key === 'transform')
 			?.value?.replace('skzams_1', 'skzams')
@@ -951,7 +951,7 @@ export const getImageForWaves = (key, mapConfig) => {
 		return transformKey;
 	}
 
-	return mapConfig.enemies.find((enemy) => enemy.id === key)?.prefabKey;
+	return mapConfig?.enemies.find((enemy) => enemy.id === key)?.prefabKey;
 };
 
 export function isChestBranch(branches, key: string) {

@@ -36,7 +36,7 @@
 		);
 		unsubscribeFns.push(
 			GameConfig.subscribe('scaledElapsedTime', (value) => {
-				if (value === 0 && !['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig.levelId)) {
+				if (value === 0 && !['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId)) {
 					currWaveIndex = 0;
 					timelineContainer && timelineContainer.scrollTo(0, 0);
 				}
@@ -47,7 +47,7 @@
 				if (currWaveIndex !== value) {
 					currWaveIndex = value;
 					let indexesToScrollBy = 0;
-					switch (mapConfig.levelId) {
+					switch (mapConfig?.levelId) {
 						case 'level_rogue4_b-7':
 							indexesToScrollBy = [0, 1].includes(value) ? 0 : 23;
 							break;
@@ -92,7 +92,7 @@
 		}
 	}
 	function getPrevActionsSize(currWaveIndex: number) {
-		if (['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig.levelId)) return 0;
+		if (['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId)) return 0;
 		let size = 0;
 		for (let i = 0; i < currWaveIndex; i++) {
 			const length = waves?.[i]?.timeline?.length || 0;

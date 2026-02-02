@@ -15,12 +15,12 @@
 
 	export let mapConfig, rogueTopic: string, language: Language, selectedFloor;
 	const stagesToExclude = ['ro3_b_7', 'ro3_b_7_b'];
-	$: isBossStage = mapConfig.id.includes('_b_');
-	$: isEventStage = mapConfig.id.includes('_ev_') || mapConfig.id.includes('_t_');
+	$: isBossStage = mapConfig?.id.includes('_b_');
+	$: isEventStage = mapConfig?.id.includes('_ev_') || mapConfig?.id.includes('_t_');
 	$: isCombatStage = !isBossStage && !isEventStage;
 </script>
 
-{#if !stagesToExclude.includes(mapConfig.id)}
+{#if !stagesToExclude.includes(mapConfig?.id)}
 	<div class="my-4">
 		<TogglePanel title={translations[language].stage_rewards} size="subheading">
 			<div class="px-2 sm:px-0 overflow-auto">
@@ -209,14 +209,14 @@
 							<tr>
 								<td />
 								<td> {translations[language].exp}</td>
-								<td colspan="2">{drops[rogueTopic][mapConfig.id].exp}</td>
+								<td colspan="2">{drops[rogueTopic][mapConfig?.id].exp}</td>
 							</tr>
 							<tr>
 								<td>
 									<img src={gold} width="35" alt={translations[language].rogue_gold} />
 								</td>
 								<td>{translations[language].rogue_gold}</td>
-								<td colspan="2">{drops[rogueTopic][mapConfig.id].gold}</td>
+								<td colspan="2">{drops[rogueTopic][mapConfig?.id].gold}</td>
 							</tr>
 							<tr>
 								<td>
@@ -225,7 +225,7 @@
 								<td>{translations[language].drop_lifepoint}</td>
 								<td colspan="2">5%</td>
 							</tr>
-							{#if mapConfig.id.includes('_ev_')}
+							{#if mapConfig?.id.includes('_ev_')}
 								<tr>
 									<td>
 										<img src={relic} width="35" alt={translations[language].relic_extra} />
@@ -257,7 +257,7 @@
 						</tbody>
 					</table>
 				{:else}
-					{@const index = mapConfig.floors.includes(3) ? 0 : mapConfig.floors.includes(5) ? 1 : 2}
+					{@const index = mapConfig?.floors.includes(3) ? 0 : mapConfig?.floors.includes(5) ? 1 : 2}
 					<p>{translations[language].exp} - {drops[rogueTopic].boss.exp[index]}</p>
 					<p>{translations[language].rogue_gold} - {drops[rogueTopic].boss.gold[index]}</p>
 				{/if}

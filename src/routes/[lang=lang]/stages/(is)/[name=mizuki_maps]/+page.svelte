@@ -24,8 +24,8 @@
 
 	export let data: PageData;
 	$: if (data.mapConfig) {
-		runes.set(data.mapConfig.n_mods);
-		allMods.set(data.mapConfig.all_mods);
+		runes.set(data.mapConfig?.n_mods);
+		allMods.set(data.mapConfig?.all_mods);
 	}
 	$: if (data.mapConfig || $difficulty) {
 		setOtherBuffsList(
@@ -39,13 +39,13 @@
 	}
 	$: language = data.language;
 	const rogueTopic: RogueTopic = data.rogueTopic;
-	$: stageName = data.mapConfig[`name_${language}`] || data.mapConfig.name_zh;
+	$: stageName = data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh;
 </script>
 
 <StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
 
 <StageHeader {language}>
-	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig.floors} {language} />
+	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
 </StageHeader>
 
 <main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">

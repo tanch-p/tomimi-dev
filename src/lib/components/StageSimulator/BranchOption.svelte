@@ -17,13 +17,13 @@
 		branchIndex: number;
 
 	let isOpen = false;
-	const branchExtraInfo = branchInfo?.[mapConfig.levelId]?.[key];
+	const branchExtraInfo = branchInfo?.[mapConfig?.levelId]?.[key];
 	const branchType = branchExtraInfo?.type;
 	const branchRandom = branchExtraInfo?.isRandom || false;
 	const tooltip = branchExtraInfo?.tooltip?.[language] || [];
 	const hasMultipleOptions =
 		mapConfig?.branches?.[key]?.phases?.length > 1 && branchType === 'single';
-	const title = isChestBranch(mapConfig.branches, key)
+	const title = isChestBranch(mapConfig?.branches, key)
 		? translations[language].mimic
 		: branchExtraInfo?.[`name_${language}`] || key;
 	function handleTitleClick(key) {

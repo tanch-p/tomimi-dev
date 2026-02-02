@@ -14,10 +14,10 @@
 		branchKey: string,
 		branchIndex: number;
 
-	const branches = Object.keys(mapConfig.branches)
+	const branches = Object.keys(mapConfig?.branches)
 		.filter((key) => !BRANCHES_TO_IGNORE.includes(key))
 		.reduce((acc, key) => {
-			const branchExtraInfo = branchInfo?.[mapConfig.levelId]?.[key];
+			const branchExtraInfo = branchInfo?.[mapConfig?.levelId]?.[key];
 			const index = branchExtraInfo?.index || 0;
 			if (!acc[index]) {
 				acc[index] = [];

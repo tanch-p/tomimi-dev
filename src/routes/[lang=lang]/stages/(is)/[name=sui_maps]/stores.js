@@ -9,6 +9,7 @@ let storedDifficulty = 0;
 if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('yan_difficulty') ?? '0');
 }
+
 export const selectedRelics = writable([]);
 export const difficulty = writable(storedDifficulty);
 export const stageType = writable('');

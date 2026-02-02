@@ -1,15 +1,14 @@
 import type { PageLoad } from './$types';
 import type { Language, RogueTopic } from '$lib/types';
-import { stageLoad } from '$lib/functions/stageLoad';
+import { getStageData } from '$lib/functions/lib';
 export const load = (async ({ params }) => {
 	const language: Language = params.lang;
-	const { mapConfig, enemies, traps } = await stageLoad(params.name, language,'rogue_yan');
+	const stageData = await getStageData(params.name);
 	const rogueTopic: RogueTopic = 'rogue_yan';
 	return {
-		mapConfig,
-		enemies,
+		mapConfig: stageData.data[0],
+		stageData,
 		language,
-		traps,
 		rogueTopic
 	};
 }) satisfies PageLoad;

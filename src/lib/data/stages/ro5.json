@@ -71,6 +71,24 @@
 		"name_ja": null,
 		"name_en": null
 	},
+	"level_rogue5_b-8": {
+		"code": "ISW-DF",
+		"name_zh": "录忆",
+		"name_ja": null,
+		"name_en": null
+	},
+	"level_rogue5_b-9-a": {
+		"code": "ISW-DF",
+		"name_zh": "止变",
+		"name_ja": null,
+		"name_en": null
+	},
+	"level_rogue5_b-10": {
+		"code": "ISW-DF",
+		"name_zh": "定乾坤",
+		"name_ja": null,
+		"name_en": null
+	},
 	"level_rogue5_t-1": {
 		"code": "ISW-SP",
 		"name_zh": "源源不断",
@@ -212,49 +230,49 @@
 	"level_rogue5_fs-2": {
 		"code": "ISW-NO",
 		"name_zh": "迎雷(双)",
-		"name_ja": "迎雷(双)",		
+		"name_ja": "迎雷(双)",
 		"name_en": "Amidst_Thunder_(2)"
 	},
 	"level_rogue5_fs-2b": {
 		"code": "ISW-NO",
 		"name_zh": "迎雷(单)",
-		"name_ja": "迎雷(単)",		
-		"name_en":  "Amidst_Thunder_(1)"
+		"name_ja": "迎雷(単)",
+		"name_en": "Amidst_Thunder_(1)"
 	},
 	"level_rogue5_fs-3": {
 		"code": "ISW-NO",
 		"name_zh": "蔑震(双)",
-		"name_ja": "蔑震(双)",		
+		"name_ja": "蔑震(双)",
 		"name_en": "Defying_Quakes_(2)"
 	},
 	"level_rogue5_fs-3b": {
 		"code": "ISW-NO",
 		"name_zh": "蔑震(单)",
-		"name_ja": "蔑震(単)",		
+		"name_ja": "蔑震(単)",
 		"name_en": "Defying_Quakes_(1)"
 	},
 	"level_rogue5_fs-4": {
 		"code": "ISW-NO",
 		"name_zh": "赴陨(双)",
-		"name_ja": "赴隕(双)",		
+		"name_ja": "赴隕(双)",
 		"name_en": "To_the_Fall_(2)"
 	},
 	"level_rogue5_fs-4b": {
 		"code": "ISW-NO",
 		"name_zh": "赴陨(单)",
-		"name_ja": "赴隕(単)",		
+		"name_ja": "赴隕(単)",
 		"name_en": "To_the_Fall_(1)"
 	},
 	"level_rogue5_fs-5": {
 		"code": "ISW-NO",
 		"name_zh": "斥洪(双)",
-		"name_ja": "斥洪(双)",		
+		"name_ja": "斥洪(双)",
 		"name_en": "Against_the_Flood_(2)"
 	},
 	"level_rogue5_fs-5b": {
 		"code": "ISW-NO",
 		"name_zh": "斥洪(单)",
-		"name_ja": "斥洪(単)",		
+		"name_ja": "斥洪(単)",
 		"name_en": "Against_the_Flood_(1)"
 	},
 	"level_rogue5_dv-5": {
@@ -398,6 +416,24 @@
 	"level_rogue5_sv-12": {
 		"code": "ISW-NO",
 		"name_zh": "四方",
+		"name_ja": null,
+		"name_en": null
+	},
+	"level_rogue5_sv-13": {
+		"code": "ISW-NO",
+		"name_zh": "时封",
+		"name_ja": null,
+		"name_en": null
+	},
+	"level_rogue5_sv-14": {
+		"code": "ISW-NO",
+		"name_zh": "遍地福音",
+		"name_ja": null,
+		"name_en": null
+	},
+	"level_rogue5_sv-15": {
+		"code": "ISW-NO",
+		"name_zh": "相合",
 		"name_ja": null,
 		"name_en": null
 	},
@@ -599,6 +635,12 @@
 		"name_ja": "落葉の帰る場所",
 		"name_en": "Return_to_Your_Roots"
 	},
+	"level_rogue5_3-6": {
+		"code": "ISW-NO",
+		"name_zh": "御外侮",
+		"name_ja": null,
+		"name_en": null
+	},
 	"level_rogue5_4-1": {
 		"code": "ISW-NO",
 		"name_zh": "山海必争",
@@ -635,6 +677,12 @@
 		"name_ja": "闇討ちは防ぎ難し",
 		"name_en": "Beware_the_Shadows"
 	},
+	"level_rogue5_4-7": {
+		"code": "ISW-NO",
+		"name_zh": "忍气不吞声",
+		"name_ja": null,
+		"name_en": null
+	},
 	"level_rogue5_5-1": {
 		"code": "ISW-NO",
 		"name_zh": "青山不语",
@@ -670,6 +718,12 @@
 		"name_zh": "不成烟火",
 		"name_ja": "煙火に成らず",
 		"name_en": "Unlit_Sparks"
+	},
+	"level_rogue5_5-7": {
+		"code": "ISW-NO",
+		"name_zh": "砺锋",
+		"name_ja": null,
+		"name_en": null
 	},
 	"level_rogue5_6-1": {
 		"code": "ISW-NO",

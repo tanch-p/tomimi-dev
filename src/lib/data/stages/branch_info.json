@@ -324,5 +324,17 @@
 				"en": ["【无言的期盼】", "Amiya 2nd Form, summons a <仅剩的创意> every 15s"]
 			}
 		}
+	},
+	"level_rogue5_b-9-e": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
+	},
+	"level_rogue5_b-10-b": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
 	}
 }

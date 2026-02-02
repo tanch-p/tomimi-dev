@@ -23,7 +23,7 @@
 </script>
 
 {#if mapConfig?.waves}
-	{#each mapConfig.waves as wave, waveIdx}
+	{#each mapConfig?.waves as wave, waveIdx}
 		{@const fragmentGroups = wave.fragments.map((fragment) =>
 			getRandomGroups(fragment, hiddenGroups)
 		)}

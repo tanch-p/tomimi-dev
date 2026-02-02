@@ -23,6 +23,9 @@ const ENEMY_KEYS_TO_IGNORE = [
 	'enemy_1294_duchns',
 	'enemy_2121_dyspl2'
 ];
+
+const SPINE_TEXT_IDS = ['enemy_3010_mcreep', 'enemy_10120_uaghst', 'enemy_10120_uaghst_2','enemy_10121_uasnip','enemy_1571_mirbst'];
+
 const ENEMY_KEYS_TO_REPLACE = {
 	enemy_2097_skzfdd: 'enemy_2082_skzdd',
 	enemy_2098_skzftx: 'enemy_2081_skztxs',
@@ -385,7 +388,7 @@ export class AssetManager {
 		this.spineAssetManager.removeAll();
 		const promises = [];
 
-		if (mapConfig.levelId === 'level_rogue4_b-8' && !this.textures.has('skzamj')) {
+		if (mapConfig?.levelId === 'level_rogue4_b-8' && !this.textures.has('skzamj')) {
 			promises.push(
 				new Promise((resolve, reject) => {
 					this.textureLoader.load(
@@ -445,7 +448,7 @@ export class AssetManager {
 				);
 			}
 		}
-		const enemyKeys = mapConfig.enemies.reduce((acc, curr) => {
+		const enemyKeys = mapConfig?.enemies.reduce((acc, curr) => {
 			if (!acc.includes(curr.prefabKey)) {
 				acc.push(curr.prefabKey);
 			}
@@ -456,11 +459,16 @@ export class AssetManager {
 				continue;
 			}
 			let fileKey = ENEMY_KEYS_TO_REPLACE[key] || key;
+			const folder = fileKey.replace('enemy_', '');
 			promises.push(
 				new Promise((resolve, reject) => {
-					this.spineAssetManager.loadBinary(`${fileKey.replace('enemy_', '')}/${fileKey}.skel`);
+					if (SPINE_TEXT_IDS.includes(key)) {
+						this.spineAssetManager.loadText(`${folder}/${fileKey}`);
+					} else {
+						this.spineAssetManager.loadBinary(`${folder}/${fileKey}.skel`);
+					}
 					this.spineAssetManager.loadTextureAtlas(
-						`${fileKey.replace('enemy_', '')}/${fileKey}.atlas`
+						`${folder}/${fileKey}.atlas`
 					);
 
 					const checkLoading = () => {
@@ -474,20 +482,29 @@ export class AssetManager {
 					checkLoading();
 				}).then(() => {
 					const atlas = this.spineAssetManager.get(
-						`${fileKey.replace('enemy_', '')}/${fileKey}.atlas`
+						`${folder}/${fileKey}.atlas`
 					);
 					const atlasLoader = new spine.AtlasAttachmentLoader(atlas);
-					const skeletonBinary = new spine.SkeletonBinary(atlasLoader);
-					skeletonBinary.scale = 0.3;
-					const skeletonData = skeletonBinary.readSkeletonData(
-						this.spineAssetManager.get(`${fileKey.replace('enemy_', '')}/${fileKey}.skel`)
-					);
+					let skeletonData;
+					if (SPINE_TEXT_IDS.includes(key)) {
+						const skelJson = new spine.SkeletonJson(atlasLoader);
+						skelJson.scale = 0.3;
+						skeletonData = skelJson.readSkeletonData(
+							JSON.parse(this.spineAssetManager.get(`${folder}/${fileKey}`))
+						);
+					} else {
+						const skeletonBinary = new spine.SkeletonBinary(atlasLoader);
+						skeletonBinary.scale = 0.3;
+						skeletonData = skeletonBinary.readSkeletonData(
+							this.spineAssetManager.get(`${folder}/${fileKey}.skel`)
+						);
+					}
 					this.spineMap.set(key, skeletonData);
 				})
 			);
 		}
 
-		for (const trap of mapConfig.traps.concat(mapConfig.token_cards)) {
+		for (const trap of mapConfig?.traps.concat(mapConfig?.token_cards)) {
 			const key = trap.key;
 			const modelType = getTrapModelType(key);
 			switch (modelType) {
@@ -584,7 +601,7 @@ export class AssetManager {
 		//to use for enemies that are of 3D models but not available, enemy_10061_cjglon, enemy_10062_cjblon...
 		const keysToHandle = ['enemy_10061_cjglon', 'enemy_10062_cjblon'];
 		for (const key of keysToHandle) {
-			if (mapConfig.enemies.some((enemy) => enemy.prefabKey === key)) {
+			if (mapConfig?.enemies.some((enemy) => enemy.prefabKey === key)) {
 				promises.push(
 					new Promise((resolve, reject) => {
 						this.textureLoader.load(

@@ -177,9 +177,9 @@
 	/>
 	<span class="w-[50px]">{zoomSize.toFixed(2)}x</span>
 </div>
-{#if stageOptions[mapConfig.levelId]}
+{#if stageOptions[mapConfig?.levelId]}
 	<div class="flex justify-center gap-x-3 mb-2">
-		{#each stageOptions[mapConfig.levelId] as { wave, display }, idx}
+		{#each stageOptions[mapConfig?.levelId] as { wave, display }, idx}
 			<button
 				class="rounded-sm px-2 py-1.5 {stagePhaseIndex == idx
 					? 'bg-gray-500'

@@ -30,15 +30,15 @@
 	export let data: PageData;
 
 	$: if (data.mapConfig) {
-		updateReqRelic(data.mapConfig.levelId, selectedRelics);
+		updateReqRelic(data.mapConfig?.levelId, selectedRelics);
 		setOtherBuffsList(otherBuffsList, rogueTopic, data.enemies, data.mapConfig, language);
-		runes.set(data.mapConfig.n_mods);
-		allMods.set(data.mapConfig.all_mods);
+		runes.set(data.mapConfig?.n_mods);
+		allMods.set(data.mapConfig?.all_mods);
 	}
 	const ro4_ALTER_BOSS_STAGES = ['level_rogue4_b-4-b', 'level_rogue4_b-5-b'];
 
 	$: language = data.language;
-	$: stageName = data.mapConfig[`name_${language}`] || data.mapConfig.name_zh;
+	$: stageName = data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh;
 	const rogueTopic: RogueTopic = data.rogueTopic;
 
 	function updateReqRelic(levelId, selectedRelics) {
@@ -62,7 +62,7 @@
 <StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
 
 <StageHeader {language}>
-	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig.floors} {language} />
+	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
 </StageHeader>
 
 <main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">

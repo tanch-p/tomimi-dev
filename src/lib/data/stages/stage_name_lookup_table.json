@@ -3854,6 +3854,21 @@
         "key": "level_rogue5_b-7",
         "topic": "rogue_yan"
     },
+    "ISW-DF_录忆": {
+        "lang": "zh",
+        "key": "level_rogue5_b-8",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_止变": {
+        "lang": "zh",
+        "key": "level_rogue5_b-9-a",
+        "topic": "rogue_yan"
+    },
+    "ISW-DF_定乾坤": {
+        "lang": "zh",
+        "key": "level_rogue5_b-10",
+        "topic": "rogue_yan"
+    },
     "ISW-SP_源源不断": {
         "lang": "zh",
         "key": "level_rogue5_t-1",
@@ -4579,6 +4594,21 @@
         "key": "level_rogue5_sv-12",
         "topic": "rogue_yan"
     },
+        "ISW-NO_时封": {
+        "lang": "zh",
+        "key": "level_rogue5_sv-13",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_遍地福音": {
+        "lang": "zh",
+        "key": "level_rogue5_sv-14",
+        "topic": "rogue_yan"
+    },
+    "ISW-NO_相合": {
+        "lang": "zh",
+        "key": "level_rogue5_sv-15",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_地有四难_dlc1": {
         "lang": "zh",
         "key": "level_rogue5_sv-1_dlc1",
@@ -4874,6 +4904,11 @@
         "key": "level_rogue5_3-5",
         "topic": "rogue_yan"
     },
+        "ISW-NO_御外侮": {
+        "lang": "zh",
+        "key": "level_rogue5_3-6",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_山海必争": {
         "lang": "zh",
         "key": "level_rogue5_4-1",
@@ -4964,6 +4999,11 @@
         "key": "level_rogue5_4-6",
         "topic": "rogue_yan"
     },
+        "ISW-NO_忍气不吞声": {
+        "lang": "zh",
+        "key": "level_rogue5_4-7",
+        "topic": "rogue_yan"
+    },
     "ISW-NO_青山不语": {
         "lang": "zh",
         "key": "level_rogue5_5-1",
@@ -5052,6 +5092,11 @@
     "ISW-NO_Unlit_Sparks": {
         "lang": "en",
         "key": "level_rogue5_5-6",
+        "topic": "rogue_yan"
+    },
+        "ISW-NO_砺锋": {
+        "lang": "zh",
+        "key": "level_rogue5_5-7",
         "topic": "rogue_yan"
     },
     "ISW-NO_炎灼": {

@@ -11,7 +11,7 @@
 		rogueTopic: RogueTopic;
 
 	function getMinMaxCount(id, eliteMode) {
-		const data = mapConfig.enemies.find((enemy) => id === enemy.id);
+		const data = mapConfig?.enemies.find((enemy) => id === enemy.id);
 		if (data) {
 			return eliteMode
 				? {
@@ -23,7 +23,7 @@
 		return { min: 0, max: 0 };
 	}
 	function getTotalCountStr(mapConfig, eliteMode: boolean) {
-		const data = eliteMode ? mapConfig.e_count ?? mapConfig.n_count : mapConfig.n_count;
+		const data = eliteMode ? mapConfig?.e_count ?? mapConfig?.n_count : mapConfig?.n_count;
 		const lastIndex = data.length - 1;
 		let min = data[0];
 		let max = data[lastIndex];
@@ -88,7 +88,7 @@
 >
 	<div class="flex flex-wrap gap-x-4 gap-y-2 px-2.5 md:px-0">
 		{#each enemies as enemy}
-			{#if isEnemyToShow(enemy.key, mapConfig.levelId)}
+			{#if isEnemyToShow(enemy.key, mapConfig?.levelId)}
 				{@const { min, max } = getMinMaxCount(enemy.stageId, eliteMode)}
 				<a href="#{enemy.stageId}" class="relative flex items-center hover:bg-neutral-700">
 					<img
@@ -100,7 +100,7 @@
 						alt={enemy.id}
 						title={enemy[`name_${language}`] || enemy[`name_zh`]}
 					/>
-					{#if !['level_rogue4_d-1', 'level_rogue4_d-2', 'level_rogue4_d-3', 'level_rogue4_d-4'].includes(mapConfig.levelId)}
+					{#if !['level_rogue4_d-1', 'level_rogue4_d-2', 'level_rogue4_d-3', 'level_rogue4_d-4'].includes(mapConfig?.levelId)}
 						<p
 							class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm"
 						>

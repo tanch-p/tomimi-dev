@@ -190,7 +190,7 @@ export const setOtherBuffsList = (
 			});
 			break;
 		case 'rogue_yan':
-			if (mapConfig.traps.some((trap) => trap.key === 'trap_222_rgdysm')) {
+			if (mapConfig?.traps.some((trap) => trap.key === 'trap_222_rgdysm')) {
 				buffsList.push({
 					key: 'trap_222_rgdysm',
 					img: '/images/chara_icons/trap_222_rgdysm.webp',
@@ -207,7 +207,7 @@ export const setOtherBuffsList = (
 			}
 			break;
 	}
-	const tileInfection = mapConfig.sp_terrain?.find(
+	const tileInfection = mapConfig?.sp_terrain?.find(
 		(item) => item.tileKey === 'tile_infection' && item.heightType === 'LOWLAND'
 	);
 	if (tileInfection) {
@@ -230,7 +230,7 @@ export const setOtherBuffsList = (
 		});
 	}
 	for (const enemy of enemies) {
-		const enemyCount = mapConfig.enemies.find((ele) => ele.id === enemy.stageId);
+		const enemyCount = mapConfig?.enemies.find((ele) => ele.id === enemy.stageId);
 		const maxCount = Math.max(enemyCount.max_count, enemyCount.elite_max_count, 1);
 		const list = [
 			...enemy.traits,
@@ -360,6 +360,9 @@ const STAGES_WITH_ELITE_IMG = [
 	'ro4_e_5_8'
 ];
 export const getStageImg = (id: string, eliteMode: boolean) => {
+	if (id.includes('_b_')) {
+		return id;
+	}
 	if (id.includes('_t_')) {
 		id = id.replace('_e', '');
 	}

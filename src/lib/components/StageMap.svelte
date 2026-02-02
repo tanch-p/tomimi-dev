@@ -38,40 +38,40 @@
 	<p class="px-2 sm:px-0 text-subheading mt-4">{translations[language].map}</p>
 	<hr class="border-gray-500 mt-1" />
 	<div class="max-w-[600px] w-full mx-auto px-3 sm:px-0 mt-3">
-		{#if stagesWithMultipleImgs.includes(mapConfig.levelId)}
+		{#if stagesWithMultipleImgs.includes(mapConfig?.levelId)}
 			<div
 				class="grid grid-flow-col auto-cols-fr font-bold text-lg text-near-white text-center select-none divide-x divide-gray-500 py-1"
 			>
-				{#each multipleImgLookup[mapConfig.levelId] as { key }, i}
+				{#each multipleImgLookup[mapConfig?.levelId] as { key }, i}
 					<button class={index === i ? '' : 'text-gray-400'} on:click={() => (index = i)}
 						>{key}</button
 					>
 				{/each}
 			</div>
 			<img
-				src={multipleImgLookup[mapConfig.levelId][index].img}
+				src={multipleImgLookup[mapConfig?.levelId][index].img}
 				width="600"
 				height="338px"
-				alt={mapConfig.levelId + '_' + multipleImgLookup[mapConfig.levelId][index].key}
+				alt={mapConfig?.levelId + '_' + multipleImgLookup[mapConfig?.levelId][index].key}
 				loading="lazy"
 			/>
 		{:else}
 			<img
-				src="/images/stages/level_{getStageImg(mapConfig.id, eliteMode)}.webp"
+				src="/images/stages/level_{getStageImg(mapConfig?.id, eliteMode)}.webp"
 				width="600"
 				height="338px"
-				alt={mapConfig.levelId}
+				alt={mapConfig?.levelId}
 				loading="lazy"
 			/>
 		{/if}
 
-		{#if rogueTopic === 'rogue_skz' && !stagesWithoutCalamity.includes(mapConfig.levelId)}
+		{#if rogueTopic === 'rogue_skz' && !stagesWithoutCalamity.includes(mapConfig?.levelId)}
 			<div class="flex flex-wrap gap-x-4 gap-y-1.5 mt-1.5">
 				<div class="flex">
 					<img src={skz_calamity} width="24px" height="24px" alt="calamity" />
 					<p>{translations[language].skz_calamity}</p>
 				</div>
-				{#if stagesWithRNG.includes(mapConfig.levelId)}
+				{#if stagesWithRNG.includes(mapConfig?.levelId)}
 					<div class="flex">
 						<div class="rounded-full bg-[#f14c4c]">
 							<img src={unknown} width="24px" height="24px" alt="?" />
@@ -83,8 +83,8 @@
 		{/if}
 	</div>
 	<div class="w-screen sm:w-full">
-		{#if mapConfig.sp_enemy}
-			<SpEnemy spEnemyInfo={mapConfig.sp_enemy} {language} />
+		{#if mapConfig?.sp_enemy}
+			<SpEnemy spEnemyInfo={mapConfig?.sp_enemy} {language} />
 		{/if}
 	</div>
 </div>

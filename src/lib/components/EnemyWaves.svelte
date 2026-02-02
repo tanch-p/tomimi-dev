@@ -43,8 +43,8 @@
 	$: baseCount = getBaseCount(mapConfig, eliteMode);
 	$: options = getOptions(mapConfig, rogueTopic, difficulty, language);
 	$: maxPermutations = eliteMode
-		? mapConfig.ELITE.max_permutations
-		: mapConfig.NORMAL.max_permutations;
+		? mapConfig?.ELITE.max_permutations
+		: mapConfig?.NORMAL.max_permutations;
 	$: permutations = getEnemyCountPermutations(
 		mapConfig,
 		compiledHiddenGroups,
@@ -79,10 +79,17 @@
 				if (
 					difficulty >= 12 &&
 					['level_rogue1_b-6', 'level_rogue1_b-7', 'level_rogue1_b-8', 'level_rogue1_b-9'].includes(
-						mapConfig.levelId
+						mapConfig?.levelId
 					)
 				) {
 					hiddenGroups = ['reforge'];
+					break;
+				}
+			case 'rogue_yan':
+				if (
+					difficulty ===18
+				) {
+					hiddenGroups = ['extra_enemy'];
 					break;
 				}
 			default:
@@ -131,7 +138,7 @@
 	<div
 		class="grid grid-cols-[75px_1fr] md:grid-cols-[120px_1fr] divide-y divide-neutral-700 border-y border-neutral-700 text-sm md:text-base"
 	>
-		{#if mapConfig.branches}
+		{#if mapConfig?.branches}
 			<p class="title {language}">{translations[language].sim_mode}</p>
 			<div class="grid grid-cols-2">
 				{#each ['wave_normal', 'wave_summons'] as key}
@@ -148,7 +155,7 @@
 			</div>
 		{/if}
 		{#if simMode === 'wave_normal'}
-			{#if mapConfig.elite_mods}
+			{#if mapConfig?.elite_mods}
 				<p class="title {language}">{translations[language].operation_type}</p>
 				<slot name="eliteMods" />
 			{/if}
@@ -201,7 +208,7 @@
 						{translations[language].max_perm_msg.replace('{perm}', `(${maxPermutations})`)}
 					</div>
 				{:else}
-					{#if mapConfig.bonus?.type}
+					{#if mapConfig?.bonus?.type}
 						<p class="title {language}"><img src={DLDGPN} width="60" alt="BONUS" /></p>
 						<div class="grid grid-flow-col auto-cols-fr">
 							{#each getBonusEnemies(rogueTopic) as key}

@@ -79,7 +79,7 @@
 	{#await loadGame(mapConfig)}
 		<LoadingScreen />
 	{:then}
-		{#if simMode === 'wave_summons' && mapConfig.branches}
+		{#if simMode === 'wave_summons' && mapConfig?.branches}
 			<BranchSummons bind:branchKey bind:branchIndex {language} {game} {mapConfig} />
 		{/if}
 		<SpawnTimeView
@@ -94,10 +94,10 @@
 			{simulatedData}
 			bind:randomSeeds
 			{game}
-			initialCost={mapConfig.initialCost}
+			initialCost={mapConfig?.initialCost}
 			{language}
 			count={timeline?.count}
-			maxCost={mapConfig.maxCost}
+			maxCost={mapConfig?.maxCost}
 		/>
 		<!-- {:catch error} -->
 		<!-- <p class="text-center">An error occured while loading: <br />{error.message}</p> -->

@@ -147,7 +147,7 @@
 			"Endless Rest",
 			"Temple of Shattered Shackles"
 		],
-		"sui_levels": ["Honglu Tower", "Shanshui Pavilion", "Yunwa Gazebo", "Ruwu Gate", "Jianzi Shrine", "Shimo Tomb"],
+		"sui_levels": ["Honglu Tower", "Shanshui Pavilion", "Yunwa Gazebo", "Ruwu Gate", "Jianzi Shrine", "Shimo Tomb","来去处","明灭顶"],
 		"phantom_variation_title": "Hallucinations",
 		"phantom_capsule": "Plays",
 		"n14_phcs": "N14 Buff",
@@ -965,7 +965,7 @@
 			"終わりなき安息",
 			"逍遥の蘭若"
 		],
-		"sui_levels": ["洪陸楼", "山水閣", "雲瓦亭", "汝吾門", "見字祠", "始末陵"],
+		"sui_levels": ["洪陸楼", "山水閣", "雲瓦亭", "汝吾門", "見字祠", "始末陵","来去处","明灭顶"],
 		"phantom_variation_title": "幻覚",
 		"phantom_capsule": "演目",
 		"n14_phcs": "N14バフ",
@@ -1750,7 +1750,7 @@
 			"无终安息",
 			"逍遥兰若"
 		],
-		"sui_levels": ["洪陆楼", "山水阁", "云瓦亭", "汝吾门", "见字祠", "始末陵"],
+		"sui_levels": ["洪陆楼", "山水阁", "云瓦亭", "汝吾门", "见字祠", "始末陵","来去处","明灭顶"],
 		"phantom_variation_title": "幻觉",
 		"phantom_capsule": "剧目",
 		"n14_phcs": "魂环",

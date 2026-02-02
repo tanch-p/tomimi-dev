@@ -19,8 +19,8 @@
 			pathEN = `/en/stages/ro4_b_9`;
 			pathJA = `/ja/stages/ro4_b_9`;
 			pathZH = `/zh/stages/ro4_b_9`;
-		} else if (stageNameOverwriteTable[mapConfig.levelId]) {
-			const info = stageNameOverwriteTable[mapConfig.levelId];
+		} else if (stageNameOverwriteTable[mapConfig?.levelId]) {
+			const info = stageNameOverwriteTable[mapConfig?.levelId];
 			pathEN = `/en/stages/${code}_${info['name_en'] || info['name_zh']}`;
 			pathJA = `/ja/stages/${code}_${info['name_ja'] || info['name_zh']}`;
 			pathZH = `/zh/stages/${code}_${info['name_zh']}`;

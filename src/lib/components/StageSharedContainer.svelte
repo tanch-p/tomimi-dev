@@ -56,11 +56,11 @@
 			inWaveOptions={true}
 			{eliteMode}
 			{runes}
-			mapNormalMods={mapConfig.n_mods}
-			mapEliteMods={mapConfig.elite_mods}
+			mapNormalMods={mapConfig?.n_mods}
+			mapEliteMods={mapConfig?.elite_mods}
 			{rogueTopic}
 			{selectedRelics}
-			stageId={mapConfig.levelId}
+			stageId={mapConfig?.levelId}
 		/>
 	</EnemyWaves>
 {/await}
@@ -74,7 +74,7 @@
 <ModsCheck {language} enemies={moddedEnemies} {mapConfig} />
 <EnemyCount
 	{mapConfig}
-	enemies={pruneExtraEnemies(moddedEnemies, mapConfig.levelId)}
+	enemies={pruneExtraEnemies(moddedEnemies, mapConfig?.levelId)}
 	eliteMode={$eliteMode}
 	{language}
 	{rogueTopic}
@@ -83,14 +83,14 @@
 	<EliteToggle
 		{eliteMode}
 		{runes}
-		mapNormalMods={mapConfig.n_mods}
-		mapEliteMods={mapConfig.elite_mods}
+		mapNormalMods={mapConfig?.n_mods}
+		mapEliteMods={mapConfig?.elite_mods}
 		{rogueTopic}
 		{selectedRelics}
-		stageId={mapConfig.levelId}
+		stageId={mapConfig?.levelId}
 	/>
 	<EnemyStatDisplay
-		enemies={pruneExtraEnemies(moddedEnemies, mapConfig.levelId)}
+		enemies={pruneExtraEnemies(moddedEnemies, mapConfig?.levelId)}
 		{language}
 		{statMods}
 		{specialMods}
