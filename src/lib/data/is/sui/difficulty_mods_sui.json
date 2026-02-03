@@ -321,8 +321,9 @@
 				"mods": [
 					{
 						"key": "aspd",
-						"value": 1.2,
-						"mode": "mul"
+						"value": 20,
+						"mode": "add",
+						"order":"initial"
 					}
 				]
 			},

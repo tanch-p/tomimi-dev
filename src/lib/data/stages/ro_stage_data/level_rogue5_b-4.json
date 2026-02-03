@@ -8,6 +8,7 @@
   {
    "id": "ro5_b_4",
    "levelId": "level_rogue5_b-4",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -24,7 +25,8 @@
    "description_ja": "万物は柱となり得るが、界の重みを背負い、園に命と色を吹き込める者はイーをおいて他にいない。彼を揺り動かさなければ、炎国は安寧を得られないだろう。\n<@lv.item><晦明の印></>配置した味方が対応する晦明属性を獲得",
    "description_en": "All things may act as Garden of Grotesqueries' beams and columns, but there is only one who can bear the weight of it, only one who can bestow order upon it. It is not ye, but Yi. Sway his heart, and Yan shall breathe easy.\n<@lv.item><Mark of Hui and Ming></> Operators deployed on it will earn a Hui-Ming Attribute.",
    "addInfo_zh": [
-    "N18追加敌人：第一波次：认真的“阿咬”×1"
+    "N18追加敌人：第一波次：认真的“阿咬”×1",
+    "其他波次：看路线模拟吧"
    ],
    "addInfo_ja": null,
    "addInfo_en": null,

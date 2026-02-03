@@ -245,14 +245,15 @@ export const setOtherBuffsList = (
 				// case for new skills added from specialMods
 				continue;
 			}
+			const replacedSkill = {...skill, ...skillRef}
 			if (skill.type === 'buff') {
 				buffsList.push({
 					key: enemy.key,
 					name: enemy[`name_${language}`],
-					targets: skill.effects.targets,
-					activeTargets: skill.effects.activeTargets,
-					mods: skill.effects.mods,
-					stackType: skill.effects.stackType,
+					targets: replacedSkill.effects.targets,
+					activeTargets: replacedSkill.effects.activeTargets,
+					mods: replacedSkill.effects.mods,
+					stackType: replacedSkill.effects.stackType,
 					maxCount: maxCount
 				});
 			}
