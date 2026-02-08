@@ -5247,16 +5247,13 @@
 	"skztxs_1_4": {
 		"tooltip": {
 			"en": [
-				"When HP drops below 50%, releases enemy wave",
-				"When defeated, resurrects over 3.95s, recovers 100% HP, teleports to right of Theresa, gains 7s invincibility, and enters 2nd Form"
+				"When defeated, resurrects over 3.95s, releases enemy wave, recovers 100% HP, teleports to right of Theresa, gains 7s invincibility, and enters 2nd Form"
 			],
 			"ja": [
-				"HP50%以下→次の敵ウェーブを解放する",
-				"倒されたとき、3.95秒かけてHPを全回復して、テレジアの右に転移、7秒間無敵、第二形態へ移行"
+				"倒されたとき、3.95秒かけてHPを全回復して、次の敵ウェーブを解放し、テレジアの右に転移、7秒間無敵、第二形態へ移行"
 			],
 			"zh": [
-				"生命值低于50%时解放当前波次",
-				"被击败后，进行3.95s的重生，后闪现至特蕾西娅右侧，获得7s无敌，不进行攻击，无法被阻挡，无法移动，结束后切换至第二形态"
+				"被击败后，解放当前波次，进行3.95s的重生，后闪现至特蕾西娅右侧，获得7s无敌，不进行攻击，无法被阻挡，无法移动，结束后切换至第二形态"
 			]
 		}
 	},
