@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../../favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
+		<link rel="manifest" href="../../site.webmanifest" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta
+			name="keywords"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		<meta property="og:site_name" content="tomimi.dev" />
+		<meta
+			property="article:tag"
+			content="tomimi,tomimi.dev,明日方舟,明日方舟Arknights,Arknights,アークナイツ,アークナイツ攻略,明日方舟攻略,明日方舟肉鸽,明日方舟集成战略,Integrated Strategies,Integrated Strategies Walkthrough,Integrated Strategies Guide,Integrated Strategies Arknights,統合戦略,統合戦略アークナイツ"
+		/>
+		
+		<link href="../../_app/immutable/assets/0.3935be5e.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.8f988fb1.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/StageHeadMeta.a8669110.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/favicon.a4f9be35.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/EnemyWaves.407be1ce.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/index.182c2402.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/StageNav.a811c1ab.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.1cf369f1.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.51467544.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.852e9b9d.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.60753f57.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stage_name_lookup_table.55513cf4.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.023555a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Icon.e4ad1363.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.08777a0d.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.6c59809a.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/19.7512f8b3.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/lib.dc16e9fb.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/translations.1959fb3f.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/StageHeadMeta.ef3523c5.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TextParser.cfc8d71d.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DraggableContainer.e6309b8e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/favicon.ee985f65.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/clickOutside.532dca22.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TogglePanel.4aa4b616.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/boss_icon.7ef3456d.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/StageNav.eaaf3e54.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TitleBlock.cf59bc64.js"><title>ISW-NO
+		忘形 / tomimi.dev - 明日方舟集成战略小帮手</title><!-- HEAD_svelte-1mxp72i_START --><meta name="description" content="tomimi.dev - 明日方舟集成战略小帮手"><meta property="og:description" content="tomimi.dev - 明日方舟集成战略小帮手"><meta property="og:title" content="ISW-NO_忘形"><meta property="og:url" content="https://tomimi.dev/zh/stages/ISW-NO_忘形"><!-- HEAD_svelte-1mxp72i_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+
+
+
+<div class="fixed max-w-[1280px] mx-auto inset-0 z-10 pointer-events-none"><button hidden class="absolute bottom-[150px] right-[20px] md:right-[40px] pointer-events-auto" id="scroll-top-button"><div class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]">
+
+
+<svg width="24" height="24" class="rotate-180"><use xlink:href="#down-arrow"></use></svg></div></button>
+	<button hidden class="absolute bottom-[90px] right-[20px] md:right-[40px] pointer-events-auto" id="scroll-btm-button"><div class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]">
+
+
+<svg width="24" height="24" class=""><use xlink:href="#down-arrow"></use></svg></div></button></div>
+
+
+<div style="display: none">
+	<svg><rect id="sq-blue" fill="#27a6f3" width="22" height="22"></rect><rect id="sq-outline" fill="none" stroke="gray" stroke-width="1.5" width="22" height="22"></rect><rect id="sq-white" fill="#f6f6f6" width="10" height="10"></rect><rect id="sq-outline-sm" fill="none" stroke="#acacac" stroke-width="1.5" width="10" height="10"></rect><symbol id="x-mark" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></symbol><symbol id="clock-icon" viewBox="0 0 24 24" fill="#bababa"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd"></path></symbol><symbol id="trash" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></symbol><symbol id="down-arrow" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#F2F2F2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75"></path></symbol><symbol id="right-arrow" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path></symbol><symbol id="down-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></symbol><symbol id="left-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></symbol><symbol id="icon-minus" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path></symbol><symbol id="icon-plus" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path></symbol><symbol id="icon-language" viewBox="0 0 20 20"><path fill="#E2E2E2" d="M20 18h-1.44a.61.61 0 0 1-.4-.12.81.81 0 0 1-.23-.31L17 15h-5l-1 2.54a.77.77 0 0 1-.22.3.59.59 0 0 1-.4.14H9l4.55-11.47h1.89zm-3.53-4.31L14.89 9.5a11.62 11.62 0 0 1-.39-1.24q-.09.37-.19.69l-.19.56-1.58 4.19zm-6.3-1.58a13.43 13.43 0 0 1-2.91-1.41 11.46 11.46 0 0 0 2.81-5.37H12V4H7.31a4 4 0 0 0-.2-.56C6.87 2.79 6.6 2 6.6 2l-1.47.5s.4.89.6 1.5H0v1.33h2.15A11.23 11.23 0 0 0 5 10.7a17.19 17.19 0 0 1-5 2.1q.56.82.87 1.38a23.28 23.28 0 0 0 5.22-2.51 15.64 15.64 0 0 0 3.56 1.77zM3.63 5.33h4.91a8.11 8.11 0 0 1-2.45 4.45 9.11 9.11 0 0 1-2.46-4.45z"></path></symbol><symbol id="icon-list2" viewBox="0 0 32 32" fill="#ffffff"><path d="M12 2h20v4h-20v-4zM12 14h20v4h-20v-4zM12 26h20v4h-20v-4zM0 4c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM0 16c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM0 28c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4z"></path></symbol><symbol id="icon-list" viewBox="0 0 32 32" fill="#ffffff"><path d="M0 0h8v8h-8zM12 2h20v4h-20zM0 12h8v8h-8zM12 14h20v4h-20zM0 24h8v8h-8zM12 26h20v4h-20z"></path></symbol><symbol id="grid-view" viewBox="0 0 16 16" fill="#ffffff"><rect width="16" height="16" id="icon-bound" fill="none"></rect><path d="M1,1h4v4H1V1z M6,1h4v4H6V1z M11,1h4v4h-4V1z M1,6h4v4H1V6z M6,6h4v4H6V6z M11,6h4v4h-4V6z M1,11h4v4H1V11z M6,11h4v4H6V11z M11,11h4v4h-4V11z"></path></symbol><symbol id="layout-view" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></symbol><symbol id="refresh-icon" fill="#fff" viewBox="0 0 489.645 489.645" xml:space="preserve"><g><path d="M460.656,132.911c-58.7-122.1-212.2-166.5-331.8-104.1c-9.4,5.2-13.5,16.6-8.3,27c5.2,9.4,16.6,13.5,27,8.3
+		c99.9-52,227.4-14.9,276.7,86.3c65.4,134.3-19,236.7-87.4,274.6c-93.1,51.7-211.2,17.4-267.6-70.7l69.3,14.5
+		c10.4,2.1,21.8-4.2,23.9-15.6c2.1-10.4-4.2-21.8-15.6-23.9l-122.8-25c-20.6-2-25,16.6-23.9,22.9l15.6,123.8
+		c1,10.4,9.4,17.7,19.8,17.7c12.8,0,20.8-12.5,19.8-23.9l-6-50.5c57.4,70.8,170.3,131.2,307.4,68.2
+		C414.856,432.511,548.256,314.811,460.656,132.911z"></path></g></symbol></svg></div>
+<div class="layout font-ch svelte-z7rxhv">
+
+<header class="sticky top-0 w-screen sm:w-full transition-none bg-neutral-800 text-near-white py-3.5 z-10"><div class="grid grid-cols-[50px_auto_50px] sm:grid-cols-[100px_auto_100px] max-w-7xl mx-auto px-2 sm:px-6 items-start"><div class="w-max"><a href="/zh"><img src="/_app/immutable/assets/favicon.e511bc87.webp" width="32px" decoding="async" loading="lazy" alt="Home"></a></div>
+		<div class="mx-auto select-none"><button id="floor-options" class="px-3 py-0.5 md:hover:bg-neutral-500"><div class="flex justify-center items-center gap-x-1">
+
+
+<svg width="24" height="24" class="w-5 h-5 mr-1.5"><use xlink:href="#left-chevron"></use></svg>
+			<div class="relative mr-1 w-8 h-8 overflow-visible"><div class="absolute inset-y-0 my-auto w-max h-max "><img src="data:image/webp;base64,UklGRjoFAABXRUJQVlA4WAoAAAAQAAAAHwAAHwAAQUxQSD4DAAANF6QokqSGDeTgAv8Wjy8KIiITfhKPmbDwKsKMo30HekZhwAIRMn6Dwrbtadta9/t9sp2k3CYuMzPuMDOfMjN3WzjFtJal75drFNH/VKx8zyWVD+MrJpb3RpPT5lnHzhpWZElZMuk+bSGWSYj9q4IixCSWmBy/s6ZpwsQwBAGDPLVfVuAY1gUWiiRuHdy98C0ITkCI+yZPs4GQIVGsxL609Z/kTYESVsBURStnhi/KnoUm9U50evigYEqpOs9YkIrvX9KcGT24U2CdMjEyI9s5yjV3xHfWI420d11upczUYSmAY2cyA4eFpzcdndX7qAHWh2qiy1JaZUauskx+nO4/KcbD/t3LaO1aueF2/qtKcfn1Q7UFmaHTiifh+G5eLn+a2d8c87v+Wk9Ke3B09urxzX0rhZN7edttL+JyiET3DVzTgyYF9zD3de7Py0oG/erK10YVglaNck3D240fRpCD6xop9ncvF59D7QXKOnKpSJMeNb8PNYlJtqP6//r959/YBwgTyzvfu1dMwd8DnaU6rRqgy/zlTr7dRAzHMCzOsPPM1VDvo3hPcAE+G2j+Y0OxkMMHYUFU+XHvPPnsOTjVfP5b+huCJRA+TWwsLP1Sy+ahDfdPka7UT0aEdwKCI7yjW+ma7Qi2VlP00vF9+9GvCkIQS05AvkGyv4r0My4bE2BdA82GSeAEjJeoUWAXEVfryCk4y5Y9KiZSYmGY4B44RQ/VcNubwxMn4YyCeVT1hsToBJmw+rpWpVZ28b2PBg3XIE+oRKN+zjMRX6p+L3xbpdT666mQkHr8T9q/iOC1BAWcxX2c3x8PvY7zp9Opxviff/t66jeDrt66JCbeSHZvIoyC0slwuuHnjbnvvFTlMDtdU5+MDn+Vb5deCqcjDZEWP3c+HlZbqiXUNvKz9dzjg61peFT5g/4W4tiSXzyYbOfWrENDII50hbsyWZPbHWrh2GrrOFHamwg5rN5H5CA2WecXpLQ/ko4dfA1nnVc+H8mokCJLsJSQvM0fD6YjWB+xWIjys0dTfTEIAoIT72J3IGNYPLJOnIUhv7TnkQLjnViJ7Xg6sopJyIqFgSAoXPoMxjsrLu5tiZRhB3YAAFZQOCDWAQAAkAgAnQEqIAAgAD6JNpRIJSMiITfoAKARCWkAEgCaArT8YHYE8KmjXjK+o/YG3R0uMeOnfSxGx/Ku70DW5low4xVmEzqsZqi4uJNGekAA/vv0F7ojXQaTv/+NN91ypGqwDs0+yYl5n/z5AxGJATPwLWXWqTRoS4xdzh2LfNGM7vunLTfupR+oM87WOzznz9yuPjcT2d83lnNLeP6o6fxNhYW4X/+PCFRMyCxAobguGpOVc/08TBrsmTjnhTnqZJwiz1LbVXlK/WOj+FOeHeh0nVoeCDeDr0jPqjNlrdFa/15uVjU6u+o71pqjkxsZfLgX3Pn0Vg2WB6BY7O73shUgooYckpv4ZPVvOKS1n42PHbOUw5t6SsRT1OvySCDjF/QsiQ4SnZPHHZ/N3X7nI2NosYLPtvhCdvu9sRLGtWHPStW6f4VyDf/w3+H7upWA+ZhMHQyY//b+9Rf353+91n/Br/kK1AT89nsBneArNWzOFyb294Or3lXZq/4acqwMZFp8YceSCxTzPQYzXiMj6/yZPnOy7seQDPmlPC5oVOQTUQGAfejbVehYKuYyE765atnwLYnQjcS8NiZ+SgjeHmWY5wILvCrzy4KfyfNVIhyIR5WTjzzPAAA=" alt="floor-6" class="w-[32px] h-[32px]"></div></div>
+			<p>始末陵</p>
+			
+
+
+<svg width="24" height="24" class="w-5 h-5 ml-2.5 rotate-180"><use xlink:href="#left-chevron"></use></svg></div>
+		</button>
+	<div class="absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh_-_160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 invisible opacity-0 -translate-y-10"><div class="w-[70%] mx-auto py-3 mt-4"><div class="grid grid-cols-7"><button class="py-2 px-2 " type="button">1
+			</button><button class="py-2 px-2 " type="button">2
+			</button><button class="py-2 px-2 " type="button">3
+			</button><button class="py-2 px-2 " type="button">4
+			</button><button class="py-2 px-2 " type="button">5
+			</button><button class="py-2 px-2 bg-gray-500" type="button">6
+			</button><button class="py-2 px-2 " type="button">7
+			</button></div>
+	<p class="text-center text-sm mt-4">※进入岁兽残识不会改变区域层数</p></div>
+	<div class="mx-auto mt-3 md:px-8"><hr class="border-neutral-600">
+		<div class="px-2 md:px-0"><p class="mt-4 font-medium text-lg text-red-400 text-center">岁时 (朦胧)
+			</p>
+
+			<div class="flex flex-col gap-y-4 mt-2"><button id="rogue_5_wrath_8" class="grid grid-cols-[75px_auto] items-center gap-x-2 text-start hover:bg-neutral-700"><div class="relative flex items-center justify-center rounded-full h-7 overflow-hidden"><img src="data:image/webp;base64,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" class="absolute z-0 -inset-[9999px] m-auto h-full" alt="">
+		<img src="data:image/webp;base64,UklGRlwEAABXRUJQVlA4WAoAAAAQAAAAVQAAGwAAQUxQSMUBAAABt+K4bSNJGtl1zLHPzT/W6u4kIiKv29mMcXiiXkbEsBwWI4vpbIItPME/lhhFMRWln4YjAhHCDGcCIvofcxtJkiL1PcOh9PcWsIyzMhmw478pezgTb0FE/xO2JMmmrT62cW3fY2td2+7//5Q5WmudHfu+R/Q/8Z99a62rZ75ctDa9cI+v9sb5j7oXLsneUPcrj2m4Yv2H2t/JJpwMNW95tgVzkTZF2OTElnKIoTtOD2GKftLmMwpzbrm3OaQmZ74iMCjaKZiJRwTpjrP70Odom4HR8hgS5w6hH9K2B6PlkYV0wdki9LSHkXhEkIqcuYQ+S/scTLnlIYd4wMl1BPo92u/CmBNbyqEIHzTy0By+tiEl2qsM5PC1De1xA92qQPdFKSkupDJflCTmzi10JYFuwBtIifYljAe88WDucoWuI9AmPZASF1AZSNID7esD3b3AkFZcTGVg8AmqICUIXfaci6sMdKuY1tAUKEXMZ8/pjEpheoqpheaUUsFsStE5U2F8i+kJzYAywDSj6KxpMHw5faF5oDxinFJ03jToAqeAP25/07gDVyTuqH/IwiXe+scv5z6qXrjHu9G6fufbdWvNi38NAAAAVlA4IHACAAAQDgCdASpWABwAPo08mUglI6KhNVgMAKARiWwAzxnM+ZV303ANsB+uXTwehHeAN5KX4K3GWBb+/+Z5dPpv0XOqr6Cn7VHosOm4vj3qhzpplPHA+BCp0zSMtTg7/becaS18sqgHeoo1dq11opylwN5zRHaCbB64yxJAAP71ZRbiMVyE4kYq6uZ/gSP4qP/2Ff4Ci8zml/tH99nRBvzP32P/+0s/+pZ/8UO8O/tHI2kSHIo93/36cq2ph5l4fBRDyWeYCAn1oMYjHQxWPPkHC5y6Vz/8wR6Nw0v2jK81xk26hTKZYosXuCPk4UsrWJFZfdYE3aj2YqsLn175A5632Y0T0CRo8v7oQ0ih4mHYu2WMmUl8YZIkyK2q4d/3OmA1+KuJU3O25J2QPOAMcbCgWac0f131PFlhJxtgnYJRiyj5njrKxgFCa3VjO2pzCaXlNHPpNOTZGYNtKw9jBkz+2GzwCsvODUPa2eX9ZLFJCuKXliezhN+s8k9iUeva/HSuIUlzqt+n86Gs/qD/+Z4dKpMH+o0e2IWRD9QmLA55b4LVTGE8/I71lcrzLiMvrWMFZhvFUdzwVEzLTVqZ40SeR6wLWtOQilQm4Wl4AfILNQyDQfdp7EoTlSS/qQnS+ftQwQ4aasN4f8v43v8xfmXkCFO8qo0kXCK+iwmqZLP38b7In+xThnu4TKyVk28qnkoBRzMSja568bEnWwgvv1+RL3rEo0mR2kLRV4MYjjz/ySDi2geP8a6XLWOrGuHDbjJrYDNqUKzqulsrvcnG82TvxFl27e+o6ZpIJJ6+KyeHGEhdPlGlO5tBOQqWbLh/dUgAAAA=" alt="申铸" loading="lazy" decoding="async" class="absolute z-[1]"></div>
+	<div class="flex flex-col"><p class="">申铸</p>
+		<p>所有【化物】敌人生命值、攻击力+10％</p></div></button></div></div></div></div></div>
+		<div class="hidden sm:flex justify-end"><div class="relative"><button class="sm:py-1 px-2 hover:underline h-full"><span class="flex gap-x-1.5 svelte-t8499q">
+
+
+<svg width="20" height="20" class="mb-0.5"><use xlink:href="#icon-language"></use></svg>
+			中文</span></button>
+	
+</div></div></div></header>
+
+<main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28"><div class="w-screen sm:w-full max-w-7xl mx-auto"><div class="sm:px-6 mb-4"><h1 id="stage-title" class="px-2 sm:px-0 text-3xl">ISW-NO
+		忘形</h1>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0"><div class="relative "><!-- HTML_TAG_START -->世上有两种得意：一种高高在上，有恃无恐；一种从口而出，真假难辨。<br/><span class="text-[#FF4C22]">胜利后获得收藏品及其他奖励</span><!-- HTML_TAG_END --></div></div>
+
+	<div class="px-2 sm:px-0 mt-2.5"><p>初始COST - 10</p>
+		<p>部署上限 - 6</p>
+		<div class="flex gap-x-1 mt-4 sm:mt-2.5"><p class="whitespace-nowrap">情报 -</p>
+				<div><div class="relative "><!-- HTML_TAG_START -->所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%<!-- HTML_TAG_END --></div></div></div>
+		</div>
+	<div class="flex gap-x-1 mt-4 sm:mt-2.5 px-2 sm:px-0"><p class="whitespace-nowrap"><span class="">链接</span>
+			-
+		</p>
+		<div class="flex flex-wrap items-center gap-2"><a href="https://search.bilibili.com/all?keyword=明日方舟 忘形" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">bilibili
+				</a>
+			<a href="https://map.ark-nights.com/map/ro5_sv_3_dlc1" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300">PRTS.Map
+			</a></div></div></div>
+
+			
+
+<div class="sm:px-6 my-4"><h2 class="px-2 sm:px-0 text-subheading mt-4">特殊地形</h2>
+	<hr class="border-gray-500 my-1">
+	<div class="px-2 sm:px-0"><table class="mt-4 sm:mx-auto"><thead><tr><th class="border border-gray-400 border-solid py-0.5 px-1.5 md:min-w-[50px]">名称</th>
+					<th class="border border-gray-400 border-solid py-0.5 px-2.5 md:min-w-[50px] sm:text-left">备注</th></tr></thead>
+			<tbody><tr><td class="min-w-[82px] border border-gray-400 px-2 py-1.5 text-center">地穴
+								</td>
+							<td class="border border-gray-400 px-2 py-1.5"><div class="relative "><!-- HTML_TAG_START -->危险的凹陷地形或地面破洞，经过的敌人会摔落至底部直接死亡<!-- HTML_TAG_END --></div></td>
+						</tr>
+				</tbody></table></div></div>
+<div class="sm:px-6"><p class="px-2 sm:px-0 text-subheading mt-4">关卡地图</p>
+	<hr class="border-gray-500 mt-1">
+	<div class="max-w-[600px] w-full mx-auto px-3 sm:px-0 mt-3"><img src="/images/stages/level_ro5_sv_3_dlc1.webp" width="600" height="338px" alt="level_rogue5_sv-3_dlc1" loading="lazy">
+
+		</div>
+	<div class="w-screen sm:w-full"></div></div>
+		<div class="px-2 sm:px-6 select-none mt-2.5"><p class="text-subheading">难易度</p>
+	
+	<div class="counter svelte-b27oxu"><button disabled aria-label="Decrease the counter by one" class="group svelte-b27oxu" id="diff-minus"><svg aria-hidden="true" viewBox="0 0 1 1" class="svelte-b27oxu"><path d="M0,0.5 L1,0.5" class="group-disabled:stroke-[#444] svelte-b27oxu"></path></svg></button>
+
+			<div class="counter-viewport select-none svelte-b27oxu"><div class="counter-digits svelte-b27oxu" style="transform: translate(0, 0%)"><strong class="hidden svelte-b27oxu" aria-hidden="true">1</strong>
+					<strong id="diff-count" class="svelte-b27oxu">0</strong></div></div>
+
+			<button  aria-label="Increase the counter by one" class="group svelte-b27oxu" id="diff-plus"><svg aria-hidden="true" viewBox="0 0 1 1" class="svelte-b27oxu"><path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" class="group-disabled:stroke-[#444] svelte-b27oxu"></path></svg></button></div>
+</div>
+		
+<div class="sm:px-6 my-4"><button class="flex justify-between items-center w-full px-2 sm:px-0"><div class="flex items-center gap-x-3"><h2 class="text-subheading">装置</h2>
+			<img src="/images/skill_icons/skill_icon_sktok_emp.webp" width="40" height="40" loading="lazy" alt=""></div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-plus"></use></svg></button>
+	<hr class="border-gray-500 my-1">
+	</div>
+<div class="sm:px-6 my-4"><button class="flex justify-between items-center w-full px-2 sm:px-0"><div class="flex items-center gap-x-3"><h2 class="text-subheading">属性加成确认</h2>
+			</div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-plus"></use></svg></button>
+	<hr class="border-gray-500 my-1">
+	</div>
+<div class="sm:px-6 my-4"><button class="flex justify-between items-center w-full px-2 sm:px-0"><div class="flex items-center gap-x-3"><h2 class="text-subheading">敌人数量 (29)</h2>
+			</div>
+		
+
+
+<svg width="24" height="24" class="w-6 h-6 sm:w-8 sm:h-8 mt-2"><use xlink:href="#icon-minus"></use></svg></button>
+	<hr class="border-gray-500 my-1">
+	<div><div class="flex flex-wrap gap-x-4 gap-y-2 px-2.5 md:px-0">
+				<a href="#enemy_1126_spslme_2" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_1126_spslme_2.webp" height="65" width="65" decoding="async" alt="SF10" title="恍惚的“得意”">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>0</span>
+						</p>
+				</a>
+				<a href="#enemy_1126_spslme_2b" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_1126_spslme_2.webp" height="65" width="65" decoding="async" alt="SF10" title="恍惚的“得意”">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>0</span>
+						</p>
+				</a>
+				<a href="#enemy_1112_emppnt_2" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_1112_emppnt_2.webp" height="65" width="65" decoding="async" alt="U12" title="帝国炮火中枢先兆者">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>1</span>
+						</p>
+				</a>
+				<a href="#enemy_1171_durokt_2" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_1171_durokt_2.webp" height="65" width="65" decoding="async" alt="DU14" title="深池飞行大队队长">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>26</span>
+						</p>
+				</a>
+				<a href="#enemy_1040_bombd_2" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_1040_bombd_2.webp" height="65" width="65" decoding="async" alt="D6" title="暴鸰·G">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>2</span>
+						</p>
+				</a>
+				<a href="#enemy_2101_dyspll" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_2101_dyspll.webp" height="65" width="65" decoding="async" alt="JY1" title="便符">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>0</span>
+						</p>
+				</a>
+				<a href="#enemy_2001_duckmi" class="relative flex items-center hover:bg-neutral-700"><img class="select-none w-[55px] md:w-[65px]" src="/images/enemy_icons/enemy_2001_duckmi.webp" height="65" width="65" decoding="async" alt="DLD" title="鸭爵">
+					<p class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm">x 
+							<span>1</span>
+						</p>
+				</a></div></div></div>
+<div class="sm:px-6">
+	<div class="min-h-screen"></div>
+	<div id="stageNav" class="mt-8 sm:mt-16 scroll-mt-20"><div class="max-w-6xl mx-auto"><table class="text-xs sm:text-base svelte-1w4agg"><tbody><tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="通常作戦" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">1</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_狡鼷三窟"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">狡鼷三窟</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_赶集"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">赶集</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_正经生意"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">正经生意</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_老戏骨"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">老戏骨</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_驱虫"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">驱虫</div>
+</a>
+								</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_凭票入内"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">凭票入内</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">2</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_有教无类"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">有教无类</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_飞来横祸"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">飞来横祸</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_所守者，义"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">所守者，义</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_明抢暗偷"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">明抢暗偷</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_救援行动"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">救援行动</div>
+</a>
+								</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_玩具兵将"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">玩具兵将</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">3</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_啖之以利"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">啖之以利</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_长驱不复"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">长驱不复</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_背山面水"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">背山面水</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_去晦"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">去晦</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_落叶归根"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">落叶归根</div>
+</a>
+								</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_御外侮"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">御外侮</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">4</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_山海必争"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">山海必争</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_贪饵"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">贪饵</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_识文"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">识文</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_赶场戏班"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">赶场戏班</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_峥嵘战功"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">峥嵘战功</div>
+</a>
+								</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_暗箭难防"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">暗箭难防</div>
+</a>
+								</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_忍气不吞声"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">忍气不吞声</div>
+</a>
+								</td>
+					</tr>
+				<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">5</td>
+					
+						<td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_青山不语"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">青山不语</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_离域检查"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">离域检查</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_薄礼一份"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">薄礼一份</div>
+</a>
+							</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_往事喑哑"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">往事喑哑</div>
+</a>
+							</td></tr>
+				
+					<tr><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_邙山镇地方志"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">邙山镇地方志</div>
+</a>
+								</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_不成烟火"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">不成烟火</div>
+</a>
+								</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_砺锋"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">砺锋</div>
+</a>
+								</td>
+					</tr>
+			<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">6</td>
+				<td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_炎灼"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">炎灼</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_人镇"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">人镇</div>
+</a>
+					</td></tr>
+			<tr><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_越山海"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">越山海</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_借力打力"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">借力打力</div>
+</a>
+					</td></tr>
+			
+			<tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="险路恶敌" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">3</td>
+				<td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_月华寒"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">月华寒</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_剑·刀·矛"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">剑·刀·矛</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_点化"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">点化</div>
+</a>
+					</td></tr>
+			<tr><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_夕娥忆"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">夕娥忆</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_仁·义·武"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">仁·义·武</div>
+</a>
+					</td><td colspan="8" class="svelte-1w4agg"><a href="/zh/stages/ISW-NO_求道"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">求道</div>
+</a>
+					</td></tr>
+			<tr><td colspan="2" rowspan="2" class="svelte-1w4agg">5</td>
+				<td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_破岁阵祀"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">破岁阵祀</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_昔字如烟"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">昔字如烟</div>
+</a>
+					</td></tr>
+			<tr><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_天数将易"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">天数将易</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_往昔难忆"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">往昔难忆</div>
+</a>
+					</td></tr>
+			<tr><td colspan="2" rowspan="1" class="svelte-1w4agg">6 </td>
+				<td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_谋岁者"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">谋岁者</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_末狩"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">末狩</div>
+</a>
+					</td></tr>
+			<tr><td colspan="2" rowspan="1" class="svelte-1w4agg">? </td>
+				<td colspan="24" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_录忆"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">录忆</div>
+</a></td></tr>
+			<tr><td colspan="2" rowspan="1" class="svelte-1w4agg">6/7 </td>
+				<td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_止变"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">止变</div>
+</a>
+					</td><td colspan="12" class="svelte-1w4agg"><a href="/zh/stages/ISW-DF_定乾坤"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">定乾坤</div>
+</a>
+					</td></tr>
+
+			
+
+			<tr><th colspan="2" class="empty svelte-1w4agg"></th>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="不期而遇" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="2" rowspan="24" class="svelte-1w4agg">? </td>
+				<td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-SP_源源不断"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">源源不断</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-SP_闪闪发光"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">闪闪发光</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-SP_循循善诱"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">循循善诱</div>
+</a>
+					</td><td colspan="6" class="svelte-1w4agg"><a href="/zh/stages/ISW-SP_易易鸭鸭"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">易易鸭鸭</div>
+</a>
+					</td></tr>
+			<tr><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_劫罚"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">劫罚</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_生百相"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">生百相</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-DF_硕果累累"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">硕果累累</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_以逸待劳"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">以逸待劳</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_喜从驮来"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">喜从驮来</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_硅基伥的宴席"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">硅基伥的宴席</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_彻底失控"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">彻底失控</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_为崖作伥"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">为崖作伥</div>
+</a>
+		</td>
+</tr>
+			<tr><th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="商店" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_神游天外"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">神游天外</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-SP_作壁上观"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">作壁上观</div>
+</a>
+		</td>
+</tr>
+			<tr><th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="指点迷津" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_谤天(双)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">谤天(双)</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_迎雷(双)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">迎雷(双)</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_蔑震(双)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">蔑震(双)</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_谤天(单)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">谤天(单)</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_迎雷(单)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">迎雷(单)</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_蔑震(单)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">蔑震(单)</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_赴陨(双)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">赴陨(双)</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_斥洪(双)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">斥洪(双)</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_赴陨(单)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">赴陨(单)</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_斥洪(单)"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">斥洪(单)</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="24" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_分明"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">分明</div>
+</a>
+		</td>
+</tr>
+			<tr><th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="狭路相逢" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_夕江对擂"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">夕江对擂</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_南武群英会"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">南武群英会</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_夕江诀"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">夕江诀</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_南武约"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">南武约</div>
+</a>
+		</td>
+</tr>
+			<tr><th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="岁兽残识" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_地有四难"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">地有四难</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_忘形"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">忘形</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_奇谭"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">奇谭</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_破局"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">破局</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_地有四难_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">地有四难 b</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_忘形_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">忘形 b</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_奇谭_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">奇谭 b</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_破局_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">破局 b</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_不鉴"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">不鉴</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_靡靡之音"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">靡靡之音</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_迷惘"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">迷惘</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_不鉴_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">不鉴 b</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_靡靡之音_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">靡靡之音 b</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_迷惘_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">迷惘 b</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_凭器_a"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">凭器 a</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_凭器_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">凭器 b</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_凭器_c"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">凭器 c</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_愠怒_a"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">愠怒 a</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_愠怒_b"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">愠怒 b</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_愠怒_c"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">愠怒 c</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_震坎"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">震坎</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_四方"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">四方</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_时封"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">时封</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_遍地福音"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">遍地福音</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_相合"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">相合</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="24" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_贪妄"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">贪妄</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="2" rowspan="23" class="svelte-1w4agg">6 </td>
+				<th colspan="24" class="svelte-1w4agg"><div class="flex justify-center items-center"><img src="data:image/webp;base64,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" alt="岁兽残识" width="120px" loading="lazy" decoding="async"></div></th></tr>
+			<tr><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_地有四难_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">地有四难</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_忘形_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5 active">忘形</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_奇谭_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">奇谭</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_破局_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">破局</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_地有四难_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">地有四难 b</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_忘形_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">忘形 b</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_奇谭_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">奇谭 b</div>
+</a>
+		</td><td colspan="6" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_破局_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">破局 b</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_不鉴_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">不鉴</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_靡靡之音_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">靡靡之音</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_迷惘_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">迷惘</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_不鉴_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">不鉴 b</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_靡靡之音_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">靡靡之音 b</div>
+</a>
+		</td><td colspan="8" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_迷惘_b_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">迷惘 b</div>
+</a>
+		</td>
+</tr>
+			<tr><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_愠怒_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">愠怒</div>
+</a>
+		</td><td colspan="12" class="svelte-sh9hjs"><a href="/zh/stages/ISW-NO_贪妄_dlc1"><div class="hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer  svelte-ghjpu5">贪妄</div>
+</a>
+		</td>
+</tr></tbody></table>
+</div></div></div></div></main>
+
+<div class="footerBar fixed overflow-hidden bottom-0 w-full select-none z-10"><div class="relative transition-opacity duration-[50ms] ease-in-out select-none opacity-0 invisible"></div>
+	<div class="shadow-2xl shadow-gray-400 bg-neutral-900 w-full mt-4 fixed bottom-0 py-2"><div class="max-w-7xl mx-auto px-2 md:px-4"><div class="relative flex items-center h-16">
+				
+				<div class="flex items-center py-[2px] bg-gradient-to-r from-[#333333] via-neutral-900 to-neutral-900 relative hover:cursor-pointer"><div class="flex items-center px-[6px] py-1 relative bg-[#313131]">
+						<img src="data:image/png;base64,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" alt="relic icon" loading="lazy" decoding="async"></div>
+					<div class="bg-neutral-900 min-w-[280px] w-[80vw] md:w-auto overflow-hidden h-14 gap-x-2 pl-1"><div class="flex gap-x-2 items-center">
+							</div></div></div></div></div></div></div>
+</div>
+
+
+			
+			<script>
+				{
+					__sveltekit_b2snm = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.1cf369f1.js"),
+						import("../../_app/immutable/entry/app.60753f57.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 3, 19],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
