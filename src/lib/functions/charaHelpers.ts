@@ -216,7 +216,8 @@ const SEARCH_IN_BLACKBOARD = [
 	'palsy',
 	'bonus_lifepoint',
 	'enemy_damage_share',
-	'sp_module'
+	'sp_module',
+	"hp_ratio_dmg"
 ];
 
 // keys not here will just use their respective key in translations
