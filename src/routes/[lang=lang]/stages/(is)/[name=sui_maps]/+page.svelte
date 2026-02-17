@@ -78,7 +78,7 @@
 											decoding="async"
 											alt={'yi'}
 										/>
-										<span>易</span>
+										<span>化镇抚</span>
 									</div>
 								{:else if suffix === 'choice_sui'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -90,7 +90,7 @@
 											decoding="async"
 											alt={'sui'}
 										/>
-										<span>岁</span>
+										<span>溯承形</span>
 									</div>
 								{:else if suffix === 'choice_wang'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -102,7 +102,19 @@
 											decoding="async"
 											alt={'wang'}
 										/>
-										<span>望</span>
+										<span>改对弈</span>
+									</div>
+								{:else if suffix === 'choice_rgdysm'}
+									<div class="flex items-center justify-center gap-x-1.5">
+										<img
+											class="select-none"
+											src={`/images/chara_icons/trap_222_rgdysm.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'cyue'}
+										/>
+										<span>塑旧历</span>
 									</div>
 								{:else if suffix === 'choice_tgr'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -124,6 +136,8 @@
 										/>
 										<span>一起</span>
 									</div>
+								{:else if suffix === 'choice_normal'}
+									<span class="font-bold text-lg">普通</span>
 								{:else if suffix === 'choice_all'}
 									<span class="font-bold text-lg">ALL</span>
 								{:else}

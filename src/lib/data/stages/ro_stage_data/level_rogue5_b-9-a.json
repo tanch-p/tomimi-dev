@@ -25,6 +25,9 @@
    "description_ja": null,
    "description_en": null,
    "addInfo_zh": [
+    "敛傲与愠怒的生命值额外提升至150%",
+    "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
+    "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
    "addInfo_ja": null,
@@ -56,6 +59,16 @@
        "mode": "mul"
       }
      ]
+    },
+    {
+     "targets": [
+      "enemy_2128_dysuib"
+     ],
+     "special": {
+      "dysuib_reflect": {
+       "value": 10
+      }
+     }
     }
    ],
    "n_mods": null,
@@ -9301,6 +9314,9 @@
    "description_ja": null,
    "description_en": null,
    "addInfo_zh": [
+    "敛傲与愠怒的生命值额外提升至150%",
+    "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
+    "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
    "addInfo_ja": null,
@@ -9332,6 +9348,16 @@
        "mode": "mul"
       }
      ]
+    },
+    {
+     "targets": [
+      "enemy_2128_dysuib"
+     ],
+     "special": {
+      "dysuib_reflect": {
+       "value": 10
+      }
+     }
     }
    ],
    "n_mods": null,
@@ -17309,6 +17335,9 @@
    "description_ja": null,
    "description_en": null,
    "addInfo_zh": [
+    "敛傲与愠怒的生命值额外提升至150%",
+    "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
+    "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
    "addInfo_ja": null,
@@ -17340,6 +17369,16 @@
        "mode": "mul"
       }
      ]
+    },
+    {
+     "targets": [
+      "enemy_2128_dysuib"
+     ],
+     "special": {
+      "dysuib_reflect": {
+       "value": 10
+      }
+     }
     }
    ],
    "n_mods": null,
@@ -25878,7 +25917,7 @@
   {
    "id": "ro5_b_9_d",
    "levelId": "level_rogue5_b-9-d",
-   "suffix": "choice_tgr",
+   "suffix": "choice_rgdysm",
    "tags": [
     "rogue_yan"
    ],
@@ -25895,6 +25934,11 @@
    "description_ja": null,
    "description_en": null,
    "addInfo_zh": [
+    "敛傲与愠怒的生命值额外提升至150%",
+    "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
+    "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
+    "雕伥(左上，右下)每20s召唤一个狂暴凶豕兽",
+    "其他雕伥每10s召唤一个利齿鬣犄兽",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
    "addInfo_ja": null,
@@ -25926,6 +25970,42 @@
        "mode": "mul"
       }
      ]
+    },
+    {
+     "targets": [
+      "trap_222_rgdysm#2",
+      "trap_222_rgdysm#3",
+      "trap_222_rgdysm#4",
+      "trap_222_rgdysm#5"
+     ],
+     "special": {
+      "rgdysm_summon": {
+       "interval": 10.0,
+       "enemy_key": "enemy_1304_mhwolf_2"
+      }
+     }
+    },
+    {
+     "targets": [
+      "trap_222_rgdysm#1",
+      "trap_222_rgdysm#6"
+     ],
+     "special": {
+      "rgdysm_summon": {
+       "interval": 20.0,
+       "enemy_key": "enemy_1309_mhboar_2"
+      }
+     }
+    },
+    {
+     "targets": [
+      "enemy_2128_dysuib"
+     ],
+     "special": {
+      "dysuib_reflect": {
+       "value": 10
+      }
+     }
     }
    ],
    "n_mods": null,

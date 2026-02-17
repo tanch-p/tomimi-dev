@@ -8,7 +8,7 @@
   {
    "id": "ro5_b_10",
    "levelId": "level_rogue5_b-10",
-   "suffix": "choice_tgr",
+   "suffix": "choice_normal",
    "tags": [
     "rogue_yan"
    ],
@@ -25,6 +25,8 @@
    "description_ja": null,
    "description_en": null,
    "addInfo_zh": [
+    "玩家持有【不赦】时，身形sp每45s召唤一次敌人",
+    "【晦】属性恍惚的“得意”天赋中的所有倍率失效（变为100%）",
     "N18追加敌人：恍惚的“得意”×12、恍惚的“得意”(晦)×12、山海众司魅人×5、不动的“偷闲”×3、“盛怒”×6"
    ],
    "addInfo_ja": null,
@@ -5882,7 +5884,7 @@
   {
    "id": "ro5_b_10_b",
    "levelId": "level_rogue5_b-10-b",
-   "suffix": "choice_all",
+   "suffix": "choice_tgr",
    "tags": [
     "rogue_yan"
    ],
