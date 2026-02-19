@@ -325,7 +325,37 @@
 			}
 		}
 	},
+	"level_rogue5_b-9-a": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
+	},
+	"level_rogue5_b-9-b": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
+	},
+	"level_rogue5_b-9-c": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
+	},
+	"level_rogue5_b-9-d": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
+	},
 	"level_rogue5_b-9-e": {
+		"dysuib_relic_branch": {
+			"type": "single",
+			"isRandom": false
+		}
+	},
+	"level_rogue5_b-10": {
 		"dysuib_relic_branch": {
 			"type": "single",
 			"isRandom": false
