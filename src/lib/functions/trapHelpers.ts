@@ -112,7 +112,7 @@ export const parseTraps = (traps: MapConfigTrap[], language: Language) => {
 				if (skill?.[valueKey]) otherKeys[valueKey] = skill[valueKey];
 			}
 			skills.push({
-				skillId: key,
+				skillId: skill.skillId,
 				name: skill[`name_${language}`] || skill[`name_zh`],
 				desc: skill[`desc_${language}`] || skill[`desc_zh`],
 				level: mainSkillLvl + '/' + skill.levels.length,
@@ -152,7 +152,7 @@ export function applyTrapMods(traps: Trap[], statMods: StatMods, specialMods: Sp
 		const rangeId = trap.stats.rangeId;
 		trap.modsList = [];
 		const moddedStats = parseStats(trap, statMods);
-		let skill = { ...trap.skills?.[0] };
+		let skill = structuredClone(trap.skills?.[0]);
 		if (skill && specialMods[trap.key]?.[skill.skillId]) {
 			skill = { ...skill, ...specialMods[trap.key]?.[skill.skillId] };
 			skill.overwrittenKeys = getOverwrittenKeys(trap.skills?.[0], skill);
