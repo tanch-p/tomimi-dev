@@ -695,7 +695,9 @@ export class Enemy {
 			this.onEnd();
 			return;
 		}
-
+		if(this.traits.some(skill => skill.key === "statue_enemy")){
+			return;
+		}
 		// 避障力
 		// const force = this.gameManager.calculateAvoidanceForce(this.raycastPos,this.getFootpoint(),this.direction);
 
