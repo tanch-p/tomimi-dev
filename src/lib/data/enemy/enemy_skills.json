@@ -9560,6 +9560,15 @@
 		}
 	},
 	"dycyue_evasion": {
+		"type": "buff",
+		"effects": {
+			"targets": ["enemy_2126_dycyue"],
+			"activeTargets": [],
+			"mods": [
+				{ "key": "atk", "value": 0.3, "order": "initial", "mode": "mul" }
+			],
+			"stackType": "add"
+		},
 		"value": 50,
 		"tooltip": {
 			"en": [""],

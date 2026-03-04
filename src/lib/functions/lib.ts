@@ -247,7 +247,7 @@ export const setOtherBuffsList = (
 			}
 			const replacedSkill = {...skill, ...skillRef}
 			if (skill.type === 'buff') {
-				buffsList.push({
+				const buff = {
 					key: enemy.key,
 					name: enemy[`name_${language}`],
 					targets: replacedSkill.effects.targets,
@@ -255,7 +255,13 @@ export const setOtherBuffsList = (
 					mods: replacedSkill.effects.mods,
 					stackType: replacedSkill.effects.stackType,
 					maxCount: maxCount
-				});
+				}
+				if(skillRef.key === "dycyue_evasion"){
+					buff.key = "dycyue_evasion";
+					buff.maxCount = 8;
+					buff.img = "/images/chara_icons/trap_790_dytswd.webp"
+				}
+				buffsList.push(buff);
 			}
 		}
 	}

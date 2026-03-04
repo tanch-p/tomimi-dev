@@ -47,6 +47,7 @@
 							alt={buff.name}
 							width="60"
 							height="60"
+							class="{["dycyue_evasion"].includes(buff.key) ? "border-2" : ""}"
 						/>
 					{/if}
 				</div>
