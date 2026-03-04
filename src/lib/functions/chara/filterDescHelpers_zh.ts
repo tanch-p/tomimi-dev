@@ -1,4 +1,4 @@
-import type { Language } from '$lib/types';
+import type { Language } from '$lib/types/types';
 import translations from '$lib/translations.json';
 import relics from '$lib/data/chara/relics_chara.json';
 import { formatArray } from '../languageHelpers';

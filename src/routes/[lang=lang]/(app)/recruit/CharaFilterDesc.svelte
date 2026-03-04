@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Language } from '$lib/types';
+	import type { Language } from '$lib/types/types';
 	import translations from '$lib/translations.json';
-	import { filterDescStore } from './stores';
+	import { filterDescStore } from './stores.old';
 	import { getDisplayKey } from '$lib/functions/chara/charaHelpers';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import { generateSkillDesc as generateSkillDesc_zh } from '$lib/functions/chara/filterDescHelpers_zh';

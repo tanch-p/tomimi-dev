@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Language } from '$lib/types';
+	import type { Language } from '$lib/types/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import translations from '$lib/translations.json';
 	import Icon from '$lib/components/Icon.svelte';

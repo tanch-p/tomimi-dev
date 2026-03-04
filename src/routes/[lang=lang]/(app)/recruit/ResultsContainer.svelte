@@ -1,35 +1,37 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
-	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
-	import Icon from '$lib/components/Icon.svelte';
-	import { onMount } from 'svelte';
-	import CharaViewGrid from './CharaViewGrid.svelte';
-	import CharaViewDetail from './CharaViewDetail.svelte';
-	import { filtersStore, relicFiltersStore } from './stores';
+	import type { Character } from "$lib/types/chara.types";
+	import type { Language } from "$lib/types/types";
+	import translations from "$lib/translations.json";
+	import Icon from "$lib/components/Icon.svelte";
+	import { onMount } from "svelte";
+	import CharaViewGrid from "./CharaViewGrid.svelte";
+	// import CharaViewDetail from "./CharaViewDetail.svelte";
 
 	interface Props {
-		characters: any;
+		characters: Character[];
 		language: Language;
 	}
 
 	let { characters, language }: Props = $props();
 
-	let displayMode = $state('grid');
-	let visibleItems = $state([]);
-	let itemsPerLoad = 50;
-	let currentIndex = $state(0);
-	let showAlt = $state(false);
+	let displayMode = $state("grid");
+	let index = $state(0);
+	let visible = $derived(characters.slice(0, index));
+	const ITEMS_PER_LOAD = 50;
+
+	$effect(() => {
+		index = Math.min(ITEMS_PER_LOAD, characters.length);
+	});
+
+	// const showAlt = $derived(
+	// 	$filtersStore.some(({ options }) =>
+	// 		options.some((item) => item.selected),
+	// 	) || $relicFiltersStore.some((item) => item.selected),
+	// );
 
 	function loadMoreItems() {
-		if (currentIndex >= characters.length) return;
-
-		setTimeout(() => {
-			const newItems = characters.slice(currentIndex, currentIndex + itemsPerLoad);
-			visibleItems = [...visibleItems, ...newItems];
-			currentIndex += itemsPerLoad;
-		}, 0);
+		if (index >= characters.length) return;
+		index += ITEMS_PER_LOAD;
 	}
 
 	function handleScroll() {
@@ -44,23 +46,11 @@
 
 	onMount(() => {
 		loadMoreItems();
-		window.addEventListener('scroll', handleScroll);
+		window.addEventListener("scroll", handleScroll);
 
 		return () => {
-			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener("scroll", handleScroll);
 		};
-	});
-	run(() => {
-		showAlt =
-			$filtersStore.some(({ _, options }) => options.some((item) => item.selected)) ||
-			$relicFiltersStore.some((item) => item.selected);
-	});
-	run(() => {
-		if (characters?.length) {
-			visibleItems = [];
-			currentIndex = 0;
-			loadMoreItems();
-		}
 	});
 </script>
 
@@ -72,21 +62,24 @@
 			<div class="absolute flex items-center gap-x-2 w-max right-4 -top-2.5">
 				<button
 					class="display-style-button rounded-full p-[9px]"
-					class:active={displayMode === 'grid'}
-					onclick={() => (displayMode = 'grid')}
+					class:active={displayMode === "grid"}
+					onclick={() => (displayMode = "grid")}
 				>
 					<Icon name="grid-view" size={24} />
 				</button>
 				<button
 					class="display-style-button rounded-full p-[10px]"
-					class:active={displayMode === 'list'}
-					onclick={() => (displayMode = 'list')}
+					class:active={displayMode === "list"}
+					onclick={() => (displayMode = "list")}
 				>
 					<Icon name="icon-list" size={22} />
 				</button>
 			</div>
 			<p class="md:text-center ml-4 md:ml-0">
-				{translations[language].filter_result.replace('<num>', characters.length)}
+				{translations[language].filter_result.replace(
+					"<num>",
+					characters.length,
+				)}
 			</p>
 		</div>
 		<div
@@ -94,11 +87,11 @@
 				? 'grid grid-cols-4 sm:flex flex-wrap gap-1.5 px-1.5 sm:px-0'
 				: 'flex flex-col gap-4 px-1.5 md:px-0'}"
 		>
-			{#each visibleItems as chara (chara.id)}
-				{#if displayMode === 'grid'}
+			{#each visible as chara (chara.id)}
+				{#if displayMode === "grid"}
 					<CharaViewGrid {chara} />
 				{:else}
-					<CharaViewDetail {chara} {language} {showAlt} />
+					<!-- <CharaViewDetail {chara} {language} {showAlt} /> -->
 				{/if}
 			{/each}
 		</div>

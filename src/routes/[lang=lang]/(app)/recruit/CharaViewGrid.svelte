@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { selectedChara, moduleIndex, sortOptions, secFilters } from './stores';
+	// import { selectedChara, moduleIndex, sortOptions, secFilters } from './stores.old';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { getPrioritySortValues } from '$lib/functions/chara/charaHelpers';
+
 	let { chara } = $props();
 
-	let equip = $derived(chara.activeModuleIndex && chara.uniequip?.[chara.activeModuleIndex]);
+	// let equip = $derived(chara.activeModuleIndex && chara.uniequip?.[chara.activeModuleIndex]);
 
-	let values = $derived(getPrioritySortValues(chara, $sortOptions, $secFilters));
+	// let values = $derived(getPrioritySortValues(chara, $sortOptions, $secFilters));
 
-	const handleClick = (chara) => {
-		selectedChara.set(chara);
-		moduleIndex.set(chara.activeModuleIndex);
-	};
+	// const handleClick = (chara) => {
+	// 	selectedChara.set(chara);
+	// 	moduleIndex.set(chara.activeModuleIndex);
+	// };
 </script>
 
 <button
@@ -28,7 +29,7 @@
 				decoding="async"
 			/>
 		</div>
-		{#if values?.length > 0}
+		<!-- {#if values?.length > 0}
 			<div
 				class="absolute bottom-0 w-full gradient-dark bg-opacity-50 pl-3 pt-3 truncate text-left"
 			>
@@ -45,15 +46,15 @@
 				alt={chara.rarity}
 				class="absolute bottom-0 right-0 h-[20px]"
 			/>
-		{/if}
+		{/if} -->
 
-		{#if equip}
+		<!-- {#if equip}
 			{@const typeIcon = equip.typeIcon.toLowerCase()}
 			<div
 				class="absolute -right-1 -top-1 w-[40px] h-[40px] bg-center bg-cover"
 				style="background-image: url(/images/color_equip_icons/{typeIcon}.webp);"
 			></div>
-		{/if}
+		{/if} -->
 		<img
 			src={`/images/chara_icons/${chara.id}.webp`}
 			width="100"

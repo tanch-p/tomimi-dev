@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Language } from '$lib/types';
+	import type { Language } from '$lib/types/types';
 	import translations from '$lib/translations.json';
-	import { secFiltersStore } from './stores';
+	import { secFiltersStore } from './stores.old';
 	import { getOptionTranslation } from '$lib/functions/chara/charaHelpers';
 	import { parseConditions } from '$lib/functions/languageHelpers';
 	import Icon from '$lib/components/Icon.svelte';
@@ -68,7 +68,7 @@
 		<CharaFilterToggle
 			title={translations[language].filter_round2}
 			className="mt-1.5"
-			innerClassName="border-t p-3 md:p-4"
+			innerClassName="border-t border-[#e5e7eb] p-3 md:p-4"
 			isOpen={true}
 		>
 			<div class="flex flex-wrap sm:grid grid-cols-2 gap-3">

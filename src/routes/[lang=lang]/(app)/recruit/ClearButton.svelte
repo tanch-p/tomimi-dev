@@ -1,8 +1,9 @@
 <script lang="ts">
-	import type { Language } from '$lib/types';
-	import { filtersStore, relicFiltersStore } from './stores';
-	import Icon from '$lib/components/Icon.svelte';
-	import translations from '$lib/translations.json';
+	import type { Language } from "$lib/types/types";
+	import { resetFilters } from "./shared.svelte";
+	import { relicFiltersStore } from "./stores.old";
+	import Icon from "$lib/components/Icon.svelte";
+	import translations from "$lib/translations.json";
 
 	interface Props {
 		language: Language;
@@ -11,20 +12,11 @@
 	let { language }: Props = $props();
 
 	const reset = () => {
-		filtersStore.update((list) =>
-			list.map((ele) => {
-				return {
-					...ele,
-					options: ele.options.map((option) => {
-						return { ...option, selected: false };
-					})
-				};
-			})
-		);
+		resetFilters();
 		relicFiltersStore.update((list) =>
 			list.map((ele) => {
 				return { ...ele, selected: false };
-			})
+			}),
 		);
 	};
 </script>

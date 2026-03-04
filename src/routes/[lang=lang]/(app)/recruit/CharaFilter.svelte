@@ -1,19 +1,15 @@
 <script lang="ts">
-	import type { Language } from '$lib/types';
-	import { filtersStore, relicFiltersStore, rogueTopic, releaseStatusStore } from './stores';
-	import translations from '$lib/translations.json';
-	import filterOptions from '$lib/data/chara/filter_options.json';
-	import CharaFilterToggle from './CharaFilterToggle.svelte';
-	import relics from '$lib/data/chara/relics_chara.json';
-	import { relicLookup } from '$lib/data/is/relic_lookup';
-	import Icon from '$lib/components/Icon.svelte';
+	import type { Language } from "$lib/types/types";
+	import translations from "$lib/translations.json";
+	import filterOptions from "$lib/data/chara/filter_options.json";
+	import CharaFilterToggle from "./CharaFilterToggle.svelte";
 	import {
 		getCategory,
 		getDisplayKey,
-		getSelectedFilterOptions,
-		updateFilters
-	} from '$lib/functions/chara/charaHelpers';
-	import { setLocalStorage } from '$lib/functions/lib';
+	} from "$lib/functions/chara/charaHelpers";
+	import { setLocalStorage } from "$lib/functions/lib";
+	import { releaseStatus, filtersStore, toggleFilterOption } from "./shared.svelte";
+	import RelicFilters from "./RelicFilters.svelte";
 
 	interface Props {
 		language: Language;
@@ -23,161 +19,177 @@
 
 	const filterLayout = [
 		{
-			title: 'enemy_debuff',
-			color: 'bg-[#FFA5AF]',
-			textColor: 'text-[#950202]',
+			title: "enemy_debuff",
+			color: "bg-[#FFA5AF]",
+			textColor: "text-[#950202]",
 			categories: [
-				{ catKey: 'stats_debuff', optionKey: 'enemy_stats' },
-				{ catKey: 'status_ailment', optionKey: 'status_ailment' },
-				{ catKey: 'buff_special', optionKey: 'debuff_special' }
-			]
+				{ catKey: "stats_debuff", optionKey: "enemy_stats" },
+				{ catKey: "status_ailment", optionKey: "status_ailment" },
+				{ catKey: "buff_special", optionKey: "debuff_special" },
+			],
 		},
 		{
-			title: 'ally_buff',
-			color: 'bg-[#FFC89B]',
-			textColor: 'text-[#A15E00]',
+			title: "ally_buff",
+			color: "bg-[#FFC89B]",
+			textColor: "text-[#A15E00]",
 			categories: [
-				{ catKey: 'stats', optionKey: 'ally_stats' },
-				{ catKey: 'atk_cat', optionKey: 'ally_atk_buffs' },
-				{ catKey: 'def_cat', optionKey: 'ally_def_buffs' },
-				{ catKey: 'targeting', optionKey: 'ally_targeting' },
-				{ catKey: 'status_ailment', optionKey: 'ally_status_buffs' },
-				{ catKey: 'heal_buff', optionKey: 'ally_heal_buffs' },
-				{ catKey: 'buff_sp', optionKey: 'ally_sp_buffs' },
-				{ catKey: 'others_tag', optionKey: 'ally_others' }
-			]
+				{ catKey: "stats", optionKey: "ally_stats" },
+				{ catKey: "atk_cat", optionKey: "ally_atk_buffs" },
+				{ catKey: "def_cat", optionKey: "ally_def_buffs" },
+				{ catKey: "targeting", optionKey: "ally_targeting" },
+				{ catKey: "status_ailment", optionKey: "ally_status_buffs" },
+				{ catKey: "heal_buff", optionKey: "ally_heal_buffs" },
+				{ catKey: "buff_sp", optionKey: "ally_sp_buffs" },
+				{ catKey: "others_tag", optionKey: "ally_others" },
+			],
 		},
 		{
-			title: 'self_buff',
-			color: 'bg-[#C0E6FA]',
-			textColor: 'text-[#17638D]',
+			title: "self_buff",
+			color: "bg-[#C0E6FA]",
+			textColor: "text-[#17638D]",
 			categories: [
-				{ catKey: 'stats', optionKey: 'self_stats' },
-				{ catKey: 'atk_cat', optionKey: 'self_atk_buffs' },
-				{ catKey: 'enemy_target_priority', optionKey: 'enemy_target_priority' },
-				{ catKey: 'def_cat', optionKey: 'self_def_buffs' },
-				{ catKey: 'targeting', optionKey: 'self_targeting' },
-				{ catKey: 'status_ailment', optionKey: 'self_status_buffs' },
-				{ catKey: 'heal_buff', optionKey: 'self_heal_buffs' },
-				{ catKey: 'buff_sp', optionKey: 'self_sp_buffs' },
-				{ catKey: 'skill', optionKey: 'skill' }
-			]
+				{ catKey: "stats", optionKey: "self_stats" },
+				{ catKey: "atk_cat", optionKey: "self_atk_buffs" },
+				{ catKey: "enemy_target_priority", optionKey: "enemy_target_priority" },
+				{ catKey: "def_cat", optionKey: "self_def_buffs" },
+				{ catKey: "targeting", optionKey: "self_targeting" },
+				{ catKey: "status_ailment", optionKey: "self_status_buffs" },
+				{ catKey: "heal_buff", optionKey: "self_heal_buffs" },
+				{ catKey: "buff_sp", optionKey: "self_sp_buffs" },
+				{ catKey: "skill", optionKey: "skill" },
+			],
 		},
 		{
-			title: 'others_tag',
-			color: 'bg-[#DAD4FF]',
-			textColor: '',
+			title: "others_tag",
+			color: "bg-[#DAD4FF]",
+			textColor: "",
 			categories: [
-				{ catKey: 'buff_tags', optionKey: 'buff_tags' },
-				{ catKey: 'profession_buff', optionKey: 'profession_buff' },
-				{ catKey: 'group_buff', optionKey: 'group_buff' },
-				{ catKey: 'enemy_type_related', optionKey: 'enemy_type_related' },
-				{ catKey: 'buff_special', optionKey: 'others_tag' },
-				{ catKey: 'terrain', optionKey: 'terrain' }
-			]
-		}
+				{ catKey: "buff_tags", optionKey: "buff_tags" },
+				{ catKey: "profession_buff", optionKey: "profession_buff" },
+				{ catKey: "group_buff", optionKey: "group_buff" },
+				{ catKey: "enemy_type_related", optionKey: "enemy_type_related" },
+				{ catKey: "buff_special", optionKey: "others_tag" },
+				{ catKey: "terrain", optionKey: "terrain" },
+			],
+		},
 	];
-	let relicDisplayMode = $state('grid');
-	let selectedRelics = $state([]);
 
-	let isSelected = $derived((key, value) => {
-		return $filtersStore.find((ele) => ele.key === key).options.find((ele) => ele.value === value)
-			?.selected;
-	});
-	relicFiltersStore.subscribe((list) => {
-		selectedRelics = list.filter((relic) => relic.selected);
-	});
-	let isRelicSelected = $derived((id) => {
-		return $relicFiltersStore.find((relic) => relic.id === id)?.selected;
-	});
-	const updateRelicFilters = (id) => {
-		relicFiltersStore.update((list) => {
-			const index = list.findIndex((ele) => ele.id === id);
-			list[index].selected = !list[index].selected;
-			return list;
-		});
-	};
+	const selectedFilters = $derived(
+		Object.fromEntries(
+			Object.entries(filtersStore).map(([key, options]) => [
+				key,
+				options.filter((o) => o.selected).map((o) => o.value),
+			]),
+		),
+	);
+
 	const updateReleaseStatus = (val) => {
-		releaseStatusStore.set(val);
-		setLocalStorage('releaseStatus', val);
+		releaseStatus.value = val;
+		setLocalStorage("releaseStatus", val);
 	};
+
+	function getSelectedOptions(categories) {
+		return categories.reduce((acc, { optionKey }) => {
+			for (const value of filterOptions[optionKey]) {
+				const category = getCategory(value);
+				const selected = selectedFilters[category].includes(value);
+				if (selected) {
+					acc.push(value);
+				}
+			}
+			return acc;
+		}, []);
+	}
+
 </script>
 
 <div class="grid gap-5 text-almost-black mt-5">
 	<div class="bg-near-white rounded-md p-3 md:p-4">
-		<h2 class="border-b text-center pb-1 md:pb-2">
+		<h2 class="border-b border-[#e5e7eb] text-center pb-1 md:pb-2">
 			{translations[language].filter}
 		</h2>
-		<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-3">
-			<p class="md:py-[5px] font-medium">{translations[language].chara_filter.release_status}</p>
+		<div
+			class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-3"
+		>
+			<p class="md:py-[5px] font-medium">
+				{translations[language].chara_filter.release_status}
+			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each ['global', 'cn'] as value}
+				{#each ["global", "cn"] as value}
 					<button
 						class="filter-btn"
-						class:active={$releaseStatusStore === value}
+						class:active={releaseStatus.value === value}
 						onclick={() => updateReleaseStatus(value)}
 					>
 						{translations[language].chara_filter[value]}
 					</button>
 				{/each}
 			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language]['rarity']}</p>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">
+				{translations[language]["rarity"]}
+			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['rarity'] as value}
+				{#each filterOptions["rarity"] as value}
 					<button
 						class="filter-btn"
-						class:active={isSelected('rarity', value)}
-						onclick={() => updateFilters('rarity', value, filtersStore)}
-					>
-						{translations[language][value]}
-					</button>
-				{/each}
-			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language]['profession']}</p>
-			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['profession'] as value}
-					<button
-						class="filter-btn"
-						class:active={isSelected('profession', value)}
-						onclick={() => updateFilters('profession', value, filtersStore)}
+						class:active={selectedFilters["rarity"].includes(value)}
+						onclick={() => toggleFilterOption("rarity", value)}
 					>
 						{translations[language][value]}
 					</button>
 				{/each}
 			</div>
 			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">
-				{translations[language]['deployable_tile']}
+				{translations[language]["profession"]}
 			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['deployable_tile'] as value}
+				{#each filterOptions["profession"] as value}
 					<button
 						class="filter-btn"
-						class:active={isSelected('deployable_tile', value)}
-						onclick={() => updateFilters('deployable_tile', value, filtersStore)}
-					>
-						{translations[language][getDisplayKey(value)]}
-					</button>
-				{/each}
-			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language].damage_type}</p>
-			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['damage_type'] as value}
-					<button
-						class="filter-btn"
-						class:active={isSelected('tags', value)}
-						onclick={() => updateFilters('tags', value, filtersStore)}
+						class:active={selectedFilters["profession"].includes(value)}
+						onclick={() => toggleFilterOption("profession", value)}
 					>
 						{translations[language][value]}
 					</button>
 				{/each}
 			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language].ele_inj}</p>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">
+				{translations[language]["deployable_tile"]}
+			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['ele_inj'] as value}
+				{#each filterOptions["deployable_tile"] as value}
 					<button
 						class="filter-btn"
-						class:active={isSelected('tags', value)}
-						onclick={() => updateFilters('tags', value, filtersStore)}
+						class:active={selectedFilters["deployable_tile"].includes(value)}
+						onclick={() => toggleFilterOption("deployable_tile", value)}
+					>
+						{translations[language][getDisplayKey(value)]}
+					</button>
+				{/each}
+			</div>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">
+				{translations[language].damage_type}
+			</p>
+			<div class="flex flex-wrap gap-2">
+				{#each filterOptions["damage_type"] as value}
+					<button
+						class="filter-btn"
+						class:active={selectedFilters["tags"].includes(value)}
+						onclick={() => toggleFilterOption("tags", value)}
+					>
+						{translations[language][value]}
+					</button>
+				{/each}
+			</div>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">
+				{translations[language].ele_inj}
+			</p>
+			<div class="flex flex-wrap gap-2">
+				{#each filterOptions["ele_inj"] as value}
+					<button
+						class="filter-btn"
+						class:active={selectedFilters["tags"].includes(value)}
+						onclick={() => toggleFilterOption("tags", value)}
 					>
 						{translations[language][value]}
 					</button>
@@ -187,11 +199,11 @@
 				{translations[language].table_headers.blockCnt}
 			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['blockCnt'] as value}
+				{#each filterOptions["blockCnt"] as value}
 					<button
 						class="filter-btn"
-						class:active={isSelected('blockCnt', value)}
-						onclick={() => updateFilters('blockCnt', value, filtersStore)}
+						class:active={selectedFilters["blockCnt"].includes(value)}
+						onclick={() => toggleFilterOption("blockCnt", value)}
 					>
 						{value}
 					</button>
@@ -201,11 +213,11 @@
 				{translations[language].others}
 			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['others'] as value}
+				{#each filterOptions["others"] as value}
 					<button
 						class="filter-btn"
-						class:active={isSelected(getCategory(value), value)}
-						onclick={() => updateFilters(getCategory(value), value, filtersStore)}
+						class:active={selectedFilters[getCategory(value)].includes(value)}
+						onclick={() => toggleFilterOption(getCategory(value), value)}
 					>
 						{translations[language][value]}
 					</button>
@@ -215,11 +227,11 @@
 				{translations[language].spType}
 			</p>
 			<div class="flex flex-wrap gap-2">
-				{#each filterOptions['spType'] as value}
+				{#each filterOptions["spType"] as value}
 					<button
 						class="filter-btn"
-						class:active={isSelected('spType', value)}
-						onclick={() => updateFilters('spType', value, filtersStore)}
+						class:active={selectedFilters["spType"].includes(value)}
+						onclick={() => toggleFilterOption("spType", value)}
 					>
 						{translations[language][value]}
 					</button>
@@ -229,9 +241,11 @@
 		<CharaFilterToggle
 			title={translations[language].subProfessionId}
 			className="mt-2"
-			titleClassName="border-b"
+			titleClassName="border-b border-[#e5e7eb]"
 		>
-			<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-2 md:pt-3">
+			<div
+				class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-2 md:pt-3"
+			>
 				{#each Object.keys(filterOptions.subProfessionId) as subKey}
 					{@const subOptions = filterOptions.subProfessionId[subKey]}
 					<p class="md:py-[5px] mt-2 md:mt-0 first:mt-0 font-medium">
@@ -242,8 +256,10 @@
 							<!-- {@const selected = options.find((ele) => ele.value === value)?.selected} -->
 							<button
 								class="filter-btn"
-								class:active={isSelected('subProfessionId', value)}
-								onclick={() => updateFilters('subProfessionId', value, filtersStore)}
+								class:active={selectedFilters["subProfessionId"].includes(
+									value,
+								)}
+								onclick={() => toggleFilterOption("subProfessionId", value)}
 							>
 								{translations[language][value]}
 							</button>
@@ -255,16 +271,20 @@
 		<CharaFilterToggle
 			title={translations[language].group}
 			className="mt-1.5"
-			titleClassName="border-b"
+			titleClassName="border-b border-[#e5e7eb]"
 		>
-			<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-2 md:pt-3">
-				<p class="hidden sm:block md:py-[5px] font-medium">{translations[language]['group']}</p>
+			<div
+				class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-2 md:pt-3"
+			>
+				<p class="hidden sm:block md:py-[5px] font-medium">
+					{translations[language]["group"]}
+				</p>
 				<div class="flex flex-wrap gap-2">
-					{#each filterOptions['group'] as value}
+					{#each filterOptions["group"] as value}
 						<button
 							class="filter-btn"
-							class:active={isSelected('group', value)}
-							onclick={() => updateFilters('group', value, filtersStore)}
+							class:active={selectedFilters["group"].includes(value)}
+							onclick={() => toggleFilterOption("group", value)}
 						>
 							{translations[language][value]}
 						</button>
@@ -274,17 +294,21 @@
 		</CharaFilterToggle>
 	</div>
 	{#each filterLayout as { title, color, textColor, categories }}
-		{@const selectedOptions = getSelectedFilterOptions(categories, $filtersStore)}
+		{@const selectedOptions = getSelectedOptions(categories)}
 		<div class="bg-near-white rounded-md overflow-hidden">
 			<CharaFilterToggle
 				id={title}
 				title={translations[language][title]}
 				isOpen={false}
-				innerClassName="border-t p-3 md:p-4"
+				innerClassName="border-t border-[#e5e7eb] p-3 md:p-4"
 			>
-				<div class="relative z-1 flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3">
+				<div
+					class="relative z-1 flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3"
+				>
 					{#each categories as { catKey, optionKey }}
-						<p class="md:py-[5px] mt-2 md:mt-0 first:mt-0 {textColor} sm:text-inherit font-medium">
+						<p
+							class="md:py-[5px] mt-2 md:mt-0 first:mt-0 {textColor} sm:text-inherit font-medium"
+						>
 							{translations[language][catKey]}
 						</p>
 						<div class="flex flex-wrap gap-2">
@@ -293,8 +317,10 @@
 								<button
 									id={value}
 									class="filter-btn"
-									class:active={isSelected(getCategory(value), value)}
-									onclick={() => updateFilters(getCategory(value), value, filtersStore)}
+									class:active={selectedFilters[getCategory(value)].includes(
+										value,
+									)}
+									onclick={() => toggleFilterOption(getCategory(value), value)}
 								>
 									{translations[language].table_headers[key] ??
 										translations[language][key] ??
@@ -305,21 +331,24 @@
 					{/each}
 				</div>
 				{#snippet triangle()}
-								<div
-						
+					<div
 						class="side-triangle absolute right-0 bottom-0 {color} h-[60px] w-[60px]"
 					></div>
-							{/snippet}
+				{/snippet}
 				{#snippet selected()}
-								<div >
+					<div>
 						{#if selectedOptions.length > 0}
-							<div class="flex flex-wrap gap-2 border-t py-3 mx-3 md:mx-4">
+							<div
+								class="flex flex-wrap gap-2 border-t border-[#e5e7eb] py-3 mx-3 md:mx-4"
+							>
 								{#each selectedOptions as value}
 									{@const key = getDisplayKey(value)}
 									<button
 										class="relative filter-btn"
-										class:active={isSelected(getCategory(value), value)}
-										onclick={() => updateFilters(getCategory(value), value, filtersStore)}
+										class:active={selectedFilters[getCategory(value)].includes(
+											value,
+										)}
+										onclick={() => toggleFilterOption(getCategory(value), value)}
 									>
 										{translations[language].table_headers[key] ??
 											translations[language][key] ??
@@ -329,123 +358,9 @@
 							</div>
 						{/if}
 					</div>
-							{/snippet}
+				{/snippet}
 			</CharaFilterToggle>
 		</div>
 	{/each}
-	<div class="bg-near-white rounded-md overflow-hidden">
-		<CharaFilterToggle
-			title={translations[language].isw}
-			innerClassName="border-t px-3 md:px-4 pt-2 pb-3 md:pb-4"
-		>
-			<div
-				class="md:absolute right-3 float-right md:float-none flex items-center gap-x-2 w-max ml-auto"
-			>
-				<button
-					class="display-style-button rounded-full p-[9px]"
-					class:active={relicDisplayMode === 'grid'}
-					onclick={() => (relicDisplayMode = 'grid')}
-				>
-					<Icon name="grid-view" size={24} className="fill-black" />
-				</button>
-				<button
-					class="display-style-button rounded-full p-[10px]"
-					class:active={relicDisplayMode === 'list'}
-					onclick={() => (relicDisplayMode = 'list')}
-				>
-					<Icon name="icon-list" size={22} />
-				</button>
-			</div>
-			<div class="flex md:justify-center gap-3 pt-2">
-				{#each Object.keys(relics) as topic}
-					<button
-						class:active={$rogueTopic === topic}
-						class="filter-btn"
-						onclick={() => rogueTopic.set(topic)}
-					>
-						{translations[language][topic]}
-					</button>
-				{/each}
-			</div>
-			<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-3 w-full pt-2 md:pt-5">
-				<p class="md:py-[5px]">{translations[language]['rogue_relic']}</p>
-				<div
-					class="gap-3 {relicDisplayMode === 'grid'
-						? language === 'en'
-							? 'grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 items-start'
-							: 'grid grid-cols-3 sm:flex flex-wrap'
-						: 'flex flex-col'}"
-				>
-					{#each relics[$rogueTopic] as relic}
-						<button
-							class={relicDisplayMode === 'grid'
-								? 'text-center'
-								: 'grid grid-cols-[100px_1fr] gap-2 text-left'}
-							class:bg-slate-300={isRelicSelected(relic.id)}
-							onclick={() => updateRelicFilters(relic.id)}
-						>
-							<img
-								src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
-								alt={relic[`name_${language}`] || relic['name_zh']}
-								width="100"
-								height="100"
-								loading="lazy"
-								decoding="async"
-								class="mx-auto w-[100px] h-[100px] object-contain"
-							/>
-							<div class="sm:px-2">
-								<p class="text-base">
-									{relic[`name_${language}`] || relic['name_zh']}
-								</p>
-								{#if relicDisplayMode === 'list'}
-									<p class="">{relic[`desc_${language}`] || relic['desc_zh']}</p>
-								{/if}
-							</div>
-						</button>
-					{/each}
-				</div>
-			</div>
-			{#snippet selected()}
-						<div >
-					{#if selectedRelics.length > 0}
-						<div class="flex flex-wrap gap-2 border-t py-3 mx-3">
-							{#each selectedRelics as { id }}
-								{@const relic = relics[$rogueTopic].find((ele) => ele.id === id)}
-								<button
-									class="text-center"
-									class:bg-slate-300={isRelicSelected(relic.id)}
-									onclick={() => updateRelicFilters(relic.id)}
-								>
-									<img
-										src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
-										alt={relic[`name_${language}`] || relic['name_zh']}
-										width="75"
-										height="75"
-										loading="lazy"
-										decoding="async"
-										class="mx-auto"
-									/>
-									<div class="px-2">
-										<p class="text-sm">
-											{relic[`name_${language}`] || relic['name_zh']}
-										</p>
-									</div>
-								</button>
-							{/each}
-						</div>
-					{/if}
-				</div>
-					{/snippet}
-		</CharaFilterToggle>
-	</div>
+	<RelicFilters {language} />
 </div>
-
-<style>
-	.display-style-button {
-		background-color: dimgrey;
-		opacity: 0.4;
-	}
-	.display-style-button.active {
-		opacity: 1;
-	}
-</style>

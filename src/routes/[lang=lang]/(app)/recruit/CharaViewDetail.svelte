@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { run } from 'svelte/legacy';
 
-	import type { Language } from '$lib/types';
+	import type { Language } from '$lib/types/types';
 	import translations from '$lib/translations.json';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
@@ -15,7 +15,7 @@
 		getModuleTrait,
 		getTotalPotStat
 	} from '$lib/functions/chara/charaHelpers';
-	import { selectedChara, moduleIndex } from './stores';
+	import { selectedChara, moduleIndex } from './stores.old';
 	import RangeParser from '$lib/components/RangeParser.svelte';
 	import CharaSkill from './CharaSkill.svelte';
 

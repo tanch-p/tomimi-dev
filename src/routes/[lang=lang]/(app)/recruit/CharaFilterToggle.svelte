@@ -29,7 +29,6 @@
 	const toggle = () => (isOpen = !isOpen);
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div class="relative {className}">
 	<button {id} class="block w-full relative p-3 hover:cursor-pointer {titleClassName}" onclick={toggle}>
 		<p class={`text-center`}>{title}</p>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/functions/clickOutside';
-	import type { Language } from '$lib/types';
-	import { selectedChara, moduleIndex } from './stores';
+	import type { Language } from '$lib/types/types';
+	import { selectedChara, moduleIndex } from './stores.old';
 	import translations from '$lib/translations.json';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import CharaSkill from './CharaSkill.svelte';
