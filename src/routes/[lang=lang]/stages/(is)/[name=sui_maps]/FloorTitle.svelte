@@ -12,7 +12,7 @@
 	import floor6 from '$lib/images/is/sui/icon_zone_6.webp';
 	import floor7 from '$lib/images/is/sui/icon_zone_7.webp';
 	import floor8 from '$lib/images/is/sui/icon_zone_8.webp';
-
+	import wrath0_bg from '$lib/images/is/sui/wrath_bg_variation_color.png';
 	import wrath_bg from '$lib/images/is/sui/wrath_bad_back.webp';
 
 	import Icon from '$lib/components/Icon.svelte';
@@ -41,13 +41,11 @@
 		<div class="flex justify-center items-center gap-x-1">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />
 			<div class="relative mr-1 w-8 h-8 overflow-visible">
-				<div class="absolute inset-y-0 my-auto w-max h-max {$selectedFloor === 7 ? "-left-2" : ""}">
+				<div class="absolute inset-y-0 my-auto w-max h-max {$selectedFloor === 7 ? '-left-2' : ''}">
 					<img
 						src={floorIcons[$selectedFloor - 1]}
 						alt={`floor-${$selectedFloor}`}
-						class="{$selectedFloor === 7
-							? 'w-[50px] h-[50px]'
-							: 'w-[32px] h-[32px]'}"
+						class={$selectedFloor === 7 ? 'w-[50px] h-[50px]' : 'w-[32px] h-[32px]'}
 					/>
 				</div>
 			</div>
@@ -58,7 +56,11 @@
 			<div class="flex justify-center gap-x-2.5 mt-1.5">
 				{#each $activeFloorEffects as effect}
 					<div class="relative wrath-bg rounded-full w-20 h-6 overflow-hidden">
-						<img src={wrath_bg} class="absolute z-0 -inset-[9999px] m-auto h-full" alt="" />
+						<img
+							src={effect.level === 0 ? wrath0_bg : wrath_bg}
+							class="absolute z-0 -inset-[9999px] m-auto h-full"
+							alt=""
+						/>
 						<img
 							src={effect.src}
 							class="absolute z-[1] -inset-[9999px] m-auto max-h-[150%]"

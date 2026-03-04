@@ -88,5 +88,29 @@
 		"tooltip_zh": "所有【化物】敌人生命值、攻击力+30％",
 		"tooltip_ja": "全ての敵【化物】の最大HP・攻撃力+30%",
 		"tooltip_en": "All [Apparitions] enemies have +30% HP and ATK"
+	},
+	{
+		"id": "rogue_5_wrath_8_d",
+		"name_zh": "申铸(醒觉)",
+		"name_ja": "申鋳(覚醒)",
+		"name_en": "Shen-Chu (Awakened)",
+		"iconId": "rogue_5_wrath_8",
+		"level": 0,
+		"effects": [
+			{
+				"targets": ["animated"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.95,
+						"mode": "mul",
+						"order": "final"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "【化物】敌人攻击力-5％",
+		"tooltip_ja": "全ての敵【化物】の攻撃力-5%",
+		"tooltip_en": "All [Apparitions] enemies have -5% ATK"
 	}
 ]

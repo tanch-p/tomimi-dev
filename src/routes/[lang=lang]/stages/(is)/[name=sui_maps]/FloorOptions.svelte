@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
-	import suiTimeList from '$lib/data/is/sui/sui_wrath.json';
+	import suiWrathList from '$lib/data/is/sui/sui_wrath.json';
 	import FloorEffect from './FloorEffect.svelte';
 	import FloorSelect from './FloorSelect.svelte';
 	import translations from '$lib/translations.json';
@@ -12,7 +12,7 @@
 	const lookup = {
 		rogue_5_wrath_8: wrath_8,
 	};
-	suiTimeList.forEach((option) => {
+	suiWrathList.forEach((option) => {
 		option.src = lookup[option.iconId];
 	});
 	let options = [];
@@ -21,16 +21,20 @@
 	difficulty.subscribe((n) => {
 		switch (true) {
 			case n <= 5:
-				options = suiTimeList.filter((ele) => ele.level == 1);
+				options = suiWrathList.filter((ele) => ele.level == 1);
 				level = 1;
 				break;
 			case n <= 11:
-				options = suiTimeList.filter((ele) => ele.level == 2);
+				options = suiWrathList.filter((ele) => ele.level == 2);
 				level = 2;
 				break;
 			default:
 				level = 3;
-				options = suiTimeList.filter((ele) => ele.level == 3);
+				options = suiWrathList.filter((ele) => ele.level == 3);
+		}
+		if(language === "zh"){
+			const wrath0 = suiWrathList.find(ele => ele.id === "rogue_5_wrath_8_d")
+			options.push(wrath0);
 		}
 		if ($activeFloorEffects.length > 0) {
 			const updatedTimes = options.filter((ele) =>
