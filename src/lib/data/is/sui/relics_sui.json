@@ -955,7 +955,7 @@
 						"mods": [
 							{
 								"key": "def",
-								"value": -750,
+								"value": -1750,
 								"mode": "add",
 								"order": "initial"
 							}
