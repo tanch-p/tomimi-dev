@@ -962,6 +962,38 @@
 						]
 					}
 				]
+			},
+			{
+				"suffix": "++",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "def",
+								"value": 4000.0,
+								"mode": "add",
+								"order": "initial"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "--",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "def",
+								"value": -3500,
+								"mode": "add",
+								"order": "initial"
+							}
+						]
+					}
+				]
 			}
 		],
 		"tooltip_zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-150（最多叠加25次）",

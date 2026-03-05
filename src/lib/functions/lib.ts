@@ -230,8 +230,6 @@ export const setOtherBuffsList = (
 		});
 	}
 	for (const enemy of enemies) {
-		const enemyCount = mapConfig?.enemies.find((ele) => ele.id === enemy.stageId);
-		const maxCount = Math.max(enemyCount.max_count, enemyCount.elite_max_count, 1);
 		const list = [
 			...enemy.traits,
 			...enemy.stats.special.reduce((acc, curr) => {
@@ -245,21 +243,22 @@ export const setOtherBuffsList = (
 				// case for new skills added from specialMods
 				continue;
 			}
-			const replacedSkill = {...skill, ...skillRef}
+			const replacedSkill = { ...skill, ...skillRef };
 			if (skill.type === 'buff') {
+				const enemyCount = mapConfig?.enemies.find((ele) => ele.id === enemy.stageId);
+				const maxCount =
+					replacedSkill.effects?.maxCount || Math.max(enemyCount.max_count, enemyCount.elite_max_count, 1);
 				const buff = {
-					key: enemy.key,
+					key: replacedSkill.effects?.key || enemy.key,
 					name: enemy[`name_${language}`],
 					targets: replacedSkill.effects.targets,
 					activeTargets: replacedSkill.effects.activeTargets,
 					mods: replacedSkill.effects.mods,
 					stackType: replacedSkill.effects.stackType,
 					maxCount: maxCount
-				}
-				if(skillRef.key === "dycyue_evasion"){
-					buff.key = "dycyue_evasion";
-					buff.maxCount = 8;
-					buff.img = "/images/chara_icons/trap_790_dytswd.webp"
+				};
+				if (skillRef.key === 'dycyue_evasion') {
+					buff.img = '/images/chara_icons/trap_790_dytswd.webp';
 				}
 				buffsList.push(buff);
 			}
