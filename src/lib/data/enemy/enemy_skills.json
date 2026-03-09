@@ -7049,15 +7049,29 @@
 		}
 	},
 	"trspsb_buff": {
+		"type": "buff",
+		"effects": {
+			"targets": ["ALL"],
+			"activeTargets": [
+				{ "key": "enemy_10007_trspsb", "count": 1 },
+				{ "key": "enemy_10007_trspsb_2", "count": 1 }
+			],
+			"mods": [
+				{ "key": "ms", "value": 1.5, "order": "final", "mode": "mul" },
+				{ "key": "aspd", "value": 50, "order": "initial", "mode": "add" }
+			],
+			"stackType": "add",
+			"maxCount":1
+		},
 		"tooltip": {
 			"en": [
-				"When a non-boss enemy passes through this unit, the enemy receives a buff for 5 minutes, giving ASPD +50, Movespeed +150% and reduces {phys} and {arts} damage taken by 50%"
+				"When a non-boss enemy passes through this unit, the enemy receives a buff for 5 minutes, giving ASPD +50, Movespeed +50% and reduces {phys} and {arts} damage taken by 50%"
 			],
 			"ja": [
-				"自身がいるマスを通過した【ボス】以外の地上敵は、300秒間攻撃速度+50、移動速度+150%、{phys}・{arts}の被ダメージ-50%"
+				"自身がいるマスを通過した【ボス】以外の地上敵は、300秒間攻撃速度+50、移動速度+50%、{phys}・{arts}の被ダメージ-50%"
 			],
 			"zh": [
-				"经过自身所在格的地面非领袖敌方单位在300s内获得下述效果：攻击速度+50，移动速度+150%，受到的{phys}/{arts}伤害-50%"
+				"经过自身所在格的地面非领袖敌方单位在300s内获得下述效果：攻击速度+50，移动速度最终提升至150%，受到的{phys}/{arts}伤害-50%"
 			]
 		}
 	},
