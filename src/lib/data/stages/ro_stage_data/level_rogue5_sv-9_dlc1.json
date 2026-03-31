@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "愠怒",
-  "ja": null,
-  "en": null
+  "ja": "憤怒",
+  "en": "Inner_Rage"
  },
  "data": [
   {
    "id": "ro5_sv_9_dlc1",
    "levelId": "level_rogue5_sv-9_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "愠怒",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "憤怒",
+   "name_en": "Inner_Rage",
    "description_zh": "拆毁所有理性，也得不到宣泄后的自由。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "全ての理性を打ち捨てたとしても、感情を発散した後に自由は得られない。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>",
+   "description_en": "Ridding yourself of all rationality will not grant you freedom.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

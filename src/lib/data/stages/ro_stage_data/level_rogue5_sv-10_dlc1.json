@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "迷惘",
-  "ja": null,
-  "en": null
+  "ja": "迷い",
+  "en": "Confusion"
  },
  "data": [
   {
    "id": "ro5_sv_10_dlc1",
    "levelId": "level_rogue5_sv-10_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "迷惘",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "迷い",
+   "name_en": "Confusion",
    "description_zh": "别被蛛网困住。当断则断，当立则立。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>\n<@lv.item><火灶></>召唤“人间烟火”对沿途所有敌方单位造成真实伤害。\n<@lv.item><废弃火灶></>召唤“饮露餐风”对所有沿途我方单位造成真实伤害。\n<@rolv.rem>场地中有可以阻挡敌人行进路线的<碎石></>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "グモの巣に囚われるなかれ。当に断つべくして則ち断ち、当に立つべくして則ち立つべし。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>\n<@lv.item><竈台></>「人間煙火」を召喚し、接触した敵全員に確定ダメージを与える\n<@lv.item><破棄された竈台></>「飲露餐風」を召喚し、接触した味方ユニット全員に確定ダメージを与える\n<@rolv.rem>敵の進攻ルートを遮る<礫岩>が出現</>",
+   "description_en": "Do not get ensnared by the web. Be decisive, and follow through.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>\n<@lv.item><Stove></> Summons 'Sapid Auspice' to deal True damage to all enemies in its path.\n<@lv.item><Derelict Stove></> Summons 'Vapid Blight' to deal True damage to all allied units in its path.\n<@rolv.rem>This stage has <Rubble> that can block the enemy's path</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

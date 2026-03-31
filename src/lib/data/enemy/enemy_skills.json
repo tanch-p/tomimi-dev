@@ -9259,8 +9259,8 @@
 		"dmg_element": "arts",
 		"skillRange": 3.5,
 		"tooltip": {
-			"en": ["DLC1 Rare Enemy"],
-			"ja": ["DLC1隠し敵"],
+			"en": ["For every 15 instances of damage taken, deals 300% ATK as {arts} damage to nearby friendly units within 3.5 tile radius and Stuns them for 15s"],
+			"ja": ["15回ダメージを受けるたび、半径3.5以内にいる味方全員に攻撃力の300%の術ダメージを与え、15秒間スタンさせる"],
 			"zh": [
 				"每受到第15次伤害，对自身半径3.5范围内的我方单位造成攻击力300%的{arts}伤害，并令其晕眩15s"
 			]
@@ -9276,12 +9276,12 @@
 	"dyjsfg_res": {
 		"tooltip": {
 			"en": [
-				"【明力】Negative Status durations -80%",
+				"【Sober】Negative Status durations -80%",
 				"When not moving, gains 35% Damage Reduction, else 90% DR"
 			],
 			"ja": [
 				"【明力】异常状态的持续时间-80%",
-				"移動してないとき受ける{phys}と{arts}ダメージが35%減少、移動中は90%"
+				"移動していない時（ブロック中含む）、受ける{phys}と{arts}ダメージが35%減少、移動中は90%"
 			],
 			"zh": [
 				"【明力】自身可抵抗状态生效时间倍率-0.8；未处于移动状态时受到的物理/法术伤害-35%，否则减伤倍率增加至-90%"
@@ -9291,8 +9291,8 @@
 	"dyjsfg_aoe": {
 		"skillRange": 1.6,
 		"tooltip": {
-			"en": ["【尚同】"],
-			"ja": ["【尚同】"],
+			"en": ["【Concordance】Deals 100% ATK as {phys} damage to friendly units within 1.6 tile radius every 2.5s. When blocked, Immediately releases a wave that deals 200% ATK instead."],
+			"ja": ["【尚同】2.5秒ごとに、半径1.6以内の味方全員に攻撃力の100%の{phys}ダメージを与える。ブロックされると、即座に半径1.6以内の味方全員に攻撃力の200%の{phys}ダメージを与える"],
 			"zh": [
 				"【尚同】每2.5s对半径1.6范围内的我方单位造成攻击力100%的{phys}伤害，被阻挡时强制触发攻击力200%的【尚同】一次"
 			]
@@ -9305,8 +9305,8 @@
 		"dmg_element": null,
 		"skillRange": 1.6,
 		"tooltip": {
-			"en": ["【非命】"],
-			"ja": ["【非命】"],
+			"en": ["【Unlife】 When HP falls below 50%, gains Block +1, +50% ATK and +100% Movespeed"],
+			"ja": ["【非命】HP50%以下になると必要ブロック数+1・攻撃力+50%・移動速度×2.0"],
 			"zh": ["【非命】生命值首次低于50%时，自身占用阻挡数+1，攻击力+50%，移动速度最终提升至200%"]
 		}
 	},
@@ -9316,10 +9316,10 @@
 		"hits": 1,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": ["【兼爱】"],
-			"ja": ["【兼爱】"],
+			"en": ["【Benevolence】When leaving the map, instantly defeats all enemies other than Bestial Hou and deals 200% ATK as {phys} damage to all friendly units{ignore_camou}{ignore_stealth}"],
+			"ja": ["【兼爱】自身が退場すると、後獣以外の敵全員を強制撃破し、マップ上の味方全員に攻撃力の200%の{phys}ダメージを与える{ignore_camou}{ignore_stealth}"],
 			"zh": [
-				"【兼爱】自身退场时，强制击倒除后兽以外的非装置/非召唤物职业的敌方单位，随后对场上所有我方干员/我方召唤物造成攻击力200%的无来源{phys}伤害"
+				"【兼爱】自身退场时，强制击倒除后兽以外的非装置/非召唤物职业的敌方单位，随后对场上所有我方干员/我方召唤物造成攻击力200%的无来源{phys}伤害{ignore_camou}{ignore_stealth}"
 			]
 		}
 	},
@@ -9328,8 +9328,8 @@
 		"suffix": { "zh": "10层", "ja": "10回", "en": "10 stacks" },
 		"dmg_element": null,
 		"tooltip": {
-			"en": ["【自化】"],
-			"ja": ["【自化】"],
+			"en": ["【Transmogrification】When an enemy (other than Bestial Ju) comes within 1.5 tile radius of Bestial Hou, instantly defeats the enemy and reduces Lifepoint by 1, and Hou deals 50% ATK as {arts} damage to all friendly units and gains 20% ATK, stacking additively up to 20 times"],
+			"ja": ["【自化】半径1.5以内に入った矩獣以外の敵を強制撃破する、さらに耐久値を-1し、マップ上の味方全員に攻撃力の50%の術ダメージを与え、自身の攻撃力を+20%する（20層まで累積）"],
 			"zh": [
 				"【自化】除矩兽以外的敌人进入自身半径1.5范围内时，使其退场并扣除1点目标生命；随后对全场我方单位造成攻击力50%的{arts}伤害，并使自身攻击力+20%（最多叠加至20层）"
 			]
@@ -9337,8 +9337,8 @@
 	},
 	"dyjsww_1": {
 		"tooltip": {
-			"en": ["【无为】"],
-			"ja": ["【无为】"],
+			"en": ["【Inaction】After 360s or Bestial Ju leaves the map, enters second form and activates all Ancient Statuegeists"],
+			"ja": ["【無為】出現から360秒経つか、矩獣が退場すると使用。第二形態へ移行し、いにしえの彫像器鬼をすべて起動させる"],
 			"zh": [
 				"【无为】战斗开始360s后/矩兽退场后，进入第二形态并激活场上所有的古雕伥（变成雕伥的外形）"
 			]
@@ -9346,8 +9346,8 @@
 	},
 	"dyjsww_2": {
 		"tooltip": {
-			"en": ["【自化】"],
-			"ja": ["【自化】"],
+			"en": ["【Transmogrification】Disables all other Protection Objectives and sets self's location to be the endpoint for all enemies"],
+			"ja": ["【自化】防衛ラインを封印し、敵の目的地を自身の中心マスに変更する"],
 			"zh": ["【自化】新增效果：将除矩兽以外的敌人的路径终点重设为自身所在位置"]
 		}
 	},
@@ -9357,8 +9357,8 @@
 		"cooldown": 999.0,
 		"suffix": { "en": "不争", "ja": "不争", "zh": "不争" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Reduces Lifepoint by 50 and despawns"],
+			"ja": [" 耐久値を-50し、全オペレーターを強制撤退させ、自身も退場する"],
 			"zh": ["扣除50目标生命值，随后退场"]
 		}
 	},
@@ -9366,10 +9366,10 @@
 		"type": "skill",
 		"initCooldown": 5.0,
 		"cooldown": 80.0,
-		"suffix": { "en": "反常制胜", "ja": "反常制胜", "zh": "反常制胜" },
+		"suffix": { "en": "Summon", "ja": "反璞", "zh": "反常制胜" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Spawns additional enemies that follow preset routes"],
+			"ja": ["追加の敵を召喚する"],
 			"zh": ["按预设路径召唤一批敌人"]
 		}
 	},
@@ -9377,10 +9377,10 @@
 		"type": "skill",
 		"initCooldown": 30.0,
 		"cooldown": 30.0,
-		"suffix": { "en": "时移", "ja": "时移", "zh": "时移" },
+		"suffix": { "en": "Timeshift", "ja": "時移", "zh": "时移" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Teleports to the next checkpoint. Friendly units facing the opposite direction of Hou's movement have -50% ASPD for 30s while enemies moving in the same direction gain +200% Movespeed for 30s"],
+			"ja": ["上か下にワープ移動。自身の移動方向と逆向きの味方の攻撃速度を-50し、同じ方向に移動していた敵の移動速度を+200%する、30秒持続する"],
 			"zh": [
 				"使场上所有部署方向与自身影响方向相反的我方单位在30s内攻击速度-50，使移动方向与自身影响方向相同的敌方单位在30s内移动速度+200%",
 				"若自身处于第一形态，还会立即闪现至下个检查点",
@@ -9392,10 +9392,10 @@
 		"type": "skill",
 		"initCooldown": 30.0,
 		"cooldown": 30.0,
-		"suffix": { "en": "并济", "ja": "并济", "zh": "并济" },
+		"suffix": { "en": "Altruism", "ja": "並済", "zh": "并济" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Targets the closest friendly unit in the same 3 rows as Hou, dealing 100% ATK as {arts} damage to the target and friendly units within 1.5 tile radius{ignore_camou}, and spawns an Ancient Statuegeist on a vacant tile in the surrounding 8 tiles to the main target"],
+			"ja": ["自身のいる横3列のうち、最も近い味方1体を選択。対象と半径1.5以内の味方全員に攻撃力の100%の{arts}ダメージを与え{ignore_camou}、対象の周囲8マスのうち通行可能な1マスに装置＜いにしえの彫像器鬼＞を配置する"],
 			"zh": [
 				"锁定位于自身所占据的其中一行的1位我方干员发射直线弹道，对首个命中的干员造成攻击力100%的{arts}溅射伤害{ignore_camou}，并在其附近合法地面地块上部署1个古雕伥"
 			]

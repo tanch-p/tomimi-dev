@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "忘形",
-  "ja": null,
-  "en": null
+  "ja": "我を忘れる",
+  "en": "To_Forget_Oneself"
  },
  "data": [
   {
    "id": "ro5_sv_3_b_dlc1",
    "levelId": "level_rogue5_sv-3-b_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "忘形",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "我を忘れる",
+   "name_en": "To_Forget_Oneself",
    "description_zh": "世上有两种得意：一种高高在上，有恃无恐；一种从口而出，真假难辨。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "世の中には二種類のうぬぼれが存在する。一つは高みに登りつめて恐れを知らぬもの、一つは口先だけのもので真偽の判別が難しいものである。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>",
+   "description_en": "There are two types of arrogance in the land: one is lofty and cocksure, the other is spoken and deceitful.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

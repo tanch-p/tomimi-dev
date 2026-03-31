@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "往昔难忆",
-  "ja": null,
-  "en": null
+  "ja": "往昔は憶い難し",
+  "en": "Near-Forgotten"
  },
  "data": [
   {
    "id": "ro5_b_5_b",
    "levelId": "level_rogue5_b-5-b",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "往昔难忆",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "往昔は憶い難し",
+   "name_en": "Near-Forgotten",
    "description_zh": "当不可着墨的长卷遇上不可记述的过往。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "墨を以て記すことのできない巻物が、記述すべからざる過去と出会った時。",
+   "description_en": "When an uninkable scroll meets an unwritable past.",
    "addInfo_zh": [
     "战斗中期，左侧场地左下化境地块与右上化境地块各自在相邻的不可部署地块刷新1个雕伥，每10s召唤一个除秽",
     "追加敌人：赤霞×5、新硎×4、山海众秘使×2"

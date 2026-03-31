@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "破局",
-  "ja": null,
-  "en": null
+  "ja": "局面打破",
+  "en": "Breakthrough"
  },
  "data": [
   {
    "id": "ro5_sv_6_b_dlc1",
    "levelId": "level_rogue5_sv-6-b_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "破局",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "局面打破",
+   "name_en": "Breakthrough",
    "description_zh": "选择众多，生路只有一条。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "多くの選択肢がある中で、生き残る道は一つしかない。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>",
+   "description_en": "From these many paths, there is only one that leads to survival.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>",
    "addInfo_zh": [
     "敌方单位的攻击力、生命值都提升至150%"
    ],

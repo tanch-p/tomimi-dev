@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "玩具兵将",
-  "ja": null,
-  "en": null
+  "ja": "おもちゃの将兵",
+  "en": "Toy_Soldiers"
  },
  "data": [
   {
    "id": "ro5_n_2_6",
    "levelId": "level_rogue5_2-6",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "玩具兵将",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "おもちゃの将兵",
+   "name_en": "Toy_Soldiers",
    "description_zh": "曾经有位外国游客将一套玩具小人遗留在了园内，如今，它们已经在这里站稳了脚跟。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "昔、ある外国人観光客がおもちゃの人形セットを園内に置き忘れていった。そして今、そうしたおもちゃたちはすっかり園内に居座っている。",
+   "description_en": "Once, a foreign guest left behind a set of action figures in the Garden. Now, they have made a place for themselves here.",
    "addInfo_zh": [
     "雕伥每25s召唤一个特里蒙城防军"
    ],

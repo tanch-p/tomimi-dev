@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "贪妄",
-  "ja": null,
-  "en": null
+  "ja": "貪欲にして妄執",
+  "en": "Avarice"
  },
  "data": [
   {
    "id": "ro5_sv_4_dlc1",
    "levelId": "level_rogue5_sv-4_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "贪妄",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "貪欲にして妄執",
+   "name_en": "Avarice",
    "description_zh": "燃烧不尽，生长不息，饥渴不止。长此以往，通常只会迎来自毁的结局。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "燃焼尽きず、生長息まず、飢渴止まらず。長く此れ以て往けば、必ず只だ自ら毀つの顛末を迎う。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>",
+   "description_en": "To burn unending, to grow unending, to hunger unending. These forms of development will only lead to self-destruction.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

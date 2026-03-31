@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "凭票入内",
-  "ja": null,
-  "en": null
+  "ja": "入園受付",
+  "en": "Ticket_Please"
  },
  "data": [
   {
    "id": "ro5_n_1_6",
    "levelId": "level_rogue5_1-6",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "凭票入内",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "入園受付",
+   "name_en": "Ticket_Please",
    "description_zh": "开园时人声鼎沸的场景仿佛印刻在了界园入口，以至于闭园时不懂事的伥怪们会争相模仿挤在一处检票的游客并乐在其中。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "開園時の賑わいは界園の入口に刻まれているかのようで、そのせいか、閉園時間になると分別のない器鬼たちが観光客のように群がってはチケットのもぎりの真似をし、楽しげに騒ぎ立てる。",
+   "description_en": "It seems that the hubbub when the Garden opens has made its mark on the entrance, to the point that when it closes, naive geists are all too eager to imitate the tourists crowding into the gate to get their tickets inspected.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

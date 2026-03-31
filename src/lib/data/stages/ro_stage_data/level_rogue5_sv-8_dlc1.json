@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "靡靡之音",
-  "ja": null,
-  "en": null
+  "ja": "退廃の音",
+  "en": "Frivolous_Tunes"
  },
  "data": [
   {
    "id": "ro5_sv_8_dlc1",
    "levelId": "level_rogue5_sv-8_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "靡靡之音",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "退廃の音",
+   "name_en": "Frivolous_Tunes",
    "description_zh": "人心如曲，积重难调。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>\n<@rolv.rem>场地中有使我方单位防御力减半的<腐蚀地面>。</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "人の心は音楽の旋律のように幾重にも重なり合い、調和するのは難しい。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>\n<@rolv.rem>味方ユニットの防御力を半減させる<腐食した地面>が出現</>",
+   "description_en": "The will of the masses is like a song. The more there are, the harder it is to harmonize.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>\n<@rolv.rem>This stage has <Corrosive Ground> that halves the DEF of allied units deployed on it.</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

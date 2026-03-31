@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "奇谭",
-  "ja": null,
-  "en": null
+  "ja": "奇譚",
+  "en": "Strange_Tales"
  },
  "data": [
   {
    "id": "ro5_sv_5_dlc1",
    "levelId": "level_rogue5_sv-5_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "奇谭",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "奇譚",
+   "name_en": "Strange_Tales",
    "description_zh": "东游的萨科塔叫什么？也会有如同阿纳萨一般的名号吗？——在如是虚幻的想象中，时光流逝殆尽。\n<@rolv.rem>场地中有夺取后回复周围友方单位技力的<“冰淇淋机”></>\n<@rolv.rem>胜利后获得收藏品及其他奖励</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "東に向かうサンクタは何と呼ばれるのだろう？「アナサ」のような名前があるのだろうか――このような虚ろな想像の中で、ただ時間だけが過ぎていく。\n<@rolv.rem>制御権を奪取すると、周囲の味方ユニットのSPを回復する<「ジェラート供給所」>が出現</>\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>",
+   "description_en": "What would Sankta who headed east be called? Would they have a name like the Anasa? And thus, in this imaginary illusion, time flows until there is none left.\n<@rolv.rem><'Gelato Stops'> are present on the field that restore allied SP when captured</>\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

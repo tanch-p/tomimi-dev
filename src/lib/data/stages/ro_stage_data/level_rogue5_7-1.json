@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "越山海",
-  "ja": null,
-  "en": null
+  "ja": "山海を越える",
+  "en": "Beyond_Mount_and_Sea"
  },
  "data": [
   {
    "id": "ro5_n_7_1",
    "levelId": "level_rogue5_7-1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "越山海",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "山海を越える",
+   "name_en": "Beyond_Mount_and_Sea",
    "description_zh": "历史被当下所诱引，展现出了融合古今的往昔。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "歴史が現在に引き寄せられ、古今の融け合う過去を映し出した。",
+   "description_en": "History has been enticed by the present, revealing a past formed from both old and new.",
    "addInfo_zh": [
     "雕伥每50s召唤一个“越长尘”",
     "N18追加敌人：山海众秘使×1"

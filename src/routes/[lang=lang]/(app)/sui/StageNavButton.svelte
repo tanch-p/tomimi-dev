@@ -5,43 +5,7 @@
 
 	export let levelId: string, language: Language;
 
-	const stagesToHide = [
-		'level_rogue5_b-4-b',
-		'level_rogue5_b-5-b',
-		'level_rogue5_b-7',
-		'level_rogue5_d-3',
-		'level_rogue5_d-4',
-		'level_rogue5_sv-11',
-		'level_rogue5_sv-12',
-		'level_rogue5_sv-13',
-		'level_rogue5_sv-14',
-		'level_rogue5_sv-15',
-		'level_rogue5_sv-1_dlc1',
-		'level_rogue5_sv-1-b_dlc1',
-		'level_rogue5_sv-3_dlc1',
-		'level_rogue5_sv-3-b_dlc1',
-		'level_rogue5_sv-4_dlc1',
-		'level_rogue5_sv-5_dlc1',
-		'level_rogue5_sv-5-b_dlc1',
-		'level_rogue5_sv-6_dlc1',
-		'level_rogue5_sv-6-b_dlc1',
-		'level_rogue5_sv-7_dlc1',
-		'level_rogue5_sv-7-b_dlc1',
-		'level_rogue5_sv-8_dlc1',
-		'level_rogue5_sv-8-b_dlc1',
-		'level_rogue5_sv-9_dlc1',
-		'level_rogue5_sv-10_dlc1',
-		'level_rogue5_sv-10-b_dlc1',
-		'level_rogue5_1-5',
-		'level_rogue5_1-6',
-		'level_rogue5_2-5',
-		'level_rogue5_2-6',
-		'level_rogue5_3-6',
-		'level_rogue5_4-7',
-		'level_rogue5_5-7',
-		'level_rogue5_7-1',
-		'level_rogue5_7-2'
-	];
+	const stagesToHide = ['level_rogue5_3-6', 'level_rogue5_4-7', 'level_rogue5_5-7'];
 
 	$: currentLevel = $page?.data?.mapConfig?.levelId;
 	const stageInfo = ro5[levelId];

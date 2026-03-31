@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "救援行动",
-  "ja": null,
-  "en": null
+  "ja": "救助活動",
+  "en": "Rescue_Mission"
  },
  "data": [
   {
    "id": "ro5_n_2_5",
    "levelId": "level_rogue5_2-5",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "救援行动",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "救助活動",
+   "name_en": "Rescue_Mission",
    "description_zh": "总有那么些游客闭园了还不想离开，你不仅要将他们送出去，还得解决他们惹出的乱子。\n<@lv.item><道路障碍物></>可以阻挡乌萨斯平民与斗士塔露拉前进，可被我方单位击毁。\n<@lv.item><乌萨斯平民></>被敌人击杀时扣除关卡生命值",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "閉園時間になっても帰りたがらない観光客はいるものだ。あなたは彼らを送り出すのみならず、彼らが引き起こすトラブルも片付けなければならない。\n<@lv.item><道路障害物></>ウルサス民間人と闘士タルラの前進を阻害する。味方の攻撃によって破壊できる\n<@lv.item><ウルサス民間人></>敵に倒された時、耐久値が減少",
+   "description_en": "There will always be some tourists who decide they don't want to leave yet when the Garden closes. Not only do you have to see them out, you also need to resolve whatever chaos they caused.\n<@lv.item><Static Roadblock></> Blocks the movement of Ursus Civilians and Talulah, the Fighter; Can be destroyed by allied units.\n<@lv.item><Ursus Civilian></> Depletes a Life Point when killed by an enemy.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

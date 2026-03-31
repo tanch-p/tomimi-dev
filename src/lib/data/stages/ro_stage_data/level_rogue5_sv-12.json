@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "四方",
-  "ja": null,
-  "en": null
+  "ja": "四方",
+  "en": "Everywhere"
  },
  "data": [
   {
    "id": "ro5_sv_12",
    "levelId": "level_rogue5_sv-12",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "四方",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "四方",
+   "name_en": "Everywhere",
    "description_zh": "求同，祛异。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "同を求め、異を除く。",
+   "description_en": "Seek similarity, reject difference.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

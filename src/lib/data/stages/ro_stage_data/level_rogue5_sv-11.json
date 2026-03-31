@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "震坎",
-  "ja": null,
-  "en": null
+  "ja": "震坎",
+  "en": "Difficult_Beginnings"
  },
  "data": [
   {
    "id": "ro5_sv_11",
    "levelId": "level_rogue5_sv-11",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "震坎",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "震坎",
+   "name_en": "Difficult_Beginnings",
    "description_zh": "惊雷移，涡旋停。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "驚雷が移り、渦旋が停まる。",
+   "description_en": "Thunder claps, and the maelstrom stops.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

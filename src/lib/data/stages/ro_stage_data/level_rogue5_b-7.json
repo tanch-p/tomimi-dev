@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "末狩",
-  "ja": null,
-  "en": null
+  "ja": "末狩",
+  "en": "The_Last_Hunt"
  },
  "data": [
   {
    "id": "ro5_b_7",
    "levelId": "level_rogue5_b-7",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "末狩",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "末狩",
+   "name_en": "The_Last_Hunt",
    "description_zh": "岁兽记忆中最为鲜明的战争，祂将胜利，亦将失败。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "歳獣の記憶に最も鮮烈に刻まれた戦争。歳獣は勝利し、そして敗北する。",
+   "description_en": "The clearest recollection of the war in Sui's memories. It will know victory, and It will know defeat.",
    "addInfo_zh": [
     "N18追加敌人：“碎壁”×12、“越长尘”×3、山海众秘使×12",
     "N16及以上时，后兽召唤：山海众秘使x10，无羁的“盛怒”x4，似兽x8"

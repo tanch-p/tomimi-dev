@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "地有四难",
-  "ja": null,
-  "en": null
+  "ja": "地に四難有り",
+  "en": "The_Four_Difficulties"
  },
  "data": [
   {
    "id": "ro5_sv_1_dlc1",
    "levelId": "level_rogue5_sv-1_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "地有四难",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "地に四難有り",
+   "name_en": "The_Four_Difficulties",
    "description_zh": "出人头地，难；学以致用，难；繁衍生息，难；免于沉湎，难。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "頭角を現すは、難し。学びて以て能く用うるは、難し。繁栄すること窮むる無きは、難し。耽溺を避くるは、難し。",
+   "description_en": "To stand out from the crowd is a difficulty. To apply what you have learned is a difficulty. To thrive is a difficulty. To free yourself from wallowing is a difficulty.",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

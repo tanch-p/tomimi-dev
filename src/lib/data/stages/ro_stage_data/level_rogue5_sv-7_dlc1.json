@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "不鉴",
-  "ja": null,
-  "en": null
+  "ja": "教訓とせず",
+  "en": "Unreflecting"
  },
  "data": [
   {
    "id": "ro5_sv_7_dlc1",
    "levelId": "level_rogue5_sv-7_dlc1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "不鉴",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "教訓とせず",
+   "name_en": "Unreflecting",
    "description_zh": "惟余复哀。\n<@rolv.rem>胜利后获得收藏品及其他奖励</>\n<@rolv.rem>场地中有夺取后可以治疗友方单位并对敌方造成法术伤害的<\"留声机\"></>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "ただ、悲しみを繰り返すだけだ。\n<@rolv.rem>勝利後、秘宝とその他報酬を獲得可能</>\n<@rolv.rem>制御権を奪取した後、周囲の別陣営のユニットに術ダメージを与え、同陣営のユニットを治療する<「蓄音機」>が出現</>",
+   "description_en": "Overthinking only leads to more sorrow.\n<@rolv.rem>Obtain Collectibles and other rewards upon victory</>\n<@rolv.rem><Gramophones> that deal Arts damage to enemies and heal allies when captured are present on the field</>",
    "addInfo_zh": [
     "所有敌方单位的攻击力、防御力提升至120%，生命值提升至130%"
    ],

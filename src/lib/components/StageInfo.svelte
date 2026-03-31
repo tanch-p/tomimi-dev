@@ -76,21 +76,20 @@
 			-
 		</p>
 		<div class="flex flex-wrap items-center gap-2">
-			{#if language === 'zh'}
-				<a
-					href="https://search.bilibili.com/all?keyword=明日方舟 {mapConfig?.name_zh}"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-blue-400 hover:text-blue-300"
-				>
-					bilibili
-				</a>
-			{:else if mapConfig?.[`name_${language}`]}
+			<a
+				href="https://search.bilibili.com/all?keyword=明日方舟 {mapConfig?.name_zh}"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-blue-400 hover:text-blue-300"
+			>
+				bilibili
+			</a>
+			{#if mapConfig?.[`name_${language}`]}
 				<a
 					href="https://www.youtube.com/results?search_query={mapConfig?.[`name_${language}`]}"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-blue-400 hover:text-blue-300">Youtube</a
+					class="text-blue-400 hover:text-blue-300">YouTube</a
 				>
 			{/if}
 			<a
@@ -104,9 +103,9 @@
 		</div>
 	</div>
 </div>
-<slot/>
+<slot />
 <slot name="drops" />
 {#if mapConfig?.sp_terrain || rogueTopic === 'rogue_skz'}
 	<SpTerrain {difficulty} spTerrain={mapConfig?.sp_terrain} {rogueTopic} {language} />
 {/if}
-<StageMap {mapConfig} {rogueTopic} {language} eliteMode={eliteMode} />
+<StageMap {mapConfig} {rogueTopic} {language} {eliteMode} />

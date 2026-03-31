@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "夕江诀",
-  "ja": null,
-  "en": null
+  "ja": "夕江訣",
+  "en": "Dusk_River_Sayings"
  },
  "data": [
   {
    "id": "ro5_duel_3",
    "levelId": "level_rogue5_d-3",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "夕江诀",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "夕江訣",
+   "name_en": "Dusk_River_Sayings",
    "description_zh": "事已至此，定分生死。\n<@rolv.rem>选择对手进行战斗，失败不会扣除目标生命值，在限定时间内击败越难的对手将会获得更好的奖励</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "事ここに至っては、死命を決するのみ。\n<@rolv.rem>相手を選択し戦闘を行う。失敗しても耐久値は失われない。限られた時間内でより強力な相手を倒せば、より豪華な報酬が手に入る</>",
+   "description_en": "Having come to this, life and death are decided.\n<@rolv.rem>Fight the foe you picked; Losing will not deduct Life Points. Defeating a tougher foe within the given time grants a better reward</>",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

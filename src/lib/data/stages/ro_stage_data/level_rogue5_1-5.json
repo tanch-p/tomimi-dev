@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "驱虫",
-  "ja": null,
-  "en": null
+  "ja": "害虫駆除",
+  "en": "Pest_Control"
  },
  "data": [
   {
    "id": "ro5_n_1_5",
    "levelId": "level_rogue5_1-5",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "驱虫",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "害虫駆除",
+   "name_en": "Pest_Control",
    "description_zh": "在界园，驱虫这件事一般是由作物自己完成的，而在它们的认知里，只要不是农人，都可以归类为虫。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "界園では、害虫駆除は基本的に作物自身が行うものであり、作物たちは農民以外の者をすべて害虫と見なしている。",
+   "description_en": "In the Garden of Grotesqueries, pest control is generally done by the crops themselves. In their minds, if you are not a farmer, then you are a pest.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,
