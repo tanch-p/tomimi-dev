@@ -17,3 +17,7 @@ vite.config.ts.timestamp-*
 /src/lib/data/chara/characters_en.json
 /src/lib/data/chara/characters_ja.json
 /src/lib/data/chara/characters_zh.json
+
+# agents
+.codex
+.claude

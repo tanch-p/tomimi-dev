@@ -45,193 +45,195 @@
 
 <div class="max-w-4xl mx-auto">
 	<table class="text-sm sm:text-base">
-		<tr class="floor1">
-			<td rowspan="2" class="corner" colspan="4">
-				<img src={aegir1} width="30px" alt="1" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
-			</td>
-			{#each floor1t as stageName}
-				<td colspan={Math.floor(60 / floor1t.length)}>
-					<StageNavButton {stageName} {language} />
+		<tbody>
+			<tr class="floor1">
+				<td rowspan="2" class="corner" colspan="4">
+					<img src={aegir1} width="30px" alt="1" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
 				</td>
-			{/each}
-			<td rowspan="2" class="corner" colspan="4" />
-		</tr>
-		<tr class="floor1">
-			{#each floor1b as stageName}
-				<td colspan={Math.floor(60 / floor1b.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor1t as stageName}
+					<td colspan={Math.floor(60 / floor1t.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td rowspan="2" class="corner" colspan="4" />
+			</tr>
+			<tr class="floor1">
+				{#each floor1b as stageName}
+					<td colspan={Math.floor(60 / floor1b.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor2">
+				<td rowspan="2" class="corner" colspan="4">
+					<img src={aegir2} width="30px" alt="2" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
 				</td>
-			{/each}
-		</tr>
-		<tr class="floor2">
-			<td rowspan="2" class="corner" colspan="4">
-				<img src={aegir2} width="30px" alt="2" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
-			</td>
-			{#each floor2t as stageName}
-				<td colspan={Math.floor(60 / floor2t.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor2t as stageName}
+					<td colspan={Math.floor(60 / floor2t.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td rowspan="2" class="corner" colspan="4" />
+			</tr>
+			<tr class="floor2">
+				{#each floor2b as stageName}
+					<td colspan={Math.floor(60 / floor2b.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor3">
+				<td rowspan="2" class="corner" colspan="4">
+					<img src={aegir3} width="30px" alt="3" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
 				</td>
-			{/each}
-			<td rowspan="2" class="corner" colspan="4" />
-		</tr>
-		<tr class="floor2">
-			{#each floor2b as stageName}
-				<td colspan={Math.floor(60 / floor2b.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor3t as stageName}
+					<td colspan={Math.floor(60 / floor3t.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td rowspan="4" class="corner" colspan="4" />
+			</tr>
+			<tr class="floor3">
+				{#each floor3b as stageName}
+					<td colspan={Math.floor(60 / floor3b.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor3">
+				<td rowspan="2" class="corner" colspan="4">
+					<img src={bossIcon} width="40px" alt="boss" class="mt-2.5 sm:mt-1 ml-0.5 sm:ml-1.5" />
 				</td>
-			{/each}
-		</tr>
-		<tr class="floor3">
-			<td rowspan="2" class="corner" colspan="4">
-				<img src={aegir3} width="30px" alt="3" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
-			</td>
-			{#each floor3t as stageName}
-				<td colspan={Math.floor(60 / floor3t.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor3boss as stageName}
+					<td colspan={Math.floor(60 / floor3boss.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor3">
+				{#each floor3boss2 as stageName}
+					<td colspan={Math.floor(60 / floor3boss2.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor4">
+				<td rowspan="2" class="corner" colspan="4">
+					<img src={aegir4} width="30px" alt="4" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
 				</td>
-			{/each}
-			<td rowspan="4" class="corner" colspan="4" />
-		</tr>
-		<tr class="floor3">
-			{#each floor3b as stageName}
-				<td colspan={Math.floor(60 / floor3b.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor4t as stageName}
+					<td colspan={Math.floor(60 / floor4t.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td rowspan="2" class="corner" colspan="4" />
+			</tr>
+			<tr class="floor4">
+				{#each floor4b as stageName}
+					<td colspan={Math.floor(60 / floor4b.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor5">
+				<td rowspan="2" class="corner" colspan="4">
+					<img src={aegir5} width="30px" alt="5" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
 				</td>
-			{/each}
-		</tr>
-		<tr class="floor3">
-			<td rowspan="2" class="corner" colspan="4">
-				<img src={bossIcon} width="40px" alt="boss" class="mt-2.5 sm:mt-1 ml-0.5 sm:ml-1.5" />
-			</td>
-			{#each floor3boss as stageName}
-				<td colspan={Math.floor(60 / floor3boss.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor5t as stageName}
+					<td colspan={Math.floor(60 / floor5t.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td rowspan="3" class="corner" colspan="4" />
+			</tr>
+			<tr class="floor5">
+				{#each floor5bb as stageName}
+					<td colspan={Math.floor(60 / floor5bb.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor5">
+				<td rowspan="1" colspan="4">
+					<img src={bossIcon} width="40px" alt="boss" class="ml-0.5 sm:ml-1.5" />
 				</td>
-			{/each}
-		</tr>
-		<tr class="floor3">
-			{#each floor3boss2 as stageName}
-				<td colspan={Math.floor(60 / floor3boss2.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor5b as stageName}
+					<td colspan={Math.floor(60 / floor5b.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floor6">
+				<td rowspan="1" colspan="4">
+					<img src={aegir6} width="30px" alt="6" class="ml-0.5 sm:ml-2" />
 				</td>
-			{/each}
-		</tr>
-		<tr class="floor4">
-			<td rowspan="2" class="corner" colspan="4">
-				<img src={aegir4} width="30px" alt="4" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
-			</td>
-			{#each floor4t as stageName}
-				<td colspan={Math.floor(60 / floor4t.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor6 as stageName}
+					<td colspan={Math.floor(60 / floor6.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td rowspan="2" class="corner" colspan="4" />
+			</tr>
+			<tr class="floor6">
+				<td rowspan="1" colspan="4">
+					<img src={bossIcon} width="40px" alt="boss" class="ml-0.5 sm:ml-1.5" />
 				</td>
-			{/each}
-			<td rowspan="2" class="corner" colspan="4" />
-		</tr>
-		<tr class="floor4">
-			{#each floor4b as stageName}
-				<td colspan={Math.floor(60 / floor4b.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floor6b as stageName}
+					<td colspan={Math.floor(60 / floor6b.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+			</tr>
+			<tr class="floorEX">
+				<td colspan="4">
+					<img src={aegirQn} width="30px" alt="?" class="ml-0.5 sm:ml-2 py-1 sm:py-1.5" />
 				</td>
-			{/each}
-		</tr>
-		<tr class="floor5">
-			<td rowspan="2" class="corner" colspan="4">
-				<img src={aegir5} width="30px" alt="5" class="mt-2 sm:mt-3 ml-0.5 sm:ml-2" />
-			</td>
-			{#each floor5t as stageName}
-				<td colspan={Math.floor(60 / floor5t.length)}>
-					<StageNavButton {stageName} {language} />
+				{#each floorEX as stageName}
+					<td colspan={Math.floor(60 / floorEX.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td class="corner" colspan="4" />
+			</tr>
+			<tr class="floorSP">
+				<td class="corner" colspan="4" />
+				{#each du1 as stageName}
+					<td colspan={Math.floor(60 / du1.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td class="corner" colspan="4" />
+			</tr>
+			<tr class="floorSP">
+				<td class="corner" colspan="4" />
+				{#each du2 as stageName}
+					<td colspan={Math.floor(60 / du2.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td class="corner" colspan="4" />
+			</tr>
+			<tr class="floorSP">
+				<td class="corner" colspan="4" />
+				{#each sp1 as stageName}
+					<td colspan={Math.floor(60 / sp1.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td class="corner" colspan="4" />
+			</tr>
+			<tr class="floorSP">
+				<td class="corner" colspan="4">
+					<img src={knt} width="40px" alt="?" class="mt-0.5 ml-0.5 sm:ml-2 py-1 sm:py-1.5" />
 				</td>
-			{/each}
-			<td rowspan="3" class="corner" colspan="4" />
-		</tr>
-		<tr class="floor5">
-			{#each floor5bb as stageName}
-				<td colspan={Math.floor(60 / floor5bb.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-		</tr>
-		<tr class="floor5">
-			<td rowspan="1" colspan="4">
-				<img src={bossIcon} width="40px" alt="boss" class="ml-0.5 sm:ml-1.5" />
-			</td>
-			{#each floor5b as stageName}
-				<td colspan={Math.floor(60 / floor5b.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-		</tr>
-		<tr class="floor6">
-			<td rowspan="1" colspan="4">
-				<img src={aegir6} width="30px" alt="6" class="ml-0.5 sm:ml-2" />
-			</td>
-			{#each floor6 as stageName}
-				<td colspan={Math.floor(60 / floor6.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-			<td rowspan="2" class="corner" colspan="4" />
-		</tr>
-		<tr class="floor6">
-			<td rowspan="1" colspan="4">
-				<img src={bossIcon} width="40px" alt="boss" class="ml-0.5 sm:ml-1.5" />
-			</td>
-			{#each floor6b as stageName}
-				<td colspan={Math.floor(60 / floor6b.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-		</tr>
-		<tr class="floorEX">
-			<td colspan="4">
-				<img src={aegirQn} width="30px" alt="?" class="ml-0.5 sm:ml-2 py-1 sm:py-1.5" />
-			</td>
-			{#each floorEX as stageName}
-				<td colspan={Math.floor(60 / floorEX.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-			<td class="corner" colspan="4" />
-		</tr>
-		<tr class="floorSP">
-			<td class="corner" colspan="4" />
-			{#each du1 as stageName}
-				<td colspan={Math.floor(60 / du1.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-			<td class="corner" colspan="4" />
-		</tr>
-		<tr class="floorSP">
-			<td class="corner" colspan="4" />
-			{#each du2 as stageName}
-				<td colspan={Math.floor(60 / du2.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-			<td class="corner" colspan="4" />
-		</tr>
-		<tr class="floorSP">
-			<td class="corner" colspan="4" />
-			{#each sp1 as stageName}
-				<td colspan={Math.floor(60 / sp1.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-			<td class="corner" colspan="4" />
-		</tr>
-		<tr class="floorSP">
-			<td class="corner" colspan="4">
-				<img src={knt} width="40px" alt="?" class="mt-0.5 ml-0.5 sm:ml-2 py-1 sm:py-1.5" />
-			</td>
-			{#each sp2 as stageName}
-				<td colspan={Math.floor(60 / sp2.length)}>
-					<StageNavButton {stageName} {language} />
-				</td>
-			{/each}
-			<td class="corner" colspan="4" />
-		</tr>
+				{#each sp2 as stageName}
+					<td colspan={Math.floor(60 / sp2.length)}>
+						<StageNavButton {stageName} {language} />
+					</td>
+				{/each}
+				<td class="corner" colspan="4" />
+			</tr>
+		</tbody>
 	</table>
 </div>
 

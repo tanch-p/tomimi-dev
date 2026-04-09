@@ -9,11 +9,20 @@
 	export let language: Language;
 
 	let allNormalStages = [
-		['死囚之夜', '度假村冤魂', '苔手', '待宰的兽群','事不过四'],
-		['没有尽头的路', '低空机动', '幽影与鬼魅', '违和', '虫虫别回头','还之彼身'],
-		['弄假成真', '饥渴祭坛', '狡兽九窟', '冰海疑影', '咫尺天涯', '思维折断','恃强凌弱'],
-		['公司纠葛', '应用测试', '坍缩体的午后', '大迁徙', '以守代攻', '杂音干扰', '禁区','冰凝之所'],
-		['乐理之灾', '生人勿近', '混乱的表象', '求敌得敌', '亡者行军', '何处无山海', '本能污染','人造物狂欢节'],
+		['死囚之夜', '度假村冤魂', '苔手', '待宰的兽群', '事不过四'],
+		['没有尽头的路', '低空机动', '幽影与鬼魅', '违和', '虫虫别回头', '还之彼身'],
+		['弄假成真', '饥渴祭坛', '狡兽九窟', '冰海疑影', '咫尺天涯', '思维折断', '恃强凌弱'],
+		['公司纠葛', '应用测试', '坍缩体的午后', '大迁徙', '以守代攻', '杂音干扰', '禁区', '冰凝之所'],
+		[
+			'乐理之灾',
+			'生人勿近',
+			'混乱的表象',
+			'求敌得敌',
+			'亡者行军',
+			'何处无山海',
+			'本能污染',
+			'人造物狂欢节'
+		],
 		['霜与沙', '生灵的终点']
 	];
 
@@ -21,12 +30,12 @@
 	let floor3b = ['呼吸', '夺树者', '大地醒转'];
 	let floor5b = ['巍峨银凇', '萨米之熵'];
 	let floor5b2 = ['深寒造像', '虚无之偶'];
-	let floor6b = ['园丁','时光之沙'];
-	let floor6b2 = ['哨兵','迈入永恒'];
+	let floor6b = ['园丁', '时光之沙'];
+	let floor6b2 = ['哨兵', '迈入永恒'];
 	let du = ['半吊子之旅', '无中生钱', '豪华车队', '“正义使者”'];
 	let sp = ['天途半道', '夙愿将偿', '惩罚', '英雄无名'];
 	let sp2 = ['腹背受敌', '长期试用', '自然条款'];
-	let sp3 = ['黄沙幻境','亘古仇敌'];
+	let sp3 = ['黄沙幻境', '亘古仇敌'];
 	//max per row = 4
 </script>
 
@@ -70,19 +79,21 @@
 				</tr>
 				{#if rowSpan === 2}
 					{@const btmRowStages = stages.slice(4)}
-					{#if btmRowStages.length >= 3}
-						{#each btmRowStages as stageName}
-							<td colspan={Math.floor(24 / btmRowStages.length)}>
-								<StageNavButton {stageName} {language} />
-							</td>
-						{/each}
-					{:else}
-						{#each btmRowStages as stageName}
-							<td colspan={Math.floor(24 / btmRowStages.length)}>
-								<StageNavButton {stageName} {language} />
-							</td>
-						{/each}
-					{/if}
+					<tr>
+						{#if btmRowStages.length >= 3}
+							{#each btmRowStages as stageName}
+								<td colspan={Math.floor(24 / btmRowStages.length)}>
+									<StageNavButton {stageName} {language} />
+								</td>
+							{/each}
+						{:else}
+							{#each btmRowStages as stageName}
+								<td colspan={Math.floor(24 / btmRowStages.length)}>
+									<StageNavButton {stageName} {language} />
+								</td>
+							{/each}
+						{/if}
+					</tr>
 				{/if}
 			{/each}
 
@@ -136,7 +147,7 @@
 				{/each}
 			</tr>
 			<tr>
-				<td colspan="2"  rowspan="2">
+				<td colspan="2" rowspan="2">
 					{6}
 				</td>
 				{#each floor6b as stageName}
