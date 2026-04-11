@@ -382,24 +382,31 @@ export class Game {
 	}
 
 	cleanup() {
+		// Stop the animation loop and remove event listeners immediately so they
+		// don't block the main thread during navigation.
 		if (this.renderer) {
 			this.renderer.setAnimationLoop(null);
 		}
-		this.renderer?.dispose();
+		window.removeEventListener('resize', this.onWindowResize);
+		this.canvas?.removeEventListener('pointerdown', this.onPointerDown);
+		document.removeEventListener('pointermove', this.onPointerMove);
+		document.removeEventListener('pointerup', this.onPointerUp);
 
-		if (this.scene) {
-			clearObjects(this.scene);
-		}
 		GameConfig.setValue('scaledElapsedTime', 0);
 		GameConfig.setValue('waveElapsedTime', 0);
 
+		// Capture refs before nulling so the deferred closure can still use them.
+		const renderer = this.renderer;
+		const scene = this.scene;
+		this.renderer = null;
 		this.scene = null;
 		this.camera = null;
-		this.renderer = null;
 
-		window.removeEventListener('resize', this.onWindowResize);
-		this.canvas.removeEventListener('pointerdown', this.onPointerDown);
-		document.removeEventListener('pointermove', this.onPointerMove);
-		document.removeEventListener('pointerup', this.onPointerUp);
+		// Defer expensive GPU disposal and scene traversal so they don't block
+		// the SvelteKit navigation that triggered this cleanup.
+		setTimeout(() => {
+			if (scene) clearObjects(scene);
+			if (renderer) renderer.dispose();
+		}, 0);
 	}
 }
