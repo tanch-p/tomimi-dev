@@ -77,19 +77,21 @@
 				</tr>
 				{#if rowSpan === 2}
 					{@const btmRowStages = stages.slice(4)}
-					{#if btmRowStages.length >= 3}
-						{#each btmRowStages as stageName}
-							<td colspan={Math.floor(24 / btmRowStages.length)}>
-								<StageNavButton {stageName} {language} />
-							</td>
-						{/each}
-					{:else}
-						{#each btmRowStages as stageName}
-							<td colspan={Math.floor(24 / btmRowStages.length)}>
-								<StageNavButton {stageName} {language} />
-							</td>
-						{/each}
-					{/if}
+					<tr>
+						{#if btmRowStages.length >= 3}
+							{#each btmRowStages as stageName}
+								<td colspan={Math.floor(24 / btmRowStages.length)}>
+									<StageNavButton {stageName} {language} />
+								</td>
+							{/each}
+						{:else}
+							{#each btmRowStages as stageName}
+								<td colspan={Math.floor(24 / btmRowStages.length)}>
+									<StageNavButton {stageName} {language} />
+								</td>
+							{/each}
+						{/if}
+					</tr>
 				{/if}
 			{/each}
 

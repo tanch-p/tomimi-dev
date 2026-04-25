@@ -23,6 +23,7 @@
 	import StageHeader from '$lib/components/StageHeader.svelte';
 	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
 	import StageDrops from './StageDrops.svelte';
+	import { get } from 'svelte/store';
 	import { setOtherBuffsList } from '$lib/functions/lib';
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
@@ -44,14 +45,14 @@
 	function updateReqRelic(levelId, selectedRelics) {
 		if (
 			ro4_ALTER_BOSS_STAGES.includes(levelId) &&
-			!$selectedRelics.find((item) => item.id === 'rogue_4_relic_explore_7')
+			!(get(selectedRelics) as any[]).find((item) => item.id === 'rogue_4_relic_explore_7')
 		) {
 			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_explore_7');
 			selectedRelics.update((list) => (list = [...list, relic]));
 		}
 		if (
 			['level_rogue4_b-7'].includes(levelId) &&
-			!$selectedRelics.find((item) => item.id === 'rogue_4_relic_final_6')
+			!(get(selectedRelics) as any[]).find((item) => item.id === 'rogue_4_relic_final_6')
 		) {
 			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_final_6');
 			selectedRelics.update((list) => (list = [...list, relic]));
@@ -59,7 +60,7 @@
 	}
 </script>
 
-<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
+<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
 	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
