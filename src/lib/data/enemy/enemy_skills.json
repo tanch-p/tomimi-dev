@@ -2233,14 +2233,14 @@
 		"skillRange": 2.5,
 		"tooltip": {
 			"en": [
-				"While having at least 1 ammo, consumes 1 ammo and does 150% ATK as {arts} damage, disarms the target for {duration} seconds as well as dealing an additional instance of 5000 Arts damage against 'Gelato Stops'"
+				"While having at least 1 ammo, consumes 1 ammo and does 150% ATK as {arts} damage, disarms the target for {duration} seconds as well as dealing an additional instance of 7500 Arts damage against 'Gelato Stops'"
 			],
 			"ja": [
 				"弾薬数1以上なら、通常攻撃時に弾薬を1消費し、対象に攻撃力の150%の術ダメージを与え、{duration}秒間攻撃・治癒行動ができない状態にする",
-				"ジェラート供給所には追加で5000の術ダメージを与える"
+				"ジェラート供給所には追加で7500の術ダメージを与える"
 			],
 			"zh": [
-				"技力大于等于1时：变为远程攻击，攻击时消耗1点技力，优先选择攻击范围内未处于攻击附加效果影响下的友方单位，造成攻击力150%{arts}普通伤害 (对<冰淇淋机>额外造成5000{arts}伤害) ，并附加<v.duration>s无法攻击与使用技能的效果"
+				"技力大于等于1时：变为远程攻击，攻击时消耗1点技力，优先选择攻击范围内未处于攻击附加效果影响下的友方单位，造成攻击力150%{arts}普通伤害 (对<冰淇淋机>额外造成7500{arts}伤害) ，并附加<v.duration>s无法攻击与使用技能的效果"
 			]
 		}
 	},
