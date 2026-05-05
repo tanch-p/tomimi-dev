@@ -18,6 +18,7 @@
             "INCREASE_WHEN_ATTACK",
             "SNIPER",
             "student",
+            "rhodes",
             "karlan",
             "position_ranged",
             "aak_dmg",
@@ -25,11 +26,11 @@
             "laterano",
             "enemy_on_grass_tile",
             "WARRIOR",
+            "skill_active",
             "hp_gt_80",
             "minos",
             "hp_gt_50",
-            "abyssal",
-            "skill_active"
+            "abyssal"
         ],
         "prob":[],
         "category":[
@@ -58,7 +59,8 @@
             "laiosteam",
             "aak_dmg",
             "TANK",
-            "skill_active"
+            "skill_active",
+            "student"
         ],
         "category":[
             "inspire",
@@ -224,6 +226,33 @@
         ],
         "target_air":[]
     },
+    "res_down":{
+        "order":[
+            "final_mul",
+            "initial_add"
+        ],
+        "targets":[
+            1,
+            99,
+            6,
+            2
+        ],
+        "value":[],
+        "duration":[],
+        "target_air":[
+            "target_air",
+            "not_target_air"
+        ],
+        "category":[
+            "freeze",
+            "others",
+            "burning_burst"
+        ],
+        "prob":[],
+        "conditions":[
+            "surrounding_8_tile"
+        ]
+    },
     "respawn_time":{
         "value":[]
     },
@@ -244,6 +273,9 @@
             "not_skill_active",
             "skill_active",
             "no_ally_8tiles"
+        ],
+        "order":[
+            "initial_mul"
         ]
     },
     "evasion":{
@@ -345,7 +377,8 @@
         "duration":[],
         "category":[
             "sluggish",
-            "others"
+            "others",
+            "slowdown"
         ],
         "target_air":[
             "target_air",
@@ -358,38 +391,11 @@
             "outside_atk_range"
         ],
         "prob":[],
-        "module":[],
         "order":[
-            "final_mul",
-            "initial_mul"
-        ]
-    },
-    "res_down":{
-        "order":[
-            "final_mul",
-            "initial_add"
+            "initial_mul",
+            "final_mul"
         ],
-        "targets":[
-            1,
-            99,
-            6,
-            2
-        ],
-        "value":[],
-        "duration":[],
-        "target_air":[
-            "target_air",
-            "not_target_air"
-        ],
-        "category":[
-            "freeze",
-            "others",
-            "burning_burst"
-        ],
-        "prob":[],
-        "conditions":[
-            "surrounding_8_tile"
-        ]
+        "module":[]
     },
     "res_penetrate":{
         "value":[]
@@ -425,7 +431,9 @@
             1,
             5,
             4,
-            99
+            99,
+            2,
+            3
         ],
         "value":[],
         "duration":[],
@@ -433,11 +441,13 @@
             "target_air",
             "not_target_air"
         ],
-        "prob":[],
         "conditions":[
+            "erosion",
             "token_blocked",
             "surrounding_8_tile"
-        ]
+        ],
+        "prob":[],
+        "module":[]
     },
     "sp_regen":{
         "value":[],
@@ -464,7 +474,10 @@
     },
     "ally_block_up":{
         "value":[],
-        "duration":[]
+        "duration":[],
+        "conditions":[
+            "flying"
+        ]
     },
     "silence":{
         "targets":[
@@ -506,7 +519,8 @@
         "targets":[
             1,
             99,
-            2
+            2,
+            3
         ],
         "value":[],
         "duration":[],
@@ -516,12 +530,16 @@
         ],
         "category":[
             "cold",
-            "others"
+            "others",
+            "slowdown"
         ],
         "conditions":[
             "token_blocked",
             "neural_burst",
             "self_block"
+        ],
+        "order":[
+            "initial_mul"
         ],
         "prob":[]
     },
@@ -551,7 +569,8 @@
             "skill_kill_enemy",
             "skill_no_kill_enemy",
             "INCREASE_WHEN_ATTACK",
-            "INCREASE_WHEN_TAKEN_DAMAGE"
+            "INCREASE_WHEN_TAKEN_DAMAGE",
+            "deploy"
         ]
     },
     "receive_heal_scale":{
@@ -666,6 +685,7 @@
         "value":[],
         "duration":[],
         "conditions":[
+            "flying",
             "hp_lt_40",
             "hp_lt_60",
             "hp_gt_70",
@@ -740,6 +760,7 @@
         "conditions":[
             "self_enemy_block",
             "evasion",
+            "melee",
             "first_hit",
             "ELITE",
             "BOSS",
@@ -866,6 +887,12 @@
     "ally_taunt":{
         "value":[]
     },
+    "ally_camouflage":{
+        "value":[],
+        "conditions":[
+            "hp_lt_50"
+        ]
+    },
     "ally_res":{
         "value":[],
         "conditions":[
@@ -882,12 +909,6 @@
         ],
         "conditions":[
             "dmg_below_200"
-        ]
-    },
-    "ally_camouflage":{
-        "value":[],
-        "conditions":[
-            "hp_lt_50"
         ]
     },
     "stealth":{
@@ -934,6 +955,9 @@
         "module":[],
         "duration":[]
     },
+    "cost_return":{
+        "value":[]
+    },
     "bonus_lifepoint":{
         "value":[]
     },
@@ -953,6 +977,7 @@
     "ally_undying":{
         "value":[],
         "conditions":[
+            "position_melee",
             "mujica"
         ]
     },

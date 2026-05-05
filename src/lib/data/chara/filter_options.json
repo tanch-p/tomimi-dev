@@ -21,7 +21,8 @@
 			"librator",
 			"crusher",
 			"hammer",
-			"primguard"
+			"primguard",
+			"mercenary"
 		],
 		"SNIPER": [
 			"fastshot",
@@ -32,7 +33,8 @@
 			"siegesniper",
 			"bombarder",
 			"loopshooter",
-			"hunter"
+			"hunter",
+			"skybreaker"
 		],
 		"TANK": [
 			"protector",
@@ -41,7 +43,8 @@
 			"artsprotector",
 			"duelist",
 			"fortress",
-			"unyield"
+			"unyield",
+			"primprotector"
 		],
 		"MEDIC": [
 			"physician",
@@ -49,7 +52,8 @@
 			"healer",
 			"wandermedic",
 			"incantationmedic",
-			"chainhealer"
+			"chainhealer",
+			"watchman"
 		],
 		"SUPPORT": ["slower", "summoner", "underminer", "bard", "blessing", "craftsman", "ritualist"],
 		"CASTER": [
@@ -250,7 +254,8 @@
 		"cost_under_10",
 		"mujica",
 		"kjerag",
-		"sargon"
+		"sargon",
+		"rhodes"
 	],
 	"others_tag": [
 		"sp_module",
