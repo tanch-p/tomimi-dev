@@ -475,5 +475,104 @@
 		"desc_zh": "相关目标获得“鉴定进度”并进入第一阶段鉴定。\n第一阶段鉴定：每0.1s，若自身被阻挡/处于我方单位视野范围内，为自身增加2点鉴定进度，否则减少1点鉴定进度；进度大于等于300点时，进入第二阶段鉴定。\n第二阶段鉴定：根据自身是否敌对改变标识颜色（自身为敌对单位时变为红色，否则为亮蓝或亮绿色）。每0.1s，若自身被阻挡/处于我方单位视野范围内，为自身增加3点鉴定进度，否则减少1点鉴定进度（不会回落至第一阶段）；第二阶段鉴定进度大于等于300点时，鉴定完成",
 		"desc_en": "The target's identification points are increased by bringing the spy within an ally's attack range or blocking it. When this condition is not met, the number of points decreases by 1 point every 0.1 second. There are two levels of identification, each requiring 300 points",
 		"desc_ja": "密偵を味方の攻撃範囲内に収めるかブロックすることで対象の識別ポイントが増加する。この条件を満たしていない時は、0.1秒ごとに1ポイント減少。識別には2段階あり、それぞれ300ポイント必要"
-	}
+	},
+	"ba.attract": {
+        "termId": "ba.attract",
+        "name_zh": "诱导",
+        "name_en": "Lure",
+        "name_ja": "誘導",
+        "desc_zh": "无法被阻挡并向目标位置移动",
+        "desc_en": "Cannot be blocked and moves towards the target's position",
+        "desc_ja": "ブロック不可となり、目標となる対象のいる方向へ移動"
+    },
+    "ba.permanentatk": {
+        "termId": "ba.permanentatk",
+        "name_zh": "持续攻击",
+        "name_en": "Continuously Attack",
+        "name_ja": "常時攻撃",
+        "desc_zh": "无论攻击范围内是否有攻击目标，都会持续进行攻击",
+        "desc_en": "Continuously attacks, regardless of whether there is a target within Attack Range",
+        "desc_ja": "攻撃範囲内に攻撃可能な対象がいるかどうかに関わらず、持続的に攻撃し続ける"
+    },
+    "ba.fever": {
+        "termId": "ba.fever",
+        "name_zh": "Fever",
+        "name_en": "Fever",
+        "name_ja": "Fever",
+        "desc_zh": "Fever累计至450点时，任意一位<$ba.mujica>Ave Mujica</>成员手动触发技能后，在场所有<$ba.mujica>Ave Mujica</>成员20秒内会持续释放当前技能",
+        "desc_en": "Once Fever reaches 450, whenever any <$ba.mujica>Ave Mujica</> member's skill is manually activated, all <$ba.mujica>Ave Mujica</> members on the field will keep their current skill activated for 20s",
+        "desc_ja": "Fever値が450に達している状態で、任意の味方<$ba.mujica>Ave Mujica</>のスキルを手動で発動すると、味方<$ba.mujica>Ave Mujica</>全員がスキルを20秒間発動し続ける"
+    },
+    "ba.mujica": {
+        "termId": "ba.mujica",
+        "name_zh": "Ave Mujica",
+        "name_en": "Ave Mujica",
+        "name_ja": "Ave Mujica",
+        "desc_zh": "包括丰川祥子、八幡海铃、三角初华、祐天寺若麦、若叶睦",
+        "desc_en": "Includes Sakiko Togawa, Umiri Yahata, Uika Misumi, Nyamu Yūtenji, Mutsumi Wakaba",
+        "desc_ja": "対象オペレーター：\n豊川祥子、八幡海鈴、三角初華、祐天寺にゃむ、若葉睦"
+    },
+    "ba.alter": {
+        "termId": "ba.alter",
+        "name_zh": "装备应变",
+        "name_en": "Equipment Alteration",
+        "name_ja": "戦術換装",
+        "desc_zh": "选中在场干员后，可以通过一定条件激活的额外效果",
+        "desc_en": "When selecting a deployed Operator, can activate extra effects when certain conditions are fulfilled",
+        "desc_ja": "配置中のオペレーターを選択後、一定の条件を満たしていれば追加効果を有効化できる"
+    },
+    "ba.weaknessatk": {
+        "termId": "ba.weaknessatk",
+        "name_zh": "弱点伤害",
+        "name_en": "Weakness damage",
+        "name_ja": "弱点ダメージ",
+        "desc_zh": "造成物理或法术伤害时，根据目标防御力和法术抗性变更伤害类型",
+        "desc_en": "When dealing Physical or Arts damage, changes damage type depending on the target's DEF and RES",
+        "desc_ja": "物理または術ダメージを与える際、敵の防御力と術耐性の値に応じてダメージのタイプが変化する"
+    },
+	"ba.dmgresistance": {
+        "termId": "ba.dmgresistance",
+        "name_zh": "伤害减免",
+        "name_en": null,
+        "name_ja": null,
+        "desc_zh": "受到的伤害降低一定数值（同名效果取最高）",
+        "desc_en": null,
+        "desc_ja": null
+    },
+    "ba.dt.erosion2": {
+        "termId": "ba.dt.erosion2",
+        "name_zh": "侵蚀损伤·我方",
+        "name_en": null,
+        "name_ja": null,
+        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到5000点元素伤害且永久降低120点防御力（可叠加）。8秒冷却",
+        "desc_en": null,
+        "desc_ja": null
+    },
+    "ba.slowdown": {
+        "termId": "ba.slowdown",
+        "name_zh": "迟钝",
+        "name_en": null,
+        "name_ja": null,
+        "desc_zh": "移动速度、攻击速度、部分技能施放速度和冷却速度、部分异常状态的恢复速度降低相应比例（同名效果取最高）",
+        "desc_en": null,
+        "desc_ja": null
+    },
+    "ba.costlowerbound": {
+        "termId": "ba.costlowerbound",
+        "name_zh": "部署费用下限",
+        "name_en": null,
+        "name_ja": null,
+        "desc_zh": "部署费用可降低至部署费用下限；部署费用小于0时部署费用自然回复速度-50%",
+        "desc_en": null,
+        "desc_ja": null
+    },
+    "ba.magicarcane": {
+        "termId": "ba.magicarcane",
+        "name_zh": "术法充盈",
+        "name_en": null,
+        "name_ja": null,
+        "desc_zh": "造成的法术伤害提升（同名效果取最高）",
+        "desc_en": null,
+        "desc_ja": null
+    }
 }
