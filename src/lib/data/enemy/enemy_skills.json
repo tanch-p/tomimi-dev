@@ -8875,13 +8875,13 @@
 	"dyshhj_end": {
 		"tooltip": {
 			"en": [
-				"After 600s has lapsed, activates Sleepless and deducts 50 lifepoints thereafter leaves the battlefield"
+				"After 600s has lapsed, activates Sleepless and thereafter leaves the battlefield (counted as entering Protection Objective and deducts lifepoints accordingly)"
 			],
 			"ja": [
 				"戦闘開始から600秒経つと、時間切れとしての【不寐】を使用",
-				"マップ上のランダムな味方のマスに出現し、マーキングした味方と周囲8マスの味方を強制撤退させ、これらの味方の再配置時間を30秒にして退場する（耐久値-50）"
+				"マップ上のランダムな味方のマスに出現し、マーキングした味方と周囲8マスの味方を強制撤退させ、これらの味方の再配置時間を30秒にして退場する（防衛ラインに入ったと見なす、耐久値を減少する）"
 			],
-			"zh": ["战斗经过600s后，发动一次【不寐】且扣除50目标生命值，随后退场"]
+			"zh": ["战斗经过600s后，发动一次【不寐】，随后退场(视为到达路径终点，根据自身目标价值扣除关卡生命值）"]
 		}
 	},
 	"dyshhj_force": {
