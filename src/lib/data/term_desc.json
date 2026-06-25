@@ -499,9 +499,9 @@
         "name_zh": "Fever",
         "name_en": "Fever",
         "name_ja": "Fever",
-        "desc_zh": "Fever累计至450点时，任意一位<$ba.mujica>Ave Mujica</>成员手动触发技能后，在场所有<$ba.mujica>Ave Mujica</>成员20秒内会持续释放当前技能",
-        "desc_en": "Once Fever reaches 450, whenever any <$ba.mujica>Ave Mujica</> member's skill is manually activated, all <$ba.mujica>Ave Mujica</> members on the field will keep their current skill activated for 20s",
-        "desc_ja": "Fever値が450に達している状態で、任意の味方<$ba.mujica>Ave Mujica</>のスキルを手動で発動すると、味方<$ba.mujica>Ave Mujica</>全員がスキルを20秒間発動し続ける"
+        "desc_zh": "Fever累计至450点时，任意一位<ba.mujica>Ave Mujica</>成员手动触发技能后，在场所有<ba.mujica>Ave Mujica</>成员20秒内会持续释放当前技能",
+        "desc_en": "Once Fever reaches 450, whenever any <ba.mujica>Ave Mujica</> member's skill is manually activated, all <ba.mujica>Ave Mujica</> members on the field will keep their current skill activated for 20s",
+        "desc_ja": "Fever値が450に達している状態で、任意の味方<ba.mujica>Ave Mujica</>のスキルを手動で発動すると、味方<ba.mujica>Ave Mujica</>全員がスキルを20秒間発動し続ける"
     },
     "ba.mujica": {
         "termId": "ba.mujica",
