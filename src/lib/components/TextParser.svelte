@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import { page } from '$app/stores';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import termDesc from '$lib/data/term_desc.json';
 	import { onMount } from 'svelte';
 
@@ -107,7 +107,7 @@
 					: `<@${key}>`;
 				line = line.replace(
 					match,
-					front + translations[language][key.replace('ba.dt.', '')] + '</>'
+					front + getTranslations(language)[key.replace('ba.dt.', '')] + '</>'
 				);
 			}
 		}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
 	import banner_mizuki from '$lib/images/banner_mizuki_800px.webp';
 	import banner_phantom from '$lib/images/banner_phantom_800px.webp';
@@ -7,7 +8,6 @@
 	import banner_sui from '$lib/images/banner_sui.webp';
 	import laoli_banner from '$lib/images/laoli_sim.webp';
 	import chara_banner from '$lib/images/chara_banner.webp';
-	import translations from '$lib/translations.json';
 	import ISLogo from '$lib/images/is_logo.webp';
 	import toolsLogo from '$lib/images/CRA-X.webp';
 	import FriendLinks from '$lib/components/FriendLinks.svelte';
@@ -25,10 +25,10 @@
 </script>
 
 <svelte:head>
-	<title>{translations[language].home} / {translations[language].title_post}</title>
-	<meta name="description" content={translations[language].title_post} />
-	<meta property="og:description" content={translations[language].title_post} />
-	<meta property="og:title" content={translations[language].home} />
+	<title>{getTranslations(language).home} / {getTranslations(language).title_post}</title>
+	<meta name="description" content={getTranslations(language).title_post} />
+	<meta property="og:description" content={getTranslations(language).title_post} />
+	<meta property="og:title" content={getTranslations(language).home} />
 	<meta property="og:url" content={`https://tomimi.dev/${language}`} />
 </svelte:head>
 
@@ -44,13 +44,13 @@
 					<span>
 						<img
 							src={toolsLogo}
-							alt={translations[language].related_tools}
+							alt={getTranslations(language).related_tools}
 							width="31"
 							height="31"
 						/>
 					</span>
 					<p class={`${language === 'en' ? 'text-sm font-bold' : 'font-semibold'}`}>
-						{translations[language].related_tools}
+						{getTranslations(language).related_tools}
 					</p>
 				</div>
 				<div class="flex flex-wrap w-full justify-center gap-4 mt-3">
@@ -60,12 +60,12 @@
 								class="select-none mx-auto"
 								src={chara_banner}
 								decoding="async"
-								alt={translations[language].chara_title}
+								alt={getTranslations(language).chara_title}
 								width="552"
 								height="177"
 							/>
 							<p class={`my-1 `}>
-								{translations[language].chara_title}
+								{getTranslations(language).chara_title}
 							</p>
 						</div>
 					</a>
@@ -75,12 +75,12 @@
 								class="select-none mx-auto"
 								src={laoli_banner}
 								decoding="async"
-								alt={translations[language].laoli_title}
+								alt={getTranslations(language).laoli_title}
 								width="552"
 								height="177"
 							/>
 							<p class={`my-1 ${language !== 'en' ? 'whitespace-nowrap' : ''}`}>
-								{translations[language].laoli_title}
+								{getTranslations(language).laoli_title}
 							</p>
 						</div>
 					</a>
@@ -89,10 +89,10 @@
 			<div class="md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6">
 				<div class="flex items-center justify-center">
 					<span>
-						<img src={ISLogo} alt={translations[language].isw} width="36" height="36" />
+						<img src={ISLogo} alt={getTranslations(language).isw} width="36" height="36" />
 					</span>
 					<p class={`${language === 'en' ? 'text-sm font-bold' : 'font-semibold'}`}>
-						{translations[language].isw}
+						{getTranslations(language).isw}
 					</p>
 				</div>
 				<div class="flex flex-wrap w-full justify-center">
@@ -102,7 +102,7 @@
 								class="select-none mx-auto py-3"
 								{src}
 								decoding="async"
-								alt={translations[language][alt]}
+								alt={getTranslations(language)[alt]}
 								width="552"
 								height="200"
 							/>

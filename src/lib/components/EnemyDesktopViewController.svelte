@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
 	import Icon from './Icon.svelte';
 	import EnemySimpleTable from './EnemySimpleTable.svelte';
-	import translations from '$lib/translations.json';
 	import EnemyHandbookDisplay from './EnemyHandbookDisplay.svelte';
 
 	export let enemies: Enemy[], language: Language, statMods, specialMods, otherBuffsList, mapConfig;
@@ -19,7 +19,7 @@
 	>
 		<Icon name="icon-list" size={22} />
 
-		<span class="text-lg">{translations[language].table_view}</span>
+		<span class="text-lg">{getTranslations(language).table_view}</span>
 	</button>
 	<button
 		class="flex items-center justify-center gap-x-1.5 w-full h-full bg-gray-500 {displayMode ===
@@ -29,12 +29,20 @@
 		on:click={() => (displayMode = 'handbook')}
 	>
 		<Icon name="layout-view" size={28} />
-		<span class="text-lg">{translations[language].handbook_view}</span>
+		<span class="text-lg">{getTranslations(language).handbook_view}</span>
 	</button>
 </div>
 
 {#if displayMode === 'table'}
-	<EnemySimpleTable {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig}/>
+	<EnemySimpleTable {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig} />
 {:else}
-	<EnemyHandbookDisplay {enemies} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig} mode="desktop" />
+	<EnemyHandbookDisplay
+		{enemies}
+		{language}
+		{statMods}
+		{specialMods}
+		{otherBuffsList}
+		{mapConfig}
+		mode="desktop"
+	/>
 {/if}

@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import {
 		getRandomGroups,
 		getRandomChance,
@@ -28,7 +28,7 @@
 			getRandomGroups(fragment, hiddenGroups)
 		)}
 		{#if fragmentGroups.some((groups) => Object.keys(groups).length > 0)}
-			<p class="title">{translations[language].enemy_wave} #{waveIdx + 1}</p>
+			<p class="title">{getTranslations(language).enemy_wave} #{waveIdx + 1}</p>
 			<div class="pb-2">
 				{#each wave.fragments as _, fragIdx}
 					{#if Object.keys(fragmentGroups[fragIdx]).length > 0}

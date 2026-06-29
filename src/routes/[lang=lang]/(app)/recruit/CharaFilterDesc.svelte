@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { filterDescStore } from './stores';
 	import { getDisplayKey } from '$lib/functions/charaHelpers';
 	import TextParser from '$lib/components/TextParser.svelte';
@@ -10,7 +10,7 @@
 
 	export let language: Language;
 
-	$: defaultLine = translations[language].chara_filter_start;
+	$: defaultLine = getTranslations(language).chara_filter_start;
 
 	$: line = defaultLine;
 
@@ -63,12 +63,12 @@
 		if (activeOptions.length === 0 && relicActiveOptions.length === 0) {
 			return defaultLine;
 		}
-		let text = translations[language].chara_filter_desc;
+		let text = getTranslations(language).chara_filter_desc;
 		//1. replace active keys
 		const bbTagHolder = [];
 		const otherOptions = [];
 		for (const ele of activeOptions) {
-			if (['tags', 'blackboard', 'blockCnt','spType'].includes(ele.key)) {
+			if (['tags', 'blackboard', 'blockCnt', 'spType'].includes(ele.key)) {
 				bbTagHolder.push(
 					...ele.options
 						.map(({ value, selected }) => selected && value)
@@ -82,20 +82,20 @@
 						const key = getDisplayKey(value);
 						return (
 							selected &&
-							(translations[language].table_headers[key] ??
-								translations[language][key] ??
-								translations[language].types[key])
+							(getTranslations(language).table_headers[key] ??
+								getTranslations(language)[key] ??
+								getTranslations(language).types[key])
 						);
 					})
 					.filter(Boolean)
 					.join('/');
 				let key = ele.key;
 				value =
-					(translations[language]['chara_filter']?.[`${key}_pre`] ?? '') +
+					(getTranslations(language)['chara_filter']?.[`${key}_pre`] ?? '') +
 					'<@bluehl>' +
 					value +
 					'</>' +
-					(translations[language]['chara_filter']?.[`${key}_post`] ?? '');
+					(getTranslations(language)['chara_filter']?.[`${key}_post`] ?? '');
 
 				text = text.replace(`<${key}>`, value);
 			}
@@ -112,7 +112,7 @@
 		text = text.replace(`<options>`, desc);
 		let replaceOperatorFlag = getReplaceOperatorFlag(language, text);
 		if (replaceOperatorFlag) {
-			text = text.replace('<operator>', translations[language].operator);
+			text = text.replace('<operator>', getTranslations(language).operator);
 		}
 		const regex = /<\w+>/g;
 		text = text.replaceAll(regex, '');

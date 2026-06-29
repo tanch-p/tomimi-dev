@@ -1,11 +1,16 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language, StatMods } from '$lib/types';
 	import { tableHeaders } from '../../routes/stores';
 	import EnemySimpleRow from './EnemySimpleRow.svelte';
 	import EnemyTableOptions from './EnemyTableOptions.svelte';
-	import translations from '$lib/translations.json';
 	import Tooltip from './Tooltip.svelte';
-	export let enemies: Enemy[], language: Language, statMods:StatMods, specialMods,otherBuffsList, mapConfig;
+	export let enemies: Enemy[],
+		language: Language,
+		statMods: StatMods,
+		specialMods,
+		otherBuffsList,
+		mapConfig;
 	$: filteredTableHeaders = $tableHeaders.filter(({ key, show }) => show);
 
 	const tooltips = { e_hp: 'tooltip_ehp' };
@@ -23,10 +28,10 @@
 						}`}
 					>
 						<div class="relative group">
-							{translations[language].table_headers[key] || translations[language][key]}
+							{getTranslations(language).table_headers[key] || getTranslations(language)[key]}
 							{#if Boolean(tooltips?.[key])}
 								&#9432;
-								<Tooltip text={translations[language][tooltips[key]]} />
+								<Tooltip text={getTranslations(language)[tooltips[key]]} />
 							{/if}
 						</div>
 					</th>
@@ -35,7 +40,16 @@
 		</thead>
 		<tbody>
 			{#each enemies as enemy, index}
-				<EnemySimpleRow {enemy} {filteredTableHeaders} {index} {language} {statMods} {specialMods} {otherBuffsList} {mapConfig}/>
+				<EnemySimpleRow
+					{enemy}
+					{filteredTableHeaders}
+					{index}
+					{language}
+					{statMods}
+					{specialMods}
+					{otherBuffsList}
+					{mapConfig}
+				/>
 			{/each}
 		</tbody>
 	</table>

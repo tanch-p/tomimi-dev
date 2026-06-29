@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import friendlink from '$lib/images/friendlink.webp';
 
 	// export let language: Language;
@@ -29,7 +29,7 @@
 		<span>
 			<img src={friendlink} alt={'友情链接'} width="31" height="29" />
 		</span>
-		<p class={`font-semibold`}>{translations[language].friendlink}</p>
+		<p class={`font-semibold`}>{getTranslations(language).friendlink}</p>
 	</div>
 
 	<div class="flex flex-wrap w-full justify-center mt-3">
@@ -41,7 +41,7 @@
 						class="hidden group-hover:flex absolute inset-0 m-auto items-center justify-center bg-black bg-opacity-50 text-xl"
 					>
 						<div class="bg-neutral-900 bg-opacity-70 px-4 py-1.5">
-							{translations[language].go_to_link}→
+							{getTranslations(language).go_to_link}→
 						</div>
 					</div>
 				</div>

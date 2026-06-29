@@ -1,23 +1,23 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
-	import translations from '$lib/translations.json';
 
 	export let data: PageData;
 	$: language = data.language;
 </script>
 
 <svelte:head>
-	<title>{translations[language].about_text}</title>
-	<meta name="description" content={translations[language].title_post} />
-	<meta property="og:description" content={translations[language].title_post} />
+	<title>{getTranslations(language).about_text}</title>
+	<meta name="description" content={getTranslations(language).title_post} />
+	<meta property="og:description" content={getTranslations(language).title_post} />
 </svelte:head>
 
 <div class="max-w-xl mx-auto space-y-24 py-24 px-2">
 	<div>
-		<p class="font-semibold text-lg">{translations[language].about_text}</p>
+		<p class="font-semibold text-lg">{getTranslations(language).about_text}</p>
 
 		<p class="mt-4">
-			{translations[language].about_content}
+			{getTranslations(language).about_content}
 		</p>
 		<table class="w-full mt-4 sm:mt-8">
 			<tbody>
@@ -82,9 +82,7 @@
 
 	<div>
 		<p class="font-semibold text-lg">Special Thanks</p>
-		<p class="mt-4">
-			To all who helped in reporting errors/bugs!
-		</p>
+		<p class="mt-4">To all who helped in reporting errors/bugs!</p>
 	</div>
 </div>
 

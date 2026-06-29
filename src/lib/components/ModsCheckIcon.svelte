@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
 	import { getFormTitle } from '$lib/functions/lib';
 
@@ -8,8 +8,8 @@
 </script>
 
 <div class="absolute top-[125%] left-1/2 -translate-x-[calc(50%_-_10px)] w-max text-xs">
-	{#if translations[language][key]}
-		{translations[language][key]}
+	{#if getTranslations(language)[key]}
+		{getTranslations(language)[key]}
 	{:else if key.includes('enemy')}
 		<img
 			class="select-none"

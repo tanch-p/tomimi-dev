@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { parseConditions } from '$lib/functions/languageHelpers';
-	import translations from '$lib/translations.json';
+	import { parseConditions, getTranslations } from '$lib/functions/languageHelpers';
 	//only used for conditions for now
 
 	export let options, updateFunc, language;
@@ -20,6 +19,6 @@
 {/each}
 {#if !showMore}
 	<button class="ml-2 text-xs hover:text-blue-500" on:click={() => (showMore = !showMore)}
-		>{translations[language].show_more}&nbsp;&gt;</button
+		>{getTranslations(language).show_more}&nbsp;&gt;</button
 	>
 {/if}

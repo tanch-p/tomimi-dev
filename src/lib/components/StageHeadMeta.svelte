@@ -1,18 +1,17 @@
 <script lang="ts">
-	import type { Language, MapConfig } from "$lib/types";
-    import translations from "$lib/translations.json"
+	import { getTranslations } from '$lib/functions/languageHelpers';
+	import type { Language, MapConfig } from '$lib/types';
 
-    export let mapConfig:MapConfig, stageName:string,language:Language
-
+	export let mapConfig: MapConfig, stageName: string, language: Language;
 </script>
 
 <svelte:head>
 	<title
 		>{mapConfig?.code}
-		{stageName.replaceAll('_', ' ')} / {translations[language].title_post}</title
+		{stageName.replaceAll('_', ' ')} / {getTranslations(language).title_post}</title
 	>
-	<meta name="description" content={translations[language].title_post} />
-	<meta property="og:description" content={translations[language].title_post} />
+	<meta name="description" content={getTranslations(language).title_post} />
+	<meta property="og:description" content={getTranslations(language).title_post} />
 	<meta property="og:title" content={mapConfig?.code + '_' + stageName} />
 	<meta
 		property="og:url"

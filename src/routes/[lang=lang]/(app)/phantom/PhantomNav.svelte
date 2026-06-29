@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import StageNavButton from './StageNavButton.svelte';
 	import combat_ops from '$lib/images/is/phantom/combat_ops.webp';
 	import boss from '$lib/images/is/phantom/boss.webp';
 	import encounter from '$lib/images/is/phantom/encounter.webp';
-	import translations from '$lib/translations.json';
 	import romanNumerals from '$lib/roman_numerals.json';
 
 	export let language: Language;
@@ -46,7 +46,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={combat_ops}
-							alt={translations[language].combat_ops}
+							alt={getTranslations(language).combat_ops}
 							width="100px"
 							loading="lazy"
 							decoding="async"
@@ -100,7 +100,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={boss}
-							alt={translations[language].boss}
+							alt={getTranslations(language).boss}
 							width="100px"
 							loading="lazy"
 							decoding="async"
@@ -154,7 +154,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={encounter}
-							alt={translations[language].boss}
+							alt={getTranslations(language).boss}
 							width="100px"
 							loading="lazy"
 							decoding="async"

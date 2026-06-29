@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
 	import { selectedFloor, activeFloorEffects } from './stores';
-	import translations from '$lib/translations.json';
 	import floor1 from '$lib/images/is/sui/icon_zone_1.webp';
 	import floor2 from '$lib/images/is/sui/icon_zone_2.webp';
 	import floor3 from '$lib/images/is/sui/icon_zone_3.webp';
@@ -49,7 +49,7 @@
 					/>
 				</div>
 			</div>
-			<p>{translations[language]['sui_levels'][$selectedFloor - 1]}</p>
+			<p>{getTranslations(language)['sui_levels'][$selectedFloor - 1]}</p>
 			<Icon name="left-chevron" className="w-5 h-5 ml-2.5 rotate-180" />
 		</div>
 		{#if $activeFloorEffects.length > 0}

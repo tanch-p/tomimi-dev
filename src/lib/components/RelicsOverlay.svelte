@@ -1,13 +1,13 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import RelicDiv from './RelicDiv.svelte';
-	import translations from '$lib/translations.json';
 	import mizukiRelics from '$lib/data/is/mizuki/relics_mizuki.json';
 	import phantomRelics from '$lib/data/is/phantom/relics_phantom.json';
 	import samiRelics from '$lib/data/is/sami/relics_sami.json';
 	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
-	import suiRelics from "$lib/data/is/sui/relics_sui.json";
+	import suiRelics from '$lib/data/is/sui/relics_sui.json';
 
 	const dispatch = createEventDispatcher();
 
@@ -75,7 +75,7 @@
 						}
 					}}
 				>
-					{translations[language]['reset']}
+					{getTranslations(language)['reset']}
 				</button>
 			</div>
 		</div>

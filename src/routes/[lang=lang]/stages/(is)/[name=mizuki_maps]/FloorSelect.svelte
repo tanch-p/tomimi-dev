@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { selectedFloor } from './stores.js';
-	import translations from '$lib/translations.json';
 	export let language: Language;
 	let floors = new Array(6);
 </script>
@@ -18,5 +18,5 @@
 			</button>
 		{/each}
 	</div>
-	<p class="text-center text-sm mt-4">※{translations[language].mizuki_sp_floor_tip}</p>
+	<p class="text-center text-sm mt-4">※{getTranslations(language).mizuki_sp_floor_tip}</p>
 </div>

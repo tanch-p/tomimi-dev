@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { missionMods } from './stores.js';
 
 	const missionModEffects = [
@@ -26,10 +26,10 @@
 		selected = !selected;
 	}}
 >
-	<p class="px-2 sm:px-0 text-subheading">{translations[language].mizuki_mission}</p>
+	<p class="px-2 sm:px-0 text-subheading">{getTranslations(language).mizuki_mission}</p>
 	<hr class="border-gray-500 my-1" />
 	<div class="px-2 sm:px-0 flex gap-x-1.5 sm:items-center mt-1.5">
 		<input type="checkbox" class="accent-red-500 w-4 h-4 mt-1 sm:mt-0" checked={selected} />
-		{translations[language].mizuki_mission_text}
+		{getTranslations(language).mizuki_mission_text}
 	</div>
 </button>

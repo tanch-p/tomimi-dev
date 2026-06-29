@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type {Language} from "$lib/types"
-	import translations from '$lib/translations.json';
+	import { getTranslations } from '$lib/functions/languageHelpers';
+	import type { Language } from '$lib/types';
 	export let normalAttack, language: Language;
 	$: atk_type = normalAttack.atk_type;
 	$: hits = normalAttack.hits;
@@ -14,7 +14,7 @@
 	{#if hits > 1}
 		{`x ${hits}`}
 	{/if}
-	{'('}{translations[language][atk_type[0]]}{#if hasAtkElement}{separator}<span
-			class={getDmgEleHighlight(atk_type[1])}>{translations[language][atk_type[1]]}</span
+	{'('}{getTranslations(language)[atk_type[0]]}{#if hasAtkElement}{separator}<span
+			class={getDmgEleHighlight(atk_type[1])}>{getTranslations(language)[atk_type[1]]}</span
 		>{/if}{')'}
 {/if}

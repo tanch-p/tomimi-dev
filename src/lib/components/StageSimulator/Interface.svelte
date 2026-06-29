@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { onDestroy, onMount } from 'svelte';
 	import { GameConfig } from './objects/GameConfig';
 	import enemyCount from '$lib/images/is/enemy_count.webp';
-	import translations from '$lib/translations.json';
 	import Icon from '../Icon.svelte';
 	import spriteCost from '$lib/images/is/sprite_cost.webp';
 	import SeekBar from './SeekBar.svelte';
@@ -123,7 +123,7 @@
 	class="absolute -top-8 md:top-0 left-1/2 -translate-x-1/2 mt-6 pb-0.5 bg-neutral-800 bg-opacity-80 pointer-events-none"
 >
 	<div class="flex items-center gap-x-1.5 px-4">
-		<img src={enemyCount} width="40" alt={translations[language].enemy_count} class="shrink-0" />
+		<img src={enemyCount} width="40" alt={getTranslations(language).enemy_count} class="shrink-0" />
 		<span>{count ?? '-'}</span>
 	</div>
 	<p class="text-center text-sm mt-1.5 px-3">

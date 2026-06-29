@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import SpTerrain from './SpTerrain.svelte';
 	import StageMap from './StageMap.svelte';
-	import translations from '$lib/translations.json';
 	import TextParser from './TextParser.svelte';
 	import { getStageImg } from '$lib/functions/lib';
 
@@ -41,14 +41,14 @@
 
 	<div class="px-2 sm:px-0 mt-2.5">
 		<p>
-			{translations[language].initialCost} - {mapConfig?.initialCost}
+			{getTranslations(language).initialCost} - {mapConfig?.initialCost}
 		</p>
 		<p>
-			{translations[language].characterLimit} - {mapConfig?.characterLimit}
+			{getTranslations(language).characterLimit} - {mapConfig?.characterLimit}
 		</p>
 		{#if mapConfig?.[`addInfo_${language}`]}
 			<div class="flex gap-x-1 mt-4 sm:mt-2.5">
-				<p class="whitespace-nowrap">{translations[language].addInfo} -</p>
+				<p class="whitespace-nowrap">{getTranslations(language).addInfo} -</p>
 				<div>
 					{#each mapConfig?.[`addInfo_${language}`] as line}
 						<TextParser {line} />
@@ -59,7 +59,9 @@
 		{#if mapConfig?.[`eliteDesc_${language}`]}
 			<div class="flex gap-x-1 mt-4 sm:mt-2.5">
 				<p class="whitespace-nowrap">
-					<span class={`${getEliteDescColor(rogueTopic)}`}>{translations[language].eliteDesc}</span>
+					<span class={`${getEliteDescColor(rogueTopic)}`}
+						>{getTranslations(language).eliteDesc}</span
+					>
 					-
 				</p>
 				<div>
@@ -72,7 +74,7 @@
 	</div>
 	<div class="flex gap-x-1 mt-4 sm:mt-2.5 px-2 sm:px-0">
 		<p class="whitespace-nowrap">
-			<span class="">{translations[language].outLink}</span>
+			<span class="">{getTranslations(language).outLink}</span>
 			-
 		</p>
 		<div class="flex flex-wrap items-center gap-2">

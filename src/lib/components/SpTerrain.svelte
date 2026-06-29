@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import spTerrainList from '$lib/sp_terrain_list.json';
 	import SpTerrainDesc from './SpTerrainDesc.svelte';
 	import { getSkzdwzDesc } from '$lib/functions/rogueHelpers';
@@ -8,17 +8,17 @@
 </script>
 
 <div class="sm:px-6 my-4">
-	<h2 class="px-2 sm:px-0 text-subheading mt-4">{translations[language].spTerrain}</h2>
+	<h2 class="px-2 sm:px-0 text-subheading mt-4">{getTranslations(language).spTerrain}</h2>
 	<hr class="border-gray-500 my-1" />
 	<div class="px-2 sm:px-0">
 		<table class="mt-4 sm:mx-auto">
 			<thead>
 				<tr>
 					<th class="border border-gray-400 border-solid py-0.5 px-1.5 md:min-w-[50px]"
-						>{translations[language].name}</th
+						>{getTranslations(language).name}</th
 					>
 					<th class="border border-gray-400 border-solid py-0.5 px-2.5 md:min-w-[50px] sm:text-left"
-						>{translations[language].sp_terrain_desc}</th
+						>{getTranslations(language).sp_terrain_desc}</th
 					>
 				</tr>
 			</thead>
@@ -28,7 +28,7 @@
 						<tr>
 							<td class="min-w-[82px] border border-gray-400 px-2 py-1.5 text-center">
 								{spTerrainList[terrain.tileKey][`name_${language}`]}
-								{#if terrain.alias}({translations[language][terrain.alias]}){/if}
+								{#if terrain.alias}({getTranslations(language)[terrain.alias]}){/if}
 							</td>
 							<SpTerrainDesc
 								blackboard={terrain.blackboard}
@@ -43,7 +43,11 @@
 							{spTerrainList.skzdwz[`name_${language}`]}
 						</td>
 						<SpTerrainDesc
-							description={getSkzdwzDesc(spTerrainList.skzdwz[`description_${language}`],difficulty,language)}
+							description={getSkzdwzDesc(
+								spTerrainList.skzdwz[`description_${language}`],
+								difficulty,
+								language
+							)}
 						/>
 					</tr>
 				{/if}

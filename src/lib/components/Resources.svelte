@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import TitleBlock from './TitleBlock.svelte';
-	import translations from '$lib/translations.json';
 
 	export let language: Language, rogueTopic: RogueTopic;
 </script>
 
-<TitleBlock title={translations[language].resource}>
+<TitleBlock title={getTranslations(language).resource}>
 	<ul class="list-disc list-inside">
 		{#if language === 'en'}
 			<li>
@@ -29,7 +29,7 @@
 			>
 				集批宝典
 			</a>
-			【{translations[language].author}：<a
+			【{getTranslations(language).author}：<a
 				href="https://space.bilibili.com/111063246"
 				class="text-blue-400 hover:text-blue-300"
 				target="_blank"

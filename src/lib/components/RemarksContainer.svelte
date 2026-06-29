@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
 	import Remark from './Remark.svelte';
 	import StatusImmune from '$lib/components/StatusImmune.svelte';
 	import EnemyFormTitle from './EnemyFormTitle.svelte';
 	import { getEnemySkills, getStatusImmune } from '$lib/functions/skillHelpers';
-	import translations from '$lib/translations.json';
 	import { isEquals } from '$lib/functions/lib';
 
 	export let enemy: Enemy, row: number, language: Language, specialMods, mapConfig;
@@ -19,33 +19,19 @@
 		<ul class="list-disc pl-5">
 			{#if enemy.forms[row].stats.dmgRes}
 				<li class="py-1">
-					<p>{translations[language].dmg_res_short} - {enemy.forms[row].stats.dmgRes * 100}%</p>
-					{#if enemy.key === "enemy_2119_dyshhj"}
-					<p>不生效(25/07/25最终确认)</p>
+					<p>{getTranslations(language).dmg_res_short} - {enemy.forms[row].stats.dmgRes * 100}%</p>
+					{#if enemy.key === 'enemy_2119_dyshhj'}
+						<p>不生效(25/07/25最终确认)</p>
 					{/if}
 				</li>
 			{/if}
 			{#each traits as skill}
-				<Remark
-					entity={enemy}
-					formIndex={row}
-					{skill}
-					{language}
-					{statusImmuneList}
-					{mapConfig}
-				/>
+				<Remark entity={enemy} formIndex={row} {skill} {language} {statusImmuneList} {mapConfig} />
 			{/each}
 		</ul>
 		<ul class="list-disc pl-5">
 			{#each specialList as skill}
-				<Remark
-					entity={enemy}
-					formIndex={row}
-					{skill}
-					{language}
-					{statusImmuneList}
-					{mapConfig}
-				/>
+				<Remark entity={enemy} formIndex={row} {skill} {language} {statusImmuneList} {mapConfig} />
 			{/each}
 		</ul>
 	{:else}
@@ -62,7 +48,7 @@
 			<ul class="list-disc pl-5">
 				{#if enemy.forms[row].stats.dmgRes}
 					<li class="py-1">
-						{translations[language].dmg_res_short} - {enemy.forms[row].stats.dmgRes * 100}%
+						{getTranslations(language).dmg_res_short} - {enemy.forms[row].stats.dmgRes * 100}%
 					</li>
 				{/if}
 				{#each traits as skill}
@@ -83,14 +69,7 @@
 		{/if}
 		<ul class="list-disc pl-5">
 			{#each specialList as skill}
-				<Remark
-					entity={enemy}
-					formIndex={row}
-					{skill}
-					{language}
-					{statusImmuneList}
-					{mapConfig}
-				/>
+				<Remark entity={enemy} formIndex={row} {skill} {language} {statusImmuneList} {mapConfig} />
 			{/each}
 		</ul>
 	{/if}

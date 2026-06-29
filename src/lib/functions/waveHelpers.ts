@@ -2,11 +2,11 @@ import type { Language, MapConfig, RogueTopic } from '$lib/types';
 import fragments from '$lib/data/is/sarkaz/fragments.json';
 import f27 from '$lib/images/is/sarkaz/rogue_4_fragment_F_27.webp';
 import f28 from '$lib/images/is/sarkaz/rogue_4_fragment_F_28.webp';
-import translations from '$lib/translations.json';
 import calamity from '$lib/images/is/sarkaz/rogue_4_disaster_1_toast.webp';
 import disasters from '$lib/data/is/sarkaz/disasters.json';
 import relicsSui from '$lib/data/is/sui/relics_sui.json';
 import enemyDatabase from '$lib/data/enemy/enemy_database.json';
+import { getTranslations } from '$lib/functions/languageHelpers';
 
 const ALWAYS_KILLED_KEYS = [
 	'enemy_2073_skzrck',
@@ -74,7 +74,7 @@ export const getOptions = (
 				options.push({
 					key: 'trap_051_vultres',
 					src: '/images/chara_icons/trap_051_vultres.webp',
-					name: translations[language].treasure
+					name: getTranslations(language).treasure
 				});
 			}
 			if (mapConfig?.elite_mods) {
@@ -103,7 +103,7 @@ export const getOptions = (
 					options.push({
 						key: 'trap_068_badbox',
 						src: '/images/chara_icons/trap_068_badbox.webp',
-						name: translations[language].treasure
+						name: getTranslations(language).treasure
 					});
 					continue;
 				}
@@ -123,7 +123,7 @@ export const getOptions = (
 					options.push({
 						key: 'trap_110_smbbox',
 						src: '/images/chara_icons/trap_110_smbbox.webp',
-						name: translations[language].treasure
+						name: getTranslations(language).treasure
 					});
 					continue;
 				}
@@ -156,7 +156,7 @@ export const getOptions = (
 					options.push({
 						key: 'trap_758_skzmbx',
 						src: '/images/chara_icons/trap_758_skzmbx.webp',
-						name: translations[language].treasure
+						name: getTranslations(language).treasure
 					});
 					continue;
 				}
@@ -210,7 +210,7 @@ export const getOptions = (
 					options.push({
 						key: 'trap_225_dysbox',
 						src: '/images/chara_icons/trap_225_dysbox.webp',
-						name: translations[language].treasure
+						name: getTranslations(language).treasure
 					});
 					continue;
 				}
@@ -605,7 +605,9 @@ export const generateWaveTimeline = (
 		});
 		const myKeys = Object.keys(spawns).map(Number);
 		if (
-			!(['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId) && myKeys.length === 0)
+			!(
+				['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId) && myKeys.length === 0
+			)
 		) {
 			myKeys.sort((a, b) => a - b);
 			const spawnList = myKeys.map((key) => ({ t: key, actions: spawns[key] }));

@@ -1,4 +1,3 @@
-import translations from '$lib/translations.json';
 import type { Enemy, Language, MapConfig, RogueTopic } from '$lib/types';
 import rogue_4_fragment_F_25 from '$lib/images/is/sarkaz/rogue_4_fragment_F_25.webp';
 import tileImg from '$lib/images/tiles/tile_infection.webp';
@@ -8,6 +7,7 @@ import ISStages from '$lib/data/stages/stage_name_lookup_table.json';
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../routes/stores';
 import pako from 'pako';
+import { getTranslations } from '$lib/functions/languageHelpers';
 
 export const BONUS_ENEMY_KEYS = [
 	'enemy_2001_duckmi',
@@ -78,22 +78,24 @@ export function getFormTitle(title: string | undefined | null, row: number, lang
 		const splitString = title.split('.');
 		const formTitle = splitString?.[1];
 		if (formTitle) {
-			return translations[language][formTitle];
+			return getTranslations(language)[formTitle];
 		}
 		if (language === 'en') {
 			return (
-				translations[language].multiform_prefix +
+				getTranslations(language).multiform_prefix +
 				convertToOrdinal(row + 1) +
 				' ' +
-				translations[language].multiform_suffix
+				getTranslations(language).multiform_suffix
 			);
 		}
 		return (
-			translations[language].multiform_prefix + (row + 1) + translations[language].multiform_suffix
+			getTranslations(language).multiform_prefix +
+			(row + 1) +
+			getTranslations(language).multiform_suffix
 		);
 	}
 
-	return translations[language][title];
+	return getTranslations(language)[title];
 }
 
 export const getStageData = async (stageName) => {
@@ -214,7 +216,7 @@ export const setOtherBuffsList = (
 		buffsList.push({
 			key: 'tile_infection',
 			img: tileImg,
-			name: translations[language].tile_infection,
+			name: getTranslations(language).tile_infection,
 			targets: ['not_flying&not_trap'],
 			activeTargets: [],
 			mods: [
@@ -247,7 +249,8 @@ export const setOtherBuffsList = (
 			if (skill.type === 'buff') {
 				const enemyCount = mapConfig?.enemies.find((ele) => ele.id === enemy.stageId);
 				const maxCount =
-					replacedSkill.effects?.maxCount || Math.max(enemyCount.max_count, enemyCount.elite_max_count, 1);
+					replacedSkill.effects?.maxCount ||
+					Math.max(enemyCount.max_count, enemyCount.elite_max_count, 1);
 				const buff = {
 					key: replacedSkill.effects?.key || enemy.key,
 					name: enemy[`name_${language}`],

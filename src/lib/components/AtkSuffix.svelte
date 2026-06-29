@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { getDmgEleHighlight } from '$lib/functions/parseAtkType';
-	import translations from '$lib/translations.json';
 	export let attack, language: Language;
 	$: atk_type = attack.atk_type;
 	$: hits = attack.hits;
@@ -15,8 +15,8 @@
 		{`x ${hits}`}
 	{/if}
 	{#if atk_type[0] !== 'raw' && atk_type[0] !== 'no_attack'}
-		{'('}{translations[language][atk_type[0]]}{separator}
-		<span class={getDmgEleHighlight(atk_type[1])}>{translations[language][atk_type[1]]}</span>
+		{'('}{getTranslations(language)[atk_type[0]]}{separator}
+		<span class={getDmgEleHighlight(atk_type[1])}>{getTranslations(language)[atk_type[1]]}</span>
 		{')'}
 	{/if}
 {/if}

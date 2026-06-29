@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
 	import { GameConfig } from './objects/GameConfig';
 	import { page } from '$app/stores';
 	import { Game } from './objects/Game';
 	import { setLocalStorage } from '$lib/functions/lib';
-	import translations from '$lib/translations.json';
 	import { onDestroy, onMount } from 'svelte';
 
 	export let game: Game, mapConfig: MapConfig;
@@ -158,12 +158,12 @@
 		class="bg-gray-500 rounded-sm px-2 py-1.5 w-max active:bg-gray-600"
 		on:click={() => game && game.onWindowResize()}
 	>
-		{translations[language].adjust_screen}
+		{getTranslations(language).adjust_screen}
 	</button>
 </div>
 
 <div class="flex items-center md:justify-center gap-x-2.5 ml-3 mb-1.5">
-	<label for="volume">{translations[language].zoom}</label>
+	<label for="volume">{getTranslations(language).zoom}</label>
 	<input
 		bind:value={zoomSize}
 		type="range"
@@ -190,7 +190,8 @@
 					game.softReset(false);
 				}}
 			>
-				{translations[language].mapstate_prefix}{display}{translations[language].mapstate_suffix}
+				{getTranslations(language).mapstate_prefix}{display}{getTranslations(language)
+					.mapstate_suffix}
 			</button>
 		{/each}
 	</div>

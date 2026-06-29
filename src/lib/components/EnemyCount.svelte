@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { MapConfig, Language, RogueTopic } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import TogglePanel from './TogglePanel.svelte';
 	import { BONUS_ENEMY_KEYS } from '$lib/functions/lib';
 
@@ -41,7 +41,7 @@
 				if (['enemy_2065_skzjs'].includes(key)) return false;
 				break;
 			case 'rogue_yan':
-				if (['enemy_2119_dyshhj_2','enemy_2121_dyspl2'].includes(key)) return false;
+				if (['enemy_2119_dyshhj_2', 'enemy_2121_dyspl2'].includes(key)) return false;
 				if (levelId.includes('_sv-') || levelId.includes('_fs-') || levelId.includes('_t-'))
 					return true;
 				break;
@@ -81,7 +81,7 @@
 </script>
 
 <TogglePanel
-	title={translations[language].enemy_count + ` (${getTotalCountStr(mapConfig, eliteMode)})`}
+	title={getTranslations(language).enemy_count + ` (${getTotalCountStr(mapConfig, eliteMode)})`}
 	isOpen={true}
 	size="subheading"
 	className="my-4"

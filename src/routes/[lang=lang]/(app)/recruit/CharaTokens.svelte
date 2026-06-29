@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import translations from '$lib/translations.json';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import RangeParser from '$lib/components/RangeParser.svelte';
 	import {
@@ -29,7 +29,7 @@
 </script>
 
 <p class="mt-6">
-	{translations[language].token}
+	{getTranslations(language).token}
 </p>
 {#if tokenToSkill1to1Linked || tokenToSkillManyLinked}
 	<div class="flex justify-evenly mt-6">
@@ -64,11 +64,11 @@
 				<div
 					class="flex items-center justify-center rounded-[5px] bg-[#555] mt-1.5 px-2 h-[24px] w-max min-w-[60px]"
 				>
-					{translations[language][
+					{getTranslations(language)[
 						`position_${getTokenPosition(token, chara.uniequip[moduleIndex])}`
 					]}
 				</div>
-				<p class="text-[#999] mt-1.5">*{translations[language].token_stat_remark}</p>
+				<p class="text-[#999] mt-1.5">*{getTranslations(language).token_stat_remark}</p>
 			</div>
 		</div>
 		<div class="grid grid-cols-[130px_1fr] sm:grid-cols-[1fr_2fr] gap-2 mt-4">
@@ -76,7 +76,7 @@
 				<div class="flex items-center h-full">
 					<RangeParser rangeId={token.stats.rangeId} />
 				</div>
-				<p class="mt-1">{translations[language].attack_range}</p>
+				<p class="mt-1">{getTranslations(language).attack_range}</p>
 			</div>
 
 			<div class="grid grid-cols-2 gap-x-2 gap-y-1.5 h-min">
@@ -104,13 +104,13 @@
 			</div>
 		</div>
 		<div class="px-1.5 mt-3">
-			<p class="text-[#999] text-lg">{translations[language].trait}</p>
+			<p class="text-[#999] text-lg">{getTranslations(language).trait}</p>
 			<TextParser
 				line={getTokenModuleTrait(token.desc, chara.uniequip[moduleIndex], moduleStage)}
 				className="mt-1.5"
 			/>
 			{#if token.talents && token.talents.length > 0}
-				<p class="mt-6 text-[#999] text-lg">{translations[language].talent}</p>
+				<p class="mt-6 text-[#999] text-lg">{getTranslations(language).talent}</p>
 				{#each token.talents as talent, idx}
 					{@const moduleTalentDesc = getTokenModuleTalent(
 						idx,
@@ -125,7 +125,7 @@
 			{/if}
 			{#if token.skills && token.skills.length > 0}
 				<p class="mt-6 text-[#999] text-lg">
-					{translations[language].skill}
+					{getTranslations(language).skill}
 				</p>
 				{#each token.skills as skill, skillIdx}
 					<div hidden={tokenToSkillManyLinked && tokenSkillIndex !== skillIdx}>
@@ -161,11 +161,11 @@
 								<div class="flex mt-2">
 									{#if skill.skillType !== 'PASSIVE' && skill.spType !== 8}
 										<p class="pill {skill?.spType}">
-											{translations[language][skill?.spType]}
+											{getTranslations(language)[skill?.spType]}
 										</p>
 									{/if}
 									<p class="pill bg-[#737373]">
-										{translations[language][skill.skillType]}
+										{getTranslations(language)[skill.skillType]}
 									</p>
 								</div>
 							</div>

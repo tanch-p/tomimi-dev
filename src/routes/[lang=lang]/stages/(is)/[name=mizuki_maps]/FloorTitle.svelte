@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
 	import { selectedFloor, activeFloorEffects } from './stores';
-	import translations from '$lib/translations.json';
 	import floor1 from '$lib/images/is/mizuki/floor1.webp';
 	import floor2 from '$lib/images/is/mizuki/floor2.webp';
 	import floor3 from '$lib/images/is/mizuki/floor3.webp';
@@ -26,16 +26,16 @@
 	$: updateFloor(stageFloors);
 </script>
 
-<div
-	use:clickOutside
-	on:outclick={() => (optionsOpen = false)}
-	class="mx-auto select-none"
->
-	<button id="floor-options" class="px-3 py-0.5 md:hover:bg-neutral-500" on:click={() => (optionsOpen = !optionsOpen)}>
+<div use:clickOutside on:outclick={() => (optionsOpen = false)} class="mx-auto select-none">
+	<button
+		id="floor-options"
+		class="px-3 py-0.5 md:hover:bg-neutral-500"
+		on:click={() => (optionsOpen = !optionsOpen)}
+	>
 		<div class="flex justify-center items-center gap-x-1">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />
 			<img src={floorIcons[$selectedFloor - 1]} alt={`floor-${selectedFloor}`} />
-			<p>{translations[language]['mizuki_levels'][$selectedFloor - 1]}</p>
+			<p>{getTranslations(language)['mizuki_levels'][$selectedFloor - 1]}</p>
 			<Icon name="left-chevron" className="w-5 h-5 ml-2.5 rotate-180" />
 		</div>
 		{#if $activeFloorEffects.length > 0}

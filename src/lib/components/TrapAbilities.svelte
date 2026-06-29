@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig, Trap } from '$lib/types';
 	import { page } from '$app/stores';
-	import translations from '$lib/translations.json';
 	import TextParser from './TextParser.svelte';
 	import TrapSkill from './TrapSkill.svelte';
 	import Remark from './Remark.svelte';
@@ -20,7 +20,7 @@
 {#if trap.desc}
 	{#if mode === 'handbook'}
 		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-			{translations[language].trait}<span class="font-normal" />
+			{getTranslations(language).trait}<span class="font-normal" />
 		</p>
 	{/if}
 	<ul class="list-disc pl-4 {mode === 'handbook' ? 'py-1' : ''}">
@@ -32,13 +32,13 @@
 {#if trap.special.length > 0}
 	{#if mode === 'handbook'}
 		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-			{translations[language].handbook_mechanics}<span class="font-normal" />
+			{getTranslations(language).handbook_mechanics}<span class="font-normal" />
 		</p>
 	{/if}
 	<ul class="list-disc pl-4 py-1">
 		<!-- {#if trap.stats.dmgRes}
 			<li class="py-1">
-				{translations[language].dmg_res_short} - {trap.stats.dmgRes * 100}%
+				{getTranslations(language).dmg_res_short} - {trap.stats.dmgRes * 100}%
 			</li>
 		{/if} -->
 		{#each trap.special as item, i}
@@ -73,7 +73,7 @@
 {#if trap.talents?.length > 0}
 	{#if mode === 'handbook'}
 		<p class="px-3.5 py-0.5 font-bold bg-[#383838] text-[#a2a5a5]">
-			{translations[language].talent}
+			{getTranslations(language).talent}
 		</p>
 	{/if}
 	<ul class="py-1 h-max {mode === 'table' ? 'pl-4 list-disc' : ''}">
@@ -93,7 +93,7 @@
 							<div class="flex items-center h-full">
 								<RangeParser rangeId={talent.rangeId} size="small" />
 							</div>
-							<p class="mt-1 text-xs">{translations[language].effect_range}</p>
+							<p class="mt-1 text-xs">{getTranslations(language).effect_range}</p>
 						</div>
 					{/if}
 				</div>
@@ -107,11 +107,11 @@
 			? 'bg-[#4f4f4f]'
 			: 'bg-[#383838] text-[#a2a5a5]'}"
 	>
-		{translations[language].skill}
+		{getTranslations(language).skill}
 	</p>
 	<div class="pb-1.5 {mode === 'table' ? 'pl-4' : ''}">
 		{#each trap.skills as skill}
-			<TrapSkill {trap} {skill} {language} {mode} {mapConfig}/>
+			<TrapSkill {trap} {skill} {language} {mode} {mapConfig} />
 		{/each}
 	</div>
 {/if}

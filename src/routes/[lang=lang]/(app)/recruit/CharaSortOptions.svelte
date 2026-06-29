@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, sortOrder } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { getOptionTranslation, updateSortPriority } from '$lib/functions/charaHelpers';
 	import { sortOptions } from './stores';
 	import Icon from '$lib/components/Icon.svelte';
@@ -38,22 +38,22 @@
 </script>
 
 <div class="bg-near-white text-almost-black rounded-md p-3 md:p-4 mt-5">
-	<p class="border-b text-center pb-1 md:pb-2">{translations[language].sort}</p>
+	<p class="border-b text-center pb-1 md:pb-2">{getTranslations(language).sort}</p>
 	<div class="relative">
 		<button class="absolute right-2 flex" on:click={reset}>
 			<Icon name="trash" className="h-[18px] mt-[1px]" />
-			{translations[language].filter_reset}
+			{getTranslations(language).filter_reset}
 		</button>
 		<div class="grid grid-cols-[minmax(75px,auto)_50px_1fr] gap-2 md:gap-3 mt-2 md:mt-3">
-			<p>{translations[language].filter_option}</p>
-			<p class="text-center">{translations[language].sort_priority}</p>
+			<p>{getTranslations(language).filter_option}</p>
+			<p class="text-center">{getTranslations(language).sort_priority}</p>
 			<p />
 			{#each $sortOptions as { key, subKey, suffix, order, priority }}
 				<p class="py-[5px] capitalize">
 					{getOptionTranslation(
 						key,
 						language
-					)}{#if suffix}{#if language === 'en'}&nbsp;{/if}{translations[language][suffix]}{/if}
+					)}{#if suffix}{#if language === 'en'}&nbsp;{/if}{getTranslations(language)[suffix]}{/if}
 				</p>
 				<p class="py-[5px] text-center">{priority || ''}</p>
 				<div class="flex flex-wrap gap-2">
@@ -62,20 +62,20 @@
 						class:active={order === 1}
 						on:click={() => updateSortOptions(key, subKey, 1)}
 					>
-						{translations[language]['asc']}
+						{getTranslations(language)['asc']}
 					</button>
 					<button
 						class="filter-btn"
 						class:active={order === -1}
 						on:click={() => updateSortOptions(key, subKey, -1)}
 					>
-						{translations[language]['desc']}
+						{getTranslations(language)['desc']}
 					</button>
 				</div>
 			{/each}
 		</div>
 	</div>
 	<p class="mt-4 text-xs text-end">
-		※{translations[language].chara_filter_disclaimer}
+		※{getTranslations(language).chara_filter_disclaimer}
 	</p>
 </div>

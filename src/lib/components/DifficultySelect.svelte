@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import { spring } from 'svelte/motion';
-	import translations from '$lib/translations.json';
 	import { setLocalStorage } from '$lib/functions/lib.js';
 
 	export let language: Language,
@@ -62,8 +62,8 @@
 </script>
 
 <div class="px-2 sm:px-6 select-none mt-2.5">
-	<p class="text-subheading">{translations[language].difficulty}</p>
-	<slot/>
+	<p class="text-subheading">{getTranslations(language).difficulty}</p>
+	<slot />
 	{#if mode === 'normal'}
 		<div class="counter">
 			<button

@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import combat_icon from '$lib/images/is/combat_icon.webp';
 	import emergency_icon from '$lib/images/is/emergency_icon.webp';
 	import portal from '$lib/images/is/node_portal.webp';
@@ -22,7 +22,7 @@
 
 {#if !stagesToExclude.includes(mapConfig?.id)}
 	<div class="my-4">
-		<TogglePanel title={translations[language].stage_rewards} size="subheading">
+		<TogglePanel title={getTranslations(language).stage_rewards} size="subheading">
 			<div class="px-2 sm:px-0 overflow-auto">
 				{#if isCombatStage}
 					<table class="border-collapse">
@@ -108,45 +108,45 @@
 						<tbody>
 							<tr>
 								<td />
-								<td> {translations[language].exp}</td>
+								<td> {getTranslations(language).exp}</td>
 								<td colspan="2">{drops[rogueTopic].combat.exp[$selectedFloor - 1]}</td>
 								<td colspan="2">{drops[rogueTopic].elite.exp[$selectedFloor - 1]}</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={gold} width="35" alt={translations[language].rogue_gold} />
+									<img src={gold} width="35" alt={getTranslations(language).rogue_gold} />
 								</td>
-								<td>{translations[language].rogue_gold}</td>
+								<td>{getTranslations(language).rogue_gold}</td>
 								<td colspan="2">{drops[rogueTopic].combat.gold[$selectedFloor - 1]}</td>
 								<td colspan="2">{drops[rogueTopic].elite.gold[$selectedFloor - 1]}</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={life} width="35" alt={translations[language].drop_lifepoint} />
+									<img src={life} width="35" alt={getTranslations(language).drop_lifepoint} />
 								</td>
-								<td>{translations[language].drop_lifepoint}</td>
+								<td>{getTranslations(language).drop_lifepoint}</td>
 								<td colspan="4">5%</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={relic} width="35" alt={translations[language].relic_extra} />
+									<img src={relic} width="35" alt={getTranslations(language).relic_extra} />
 								</td>
-								<td>{translations[language].relic_extra}</td>
+								<td>{getTranslations(language).relic_extra}</td>
 								<td colspan="4">5%</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={totem} width="35" alt={translations[language].totem} />
+									<img src={totem} width="35" alt={getTranslations(language).totem} />
 								</td>
-								<td>{translations[language].totem}</td>
+								<td>{getTranslations(language).totem}</td>
 								<td colspan="2">40%</td>
 								<td colspan="2">80%</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={vision} width="40" alt={translations[language].vision} />
+									<img src={vision} width="40" alt={getTranslations(language).vision} />
 								</td>
-								<td> {translations[language].vision}*</td>
+								<td> {getTranslations(language).vision}*</td>
 								<td>x 1 - 11.97%</td>
 								<td>
 									<p>x 1 - 79.17%</p>
@@ -160,7 +160,7 @@
 							</tr>
 							<tr>
 								<td class="text-start noborder" colspan="5">
-									* - {translations[language].data_estimate}
+									* - {getTranslations(language).data_estimate}
 								</td>
 							</tr>
 						</tbody>
@@ -208,58 +208,58 @@
 						<tbody>
 							<tr>
 								<td />
-								<td> {translations[language].exp}</td>
+								<td> {getTranslations(language).exp}</td>
 								<td colspan="2">{drops[rogueTopic][mapConfig?.id].exp}</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={gold} width="35" alt={translations[language].rogue_gold} />
+									<img src={gold} width="35" alt={getTranslations(language).rogue_gold} />
 								</td>
-								<td>{translations[language].rogue_gold}</td>
+								<td>{getTranslations(language).rogue_gold}</td>
 								<td colspan="2">{drops[rogueTopic][mapConfig?.id].gold}</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={life} width="35" alt={translations[language].drop_lifepoint} />
+									<img src={life} width="35" alt={getTranslations(language).drop_lifepoint} />
 								</td>
-								<td>{translations[language].drop_lifepoint}</td>
+								<td>{getTranslations(language).drop_lifepoint}</td>
 								<td colspan="2">5%</td>
 							</tr>
 							{#if mapConfig?.id.includes('_ev_')}
 								<tr>
 									<td>
-										<img src={relic} width="35" alt={translations[language].relic_extra} />
+										<img src={relic} width="35" alt={getTranslations(language).relic_extra} />
 									</td>
-									<td>{translations[language].relic_extra}</td>
+									<td>{getTranslations(language).relic_extra}</td>
 									<td colspan="2">100%</td>
 								</tr>
 							{/if}
 							<tr>
 								<td>
-									<img src={totem} width="35" alt={translations[language].totem} />
+									<img src={totem} width="35" alt={getTranslations(language).totem} />
 								</td>
-								<td>{translations[language].totem}</td>
+								<td>{getTranslations(language).totem}</td>
 								<td colspan="2">40%</td>
 							</tr>
 							<tr>
 								<td>
-									<img src={vision} width="40" alt={translations[language].vision} />
+									<img src={vision} width="40" alt={getTranslations(language).vision} />
 								</td>
-								<td> {translations[language].vision}*</td>
+								<td> {getTranslations(language).vision}*</td>
 								<td>x 1 - 4.55%</td>
 								<td> ? </td>
 							</tr>
 							<tr>
 								<td class="text-start noborder" colspan="5">
-									* - {translations[language].data_estimate}
+									* - {getTranslations(language).data_estimate}
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				{:else}
 					{@const index = mapConfig?.floors.includes(3) ? 0 : mapConfig?.floors.includes(5) ? 1 : 2}
-					<p>{translations[language].exp} - {drops[rogueTopic].boss.exp[index]}</p>
-					<p>{translations[language].rogue_gold} - {drops[rogueTopic].boss.gold[index]}</p>
+					<p>{getTranslations(language).exp} - {drops[rogueTopic].boss.exp[index]}</p>
+					<p>{getTranslations(language).rogue_gold} - {drops[rogueTopic].boss.gold[index]}</p>
 				{/if}
 			</div>
 		</TogglePanel>

@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language, Skill, StatusImmune, Trap } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { getFormTitle } from '$lib/functions/lib';
 	export let entity: Enemy | Trap,
@@ -15,16 +15,15 @@
 	<p class="whitespace-nowrap {mode === 'table' ? 'mr-1.5' : 'mr-2.5'}">{skill.suffix[language]}</p>
 	{#if skillType === 'COOLDOWN'}
 		<div class={mode === 'table' ? '' : 'pill default bg-[#555]'}>
-			{#if mode === 'table'}({/if}{translations[language].initCooldown}{#if language === 'en'}<sub
-					>init</sub
-				>&nbsp;{/if}<span
+			{#if mode === 'table'}({/if}{getTranslations(language)
+				.initCooldown}{#if language === 'en'}<sub>init</sub>&nbsp;{/if}<span
 				class={skill?.overwrittenKeys?.includes('initCooldown') ? 'text-red-400 font-semibold' : ''}
 				>{skill.initCooldown}</span
-			>{translations[language].seconds_abbr} / {translations[language]
+			>{getTranslations(language).seconds_abbr} / {getTranslations(language)
 				.cooldown}{#if language === 'en'}<sub>n</sub>&nbsp;{/if}<span
 				class={skill.overwrittenKeys.includes('cooldown') ? 'text-red-400 font-semibold' : ''}
 				>{skill.cooldown}</span
-			>{translations[language].seconds_abbr}{#if mode === 'table'}){/if}
+			>{getTranslations(language).seconds_abbr}{#if mode === 'table'}){/if}
 		</div>
 	{:else}
 		<div class="flex items-center gap-x-1 rounded-[5px] text-sm bg-[#434343]">
@@ -51,16 +50,16 @@
 		</div>
 	{/if}
 	<p class="pill default {skillType} ml-0.5">
-		{translations[language][skillType]}
+		{getTranslations(language)[skillType]}
 	</p>
 	{#if skill.can_silence && !statusImmuneList.includes('silence')}
-		<span class="skilltag can_silence !ml-0">{translations[language].can_silence}</span>
+		<span class="skilltag can_silence !ml-0">{getTranslations(language).can_silence}</span>
 	{/if}
 </div>
 {#if entity.forms.length > 1 && skill.formIndexes}
 	<p class="text-xs text-gray-400">
 		&lt;{#each skill.formIndexes as idx, i}
-			{#if i > 0}{translations[language].comma}{/if}<span
+			{#if i > 0}{getTranslations(language).comma}{/if}<span
 				>{getFormTitle(entity?.forms?.[idx]?.title, idx, language)}</span
 			>{/each}&gt;
 	</p>

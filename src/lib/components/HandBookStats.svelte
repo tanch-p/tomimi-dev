@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import hpIcon from '$lib/images/is/icon_sort_hp.webp';
 	import atkIcon from '$lib/images/is/icon_sort_atk.webp';
 	import defIcon from '$lib/images/is/icon_sort_def.webp';
@@ -51,7 +51,7 @@
 							? 'text-xs leading-[20px]'
 							: ''}"
 					>
-						{translations[language].table_headers[statKey]}
+						{getTranslations(language).table_headers[statKey]}
 					</span>
 				</div>
 				<p data-id="{statKey}-value" class="text-near-white px-[18px]">
@@ -61,15 +61,15 @@
 		{/each}
 	</div>
 	<p class="text-[#858585] font-semibold mt-1.5 text-sm">
-		{translations[language].table_headers.range}:
+		{getTranslations(language).table_headers.range}:
 		<span data-id="range-value" class="text-near-white">
 			{enemy.forms[formIndex].stats.range <= 0 ? '0' : enemy.forms[formIndex].stats.range}
 		</span>
 	</p>
 	{#if enemy.forms[formIndex].stats.dmgRes}
 		<div class="group relative text-[#858585] font-semibold mt-1.5 text-sm">
-			{translations[language].table_headers.e_hp}: &#9432;
-			<Tooltip text={translations[language].tooltip_ehp} position="top" />
+			{getTranslations(language).table_headers.e_hp}: &#9432;
+			<Tooltip text={getTranslations(language).tooltip_ehp} position="top" />
 			<span data-id="range-value" class="text-near-white">
 				{Math.round(enemy.forms[formIndex].stats.hp / (1 - enemy.forms[formIndex].stats.dmgRes))}
 			</span>

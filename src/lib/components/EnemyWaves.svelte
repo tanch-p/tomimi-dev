@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import TogglePanel from './TogglePanel.svelte';
 	import {
 		compileHiddenGroups,
@@ -39,7 +39,13 @@
 		bonusKey = '',
 		baseCount = 0;
 
-	$: compiledHiddenGroups = compileHiddenGroups(hiddenGroups, eliteMode, mapConfig, rogueTopic,relics);
+	$: compiledHiddenGroups = compileHiddenGroups(
+		hiddenGroups,
+		eliteMode,
+		mapConfig,
+		rogueTopic,
+		relics
+	);
 	$: baseCount = getBaseCount(mapConfig, eliteMode);
 	$: options = getOptions(mapConfig, rogueTopic, difficulty, language);
 	$: maxPermutations = eliteMode
@@ -86,9 +92,7 @@
 					break;
 				}
 			case 'rogue_yan':
-				if (
-					difficulty ===18
-				) {
+				if (difficulty === 18) {
 					hiddenGroups = ['extra_enemy'];
 					break;
 				}
@@ -131,7 +135,7 @@
 
 <TogglePanel
 	key={'stageSim'}
-	title={translations[language].enemy_routes + ' v0.3'}
+	title={getTranslations(language).enemy_routes + ' v0.3'}
 	size="subheading"
 	isOpen={defaultOpenStageSim}
 >
@@ -139,7 +143,7 @@
 		class="grid grid-cols-[75px_1fr] md:grid-cols-[120px_1fr] divide-y divide-neutral-700 border-y border-neutral-700 text-sm md:text-base"
 	>
 		{#if mapConfig?.branches}
-			<p class="title {language}">{translations[language].sim_mode}</p>
+			<p class="title {language}">{getTranslations(language).sim_mode}</p>
 			<div class="grid grid-cols-2">
 				{#each ['wave_normal', 'wave_summons'] as key}
 					<button
@@ -149,18 +153,18 @@
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 						on:click={() => GameConfig.setValue('mode', key)}
 					>
-						{translations[language][key]}
+						{getTranslations(language)[key]}
 					</button>
 				{/each}
 			</div>
 		{/if}
 		{#if simMode === 'wave_normal'}
 			{#if mapConfig?.elite_mods}
-				<p class="title {language}">{translations[language].operation_type}</p>
+				<p class="title {language}">{getTranslations(language).operation_type}</p>
 				<slot name="eliteMods" />
 			{/if}
 			{#if options?.length > 0}
-				<p class="title {language}">{translations[language].hidden_options}</p>
+				<p class="title {language}">{getTranslations(language).hidden_options}</p>
 				<div class="grid grid-cols-3 md:grid-cols-5">
 					{#each options as { key, src, name }}
 						{@const selected = hiddenGroups.includes(key)}
@@ -187,7 +191,7 @@
 					{/each}
 				</div>
 			{/if}
-			<p class="title {language}">{translations[language].permutation_mode}</p>
+			<p class="title {language}">{getTranslations(language).permutation_mode}</p>
 			<div class="grid grid-cols-2">
 				{#each ['predefined', 'user-select'] as key}
 					<button
@@ -197,7 +201,7 @@
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 						on:click={() => (mode = key)}
 					>
-						{translations[language][key]}
+						{getTranslations(language)[key]}
 					</button>
 				{/each}
 			</div>
@@ -205,7 +209,7 @@
 				{#if maxPermutations > 32 || permutations.length <= 0}
 					<p class="title {language}" />
 					<div class="flex justify-center items-center">
-						{translations[language].max_perm_msg.replace('{perm}', `(${maxPermutations})`)}
+						{getTranslations(language).max_perm_msg.replace('{perm}', `(${maxPermutations})`)}
 					</div>
 				{:else}
 					{#if mapConfig?.bonus?.type}
@@ -230,7 +234,7 @@
 							{/each}
 						</div>
 					{/if}
-					<p class="title {language}">{translations[language].enemy_count}</p>
+					<p class="title {language}">{getTranslations(language).enemy_count}</p>
 					<DraggableContainer className="grid grid-flow-col auto-cols-[minmax(100px,1fr)]">
 						{#each enemyCounts as count, i}
 							<button
@@ -246,8 +250,8 @@
 					</DraggableContainer>
 					{#if permutationsToShow.length > 0}
 						<p class="title {language}">
-							{translations[language].table_headers.enemy}{translations[language]
-								.spacing}{translations[language].permutation}
+							{getTranslations(language).table_headers.enemy}{getTranslations(language)
+								.spacing}{getTranslations(language).permutation}
 						</p>
 						<DraggableContainer className="grid grid-flow-col auto-cols-[minmax(120px,1fr)]">
 							{#each permutationsToShow as _, i}
@@ -263,11 +267,12 @@
 							{/each}
 						</DraggableContainer>
 						<p class="title {language}">
-							{translations[language].trap}{translations[language].spacing}{translations[language]
-								.permutation}
+							{getTranslations(language).trap}{getTranslations(language).spacing}{getTranslations(
+								language
+							).permutation}
 						</p>
 						<div class="flex justify-center items-center font-semibold">
-							{translations[language].random}
+							{getTranslations(language).random}
 						</div>
 					{/if}
 				{/if}

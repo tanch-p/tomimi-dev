@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { filtersStore, relicFiltersStore, rogueTopic, releaseStatusStore } from './stores';
-	import translations from '$lib/translations.json';
 	import filterOptions from '$lib/data/chara/filter_options.json';
 	import CharaFilterToggle from './CharaFilterToggle.svelte';
 	import relics from '$lib/data/chara/relics_chara.json';
@@ -102,10 +102,10 @@
 <div class="grid gap-5 text-almost-black mt-5">
 	<div class="bg-near-white rounded-md p-3 md:p-4">
 		<h2 class="border-b text-center pb-1 md:pb-2">
-			{translations[language].filter}
+			{getTranslations(language).filter}
 		</h2>
 		<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-3">
-			<p class="md:py-[5px] font-medium">{translations[language].chara_filter.release_status}</p>
+			<p class="md:py-[5px] font-medium">{getTranslations(language).chara_filter.release_status}</p>
 			<div class="flex flex-wrap gap-2">
 				{#each ['global', 'cn'] as value}
 					<button
@@ -113,11 +113,11 @@
 						class:active={$releaseStatusStore === value}
 						on:click={() => updateReleaseStatus(value)}
 					>
-						{translations[language].chara_filter[value]}
+						{getTranslations(language).chara_filter[value]}
 					</button>
 				{/each}
 			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language]['rarity']}</p>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{getTranslations(language)['rarity']}</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['rarity'] as value}
 					<button
@@ -125,11 +125,11 @@
 						class:active={isSelected('rarity', value)}
 						on:click={() => updateFilters('rarity', value, filtersStore)}
 					>
-						{translations[language][value]}
+						{getTranslations(language)[value]}
 					</button>
 				{/each}
 			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language]['profession']}</p>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{getTranslations(language)['profession']}</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['profession'] as value}
 					<button
@@ -137,12 +137,12 @@
 						class:active={isSelected('profession', value)}
 						on:click={() => updateFilters('profession', value, filtersStore)}
 					>
-						{translations[language][value]}
+						{getTranslations(language)[value]}
 					</button>
 				{/each}
 			</div>
 			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">
-				{translations[language]['deployable_tile']}
+				{getTranslations(language)['deployable_tile']}
 			</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['deployable_tile'] as value}
@@ -151,11 +151,11 @@
 						class:active={isSelected('deployable_tile', value)}
 						on:click={() => updateFilters('deployable_tile', value, filtersStore)}
 					>
-						{translations[language][getDisplayKey(value)]}
+						{getTranslations(language)[getDisplayKey(value)]}
 					</button>
 				{/each}
 			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language].damage_type}</p>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{getTranslations(language).damage_type}</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['damage_type'] as value}
 					<button
@@ -163,11 +163,11 @@
 						class:active={isSelected('tags', value)}
 						on:click={() => updateFilters('tags', value, filtersStore)}
 					>
-						{translations[language][value]}
+						{getTranslations(language)[value]}
 					</button>
 				{/each}
 			</div>
-			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{translations[language].ele_inj}</p>
+			<p class="md:py-[5px] mt-2 md:mt-0 font-medium">{getTranslations(language).ele_inj}</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['ele_inj'] as value}
 					<button
@@ -175,12 +175,12 @@
 						class:active={isSelected('tags', value)}
 						on:click={() => updateFilters('tags', value, filtersStore)}
 					>
-						{translations[language][value]}
+						{getTranslations(language)[value]}
 					</button>
 				{/each}
 			</div>
 			<p class="md:py-[5px] mt-2 md:mt-0 capitalize font-medium">
-				{translations[language].table_headers.blockCnt}
+				{getTranslations(language).table_headers.blockCnt}
 			</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['blockCnt'] as value}
@@ -194,7 +194,7 @@
 				{/each}
 			</div>
 			<p class="md:py-[5px] mt-2 md:mt-0 capitalize font-medium">
-				{translations[language].others}
+				{getTranslations(language).others}
 			</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['others'] as value}
@@ -203,12 +203,12 @@
 						class:active={isSelected(getCategory(value), value)}
 						on:click={() => updateFilters(getCategory(value), value, filtersStore)}
 					>
-						{translations[language][value]}
+						{getTranslations(language)[value]}
 					</button>
 				{/each}
 			</div>
 			<p class="md:py-[5px] mt-2 md:mt-0 capitalize font-medium">
-				{translations[language].spType}
+				{getTranslations(language).spType}
 			</p>
 			<div class="flex flex-wrap gap-2">
 				{#each filterOptions['spType'] as value}
@@ -217,13 +217,13 @@
 						class:active={isSelected('spType', value)}
 						on:click={() => updateFilters('spType', value, filtersStore)}
 					>
-						{translations[language][value]}
+						{getTranslations(language)[value]}
 					</button>
 				{/each}
 			</div>
 		</div>
 		<CharaFilterToggle
-			title={translations[language].subProfessionId}
+			title={getTranslations(language).subProfessionId}
 			className="mt-2"
 			titleClassName="border-b"
 		>
@@ -231,7 +231,7 @@
 				{#each Object.keys(filterOptions.subProfessionId) as subKey}
 					{@const subOptions = filterOptions.subProfessionId[subKey]}
 					<p class="md:py-[5px] mt-2 md:mt-0 first:mt-0 font-medium">
-						{translations[language][subKey]}
+						{getTranslations(language)[subKey]}
 					</p>
 					<div class="flex flex-wrap gap-2">
 						{#each subOptions as value}
@@ -241,7 +241,7 @@
 								class:active={isSelected('subProfessionId', value)}
 								on:click={() => updateFilters('subProfessionId', value, filtersStore)}
 							>
-								{translations[language][value]}
+								{getTranslations(language)[value]}
 							</button>
 						{/each}
 					</div>
@@ -249,12 +249,12 @@
 			</div>
 		</CharaFilterToggle>
 		<CharaFilterToggle
-			title={translations[language].group}
+			title={getTranslations(language).group}
 			className="mt-1.5"
 			titleClassName="border-b"
 		>
 			<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-2 md:pt-3">
-				<p class="hidden sm:block md:py-[5px] font-medium">{translations[language]['group']}</p>
+				<p class="hidden sm:block md:py-[5px] font-medium">{getTranslations(language)['group']}</p>
 				<div class="flex flex-wrap gap-2">
 					{#each filterOptions['group'] as value}
 						<button
@@ -262,7 +262,7 @@
 							class:active={isSelected('group', value)}
 							on:click={() => updateFilters('group', value, filtersStore)}
 						>
-							{translations[language][value]}
+							{getTranslations(language)[value]}
 						</button>
 					{/each}
 				</div>
@@ -274,14 +274,14 @@
 		<div class="bg-near-white rounded-md overflow-hidden">
 			<CharaFilterToggle
 				id={title}
-				title={translations[language][title]}
+				title={getTranslations(language)[title]}
 				isOpen={false}
 				innerClassName="border-t p-3 md:p-4"
 			>
 				<div class="relative z-[1] flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3">
 					{#each categories as { catKey, optionKey }}
 						<p class="md:py-[5px] mt-2 md:mt-0 first:mt-0 {textColor} sm:text-inherit font-medium">
-							{translations[language][catKey]}
+							{getTranslations(language)[catKey]}
 						</p>
 						<div class="flex flex-wrap gap-2">
 							{#each filterOptions[optionKey] as value}
@@ -292,9 +292,9 @@
 									class:active={isSelected(getCategory(value), value)}
 									on:click={() => updateFilters(getCategory(value), value, filtersStore)}
 								>
-									{translations[language].table_headers[key] ??
-										translations[language][key] ??
-										translations[language].types[key]}
+									{getTranslations(language).table_headers[key] ??
+										getTranslations(language)[key] ??
+										getTranslations(language).types[key]}
 								</button>
 							{/each}
 						</div>
@@ -314,9 +314,9 @@
 									class:active={isSelected(getCategory(value), value)}
 									on:click={() => updateFilters(getCategory(value), value, filtersStore)}
 								>
-									{translations[language].table_headers[key] ??
-										translations[language][key] ??
-										translations[language].types[key]}
+									{getTranslations(language).table_headers[key] ??
+										getTranslations(language)[key] ??
+										getTranslations(language).types[key]}
 								</button>
 							{/each}
 						</div>
@@ -327,7 +327,7 @@
 	{/each}
 	<div class="bg-near-white rounded-md overflow-hidden">
 		<CharaFilterToggle
-			title={translations[language].isw}
+			title={getTranslations(language).isw}
 			innerClassName="border-t px-3 md:px-4 pt-2 pb-3 md:pb-4"
 		>
 			<div
@@ -355,12 +355,12 @@
 						class="filter-btn"
 						on:click={() => rogueTopic.set(topic)}
 					>
-						{translations[language][topic]}
+						{getTranslations(language)[topic]}
 					</button>
 				{/each}
 			</div>
 			<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-3 w-full pt-2 md:pt-5">
-				<p class="md:py-[5px]">{translations[language]['rogue_relic']}</p>
+				<p class="md:py-[5px]">{getTranslations(language)['rogue_relic']}</p>
 				<div
 					class="gap-3 {relicDisplayMode === 'grid'
 						? language === 'en'

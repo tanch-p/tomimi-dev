@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language, StatMods } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import StatusImmune from './StatusImmune.svelte';
 	import HandbookAbilities from './HandbookAbilities.svelte';
 	import HandbookAtkType from './HandbookAtkType.svelte';
@@ -15,7 +15,13 @@
 	import OtherBuffs from './OtherBuffs.svelte';
 	import DraggableContainer from './DraggableContainer.svelte';
 
-	export let enemy: Enemy, language: Language, statMods:StatMods, specialMods, otherBuffsList, mode, mapConfig;
+	export let enemy: Enemy,
+		language: Language,
+		statMods: StatMods,
+		specialMods,
+		otherBuffsList,
+		mode,
+		mapConfig;
 
 	const enemyLevels = ['NORMAL', 'ELITE', 'BOSS'];
 
@@ -45,7 +51,9 @@
 		{/if}
 		<div class="flex gap-x-2 pt-4">
 			{#each enemy.type.filter((ele) => !enemyLevels.includes(ele)) as type}
-				<p class="whitespace-nowrap text-[#83a39f] text-sm">{translations[language].types[type]}</p>
+				<p class="whitespace-nowrap text-[#83a39f] text-sm">
+					{getTranslations(language).types[type]}
+				</p>
 			{/each}
 		</div>
 		<div class="flex items-center mt-0.5">
@@ -91,7 +99,7 @@
 						<img src={weightIcon} width="18px" height="18px" alt="" />
 					</div>
 					<span class={`text-[#858585] font-bold ${language === 'en' ? 'text-sm' : ''}`}>
-						{translations[language].table_headers.weight}
+						{getTranslations(language).table_headers.weight}
 					</span>
 				</div>
 				<span class="text-[#a2a5a5] text-lg font-bold ml-auto"
@@ -123,6 +131,13 @@
 	<div class="flex flex-col mt-3">
 		<StatusImmune {statusImmuneList} {language} mode="handbook" />
 		<OtherBuffs {otherBuffsList} {language} entity={enemy} />
-		<HandbookAbilities {enemy} {language} {specialMods} {statusImmuneList} {formIndex} {mapConfig}/>
+		<HandbookAbilities
+			{enemy}
+			{language}
+			{specialMods}
+			{statusImmuneList}
+			{formIndex}
+			{mapConfig}
+		/>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, Trap } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
-	import translations from '$lib/translations.json';
 	import TrapHandbookDetails from './TrapHandbookDetails.svelte';
 	import MediaQuery from './MediaQuery.svelte';
 	import TrapTable from './TrapTable.svelte';
@@ -11,7 +11,7 @@
 
 {#if traps?.length > 0}
 	<TogglePanel
-		title={translations[language].trap}
+		title={getTranslations(language).trap}
 		titleIcon={'/images/skill_icons/skill_icon_sktok_emp.webp'}
 		isOpen={false}
 		size="subheading"

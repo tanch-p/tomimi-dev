@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { RogueTopic } from '$lib/types';
 	import type { PageData } from './$types';
 	import {
@@ -18,7 +19,6 @@
 	import NavTemp from '../../../(app)/sarkaz/NavTemp.svelte';
 	import StageInfo from '$lib/components/StageInfo.svelte';
 	import FooterBar from '$lib/components/FooterBar.svelte';
-	import translations from '$lib/translations.json';
 	import FloorTitle from './FloorTitle.svelte';
 	import StageHeader from '$lib/components/StageHeader.svelte';
 	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
@@ -59,7 +59,7 @@
 	}
 </script>
 
-<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
+<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
 	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
@@ -86,7 +86,7 @@
 						: 'brightness-[.6] hover:brightness-100'}"
 					on:click={() => difficultyMode.set('normal')}
 				>
-					{translations[language].normal_state}
+					{getTranslations(language).normal_state}
 				</button>
 				<button
 					class="flex items-center justify-center min-w-[70px] px-[10px] rounded-md bg-emerald-700 {$difficultyMode ===

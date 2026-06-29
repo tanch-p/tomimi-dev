@@ -2,9 +2,8 @@
 	import type { Language } from '$lib/types';
 	import { GameConfig } from './objects/GameConfig';
 	import { page } from '$app/stores';
-	import { wavePrefixSuffix } from '$lib/functions/languageHelpers';
+	import { wavePrefixSuffix, getTranslations } from '$lib/functions/languageHelpers';
 	import { onDestroy, onMount } from 'svelte';
-	import translations from '$lib/translations.json';
 	import { compileSpawnTimeActions, getImageForWaves } from '$lib/functions/waveHelpers';
 
 	export let waves, mapConfig, branchKey, branchIndex: number;
@@ -191,11 +190,11 @@
 						<div class="text-center mt-4 {language !== 'en' ? '-ml-2' : ''}">
 							{#if maxTimeWaitingForNextWave > 0}
 								<p>
-									{translations[language].max_wait_time}:
-									<br />{maxTimeWaitingForNextWave}{translations[language].seconds_abbr}<br />OR
+									{getTranslations(language).max_wait_time}:
+									<br />{maxTimeWaitingForNextWave}{getTranslations(language).seconds_abbr}<br />OR
 								</p>
 							{/if}
-							{translations[language].all_enemies_defeated}
+							{getTranslations(language).all_enemies_defeated}
 						</div>
 					{/if}
 				{/each}

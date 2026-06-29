@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import DraggableContainer from './DraggableContainer.svelte';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import aspdIcon from '$lib/images/is/aspd.webp';
@@ -39,7 +39,7 @@
 	$: statsToShow = enemy.modsList[formIndex]
 		.reduce((acc, curr) => {
 			for (const mod of curr.mods) {
-				if (['range', 'dmg_res','weight'].includes(mod?.key)) continue;
+				if (['range', 'dmg_res', 'weight'].includes(mod?.key)) continue;
 				let key = mod?.key;
 				if (key === 'atk_interval') {
 					key = 'aspd';
@@ -156,12 +156,12 @@
 					alt=""
 					class="shrink-0"
 				/>
-				{translations[language].table_headers[STATS_KEY_TABLE[key]]}
+				{getTranslations(language).table_headers[STATS_KEY_TABLE[key]]}
 			</button>
 		{/each}
 	</div>
 	<div class="ml-3 overflow-hidden">
-		<span class="text-gray-500 text-xs">※{translations[language].mods_check_disclaimer}</span>
+		<span class="text-gray-500 text-xs">※{getTranslations(language).mods_check_disclaimer}</span>
 		<div class="flex items-center justify-center gap-x-1.5 px-2 py-1">
 			<img
 				src={getImgSrc(STATS_KEY_TABLE[statKey])}
@@ -170,7 +170,7 @@
 				alt=""
 				class="shrink-0"
 			/>
-			{translations[language].table_headers[STATS_KEY_TABLE[[statKey]]]}
+			{getTranslations(language).table_headers[STATS_KEY_TABLE[[statKey]]]}
 			{enemy.forms[formIndex].stats[statKey]}
 		</div>
 		<DraggableContainer className="h-full ">
@@ -220,7 +220,7 @@
 					{#if runeMods?.length > 0}
 						<div class="flex relative">
 							<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
-								{translations[language].runes}
+								{getTranslations(language).runes}
 							</div>
 							{#each runeMods as { key, value, mode }}
 								{#if mode === 'add'}
@@ -229,7 +229,7 @@
 										{value}</span
 									>
 								{:else}
-									<span>&nbsp;× {1+value}</span>
+									<span>&nbsp;× {1 + value}</span>
 								{/if}
 							{/each}
 							<span>)</span>
@@ -290,11 +290,11 @@
 						<div class="flex relative">
 							({enemy.stats[statKey]}
 							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{translations[language].runes}
+								{getTranslations(language).runes}
 							</div>
 							{#each runeMods as { key, value, mode, groupKey }}
 								<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
-									{translations[language][groupKey]}
+									{getTranslations(language)[groupKey]}
 								</div>
 								{#if mode === 'add'}
 									<span
@@ -315,7 +315,7 @@
 					{#if otherMods?.initialAdd?.length > 0}
 						<div class="relative inline-flex">
 							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{translations[language].initial_add}
+								{getTranslations(language).initial_add}
 							</div>
 							{#each otherMods?.initialAdd as { key, value }}
 								<div class="relative">
@@ -330,7 +330,7 @@
 					{#if otherMods?.initialMul?.length > 0}
 						<div class="relative inline-flex">
 							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{translations[language].initial_mul}
+								{getTranslations(language).initial_mul}
 							</div>
 							&nbsp;× (1
 							{#each otherMods?.initialMul as { key, value }}
@@ -345,7 +345,7 @@
 					{#if otherMods?.finalAdd?.length > 0}
 						<div class="relative inline-flex">
 							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{translations[language].final_add}
+								{getTranslations(language).final_add}
 							</div>
 							{#each otherMods?.finalAdd as { key, value }}
 								<div class="relative">
@@ -360,7 +360,7 @@
 					{#if otherMods?.finalMul?.length > 0}
 						<div class="relative inline-flex">
 							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{translations[language].final_mul}
+								{getTranslations(language).final_mul}
 							</div>
 							{#each otherMods?.finalMul as { key, value }}
 								<div class="relative">

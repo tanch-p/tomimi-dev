@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { page } from '$app/stores';
-	import translations from '$lib/translations.json';
 	export let trap: Trap;
 
 	let language: Language;
@@ -23,7 +23,7 @@
 							? 'text-xs'
 							: ''}"
 					>
-						{translations[language].table_headers[statKey]}
+						{getTranslations(language).table_headers[statKey]}
 					</span>
 					<p data-id="{statKey}-value" class="text-near-white">
 						{trap.stats[statKey] ?? '0'}
@@ -34,7 +34,7 @@
 	</div>
 	{#if trap.tauntLevel !== 0}
 		<p class="text-[#858585] font-semibold mt-1.5 text-sm">
-			{translations[language].table_headers.tauntLevel}:
+			{getTranslations(language).table_headers.tauntLevel}:
 			<span class="text-near-white">{trap.tauntLevel}</span>
 		</p>
 	{/if}

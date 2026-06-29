@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import { clickOutside } from '$lib/functions/clickOutside';
 	import type { Language } from '$lib/types';
 	import { selectedChara, moduleIndex } from './stores';
-	import translations from '$lib/translations.json';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import CharaSkill from './CharaSkill.svelte';
 	import {
@@ -74,7 +74,7 @@
 			</div>
 			<div class="relative">
 				<p class="absolute -translate-y-full right-2 text-xs text-[#b3b3b3]">
-					※{translations[language].chara_stat_disclaimer}
+					※{getTranslations(language).chara_stat_disclaimer}
 				</p>
 				<div class="grid grid-cols-[70px_1fr] gap-x-2 items-center px-1 mt-3">
 					<div class="flex flex-col items-center justify-evenly h-full">
@@ -114,7 +114,7 @@
 								<div class="grid grid-cols-[16px_1fr] items-center gap-x-1">
 									<img src={charaAssets[statKey]} width="16px" height="16px" alt="" />
 									<span class="text-[#b3b3b3] font-semibold">
-										{translations[language].table_headers[statKey]}
+										{getTranslations(language).table_headers[statKey]}
 									</span>
 								</div>
 								<p class="text-near-white pl-[20px] whitespace-nowrap">
@@ -143,18 +143,18 @@
 					<div class="flex items-center min-h-[50px] max-w-[90px]">
 						<RangeParser rangeId={getAttackRangeId($selectedChara, $moduleIndex, moduleStage)} />
 					</div>
-					<p class="mt-1">{translations[language].attack_range}</p>
+					<p class="mt-1">{getTranslations(language).attack_range}</p>
 				</div>
 				<div class="min-h-[130px]">
 					{#if Object.keys($selectedChara.favorData).length > 0}
 						<p class="mb-3">
-							{translations[language].favor}:
+							{getTranslations(language).favor}:
 							{#each Object.keys($selectedChara.favorData) as key, i}
 								{#if i !== 0}
 									,
 								{/if}
 								<span>
-									{translations[language].table_headers[convertStatKeys[key]]}+{$selectedChara
+									{getTranslations(language).table_headers[convertStatKeys[key]]}+{$selectedChara
 										.favorData[key]}
 								</span>
 							{/each}
@@ -169,7 +169,7 @@
 							/>
 						</div>
 						<p class="ml-3 text-xl">
-							{translations[language][$selectedChara.subProfessionId]}
+							{getTranslations(language)[$selectedChara.subProfessionId]}
 						</p>
 					</div>
 					<TextParser
@@ -182,9 +182,11 @@
 					/>
 					{#if hasModule}
 						<p class="mt-4">
-							{translations[language].module}
+							{getTranslations(language).module}
 							{#if hasModule && $selectedChara.uniequip.length > 0}
-								<span class="text-[#999]">※{translations[language].chara_module_stage_click}</span>
+								<span class="text-[#999]"
+									>※{getTranslations(language).chara_module_stage_click}</span
+								>
 							{/if}
 						</p>
 						<div class="mt-4 px-4">
@@ -284,7 +286,7 @@
 						$selectedChara.uniequip[$moduleIndex],
 						moduleStage
 					)}
-					<p>{translations[language].talent}</p>
+					<p>{getTranslations(language).talent}</p>
 					{#each $selectedChara.talents as talent, idx}
 						{@const moduleTalentDesc = getModuleTalentDesc(
 							idx,
@@ -305,9 +307,9 @@
 				{/if}
 				{#if $selectedChara.skills && $selectedChara.skills.length > 0}
 					<p class="mt-8">
-						{translations[language].skill}
+						{getTranslations(language).skill}
 						{#if $selectedChara.rarity !== 'TIER_3'}
-							<span class="text-[#999]">※{translations[language].chara_skill_rank_click}</span>
+							<span class="text-[#999]">※{getTranslations(language).chara_skill_rank_click}</span>
 						{/if}
 					</p>
 					{#each $selectedChara.skills as skill}

@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import DLDGPN from '$lib/images/is/DLDGPN.webp';
 	import enemyCount from '$lib/images/is/enemy_count.webp';
 	import combat_icon from '$lib/images/is/combat_icon.webp';
 	import emergency_icon from '$lib/images/is/emergency_icon.webp';
-	import translations from '$lib/translations.json';
 
 	export let spEnemyInfo, language: Language;
 </script>

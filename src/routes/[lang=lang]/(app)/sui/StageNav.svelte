@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import StageNavButton from './StageNavButton.svelte';
 	import combat_ops from '$lib/images/is/sui/node_battle.webp';
 	import boss from '$lib/images/is/sui/boss_focus.webp';
 	import encounter from '$lib/images/is/sui/node_inv.webp';
-	import translations from '$lib/translations.json';
 	import duelIcon from '$lib/images/is/sui/node_duel.webp';
 	import shop from '$lib/images/is/sui/node_shop.webp';
 	import candleIcon from '$lib/images/is/sui/node_stashed_recruit.webp';
@@ -66,7 +66,7 @@
 	let floor5b = ['level_rogue5_b-4', 'level_rogue5_b-5'];
 	let floor5bAlt = ['level_rogue5_b-4-b', 'level_rogue5_b-5-b'];
 	let floor6b = ['level_rogue5_b-6', 'level_rogue5_b-7'];
-		let floor7b = ['level_rogue5_b-9-a', 'level_rogue5_b-10'];
+	let floor7b = ['level_rogue5_b-9-a', 'level_rogue5_b-10'];
 	let du = ['level_rogue5_t-1', 'level_rogue5_t-2', 'level_rogue5_t-3', 'level_rogue5_t-4'];
 	let encount1 = ['level_rogue5_t-5', 'level_rogue5_t-6', 'level_rogue5_t-7', 'level_rogue5_t-8'];
 	let encount2 = [
@@ -130,7 +130,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={combat_ops}
-							alt={translations[language].combat_ops}
+							alt={getTranslations(language).combat_ops}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -226,7 +226,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={boss}
-							alt={translations[language].boss_ops}
+							alt={getTranslations(language).boss_ops}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -299,7 +299,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={encounter}
-							alt={translations[language].encounter}
+							alt={getTranslations(language).encounter}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -322,7 +322,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={shop}
-							alt={translations[language].shop}
+							alt={getTranslations(language).shop}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -336,7 +336,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={candleIcon}
-							alt={translations[language].sui_candle}
+							alt={getTranslations(language).sui_candle}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -354,7 +354,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={duelIcon}
-							alt={translations[language].duel}
+							alt={getTranslations(language).duel}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -369,7 +369,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={portal}
-							alt={translations[language].sui_portal}
+							alt={getTranslations(language).sui_portal}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -392,7 +392,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={dlc1Portal}
-							alt={translations[language].sui_portal}
+							alt={getTranslations(language).sui_portal}
 							width="120px"
 							loading="lazy"
 							decoding="async"

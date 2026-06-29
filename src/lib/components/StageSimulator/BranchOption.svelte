@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import branchInfo from '$lib/data/stages/branch_info.json';
 	import { Game } from './objects/Game';
 	import Icon from '../Icon.svelte';
@@ -24,7 +24,7 @@
 	const hasMultipleOptions =
 		mapConfig?.branches?.[key]?.phases?.length > 1 && branchType === 'single';
 	const title = isChestBranch(mapConfig?.branches, key)
-		? translations[language].mimic
+		? getTranslations(language).mimic
 		: branchExtraInfo?.[`name_${language}`] || key;
 	function handleTitleClick(key) {
 		if (hasMultipleOptions) {

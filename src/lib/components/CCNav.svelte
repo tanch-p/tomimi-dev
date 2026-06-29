@@ -1,5 +1,5 @@
 <script lang="ts">
-	import translations from '$lib/translations.json';
+	import { getTranslations } from '$lib/functions/languageHelpers';
 
 	export let language: string;
 
@@ -27,14 +27,14 @@
 </script>
 
 <div class="border border-gray-500 text-center">
-	<div class="border-b border-gray-500 py-2">{translations[language].index.perma_stage}</div>
+	<div class="border-b border-gray-500 py-2">{getTranslations(language).index.perma_stage}</div>
 	<a href="/{language}/stages/无名庇护所">
 		<div class={`py-2 hover:cursor-pointer hover:bg-gray-600 text-indigo-300 `}>
-			{translations[language].无名庇护所}
+			{getTranslations(language).无名庇护所}
 		</div>
 	</a>
 	<div class="border-y border-gray-500 py-2">
-		{translations[language].index.daily_stage}
+		{getTranslations(language).index.daily_stage}
 	</div>
 	<div class="grid grid-cols-4 md:grid-cols-7 items-center gap-y-4 text-sm py-2">
 		{#each dailyStages as stage}
@@ -46,7 +46,7 @@
 				>
 					<p>{stage.m}/{stage.d}</p>
 					<p class={`flex justify-center items-center py-1 h-full text-indigo-300`}>
-						{translations[language][stage.name] ?? stage.name}
+						{getTranslations(language)[stage.name] ?? stage.name}
 					</p>
 				</div>
 			</a>

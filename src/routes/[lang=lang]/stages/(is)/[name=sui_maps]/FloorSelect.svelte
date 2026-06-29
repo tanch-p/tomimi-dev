@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { selectedFloor } from './stores.js';
-	import translations from '$lib/translations.json';
 
 	export let language: Language;
-	
+
 	const floors = new Array(7);
 </script>
 
@@ -20,5 +20,5 @@
 			</button>
 		{/each}
 	</div>
-	<p class="text-center text-sm mt-4">※{translations[language].sui_sp_floor_tip}</p>
+	<p class="text-center text-sm mt-4">※{getTranslations(language).sui_sp_floor_tip}</p>
 </div>

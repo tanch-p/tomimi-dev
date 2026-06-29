@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import RangeParser from './RangeParser.svelte';
 	import Remark from './Remark.svelte';
 
@@ -9,7 +9,7 @@
 
 {#if skills.length > 0}
 	<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-		{translations[language].skill}
+		{getTranslations(language).skill}
 	</p>
 	<ul class="list-disc pl-4">
 		{#each skills as skill}
@@ -30,7 +30,7 @@
 							<div class="flex items-center h-full">
 								<RangeParser rangeId={skill.rangeId} size="small" />
 							</div>
-							<p class="mt-1 text-xs">{translations[language].effect_range}</p>
+							<p class="mt-1 text-xs">{getTranslations(language).effect_range}</p>
 						</div>
 					{/if} -->
 			</div>

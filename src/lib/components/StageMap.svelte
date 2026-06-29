@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import SpEnemy from '$lib/components/SpEnemy.svelte';
 	import skz_calamity from '$lib/images/is/sarkaz/skz_calamity.webp';
 	import unknown from '$lib/images/is/skz_unknown.webp';
@@ -35,7 +35,7 @@
 </script>
 
 <div class="sm:px-6">
-	<p class="px-2 sm:px-0 text-subheading mt-4">{translations[language].map}</p>
+	<p class="px-2 sm:px-0 text-subheading mt-4">{getTranslations(language).map}</p>
 	<hr class="border-gray-500 mt-1" />
 	<div class="max-w-[600px] w-full mx-auto px-3 sm:px-0 mt-3">
 		{#if stagesWithMultipleImgs.includes(mapConfig?.levelId)}
@@ -69,14 +69,14 @@
 			<div class="flex flex-wrap gap-x-4 gap-y-1.5 mt-1.5">
 				<div class="flex">
 					<img src={skz_calamity} width="24px" height="24px" alt="calamity" />
-					<p>{translations[language].skz_calamity}</p>
+					<p>{getTranslations(language).skz_calamity}</p>
 				</div>
 				{#if stagesWithRNG.includes(mapConfig?.levelId)}
 					<div class="flex">
 						<div class="rounded-full bg-[#f14c4c]">
 							<img src={unknown} width="24px" height="24px" alt="?" />
 						</div>
-						<p class="ml-1">{translations[language].stageinfo_random}</p>
+						<p class="ml-1">{getTranslations(language).stageinfo_random}</p>
 					</div>
 				{/if}
 			</div>

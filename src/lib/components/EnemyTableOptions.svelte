@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { tableHeaders } from '../../routes/stores';
-	import translations from '$lib/translations.json';
 	import { setLocalStorage } from '$lib/functions/lib';
 	export let language: Language;
 	function updateHeaders(key) {
@@ -22,7 +22,7 @@
 				class={`rounded-full px-4 py-1 ${show ? 'bg-sky-600' : 'bg-gray-400'}`}
 				on:click={() => updateHeaders(key)}
 			>
-				{translations[language].table_headers[key] || translations[language][key]}
+				{getTranslations(language).table_headers[key] || getTranslations(language)[key]}
 			</button>
 		{/each}
 	</div>

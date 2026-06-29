@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import fragments from '$lib/data/is/sarkaz/fragments.json';
 	import rogue_4_fragment_F_03 from '$lib/images/is/sarkaz/rogue_4_fragment_F_03.webp';
@@ -56,14 +56,14 @@
 		rogue_4_fragment_F_21: rogue_4_fragment_F_21,
 		rogue_4_fragment_F_27: rogue_4_fragment_F_27,
 		rogue_4_fragment_F_28: rogue_4_fragment_F_28,
-		rogue_4_fragment_F_23:rogue_4_fragment_F_23,
-		rogue_4_fragment_F_24:rogue_4_fragment_F_24
+		rogue_4_fragment_F_23: rogue_4_fragment_F_23,
+		rogue_4_fragment_F_24: rogue_4_fragment_F_24
 	};
 
 	export let language: Language;
 </script>
 
-<TogglePanel title={translations[language].skz_fragment_combine_list} isOpen={false}>
+<TogglePanel title={getTranslations(language).skz_fragment_combine_list} isOpen={false}>
 	{#each fragments as fragment}
 		{#if fragment.fragments}
 			{@const fragment1 = fragments.find((ele) => ele.id === fragment.fragments[0])}

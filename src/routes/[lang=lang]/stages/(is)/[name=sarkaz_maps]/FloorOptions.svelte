@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import FloorEffect from './FloorEffect.svelte';
 	import FloorSelect from './FloorSelect.svelte';
-	import translations from '$lib/translations.json';
 	import disasters from '$lib/data/is/sarkaz/disasters.json';
 	import { actualDifficulty, disasterEffects } from './stores';
 
@@ -44,7 +44,7 @@
 		<hr class="border-neutral-600" />
 		<div class="px-2 md:px-0">
 			<p class="mt-4 font-medium text-lg text-[#ff382e] text-center">
-				{translations[language].sarkaz_disaster} ({translations[language][
+				{getTranslations(language).sarkaz_disaster} ({getTranslations(language)[
 					`disaster_level_${level}`
 				]})
 			</p>

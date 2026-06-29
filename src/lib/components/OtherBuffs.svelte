@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import {
 		getApplicableBuffsList,
 		getOtherBuffsCount,
@@ -17,7 +17,7 @@
 
 {#if applicableBuffsList?.length > 0}
 	<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold {mode === 'table' ? 'hidden' : ''}">
-		{translations[language].other_buffs}
+		{getTranslations(language).other_buffs}
 	</p>
 	<div
 		class="justify-items-center gap-y-1.5 py-2 {mode === 'table'
@@ -47,7 +47,7 @@
 							alt={buff.name}
 							width="60"
 							height="60"
-							class="{["dycyue_evasion"].includes(buff.key) ? "border-2" : ""}"
+							class={['dycyue_evasion'].includes(buff.key) ? 'border-2' : ''}
 						/>
 					{/if}
 				</div>

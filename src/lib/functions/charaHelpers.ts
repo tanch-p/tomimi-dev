@@ -1,7 +1,7 @@
 import type { Language } from '$lib/types';
 import filterOptions from '$lib/data/chara/filter_options.json';
-import translations from '$lib/translations.json';
 import { decompressGzipToJson } from './lib';
+import { getTranslations } from '$lib/functions/languageHelpers';
 
 const SEARCH_IN_TAGS = [
 	'phys',
@@ -217,7 +217,7 @@ const SEARCH_IN_BLACKBOARD = [
 	'bonus_lifepoint',
 	'enemy_damage_share',
 	'sp_module',
-	"hp_ratio_dmg"
+	'hp_ratio_dmg'
 ];
 
 // keys not here will just use their respective key in translations
@@ -459,11 +459,11 @@ export const getOptionTranslation = (option, language: Language) => {
 	}
 	option = getDisplayKey(option);
 	return (
-		(translations[language].table_headers[option] ??
-			translations[language][option] ??
-			translations[language].types[option]) +
-		(suffix ? getSpacing(language) + `${translations[language][suffix]}` : '') +
-		(symbol ? getSpacing(language) + `(${translations[language][symbol]})` : '')
+		(getTranslations(language).table_headers[option] ??
+			getTranslations(language)[option] ??
+			getTranslations(language).types[option]) +
+		(suffix ? getSpacing(language) + `${getTranslations(language)[suffix]}` : '') +
+		(symbol ? getSpacing(language) + `(${getTranslations(language)[symbol]})` : '')
 	);
 };
 export const getSpacing = (language: Language) => {

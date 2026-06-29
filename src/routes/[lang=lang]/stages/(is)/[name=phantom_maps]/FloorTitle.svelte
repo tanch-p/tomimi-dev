@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
 	import { selectedFloor, activeFloorEffects } from './stores';
-	import translations from '$lib/translations.json';
 	import romanNumerals from '$lib/roman_numerals.json';
 	import Icon from '$lib/components/Icon.svelte';
 
@@ -39,7 +39,7 @@
 		{/if}
 		<div class="flex justify-center items-center gap-x-2.5 group-hover:md:bg-neutral-500">
 			<Icon name="left-chevron" className="w-5 h-5" />
-			<p class="text-center">{translations[language].phcs_levels[$selectedFloor - 1]}</p>
+			<p class="text-center">{getTranslations(language).phcs_levels[$selectedFloor - 1]}</p>
 			<Icon name="left-chevron" className="w-5 h-5 rotate-180" />
 		</div>
 	</button>

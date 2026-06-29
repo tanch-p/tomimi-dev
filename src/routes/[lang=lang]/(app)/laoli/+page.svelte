@@ -1,5 +1,5 @@
 <script lang="ts">
-	import translations from '$lib/translations.json';
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
 	import ActionBlock from './ActionBlock.svelte';
 	import StunBlock from './StunBlock.svelte';
@@ -186,16 +186,16 @@
 </script>
 
 <svelte:head>
-	<title>{translations[language].laoli_title} / {translations[language].title_post}</title>
-	<meta name="description" content={translations[language].title_post} />
-	<meta property="og:description" content={translations[language].title_post} />
-	<meta property="og:title" content={translations[language].laoli_title} />
+	<title>{getTranslations(language).laoli_title} / {getTranslations(language).title_post}</title>
+	<meta name="description" content={getTranslations(language).title_post} />
+	<meta property="og:description" content={getTranslations(language).title_post} />
+	<meta property="og:title" content={getTranslations(language).laoli_title} />
 	<meta property="og:url" content={`https://tomimi.dev/${language}/laoli`} />
 </svelte:head>
 
 <div class="min-w-screen min-h-screen bg-[#f2f2f2] text-[#222222]">
 	<div class="max-w-7xl mx-auto py-16 md:px-4">
-		<h1 class="text-center text-2xl font-bold mb-10">{translations[language].laoli_title}</h1>
+		<h1 class="text-center text-2xl font-bold mb-10">{getTranslations(language).laoli_title}</h1>
 		<p class="text-lg font-bold">
 			原理解析：
 			<a
@@ -206,24 +206,24 @@
 				bilibili
 			</a>
 		</p>
-		<p class="my-4">※{translations[language].laoli_f_explain}</p>
+		<p class="my-4">※{getTranslations(language).laoli_f_explain}</p>
 		<div class="flex flex-col gap-y-2">
 			<label>
-				<span class="text-right pr-2">{translations[language].laoli_zoom}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_zoom}</span>
 				<input type="number" bind:value={resolution} min="1" max="10" step="1" />
 				<span class="text-right px-2">1</span>
 				<input type="range" bind:value={resolution} min="1" max="10" step="1" />
 				<span class="text-left px-2">10</span>
 			</label>
 			<label>
-				<span class="text-right pr-2">{translations[language].laoli_rounds}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_rounds}</span>
 				<input type="number" bind:value={rounds} min="20" max="100" step="1" />
 				<span class="text-right px-2">20</span>
 				<input type="range" bind:value={rounds} min="20" max="100" step="5" />
 				<span class="text-left px-2">100</span>
 			</label>
 			<label class="mb-3">
-				<span class="text-right pr-2">{translations[language].laoli_module_lvl}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_module_lvl}</span>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
 					on:click={() => (moduleLevel -= 1)}
@@ -248,21 +248,21 @@
 				</button>
 			</label>
 			<label>
-				<span class="text-right pr-2">{translations[language].laoli_talent_adjust}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_talent_adjust}</span>
 				<input type="number" bind:value={talentInset} min="0" max="90" step="1" />
 				<span class="text-right px-2">0</span>
 				<input type="range" bind:value={talentInset} min="0" max="90" step="5" />
 				<span class="text-left px-2">90</span>
 			</label>
 			<label>
-				<span class="text-right pr-2">{translations[language].laoli_aspd}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_aspd}</span>
 				<input type="number" bind:value={aspdInc} min="0" max="300" step="1" />
 				<span class="text-right px-2">0</span>
 				<input type="range" bind:value={aspdInc} min="0" max="300" step="1" />
 				<span class="text-left px-2">300</span>
 			</label>
 			<label>
-				<span class="text-right pr-2">{translations[language].laoli_f0}(F0)</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_f0}(F0)</span>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
 					on:click={() => (f0 -= 1)}
@@ -281,7 +281,7 @@
 			</label>
 			<p class="pl-[68px]">Fnormal: {Fnormal} &nbsp&nbsp Fcold: {Fcold}</p>
 			<div class="grid grid-cols-[140px_auto_auto_auto] w-max">
-				<span class="text-right pr-2">{translations[language].laoli_fCold}(F1,F2)</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_fCold}(F1,F2)</span>
 				<button
 					class="border rounded bg-neutral-200 active:bg-neutral-300 w-7 text-lg"
 					on:mousedown={() => startDecrement(initialTimeout)}
@@ -305,11 +305,11 @@
 				</button>
 			</div>
 			<label class="mt-3">
-				<span class="text-right pr-2">{translations[language].laoli_initial_talent_on}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_initial_talent_on}</span>
 				<input class="justify-self-start" type="checkbox" bind:checked={initialTalentActivated} />
 			</label>
 			<label>
-				<span class="text-right pr-2">{translations[language].laoli_doq_hp50}</span>
+				<span class="text-right pr-2">{getTranslations(language).laoli_doq_hp50}</span>
 				<input class="justify-self-start" type="checkbox" bind:checked={doqHP50} />
 			</label>
 		</div>
@@ -339,31 +339,31 @@
 			</div>
 			<ActionBlock {resolution} {fValues} {freezeDuration} />
 		</div>
-		<p class="text-lg font-bold text-center mt-2">{translations[language].legend}</p>
+		<p class="text-lg font-bold text-center mt-2">{getTranslations(language).legend}</p>
 		<div
 			class="flex flex-col md:flex-row md:flex-wrap justify-evenly gap-y-2.5 rounded border bg-slate-200 py-2.5 px-3 md:px-0"
 		>
 			<div class="flex items-center gap-x-2">
 				<div class="h-4 w-4 bg-[#fdfc01]" />
-				<span> {translations[language].laoli_f0} </span>
+				<span> {getTranslations(language).laoli_f0} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
 				<div class="h-4 w-4 bg-[#f8cc47]" />
 				<div class="h-4 w-4 bg-[#f28b00]" />
-				<span> {translations[language].laoli_fCold} </span>
+				<span> {getTranslations(language).laoli_fCold} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
 				<div class="h-4 w-4 bg-[#34c2e6]" />
-				<span> {translations[language].laoli_freeze_duration} </span>
+				<span> {getTranslations(language).laoli_freeze_duration} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
 				<div class="h-4 w-4 bg-neutral-900" />
 				<div class="h-4 w-4 bg-gray-600" />
-				<span>{translations[language].laoli_talent}</span>
+				<span>{getTranslations(language).laoli_talent}</span>
 			</div>
 			<div class="flex items-center gap-x-2">
 				<div class="h-4 w-4 bg-[#8d2828]" />
-				<span> {translations[language].laoli_stun_duration} </span>
+				<span> {getTranslations(language).laoli_stun_duration} </span>
 			</div>
 		</div>
 		<!-- <p class="text-lg font-bold mt-8">Debug用</p>
@@ -395,7 +395,7 @@
 			{/each}
 		</p> -->
 		<div class="pl-3 md:pl-0">
-			<p class="text-lg font-bold mt-8">{translations[language].laoli_credits}</p>
+			<p class="text-lg font-bold mt-8">{getTranslations(language).laoli_credits}</p>
 			<ul class="flex flex-col gap-y-2">
 				{#each creditsRoll as up}
 					<li>

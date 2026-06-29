@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import translations from '$lib/translations.json';
 	import Icon from '$lib/components/Icon.svelte';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import RangeParser from '$lib/components/RangeParser.svelte';
@@ -83,10 +83,10 @@
 	<div class="flex mt-2">
 		{#if skill.skillType !== 'PASSIVE'}
 			<p class="pill {layout} {skill?.spType}">
-				{translations[language][skill?.spType]}
+				{getTranslations(language)[skill?.spType]}
 			</p>
 		{/if}
-		<p class="pill {layout} bg-[#737373]">{translations[language][skill.skillType]}</p>
+		<p class="pill {layout} bg-[#737373]">{getTranslations(language)[skill.skillType]}</p>
 		{#if skill.levels?.[mastery]?.duration > 0}
 			<div class="pill {layout} grid grid-cols-[20px_1fr] gap-x-1.5 items-center bg-[#555]">
 				<Icon name="clock-icon" />
@@ -158,7 +158,7 @@
 							? 'text-xs'
 							: 'text-sm'}"
 					>
-						{translations[language][skill?.spType]}
+						{getTranslations(language)[skill?.spType]}
 					</p>
 				{/if}
 				<p
@@ -167,7 +167,7 @@
 						? 'text-xs'
 						: 'text-sm'}"
 				>
-					{translations[language][skill.skillType]}
+					{getTranslations(language)[skill.skillType]}
 				</p>
 				{#if skill.levels?.[mastery]?.duration > 0}
 					<div
@@ -195,7 +195,7 @@
 						/>
 					{/if}
 				</div>
-				<p class="text-near-white text-xs">{translations[language].attack_range}</p>
+				<p class="text-near-white text-xs">{getTranslations(language).attack_range}</p>
 			</div>
 		{/if}
 	</div>

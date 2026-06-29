@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
 	import CharaViewGrid from './CharaViewGrid.svelte';
@@ -55,7 +55,7 @@
 
 <div class="max-w-5xl mx-auto">
 	{#if characters.length === 0}
-		<p class="text-center">{translations[language].filter_no_result}</p>
+		<p class="text-center">{getTranslations(language).filter_no_result}</p>
 	{:else}
 		<div class="relative">
 			<div class="absolute flex items-center gap-x-2 w-max right-4 -top-2.5">
@@ -75,7 +75,7 @@
 				</button>
 			</div>
 			<p class="md:text-center ml-4 md:ml-0">
-				{translations[language].filter_result.replace('<num>', characters.length)}
+				{getTranslations(language).filter_result.replace('<num>', characters.length)}
 			</p>
 		</div>
 		<div

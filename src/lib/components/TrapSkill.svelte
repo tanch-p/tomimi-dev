@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig, Skill, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { getSkillImgUrl } from '$lib/functions/charaHelpers';
 	import RangeParser from './RangeParser.svelte';
-	import translations from '$lib/translations.json';
 	import TextParser from './TextParser.svelte';
 	import Icon from './Icon.svelte';
 	import { parseValues } from '$lib/functions/skillHelpers';
@@ -52,17 +52,17 @@
 				<div class="flex items-center h-full">
 					<RangeParser rangeId={skill.rangeId} size="small" />
 				</div>
-				<p class="mt-1 text-xs">{translations[language].effect_range}</p>
+				<p class="mt-1 text-xs">{getTranslations(language).effect_range}</p>
 			</div>
 		{/if}
 	</div>
 	<div class="flex mt-2 text-sm">
 		{#if skill.skillType !== 'PASSIVE' && skill?.spType !== 8}
 			<p class="pill default max-w-[110px] {skill?.spType}">
-				{translations[language][skill?.spType]}
+				{getTranslations(language)[skill?.spType]}
 			</p>
 		{/if}
-		<p class="pill default bg-[#737373]">{translations[language][skill.skillType]}</p>
+		<p class="pill default bg-[#737373]">{getTranslations(language)[skill.skillType]}</p>
 		{#if skill?.duration > 0}
 			<div class="pill default grid grid-cols-[20px_1fr] gap-x-0.5 items-center bg-[#555]">
 				<Icon name="clock-icon" size={20} />
@@ -98,10 +98,10 @@
 		<div class="flex mt-1.5 text-sm">
 			{#if skill.skillType !== 'PASSIVE' && skill?.spType !== 8}
 				<p class="pill default {skill?.spType}">
-					{translations[language][skill?.spType]}
+					{getTranslations(language)[skill?.spType]}
 				</p>
 			{/if}
-			<p class="pill default bg-[#737373]">{translations[language][skill.skillType]}</p>
+			<p class="pill default bg-[#737373]">{getTranslations(language)[skill.skillType]}</p>
 			{#if skill?.duration > 0}
 				<div class="pill default grid grid-cols-[20px_1fr] gap-x-0.5 items-center bg-[#555]">
 					<Icon name="clock-icon" size={20} />
@@ -121,7 +121,7 @@
 					<div class="flex items-center h-full">
 						<RangeParser rangeId={skill.rangeId} size="small" />
 					</div>
-					<p class="mt-1 text-xs">{translations[language].effect_range}</p>
+					<p class="mt-1 text-xs">{getTranslations(language).effect_range}</p>
 				</div>
 			{/if}
 		</div>

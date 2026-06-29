@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import relicIcon from '$lib/images/is/relic.png';
 	import RelicsOverlay from './RelicsOverlay.svelte';
-	import translations from '$lib/translations.json';
 	import Icon from './Icon.svelte';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
 	export let language: Language,
@@ -39,7 +39,7 @@
 							>
 								<Icon name="down-arrow" className="w-6 h-6 mx-auto" />
 								<p class="font-medium text-near-white">
-									{translations[language]['relic_overlay_close']}
+									{getTranslations(language)['relic_overlay_close']}
 								</p>
 							</div>
 						{/if}

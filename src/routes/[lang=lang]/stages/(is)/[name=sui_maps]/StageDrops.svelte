@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import combat_icon from '$lib/images/is/combat_icon.webp';
 	import emergency_icon from '$lib/images/is/emergency_icon.webp';
 	import portal from '$lib/images/is/node_portal.webp';
@@ -19,7 +19,7 @@
 
 {#if dropData}
 	<div class="my-4">
-		<TogglePanel title={translations[language].stage_rewards} size="subheading">
+		<TogglePanel title={getTranslations(language).stage_rewards} size="subheading">
 			<div class="px-2 sm:px-0 overflow-auto">
 				<table class="border-collapse mt-4 sm:mx-auto w-full sm:w-auto">
 					<colgroup>
@@ -64,7 +64,7 @@
 					<tbody>
 						<tr>
 							<td />
-							<td> {translations[language].exp}</td>
+							<td> {getTranslations(language).exp}</td>
 							<td colspan="1">
 								{dropData?.exp?.[0]}
 							</td>
@@ -76,9 +76,9 @@
 						</tr>
 						<tr>
 							<td>
-								<img src={gold} width="35" alt={translations[language].rogue_gold} />
+								<img src={gold} width="35" alt={getTranslations(language).rogue_gold} />
 							</td>
-							<td>{translations[language].rogue_gold}</td>
+							<td>{getTranslations(language).rogue_gold}</td>
 							<td colspan="1">
 								{dropData?.gold?.[0] || drops[rogueTopic].floor_gold[$selectedFloor - 1][0]}
 							</td>
@@ -90,7 +90,7 @@
 						</tr>
 						<tr>
 							<td />
-							<td> {translations[language].ro4_fragment}*</td>
+							<td> {getTranslations(language).ro4_fragment}*</td>
 							<td colspan="2">
 								<div>2 - 33%</div>
 								<div>3 - 66%</div>
@@ -98,7 +98,7 @@
 						</tr>
 						<tr>
 							<td class="text-start noborder" colspan="5">
-								* {translations[language].ro4_fragment_imperfect}
+								* {getTranslations(language).ro4_fragment_imperfect}
 								<a
 									href="https://www.bilibili.com/video/BV1PHS4Y7ExF/"
 									target="_blank"

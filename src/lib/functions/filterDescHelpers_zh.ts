@@ -1,11 +1,11 @@
 import type { Language } from '$lib/types';
-import translations from '$lib/translations.json';
 import relics from '$lib/data/chara/relics_chara.json';
 import { formatArray } from './languageHelpers';
 import { getDisplayKey } from './charaHelpers';
+import { getTranslations } from '$lib/functions/languageHelpers';
 
 const DAMAGE_TYPE_KEYS = ['phys', 'arts', 'true', 'ele_dmg'];
-const ELE_INJ_KEYS=['apoptosis','burning','neural'];
+const ELE_INJ_KEYS = ['apoptosis', 'burning', 'neural'];
 const BUFF_TAGS = [
 	'inspire',
 	'berserk',
@@ -19,7 +19,15 @@ const BUFF_TAGS = [
 	'barrier',
 	'liftoff'
 ];
-const STAT_DEBUFFS = ['atk_down', 'def_down', 'res_down', 'aspd_down', 'ms_down', 'hitrate_down','heal_scale_down'];
+const STAT_DEBUFFS = [
+	'atk_down',
+	'def_down',
+	'res_down',
+	'aspd_down',
+	'ms_down',
+	'hitrate_down',
+	'heal_scale_down'
+];
 const DEBUFFS = [
 	'stun',
 	'sluggish',
@@ -45,7 +53,7 @@ const ALLY_STAT_BUFFS = [
 	'ally_aspd',
 	'ally_sp_regen',
 	'ally_sp_stock',
-	"ally_max_ammo",
+	'ally_max_ammo'
 ];
 const ALLY_NORMAL = [
 	'ally_block_down',
@@ -58,13 +66,13 @@ const ALLY_NORMAL = [
 	'ally_heal_scale',
 	'ally_sp_gain',
 	'ally_spareshot',
-	"add_bullet",
+	'add_bullet',
 	'ally_lower_target_priority'
 ];
 const ALLY_STAT_MINUS = ['ally_respawn_time', 'ally_cost_down'];
 const ALLY_BUFFS = [
 	'ally_evasion',
-	"ally_min_aspd",
+	'ally_min_aspd',
 	'ally_shield',
 	'ally_reflect_dmg',
 	'ally_res_penetrate',
@@ -107,12 +115,12 @@ const SELF_BUFF_TAGS = [
 	'stealth',
 	'camouflage',
 	'taunt',
-	"receive_heal_scale",
+	'receive_heal_scale',
 	'lower_target_priority',
 	'resist',
 	'status_immune'
 ];
-const SELF_STAT_BUFFS = ['sp_regen', 'sp_stock', 'def', 'res',"max_ammo"];
+const SELF_STAT_BUFFS = ['sp_regen', 'sp_stock', 'def', 'res', 'max_ammo'];
 const HAVE_TAGS = [
 	'global_heal',
 	'squad_effect',
@@ -127,8 +135,8 @@ const HAVE_TAGS = [
 	'aspd_unrelated',
 	'starting_cost',
 	'global_range',
-	"bonus_lifepoint",
-	"sp_module"
+	'bonus_lifepoint',
+	'sp_module'
 ];
 const SKILL_HAVE_TAGS = [
 	'PASSIVE',
@@ -140,8 +148,8 @@ const SKILL_HAVE_TAGS = [
 	'charged',
 	'overdrive',
 	'trigger_time',
-	"skill_manual_off",
-	"ct"
+	'skill_manual_off',
+	'ct'
 ];
 const PRIORITY_TAGS = [
 	'priority_flying',
@@ -176,14 +184,14 @@ const SQUAD_TAGS = [
 	'SPECIAL',
 	'cost_under_10',
 	'mujica',
-	"kjerag"
+	'kjerag'
 ];
 const TYPE_TAGS = [
 	'flying',
 	'drone',
 	'infection',
 	'sarkaz',
-	"machine",
+	'machine',
 	'wildanimal',
 	'seamonster',
 	'type_stun',
@@ -195,13 +203,13 @@ const TYPE_TAGS = [
 	'blocked_enemy',
 	'no_block_enemy',
 	'self_no_block_enemy',
-	"not_moving"
+	'not_moving'
 ];
 
 const getFilterDescCategory = (key) => {
 	const categories = [
 		{ category: 'damage_type', keyList: DAMAGE_TYPE_KEYS },
-		{category: 'ele_inj', keyList:ELE_INJ_KEYS},
+		{ category: 'ele_inj', keyList: ELE_INJ_KEYS },
 		{ category: 'enemy_stat_debuff', keyList: STAT_DEBUFFS },
 		{ category: 'enemy_debuff', keyList: DEBUFFS },
 		{ category: 'ally_stat_buff', keyList: ALLY_STAT_BUFFS },
@@ -296,7 +304,7 @@ export const generateSkillDesc = (
 					category_pre += '能';
 				}
 			}
-			category_pre += translations[language].chara_filter[`${key}_start`] ?? '';
+			category_pre += getTranslations(language).chara_filter[`${key}_start`] ?? '';
 		}
 		if (
 			key === 'others' &&
@@ -304,7 +312,8 @@ export const generateSkillDesc = (
 			(otherGroups?.others?.some((ele) =>
 				['aoe', 'damage_type', 'max_target', 'target_air'].includes(ele)
 			) ||
-				otherGroups?.['damage_type'] || otherGroups?.['ele_inj'])
+				otherGroups?.['damage_type'] ||
+				otherGroups?.['ele_inj'])
 		) {
 			category_pre += '能';
 		}
@@ -336,9 +345,9 @@ export const generateSkillDesc = (
 						? key
 						: category === 'relic'
 						? relic[`name_${language}`] || relic['name_zh']
-						: translations[language].table_headers[displayKey] ??
-						  translations[language][displayKey] ??
-						  translations[language].types[displayKey]) +
+						: getTranslations(language).table_headers[displayKey] ??
+						  getTranslations(language)[displayKey] ??
+						  getTranslations(language).types[displayKey]) +
 					'</>'
 				);
 			});
@@ -346,8 +355,8 @@ export const generateSkillDesc = (
 				filterMode === 'OR' || category === 'blockCnt'
 					? translatedStrings.join('/')
 					: formatArray(translatedStrings, ',', '和');
-			const pre = translations[language]['chara_filter']?.[`${category}_pre`] ?? '';
-			const post = translations[language]['chara_filter']?.[`${category}_post`] ?? '';
+			const pre = getTranslations(language)['chara_filter']?.[`${category}_pre`] ?? '';
+			const post = getTranslations(language)['chara_filter']?.[`${category}_post`] ?? '';
 			categoryDescHolder.push(pre + joinedString + post);
 		});
 		if (categoryDescHolder.length > 0) {
@@ -361,15 +370,15 @@ export const generateSkillDesc = (
 				const key = getDisplayKey(value);
 				return (
 					selected &&
-					(translations[language].table_headers[key] ??
-						translations[language][key] ??
-						translations[language].types[key])
+					(getTranslations(language).table_headers[key] ??
+						getTranslations(language)[key] ??
+						getTranslations(language).types[key])
 				);
 			})
 			.filter(Boolean)
 			.join('/');
-		const pre = translations[language]['chara_filter']?.[`${key}_pre`] ?? '';
-		const post = translations[language]['chara_filter']?.[`${key}_post`] ?? '';
+		const pre = getTranslations(language)['chara_filter']?.[`${key}_pre`] ?? '';
+		const post = getTranslations(language)['chara_filter']?.[`${key}_post`] ?? '';
 		descList.push(pre + '<@bluehl>' + value + '</>' + post);
 	}
 	const innerConnectorFinal = filterMode === 'OR' ? '或' : ',';

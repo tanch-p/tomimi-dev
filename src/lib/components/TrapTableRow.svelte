@@ -7,7 +7,13 @@
 	import StatusImmune from './StatusImmune.svelte';
 	import TrapAbilities from './TrapAbilities.svelte';
 
-	export let trap: Trap, tableHeaders, index, language: Language, specialMods, otherBuffsList,mapConfig:MapConfig;
+	export let trap: Trap,
+		tableHeaders,
+		index,
+		language: Language,
+		specialMods,
+		otherBuffsList,
+		mapConfig: MapConfig;
 </script>
 
 <tr id={trap.key} class={`scroll-mt-24 ${index % 2 === 1 ? ' bg-[#333333]' : 'bg-neutral-800'}`}>
@@ -29,14 +35,6 @@
 					{trap.name}
 				</p>
 			</td>
-			<!-- {:else if key === 'type'}
-			<td class={`border border-gray-400 h-[65px] text-center>
-				<div>
-					{#each trap.type.filter((ele) => ele !== 'NORMAL') as type}
-						<p class="whitespace-nowrap">{translations[language].types[type]}</p>
-					{/each}
-				</div>
-			</td> -->
 		{:else if key === 'range_display'}
 			<td class={`border border-gray-400 text-center px-1`}>
 				{#if trap.stats.rangeId}

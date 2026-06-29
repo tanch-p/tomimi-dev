@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
 	import { selectedFloor, disasterEffects, difficultyMode } from './stores';
-	import translations from '$lib/translations.json';
 	import roman_1 from '$lib/images/is/sarkaz/icon_zone_1.webp';
 	import roman_2 from '$lib/images/is/sarkaz/icon_zone_2.webp';
 	import roman_3 from '$lib/images/is/sarkaz/icon_zone_3.webp';
@@ -84,7 +84,11 @@
 	on:outclick={() => (optionsOpen = false)}
 	class="self-center mx-auto select-none"
 >
-	<button id="floor-options" class="px-3 py-0.5 md:hover:bg-neutral-500" on:click={() => (optionsOpen = !optionsOpen)}>
+	<button
+		id="floor-options"
+		class="px-3 py-0.5 md:hover:bg-neutral-500"
+		on:click={() => (optionsOpen = !optionsOpen)}
+	>
 		<p class="flex items-center justify-center relative text-center">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />
 			<img
@@ -92,8 +96,8 @@
 				src={lookup[`roman_${$selectedFloor}`]}
 				alt={$selectedFloor}
 			/>&nbsp;{$selectedFloor === 6
-				? translations[language].sarkaz_levels[floor6Index]
-				: translations[language].sarkaz_levels[$selectedFloor - 1]}
+				? getTranslations(language).sarkaz_levels[floor6Index]
+				: getTranslations(language).sarkaz_levels[$selectedFloor - 1]}
 			<Icon name="left-chevron" className="w-5 h-5 ml-2.5 rotate-180" />
 		</p>
 		{#if $disasterEffects.length > 0}

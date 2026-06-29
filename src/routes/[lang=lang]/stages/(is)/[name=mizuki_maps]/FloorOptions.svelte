@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import mizukiOptions from '$lib/data/is/mizuki/variations_mizuki.json';
 	import FloorEffect from './FloorEffect.svelte';
 	import FloorSelect from './FloorSelect.svelte';
-	import translations from '$lib/translations.json';
 	import 争斗 from '$lib/images/is/mizuki/争斗.webp';
 	import 徒长 from '$lib/images/is/mizuki/徒长.webp';
 	import 众我 from '$lib/images/is/mizuki/众我.webp';
@@ -27,13 +27,13 @@
 		<hr class="border-neutral-600" />
 		<div class="px-2 md:px-0">
 			<p class="mt-4 font-medium text-lg text-red-400 text-center">
-				{translations[language].mizuki_seaborn_call}
+				{getTranslations(language).mizuki_seaborn_call}
 				<!-- <span class="font-normal text-sm text-near-white"
-				>{translations[language].variation_max_2}</span
+				>{getTranslations(language).variation_max_2}</span
 			> -->
 			</p>
 			<p class="font-normal text-sm text-near-white text-center">
-				({translations[language].variation_max_2})
+				({getTranslations(language).variation_max_2})
 			</p>
 
 			<div class="flex flex-col gap-y-4 mt-2">

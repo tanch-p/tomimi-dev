@@ -1,20 +1,29 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import StageNavButton from './StageNavButton.svelte';
 	import combat_ops from '$lib/images/is/sarkaz/node_battle.webp';
 	import boss from '$lib/images/is/sarkaz/boss_2.webp';
 	import boss_big from '$lib/images/is/sarkaz/boss_icon.webp';
 	import encounter from '$lib/images/is/sarkaz/node_inv.webp';
-	import translations from '$lib/translations.json';
 	import duelIcon from '$lib/images/is/sarkaz/node_duel.webp';
 	import shop from '$lib/images/is/sarkaz/node_shop.webp';
 
 	export let language: Language;
 
 	let allNormalStages = [
-		['坏邻居', '公害', '安全检查', '夺路而跳','冰川期'],
-		['见闻峰会', '拆东补西', '排风口', '炉工志愿队', '有序清场', '卡兹瀑布','丛林密布'],
-		['大棋一盘', '血脉之辩', '遮天蔽日', '劳作的清晨', '溃乱魔典', '盲盒商场', '火力小队','机动队'],
+		['坏邻居', '公害', '安全检查', '夺路而跳', '冰川期'],
+		['见闻峰会', '拆东补西', '排风口', '炉工志愿队', '有序清场', '卡兹瀑布', '丛林密布'],
+		[
+			'大棋一盘',
+			'血脉之辩',
+			'遮天蔽日',
+			'劳作的清晨',
+			'溃乱魔典',
+			'盲盒商场',
+			'火力小队',
+			'机动队'
+		],
 		[
 			'年代断层',
 			'朽败考察',
@@ -49,8 +58,8 @@
 	let floor5b = ['紧急授课', '朝谒'];
 	let floor5bd = ['思维矫正', '魂灵朝谒'];
 	let floor6b = ['圣城', '授法'];
-	let floor67 = ['不容拒绝']
-	let floorUnknown = ['「」']
+	let floor67 = ['不容拒绝'];
+	let floorUnknown = ['「」'];
 	let du = ['失败的试胆', '信号灯', '劫虚济实', '鸭速公路'];
 	let sp = ['战场侧面', '继承', '玩具的报复'];
 	let sp2 = ['物权纠纷', '叙事要约'];
@@ -67,7 +76,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={combat_ops}
-							alt={translations[language].combat_ops}
+							alt={getTranslations(language).combat_ops}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -163,7 +172,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={boss}
-							alt={translations[language].boss_ops}
+							alt={getTranslations(language).boss_ops}
 							width="160px"
 							loading="lazy"
 							decoding="async"
@@ -216,7 +225,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={boss_big}
-							alt={translations[language].boss_ops}
+							alt={getTranslations(language).boss_ops}
 							width="160px"
 							loading="lazy"
 							decoding="async"
@@ -253,7 +262,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" rowspan="1">
-					{"6/7"}
+					{'6/7'}
 				</td>
 				{#each floor67 as stageName}
 					<td colspan={Math.floor(24 / floor67.length)}>
@@ -270,7 +279,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={encounter}
-							alt={translations[language].encounter}
+							alt={getTranslations(language).encounter}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -298,7 +307,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={shop}
-							alt={translations[language].shop}
+							alt={getTranslations(language).shop}
 							width="120px"
 							loading="lazy"
 							decoding="async"
@@ -318,7 +327,7 @@
 					<div class="flex justify-center items-center">
 						<img
 							src={duelIcon}
-							alt={translations[language].duel}
+							alt={getTranslations(language).duel}
 							width="120px"
 							loading="lazy"
 							decoding="async"

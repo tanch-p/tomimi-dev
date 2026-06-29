@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import FloorEffect from './FloorEffect.svelte';
 	import FloorSelect from './FloorSelect.svelte';
-	import translations from '$lib/translations.json';
 	import linear from '$lib/images/is/sami/非线性.webp';
-	import blind from "$lib/images/is/sami/pic_rogue_3_chaos_9.webp"
+	import blind from '$lib/images/is/sami/pic_rogue_3_chaos_9.webp';
 	import chaosList from '$lib/data/is/sami/chaos_sami.json';
 	import portal from '$lib/images/is/node_portal.webp';
 	import { portalMods } from './stores';
@@ -21,8 +21,8 @@
 			mods: [
 				{ key: 'weight', value: 1, mode: 'add' },
 				{ key: 'ms', value: 0.5, mode: 'mul' },
-				{ key: 'def', value: 800, mode: 'add', order:"initial" },
-				{ key: 'res', value: 30, mode: 'add',order:"initial" }
+				{ key: 'def', value: 800, mode: 'add', order: 'initial' },
+				{ key: 'res', value: 30, mode: 'add', order: 'initial' }
 			]
 		}
 	];
@@ -32,7 +32,7 @@
 		portalSelected = Boolean(value);
 	});
 	chaosList.forEach((option) => {
-		option.src = option.shared_id === "chaos_3" ? linear : blind;
+		option.src = option.shared_id === 'chaos_3' ? linear : blind;
 	});
 
 	const handlePortalClick = () => {
@@ -50,7 +50,7 @@
 		<hr class="border-neutral-600" />
 		<div class="px-2 md:px-0">
 			<p class="mt-4 font-medium text-lg text-[#FF99CA] text-center">
-				{translations[language].sami_portal}
+				{getTranslations(language).sami_portal}
 			</p>
 			<button
 				id="sami-portal"
@@ -62,7 +62,7 @@
 				<div class="relative flex items-center justify-center">
 					<img
 						src={portal}
-						alt={translations[language].sami_portal}
+						alt={getTranslations(language).sami_portal}
 						loading="lazy"
 						decoding="async"
 						class="z-[1]"
@@ -73,13 +73,13 @@
 				</div>
 				<div class="flex flex-col">
 					<p class={`${portalSelected ? 'text-[#FF99CA] font-semibold' : ''}`}>
-						{translations[language].sami_portal_buff}
+						{getTranslations(language).sami_portal_buff}
 					</p>
 					<p>{portalDesc[language]}</p>
 				</div>
 			</button>
 			<p class="mt-4 font-medium text-lg text-purple-400 text-center">
-				{translations[language].sami_chaos}
+				{getTranslations(language).sami_chaos}
 			</p>
 			<div class="flex flex-col gap-y-4 mt-2">
 				{#each chaosList as option}

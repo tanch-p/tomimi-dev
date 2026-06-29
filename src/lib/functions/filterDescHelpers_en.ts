@@ -1,8 +1,8 @@
 import type { Language } from '$lib/types';
-import translations from '$lib/translations.json';
 import relics from '$lib/data/chara/relics_chara.json';
 import { formatArray } from './languageHelpers';
 import { getDisplayKey } from './charaHelpers';
+import { getTranslations } from '$lib/functions/languageHelpers';
 
 function capitalize(str) {
 	// Check if the input is a valid string
@@ -83,7 +83,7 @@ const ALLY_BUFFS = [
 	'ally_stealth',
 	'ally_camouflage',
 	'ally_taunt',
-	"ally_arts",
+	'ally_arts',
 	'ally_apoptosis',
 	'ally_burning',
 	'ally_lower_target_priority',
@@ -145,7 +145,7 @@ const HAVE_TAGS = [
 	'def_penetrate',
 	'res_penetrate',
 	'reflect_dmg',
-	"sp_module"
+	'sp_module'
 ];
 const SKILL_HAVE_TAGS = ['unlimited_duration', 'skill_invincible', 'skill_manual_off'];
 const PRIORITY_TAGS = [
@@ -182,7 +182,7 @@ const SQUAD_TAGS = [
 	'SPECIAL',
 	'cost_under_10',
 	'mujica',
-	"kjerag"
+	'kjerag'
 ];
 const TYPE_TAGS = [
 	'flying',
@@ -201,7 +201,7 @@ const TYPE_TAGS = [
 	'blocked_enemy',
 	'no_block_enemy',
 	'self_no_block_enemy',
-	"not_moving"
+	'not_moving'
 ];
 
 const SP_TYPE_LIST = [
@@ -292,18 +292,18 @@ export const generateSkillDesc = (
 				const key = getDisplayKey(value);
 				return (
 					selected &&
-					(translations[language].table_headers[key] ??
-						translations[language][key] ??
-						translations[language].types[key])
+					(getTranslations(language).table_headers[key] ??
+						getTranslations(language)[key] ??
+						getTranslations(language).types[key])
 				);
 			})
 			.filter(Boolean)
 			.join('/');
-		let pre = translations[language]['chara_filter']?.[`${key}_pre`] ?? '';
+		let pre = getTranslations(language)['chara_filter']?.[`${key}_pre`] ?? '';
 		if (key === 'deployable_tile' && otherOptions.length === 1) {
 			pre = 'that ' + pre;
 		}
-		const post = translations[language]['chara_filter']?.[`${key}_post`] ?? '';
+		const post = getTranslations(language)['chara_filter']?.[`${key}_post`] ?? '';
 		descList.push(pre + '<@bluehl>' + value + '</>' + post);
 	}
 
@@ -364,9 +364,9 @@ export const generateSkillDesc = (
 				let pre = '';
 				let post = '';
 				let translated =
-					translations[language].table_headers[displayKey] ??
-					translations[language][displayKey] ??
-					translations[language].types[displayKey] ??
+					getTranslations(language).table_headers[displayKey] ??
+					getTranslations(language)[displayKey] ??
+					getTranslations(language).types[displayKey] ??
 					'';
 				if (['atk', 'hp', 'res', 'def', 'attack_speed'].includes(displayKey)) {
 					translated = translated.toUpperCase();
@@ -460,8 +460,8 @@ export const generateSkillDesc = (
 				filterMode === 'OR' || ['blockCnt', 'spType'].includes(category)
 					? translatedStrings.join('/')
 					: formatArray(translatedStrings, ', ', ' and ');
-			let pre = translations[language]['chara_filter']?.[`${category}_pre`] ?? '';
-			let post = translations[language]['chara_filter']?.[`${category}_post`] ?? '';
+			let pre = getTranslations(language)['chara_filter']?.[`${category}_pre`] ?? '';
+			let post = getTranslations(language)['chara_filter']?.[`${category}_post`] ?? '';
 			if (
 				category === 'type' &&
 				!(options.includes('no_block_enemy') || options.includes('self_no_block_enemy'))

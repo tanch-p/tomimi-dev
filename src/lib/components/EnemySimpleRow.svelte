@@ -1,11 +1,11 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language, EnemyFormType, StatMods } from '$lib/types';
 	import { getNormalAtk } from '$lib/functions/parseAtkType';
 	import { getStatSkills } from '$lib/functions/skillHelpers';
 	import RemarksContainer from '$lib/components/RemarksContainer.svelte';
 	import AtkSuffix from '$lib/components/AtkSuffix.svelte';
 	import StatSkills from '$lib/components/StatSkills.svelte';
-	import translations from '$lib/translations.json';
 	import OtherBuffs from './OtherBuffs.svelte';
 	import { isEquals } from '$lib/functions/lib';
 
@@ -88,7 +88,7 @@
 				<td class={`border border-gray-400 h-[65px] ${textAlign(key)}`} rowspan={maxRowSpan}>
 					<div>
 						{#each enemy.type.filter((ele) => ele !== 'NORMAL') as type}
-							<p class="whitespace-nowrap">{translations[language].types[type]}</p>
+							<p class="whitespace-nowrap">{getTranslations(language).types[type]}</p>
 						{/each}
 					</div>
 				</td>

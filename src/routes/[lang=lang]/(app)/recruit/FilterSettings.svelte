@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { filterModeStore } from './stores';
 	import { setLocalStorage } from '$lib/functions/lib';
 
@@ -14,10 +14,10 @@
 
 <div class="bg-near-white rounded-md p-3 md:p-4 text-almost-black">
 	<h2 class="border-b text-center pb-1 md:pb-2">
-		{translations[language].settings}
+		{getTranslations(language).settings}
 	</h2>
 	<div class="flex flex-col md:grid grid-cols-[100px_1fr] gap-2 md:gap-y-3 pt-3">
-		<p class="md:py-[5px]">{translations[language].filter_mode}</p>
+		<p class="md:py-[5px]">{getTranslations(language).filter_mode}</p>
 		<div class="flex flex-wrap gap-2">
 			{#each ['OR', 'AND', 'AND_STRICT'] as value}
 				<button
@@ -32,7 +32,7 @@
 	</div>
 	<div class="mt-4 max-w-[500px]">
 		{#if $filterModeStore === 'OR'}
-			<p class="text-lg">OR - {translations[language].general_search}</p>
+			<p class="text-lg">OR - {getTranslations(language).general_search}</p>
 			<p>
 				{#if language === 'en'}
 					Queries by whether operator's talent/module/skill is able to fulfill <span
@@ -46,7 +46,7 @@
 					>を満たすことができるかどうかを照会します。{/if}
 			</p>
 		{:else if $filterModeStore === 'AND'}
-			<p class="text-lg">AND - {translations[language].specific_search}</p>
+			<p class="text-lg">AND - {getTranslations(language).specific_search}</p>
 			<p class="">
 				{#if language === 'en'}
 					Queries by whether operator's talent/module + <span class="text-[#508407]"
@@ -64,7 +64,7 @@
 				{/if}
 			</p>
 		{:else}
-			<p class="text-lg">AND (STRICT) - {translations[language].specific_search_strict}</p>
+			<p class="text-lg">AND (STRICT) - {getTranslations(language).specific_search_strict}</p>
 			<p class="">
 				{#if language === 'en'}
 					Queries by whether operator is able to fulfill <span class="text-red-600">ALL</span> of

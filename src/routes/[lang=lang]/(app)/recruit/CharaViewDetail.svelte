@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import TextParser from '$lib/components/TextParser.svelte';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import {
@@ -161,7 +161,7 @@
 										size="small"
 									/>
 								</div>
-								<p class="text-near-white text-xs">{translations[language].attack_range}</p>
+								<p class="text-near-white text-xs">{getTranslations(language).attack_range}</p>
 							</div>
 						</div>
 						<div class="hidden min-[500px]:grid grid-cols-2 gap-x-2 gap-y-1 ml-2.5">
@@ -194,7 +194,7 @@
 			class="relative rounded-b-md bg-[#e9e9e9] pt-4 pb-2 -mt-2.5 space-y-2.5 text-[#333] overflow-hidden"
 		>
 			<div class="px-4 min-[500px]:pr-[120px]">
-				<p class="font-medium">{translations[language][chara.subProfessionId]}</p>
+				<p class="font-medium">{getTranslations(language)[chara.subProfessionId]}</p>
 				<TextParser
 					line={getModuleTrait(chara.desc, chara.uniequip[chara.activeModuleIndex], 2)}
 					className="text-sm"

@@ -1,16 +1,16 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import suiWrathList from '$lib/data/is/sui/sui_wrath.json';
 	import FloorEffect from './FloorEffect.svelte';
 	import FloorSelect from './FloorSelect.svelte';
-	import translations from '$lib/translations.json';
 	import wrath_8 from '$lib/images/is/sui/rogue_5_wrath_8.webp';
 	import { difficulty, activeFloorEffects } from './stores';
 
 	export let optionsOpen: boolean, language: Language;
 
 	const lookup = {
-		rogue_5_wrath_8: wrath_8,
+		rogue_5_wrath_8: wrath_8
 	};
 	suiWrathList.forEach((option) => {
 		option.src = lookup[option.iconId];
@@ -32,8 +32,8 @@
 				level = 3;
 				options = suiWrathList.filter((ele) => ele.level == 3);
 		}
-		if(language === "zh"){
-			const wrath0 = suiWrathList.find(ele => ele.id === "rogue_5_wrath_8_d")
+		if (language === 'zh') {
+			const wrath0 = suiWrathList.find((ele) => ele.id === 'rogue_5_wrath_8_d');
 			options.push(wrath0);
 		}
 		if ($activeFloorEffects.length > 0) {
@@ -55,7 +55,7 @@
 		<hr class="border-neutral-600" />
 		<div class="px-2 md:px-0">
 			<p class="mt-4 font-medium text-lg text-red-400 text-center">
-				{translations[language].sui_wrath} ({translations[language][`wrath_level_${level}`]})
+				{getTranslations(language).sui_wrath} ({getTranslations(language)[`wrath_level_${level}`]})
 			</p>
 
 			<div class="flex flex-col gap-y-4 mt-2">

@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import { Game } from './objects/Game';
 	import BranchOption from './BranchOption.svelte';
 	import branchInfo from '$lib/data/stages/branch_info.json';
@@ -32,7 +32,9 @@
 >
 	<div>
 		<div class="flex items-center gap-x-1.5 pl-1 pr-0.5 border-b border-slate-600 text-end">
-			<h6 class="font-semibold text-sky-500 w-full">{translations[language].branch_summon_list}</h6>
+			<h6 class="font-semibold text-sky-500 w-full">
+				{getTranslations(language).branch_summon_list}
+			</h6>
 		</div>
 		<div class="flex flex-col gap-y-1.5 mt-1.5">
 			{#each Object.entries(branches) as [index, keyList]}

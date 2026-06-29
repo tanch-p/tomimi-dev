@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import TitleBlock from './TitleBlock.svelte';
-	import translations from '$lib/translations.json';
 
-	export let list, docLink = null, language: Language;
+	export let list,
+		docLink = null,
+		language: Language;
 
 	const moreBugs = {
 		zh: `想查看更多或反馈bug，可以在这里查看`,
@@ -12,7 +14,7 @@
 	};
 </script>
 
-<TitleBlock title={translations[language].buglist}>
+<TitleBlock title={getTranslations(language).buglist}>
 	{#if docLink}
 		<p class="mb-4">
 			<span>{moreBugs[language]}</span>

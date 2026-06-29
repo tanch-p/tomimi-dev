@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
 	import type { Language } from '$lib/types';
 	import { filters, globalCheck, sortFunction } from './stores';
@@ -9,7 +10,6 @@
 	import CharaSortOptions from './CharaSortOptions.svelte';
 	import CharaSecFilter from './CharaSecFilter.svelte';
 	import CharaPopup from './CharaPopup.svelte';
-	import translations from '$lib/translations.json';
 	import ClearButton from './ClearButton.svelte';
 	import Settings from './FilterSettings.svelte';
 
@@ -20,15 +20,15 @@
 	let loading = true;
 	let characters = [];
 
-	const loadData = async (language:Language) => {
+	const loadData = async (language: Language) => {
 		characters = await getCharaList(language);
 	};
 </script>
 
 <svelte:head>
-	<title>{translations[language].chara_page} / {translations[language].title_post}</title>
-	<meta name="description" content={translations[language].title_post} />
-	<meta property="og:description" content={translations[language].title_post} />
+	<title>{getTranslations(language).chara_page} / {getTranslations(language).title_post}</title>
+	<meta name="description" content={getTranslations(language).title_post} />
+	<meta property="og:description" content={getTranslations(language).title_post} />
 </svelte:head>
 
 <ClearButton {language} />
@@ -41,7 +41,7 @@
 			<CharaSecFilter {language} />
 		</div>
 		{#await loadData(language)}
-			<p class="text-center">{translations[language].data_loading}</p>
+			<p class="text-center">{getTranslations(language).data_loading}</p>
 		{:then}
 			<DisplayContainer
 				characters={characters.filter($globalCheck).filter($filters).sort($sortFunction)}

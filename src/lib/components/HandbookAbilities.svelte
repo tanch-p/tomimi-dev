@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
 	import Remark from './Remark.svelte';
-	import translations from '$lib/translations.json';
 	import EnemyFormTitle from './EnemyFormTitle.svelte';
 	import { getEnemySkills, getHandbookEnemySkills } from '$lib/functions/skillHelpers';
 	import HandbookSkills from './HandbookSkills.svelte';
@@ -23,14 +23,14 @@
 		return acc;
 	}, true)}
 	<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-		{translations[language].handbook_ability}
+		{getTranslations(language).handbook_ability}
 	</p>
 	<div class="py-1">
 		<ul class="list-disc pl-4">
 			{#if sameDmgRedAcrossForms}
 				{#if enemy.forms[0].stats.dmgRes}
 					<li class="py-1">
-						{translations[language].dmg_res_short} - {enemy.forms[0].stats.dmgRes * 100}%
+						{getTranslations(language).dmg_res_short} - {enemy.forms[0].stats.dmgRes * 100}%
 						{#if enemy.key === 'enemy_2119_dyshhj'}
 							(不生效，25/07/25最终确认)
 						{/if}
@@ -56,7 +56,7 @@
 			<ul class="list-disc pl-4">
 				{#if !sameDmgRedAcrossForms}
 					<li class="py-1">
-						{translations[language].dmg_res_short} - {form.stats.dmgRes * 100}%
+						{getTranslations(language).dmg_res_short} - {form.stats.dmgRes * 100}%
 					</li>
 				{/if}
 			</ul>

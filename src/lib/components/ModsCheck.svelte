@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
-	import translations from '$lib/translations.json';
 	import TogglePanel from './TogglePanel.svelte';
 	import { getFormTitle } from '$lib/functions/lib';
 	import DraggableContainer from './DraggableContainer.svelte';
@@ -17,16 +17,12 @@
 	$: if (enemyIndex > -1) {
 		formIndex = 0;
 	}
-	$: listToShow = enemies?.filter((enemy) => enemy?.modsList?.some((mods) => mods?.length > 0)) || [];
+	$: listToShow =
+		enemies?.filter((enemy) => enemy?.modsList?.some((mods) => mods?.length > 0)) || [];
 	$: enemy = listToShow[enemyIndex];
-
 </script>
 
-<TogglePanel
-	title={translations[language].mods_check}
-	size="subheading"
-	className="my-4"
->
+<TogglePanel title={getTranslations(language).mods_check} size="subheading" className="my-4">
 	{#if listToShow.length > 0}
 		<DraggableContainer className="no-scrollbar">
 			<div
@@ -59,7 +55,7 @@
 				<div class="flex gap-x-2 mt-1.5 h-[20px]">
 					{#each enemy.type.filter((ele) => !['melee', 'ranged', 'NORMAL'].includes(ele)) as type}
 						<p class="whitespace-nowrap text-[#83a39f] text-sm">
-							{translations[language].types[type]}
+							{getTranslations(language).types[type]}
 						</p>
 					{/each}
 				</div>

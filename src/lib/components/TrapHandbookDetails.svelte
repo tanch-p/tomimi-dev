@@ -1,14 +1,14 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig, Trap } from '$lib/types';
 	import { page } from '$app/stores';
-	import translations from '$lib/translations.json';
 	import StatusImmune from './StatusImmune.svelte';
 	import TrapStats from './TrapStats.svelte';
 	import RangeParser from './RangeParser.svelte';
 	import TrapAbilities from './TrapAbilities.svelte';
 	import OtherBuffs from './OtherBuffs.svelte';
 
-	export let trap: Trap, otherBuffsList, specialMods, mapConfig:MapConfig;
+	export let trap: Trap, otherBuffsList, specialMods, mapConfig: MapConfig;
 	let language: Language;
 	$: language = $page.data.language;
 </script>
@@ -48,7 +48,7 @@
 					<div class="flex items-center">
 						<RangeParser rangeId={trap.stats.rangeId} size="small" />
 					</div>
-					<p class="mt-1 text-xs">{translations[language].attack_range}</p>
+					<p class="mt-1 text-xs">{getTranslations(language).attack_range}</p>
 				</div>
 			{/if}
 		</div>
@@ -58,7 +58,7 @@
 		{#if trap.key === 'trap_760_skztzs'}
 			<OtherBuffs {otherBuffsList} {language} entity={trap} />
 		{/if}
-		<TrapAbilities {trap} {specialMods} {mapConfig}/>
+		<TrapAbilities {trap} {specialMods} {mapConfig} />
 		<StatusImmune statusImmuneList={trap.status_immune} {language} mode="handbook" />
 	</div>
 </div>

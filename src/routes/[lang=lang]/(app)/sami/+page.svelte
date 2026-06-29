@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
 	import banner_sami from '$lib/images/banner_sami_800px.webp';
-	import translations from '$lib/translations.json';
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import HowToUse from '$lib/components/HowToUse.svelte';
 	import SamiNavTemp from './SamiNavTemp.svelte';
@@ -13,10 +13,10 @@
 </script>
 
 <svelte:head>
-	<title>{translations[language].rogue_sami} / {translations[language].title_post}</title>
-	<meta name="description" content={translations[language].title_post} />
-	<meta property="og:description" content={translations[language].title_post} />
-	<meta property="og:title" content={translations[language].rogue_sami} />
+	<title>{getTranslations(language).rogue_sami} / {getTranslations(language).title_post}</title>
+	<meta name="description" content={getTranslations(language).title_post} />
+	<meta property="og:description" content={getTranslations(language).title_post} />
+	<meta property="og:title" content={getTranslations(language).rogue_sami} />
 	<meta property="og:url" content={`https://tomimi.dev/${language}/sami`} />
 </svelte:head>
 
@@ -26,15 +26,15 @@
 			<img
 				class="select-none mx-auto py-2"
 				src={banner_sami}
-				alt={translations[language].rogue_sami}
+				alt={getTranslations(language).rogue_sami}
 			/>
 		</div>
 		<div class="space-y-6">
-			<Resources {language}/>
-			<TogglePanel title={translations[language].how_to_use} isOpen={true}>
+			<Resources {language} />
+			<TogglePanel title={getTranslations(language).how_to_use} isOpen={true}>
 				<HowToUse {language} rogueTopic={'rogue_sami'} />
 			</TogglePanel>
-			<TitleBlock title={translations[language].stage_nav}>
+			<TitleBlock title={getTranslations(language).stage_nav}>
 				<SamiNavTemp {language} />
 			</TitleBlock>
 		</div>
