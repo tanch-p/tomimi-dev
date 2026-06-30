@@ -1,11 +1,23 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
+	import { parseTaggedText, type TaggedTextNode } from '$lib/functions/ASTTextParser';
 	import { page } from '$app/stores';
 	import type { Language } from '$lib/types';
 	import termDesc from '$lib/data/term_desc.json';
 	import { onMount } from 'svelte';
 
-	const HTML_TAGS = ['span', 'br', 'div', 'h4', 'h5', 'h6'];
+	const LT_PLACEHOLDER = '__TEXT_PARSER_LT__';
+	const GT_PLACEHOLDER = '__TEXT_PARSER_GT__';
+	type TermDescEntry = {
+		termId?: string;
+		name_zh?: string;
+		name_en?: string;
+		name_ja?: string;
+		desc_zh?: string;
+		desc_en?: string;
+		desc_ja?: string;
+	};
+	const termDescMap = termDesc as unknown as Record<string, TermDescEntry>;
 
 	// note to self do not ever use <text> for special parsing usage when using inner HTML...
 	export let line: string,
@@ -37,57 +49,27 @@
 		'@arts': 'text-[#A7C2FC] capitalize',
 		'@true': 'text-[#FF99CA] capitalize',
 		'@strike': 'line-through text-neutral-400'
-	};
+	} as Record<string, string>;
 
-	function processText(input, pattern) {
+	function processText(input: string, pattern: { prefix: string; suffix: string; style: string }) {
 		if (pattern.prefix === '$') {
 			const regex = /\$(.*?)\$/g;
-			return input.replace(regex, (match, content) => {
+			return input.replace(regex, (_match, content) => {
 				return `<span class="${pattern.style}">${content}</span>`;
 			});
 		}
 		return input;
 	}
-	function addTooltip(pattern, content) {
-		let desc = termDesc?.[pattern]?.[`desc_${language}`] || termDesc?.[pattern]?.[`desc_zh`];
+	function addTooltip(pattern: string, content: string) {
+		let desc = termDescMap?.[pattern]?.[`desc_${language}`] || termDescMap?.[pattern]?.[`desc_zh`];
 		// determine if tooltip will exceed popup screen
 		if (!desc) {
 			return content;
 		}
-		const name = termDesc?.[pattern]?.[`name_${language}`] || termDesc?.[pattern]?.[`name_zh`];
-		// prepare depth+1 desc
-		let desc2 = [];
-		desc = desc.replace(/<(.*?)>(.*?)<\/>/g, (match, pattern, content) => {
-			if (pattern.includes('@')) {
-				return `<span class="${textPatterns[pattern]}">${content}</span>`;
-			} else {
-				// because tailwind classes doesn't work with interpolated strings
-				const peerDesc =
-					desc2.length === 0
-						? 'one'
-						: desc2.length === 1
-						? 'two'
-						: desc2.length === 2
-						? 'three'
-						: 'four';
-				const peerClass =
-					desc2.length === 0
-						? 'peer-has-[.one:hover]:pointer-events-auto'
-						: desc2.length === 1
-						? 'peer-has-[.two:hover]:pointer-events-auto'
-						: desc2.length === 2
-						? 'peer-has-[.three:hover]:pointer-events-auto'
-						: 'peer-has-[.four:hover]:pointer-events-auto';
-				desc2.push(
-					`<div class="tooltiptext absolute opacity-0 pointer-events-none ${peerClass} hover:pointer-events-auto hover:opacity-100 top-[54px] bg-slate-300 text-[#222222] w-[220px] ${
-						language === 'en' ? 'min-h-[150px]' : ' min-h-[100px]'
-					} p-1.5 z-[1] rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${content}</h6><div class="mt-1">${
-						termDesc[pattern][`desc_${language}`] || termDesc[pattern][`desc_zh`]
-					}</div></div>`
-				);
-				return `<div class="${peerDesc} relative inline-block underline underline-offset-2">${content}</div>`;
-			}
-		});
+		const name =
+			termDescMap?.[pattern]?.[`name_${language}`] || termDescMap?.[pattern]?.[`name_zh`];
+		let desc2: string[] = [];
+		desc = renderTooltipDescription(desc, desc2);
 		return `<div class="tooltip relative inline-block underline underline-offset-2 group leading-tight bg-[linear-gradient(to_top,#fff6,transparent_75%)]">${content}<div class="tooltiptext absolute hidden peer group-hover:block bg-slate-200 text-[#222222] w-[220px] p-1.5 z-[1] rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${name}</h6><div class="mt-1">${desc}</div></div>${desc2.join(
 			''
 		)}</div>`;
@@ -111,33 +93,152 @@
 				);
 			}
 		}
-		line = line.replace(/<(b.*?)>(.*?)<\/>/g, (match, pattern, content) => {
-			return addTooltip(pattern, content);
-		});
-		line = line.replaceAll('\n', '<br/>');
-		line = line.replaceAll('\\n', '<br/>');
-		//parsed separately to deal with cathy case
-		line = line.replace(/<@(.*?)>(.*?)<\/>/g, (match, pattern, content) => {
-			if (pattern.includes('skilltag')) {
-				return `<span class="${pattern}">${content}</span>`;
-			}
-			return `<span class="${textPatterns?.['@' + pattern] ?? ''}">${content}</span>`;
-		});
+		line = renderTaggedMarkup(line);
 		for (const pattern of patternsToParse) {
 			line = processText(line, pattern);
 		}
-		// case to handle for en stage desc with trap names... eg: ro4_1-2
-		line = line.replace(/<(.*?)>/g, (match, pattern, content) => {
-			if (HTML_TAGS.some((tag) => match.includes(tag))) {
-				return match;
-			}
-			return `&lt;${pattern}&gt;`;
-		});
 		return line;
 	};
-	function adjustTooltipPosition(tooltip) {
+
+	function renderTaggedMarkup(input: string): string {
+		const sanitizedInput = escapeUnsupportedTags(input);
+
+		try {
+			return renderTaggedNodes(parseTaggedText(sanitizedInput).children);
+		} catch (_error) {
+			return formatText(sanitizedInput);
+		}
+	}
+
+	function renderTooltipDescription(input: string, desc2: string[]): string {
+		const sanitizedInput = escapeUnsupportedTags(input);
+
+		try {
+			return renderTooltipNodes(parseTaggedText(sanitizedInput).children, desc2);
+		} catch (_error) {
+			return formatText(sanitizedInput);
+		}
+	}
+
+	function renderTaggedNodes(nodes: TaggedTextNode[]): string {
+		return nodes.map((node) => renderTaggedNode(node)).join('');
+	}
+
+	function renderTaggedNode(node: TaggedTextNode): string {
+		if (node.type === 'text') {
+			return formatText(node.value);
+		}
+
+		const content = renderTaggedNodes(node.children);
+		return renderTag(node.name, content);
+	}
+
+	function renderTooltipNodes(nodes: TaggedTextNode[], desc2: string[]): string {
+		return nodes.map((node) => renderTooltipNode(node, desc2)).join('');
+	}
+
+	function renderTooltipNode(node: TaggedTextNode, desc2: string[]): string {
+		if (node.type === 'text') {
+			return formatText(node.value);
+		}
+
+		const content = renderTooltipNodes(node.children, desc2);
+		if (node.name.startsWith('@')) {
+			return `<span class="${escapeHtmlAttribute(
+				textPatterns[node.name] ?? ''
+			)}">${content}</span>`;
+		}
+
+		const tooltipKey = node.name.startsWith('$') ? node.name.slice(1) : node.name;
+		const tooltipDesc =
+			termDescMap?.[tooltipKey]?.[`desc_${language}`] || termDescMap?.[tooltipKey]?.[`desc_zh`];
+
+		if (!tooltipDesc) {
+			return content;
+		}
+
+		const peerDesc =
+			desc2.length === 0
+				? 'one'
+				: desc2.length === 1
+				? 'two'
+				: desc2.length === 2
+				? 'three'
+				: 'four';
+		const peerClass =
+			desc2.length === 0
+				? 'peer-has-[.one:hover]:pointer-events-auto'
+				: desc2.length === 1
+				? 'peer-has-[.two:hover]:pointer-events-auto'
+				: desc2.length === 2
+				? 'peer-has-[.three:hover]:pointer-events-auto'
+				: 'peer-has-[.four:hover]:pointer-events-auto';
+
+		desc2.push(
+			`<div class="tooltiptext absolute opacity-0 pointer-events-none ${peerClass} hover:pointer-events-auto hover:opacity-100 top-[54px] bg-slate-300 text-[#222222] w-[220px] ${
+				language === 'en' ? 'min-h-[150px]' : ' min-h-[100px]'
+			} p-1.5 z-[1] rounded-md text-sm shadow-inner"><h6 class="font-semibold text-base">${content}</h6><div class="mt-1">${renderTooltipDescription(
+				tooltipDesc,
+				desc2
+			)}</div></div>`
+		);
+
+		return `<div class="${peerDesc} relative inline-block underline underline-offset-2">${content}</div>`;
+	}
+
+	function renderTag(tagName: string, content: string): string {
+		if (tagName.startsWith('@skilltag ')) {
+			return `<span class="${escapeHtmlAttribute(tagName.slice(1))}">${content}</span>`;
+		}
+		if (tagName.startsWith('@')) {
+			return `<span class="${escapeHtmlAttribute(textPatterns[tagName] ?? '')}">${content}</span>`;
+		}
+		if (tagName.startsWith('$')) {
+			return addTooltip(tagName.slice(1), content);
+		}
+		if (tagName.startsWith('b')) {
+			return addTooltip(tagName, content);
+		}
+		return formatText(`<${tagName}>`) + content;
+	}
+
+	function isSupportedCustomTag(tagName: string): boolean {
+		return tagName.startsWith('@') || tagName.startsWith('$') || tagName.startsWith('b');
+	}
+
+	function escapeUnsupportedTags(input: string): string {
+		return input.replace(/<([^<>]+)>/g, (match, tagName) => {
+			const normalizedTagName = tagName.trim();
+			if (normalizedTagName === '/' || isSupportedCustomTag(normalizedTagName)) {
+				return match;
+			}
+
+			return `${LT_PLACEHOLDER}${tagName}${GT_PLACEHOLDER}`;
+		});
+	}
+
+	function formatText(value: string): string {
+		return escapeHtml(value)
+			.replaceAll(LT_PLACEHOLDER, '&lt;')
+			.replaceAll(GT_PLACEHOLDER, '&gt;')
+			.replaceAll('\n', '<br/>')
+			.replaceAll('\\n', '<br/>');
+	}
+
+	function escapeHtml(value: string): string {
+		return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+	}
+
+	function escapeHtmlAttribute(value: string): string {
+		return escapeHtml(value).replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+	}
+
+	function adjustTooltipPosition(tooltip: Element) {
 		const container = tooltip.closest('.popup') || tooltip.closest('main');
-		const tooltipTexts = tooltip.querySelectorAll('.tooltiptext');
+		const tooltipTexts = tooltip.querySelectorAll<HTMLElement>('.tooltiptext');
+		if (!container) {
+			return;
+		}
 		const containerRect = container.getBoundingClientRect();
 		const tooltipRect = tooltip.getBoundingClientRect();
 		const overflowRight = tooltipRect.right + 110 - containerRect.right;
