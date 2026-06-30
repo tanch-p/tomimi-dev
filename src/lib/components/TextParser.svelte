@@ -8,6 +8,7 @@
 
 	const LT_PLACEHOLDER = '__TEXT_PARSER_LT__';
 	const GT_PLACEHOLDER = '__TEXT_PARSER_GT__';
+	const TRUSTED_HTML_TAGS = ['span', 'div'];
 	type TermDescEntry = {
 		termId?: string;
 		name_zh?: string;
@@ -101,22 +102,30 @@
 	};
 
 	function renderTaggedMarkup(input: string): string {
-		const sanitizedInput = escapeUnsupportedTags(input);
+		const { placeholderedInput, trustedHtmlTags } = preserveTrustedHtmlTags(input);
+		const sanitizedInput = escapeUnsupportedTags(placeholderedInput);
 
 		try {
-			return renderTaggedNodes(parseTaggedText(sanitizedInput).children);
+			return restoreTrustedHtmlTags(
+				renderTaggedNodes(parseTaggedText(sanitizedInput).children),
+				trustedHtmlTags
+			);
 		} catch (_error) {
-			return formatText(sanitizedInput);
+			return restoreTrustedHtmlTags(formatText(sanitizedInput), trustedHtmlTags);
 		}
 	}
 
 	function renderTooltipDescription(input: string, desc2: string[]): string {
-		const sanitizedInput = escapeUnsupportedTags(input);
+		const { placeholderedInput, trustedHtmlTags } = preserveTrustedHtmlTags(input);
+		const sanitizedInput = escapeUnsupportedTags(placeholderedInput);
 
 		try {
-			return renderTooltipNodes(parseTaggedText(sanitizedInput).children, desc2);
+			return restoreTrustedHtmlTags(
+				renderTooltipNodes(parseTaggedText(sanitizedInput).children, desc2),
+				trustedHtmlTags
+			);
 		} catch (_error) {
-			return formatText(sanitizedInput);
+			return restoreTrustedHtmlTags(formatText(sanitizedInput), trustedHtmlTags);
 		}
 	}
 
@@ -204,6 +213,33 @@
 
 	function isSupportedCustomTag(tagName: string): boolean {
 		return tagName.startsWith('@') || tagName.startsWith('$') || tagName.startsWith('b');
+	}
+
+	function preserveTrustedHtmlTags(input: string): {
+		placeholderedInput: string;
+		trustedHtmlTags: string[];
+	} {
+		const trustedHtmlTags: string[] = [];
+		const htmlTagPattern = /<\/?(span|div)\b[^>]*>/gi;
+
+		return {
+			placeholderedInput: input.replace(htmlTagPattern, (match, tagName: string) => {
+				if (!TRUSTED_HTML_TAGS.includes(tagName.toLowerCase())) {
+					return match;
+				}
+
+				const placeholder = `__TEXT_PARSER_HTML_${trustedHtmlTags.length}__`;
+				trustedHtmlTags.push(match);
+				return placeholder;
+			}),
+			trustedHtmlTags
+		};
+	}
+
+	function restoreTrustedHtmlTags(input: string, trustedHtmlTags: string[]): string {
+		return trustedHtmlTags.reduce((output, tag, index) => {
+			return output.replaceAll(`__TEXT_PARSER_HTML_${index}__`, tag);
+		}, input);
 	}
 
 	function escapeUnsupportedTags(input: string): string {
