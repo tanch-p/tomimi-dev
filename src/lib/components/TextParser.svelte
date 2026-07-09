@@ -254,19 +254,20 @@
 	}
 
 	function formatText(value: string): string {
-		return escapeHtml(value)
+		return value
 			.replaceAll(LT_PLACEHOLDER, '&lt;')
 			.replaceAll(GT_PLACEHOLDER, '&gt;')
 			.replaceAll('\n', '<br/>')
 			.replaceAll('\\n', '<br/>');
 	}
 
-	function escapeHtml(value: string): string {
-		return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-	}
-
 	function escapeHtmlAttribute(value: string): string {
-		return escapeHtml(value).replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+		return value
+			.replaceAll('&', '&amp;')
+			.replaceAll('<', '&lt;')
+			.replaceAll('>', '&gt;')
+			.replaceAll('"', '&quot;')
+			.replaceAll("'", '&#39;');
 	}
 
 	function adjustTooltipPosition(tooltip: Element) {
