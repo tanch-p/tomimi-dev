@@ -73407,9 +73407,6 @@
                 "epResistance": 0.0,
                 "traits": [
                     {
-                        "key": "ymgtop_start"
-                    },
-                    {
                         "key": "ymgtop_spin"
                     },
                     {
