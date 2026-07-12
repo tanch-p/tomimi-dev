@@ -27,8 +27,12 @@
    "addInfo_zh": [
     "N18追加敌人：第一波次：山海众连阵者×3、山海众秘使×6"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜山海衆連陣守護者＞3体、＜山海衆密使＞6体が追加で出現"
+   ],
+   "addInfo_en": [
+    "D18 - additional 3 &lt;Shanhaizhong Phalanx&gt; and 6 &lt;Shanhaizhong Secret-Keeper&gt; appears"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

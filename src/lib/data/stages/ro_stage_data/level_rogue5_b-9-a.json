@@ -1,8 +1,8 @@
 {
  "name": {
   "zh": "止变",
-  "ja": null,
-  "en": null
+  "ja": "止変",
+  "en": "Stasis"
  },
  "data": [
   {
@@ -19,19 +19,29 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "止变",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "止変",
+   "name_en": "Stasis",
    "description_zh": "让无休止的演化，留驻于此。\n<@rolv.rem>“身形”反弹部分受到的伤害；“敛傲”“愠怒”最大生命值提升</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "終わりなき進化を、ここに断つ。\n<@rolv.rem><身形>は被ダメージの一部を攻撃者にも与える。<抑傲>と<憤怒>の最大HPが上昇</>",
+   "description_en": "Let unending evolution end here.\n<@rolv.rem>'Body' reflects a portion of damage received; 'Restrained Pride' and 'Fume of Anger' have increased Max HP</>",
    "addInfo_zh": [
     "敛傲与愠怒的生命值额外提升至150%",
     "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
     "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "＜抑傲＞と＜憤怒＞の最大HP+50%",
+    "＜身形＞が攻撃を受けた時、そのダメージ源に対して受けたダメージの10%の確定ダメージを与える",
+    "秘宝「不赦」所持時、＜身形＞が30秒ごとに追加の敵を召喚する",
+    "18難：＜昭烈君＞1体、＜文衡君＞1体、＜桓君＞1体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "&lt;Restrained Pride&gt; and &lt;Fumes of Anger&gt; have +50% Max HP",
+    "&lt;Body&gt; reflect 10% of the damage received to attacker as True damage",
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 30s",
+    "D18 - additional 1 &lt;Lord Zhaolie&gt;, 1 &lt;Lord Wenheng&gt; and 1 &lt;Lord Huan&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,
@@ -9308,19 +9318,29 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "止变",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "止変",
+   "name_en": "Stasis",
    "description_zh": "让无休止的演化，留驻于此。\n<@rolv.rem>“身形”反弹部分受到的伤害；“敛傲”“愠怒”最大生命值提升</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "終わりなき進化を、ここに断つ。\n<@rolv.rem><身形>は被ダメージの一部を攻撃者にも与える。<抑傲>と<憤怒>の最大HPが上昇</>",
+   "description_en": "Let unending evolution end here.\n<@rolv.rem>'Body' reflects a portion of damage received; 'Restrained Pride' and 'Fume of Anger' have increased Max HP</>",
    "addInfo_zh": [
     "敛傲与愠怒的生命值额外提升至150%",
     "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
     "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "＜抑傲＞と＜憤怒＞の最大HP+50%",
+    "＜身形＞が攻撃を受けた時、そのダメージ源に対して受けたダメージの10%の確定ダメージを与える",
+    "秘宝「不赦」所持時、＜身形＞が30秒ごとに追加の敵を召喚する",
+    "18難：＜昭烈君＞1体、＜文衡君＞1体、＜桓君＞1体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "&lt;Restrained Pride&gt; and &lt;Fumes of Anger&gt; have +50% Max HP",
+    "&lt;Body&gt; reflect 10% of the damage received to attacker as True damage",
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 30s",
+    "D18 - additional 1 &lt;Lord Zhaolie&gt;, 1 &lt;Lord Wenheng&gt; and 1 &lt;Lord Huan&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,
@@ -17329,19 +17349,29 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "止变",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "止変",
+   "name_en": "Stasis",
    "description_zh": "让无休止的演化，留驻于此。\n<@rolv.rem>“身形”反弹部分受到的伤害；“敛傲”“愠怒”最大生命值提升</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "終わりなき進化を、ここに断つ。\n<@rolv.rem><身形>は被ダメージの一部を攻撃者にも与える。<抑傲>と<憤怒>の最大HPが上昇</>",
+   "description_en": "Let unending evolution end here.\n<@rolv.rem>'Body' reflects a portion of damage received; 'Restrained Pride' and 'Fume of Anger' have increased Max HP</>",
    "addInfo_zh": [
     "敛傲与愠怒的生命值额外提升至150%",
     "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
     "玩家持有【不赦】时，身形sp每30s召唤一次敌人",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "＜抑傲＞と＜憤怒＞の最大HP+50%",
+    "＜身形＞が攻撃を受けた時、そのダメージ源に対して受けたダメージの10%の確定ダメージを与える",
+    "秘宝「不赦」所持時、＜身形＞が30秒ごとに追加の敵を召喚する",
+    "18難：＜昭烈君＞1体、＜文衡君＞1体、＜桓君＞1体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "&lt;Restrained Pride&gt; and &lt;Fumes of Anger&gt; have +50% Max HP",
+    "&lt;Body&gt; reflect 10% of the damage received to attacker as True damage",
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 30s",
+    "D18 - additional 1 &lt;Lord Zhaolie&gt;, 1 &lt;Lord Wenheng&gt; and 1 &lt;Lord Huan&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,
@@ -25928,11 +25958,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "止变",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "止変",
+   "name_en": "Stasis",
    "description_zh": "让无休止的演化，留驻于此。\n<@rolv.rem>“身形”反弹部分受到的伤害；“敛傲”“愠怒”最大生命值提升</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "終わりなき進化を、ここに断つ。\n<@rolv.rem><身形>は被ダメージの一部を攻撃者にも与える。<抑傲>と<憤怒>の最大HPが上昇</>",
+   "description_en": "Let unending evolution end here.\n<@rolv.rem>'Body' reflects a portion of damage received; 'Restrained Pride' and 'Fume of Anger' have increased Max HP</>",
    "addInfo_zh": [
     "敛傲与愠怒的生命值额外提升至150%",
     "身形/身形sp受到伤害时反弹伤害量10%的真实伤害",
@@ -25941,8 +25971,18 @@
     "其他雕伥每10s召唤一个利齿鬣犄兽",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "＜抑傲＞と＜憤怒＞の最大HP+50%",
+    "＜身形＞が攻撃を受けた時、そのダメージ源に対して受けたダメージの10%の確定ダメージを与える",
+    "秘宝「不赦」所持時、＜身形＞が30秒ごとに追加の敵を召喚する",
+    "18難：＜昭烈君＞1体、＜文衡君＞1体、＜桓君＞1体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "&lt;Restrained Pride&gt; and &lt;Fumes of Anger&gt; have +50% Max HP",
+    "&lt;Body&gt; reflect 10% of the damage received to attacker as True damage",
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 30s",
+    "D18 - additional 1 &lt;Lord Zhaolie&gt;, 1 &lt;Lord Wenheng&gt; and 1 &lt;Lord Huan&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,
@@ -34946,11 +34986,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "止变",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "止変",
+   "name_en": "Stasis",
    "description_zh": "让无休止的演化，留驻于此。\n<@rolv.rem>“身形”反弹部分受到的伤害；所有敌人攻击力、防御力、生命值提升且“敛傲”“愠怒”最大生命值额外提升；“朔壳”“妄躯”技能释放更加频繁</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "終わりなき進化を、ここに断つ。\n<@rolv.rem><身形>は被ダメージの一部を攻撃者にも与える。敵全員の攻撃力、防御力、最大HPが上昇し、<抑傲>と<憤怒>の最大HPが追加で上昇。<朔殻>と<妄躯>のスキル発動頻度が上昇</>",
+   "description_en": "Let unending evolution end here.\n<@rolv.rem>'Body' reflects a portion of damage received; all enemies have increased ATK, DEF, and HP, while 'Restrained Pride' and 'Fume of Anger' have further increased Max HP; 'Vessel of Shuo' and 'Arrogance Embodied' use their skills more often</>",
    "addInfo_zh": [
     "敌方单位的攻击力、防御力和生命值都提升至120%",
     "敛傲与愠怒的生命值额外提升至150%",
@@ -34959,8 +34999,22 @@
     "朔壳与妄躯的周期技能冷却时间降低至80%",
     "N18追加敌人：桓君、昭烈君、文衡君"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "敵全員の攻撃力+20%、防御力+20%、最大HP+20%",
+    "＜抑傲＞と＜憤怒＞の最大HP+50%",
+    "＜身形＞が攻撃を受けた時、そのダメージ源に対して受けたダメージの20%の確定ダメージを与える",
+    "秘宝「不赦」所持時、＜身形＞が8秒ごとに追加の敵を召喚する",
+    "＜朔殻＞と＜妄躯＞のスキル発動頻度が増加(必要SP-20%)",
+    "18難：＜昭烈君＞1体、＜文衡君＞1体、＜桓君＞1体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+    "&lt;Restrained Pride&gt; and &lt;Fumes of Anger&gt; have +50% Max HP",
+    "&lt;Body&gt; reflect 20% of the damage received to attacker as True damage",
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 8s",
+    "Skill cooldowns of &lt;Vessel of Shuo&gt; and &lt;Arrogance Embodied&gt; are reduced by 20%",
+    "D18 - additional 1 &lt;Lord Zhaolie&gt;, 1 &lt;Lord Wenheng&gt; and 1 &lt;Lord Huan&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

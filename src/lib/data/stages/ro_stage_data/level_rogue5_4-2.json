@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_4_2",
    "levelId": "level_rogue5_4-2",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：寻路者突击手×8、寻路者阵地撕裂者×6"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
+    "18難：＜求道強襲者＞8体、＜精鋭求道ブレイカー＞6体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
+    "D18: Additional 8 &lt;Pathfinder Veles&gt; and 6 &lt;Pathfinder Ballistarius Prefect&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力，防御力，生命值+40%",

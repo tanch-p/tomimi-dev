@@ -29,10 +29,12 @@
     "N18追加敌人：山海众秘使×1"
    ],
    "addInfo_ja": [
-    "彫鬼は50秒ごとに&lt;「長塵」&gt;一体を召喚する"
+    "彫鬼は50秒ごとに&lt;「長塵」&gt;一体を召喚する",
+    "18難：＜山海衆密使＞1体が追加で出現"
    ],
    "addInfo_en": [
-    "Statuegeist summons 1 'Sand Voyager' every 50s"
+    "Statuegeist summons 1 'Sand Voyager' every 50s",
+    "D18: Additional 1 &lt;Shanhaizhong Secret-Keeper&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+30%，防御力+30%，生命值+50%",

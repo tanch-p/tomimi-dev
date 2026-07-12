@@ -1,8 +1,8 @@
 {
  "name": {
   "zh": "定乾坤",
-  "ja": null,
-  "en": null
+  "ja": "定乾坤",
+  "en": "Defining_the_World"
  },
  "data": [
   {
@@ -19,18 +19,24 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "定乾坤",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "定乾坤",
+   "name_en": "Defining_the_World",
    "description_zh": "人所能见，能及，能定的尽头。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "人が認識し、到達し、定めうる限界。",
+   "description_en": "The limit of what humanity can see, match, or define.",
    "addInfo_zh": [
     "玩家持有【不赦】时，身形sp每45s召唤一次敌人",
     "【晦】属性恍惚的“得意”天赋中的所有倍率失效（变为100%）",
     "N18追加敌人：恍惚的“得意”×12、恍惚的“得意”(晦)×12、山海众司魅人×5、不动的“偷闲”×3、“盛怒”×6"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "秘宝「不赦」所持時、＜身形＞が45秒ごとに追加の敵を召喚する",
+    "18難：＜不動の「ヤマツミ」＞3体、＜恍惚の「オニビ」＞24体、＜「シンイ」＞6体、＜山海衆怪術師＞5体が追加で出現"
+   ],
+   "addInfo_en": [
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 45s",
+    "D18 - additional 3 &lt;Unmoving 'Lazy'&gt;, 24 &lt;Dazzled 'Smarty'&gt;, 6 'Fury'&gt; and 5 &lt;Shanhaizhong Oracle&gt; appear"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,
@@ -5895,11 +5901,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "定乾坤",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "定乾坤",
+   "name_en": "Defining_the_World",
    "description_zh": "人所能见，能及，能定的尽头。\n<@rolv.rem>“身形”反弹部分受到的伤害；所有敌人攻击力、防御力、生命值提升且“敛傲”“愠怒”最大生命值额外提升；“朔壳”“妄躯”技能释放更加频繁</>",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "人が認識し、到達し、定めうる限界。\n<@rolv.rem><身形>は被ダメージの一部を攻撃者にも与える。敵全員の攻撃力、防御力、最大HPが上昇し、<抑傲>と<憤怒>の最大HPが追加で上昇。<朔殻>と<妄躯>のスキル発動頻度が上昇</>",
+   "description_en": "The limit of what humanity can see, match, or define.\n<@rolv.rem>'Body' reflects a portion of damage received; all enemies have increased ATK, DEF, and HP, while 'Restrained Pride' and 'Fume of Anger' have further increased Max HP; 'Vessel of Shuo' and 'Arrogance Embodied' use their skills more often</>",
    "addInfo_zh": [
     "敌方单位的攻击力、防御力和生命值都提升至120%",
     "敛傲与愠怒的生命值额外提升至150%",
@@ -5908,8 +5914,22 @@
     "朔壳与妄躯技能的周期冷却降低至80%",
     "N18追加敌人：“碎壁”×6"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "敵全員の攻撃力+20%、防御力+20%、最大HP+20%",
+    "＜抑傲＞と＜憤怒＞の最大HP+50%",
+    "＜身形＞が攻撃を受けた時、そのダメージ源に対して受けたダメージの20%の確定ダメージを与える",
+    "秘宝「不赦」所持時、＜身形＞が45秒ごとに追加の敵を召喚する",
+    "＜朔殻＞と＜妄躯＞のスキル発動頻度が増加(必要SP-20%)",
+    "18難：＜「砕壁」＞6体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "All enemy units have +20% ATK, +20% DEF and +20% Max HP",
+    "&lt;Restrained Pride&gt; and &lt;Fumes of Anger&gt; have +50% Max HP",
+    "&lt;Body&gt; reflect 20% of the damage received to attacker as True damage",
+    "When possessing the relic &lt;Merciless&gt;, special &lt;Body&gt; summons additional enemies every 45s",
+    "Skill cooldowns of &lt;Vessel of Shuo&gt; and &lt;Arrogance Embodied&gt; are reduced by 20%",
+    "D18 - additional 6 &lt;'Fortbreaker'&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

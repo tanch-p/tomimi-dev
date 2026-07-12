@@ -5,8 +5,6 @@
 
 	export let levelId: string, language: Language;
 
-	const stagesToHide = ['level_rogue5_3-6', 'level_rogue5_4-7', 'level_rogue5_5-7'];
-
 	$: currentLevel = $page?.data?.mapConfig?.levelId;
 	const stageInfo = ro5[levelId];
 	if (!stageInfo) {
@@ -19,9 +17,7 @@
 <a href={`/${language}/stages/${stageUrl}`}>
 	<div
 		class:active={levelId === currentLevel}
-		class={`hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer ${
-			language !== 'zh' && stagesToHide.includes(levelId) ? 'text-neutral-800' : ''
-		}`}
+		class={`hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer`}
 	>
 		{name.replaceAll('_', ' ')}
 	</div>

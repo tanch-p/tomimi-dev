@@ -31,11 +31,13 @@
    ],
    "addInfo_ja": [
     "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる",
-    "彫鬼は20秒ごとに便符一体を召喚する"
+    "彫鬼は20秒ごとに便符一体を召喚する",
+    "18難：「彫鬼」1体と＜殉死せし魂の聖杯＞4体が追加で出現"
    ],
    "addInfo_en": [
     "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier",
-    "Statuegeist summons 1 Talisman every 20s"
+    "Statuegeist summons 1 Talisman every 20s",
+    "D18: Additional 1 Statuegeist and 4 &lt;Chalice of Mortality&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+30%，生命值+50%",

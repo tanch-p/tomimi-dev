@@ -602,10 +602,10 @@
 		"skillRange": 1.3,
 		"tooltip": {
 			"en": [
-				"Explodes on death, leaving behind 源石污染区 tile and dealing <v.atk.multiplier>% ATK as {phys} damage to nearby units{can_silence}{ignore_camou}"
+				"Explodes on death, leaving behind Originium Pollution tile and dealing <v.atk.multiplier>% ATK as {phys} damage to nearby units{can_silence}{ignore_camou}"
 			],
 			"ja": [
-				"死亡時には爆発する、源石污染区を生成し、周囲に攻撃力<v.atk.multiplier>%の{phys}ダメージを与える{can_silence}{ignore_camou}"
+				"死亡時には爆発する、源石汚染エリアを生成し、周囲に攻撃力<v.atk.multiplier>%の{phys}ダメージを与える{can_silence}{ignore_camou}"
 			],
 			"zh": [
 				"死亡后在自身所在地块生成源石污染区，对半径1.3范围内的友方单位造成攻击力<v.atk.multiplier>%{phys}溅射伤害{can_silence}{ignore_camou}"
@@ -2886,7 +2886,7 @@
 		"tooltip": {
 			"en": ["HP↓50% - ASPD +40"],
 			"ja": ["HP↓50% - 攻撃速度+40"],
-			"zh": ["HP↓50% - 攻撃速度+40"]
+			"zh": ["HP↓50% - 攻击速度+40"]
 		}
 	},
 	"pompeii_burn": {
@@ -3062,8 +3062,8 @@
 		"hits": 1,
 		"tooltip": {
 			"en": ["'Break the Chains' - Initial Cast: 30s, Thereafter: 70s"],
-			"ja": ["「破桎而出」初動30秒/再動70秒"],
-			"zh": ["スキル (破桎而出) "]
+			"ja": ["スキル (破桎而出)"],
+			"zh": ["「破桎而出」初動30秒/再動70秒 "]
 		}
 	},
 	"dublinn_phalanx": {
@@ -3166,8 +3166,8 @@
 	},
 	"sfhu_splash": {
 		"tooltip": {
-			"en": ["通常攻撃は爆発半径1.0の範囲{arts}攻撃{ignore_camou}"],
-			"ja": ["Attacks deal splash damage over a radius of 1{ignore_camou}"],
+			"en": ["Attacks deal splash damage over a radius of 1{ignore_camou}"],
+			"ja": ["通常攻撃は爆発半径1.0の範囲{arts}攻撃{ignore_camou}"],
 			"zh": ["普通攻击对目标对及其周围半径1范围内的所有我方单位造成{arts}普通伤害{ignore_camou}"]
 		}
 	},
@@ -5000,11 +5000,11 @@
 	"skzcan_1": {
 		"tooltip": {
 			"en": [
-				"When HP drops to 75%/50%, summons 3 &lt;迷珍巧械&gt;",
+				"When HP drops to 75%/50%, summons 3 &lt;Lost Contraption&gt;",
 				"※ Will be interrupted by status ailments like Stun/Fear"
 			],
 			"ja": [
-				"HPが75%/50%になる度、<迷珍巧械>を3体召喚する",
+				"HPが75%/50%になる度、<珍妙な機械>を3体召喚する",
 				"※スタン/恐怖等の状態異常で中断される"
 			],
 			"zh": ["每当生命值低75%/50%时，召唤3个迷珍巧械", "※会被晕眩，恐惧等异常状态打断"]
@@ -7061,7 +7061,7 @@
 				{ "key": "aspd", "value": 50, "order": "initial", "mode": "add" }
 			],
 			"stackType": "add",
-			"maxCount":1
+			"maxCount": 1
 		},
 		"tooltip": {
 			"en": [
@@ -8881,7 +8881,9 @@
 				"戦闘開始から600秒経つと、時間切れとしての【不寐】を使用",
 				"マップ上のランダムな味方のマスに出現し、マーキングした味方と周囲8マスの味方を強制撤退させ、これらの味方の再配置時間を30秒にして退場する（防衛ラインに入ったと見なす、耐久値を減少する）"
 			],
-			"zh": ["战斗经过600s后，发动一次【不寐】，随后退场(视为到达路径终点，根据自身目标价值扣除关卡生命值）"]
+			"zh": [
+				"战斗经过600s后，发动一次【不寐】，随后退场(视为到达路径终点，根据自身目标价值扣除关卡生命值）"
+			]
 		}
 	},
 	"dyshhj_force": {
@@ -9152,25 +9154,23 @@
 	"ymghol_start": {
 		"standby": 60,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Begins in disguised state for <v.standby>s, during which does not move/attack, cannot be blocked and is invincible"
+			],
+			"ja": [
+				"出現してから<v.standby>秒、自身を穴に偽装する",
+				"偽装中は移動・攻撃せず、無敵・ステルス・ブロック不可・強制移動無効"
+			],
 			"zh": ["初始处于【伪装】状态，持续<v.standby>s，期间持有无敌、不可阻挡、失衡免疫、自缚"]
 		}
 	},
 	"ymghol_stealth_loss": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["When stealth is disabled, loses disguise"],
+			"ja": ["ステルスを無効化されると偽装を解除する"],
 			"zh": [
 				"受反隐（隐匿免疫）影响后立即失去【伪装】；【伪装】期间，“某种天命”进入自身半径0.35范围内（碰撞判定）时令其坠落，随后自身立即失去【伪装】"
 			]
-		}
-	},
-	"ymgtop_start": {
-		"tooltip": {
-			"en": [],
-			"ja": [],
-			"zh": ["【初始形态】进行近战攻击；进入该形态后的1s内无法切换至漩涡形态"]
 		}
 	},
 	"ymgtop_spin": {
@@ -9180,18 +9180,22 @@
 		"suffix": { "en": "Start Spin", "ja": "回転開始", "zh": "切换形态" },
 		"tooltip": {
 			"en": ["Attempts to enter Spinning state"],
-			"ja": ["回転状態に入る"],
+			"ja": ["渦潮状態に入る"],
 			"zh": ["尝试切换至漩涡形态"]
 		}
 	},
 	"ymgtop_spin_state": {
 		"atk": { "multiplier": 1.2 },
-		"suffix": { "en": "Spin", "ja": "回転", "zh": "旋转" },
+		"suffix": { "en": "Spin", "ja": "渦潮", "zh": "旋转" },
 		"hits": null,
 		"dmg_element": "phys",
 		"tooltip": {
 			"en": [],
-			"ja": [],
+			"ja": [
+				"【渦潮形態】通常攻撃しない、半径1.0以内にいる味方全員に、毎秒攻撃力の120%の{phys}ダメージを与える{ignore_camou}",
+				"スタン・睡眠・凍結・浮遊中はダメージが発生しない",
+				"強制移動するか、移行から60秒経つと通常形態に戻る"
+			],
 			"zh": [
 				"【漩涡形态】不进行普通攻击，每秒对半径1.0范围内的所有我方单位造成攻击力120%的{phys}伤害{ignore_camou}",
 				"若自身处于晕眩/冻结/无法行动则无法造成此伤害；进入该形态后的1s内无法切换至初始形态",
@@ -9204,7 +9208,7 @@
 		"tooltip": {
 			"en": [
 				"When not being blocked, stun or bind, accelerates every 3s, increasing Movespeed by 20%",
-				"When Movespeed increase ≥ 800%, takes off and enters Flying state",
+				"When Movespeed increase ≥ 800%, takes off and enters Hover state",
 				"※Getting stunned/bind/push/pull will reset Movespeed stacks to 0"
 			],
 			"ja": [
@@ -9221,8 +9225,14 @@
 	"ymggld_fly": {
 		"ms": { "multiplier": 8, "order": "final" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"While Hover, does not attack, gains Movespeed +800%",
+				"Loses Hover when stunned/sleep/frozen"
+			],
+			"ja": [
+				"【滑空】状態：低空浮揚、攻撃せず、移動速度+800%",
+				"スタン・睡眠・凍結状態になると低空浮揚は解除される"
+			],
 			"zh": [
 				"【滑翔】状态：近地悬浮，失衡免疫，移动速度最终提升至800%，不进行攻击，退出加速状态且加速不生效",
 				"受晕眩/冻结/沉睡影响时，立刻退出【滑翔】状态 "
@@ -9231,8 +9241,12 @@
 	},
 	"ymgung_condition": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Jumps when blocked, coming into contact with <Certain Fate>, or near a Hole (including disguised Doton Ninjas/Masters)"
+			],
+			"ja": [
+				"ブロックされるか、半径0.5以内に「ある種の天命」・偽装した土遁忍者系がいる、もしくは半径0.8以内に穴が存在すると飛び出す"
+			],
 			"zh": [
 				"被阻挡时或半径0.5范围内存在“某种天命”、伪装的土遁忍者/土遁宗师，或半径0.8范围内的地块（中点判定）中存在地穴时，立刻尝试释放【跳跃】"
 			]
@@ -9244,8 +9258,13 @@
 		"cooldown": 15.0,
 		"suffix": { "en": "Jump", "ja": "跳躍", "zh": "跳跃" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"On activation, for 2 seconds becomes unblockable, gains Hover and Movespeed is increased to 300%, does not attack and is immune to stun/silence/levitate/freeze/sleep",
+				"Loses Hover after skill ends"
+			],
+			"ja": [
+				"即座にブロックを解除し、2秒間低空浮揚状態になり、0.33秒停止する、飛行中は攻撃せず、移動速度が300%に上昇"
+			],
 			"zh": [
 				"触发时，立刻解除阻挡，并获得近地悬浮和0.33秒自缚",
 				"跳跃持续2秒，期间移动速度最终提升至300%，持有失衡免疫、晕眩免疫、沉默免疫、浮空免疫、冻结免疫、沉睡免疫、闭锁免疫，且不攻击。",
@@ -9259,8 +9278,12 @@
 		"dmg_element": "arts",
 		"skillRange": 3.5,
 		"tooltip": {
-			"en": ["For every 15 instances of damage taken, deals 300% ATK as {arts} damage to nearby friendly units within 3.5 tile radius and Stuns them for 15s"],
-			"ja": ["15回ダメージを受けるたび、半径3.5以内にいる味方全員に攻撃力の300%の術ダメージを与え、15秒間スタンさせる"],
+			"en": [
+				"For every 15 instances of damage taken, deals 300% ATK as {arts} damage to nearby friendly units within 3.5 tile radius and Stuns them for 15s"
+			],
+			"ja": [
+				"15回ダメージを受けるたび、半径3.5以内にいる味方全員に攻撃力の300%の術ダメージを与え、15秒間スタンさせる"
+			],
 			"zh": [
 				"每受到第15次伤害，对自身半径3.5范围内的我方单位造成攻击力300%的{arts}伤害，并令其晕眩15s"
 			]
@@ -9280,7 +9303,7 @@
 				"When not moving, gains 35% Damage Reduction, else 90% DR"
 			],
 			"ja": [
-				"【明力】异常状态的持续时间-80%",
+				"【明力】レジスト可能な状態異常の持続時間-80%",
 				"移動していない時（ブロック中含む）、受ける{phys}と{arts}ダメージが35%減少、移動中は90%"
 			],
 			"zh": [
@@ -9291,8 +9314,12 @@
 	"dyjsfg_aoe": {
 		"skillRange": 1.6,
 		"tooltip": {
-			"en": ["【Concordance】Deals 100% ATK as {phys} damage to friendly units within 1.6 tile radius every 2.5s. When blocked, Immediately releases a wave that deals 200% ATK instead."],
-			"ja": ["【尚同】2.5秒ごとに、半径1.6以内の味方全員に攻撃力の100%の{phys}ダメージを与える。ブロックされると、即座に半径1.6以内の味方全員に攻撃力の200%の{phys}ダメージを与える"],
+			"en": [
+				"【Concordance】Deals 100% ATK as {phys} damage to friendly units within 1.6 tile radius every 2.5s. When blocked, Immediately releases a wave that deals 200% ATK instead."
+			],
+			"ja": [
+				"【尚同】2.5秒ごとに、半径1.6以内の味方全員に攻撃力の100%の{phys}ダメージを与える。ブロックされると、即座に半径1.6以内の味方全員に攻撃力の200%の{phys}ダメージを与える"
+			],
 			"zh": [
 				"【尚同】每2.5s对半径1.6范围内的我方单位造成攻击力100%的{phys}伤害，被阻挡时强制触发攻击力200%的【尚同】一次"
 			]
@@ -9316,8 +9343,12 @@
 		"hits": 1,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": ["【Benevolence】When leaving the map, instantly defeats all enemies other than Bestial Hou and deals 200% ATK as {phys} damage to all friendly units{ignore_camou}{ignore_stealth}"],
-			"ja": ["【兼爱】自身が退場すると、後獣以外の敵全員を強制撃破し、マップ上の味方全員に攻撃力の200%の{phys}ダメージを与える{ignore_camou}{ignore_stealth}"],
+			"en": [
+				"【Benevolence】When leaving the map, instantly defeats all enemies other than Bestial Hou and deals 200% ATK as {phys} damage to all friendly units{ignore_camou}{ignore_stealth}"
+			],
+			"ja": [
+				"【兼爱】自身が退場すると、後獣以外の敵全員を強制撃破し、マップ上の味方全員に攻撃力の200%の{phys}ダメージを与える{ignore_camou}{ignore_stealth}"
+			],
 			"zh": [
 				"【兼爱】自身退场时，强制击倒除后兽以外的非装置/非召唤物职业的敌方单位，随后对场上所有我方干员/我方召唤物造成攻击力200%的无来源{phys}伤害{ignore_camou}{ignore_stealth}"
 			]
@@ -9328,8 +9359,12 @@
 		"suffix": { "zh": "10层", "ja": "10回", "en": "10 stacks" },
 		"dmg_element": null,
 		"tooltip": {
-			"en": ["【Transmogrification】When an enemy (other than Bestial Ju) comes within 1.5 tile radius of Bestial Hou, instantly defeats the enemy and reduces Lifepoint by 1, and Hou deals 50% ATK as {arts} damage to all friendly units and gains 20% ATK, stacking additively up to 20 times"],
-			"ja": ["【自化】半径1.5以内に入った矩獣以外の敵を強制撃破する、さらに耐久値を-1し、マップ上の味方全員に攻撃力の50%の術ダメージを与え、自身の攻撃力を+20%する（20層まで累積）"],
+			"en": [
+				"【Transmogrification】When an enemy (other than Bestial Ju) comes within 1.5 tile radius of Bestial Hou, instantly defeats the enemy and reduces Lifepoint by 1, and Hou deals 50% ATK as {arts} damage to all friendly units and gains 20% ATK, stacking additively up to 20 times"
+			],
+			"ja": [
+				"【自化】半径1.5以内に入った矩獣以外の敵を強制撃破する、さらに耐久値を-1し、マップ上の味方全員に攻撃力の50%の術ダメージを与え、自身の攻撃力を+20%する（20層まで累積）"
+			],
 			"zh": [
 				"【自化】除矩兽以外的敌人进入自身半径1.5范围内时，使其退场并扣除1点目标生命；随后对全场我方单位造成攻击力50%的{arts}伤害，并使自身攻击力+20%（最多叠加至20层）"
 			]
@@ -9337,8 +9372,12 @@
 	},
 	"dyjsww_1": {
 		"tooltip": {
-			"en": ["【Inaction】After 360s or Bestial Ju leaves the map, enters second form and activates all Ancient Statuegeists"],
-			"ja": ["【無為】出現から360秒経つか、矩獣が退場すると使用。第二形態へ移行し、いにしえの彫像器鬼をすべて起動させる"],
+			"en": [
+				"【Inaction】After 360s or Bestial Ju leaves the map, enters second form and activates all Ancient Statuegeists"
+			],
+			"ja": [
+				"【無為】出現から360秒経つか、矩獣が退場すると使用。第二形態へ移行し、いにしえの彫像器鬼をすべて起動させる"
+			],
 			"zh": [
 				"【无为】战斗开始360s后/矩兽退场后，进入第二形态并激活场上所有的古雕伥（变成雕伥的外形）"
 			]
@@ -9346,7 +9385,9 @@
 	},
 	"dyjsww_2": {
 		"tooltip": {
-			"en": ["【Transmogrification】Disables all other Protection Objectives and sets self's location to be the endpoint for all enemies"],
+			"en": [
+				"【Transmogrification】Disables all other Protection Objectives and sets self's location to be the endpoint for all enemies"
+			],
 			"ja": ["【自化】防衛ラインを封印し、敵の目的地を自身の中心マスに変更する"],
 			"zh": ["【自化】新增效果：将除矩兽以外的敌人的路径终点重设为自身所在位置"]
 		}
@@ -9379,8 +9420,12 @@
 		"cooldown": 30.0,
 		"suffix": { "en": "Timeshift", "ja": "時移", "zh": "时移" },
 		"tooltip": {
-			"en": ["Teleports to the next checkpoint. Friendly units facing the opposite direction of Hou's movement have -50% ASPD for 30s while enemies moving in the same direction gain +200% Movespeed for 30s"],
-			"ja": ["上か下にワープ移動。自身の移動方向と逆向きの味方の攻撃速度を-50し、同じ方向に移動していた敵の移動速度を+200%する、30秒持続する"],
+			"en": [
+				"Teleports to the next checkpoint. Friendly units facing the opposite direction of Hou's movement have -50% ASPD for 30s while enemies moving in the same direction gain +200% Movespeed for 30s"
+			],
+			"ja": [
+				"上か下にワープ移動。自身の移動方向と逆向きの味方の攻撃速度を-50し、同じ方向に移動していた敵の移動速度を+200%する、30秒持続する"
+			],
 			"zh": [
 				"使场上所有部署方向与自身影响方向相反的我方单位在30s内攻击速度-50，使移动方向与自身影响方向相同的敌方单位在30s内移动速度+200%",
 				"若自身处于第一形态，还会立即闪现至下个检查点",
@@ -9394,8 +9439,12 @@
 		"cooldown": 30.0,
 		"suffix": { "en": "Altruism", "ja": "並済", "zh": "并济" },
 		"tooltip": {
-			"en": ["Targets the closest friendly unit in the same 3 rows as Hou, dealing 100% ATK as {arts} damage to the target and friendly units within 1.5 tile radius{ignore_camou}, and spawns an Ancient Statuegeist on a vacant tile in the surrounding 8 tiles to the main target"],
-			"ja": ["自身のいる横3列のうち、最も近い味方1体を選択。対象と半径1.5以内の味方全員に攻撃力の100%の{arts}ダメージを与え{ignore_camou}、対象の周囲8マスのうち通行可能な1マスに装置＜いにしえの彫像器鬼＞を配置する"],
+			"en": [
+				"Targets the closest friendly unit in the same 3 rows as Hou, dealing 100% ATK as {arts} damage to the target and friendly units within 1.5 tile radius{ignore_camou}, and spawns an Ancient Statuegeist on a vacant tile in the surrounding 8 tiles to the main target"
+			],
+			"ja": [
+				"自身のいる横3列のうち、最も近い味方1体を選択。対象と半径1.5以内の味方全員に攻撃力の100%の{arts}ダメージを与え{ignore_camou}、対象の周囲8マスのうち通行可能な1マスに装置＜いにしえの彫像器鬼＞を配置する"
+			],
 			"zh": [
 				"锁定位于自身所占据的其中一行的1位我方干员发射直线弹道，对首个命中的干员造成攻击力100%的{arts}溅射伤害{ignore_camou}，并在其附近合法地面地块上部署1个古雕伥"
 			]
@@ -9506,8 +9555,8 @@
 	},
 	"dyswrd_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Actual attack range is half of what is stated (0.65)"],
+			"ja": ["実際の攻撃範囲は攻撃半径の0.5倍（0.65）"],
 			"zh": [
 				"静态刚体，实际的攻击范围为攻击半径的0.5倍，普通攻击对1个目标造成攻击力100%的{phys}伤害，不会攻击飞行单位"
 			]
@@ -9515,8 +9564,8 @@
 	},
 	"dyfire_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Actual attack range is half of what is stated (0.65)"],
+			"ja": ["実際の攻撃範囲は攻撃半径の0.5倍（0.65）"],
 			"zh": [
 				"静态刚体，实际的攻击范围为攻击半径的0.5倍，普通攻击对1个目标造成攻击力100%的{arts}伤害和攻击力25%的{ba.dt.burning}，不会攻击飞行单位"
 			]
@@ -9524,9 +9573,16 @@
 	},
 	"dy_end": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Dies after carrying out normal attack (regardless of landing the hit)"],
+			"ja": ["通常攻撃後、死亡する"],
 			"zh": ["自身的普通攻击弹道击中目标0.033秒后，强制击杀自身（与是否成功造成伤害无关） "]
+		}
+	},
+	"dy_target": {
+		"tooltip": {
+			"en": ["Changes target to nearest Protection Objective if loses sight of initial target (from retreat, camouflage etc.)"],
+			"ja": ["出現時に決めたターゲットが撤退・無敵・迷彩などで対象にできない場合、自身の目的地を最寄りの防衛ラインに変更する"],
+			"zh": ["出现后如果目标消失（撤退，无敌，迷彩等），目标改为最靠近的蓝门"]
 		}
 	},
 	"dycyue_summon_body": {
@@ -9535,8 +9591,8 @@
 		"cooldown": 54.0,
 		"suffix": { "en": "Summon Body", "ja": "躰召喚", "zh": "描躯" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["When no <Body> summoned by this skill is present, summons 1 x <Body> at preset location","While <Body> is present, becomes invincible"],
+			"ja": ["マップ上にこのスキルに召喚された身形がいない時に使用可能、身形×1を召喚する","身形がマップ上にいる間、朔殻は無敵"],
 			"zh": [
 				"仅自身未持有身形赋予的无敌时可触发：",
 				"以关卡预设路径召唤1节身形",
@@ -9548,12 +9604,13 @@
 		"type": "skill",
 		"initCooldown": 5.0,
 		"cooldown": 36.0,
-		"suffix": { "en": "Card", "ja": "醉生", "zh": "醉生" },
+		"count":1,
+		"suffix": { "en": "Drunken Stupor", "ja": "醉生", "zh": "醉生" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Adds <v.count> x Olden Pride to the Deployment Waiting Zone (Max 8)","Olden Pride - summons 1 Restrained Pride upon deployment. While having the relic [Merciless] additionally summons 1 <Hateful Carrion>"],
+			"ja": ["配置待機エリアに宿傲×<v.count>を追加。配置待機エリアに8体以上宿傲がいる場合、このスキルは失敗する"],
 			"zh": [
-				"尝试向待部署区内添加1张宿傲（待部署区中已存在≥8张宿傲时尝试将失败）",
+				"尝试向待部署区内添加<v.count>张宿傲（待部署区中已存在≥8张宿傲时尝试将失败）",
 				"※宿傲效果简述：部署后召唤1枚敛傲，若玩家持有【不赦】则额外召唤1只怨骸"
 			]
 		}
@@ -9564,8 +9621,8 @@
 		"cooldown": 36.0,
 		"suffix": { "en": "Summon Sword", "ja": "剣召喚", "zh": "溯律" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Used only when there are friendly units on the map","Selects up to (1 + no. of Olden Pride in Deployment Waiting Zone) targets within 13 tile radius, and spawns Restrained Pride on the spot, which moves towards their respective targets"],
+			"ja": ["半径13.0以内の味方を「配置待機エリアの宿傲の数+1」だけターゲットし、それぞれの位置に向けて移動する抑傲を召喚する"],
 			"zh": [
 				"仅全场范围内存在我方干员/召唤物时可触发：",
 				"选择半径13.0范围内的至多(待部署区中的宿傲数量+1)名我方干员/召唤物为目标，在自身所在地块中心0.5边长正方形区域内的随机位置以各目标所在地块中心为路径终点各召唤1枚敛傲",
@@ -9576,51 +9633,49 @@
 	"dycyue_evasion": {
 		"type": "buff",
 		"effects": {
-			"key":"dycyue_evasion",
+			"key": "dycyue_evasion",
 			"targets": ["enemy_2126_dycyue"],
 			"activeTargets": [],
-			"mods": [
-				{ "key": "atk", "value": 0.3, "order": "initial", "mode": "mul" }
-			],
+			"mods": [{ "key": "atk", "value": 0.3, "order": "initial", "mode": "mul" }],
 			"stackType": "add",
-			"maxCount":9
+			"maxCount": 9
 		},
 		"value": 50,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["[Violence] gains +<v.value>% {phys}/{arts} evasion against units not blocking self","Gains +30% ATK for every Olden Pride in the Deployment Waiting Zone"],
+			"ja": ["【暴武】自身をブロックしていない味方からの{phys}・{arts}ダメージを<v.value>%の確率で回避する","配置待機エリアの装置<宿傲>1体につき、攻撃力+30%"],
 			"zh": [
-				"【暴武】：<v.value>%概率闪避非来源于自身阻挡单位的物理/法术伤害（含无来源伤害）",
+				"【暴武】：<v.value>%概率闪避非来源于自身阻挡单位的{phys}/{arts}伤害（含无来源伤害）",
 				"待部署区中每存在1张宿傲，自身攻击力+30%"
 			]
 		}
 	},
 	"dycyue_defeat": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["On defeat, summons preset enemies"],
+			"ja": ["死亡時、敵を召喚する"],
 			"zh": ["自身被击倒后，以关卡预设路径召唤一批敌人"]
 		}
 	},
 	"dysuib_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Does not move, immune to unbalance, has no normal attack"],
+			"ja": ["移動・攻撃しない、強制移動無効"],
 			"zh": ["自缚、失衡免疫，不进行普通攻击"]
 		}
 	},
 	"dysuib_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Hitbox is a 2.95×0.95 area"],
+			"ja": ["当たり判定は縦0.95×横2.95"],
 			"zh": ["非巨型单位，但拥有特殊的受击判定区域：该区域为长2.95、宽0.95的长方形"]
 		}
 	},
 	"dysuib_reflect": {
 		"value": 0,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Reflects <v.value>% of damage as sourceless {true} damage to target"],
+			"ja": ["被ダメージの<v.value>%を{true}ダメージとしてしてきた対象に反射する"],
 			"zh": [
 				"受到我方单位的伤害时，对伤害来源造成本次伤害<v.value>%的无来源{true}伤害（无视其可选性）"
 			]
@@ -9628,8 +9683,8 @@
 	},
 	"dysuib_3": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["On spawn, forcefully retreats friendly units on self-occupied tiles with -85% redeployment time"],
+			"ja": ["存在している間、自身のいるマスを配置不可マスにする。身形出現時にこの効果で撤退した味方の再配置時間は、元の15%に短縮される"],
 			"zh": [
 				"登场时，强制撤退连续3格内的实体类型为默认类或装置类、且职业为干员或召唤物的我方单位/铁钳号·原型机（无视无法选择、孤立），受影响的我方干员/铁钳号·原型机的下次再部署时间缩短至15%；在场期间重写连续3格内的地块的部署类型为不可部署"
 			]
@@ -9637,8 +9692,8 @@
 	},
 	"dysuib_4": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["While <Body> is on the field, grants the following effects","①<Vessel of Shuo> gains invincible","②<Arrogance Embodied> gains -50% {phys}/{arts} damage for every <Body> on field (stacks multiplicatively)","On defeat, stuns <Arrogance Embodied> for 15s"],
+			"ja": ["身形がマップ上にいる間、以下の効果が発生","①朔殻は無敵","②妄躯の物理・術の被ダメージ-50%（乗算で累積）","死亡時、妄躯を15秒間行動不能にする"],
 			"zh": [
 				"在场期间自身未处于消失状态时：①使朔壳获得无敌；②使妄躯受到的物理/法术伤害降低至50%（可乘算叠加），自身退场时，若妄躯未处于技能【止戈】期间，则使妄躯尝试触发一次【晕眩】"
 			]
@@ -9646,145 +9701,138 @@
 	},
 	"dysuib_summon": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["When having the relic [Merciless], summons enemies periodically"],
+			"ja": ["秘宝「不赦」を持っている場合、定期的に敵を召喚する"],
 			"zh": [
 				"玩家持有【不赦】时，若根据关卡配置自身允许受到该藏品对自身能力的加成，则每隔一段时间（默认为30秒）以关卡预设路径召唤一批敌人"
 			]
 		}
 	},
-	"dysuih_end":{
+	"dysuih_end": {
 		"type": "skill",
 		"initCooldown": 3000.0,
 		"cooldown": 9999.0,
-		"value":50,
+		"value": 50,
 		"suffix": { "en": "End", "ja": "エンド", "zh": "止戈" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": [
-				"扣除<v.value>点目标生命值，技能结束时，强制击杀自身","※技能期间持有无敌"
-			]
+			"en": ["After 3000s, reduces Lifepoints by <v.value> and is defeated"],
+			"ja": ["出現から3000秒経過すると耐久値-<v.value>し、自身は死亡する"],
+			"zh": ["扣除<v.value>点目标生命值，技能结束时，强制击杀自身", "※技能期间持有无敌"]
 		}
 	},
-	"dysuih_summon_body":{
+	"dysuih_summon_body": {
 		"type": "skill",
 		"initCooldown": 20.0,
 		"cooldown": 60.0,
-		"suffix": { "en": "Summon Body", "ja": "躰召喚", "zh": "筑基" },
+		"suffix": { "en": "Summon Body", "ja": "築基", "zh": "筑基" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": [
-				"仅自身未持有身形赋予的伤害降低时可触发：以关卡预设路径召唤1节身形"
-			]
+			"en": ["When no <Body> is present, summons 1 <Body>"],
+			"ja": ["マップ上に身形がいない時に使用。身形×1を召喚する"],
+			"zh": ["仅自身未持有身形赋予的伤害降低时可触发：以关卡预设路径召唤1节身形"]
 		}
 	},
-	"dysuih_card":{
+	"dysuih_card": {
 		"type": "skill",
 		"initCooldown": 15.0,
 		"cooldown": 60.0,
-		"suffix": { "en": "谋炎", "ja": "谋炎", "zh": "谋炎" },
+		"count":1,
+		"suffix": { "en": "Flame of Intrigue", "ja": "謀炎", "zh": "谋炎" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Adds <v.count> x Olden Grudge to the Deployment Waiting Zone (Max 8)"],
+			"ja": ["配置待機エリアに宿怒×<v.count>を追加。配置待機エリアに8体以上宿怒がいる場合、このスキルは失敗する。"],
 			"zh": [
-				"尝试向待部署区内添加1张宿怒（待部署区中已存在≥8张宿怒时尝试将失败）","※宿怒效果简述：部署后召唤1枚愠怒"
+				"尝试向待部署区内添加<v.count>张宿怒（待部署区中已存在≥8张宿怒时尝试将失败）",
+				"※宿怒效果简述：部署后召唤1枚愠怒"
 			]
 		}
 	},
-	"dysuih_fire_1":{
+	"dysuih_fire_1": {
 		"type": "skill",
 		"initCooldown": 40.0,
 		"cooldown": 40.0,
-		"suffix": { "en": "织牢", "ja": "织牢", "zh": "织牢" },
+		"suffix": { "en": "Woven Prison", "ja": "織牢", "zh": "织牢" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Targets a friendly unit and channels for 10 seconds, spawning a Fume of Anger towards the target every 0.49 seconds after a initial 2.5s wait"],
+			"ja": ["10秒間の詠唱状態に入り、「マップ上の味方1体へ移動する憤怒×1を召喚」を詠唱終了まで最大15回行う"],
 			"zh": [
-				"仅全场范围内存在我方干员/召唤物时可触发：技能触发的2.5s后至技能结束时的这一期间内，每0.49s在全场范围内选择1名我方干员/召唤物为目标，在自身所在地块中心向下偏移1.0的位置以目标所在地块中心为路径终点召唤1枚愠怒","※技能持续10s（意味着一次技能至多召唤15枚愠怒）"
+				"仅全场范围内存在我方干员/召唤物时可触发：技能触发的2.5s后至技能结束时的这一期间内，每0.49s在全场范围内选择1名我方干员/召唤物为目标，在自身所在地块中心向下偏移1.0的位置以目标所在地块中心为路径终点召唤1枚愠怒",
+				"※技能持续10s（意味着一次技能至多召唤15枚愠怒）"
 			]
 		}
 	},
-	"dysuih_fire_2":{
+	"dysuih_fire_2": {
 		"type": "skill",
 		"initCooldown": 5.0,
 		"cooldown": 12.0,
-		"suffix": { "en": "灸灼", "ja": "灸灼", "zh": "灸灼" },
+		"suffix": { "en": "Purifying Flame", "ja": "灸灼", "zh": "灸灼" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Used only when there are friendly units on the map","Selects up to (1 + no. of Olden Grudge in Deployment Waiting Zone) targets within 13 tile radius, and spawns Fume of Anger on the spot, which moves towards their respective targets"],
+			"ja": ["半径15.0以内の味方を「配置待機エリアの宿怒の数+1」だけターゲットし、それぞれの位置へ移動する憤怒を召喚する"],
 			"zh": [
 				"仅全场范围内存在我方干员/召唤物时可触发：选择半径15.0范围内的至多(待部署区中的宿怒数量+1)名我方干员/召唤物为目标，在自身所在地块中心向下偏移1.0的0.5边长正方形区域内的随机位置以各目标所在地块中心为路径终点各召唤1枚愠怒"
 			]
 		}
 	},
-	"dysuih_stun":{
-		"value":15,
+	"dysuih_stun": {
+		"value": 15,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": [
-				"身形退场时，自身会因受其影响而晕眩<v.value>s"
-			]
+			"en": ["When <Body> is defeated, becomes disabled for <v.value>s"],
+			"ja": ["身形が死亡すると、妄躯は<v.value>秒間行動不能になる"],
+			"zh": ["身形退场时，自身会因受其影响而行动不可<v.value>s"]
 		}
 	},
-	"dysuih_1":{
+	"dysuih_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": [
-				"巨型单位：受击判定区域为长2.95、宽2.95的长方形，向上偏移1.0"
-			]
+			"en": ["Large Enemy. Occupies 2.95 x 2.95 area"],
+			"ja": ["巨大ボス。当たり判定は縦2.95×横2.95"],
+			"zh": ["巨型单位：受击判定区域为长2.95、宽2.95的长方形，向上偏移1.0"]
 		}
 	},
-	"dysuih_2":{
+	"dysuih_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": [
-				"失衡免疫、晕眩免疫，无法被阻挡"
-			]
+			"en": ["Immune to Imbalance, Stun Immune, Cannot be blocked"],
+			"ja": ["強制移動無効、スタン無効、ブロック不可"],
+			"zh": ["失衡免疫、晕眩免疫，无法被阻挡"]
 		}
 	},
-	"dysuih_atk":{
+	"dysuih_atk": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Normal attack does no damage but spawns a <Fume of Anger> that moves towards target"],
+			"ja": ["通常攻撃時、味方にダメージを与えない。代わりに、対象へ移動する憤怒×1を召喚する"],
 			"zh": [
 				"普通攻击仅攻击我方干员/召唤物，不造成伤害，但会在自身所在地块中心向下偏移1.0的0.5边长正方形区域内的随机位置以目标所在地块中心为路径终点召唤1枚愠怒"
 			]
 		}
 	},
-	"dysuih_3":{
+	"dysuih_3": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["On spawn summons <Body> at preset locations"],
+			"ja": ["出現時に身形を召喚。配置待機エリアに宿傲がある場合、すべて装置<宿怒>に置き換える"],
 			"zh": [
 				"登场时，以关卡预设路径召唤数节身形，同时若待部署区内存在宿傲，则将宿傲隐藏并添加等量的宿怒"
 			]
 		}
 	},
-	"dysuih_4":{
+	"dysuih_4": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": [
-				"【筑基(天赋)】：每损失30%生命值，以关卡预设路径召唤数节身形"
-			]
+			"en": ["Every 30% of max HP lost, summons <Body> at preset locations"],
+			"ja": ["HPが30%減るたびに身形を自動召喚する"],
+			"zh": ["【筑基(天赋)】：每损失30%生命值，以关卡预设路径召唤数节身形"]
 		}
 	},
 	"attack_mcreep": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Can attack Ursus Civilian/Miner Guerilla within attack range"],
+			"ja": ["攻撃範囲内のウルサス民間人/坑夫遊撃隊員を攻撃できる"],
 			"zh": ["可攻击范围内的乌萨斯平民/矿工游击队"]
 		}
 	},
 	"uashield_command": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When <Army Frontline/Senior Commander> is present, receives -40% {phys}/{arts} damage"
+			],
+			"ja": ["マップ上にウルサス軍前線指揮兵系がいると、{phys}・{arts}の被ダメージ-40%"],
 			"zh": ["受到<指挥官指令>影响时，受到的{phys}与{arts}伤害-40%"]
 		}
 	},
@@ -9798,8 +9846,12 @@
 	"uacann_fire": {
 		"value": 100,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Attacks leave behind a burning area of 1.5 tile radius that lasts for 3s and deals 100 {arts} damage every second (stacks)."
+			],
+			"ja": [
+				"対象に攻撃が命中すると、その地点に半径1.5・持続3秒の燃焼エリアを発生させる。燃焼エリア内の味方は、毎秒100の{arts}ダメージを受ける（複数あると重複する）"
+			],
 			"zh": [
 				"在场期间，自身攻击击中主目标时，以主目标的“攻击弹道发出点”为中心，释放一个持续3s，半径1.5的燃烧区域；位于燃烧区域中（碰撞判定）的我方单位每秒受到<v.value>{arts}持续伤害（可叠加，伤害来源为集团军轻型火炮）"
 			]
@@ -9807,8 +9859,8 @@
 	},
 	"uacann_command": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["When <Army Frontline/Senior Commander> is present, prioritizes <Miner Guerrilla>"],
+			"ja": ["マップ上にウルサス軍前線指揮兵系がいると、坑夫遊撃隊員を優先して狙う"],
 			"zh": ["受到<指挥官指令>影响时，优先攻击矿工游击队"]
 		}
 	},
@@ -9821,41 +9873,59 @@
 		"hits": 3,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Fires 3 rockets to friendly units with 1.0 tile radius, prioritizing different targets. Each rocket does <v.atk.multiplier>% of ATK as {phys} damage to target",
+				"When <Army Frontline/Senior Commander> is present, fires 6 rockets instead"
+			],
+			"ja": [
+				"半径1.0以内の対象にミサイルを3発発射。各ミサイルは異なる対象を優先して狙い、対象と半径1.1以内の味方に攻撃力の<v.atk.multiplier>%の{phys}ダメージを与える",
+				"マップ上にウルサス軍前線指揮兵系がいると、ミサイルの発射数が6発に増加"
+			],
 			"zh": [
-				"自身半径1.0范围内存在我方单位时：发射3枚导弹，每枚导弹对目标中心半径1.1范围内的我方单位造成攻击力70%的{phys}普通伤害，导弹优先锁定不同的目标（不可对空）",
+				"自身半径1.0范围内存在我方单位时：发射3枚导弹，每枚导弹对目标中心半径1.1范围内的我方单位造成攻击力<v.atk.multiplier>%的{phys}普通伤害，导弹优先锁定不同的目标（不可对空）",
 				"受到<指挥官指令>影响时，每次发射6枚导弹"
 			]
 		}
 	},
 	"rkbomb_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Spawns with a barrier that absorbs damage up to 10% of Max HP but only attacks from <Miner Guerrilla>"
+			],
+			"ja": ["出現時、坑夫遊撃隊員からの攻撃のみを防ぐ最大HP10%分のバリアを持つ"],
 			"zh": ["出场时获得最大生命值10%的特殊屏障：仅吸收来源于矿工游击队造成的物理伤害"]
 		}
 	},
 	"rkbomb_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"While barrier is active, gains Target Priority +1, reflects 200 {arts} sourceless damage to damage source and receives 50% less Physical and Arts damage except from <Miner Guerrilla>"
+			],
+			"ja": [
+				"バリア所持中は味方から狙われやすく（挑発レベル+1）、坑夫遊撃隊員以外からの物理・術の被ダメージを-50%し、ダメージを受けると攻撃した味方に200の{arts}ダメージを与える"
+			],
 			"zh": [
-				"自身的特殊屏障存在期间：嘲讽等级+1，受到来自敌方/我方单位的伤害时对伤害来源造成200无来源法术伤害（无视其可选性；伤害来源持有无敌/不可选中时不对来源造成伤害，且屏障不吸收/减少伤害），受到非来源于矿工游击队的物理/法术伤害-50%"
+				"自身的特殊屏障存在期间：嘲讽等级+1，受到来自敌方/我方单位的伤害时对伤害来源造成200无来源{arts}伤害（无视其可选性；伤害来源持有无敌/不可选中时不对来源造成伤害，且屏障不吸收/减少伤害），受到非来源于矿工游击队的物理/法术伤害-50%"
 			]
 		}
 	},
 	"rkmbst_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Spawns with a barrier that absorbs damage up to 5% of Max HP but only attacks from <Miner Guerrilla>"
+			],
+			"ja": ["出現時、坑夫遊撃隊員からの攻撃のみを防ぐ最大HP5%分のバリアを持つ"],
 			"zh": ["出场时获得最大生命值5%的特殊屏障：仅吸收来源于矿工游击队造成的物理伤害"]
 		}
 	},
 	"rkmbst_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"While barrier is active, gains Fear, Sleep immune, +100 ASPD, Target Priority +1 and receives 50% less Physical and Arts damage except from <Miner Guerrilla>"
+			],
+			"ja": [
+				"バリア所持中は味方から狙われやすく（挑発レベル+1）、坑夫遊撃隊員以外からの物理・術の被ダメージを-50%し、攻撃速度+100、睡眠・恐怖無効"
+			],
 			"zh": [
 				"自身的特殊屏障存在期间：嘲讽等级+1，攻击速度+100，恐惧免疫、沉睡免疫，受到非来源于矿工游击队的物理/法术伤害-50%"
 			]
@@ -9863,8 +9933,14 @@
 	},
 	"mirbst_base": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When dealing damage, inflicts a debuff to target, causing them to take +100% damage from self for 20s, indicated by a red claw symbol above target",
+				"Enraged state's duration is shown as an orange bar below the HP"
+			],
+			"ja": [
+				"自身からダメージを受けた対象は、20秒間自身から受けるダメージ+100%（効果が切れるまで再付与されない）",
+				"HPバーの下に【激昂】の残り時間が表示される"
+			],
 			"zh": [
 				"自身成功造成伤害后，使目标受到来自自身的伤害+100%，持续20s（生效期间无法再次获得）",
 				"※在自身生命值下方显示【狂怒】的剩余时间"
@@ -9873,8 +9949,12 @@
 	},
 	"mirbst_1_hit": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Attacks hit twice, and targets both friendly and enemy units, ATK is increased to 200% when attacking enemy units"
+			],
+			"ja": [
+				"通常攻撃は2回攻撃、自身を除く敵味方すべてのユニットを攻撃する。敵を攻撃する時は通常攻撃の倍率が200%に上昇する"
+			],
 			"zh": [
 				"普通攻击为2连击，且会攻击除狂躁异质裂兽外的敌方/我方单位，攻击敌人类敌方单位时攻击倍率提升至200%"
 			]
@@ -9882,8 +9962,8 @@
 	},
 	"mirbst_1_invul": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["When HP falls below 20%, becomes invulnerable until second phase"],
+			"ja": ["HPが20%以下になると、第二形態に移行するまで無敵"],
 			"zh": ["生命值不高于20%时，获得无敌（进入第二形态时解除）"]
 		}
 	},
@@ -9892,8 +9972,12 @@
 		"ms": { "multiplier": 2, "order": "final" },
 		"suffix": { "en": "Fury", "ja": "凶暴化", "zh": "狂怒" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Enraged - gains Fear, Sleep immune, ASPD +200, Movespeed increased to 200%, receives -50% Physical and Arts damage, moves towards unit that dealt damage to self"
+			],
+			"ja": [
+				"【激昂】恐怖無効、睡眠無効、攻撃速度+200、移動速度×2.0、物理・術の被ダメージ-50%、自身にダメージを与えたユニットを追跡する"
+			],
 			"zh": [
 				"【狂怒】：恐惧免疫、沉睡免疫，攻击速度+200，移动速度最终提升至200%，受到的物理/法术伤害-50%，采用生息演算寻敌逻辑（受伤后尝试寻找伤害来源，直至找到可攻击目标，攻击目标离场后结束寻敌直至再次受伤）"
 			]
@@ -9901,8 +9985,13 @@
 	},
 	"mirbst_1_fury_end": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When HP drops below 50% or after 120s has elapsed, ends Enraged state and flees. Stops attacking and becomes unblockable, moves to a preset position and returns after 10 seconds"
+			],
+			"ja": [
+				"HPが50%以下になるか、出現から120秒経つと【激昂】を解除して逃走状態に移行。この状態では通常攻撃せず、ブロック不可。",
+				"特定のマスまで移動して姿を消した後、10秒後に第二形態として再出現する"
+			],
 			"zh": [
 				"生命值不高于50%时或登场120s后，【狂怒】结束，开始逃跑：不进行攻击，无法被阻挡，向一个距离自身最近的备选地块移动并在抵达后消失，10s后重新在指定位置出现，以当前生命值进入第二形态"
 			]
@@ -9910,10 +9999,10 @@
 	},
 	"mirbst_2_fury": {
 		"atk": { "multiplier": 1, "order": "initial" },
-		"suffix": { "en": "Fury", "ja": "凶暴化", "zh": "狂怒" },
+		"suffix": { "en": "Enraged", "ja": "凶暴化", "zh": "狂怒" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Enraged - for 60s, gains +100% ATK, receives -60% Physical and Arts damage"],
+			"ja": ["【激昂】60秒間攻撃力+100%、物理・術の被ダメージ-60%"],
 			"zh": ["【狂怒】：攻击力+100%，受到的物理/法术伤害-60%，持续60s"]
 		}
 	},
@@ -9926,10 +10015,16 @@
 		"hits": 1,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Throws a boulder at the friendly unit, dealing <v.atk.multiplier>% of ATK as {phys} damage{can_silence}",
+				"Targeting is not affected by block, chooses unit that has dealt the most damage to self"
+			],
+			"ja": [
+				"マップ上の味方オペレーターに対して使用。射程無限の石を投げ、攻撃力の<v.atk.multiplier>%の{phys}ダメージと10秒間のスタンを与える{can_silence}",
+				"対象選択にブロックは影響せず、自身に最もダメージを与えた味方を優先して狙う"
+			],
 			"zh": [
-				"仅全场范围内存在角色类我方干员时可触发：向目标投掷石头，造成攻击力150%的物理伤害与10s晕眩（优先选择对其造成伤害的干员）",
+				"仅全场范围内存在角色类我方干员时可触发：向目标投掷石头，造成攻击力<v.atk.multiplier>%的{phys}伤害与10s晕眩（优先选择对其造成伤害的干员）{can_silence}",
 				"※索敌不受阻挡影响；技能不会因丢失目标而结束"
 			]
 		}
@@ -9937,15 +10032,15 @@
 	"mcreep_fight": {
 		"value": 1,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Can fight up to <v.value><Miner Guerrilla>"],
+			"ja": ["同時に<坑夫遊撃隊員><v.value>体まで交戦できる"],
 			"zh": ["可以与<v.value>名<矿工游击队>交战"]
 		}
 	},
 	"mcreep_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Neutral unit, cannot be blocked, has -1 target priority"],
+			"ja": ["中立ユニット。ブロック不可、敵から狙われにくい（挑発レベル-1）"],
 			"zh": [
 				"非首要目标，不计入待处理目标数量；中立单位，嘲讽等级-1，无法被阻挡，攻击无视不可选中，不会攻击飞行单位"
 			]
@@ -9953,8 +10048,14 @@
 	},
 	"mcreep_fear": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Every 0.3 seconds, disables Toxic Pollution in the surrounding 8 tiles for 3 seconds",
+				"While Feared, loses 200 HP every second and the above ability is disabled"
+			],
+			"ja": [
+				"0.3秒ごとに、自身と周囲8マスの高リスク汚染を3秒間無効にする",
+				"恐怖中は攻撃できなくなり、上記の汚染無効化能力を失い、毎秒200の確定ダメージを受ける。HPが全回復すると恐怖は解除される"
+			],
 			"zh": [
 				"未受恐惧影响时，每0.3秒令自身及其周围8格地块的高危污染失效3秒（重复施加刷新持续时间）",
 				"受恐惧影响时每秒对自身造成200真实伤害"
@@ -9963,24 +10064,39 @@
 	},
 	"mcreep_heal": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"While in a Medic operator's healing range, receives healing equal to 50% of the Medic's ATK every second (applied independently)"
+			],
+			"ja": [
+				"医療オペレーターの攻撃範囲内にいる時、そのオペレーターの攻撃力の50%分のHPを毎秒回復する",
+				"医療が複数いる場合は個別に計算される"
+			],
 			"zh": [
 				"每秒检测一次，若自身生命值未满且位于医疗干员的有效视野范围内时，治疗自身相当于该医疗干员当前攻击力50%的生命值（不同医疗干员独立结算） "
 			]
 		}
 	},
 	"uasnip_unblocked": {
+		"atk": { "multiplier": 2.5, "order": "final" },
+		"suffix": { "en": "Ranged", "ja": "遠", "zh": "远程" },
+		"hits": 1,
+		"dmg_element": "phys",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
-			"zh": ["未被阻挡时触发的攻击造成攻击力250%的物理伤害，不会攻击飞行单位"]
+			"en": ["Ranged attack does 250% of ATK as {phys} damage to target"],
+			"ja": ["ブロックされていない時、通常攻撃で攻撃力の250%の{phys}ダメージを与える"],
+			"zh": ["未被阻挡时触发的攻击造成攻击力250%的{phys}伤害，不会攻击飞行单位"]
 		}
 	},
 	"uasnip_worker": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Unable to use ranged attacks if there is a friendly unit or Miner Guerrilla within 1.5 tile radius",
+				"When <Army Frontline/Senior Commander> is present, above radius becomes 0.5"
+			],
+			"ja": [
+				"半径1.5以内に味方か坑夫遊撃隊員がいると、遠距離攻撃できなくなる",
+				"マップ上にウルサス軍前線指揮兵系がいる時、上記の範囲が半径0.5以内に縮小"
+			],
 			"zh": [
 				"半径1.5范围内存在我方阵营的任意单位/中立阵营的矿工游击队时，仅进行阻挡攻击",
 				"受到<指挥官指令>影响时，上述半径变为0.5"

@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_5_6",
    "levelId": "level_rogue5_5-6",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：招财×9、无谓×20"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
+    "18難：＜招財＞9体、＜無謂＞20体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
+    "D18: Additional 9 &lt;Prosperity&gt; and 20 &lt;Vapidity&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+20%，防御力+30%，生命值+30%",

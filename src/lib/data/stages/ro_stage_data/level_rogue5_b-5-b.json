@@ -26,13 +26,15 @@
    "description_en": "When an uninkable scroll meets an unwritable past.",
    "addInfo_zh": [
     "战斗中期，左侧场地左下化境地块与右上化境地块各自在相邻的不可部署地块刷新1个雕伥，每10s召唤一个除秽",
-    "追加敌人：赤霞×5、新硎×4、山海众秘使×2"
+    "N18追加敌人：赤霞×5、新硎×4、山海众秘使×2"
    ],
    "addInfo_ja": [
-    "戦闘中盤、追加で彫鬼二体が出現、10秒ごとに&lt;除穢&gt;を召喚する"
+    "戦闘中盤、追加で彫鬼二体が出現、10秒ごとに&lt;除穢&gt;を召喚する",
+    "18難：＜赤霞＞5体、＜新砥＞4体、＜山海衆密使＞2体が追加で出現"
    ],
    "addInfo_en": [
-    "Halfway through the battle, additional 2 Statuegeist appear, summons &lt;Expelled Filth&gt; every 10s"
+    "Halfway through the battle, additional 2 Statuegeist appear, summons &lt;Expelled Filth&gt; every 10s",
+    "D18: Additional 5 &lt;Scarletmist&gt;, 5 &lt;Sharpedge&gt; and 4 &lt;Shanhaizhong Secret-Keeper&gt; appear"
    ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,

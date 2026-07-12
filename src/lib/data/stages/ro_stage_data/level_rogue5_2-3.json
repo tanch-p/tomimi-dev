@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_2_3",
    "levelId": "level_rogue5_2-3",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -21,7 +22,7 @@
    "name_ja": "守りしものは義なり",
    "name_en": "Guardian_of_Justice",
    "description_zh": "侠士为一场对决等了十年，直至一小童前来：“别等了，十年前那人就死了。看，我找你这么多年，都长这么大了。”语毕消失不见，只留一把佩刀在地。\n<@rolv.rem>场地中有夺取后可以治疗友方单位并对敌方造成法术伤害的<\"留声机\"></>",
-   "description_ja": "十年もの間、決闘を待っている侠客がいた。そこへ一人の子どもがやって来て、「もう待つことはありません。十年前にあの人は死にました。ほら、あなたを探している間に、私はこんなにも大きくなりました」と伝えた。言い終えるとすぐ、子どもの姿は消えてなくなり、一本の刀だけがその場に残された。\n<@rolv.rem>制御権を奪取した後、味方ユニットを治療し敵に術ダメージを与える<「蓄音機」>が出現</>",
+   "description_ja": "十年もの間、決闘を待っている侠客がいた。そこへ一人の子どもがやって来て、「もう待つことはありません。十年前にあの人は死にました。ほら、あなたを探している間に、私はこんなにも大きくなりました」と伝えた。言い終えるとすぐ、子どもの姿は消えてなくなり、一本の刀だけがその場に残された。\n<@rolv.rem>制御権を奪取した後、周囲の別陣営のユニットに術ダメージを与え、同陣営のユニットを治療する<「蓄音機」>が出現</>",
    "description_en": "The wandering warrior has been awaiting this match for over a decade, until a young child comes over: 'You can stop waiting now, that guy died ten years ago. Look, I've been looking for you so long, I'm big now.' Once done speaking, the child disappears, leaving behind only a saber on the ground.\n<@rolv.rem><Gramophones> that deal Arts damage to enemies and heal allies when captured are present on the field</>",
    "addInfo_zh": [
     "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现"

@@ -8,6 +8,7 @@
   {
    "id": "ro5_t_1",
    "levelId": "level_rogue5_t-1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -21,7 +22,7 @@
    "name_ja": "底なし",
    "name_en": "Steady_Stream",
    "description_zh": "这熊霸乱丢的食物残渣吸引来许多源石虫，赶紧来个人告诉他，在界园不要乱扔垃圾！\n<@rolv.rem>场地中有可以阻挡敌人行进路线的<碎石></>\n<@rolv.rem>场地中有夺取后可以治疗友方单位并对敌方造成法术伤害的<\"留声机\"></>",
-   "description_ja": "この乱暴な熊野郎があちこちに捨てた食べカスにオリジムシがたくさん集まっている。誰か、界園でゴミのポイ捨てをしないように注意してやってくれ！\n<@rolv.rem>敵の進攻ルートを遮る<礫岩>が出現</>\n<@rolv.rem>制御権を奪取した後、味方ユニットを治療し敵に術ダメージを与える<「蓄音機」>が出現</>",
+   "description_ja": "この乱暴な熊野郎があちこちに捨てた食べカスにオリジムシがたくさん集まっている。誰か、界園でゴミのポイ捨てをしないように注意してやってくれ！\n<@rolv.rem>敵の進攻ルートを遮る<礫岩>が出現</>\n<@rolv.rem>制御権を奪取した後、周囲の別陣営のユニットに術ダメージを与え、同陣営のユニットを治療する<「蓄音機」>が出現</>",
    "description_en": "The food that Bear Lord's throwing away is attracting Originium slugs! Quick, send someone to tell him: NO LITTERING IN THE GARDEN OF GROTESQUERIES!\n<@rolv.rem>This stage has <Rubble> that can block the enemy's path</>\n<@rolv.rem><Gramophones> that deal Arts damage to enemies and heal allies when captured are present on the field</>",
    "addInfo_zh": [
     "普通作战 - “留声机”所需技力增加至150"

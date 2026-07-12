@@ -24,6 +24,7 @@
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 	import { stageLoadMulti } from '$lib/functions/stageLoad';
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
+	import { getTranslations } from '$lib/functions/languageHelpers';
 
 	export let data: PageData;
 
@@ -59,7 +60,7 @@
 		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}>
 			<!-- <StageDrops slot="drops" mapConfig={mapConfig} {language} {rogueTopic} {selectedFloor} /> -->
 			{#if data.stageData.data.length > 1}
-				<TitleBlock title="选择" size="subheading">
+				<TitleBlock title={getTranslations(language).stage_choice} size="subheading">
 					<div class="flex flex-wrap md:grid grid-flow-col auto-cols-fr">
 						{#each data.stageData.data as { suffix }, i}
 							<button
@@ -78,7 +79,11 @@
 											decoding="async"
 											alt={'yi'}
 										/>
-										<span>化镇抚</span>
+										<span
+											>{{ zh: '化镇抚', ja: '鎮撫と化す', en: 'Suppressive strike' }[
+												language
+											]}</span
+										>
 									</div>
 								{:else if suffix === 'choice_sui'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -90,7 +95,7 @@
 											decoding="async"
 											alt={'sui'}
 										/>
-										<span>溯承形</span>
+										<span>{{ zh: '溯承形', ja: '承形を遡る', en: 'Inheritance' }[language]}</span>
 									</div>
 								{:else if suffix === 'choice_wang'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -102,7 +107,7 @@
 											decoding="async"
 											alt={'wang'}
 										/>
-										<span>改对弈</span>
+										<span>{{ zh: '改对弈', ja: '対局に改める', en: 'Match' }[language]}</span>
 									</div>
 								{:else if suffix === 'choice_rgdysm'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -114,7 +119,7 @@
 											decoding="async"
 											alt={'cyue'}
 										/>
-										<span>塑旧历</span>
+										<span>{{ zh: '塑旧历', ja: '旧暦を塑す', en: 'Calendar' }[language]}</span>
 									</div>
 								{:else if suffix === 'choice_tgr'}
 									<div class="flex items-center justify-center gap-x-1.5">
@@ -134,12 +139,34 @@
 											decoding="async"
 											alt={'suih'}
 										/>
-										<span>一起</span>
+										<span
+											>{{ zh: '定本源', ja: '根源を定める', en: 'Define a source' }[language]}</span
+										>
 									</div>
 								{:else if suffix === 'choice_normal'}
-									<span class="font-bold text-lg">普通</span>
+									<span class="font-bold text-lg">
+										{{ zh: '普通', ja: '通常', en: 'Normal' }[language]}
+									</span>
 								{:else if suffix === 'choice_all'}
-									<span class="font-bold text-lg">ALL</span>
+									<div class="flex items-center justify-center gap-x-1.5">
+										<img
+											class="select-none"
+											src={`/images/enemy_icons/enemy_2126_dycyue.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'cyue'}
+										/>
+										<img
+											class="select-none"
+											src={`/images/enemy_icons/enemy_2127_dysuih.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'suih'}
+										/>
+										<span>{{ zh: '役群兽', ja: '群獣を役す', en: 'Wage war' }[language]}</span>
+									</div>
 								{:else}
 									{suffix}
 								{/if}

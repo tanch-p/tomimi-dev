@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_5_3",
    "levelId": "level_rogue5_5-3",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -30,11 +31,13 @@
    ],
    "addInfo_ja": [
     "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
-    "彫鬼は20秒ごとに便符一体を召喚する"
+    "彫鬼は20秒ごとに便符一体を召喚する",
+    "18難：＜防塵サンドバギー＞4体、＜改良型投石機＞2体が追加で出現"
    ],
    "addInfo_en": [
     "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
-    "Statuegeist summons 1 Talisman every 20s"
+    "Statuegeist summons 1 Talisman every 20s",
+    "D18: Additional 4 &lt;Fully-Enclosed Beach Buggy&gt; and 2 &lt;Refurbished Lithobolos&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力，防御力，生命值+20%",

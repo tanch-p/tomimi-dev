@@ -8,6 +8,7 @@
   {
    "id": "ro5_b_6",
    "levelId": "level_rogue5_b-6",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -26,8 +27,14 @@
    "addInfo_zh": [
     "N18追加敌人：山海众头目×12、山海众窥魅人×6、“破坚”×8，初始额外部署7枚包围右上和右中高台的瑕"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜山海衆精鋭＞12体、＜山海衆霊視者＞6体、＜「破堅」＞8体が追加で出現",
+    "戦場右上と右中央の高台周囲4マスが「瑕」に囲まれた状態で開始"
+   ],
+   "addInfo_en": [
+    "D18: Additional 12 &lt;Shanhaizhong Ringleader&gt;, 6 &lt;Shanhaizhong Seer&gt; and 8 &lt;'Wallbreaker'&gt; appear",
+    "Additional 7 Flaws are deployed on the right side of the map at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

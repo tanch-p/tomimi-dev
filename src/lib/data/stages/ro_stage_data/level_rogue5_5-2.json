@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_5_2",
    "levelId": "level_rogue5_5-2",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -30,11 +31,13 @@
    ],
    "addInfo_ja": [
     "初期コスト上限が50になる",
-    "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;涙目の坊や&gt;に固定され、出現が早くなる",
+    "18難：＜サルカズ歩哨隊長＞2体、＜サルカズ呪術隊長＞4体が追加で出現"
    ],
    "addInfo_en": [
     "Starting Max Cost capped at 50",
-    "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Crying Thief, and appears earlier",
+    "D18: Additional 2 &lt;Sarkaz Sentinel Leader&gt; and 4 &lt;Sarkaz Worldcurser&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力，防御力，生命值+20%",

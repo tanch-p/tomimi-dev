@@ -73357,9 +73357,6 @@
                 "epResistance": 0.0,
                 "traits": [
                     {
-                        "key": "ymgtop_start"
-                    },
-                    {
                         "key": "ymgtop_spin"
                     },
                     {
@@ -75723,8 +75720,8 @@
         "key": "enemy_10138_xdsnow",
         "sortId": 1075,
         "name_zh": "雪孩子",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ユキッコ",
+        "name_en": "Snowchild",
         "stats": [
             {
                 "hp": 5500,
@@ -75766,8 +75763,8 @@
         "key": "enemy_10138_xdsnow_2",
         "sortId": 1076,
         "name_zh": "雪顽童",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ダダッコ",
+        "name_en": "Snowbrat",
         "stats": [
             {
                 "hp": 7000,
@@ -75809,8 +75806,8 @@
         "key": "enemy_10139_xdseal",
         "sortId": 1077,
         "name_zh": "蓬松雪球",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "フワユキマル",
+        "name_en": "Fluffy Snowball",
         "stats": [
             {
                 "hp": 5500,
@@ -75852,8 +75849,8 @@
         "key": "enemy_10139_xdseal_2",
         "sortId": 1078,
         "name_zh": "夜色雪球",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ヨルユキマル",
+        "name_en": "Penumbral Snowball",
         "stats": [
             {
                 "hp": 7000,
@@ -75895,8 +75892,8 @@
         "key": "enemy_10140_xdbird",
         "sortId": 1079,
         "name_zh": "洞栖雪灵",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "洞窟雪霊",
+        "name_en": "Cave Snowsprite",
         "stats": [
             {
                 "hp": 4500,
@@ -75938,8 +75935,8 @@
         "key": "enemy_10140_xdbird_2",
         "sortId": 1080,
         "name_zh": "山谷雪灵",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "山谷雪霊",
+        "name_en": "Valley Snowsprite",
         "stats": [
             {
                 "hp": 6000,
@@ -75981,8 +75978,8 @@
         "key": "enemy_10141_xdpeng",
         "sortId": 1081,
         "name_zh": "抱蛋羽兽",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "抱卵羽獣",
+        "name_en": "Eggcradler Fowlbeast",
         "stats": [
             {
                 "hp": 7500,
@@ -76024,8 +76021,8 @@
         "key": "enemy_10141_xdpeng_2",
         "sortId": 1082,
         "name_zh": "拥霜羽兽",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "擁氷羽獣",
+        "name_en": "Frostcradler Fowlbeast",
         "stats": [
             {
                 "hp": 10000,
@@ -76067,8 +76064,8 @@
         "key": "enemy_10142_xdturt",
         "sortId": 1083,
         "name_zh": "翻身甲",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ひっくり甲羅",
+        "name_en": "Frostdillo",
         "stats": [
             {
                 "hp": 8000,
@@ -76110,8 +76107,8 @@
         "key": "enemy_10142_xdturt_2",
         "sortId": 1084,
         "name_zh": "坚冰翻身甲",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "堅氷ひっくり甲羅",
+        "name_en": "Rime Frostdillo",
         "stats": [
             {
                 "hp": 10000,
@@ -76153,8 +76150,8 @@
         "key": "enemy_10143_xdmush",
         "sortId": 1085,
         "name_zh": "小雪伞",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ユキガサタケ",
+        "name_en": "Snowcap",
         "stats": [
             {
                 "hp": 12000,
@@ -76198,8 +76195,8 @@
         "key": "enemy_10143_xdmush_2",
         "sortId": 1086,
         "name_zh": "焕生雪伞",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ツヤツヤユキガサタケ",
+        "name_en": "Bright Snowcap",
         "stats": [
             {
                 "hp": 18000,
@@ -76243,8 +76240,8 @@
         "key": "enemy_10144_xdelk",
         "sortId": 1087,
         "name_zh": "巨角卢鲁",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "大角のルル",
+        "name_en": "Greathorn Rhuul",
         "stats": [
             {
                 "hp": 15000,
@@ -76289,8 +76286,8 @@
         "key": "enemy_10144_xdelk_2",
         "sortId": 1088,
         "name_zh": "乌顶巨角卢鲁",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "黒き大角のルル",
+        "name_en": "Blackhorn Rhuul",
         "stats": [
             {
                 "hp": 20000,
@@ -76335,8 +76332,8 @@
         "key": "enemy_10145_xdrock",
         "sortId": 1089,
         "name_zh": "伊斯贝塔",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "イスビット",
+        "name_en": "Isbit",
         "stats": [
             {
                 "hp": 20000,
@@ -76378,8 +76375,8 @@
         "key": "enemy_10145_xdrock_2",
         "sortId": 1090,
         "name_zh": "斯托斯贝塔",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ストリスビット",
+        "name_en": "Storisbit",
         "stats": [
             {
                 "hp": 24000,
@@ -76421,8 +76418,8 @@
         "key": "enemy_10146_nscola",
         "sortId": 1091,
         "name_zh": "开天汽水瓶",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "衝天サイダー",
+        "name_en": "Skybuster Soda",
         "stats": [
             {
                 "hp": 5000,
@@ -76466,8 +76463,8 @@
         "key": "enemy_10146_nscola_2",
         "sortId": 1092,
         "name_zh": "开天汽水瓶·酸辣味",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "衝天サイダー・スパイシー",
+        "name_en": "Skybuster Soda (Sour and Spicy)",
         "stats": [
             {
                 "hp": 6500,
@@ -76511,8 +76508,8 @@
         "key": "enemy_10147_nsbomb",
         "sortId": 1093,
         "name_zh": "遮天面包机",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "空覆うトースター",
+        "name_en": "Flying Toaster",
         "stats": [
             {
                 "hp": 7000,
@@ -76556,8 +76553,8 @@
         "key": "enemy_10147_nsbomb_2",
         "sortId": 1094,
         "name_zh": "遮天面包机·果酱款",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "空覆うジャム・トースター",
+        "name_en": "Flying Toaster (With Jam)",
         "stats": [
             {
                 "hp": 9000,
@@ -76601,8 +76598,8 @@
         "key": "enemy_10148_nsmos",
         "sortId": 1095,
         "name_zh": "啸天吸尘器",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "震空掃除機",
+        "name_en": "Skyhowl Vacuum",
         "stats": [
             {
                 "hp": 6000,
@@ -76646,8 +76643,8 @@
         "key": "enemy_10148_nsmos_2",
         "sortId": 1096,
         "name_zh": "啸天吸尘器·大力版",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "震空掃除機・ハイパワー",
+        "name_en": "High-Powered Skyhowl Vacuum",
         "stats": [
             {
                 "hp": 7000,
@@ -76691,8 +76688,8 @@
         "key": "enemy_10149_nscan",
         "sortId": 1097,
         "name_zh": "掀天汽水桶",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "破天ボトル",
+        "name_en": "Skybreaker Soda Keg",
         "stats": [
             {
                 "hp": 11000,
@@ -76736,8 +76733,8 @@
         "key": "enemy_10149_nscan_2",
         "sortId": 1098,
         "name_zh": "掀天汽水桶·家庭装",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "破天ボトル・特大",
+        "name_en": "Skybreaker Soda Keg (Family Size)",
         "stats": [
             {
                 "hp": 13000,
@@ -76781,8 +76778,8 @@
         "key": "enemy_10150_nsheat",
         "sortId": 1099,
         "name_zh": "炙烤螺旋桨",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ロースト・プロペラ",
+        "name_en": "Scorching Propeller",
         "stats": [
             {
                 "hp": 15000,
@@ -76826,8 +76823,8 @@
         "key": "enemy_10150_nsheat_2",
         "sortId": 1100,
         "name_zh": "焦香螺旋桨",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "バーンド・プロペラ",
+        "name_en": "Scorched-Scent Propeller",
         "stats": [
             {
                 "hp": 20000,
@@ -76871,8 +76868,8 @@
         "key": "enemy_10151_nspace",
         "sortId": 1101,
         "name_zh": "行天卫生间",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "天駆けるトイレ",
+        "name_en": "Skystrider Porta-Potty",
         "stats": [
             {
                 "hp": 15000,
@@ -76916,8 +76913,8 @@
         "key": "enemy_10151_nspace_2",
         "sortId": 1102,
         "name_zh": "行天救护车",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "天駆ける救急車",
+        "name_en": "Skystrider Ambulance",
         "stats": [
             {
                 "hp": 18000,
@@ -76961,8 +76958,8 @@
         "key": "enemy_10152_nstree",
         "sortId": 1103,
         "name_zh": "“自由的树”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「自由の木」",
+        "name_en": "'Liberated Tree'",
         "stats": [
             {
                 "hp": 40000,
@@ -77006,8 +77003,8 @@
         "key": "enemy_10152_nstree_2",
         "sortId": 1104,
         "name_zh": "“逐日的树”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「太陽の木」",
+        "name_en": "'Sunchaser Tree'",
         "stats": [
             {
                 "hp": 50000,
@@ -77051,8 +77048,8 @@
         "key": "enemy_10153_nsblon",
         "sortId": 1105,
         "name_zh": "热气球",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "熱気球",
+        "name_en": "Balloon",
         "stats": [
             {
                 "hp": 8000,
@@ -77096,8 +77093,8 @@
         "key": "enemy_10153_nsblon_2",
         "sortId": 1106,
         "name_zh": "强力热气球",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "高性能熱気球",
+        "name_en": "Powerful Balloon",
         "stats": [
             {
                 "hp": 10000,
@@ -77141,8 +77138,8 @@
         "key": "enemy_10154_mnmblx",
         "sortId": 1107,
         "name_zh": "“英雄的呼唤”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「英雄の呼び声」",
+        "name_en": "Hero's Call",
         "stats": [
             {
                 "hp": 3,
@@ -77187,8 +77184,8 @@
         "key": "enemy_10155_mntjsd",
         "sortId": 1108,
         "name_zh": "投矛的士兵",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "投槍の兵士",
+        "name_en": "Javelineer",
         "stats": [
             {
                 "hp": 4200,
@@ -77230,8 +77227,8 @@
         "key": "enemy_10155_mntjsd_2",
         "sortId": 1109,
         "name_zh": "投矛的勇士",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "投槍の勇士",
+        "name_en": "Peltast",
         "stats": [
             {
                 "hp": 5400,
@@ -77273,8 +77270,8 @@
         "key": "enemy_10156_mncrer",
         "sortId": 1110,
         "name_zh": "新手祭司学徒",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "祭司学院新入生",
+        "name_en": "Novice Acolyte",
         "stats": [
             {
                 "hp": 4000,
@@ -77316,8 +77313,8 @@
         "key": "enemy_10156_mncrer_2",
         "sortId": 1111,
         "name_zh": "见习祭司学徒",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "祭司学院上級生",
+        "name_en": "Trainee Acolyte",
         "stats": [
             {
                 "hp": 5500,
@@ -77359,8 +77356,8 @@
         "key": "enemy_10157_mnggyl",
         "sortId": 1112,
         "name_zh": "疑问的雕像",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "問いかける彫像",
+        "name_en": "Questioning Statue",
         "stats": [
             {
                 "hp": 6000,
@@ -77404,8 +77401,8 @@
         "key": "enemy_10157_mnggyl_2",
         "sortId": 1113,
         "name_zh": "失望的雕像",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "失望した彫像",
+        "name_en": "Disappointed Statue",
         "stats": [
             {
                 "hp": 8000,
@@ -77449,8 +77446,8 @@
         "key": "enemy_10158_mnzeno",
         "sortId": 1114,
         "name_zh": "小跑的斐迪庇第斯",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "小走りのフェイディピデス",
+        "name_en": "Pheidippides the Jogger",
         "stats": [
             {
                 "hp": 8000,
@@ -77492,8 +77489,8 @@
         "key": "enemy_10158_mnzeno_2",
         "sortId": 1115,
         "name_zh": "狂奔的斐迪庇第斯",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "疾走するフェイディピデス",
+        "name_en": "Pheidippides the Marathoner",
         "stats": [
             {
                 "hp": 9600,
@@ -77535,8 +77532,8 @@
         "key": "enemy_10159_mntrjn",
         "sortId": 1116,
         "name_zh": "伊利昂的木驮兽",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "イリオスの木駄獣",
+        "name_en": "Wooden Burdenbeast of Ilion",
         "stats": [
             {
                 "hp": 28000,
@@ -77579,8 +77576,8 @@
         "key": "enemy_10159_mntrjn_2",
         "sortId": 1117,
         "name_zh": "伊利昂的铁驮兽",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "イリオスの鉄駄獣",
+        "name_en": "Iron Burdenbeast of Ilion",
         "stats": [
             {
                 "hp": 32000,
@@ -77623,8 +77620,8 @@
         "key": "enemy_10160_mnlaur",
         "sortId": 1118,
         "name_zh": "传唱喜剧的诗人",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "喜劇を歌い継ぐ詩人",
+        "name_en": "Comedic Poet",
         "stats": [
             {
                 "hp": 8000,
@@ -77666,8 +77663,8 @@
         "key": "enemy_10160_mnlaur_2",
         "sortId": 1119,
         "name_zh": "传唱悲剧的诗人",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "悲劇を歌い継ぐ詩人",
+        "name_en": "Tragic Poet",
         "stats": [
             {
                 "hp": 10000,
@@ -77709,8 +77706,8 @@
         "key": "enemy_10161_mnserv",
         "sortId": 1120,
         "name_zh": "英雄的理想",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "英雄的理想",
+        "name_en": "Heroic Ideal",
         "stats": [
             {
                 "hp": 22000,
@@ -77752,8 +77749,8 @@
         "key": "enemy_10161_mnserv_2",
         "sortId": 1121,
         "name_zh": "英雄的气概",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "英雄的精神",
+        "name_en": "Heroic Spirit",
         "stats": [
             {
                 "hp": 25000,
@@ -77795,8 +77792,8 @@
         "key": "enemy_10162_mnctpt",
         "sortId": 1122,
         "name_zh": "自制投石机",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "手製の投石機",
+        "name_en": "Handmade Catapult",
         "stats": [
             {
                 "hp": 16000,
@@ -77838,8 +77835,8 @@
         "key": "enemy_10162_mnctpt_2",
         "sortId": 1123,
         "name_zh": "翻新投石机",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "改良型投石機",
+        "name_en": "Refurbished Lithobolos",
         "stats": [
             {
                 "hp": 18000,
@@ -77881,8 +77878,8 @@
         "key": "enemy_10163_mnctur",
         "sortId": 1124,
         "name_zh": "帕拉杜利斯",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "パラドゥリス",
+        "name_en": "Palladulis",
         "stats": [
             {
                 "hp": 40000,
@@ -77927,8 +77924,8 @@
         "key": "enemy_10163_mnctur_2",
         "sortId": 1125,
         "name_zh": "神勇的帕拉杜利斯",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "神勇なるパラドゥリス",
+        "name_en": "Brave Palladulis",
         "stats": [
             {
                 "hp": 44000,
@@ -77973,8 +77970,8 @@
         "key": "enemy_1574_xdagt",
         "sortId": 1331,
         "name_zh": "披挂冰雪的少女",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "氷雪を纏うもの",
+        "name_en": "Maiden of Snow and Ice",
         "stats": [
             {
                 "hp": 125000,
@@ -78039,8 +78036,8 @@
         "key": "enemy_1575_xdmon",
         "sortId": 1332,
         "name_zh": "耶拉冈德",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "イェラガンド",
+        "name_en": "Kjeragandr",
         "stats": [
             {
                 "hp": 125000,
@@ -78105,8 +78102,8 @@
         "key": "enemy_1576_spbell",
         "sortId": 1333,
         "name_zh": "喀兰圣女",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "カランドの巫女",
+        "name_en": "Karlan Saintess",
         "stats": [
             {
                 "hp": 10000,
@@ -78148,8 +78145,8 @@
         "key": "enemy_1577_iceball",
         "sortId": 1334,
         "name_zh": "“寒意”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「冷気」",
+        "name_en": "'Coldness'",
         "stats": [
             {
                 "hp": 5000,
@@ -78215,8 +78212,8 @@
         "key": "enemy_1578_icecage",
         "sortId": 1335,
         "name_zh": "圣女雪衣",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "巫女の雪衣",
+        "name_en": "Saintess's Snowrobe",
         "stats": [
             {
                 "hp": 15000,
@@ -78282,8 +78279,8 @@
         "key": "enemy_1579_nstmom",
         "sortId": 1336,
         "name_zh": "女妖河谷的拂哀菈",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "バンシーの河谷のヴァエラ",
+        "name_en": "Væla of Convallis",
         "stats": [
             {
                 "hp": 70000,
@@ -78344,8 +78341,8 @@
         "key": "enemy_1580_mnchrn",
         "sortId": 1337,
         "name_zh": "赞索斯，复仇者",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「復讐者」クサントス",
+        "name_en": "Xanthos, the Avenger",
         "stats": [
             {
                 "hp": 90000,
@@ -78404,8 +78401,8 @@
         "key": "enemy_1581_mnchrs",
         "sortId": 1338,
         "name_zh": "“无数的伊萨科斯”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「無数のイサコス」",
+        "name_en": "'Ithakos Innumerable'",
         "stats": [
             {
                 "hp": 90000,
@@ -78464,8 +78461,8 @@
         "key": "enemy_2001_duckmi_2",
         "sortId": 1131,
         "name_zh": "鸭爵",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ダック卿",
+        "name_en": "Duck Lord",
         "stats": [
             {
                 "hp": 6000,
@@ -78509,8 +78506,8 @@
         "key": "enemy_2002_bearmi_2",
         "sortId": 1133,
         "name_zh": "高普尼克",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ゴプニク",
+        "name_en": "Gopnik",
         "stats": [
             {
                 "hp": 11000,
@@ -78556,8 +78553,8 @@
         "key": "enemy_2034_sythef_2",
         "sortId": 1135,
         "name_zh": "流泪小子",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "涙目の坊や",
+        "name_en": "Crying Thief",
         "stats": [
             {
                 "hp": 4500,
@@ -78599,8 +78596,8 @@
         "key": "enemy_2085_skzjxd_2",
         "sortId": 1137,
         "name_zh": "圆仔",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "マルッコ",
+        "name_en": "Fatty",
         "stats": [
             {
                 "hp": 13000,
@@ -78644,8 +78641,8 @@
         "key": "enemy_2126_dycyue",
         "sortId": 1412,
         "name_zh": "朔壳",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "朔殻",
+        "name_en": "Vessel of Shuo",
         "stats": [
             {
                 "hp": 500000,
@@ -78710,8 +78707,8 @@
         "key": "enemy_2127_dysuih",
         "sortId": 1413,
         "name_zh": "妄躯",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "妄躯",
+        "name_en": "Arrogance Embodied",
         "stats": [
             {
                 "hp": 500000,
@@ -78796,8 +78793,8 @@
         "key": "enemy_2128_dysuib",
         "sortId": 1411,
         "name_zh": "身形",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "身形",
+        "name_en": "Body",
         "stats": [
             {
                 "hp": 80000,
@@ -78869,8 +78866,8 @@
         "key": "enemy_2129_dylong",
         "sortId": 1179,
         "name_zh": "怨骸",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "怨骸",
+        "name_en": "Hateful Carrion",
         "stats": [
             {
                 "hp": 40000,
@@ -78884,7 +78881,7 @@
                 "ms": 0.6,
                 "epDamageResistance": 0.0,
                 "epResistance": 0.0,
-                "traits": [],
+                "traits": [{"key":"no_move"}],
                 "special": []
             }
         ],
@@ -78921,8 +78918,8 @@
         "key": "enemy_2130_dyswrd",
         "sortId": 1180,
         "name_zh": "敛傲",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "抑傲",
+        "name_en": "Restrained Pride",
         "stats": [
             {
                 "hp": 20000,
@@ -78942,6 +78939,9 @@
                     },
                     {
                         "key": "dy_end"
+                    },
+                    {
+                        "key":"dy_target"
                     }
                 ],
                 "special": []
@@ -78983,8 +78983,8 @@
         "key": "enemy_2131_dyfire",
         "sortId": 1181,
         "name_zh": "愠怒",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "憤怒",
+        "name_en": "Fume of Anger",
         "stats": [
             {
                 "hp": 20000,
@@ -79004,6 +79004,9 @@
                     },
                     {
                         "key": "dy_end"
+                    },
+                    {
+                        "key":"dy_target"
                     }
                 ],
                 "special": []
@@ -79044,8 +79047,8 @@
         "key": "enemy_4040_mugoal",
         "sortId": 1240,
         "name_zh": "终点信标塔",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ゴールビーコン",
+        "name_en": "Beacon Tower",
         "stats": [
             {
                 "hp": 1000,
@@ -79097,8 +79100,8 @@
         "key": "enemy_4041_mundr",
         "sortId": 1241,
         "name_zh": "红宝石飞翼",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ルビーウイング",
+        "name_en": "Ruby Flightwing",
         "stats": [
             {
                 "hp": 600,
@@ -79151,8 +79154,8 @@
         "key": "enemy_4042_murdr",
         "sortId": 1242,
         "name_zh": "蓝宝石飞翼",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "サファイアウイング",
+        "name_en": "Sapphire Flightwing",
         "stats": [
             {
                 "hp": 2000,
@@ -79205,8 +79208,8 @@
         "key": "enemy_4043_muedr",
         "sortId": 1243,
         "name_zh": "钻石飞翼",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "ダイヤモンドウイング",
+        "name_en": "Diamond Flightwing",
         "stats": [
             {
                 "hp": 3000,
@@ -79259,8 +79262,8 @@
         "key": "enemy_4044_mutdek",
         "sortId": 1244,
         "name_zh": "物资浮板",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "物資フロート",
+        "name_en": "Supplies Floater",
         "stats": [
             {
                 "hp": 1200,
@@ -79312,8 +79315,8 @@
         "key": "enemy_4045_murtre",
         "sortId": 1245,
         "name_zh": "沉水物资箱",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "水没物資箱",
+        "name_en": "Submerged Supply Crate",
         "stats": [
             {
                 "hp": 5000,
@@ -79365,8 +79368,8 @@
         "key": "enemy_4046_muobst",
         "sortId": 1246,
         "name_zh": "定点浮标",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "定点浮標",
+        "name_en": "Moored Buoy",
         "stats": [
             {
                 "hp": 1000,
@@ -79418,8 +79421,8 @@
         "key": "enemy_4047_mustak",
         "sortId": 1247,
         "name_zh": "火盆浮标",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "火鉢浮標",
+        "name_en": "Brazier Buoy",
         "stats": [
             {
                 "hp": 1000,
@@ -79471,8 +79474,8 @@
         "key": "enemy_4048_mubarn",
         "sortId": 1248,
         "name_zh": "盐水健身客",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "塩水トレーニー",
+        "name_en": "Salty Gym-goer",
         "stats": [
             {
                 "hp": 2100,
@@ -79514,8 +79517,8 @@
         "key": "enemy_4048_mubarn_2",
         "sortId": 1249,
         "name_zh": "“超级钳”盐水健身客",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「超級爪」塩水トレーニー",
+        "name_en": "'Super Pincer' Salty Gym-goer",
         "stats": [
             {
                 "hp": 3000,
@@ -79557,8 +79560,8 @@
         "key": "enemy_4049_muston",
         "sortId": 1250,
         "name_zh": "引浪兽",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "引波獣",
+        "name_en": "Wavebringer",
         "stats": [
             {
                 "hp": 40000,
@@ -79610,8 +79613,8 @@
         "key": "enemy_4049_muston_2",
         "sortId": 1251,
         "name_zh": "“水上明珠”引浪兽",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「水上の真珠」引波獣",
+        "name_en": "'Pearl of the Waves' Wavebringer",
         "stats": [
             {
                 "hp": 58000,
@@ -79663,8 +79666,8 @@
         "key": "enemy_4050_mubbar",
         "sortId": 1252,
         "name_zh": "深水大力士",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "深水マッスル",
+        "name_en": "Marine Strongman",
         "stats": [
             {
                 "hp": 26000,
@@ -79706,8 +79709,8 @@
         "key": "enemy_4050_mubbar_2",
         "sortId": 1253,
         "name_zh": "“举重王”深水大力士",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「重量挙げ王」深水マッスル",
+        "name_en": "'Weightlifting Champ' Marine Strongman",
         "stats": [
             {
                 "hp": 32000,
@@ -79749,8 +79752,8 @@
         "key": "enemy_4051_mublow",
         "sortId": 1254,
         "name_zh": "潮风操控者",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "潮風ルーラー",
+        "name_en": "Seawind Manipulator",
         "stats": [
             {
                 "hp": 32000,
@@ -79792,8 +79795,8 @@
         "key": "enemy_4051_mublow_2",
         "sortId": 1255,
         "name_zh": "“风向标”潮风操控者",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「風向計」潮風ルーラー",
+        "name_en": "'Weathervane' Seawind Manipulator",
         "stats": [
             {
                 "hp": 38000,
@@ -79835,8 +79838,8 @@
         "key": "enemy_4052_mulaze",
         "sortId": 1256,
         "name_zh": "眩光记录员",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "閃光カメラマン",
+        "name_en": "Radiance Scorer",
         "stats": [
             {
                 "hp": 29000,
@@ -79880,8 +79883,8 @@
         "key": "enemy_4052_mulaze_2",
         "sortId": 1257,
         "name_zh": "“裁决者”眩光记录员",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「裁決者」閃光カメラマン",
+        "name_en": "'Judgment' Radiance Scorer",
         "stats": [
             {
                 "hp": 36000,
@@ -79925,8 +79928,8 @@
         "key": "enemy_6033_skagod",
         "sortId": 1449,
         "name_zh": "冰滚兽 ",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "氷転獣 ",
+        "name_en": "'Iceball'",
         "stats": [
             {
                 "hp": 80000,
@@ -79968,8 +79971,8 @@
         "key": "enemy_9006_actoxi",
         "sortId": 1538,
         "name_zh": "假想敌：蚀裂",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：蝕裂",
+        "name_en": "OpFor: Fissure",
         "stats": [
             {
                 "hp": 15000,
@@ -80012,8 +80015,8 @@
         "key": "enemy_9007_acelem",
         "sortId": 1539,
         "name_zh": "假想敌：淤困",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：泥濘",
+        "name_en": "OpFor: Quagmire",
         "stats": [
             {
                 "hp": 36000,
@@ -80056,8 +80059,8 @@
         "key": "enemy_9008_acbunn",
         "sortId": 1540,
         "name_zh": "假想敌：骨刺",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：骨棘",
+        "name_en": "OpFor: Bonespur",
         "stats": [
             {
                 "hp": 12000,
@@ -80100,8 +80103,8 @@
         "key": "enemy_9009_acfort",
         "sortId": 1541,
         "name_zh": "假想敌：黑云",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：黒雲",
+        "name_en": "OpFor: BlackCloud",
         "stats": [
             {
                 "hp": 24000,
@@ -80144,8 +80147,8 @@
         "key": "enemy_9010_acpupp",
         "sortId": 1542,
         "name_zh": "假想敌：再生",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：再生",
+        "name_en": "OpFor: Rebirth",
         "stats": [
             {
                 "hp": 12000,
@@ -80188,8 +80191,8 @@
         "key": "enemy_9011_acrefr",
         "sortId": 1543,
         "name_zh": "假想敌：镜膜",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：鏡膜",
+        "name_en": "OpFor: Mirror",
         "stats": [
             {
                 "hp": 18000,
@@ -80232,8 +80235,8 @@
         "key": "enemy_9012_acloon",
         "sortId": 1544,
         "name_zh": "\"炎佑\"",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「炎祐」",
+        "name_en": "Yan's Protection",
         "stats": [
             {
                 "hp": 12000,
@@ -80276,8 +80279,8 @@
         "key": "enemy_9013_acstmk",
         "sortId": 1545,
         "name_zh": "假想敌：胄",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：冑",
+        "name_en": "OpFor: Armor",
         "stats": [
             {
                 "hp": 600000,
@@ -80328,8 +80331,8 @@
         "key": "enemy_9013_acstmk_2",
         "sortId": 1556,
         "name_zh": "假想敌：胄",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：冑",
+        "name_en": "OpFor: Armor",
         "stats": [
             {
                 "hp": 1200000,
@@ -80380,8 +80383,8 @@
         "key": "enemy_9014_acstma",
         "sortId": 1546,
         "name_zh": "“斩胄之剑”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「甲冑断つ剣」",
+        "name_en": "'Armor Cleaver'",
         "stats": [
             {
                 "hp": 240000,
@@ -80434,8 +80437,8 @@
         "key": "enemy_9015_acstmb",
         "sortId": 1547,
         "name_zh": "“破胄之锤”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「甲冑割る槌」",
+        "name_en": "'Armor Crusher'",
         "stats": [
             {
                 "hp": 250000,
@@ -80488,8 +80491,8 @@
         "key": "enemy_9016_acstmr",
         "sortId": 1548,
         "name_zh": "刺胄之弹",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "甲冑穿つ弾",
+        "name_en": "Armor Piercer",
         "stats": [
             {
                 "hp": 8,
@@ -80542,8 +80545,8 @@
         "key": "enemy_9017_achunt",
         "sortId": 1549,
         "name_zh": "假想敌：铳",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：銃",
+        "name_en": "OpFor: Gun",
         "stats": [
             {
                 "hp": 120000,
@@ -80595,8 +80598,8 @@
         "key": "enemy_9017_achunt_2",
         "sortId": 1557,
         "name_zh": "假想敌：铳",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：銃",
+        "name_en": "OpFor: Gun",
         "stats": [
             {
                 "hp": 120000,
@@ -80648,8 +80651,8 @@
         "key": "enemy_9018_actrpa",
         "sortId": 1550,
         "name_zh": "“碎铳之簧”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「機銃砕く輪」",
+        "name_en": "'Gunshatter'",
         "stats": [
             {
                 "hp": 2500000,
@@ -80694,8 +80697,8 @@
         "key": "enemy_9019_actrpb",
         "sortId": 1551,
         "name_zh": "“碎铳之簧”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「機銃砕く輪」",
+        "name_en": "'Gunshatter'",
         "stats": [
             {
                 "hp": 2500000,
@@ -80740,8 +80743,8 @@
         "key": "enemy_9020_actrpc",
         "sortId": 1552,
         "name_zh": "“碎铳之簧”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「機銃砕く輪」",
+        "name_en": "'Gunshatter'",
         "stats": [
             {
                 "hp": 2500000,
@@ -80786,8 +80789,8 @@
         "key": "enemy_9021_acduml",
         "sortId": 1553,
         "name_zh": "假想敌：管",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：管",
+        "name_en": "OpFor: Pipe",
         "stats": [
             {
                 "hp": 85000,
@@ -80837,8 +80840,8 @@
         "key": "enemy_9021_acduml_2",
         "sortId": 1558,
         "name_zh": "假想敌：管",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：管",
+        "name_en": "OpFor: Pipe",
         "stats": [
             {
                 "hp": 85000,
@@ -80888,8 +80891,8 @@
         "key": "enemy_9022_acdumm",
         "sortId": 1554,
         "name_zh": "假想敌：弦",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "仮想敵：絃",
+        "name_en": "OpFor: String",
         "stats": [
             {
                 "hp": 85000,
@@ -80954,8 +80957,8 @@
         "key": "enemy_9023_acdums",
         "sortId": 1555,
         "name_zh": "“裂管之音”/“断弦之音”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「断絃の音」/「裂管の音」",
+        "name_en": "'Echoes of Cracked Pipe'/'Echoes of Broken Strings'",
         "stats": [
             {
                 "hp": 10,
@@ -80998,8 +81001,8 @@
         "key": "enemy_9032_aclionk",
         "sortId": 1559,
         "name_zh": "阿利斯泰尔，帝国余晖",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「帝国の残光」アリステア",
+        "name_en": "Alistair, Final Flame of the Empire",
         "stats": [
             {
                 "hp": 81000,
@@ -81045,8 +81048,8 @@
         "key": "enemy_9033_acdeer",
         "sortId": 1560,
         "name_zh": "“萨米的意志”",
-        "name_ja": "",
-        "name_en": "",
+        "name_ja": "「サーミの意志」",
+        "name_en": "'Samivilinn,' the Resolution of the Very North",
         "stats": [
             {
                 "hp": 240000,

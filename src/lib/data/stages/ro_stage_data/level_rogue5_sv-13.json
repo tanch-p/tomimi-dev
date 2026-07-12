@@ -1,8 +1,8 @@
 {
  "name": {
   "zh": "时封",
-  "ja": null,
-  "en": null
+  "ja": "時の封",
+  "en": "Sealed_Time"
  },
  "data": [
   {
@@ -19,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "时封",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "時の封",
+   "name_en": "Sealed_Time",
    "description_zh": "时光定格在了群兽起乱的那一刻，但封禁总有尽头，赶快寻找出路吧。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "獣の群れが蜂起した瞬間、時は凍りついた。だが、その封もいずれは解ける。急いで活路を見出さねば。",
+   "description_en": "Time has frozen this herd in a moment of confusion, but all seals must one day break. Best get out of here quick.",
    "addInfo_zh": [
     "雕伥每60s召唤一个利齿鬣犄兽"
    ],

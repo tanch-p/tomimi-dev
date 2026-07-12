@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_6_1",
    "levelId": "level_rogue5_6-1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：飘香×4、平剑客×2"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる",
+    "18難：＜漂香＞4体、＜平剣客＞2体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier",
+    "D18: Additional 4 &lt;Drifting Aroma&gt; and 2 &lt;Bottle Swordsman&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+50%，防御力+30%，生命值+20%",

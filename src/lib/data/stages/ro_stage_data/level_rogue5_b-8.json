@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "录忆",
-  "ja": null,
-  "en": null
+  "ja": "録憶",
+  "en": "Recorded_Memory"
  },
  "data": [
   {
    "id": "ro5_b_8",
    "levelId": "level_rogue5_b-8",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,16 +19,20 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-DF",
    "name_zh": "录忆",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "録憶",
+   "name_en": "Recorded_Memory",
    "description_zh": "岁兽代理人的回忆让墨成仪器有了化伥的迹象，但点睛的一着，仍需由人来行。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "歳獣の代理人の記憶によって、墨からなる器具が器鬼に化けつつある。しかし、仕上げの点睛はやはり人の手で添えられるべきだ。",
+   "description_en": "The memories of the Sui proxy induce signs of geistification in the ink-turned-icon, but the finishing touch still requires a human hand.",
    "addInfo_zh": [
     "N18追加敌人：“碎壁”×7"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜「砕壁」＞7体が追加で初期配置される"
+   ],
+   "addInfo_en": [
+    "D18 - additional 7 &lt;'Fortbreaker'&gt; appear at the start"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

@@ -1,8 +1,8 @@
 {
  "name": {
   "zh": "相合",
-  "ja": null,
-  "en": null
+  "ja": "相合",
+  "en": "Conformity"
  },
  "data": [
   {
@@ -19,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "相合",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "相合",
+   "name_en": "Conformity",
    "description_zh": "左行人，右行伥，远伐近攻，至尽而相合。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "左を行くは人、右を行くは器鬼。遠きを伐ち、近きを攻め、道の果てにて相合す。",
+   "description_en": "On the left walk men, on the right, geists. From afar, they fire. When near, they strike. In the end, they come together as one.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

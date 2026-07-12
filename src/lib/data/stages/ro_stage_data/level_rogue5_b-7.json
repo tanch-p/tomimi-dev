@@ -28,8 +28,14 @@
     "N18追加敌人：“碎壁”×12、“越长尘”×3、山海众秘使×12",
     "N16及以上时，后兽召唤：山海众秘使x10，无羁的“盛怒”x4，似兽x8"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜「砕壁」＞12体、＜「長塵」＞3体、＜山海衆密使＞12体が追加で出現",
+    "16難以上：後獣が召喚する敵が変化する＜「山海衆密使」＞10体、＜「奔放な「シンイ」＞4体、＜似獣＞8体"
+   ],
+   "addInfo_en": [
+    "D18 - additional 12 &lt;'Fortbreaker'&gt;, 3 &lt;'Sand Voyager'&gt; and 12 &lt;Shanhaizhong Secret-Keeper&gt; appears",
+    "D16: Bestial Hou summons different enemies - 10 &lt;Shanhaizhong Secret-Keeper&gt;, 4 &lt;Unbridled 'Fury'&gt; and 8 &lt;Pseudomut&gt;"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

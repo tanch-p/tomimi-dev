@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_5_1",
    "levelId": "level_rogue5_5-1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -29,10 +30,12 @@
     "N18追加敌人：“偷闲”×4、“得意”×7、“得意”(晦)×7"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる",
+    "18難：＜「ヤマツミ」＞4体、明晦属性の＜「オニビ」＞7体ずつが追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier",
+    "D18: Additional 4 &lt;'Lazy'&gt;, 7 Yang &lt;'Smarty'&gt; and 7 Yin &lt;'Smarty'&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+50%，防御力+20%，生命值+50%",

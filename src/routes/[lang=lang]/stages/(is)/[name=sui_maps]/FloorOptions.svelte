@@ -32,10 +32,8 @@
 				level = 3;
 				options = suiWrathList.filter((ele) => ele.level == 3);
 		}
-		if (language === 'zh') {
-			const wrath0 = suiWrathList.find((ele) => ele.id === 'rogue_5_wrath_8_d');
-			options.push(wrath0);
-		}
+		const wrath0 = suiWrathList.find((ele) => ele.id === 'rogue_5_wrath_8_d');
+		options.push(wrath0);
 		if ($activeFloorEffects.length > 0) {
 			const updatedTimes = options.filter((ele) =>
 				$activeFloorEffects.some((item) => item.iconId === ele.iconId)

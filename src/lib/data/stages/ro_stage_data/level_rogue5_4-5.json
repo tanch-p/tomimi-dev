@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_4_5",
    "levelId": "level_rogue5_4-5",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：身观×4、沉沙×4、新硎×4、竞赛级沙滩车×6"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる",
+    "18難：＜身観＞4体、＜沈砂＞4体、＜新砥＞4体、＜レーシングサンドバギー＞6体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier",
+    "D18: Additional 4 &lt;Introspection&gt;, 4 &lt;Sinkingsand&gt;,  4 &lt;Sharpedge&gt; and 4 &lt;Competitive-Grade Beach Buggy&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+20%，防御力+20%，生命值+30%",

@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_5_4",
    "levelId": "level_rogue5_5-4",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：腐败之种×36、高准度伦蒂尼姆城防自行炮×7、腐败萃聚使徒×3"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる",
+    "18難：＜腐敗の種＞36体、＜高精度都市防衛自走砲＞7体、＜腐敗凝集使徒＞3体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier",
+    "D18: Additional 36 &lt;Seed of Decay&gt;, 7 &lt;Londinium Precision Mobile Defense Artillery&gt; and 3 &lt;Decaying Collector Disciple&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力，防御力+20%，生命值+50%，重量+1",

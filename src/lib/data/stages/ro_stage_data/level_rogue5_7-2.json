@@ -27,8 +27,12 @@
    "addInfo_zh": [
     "N18追加敌人：“饱食”×6、飘香×6、招财×3、无谓×30"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜「飽食」＞6体、＜漂香＞6体、＜招財＞3体、＜無謂＞30体が追加で出現"
+   ],
+   "addInfo_en": [
+    "D18 - additional 6 &lt;'Bloated'&gt;, 6 &lt;Drifting Aroma&gt;, 3 &lt;Prosperity&gt; and 30 &lt;Vapidity&gt; appears"
+   ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+20%，防御力+20%，生命值+20%",
     "初始左下侵入点右侧三格额外刷新3个“废食”"

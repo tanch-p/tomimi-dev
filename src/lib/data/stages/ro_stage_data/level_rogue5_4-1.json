@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_4_1",
    "levelId": "level_rogue5_4-1",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -22,16 +23,18 @@
    "name_en": "Shanhaizhong_Scramble",
    "description_zh": "“八个不要”已犯四条，于是，走路路不通，寻物物不见，混入园中的山海众被伥“教了规矩”。把他们提溜去司岁台前，还是先帮他们脱困吧。\n<@rolv.rem>场地中有阻挡敌人的<城防路障></>",
    "description_ja": "「八つの『しない』」のうち四つを犯したため、行く道は通れず、探し物も見つからない。界園に紛れ込んだ山海衆は、器鬼によって「摂理」を思い知らされた。彼らを司歳台に連れて行く前に、まずは窮地を脱する手助けをしよう。\n<@rolv.rem>敵をブロックできる<都市防衛柵>が出現</>",
-   "description_en": "Of the eight 'Do Nots', the Shanhaizhong intruding in the Garden have violated four of them, so the roads they walk and the searches they perform are all fruitless as the geists 'teach them the rules'. Give them a hand before you hand them over to the Sui Regulator.\n<@rolv.rem><Defensive Barricades> are present on the field that Block enemies</>",
+   "description_en": "'Of the eight 'Do Nots', the Shanhaizhong intruding in the Garden have violated four of them, so the roads they walk and the searches they perform are all fruitless as the geists 'teach them the rules'. Give them a hand before you hand them over to the Sui Regulator.\n<@rolv.rem><Defensive Barricades> are present on the field that Block enemies</>",
    "addInfo_zh": [
     "【鸭爵金币】固定出现&lt;高普尼克&gt;，且提早出现",
     "N18追加敌人：提亚卡乌冠军×2、山海众连阵者×2、山海众头目×2、山海众窥魅人×3、朗姆酒推荐者×6"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;ゴプニク&gt;に固定され、出現が早くなる",
+    "18難：＜ティアカウチャンピオン＞2体、＜山海衆連陣守護者＞2体、＜山海衆精鋭＞2体、＜山海衆霊視者＞3体、＜ラム酒過激派＞6体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Gopnik, and appears earlier",
+    "D18: Additional 2 &lt;Tiacauh Champion&gt;, 2 &lt;Shanhaizhong Phalanx&gt;, 2 &lt;Shanhaizhong Ringleader&gt;, 2 &lt;Shanhaizhong Seer&gt; and 6 &lt;Rum Gourmet&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力，防御力，生命值+20%",

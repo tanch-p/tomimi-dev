@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_4_4",
    "levelId": "level_rogue5_4-4",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：寻路者术师×2、战线推进者×4、战线突破者×4、爆炸追寻者×1、压力舒缓帮手×4"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵がダック卿に固定され、出現が早くなる",
+    "18難：＜求道術師＞2体、＜戦線推進兵＞4体、＜戦線突破兵＞4体、＜爆発探求者＞1体、＜モヤモヤナクナール＞4体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Duck Lord, and appears earlier",
+    "D18: Additional 2 &lt;Pathfinder Artifex&gt;, 4 &lt;Battleline Advance Guard&gt;, 1 &lt;Explosion Chaser&gt; and 4 &lt;Stress-Relief Helper&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力，防御力，生命值+30%",

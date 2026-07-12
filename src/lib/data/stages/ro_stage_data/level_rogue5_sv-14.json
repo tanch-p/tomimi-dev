@@ -1,8 +1,8 @@
 {
  "name": {
   "zh": "遍地福音",
-  "ja": null,
-  "en": null
+  "ja": "満ちる福音",
+  "en": "Omnipresent_Gospel"
  },
  "data": [
   {
@@ -19,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "遍地福音",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "満ちる福音",
+   "name_en": "Omnipresent_Gospel",
    "description_zh": "无论被何人收藏，无论被置于何处，拉特兰圣像那照拂一切的光芒都无法掩盖。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "誰に収められようと、どこに置かれようと、ラテラーノの聖像が万物を照らす光が覆い隠されることはない。",
+   "description_en": "No matter who collected them or where they are placed, the pervasive radiance of the holy statues of Laterano cannot be concealed.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

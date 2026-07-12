@@ -23,13 +23,19 @@
    "name_en": "The_Suppression_of_Sui",
    "description_zh": "诸物皆可为梁柱，然承界之重，赋园以格，唯一，唯易。撼动了他，大炎才会心安。\n<@lv.item><晦明之印></>部署在其上的干员获得晦明属性",
    "description_ja": "万物は柱となり得るが、界の重みを背負い、園に命と色を吹き込める者はイーをおいて他にいない。彼を揺り動かさなければ、炎国は安寧を得られないだろう。\n<@lv.item><晦明の印></>配置した味方が対応する晦明属性を獲得",
-   "description_en": "All things may act as Garden of Grotesqueries' beams and columns, but there is only one who can bear the weight of it, only one who can bestow order upon it. It is not ye, but Yi. Sway his heart, and Yan shall breathe easy.\n<@lv.item><Mark of Hui and Ming></> Operators deployed on it will earn a Hui-Ming Attribute.",
+   "description_en": "All things may act as the Garden of Grotesqueries' beams and columns, but there is only one who can bear the weight of it, only one who can bestow order upon it. It is not ye, but Yi. Sway his heart, and Yan shall breathe easy.\n<@lv.item><Mark of Hui and Ming></> Operators deployed on it will earn a Hui-Ming Attribute.",
    "addInfo_zh": [
     "N18追加敌人：第一波次：认真的“阿咬”×1",
     "其他波次：看路线模拟吧"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：最初のウェーブに&lt;真面目な「クヒツム」&gt;1体が追加で出現",
+    "ほかウェーブも変化あり"
+   ],
+   "addInfo_en": [
+    "D18: Initial enemy wave - Additional 1 &lt;Serious 'Bitey'&gt; appears",
+    "Changes in other waves too"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "御外侮",
-  "ja": null,
-  "en": null
+  "ja": "外侮を禦ぐ",
+  "en": "Repel_the_Outsiders"
  },
  "data": [
   {
    "id": "ro5_n_3_6",
    "levelId": "level_rogue5_3-6",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,11 +19,11 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "御外侮",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "外侮を禦ぐ",
+   "name_en": "Repel_the_Outsiders",
    "description_zh": "许多人一生都没离开过家园，他们会，也愿为这个概念付出一切。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "多くの者は、生涯故郷を離れることはない。彼らは「故郷」という概念のためなら、進んで全てを捧げるのだ。",
+   "description_en": "Many people will spend their entire lives never having left their homeland, but they will, and they will put their all into doing so.",
    "addInfo_zh": null,
    "addInfo_ja": null,
    "addInfo_en": null,

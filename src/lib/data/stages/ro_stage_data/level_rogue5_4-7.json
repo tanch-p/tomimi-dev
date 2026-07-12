@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "忍气不吞声",
-  "ja": null,
-  "en": null
+  "ja": "忍べど黙せず",
+  "en": "Let_It_All_Out"
  },
  "data": [
   {
    "id": "ro5_n_4_7",
    "levelId": "level_rogue5_4-7",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,16 +19,20 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "忍气不吞声",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "忍べど黙せず",
+   "name_en": "Let_It_All_Out",
    "description_zh": "易有些懊悔，或许当初就不该让伥们有机会阅读那些他收藏的东国流行小说，现在这些扮作忍者的伥只学了点皮毛就四处横行，比那些聒噪的乐师闹出的动静还要大。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "イーは少し後悔していた。自身のコレクションである極東の人気小説を器鬼たちに読ませるべきではなかったと。今や稚拙なモノマネで忍者を気取る器鬼たちがあちこちを荒らし回り、もはや騒々しい音楽家の方が静かに感じるほどだ。",
+   "description_en": "Yi has some regrets about letting the geists read the Higashinese novels in his collection. The geists playing ninja had only just scratched the surface of the culture before going on a rampage, causing much more of an uproar than those noisy musicians.",
    "addInfo_zh": [
     "N18追加敌人：压力归零帮手×5"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜イライラナクナール＞5体が追加で出現"
+   ],
+   "addInfo_en": [
+    "D18 - additional 5 &lt;Zero-Stress Helper&gt; appear"
+   ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+20%，防御力+50%，生命值+20%",
     "水遁宗师获得隐匿"

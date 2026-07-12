@@ -121,6 +121,11 @@
 		"ja": "ステージ一覧",
 		"zh": "关卡一览"
 	},
+	"stage_choice":{
+		"en":"Variation",
+		"ja":"バリエーション",
+		"zh":"变体"
+	},
 	"characterLimit": {
 		"en": "Deploy Limit",
 		"ja": "同時配置可能数",

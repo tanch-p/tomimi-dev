@@ -8,6 +8,7 @@
   {
    "id": "ro5_b_5",
    "levelId": "level_rogue5_b-5",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -26,8 +27,12 @@
    "addInfo_zh": [
     "N18追加敌人：新硎×1、恶语×6、飘香×8"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜新砥＞1体、＜悪語＞6体、＜漂香＞8体が追加で出現"
+   ],
+   "addInfo_en": [
+    "D18: Additional 1 &lt;Sharpedge&gt;, 6 &lt;Profanity&gt; and 8 &lt;Drifting Aroma&gt; appear"
+   ],
    "eliteDesc_zh": null,
    "eliteDesc_ja": null,
    "eliteDesc_en": null,

@@ -8,6 +8,7 @@
   {
    "id": "ro5_n_4_6",
    "levelId": "level_rogue5_4-6",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -28,10 +29,12 @@
     "N18追加敌人：倾轧者×5、家族恫吓者×4、重弩猎杀者×2、灰烬造物×2"
    ],
    "addInfo_ja": [
-    "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる"
+    "【鴨爵の金幣】隠し敵が&lt;マルッコ&gt;に固定され、出現が早くなる",
+    "18難：＜凶悪ロードローラー＞5体、＜マフィアの脅迫者＞4体、＜重型クロスボウ猛襲者＞2体、＜灰燼の創造物＞2体が追加で出現"
    ],
    "addInfo_en": [
-    "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier"
+    "Duck Coin - bonus enemy fixed to summon Fatty, and appears earlier",
+    "D18: Additional 5 &lt;Bulldozer&gt;, 4 &lt;Famiglia Intimidator&gt;, 4 &lt;Heavy Crossbowman Hunter&gt; and 2 &lt;Ash Creation&gt; appear"
    ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+10%，防御力+20%，生命值+20%，移动速度+20%",

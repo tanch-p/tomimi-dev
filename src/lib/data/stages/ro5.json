@@ -74,50 +74,50 @@
     "level_rogue5_b-8": {
         "code": "ISW-DF",
         "name_zh": "录忆",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "録憶",
+        "name_en": "Recorded_Memory"
     },
     "level_rogue5_b-9-a": {
         "code": "ISW-DF",
         "name_zh": "止变",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "止変",
+        "name_en": "Stasis"
     },
     "level_rogue5_b-9-b": {
         "code": "ISW-DF",
         "name_zh": "止变",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "止変",
+        "name_en": "Stasis"
     },
     "level_rogue5_b-9-c": {
         "code": "ISW-DF",
         "name_zh": "止变",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "止変",
+        "name_en": "Stasis"
     },
     "level_rogue5_b-9-d": {
         "code": "ISW-DF",
         "name_zh": "止变",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "止変",
+        "name_en": "Stasis"
     },
     "level_rogue5_b-9-e": {
         "code": "ISW-DF",
         "name_zh": "止变",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "止変",
+        "name_en": "Stasis"
     },
     "level_rogue5_b-10": {
         "code": "ISW-DF",
         "name_zh": "定乾坤",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "定乾坤",
+        "name_en": "Defining_the_World"
     },
     "level_rogue5_b-10-b": {
         "code": "ISW-DF",
         "name_zh": "定乾坤",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "定乾坤",
+        "name_en": "Defining_the_World"
     },
     "level_rogue5_t-1": {
         "code": "ISW-SP",
@@ -404,8 +404,8 @@
     "level_rogue5_sv-8-b": {
         "code": "ISW-NO",
         "name_zh": "靡靡之音_b",
-        "name_ja": "退廃の音",
-        "name_en": "Frivolous_Tunes"
+        "name_ja": "退廃の音_b",
+        "name_en": "Frivolous_Tunes_b"
     },
     "level_rogue5_sv-9": {
         "code": "ISW-NO",
@@ -452,20 +452,20 @@
     "level_rogue5_sv-13": {
         "code": "ISW-NO",
         "name_zh": "时封",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "時の封",
+        "name_en": "Sealed_Time"
     },
     "level_rogue5_sv-14": {
         "code": "ISW-NO",
         "name_zh": "遍地福音",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "満ちる福音",
+        "name_en": "Omnipresent_Gospel"
     },
     "level_rogue5_sv-15": {
         "code": "ISW-NO",
         "name_zh": "相合",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "相合",
+        "name_en": "Conformity"
     },
     "level_rogue5_sv-1_dlc1": {
         "code": "ISW-NO",
@@ -668,8 +668,8 @@
     "level_rogue5_3-6": {
         "code": "ISW-NO",
         "name_zh": "御外侮",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "外侮を禦ぐ",
+        "name_en": "Repel_the_Outsiders"
     },
     "level_rogue5_4-1": {
         "code": "ISW-NO",
@@ -710,8 +710,8 @@
     "level_rogue5_4-7": {
         "code": "ISW-NO",
         "name_zh": "忍气不吞声",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "忍べど黙せず",
+        "name_en": "Let_It_All_Out"
     },
     "level_rogue5_5-1": {
         "code": "ISW-NO",
@@ -752,8 +752,8 @@
     "level_rogue5_5-7": {
         "code": "ISW-NO",
         "name_zh": "砺锋",
-        "name_ja": null,
-        "name_en": null
+        "name_ja": "研がれた切先",
+        "name_en": "Honed_Edge"
     },
     "level_rogue5_6-1": {
         "code": "ISW-NO",

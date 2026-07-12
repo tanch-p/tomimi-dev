@@ -1,13 +1,14 @@
 {
  "name": {
   "zh": "砺锋",
-  "ja": null,
-  "en": null
+  "ja": "研がれた切先",
+  "en": "Honed_Edge"
  },
  "data": [
   {
    "id": "ro5_n_5_7",
    "levelId": "level_rogue5_5-7",
+   "suffix": "",
    "tags": [
     "rogue_yan"
    ],
@@ -18,27 +19,31 @@
    "costIncreaseTime": 1.0,
    "code": "ISW-NO",
    "name_zh": "砺锋",
-   "name_ja": null,
-   "name_en": null,
+   "name_ja": "研がれた切先",
+   "name_en": "Honed_Edge",
    "description_zh": "藏品经过维护方可彰显其价值，而这批藏品的维护方式，是以不停息的争斗磨砺其血性与锐意。",
-   "description_ja": null,
-   "description_en": null,
+   "description_ja": "コレクションは手入れを施されてこそ、その真価を発揮する。そしてこれらに施す手入れとは、絶えぬ争いで気概と鋭気を磨いてやることだ。",
+   "description_en": "Through conservation treatments, items in the collection show their true worth. These particular pieces require a honing of their bravery and valor in endless battle to stay their best.",
    "addInfo_zh": [
     "N18追加敌人：游击队传令兵组长×5、皮书生×10"
    ],
-   "addInfo_ja": null,
-   "addInfo_en": null,
+   "addInfo_ja": [
+    "18難：＜遊撃隊伝令隊長＞5体、＜皮書生＞10体が追加で出現"
+   ],
+   "addInfo_en": [
+    "D18 - additional 5 &lt;Zero-Stress Helper&gt; appear"
+   ],
    "eliteDesc_zh": [
     "所有敌方单位的攻击力+20%，防御力+20%，生命值+20%",
-    "狂躁异质裂兽获得额外防御力+50%，生命值+50%，路线由经中央区域进入右上保护目标点变为经中间区域绕左上一圈进入左下保护目标点"
+    "狂躁异质裂兽获得额外防御力+50%，生命值+50%，路线由经中央区域进入右上保护目标点"
    ],
    "eliteDesc_ja": [
     "敵全員の攻撃力+20%、防御力+20%、最大HP+20%",
-    "&lt;狂躁异质裂兽&gt;がさらに防御力+50%、最大HP+50%"
+    "&lt;狂乱の変質裂獣&gt;がさらに防御力+50%、最大HP+50%、戦場右上の防衛ラインを目指す進行ルートに変更"
    ],
    "eliteDesc_en": [
     "All enemy units have +20% ATK, +20% DEF, +20% Max HP",
-    "&lt;Boss Bear&gt; gains an additional +50% DEF, +50% Max HP"
+    "&lt;Rampaging Abnormal Manglerbeast&gt; gains an additional +50% DEF, +50% Max HP, movement route changes to enter the top right Protection Objective"
    ],
    "all_mods": [
     {
