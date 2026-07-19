@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
-	import banner_sami from '$lib/images/banner_sami_800px.webp';
+	import banner_sami from '$lib/images/banner_sami.webp';
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import HowToUse from '$lib/components/HowToUse.svelte';
 	import SamiNavTemp from './SamiNavTemp.svelte';

@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import PhantomNav from './PhantomNav.svelte';
 	import type { PageData } from './$types';
-	import banner_phantom from '$lib/images/banner_phantom_800px.webp';
+	import banner_phantom from '$lib/images/banner_phantom.webp';
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import HowToUse from '$lib/components/HowToUse.svelte';
 	import TitleBlock from '$lib/components/TitleBlock.svelte';

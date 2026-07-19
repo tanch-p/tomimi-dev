@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import MizukiNav from './MizukiNav.svelte';
 	import type { PageData } from './$types';
-	import banner_mizuki from '$lib/images/banner_mizuki_800px.webp';
+	import banner_mizuki from '$lib/images/banner_mizuki.webp';
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import HowToUse from '$lib/components/HowToUse.svelte';
 	import TitleBlock from '$lib/components/TitleBlock.svelte';

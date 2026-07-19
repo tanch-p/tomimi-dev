@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
 	import type { Language } from '$lib/types';
-	import banner_sarkaz from '$lib/images/banner_sarkaz_800px.webp';
+	import banner_sarkaz from '$lib/images/banner_sarkaz.webp';
 	import TogglePanel from '$lib/components/TogglePanel.svelte';
 	import HowToUse from '$lib/components/HowToUse.svelte';
 	import NavTemp from './NavTemp.svelte';

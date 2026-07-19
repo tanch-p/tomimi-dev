@@ -1270,6 +1270,14 @@
 			"zh": ["攻击附加相当于攻击力<v.%value>%的{ba.dt.burning}"]
 		}
 	},
+	"dt_burning": {
+		"value": 0.1,
+		"tooltip": {
+			"en": ["Attack deals <v.%value>% of ATK as {ba.dt.burning}"],
+			"ja": ["攻撃で攻撃力の<v.%value>%の{ba.dt.burning}を与える"],
+			"zh": ["攻击附加相当于攻击力<v.%value>%的{ba.dt.burning}"]
+		}
+	},
 	"sy2_attackdef": {
 		"tooltip": {
 			"en": ["When attacking for the first time, stops moving and gains 300 DEF for 20s."],

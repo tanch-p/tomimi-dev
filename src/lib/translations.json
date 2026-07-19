@@ -2211,9 +2211,14 @@
 		"zh": "裂空炮手"
 	},
 	"watchman": {
-		"en": "Watchman (?)",
-		"ja": "監視者(?)",
+		"en": "Watchman",
+		"ja": "空癒師",
 		"zh": "守望者"
+	},
+	"supportiveranger":{
+		"en": "Support Ranger (?)",
+		"ja": "遊撃手",
+		"zh": "游击手"
 	},
 	"nationId": {
 		"en": "Nationality",
@@ -3155,6 +3160,11 @@
 		"ja": "装置のバリア",
 		"zh": "装置屏障"
 	},
+	"barrier_break":{
+		"en": "Barrier Broken",
+		"ja": "バリア破壊",
+		"zh": "屏障摧毁"
+	},
 	"dmg_below_200": {
 		"en": "Damage Under 200",
 		"ja": "ダメージが200以下",
@@ -3449,6 +3459,16 @@
 		"en": "Corrosion Damage",
 		"ja": "侵蝕損傷",
 		"zh": "侵蚀损伤"
+	},
+	"rampage_burst":{
+		"en": "Rabies Duration",
+		"ja": "狂躁損傷爆発",
+		"zh": "狂躁损伤爆发"
+	},
+	"rampage":{
+		"en": "Rabies Damage",
+		"ja": "狂躁損傷",
+		"zh": "狂躁损伤"
 	},
 	"ele_dmg": {
 		"en": "Elemental Damage",

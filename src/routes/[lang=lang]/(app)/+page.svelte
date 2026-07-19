@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
-	import banner_mizuki from '$lib/images/banner_mizuki_800px.webp';
-	import banner_phantom from '$lib/images/banner_phantom_800px.webp';
-	import banner_sami from '$lib/images/banner_sami_800px.webp';
-	import banner_sarkaz from '$lib/images/banner_sarkaz_800px.webp';
+	import banner_mizuki from '$lib/images/banner_mizuki.webp';
+	import banner_phantom from '$lib/images/banner_phantom.webp';
+	import banner_sami from '$lib/images/banner_sami.webp';
+	import banner_sarkaz from '$lib/images/banner_sarkaz.webp';
 	import banner_sui from '$lib/images/banner_sui.webp';
 	import laoli_banner from '$lib/images/laoli_sim.webp';
 	import chara_banner from '$lib/images/chara_banner.webp';

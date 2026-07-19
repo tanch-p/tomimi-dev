@@ -193,7 +193,7 @@
 		"name_zh": "元素损伤",
 		"name_en": "Elemental Injury",
 		"name_ja": "元素損傷",
-		"desc_zh": "包括<ba.dt.neural>神经损伤</>、<ba.dt.erosion>侵蚀损伤</>、<ba.dt.burning>灼燃损伤</>、<ba.dt.apoptosis>凋亡损伤</>",
+		"desc_zh": "包括<$ba.dt.neural>神经损伤</>、<$ba.dt.erosion>侵蚀损伤</>、<$ba.dt.burning>灼燃损伤</>、<$ba.dt.apoptosis>凋亡损伤</>、<$ba.dt.rampage>狂躁损伤</>",
 		"desc_en": "Includes <ba.dt.neural>Nervous Impairment</>, <ba.dt.erosion>Corrosion Damage</>, <ba.dt.burning>Burn Damage</>, and <ba.dt.apoptosis>Necrosis Damage</>",
 		"desc_ja": "以下のダメージ種類を含む：<ba.dt.neural>神経損傷</>、<ba.dt.erosion>侵蝕損傷</>、<ba.dt.burning>灼熱損傷</>、<ba.dt.apoptosis>壊死損傷</>"
 	},
@@ -406,39 +406,39 @@
 	},
 	"ba.physicfragile": {
 		"termId": "ba.physicfragile",
-      "name_zh": "物理脆弱",
-        "name_en": "Physical Fragility",
-        "name_ja": "対物理脆弱",
-        "desc_zh": "受到的物理伤害提升相应比例（同名效果取最高）",
-        "desc_en": "Amplifies all Physical damage taken by the corresponding amount (only the strongest effect of this type applies)",
-        "desc_ja": "物理の被ダメージが効果値分上昇（同名の状態は効果値が高いほうのみ適用）"
+		"name_zh": "物理脆弱",
+		"name_en": "Physical Fragility",
+		"name_ja": "対物理脆弱",
+		"desc_zh": "受到的物理伤害提升相应比例（同名效果取最高）",
+		"desc_en": "Amplifies all Physical damage taken by the corresponding amount (only the strongest effect of this type applies)",
+		"desc_ja": "物理の被ダメージが効果値分上昇（同名の状態は効果値が高いほうのみ適用）"
 	},
 	"ba.dt.neural2": {
 		"termId": "ba.dt.neural2",
-        "name_zh": "神经损伤·我方",
-        "name_en": "Nervous Impairment - Player",
-        "name_ja": "神経損傷・味方",
-        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到6000点元素伤害且获得3层<ba.palsy>麻痹</>。10秒冷却",
-        "desc_en": "Explodes when at max (1000 for Normal and Elite, 2000 for Leaders), dealing 6000 Elemental Damage and inflicting 3 stacks of <ba.palsy>Paralysis</>. 10s cooldown.",
-        "desc_ja": "損傷が一定値（通常の敵及び【エリート】は1000、敵【ボス】は2000）蓄積すると爆発し、対象は即時に6000の元素ダメージを受け、かつ<ba.palsy>麻痺</>効果が3回分付与される。効果発動後、10秒後再発動可能になる"
+		"name_zh": "神经损伤·我方",
+		"name_en": "Nervous Impairment - Player",
+		"name_ja": "神経損傷・味方",
+		"desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到6000点元素伤害且获得3层<ba.palsy>麻痹</>。10秒冷却",
+		"desc_en": "Explodes when at max (1000 for Normal and Elite, 2000 for Leaders), dealing 6000 Elemental Damage and inflicting 3 stacks of <ba.palsy>Paralysis</>. 10s cooldown.",
+		"desc_ja": "損傷が一定値（通常の敵及び【エリート】は1000、敵【ボス】は2000）蓄積すると爆発し、対象は即時に6000の元素ダメージを受け、かつ<ba.palsy>麻痺</>効果が3回分付与される。効果発動後、10秒後再発動可能になる"
 	},
 	"ba.palsy": {
 		"termId": "ba.palsy",
-        "name_zh": "麻痹",
-        "name_en": "Paralysis",
-        "name_ja": "麻痺",
-        "desc_zh": "每层麻痹可以使敌人在普通攻击时打断本次攻击，上限3层；麻痹未被消耗时持续时间无限，拥有抵抗的单位每5秒流失1层",
-        "desc_en": "Each stack of Paralysis can interrupt an enemy when it attempts to perform a normal attack, max 3 stacks; Paralysis has unlimited duration when not consumed, but units with status resistance lose 1 stack every 5s",
-        "desc_ja": "通常攻撃時に1回分消費され、その攻撃をキャンセルする。最大3回分まで重複可能で、消費されない限り消えない。レジストを持つユニットは5秒ごとに1回分減少"
+		"name_zh": "麻痹",
+		"name_en": "Paralysis",
+		"name_ja": "麻痺",
+		"desc_zh": "每层麻痹可以使敌人在普通攻击时打断本次攻击，上限3层；麻痹未被消耗时持续时间无限，拥有抵抗的单位每5秒流失1层",
+		"desc_en": "Each stack of Paralysis can interrupt an enemy when it attempts to perform a normal attack, max 3 stacks; Paralysis has unlimited duration when not consumed, but units with status resistance lose 1 stack every 5s",
+		"desc_ja": "通常攻撃時に1回分消費され、その攻撃をキャンセルする。最大3回分まで重複可能で、消費されない限り消えない。レジストを持つユニットは5秒ごとに1回分減少"
 	},
 	"ba.addbullet": {
 		"termId": "ba.addbullet",
-        "name_zh": "补弹",
-        "name_en": "Replenish",
-        "name_ja": "補弾",
-        "desc_zh": "为其他人的弹药类技能补充弹药。单次弹药类技能的持续时间内，最多被补充该次技能所装有弹药数量上限的弹药",
-        "desc_en": "Replenishes ammo for other Operators' ammo-type skills; an ammo-type skill can only be replenished up to its max ammo capacity during a single activation of that skill",
-        "desc_ja": "他オペレーターの弾薬消費系スキルの弾薬を補充する。対象が一度の弾薬消費系スキル発動中に受けられる給弾数は、累計でそのスキルの弾薬上限と同数まで"
+		"name_zh": "补弹",
+		"name_en": "Replenish",
+		"name_ja": "補弾",
+		"desc_zh": "为其他人的弹药类技能补充弹药。单次弹药类技能的持续时间内，最多被补充该次技能所装有弹药数量上限的弹药",
+		"desc_en": "Replenishes ammo for other Operators' ammo-type skills; an ammo-type skill can only be replenished up to its max ammo capacity during a single activation of that skill",
+		"desc_ja": "他オペレーターの弾薬消費系スキルの弾薬を補充する。対象が一度の弾薬消費系スキル発動中に受けられる給弾数は、累計でそのスキルの弾薬上限と同数まで"
 	},
 	"ba.straightshot": {
 		"termId": "ba.straightshot",
@@ -477,102 +477,120 @@
 		"desc_ja": "密偵を味方の攻撃範囲内に収めるかブロックすることで対象の識別ポイントが増加する。この条件を満たしていない時は、0.1秒ごとに1ポイント減少。識別には2段階あり、それぞれ300ポイント必要"
 	},
 	"ba.attract": {
-        "termId": "ba.attract",
-        "name_zh": "诱导",
-        "name_en": "Lure",
-        "name_ja": "誘導",
-        "desc_zh": "无法被阻挡并向目标位置移动",
-        "desc_en": "Cannot be blocked and moves towards the target's position",
-        "desc_ja": "ブロック不可となり、目標となる対象のいる方向へ移動"
-    },
-    "ba.permanentatk": {
-        "termId": "ba.permanentatk",
-        "name_zh": "持续攻击",
-        "name_en": "Continuously Attack",
-        "name_ja": "常時攻撃",
-        "desc_zh": "无论攻击范围内是否有攻击目标，都会持续进行攻击",
-        "desc_en": "Continuously attacks, regardless of whether there is a target within Attack Range",
-        "desc_ja": "攻撃範囲内に攻撃可能な対象がいるかどうかに関わらず、持続的に攻撃し続ける"
-    },
-    "ba.fever": {
-        "termId": "ba.fever",
-        "name_zh": "Fever",
-        "name_en": "Fever",
-        "name_ja": "Fever",
-        "desc_zh": "Fever累计至450点时，任意一位<ba.mujica>Ave Mujica</>成员手动触发技能后，在场所有<ba.mujica>Ave Mujica</>成员20秒内会持续释放当前技能",
-        "desc_en": "Once Fever reaches 450, whenever any <ba.mujica>Ave Mujica</> member's skill is manually activated, all <ba.mujica>Ave Mujica</> members on the field will keep their current skill activated for 20s",
-        "desc_ja": "Fever値が450に達している状態で、任意の味方<ba.mujica>Ave Mujica</>のスキルを手動で発動すると、味方<ba.mujica>Ave Mujica</>全員がスキルを20秒間発動し続ける"
-    },
-    "ba.mujica": {
-        "termId": "ba.mujica",
-        "name_zh": "Ave Mujica",
-        "name_en": "Ave Mujica",
-        "name_ja": "Ave Mujica",
-        "desc_zh": "包括丰川祥子、八幡海铃、三角初华、祐天寺若麦、若叶睦",
-        "desc_en": "Includes Sakiko Togawa, Umiri Yahata, Uika Misumi, Nyamu Yūtenji, Mutsumi Wakaba",
-        "desc_ja": "対象オペレーター：\n豊川祥子、八幡海鈴、三角初華、祐天寺にゃむ、若葉睦"
-    },
-    "ba.alter": {
-        "termId": "ba.alter",
-        "name_zh": "装备应变",
-        "name_en": "Equipment Alteration",
-        "name_ja": "戦術換装",
-        "desc_zh": "选中在场干员后，可以通过一定条件激活的额外效果",
-        "desc_en": "When selecting a deployed Operator, can activate extra effects when certain conditions are fulfilled",
-        "desc_ja": "配置中のオペレーターを選択後、一定の条件を満たしていれば追加効果を有効化できる"
-    },
-    "ba.weaknessatk": {
-        "termId": "ba.weaknessatk",
-        "name_zh": "弱点伤害",
-        "name_en": "Weakness damage",
-        "name_ja": "弱点ダメージ",
-        "desc_zh": "造成物理或法术伤害时，根据目标防御力和法术抗性变更伤害类型",
-        "desc_en": "When dealing Physical or Arts damage, changes damage type depending on the target's DEF and RES",
-        "desc_ja": "物理または術ダメージを与える際、敵の防御力と術耐性の値に応じてダメージのタイプが変化する"
-    },
+		"termId": "ba.attract",
+		"name_zh": "诱导",
+		"name_en": "Lure",
+		"name_ja": "誘導",
+		"desc_zh": "无法被阻挡并向目标位置移动",
+		"desc_en": "Cannot be blocked and moves towards the target's position",
+		"desc_ja": "ブロック不可となり、目標となる対象のいる方向へ移動"
+	},
+	"ba.permanentatk": {
+		"termId": "ba.permanentatk",
+		"name_zh": "持续攻击",
+		"name_en": "Continuously Attack",
+		"name_ja": "常時攻撃",
+		"desc_zh": "无论攻击范围内是否有攻击目标，都会持续进行攻击",
+		"desc_en": "Continuously attacks, regardless of whether there is a target within Attack Range",
+		"desc_ja": "攻撃範囲内に攻撃可能な対象がいるかどうかに関わらず、持続的に攻撃し続ける"
+	},
+	"ba.fever": {
+		"termId": "ba.fever",
+		"name_zh": "Fever",
+		"name_en": "Fever",
+		"name_ja": "Fever",
+		"desc_zh": "Fever累计至450点时，任意一位<ba.mujica>Ave Mujica</>成员手动触发技能后，在场所有<ba.mujica>Ave Mujica</>成员20秒内会持续释放当前技能",
+		"desc_en": "Once Fever reaches 450, whenever any <ba.mujica>Ave Mujica</> member's skill is manually activated, all <ba.mujica>Ave Mujica</> members on the field will keep their current skill activated for 20s",
+		"desc_ja": "Fever値が450に達している状態で、任意の味方<ba.mujica>Ave Mujica</>のスキルを手動で発動すると、味方<ba.mujica>Ave Mujica</>全員がスキルを20秒間発動し続ける"
+	},
+	"ba.mujica": {
+		"termId": "ba.mujica",
+		"name_zh": "Ave Mujica",
+		"name_en": "Ave Mujica",
+		"name_ja": "Ave Mujica",
+		"desc_zh": "包括丰川祥子、八幡海铃、三角初华、祐天寺若麦、若叶睦",
+		"desc_en": "Includes Sakiko Togawa, Umiri Yahata, Uika Misumi, Nyamu Yūtenji, Mutsumi Wakaba",
+		"desc_ja": "対象オペレーター：\n豊川祥子、八幡海鈴、三角初華、祐天寺にゃむ、若葉睦"
+	},
+	"ba.alter": {
+		"termId": "ba.alter",
+		"name_zh": "装备应变",
+		"name_en": "Equipment Alteration",
+		"name_ja": "戦術換装",
+		"desc_zh": "选中在场干员后，可以通过一定条件激活的额外效果",
+		"desc_en": "When selecting a deployed Operator, can activate extra effects when certain conditions are fulfilled",
+		"desc_ja": "配置中のオペレーターを選択後、一定の条件を満たしていれば追加効果を有効化できる"
+	},
+	"ba.weaknessatk": {
+		"termId": "ba.weaknessatk",
+		"name_zh": "弱点伤害",
+		"name_en": "Weakness damage",
+		"name_ja": "弱点ダメージ",
+		"desc_zh": "造成物理或法术伤害时，根据目标防御力和法术抗性变更伤害类型",
+		"desc_en": "When dealing Physical or Arts damage, changes damage type depending on the target's DEF and RES",
+		"desc_ja": "物理または術ダメージを与える際、敵の防御力と術耐性の値に応じてダメージのタイプが変化する"
+	},
 	"ba.dmgresistance": {
-        "termId": "ba.dmgresistance",
-        "name_zh": "伤害减免",
-        "name_en": null,
-        "name_ja": null,
-        "desc_zh": "受到的伤害降低一定数值（同名效果取最高）",
-        "desc_en": null,
-        "desc_ja": null
-    },
-    "ba.dt.erosion2": {
-        "termId": "ba.dt.erosion2",
-        "name_zh": "侵蚀损伤·我方",
-        "name_en": null,
-        "name_ja": null,
-        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到5000点元素伤害且永久降低120点防御力（可叠加）。8秒冷却",
-        "desc_en": null,
-        "desc_ja": null
-    },
-    "ba.slowdown": {
-        "termId": "ba.slowdown",
-        "name_zh": "迟钝",
-        "name_en": null,
-        "name_ja": null,
-        "desc_zh": "移动速度、攻击速度、部分技能施放速度和冷却速度、部分异常状态的恢复速度降低相应比例（同名效果取最高）",
-        "desc_en": null,
-        "desc_ja": null
-    },
-    "ba.costlowerbound": {
-        "termId": "ba.costlowerbound",
-        "name_zh": "部署费用下限",
-        "name_en": null,
-        "name_ja": null,
-        "desc_zh": "部署费用可降低至部署费用下限；部署费用小于0时部署费用自然回复速度-50%",
-        "desc_en": null,
-        "desc_ja": null
-    },
-    "ba.magicarcane": {
-        "termId": "ba.magicarcane",
-        "name_zh": "术法充盈",
-        "name_en": null,
-        "name_ja": null,
-        "desc_zh": "造成的法术伤害提升（同名效果取最高）",
-        "desc_en": null,
-        "desc_ja": null
-    }
+		"termId": "ba.dmgresistance",
+		"name_zh": "伤害减免",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "受到的伤害降低一定数值（同名效果取最高）",
+		"desc_en": null,
+		"desc_ja": null
+	},
+	"ba.dt.erosion2": {
+		"termId": "ba.dt.erosion2",
+		"name_zh": "侵蚀损伤·我方",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人立即受到5000点元素伤害且永久降低120点防御力（可叠加）。8秒冷却",
+		"desc_en": null,
+		"desc_ja": null
+	},
+	"ba.slowdown": {
+		"termId": "ba.slowdown",
+		"name_zh": "迟钝",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "移动速度、攻击速度、部分技能施放速度和冷却速度、部分异常状态的恢复速度降低相应比例（同名效果取最高）",
+		"desc_en": null,
+		"desc_ja": null
+	},
+	"ba.costlowerbound": {
+		"termId": "ba.costlowerbound",
+		"name_zh": "部署费用下限",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "部署费用可降低至部署费用下限；部署费用小于0时部署费用自然回复速度-50%",
+		"desc_en": null,
+		"desc_ja": null
+	},
+	"ba.magicarcane": {
+		"termId": "ba.magicarcane",
+		"name_zh": "术法充盈",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "造成的法术伤害提升（同名效果取最高）",
+		"desc_en": null,
+		"desc_ja": null
+	},
+	"ba.triggereffect": {
+		"termId": "ba.triggereffect",
+		"name_zh": "触发型效果",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "施加于敌方/友方单位的一次性减益/增益效果，该效果仅在满足特定条件时触发",
+		"desc_en": null,
+		"desc_ja": null
+	},
+	"ba.dt.rampage": {
+		"termId": "ba.dt.rampage",
+		"name_zh": "狂躁损伤",
+		"name_en": null,
+		"name_ja": null,
+		"desc_zh": "狂躁损伤累计至1000时，15秒内攻击速度+50，但每秒受到100点真实伤害（每次攻击时提升50，最多600）",
+		"desc_en": null,
+		"desc_ja": null
+	}
 }
