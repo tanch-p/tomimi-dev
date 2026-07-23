@@ -28,6 +28,7 @@
 		}
 	},
 	"thorn_box": {
+		"value": 40,
 		"tooltip": {
 			"zh": [
 				"受到伤害时，若伤害来源为默认类，则对伤害来源造成相当于本次伤害40%的无来源{true}普通伤害"
@@ -1216,203 +1217,203 @@
 		}
 	},
 	"sktok_lrcore": {
-        "name_zh": "灵魂激荡",
-        "name_ja": "ソウルエコー",
-        "name_en": "Soul Echo",
-        "desc_zh": "引火的死魂灵进入第二形态后开启。操纵<洪流束激发器>对其左侧大范围内敌人造成持续伤害",
-        "desc_ja": "熾し火のレヴァナントが第二形態に入ると起動。<奔流発生装置>を操り、左側広範囲の敵にダメージを与え続ける",
-        "desc_en": "Activated once Kindling Revenant changes to its second form. Controls <Torrent Beam Activator> to deal continuous damage to enemies in a large area to the left.",
-        "skillType": "MANUAL",
-        "durationType": "NONE",
-        "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 25,
-                    "initSp": 25,
-                    "increment": 1.0
-                },
-                "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "unlock",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "branch_id",
-                        "value": 0.0,
-                        "valueStr": "branch_1"
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 25,
-                    "initSp": 25,
-                    "increment": 1.0
-                },
-                "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "unlock",
-                        "value": 2.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "branch_id",
-                        "value": 0.0,
-                        "valueStr": "null"
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 25,
-                    "initSp": 25,
-                    "increment": 1.0
-                },
-                "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "unlock",
-                        "value": 3.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "branch_id",
-                        "value": 0.0,
-                        "valueStr": "null"
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WHEN_TAKEN_DAMAGE",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 25,
-                    "initSp": 25,
-                    "increment": 1.0
-                },
-                "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "unlock",
-                        "value": 4.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "branch_id",
-                        "value": 0.0,
-                        "valueStr": "null"
-                    }
-                ]
-            }
-        ]
-    },
+		"name_zh": "灵魂激荡",
+		"name_ja": "ソウルエコー",
+		"name_en": "Soul Echo",
+		"desc_zh": "引火的死魂灵进入第二形态后开启。操纵<洪流束激发器>对其左侧大范围内敌人造成持续伤害",
+		"desc_ja": "熾し火のレヴァナントが第二形態に入ると起動。<奔流発生装置>を操り、左側広範囲の敵にダメージを与え続ける",
+		"desc_en": "Activated once Kindling Revenant changes to its second form. Controls <Torrent Beam Activator> to deal continuous damage to enemies in a large area to the left.",
+		"skillType": "MANUAL",
+		"durationType": "NONE",
+		"spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 25,
+					"initSp": 25,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "unlock",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "branch_1"
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 25,
+					"initSp": 25,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "unlock",
+						"value": 2.0,
+						"valueStr": null
+					},
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "null"
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 25,
+					"initSp": 25,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "unlock",
+						"value": 3.0,
+						"valueStr": null
+					},
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "null"
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WHEN_TAKEN_DAMAGE",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 25,
+					"initSp": 25,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "unlock",
+						"value": 4.0,
+						"valueStr": null
+					},
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "null"
+					}
+				]
+			}
+		]
+	},
 	"sktok_lrlgun": {
-        "name_zh": "灵魂激荡",
-        "name_ja": "ソウルエコー",
-        "name_en": "Soul Echo",
-        "desc_zh": "",
-        "desc_ja": null,
-        "desc_en": null,
-        "skillType": "AUTO",
-        "durationType": "NONE",
-        "spType": "INCREASE_WITH_TIME",
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 0,
-                    "initSp": 0,
-                    "increment": 1.0
-                },
-                "duration": 0.0,
-                "blackboard": []
-            }
-        ]
-    },
+		"name_zh": "灵魂激荡",
+		"name_ja": "ソウルエコー",
+		"name_en": "Soul Echo",
+		"desc_zh": "",
+		"desc_ja": null,
+		"desc_en": null,
+		"skillType": "AUTO",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": 0.0,
+				"blackboard": []
+			}
+		]
+	},
 	"sktok_lrsiege": {
-        "name_zh": "振奋荣光",
-        "name_ja": "奮い立つ栄光",
-        "name_en": "Light of Glory",
-        "desc_zh": "",
-        "desc_ja": null,
-        "desc_en": null,
-        "skillType": "AUTO",
-        "durationType": "NONE",
-        "spType": "INCREASE_WITH_TIME",
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 0,
-                    "initSp": 0,
-                    "increment": 1.0
-                },
-                "duration": -1.0,
-                "blackboard": []
-            }
-        ]
-    },
+		"name_zh": "振奋荣光",
+		"name_ja": "奮い立つ栄光",
+		"name_en": "Light of Glory",
+		"desc_zh": "",
+		"desc_ja": null,
+		"desc_en": null,
+		"skillType": "AUTO",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": []
+			}
+		]
+	},
 	"sktok_mpweak_1": {
-        "name_zh": "弱化",
-        "name_ja": "",
-        "name_en": "",
-        "desc_zh": "被PRTS激活时会降低周围干员<@ba.vdown>50%</>的防御力和法术抗性，持续<@ba.vdown>20</>秒；\\n我方可消耗<@ba.vup>{cost}</>点部署费用激活来降低周围敌人<@ba.vup>50%</>的防御力和法术抗性，持续<@ba.vup>30</>秒。",
-        "desc_ja": "",
-        "desc_en": "",
-        "skillType": "MANUAL",
-        "durationType": "NONE",
-        "spType": "INCREASE_WITH_TIME",
-        "levels": [
-            {
-                "rangeId": "x-4",
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 30,
-                    "initSp": 0,
-                    "increment": 1.0
-                },
-                "duration": 30.0,
-                "blackboard": [
-                    {
-                        "key": "cost",
-                        "value": 10.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "duration_prts",
-                        "value": 20.0,
-                        "valueStr": null
-                    }
-                ]
-            }
-        ]
-    },
+		"name_zh": "弱化",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "被PRTS激活时会降低周围干员<@ba.vdown>50%</>的防御力和法术抗性，持续<@ba.vdown>20</>秒；\\n我方可消耗<@ba.vup>{cost}</>点部署费用激活来降低周围敌人<@ba.vup>50%</>的防御力和法术抗性，持续<@ba.vup>30</>秒。",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "MANUAL",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": "x-4",
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 30,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": 30.0,
+				"blackboard": [
+					{
+						"key": "cost",
+						"value": 10.0,
+						"valueStr": null
+					},
+					{
+						"key": "duration_prts",
+						"value": 20.0,
+						"valueStr": null
+					}
+				]
+			}
+		]
+	},
 	"sktok_smpow": {
 		"skillId": "sktok_smpow",
 		"name_zh": "启动",
@@ -1828,7 +1829,9 @@
 				"攻击范围内存在我方干员时，自身退场并召唤树盾/树墙（根据关卡配置决定），并令其流失生命值至与自身退场前的生命比例相等"
 			],
 			"ja": ["隣接4マスにオペレーターを配置すると＜ツリーシールド＞か＜ツリーウォール＞に変化する"],
-			"en": ["Turns into a <Tree Shield> or <Tree Wall> when a friendly unit is deployed in the adjacent 4 tiles"]
+			"en": [
+				"Turns into a <Tree Shield> or <Tree Wall> when a friendly unit is deployed in the adjacent 4 tiles"
+			]
 		}
 	},
 	"sktok_cjgtow_1": {
@@ -2134,6 +2137,14 @@
 			]
 		}
 	},
+	"boxnma_wake": {
+		"value": 50,
+		"tooltip": {
+			"zh": ["<v.value>s自后身退场并召唤压力舒缓帮手"],
+			"ja": ["<v.value>秒後撤退して<モヤモヤナクナール>を召喚する"],
+			"en": ["After <v.value>s, summons a <Stress-Relief Helper> and retreats"]
+		}
+	},
 	"sktok_cnnon": {
 		"name_zh": "吃盐坨子吧！",
 		"name_ja": "塩でも食ってろ！",
@@ -2223,7 +2234,9 @@
 		"interval": 30,
 		"enemy_key": "enemy_2105_dyrnge",
 		"tooltip": {
-			"zh": ["激活后，每隔<v.interval>秒根据地图预定路径召唤一个<v.enemy_key>；技能结束时立刻进行召唤"],
+			"zh": [
+				"激活后，每隔<v.interval>秒根据地图预定路径召唤一个<v.enemy_key>；技能结束时立刻进行召唤"
+			],
 			"ja": ["活性化後、<v.interval>毎に<v.enemy_key>を召喚する；スキルが終わるとすぐ召喚を行う"],
 			"en": [
 				"After activation, summons <v.enemy_key> every <v.interval> seconds; Immediately carries out summon when skill ends"
@@ -2757,10 +2770,379 @@
 		]
 	},
 	"sktok_mjcsdw": {
-        "name_zh": "破茧倒计时",
+		"name_zh": "破茧倒计时",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "可以阻挡月光",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 999,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "sp",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "interval",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "sp_moon",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "damage_resistance",
+						"value": 0.8,
+						"valueStr": null
+					},
+					{
+						"key": "sp_warning",
+						"value": 900.0,
+						"valueStr": null
+					},
+					{
+						"key": "show_fx",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "enemy_mjcsdw"
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 999,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "sp",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "interval",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "sp_moon",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "damage_resistance",
+						"value": 0.8,
+						"valueStr": null
+					},
+					{
+						"key": "sp_warning",
+						"value": 900.0,
+						"valueStr": null
+					},
+					{
+						"key": "show_fx",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "enemy_mjcsdw"
+					}
+				]
+			}
+		]
+	},
+	"sktok_rgcssm": {
+		"name_zh": "古雕伥",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "消耗20点部署费用，使古雕伥把嘴闭上一段时间，并停止吐出敌人",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "MANUAL",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 1,
+					"initSp": 1,
+					"increment": 0.0
+				},
+				"duration": 150.0,
+				"blackboard": [
+					{
+						"key": "cost",
+						"value": 20.0,
+						"valueStr": null
+					},
+					{
+						"key": "stun",
+						"value": 0.0,
+						"valueStr": null
+					},
+					{
+						"key": "cnt",
+						"value": 1.0,
+						"valueStr": null
+					},
+					{
+						"key": "talent@interval",
+						"value": 20.0,
+						"valueStr": null
+					},
+					{
+						"key": "enemy_key",
+						"value": 0.0,
+						"valueStr": "enemy_1303_mhshep_2"
+					},
+					{
+						"key": "attack@enemy_key",
+						"value": 0.0,
+						"valueStr": "enemy_1303_mhshep_2"
+					}
+				]
+			}
+		]
+	},
+	"sktok_shsbox": {
+		"name_zh": "极诱人珍宝",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "击破额外获得10源石锭",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "branch_id",
+						"value": 0.0,
+						"valueStr": "shsbox"
+					}
+				]
+			}
+		]
+	},
+	"sktok_shnbox": {
+		"name_zh": "诱人珍宝",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "击破额外获得2源石锭",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": []
+			}
+		]
+	},
+	"sktok_shrbox": {
+		"name_zh": "刺人植物",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "反弹部分受到的伤害，击破额外获得5源石锭",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": []
+			}
+		]
+	},
+	"sktok_shtlbx": {
+		"name_zh": "“款到出货”",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "消耗50点部署费用开启，战斗后获得1个零件",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "MANUAL",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 20,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "cost",
+						"value": 50.0,
+						"valueStr": null
+					}
+				]
+			}
+		]
+	},
+	"sktok_tree": {
+        "name_zh": "天然隐蔽",
+        "name_ja": "きのこガード",
+        "name_en": "Natural Camouflage",
+        "desc_zh": "相邻的我方单位防御<@ba.vup>提升</>；被<罗德岛临时雇员>清理后成为可部署的远程位",
+        "desc_ja": "隣接4マスにいる味方ユニットの防御力<@ba.vup>上昇</>\n<伐採作業員>の伐採後、オペレーター配置可能な遠距離マスになる",
+        "desc_en": "<@ba.vup>Increases</> the DEF of adjacent allied units; Aftering being cleared by a [Rhodes Island Temporary Employee], turns into a deployable Ranged tile",
+        "skillType": "PASSIVE",
+        "durationType": "NONE",
+        "spType": 8,
+        "levels": [
+            {
+                "rangeId": "x-5",
+                "spData": {
+                    "spType": 8,
+                    "levelUpCost": null,
+                    "maxChargeTime": 0,
+                    "spCost": 0,
+                    "initSp": 0,
+                    "increment": 0.0
+                },
+                "duration": 0.0,
+                "blackboard": [
+                    {
+                        "key": "def",
+                        "value": 150.0,
+                        "valueStr": null
+                    }
+                ]
+            }
+        ]
+    },
+	"sktok_shmbmb": {
+        "name_zh": "全域信息失真",
         "name_ja": "",
         "name_en": "",
-        "desc_zh": "可以阻挡月光",
+        "desc_zh": "对全场我方单位造成少量法术伤害，并使源阶方损失8%生命",
+        "desc_ja": "",
+        "desc_en": "",
+        "skillType": "AUTO",
+        "durationType": "NONE",
+        "spType": "INCREASE_WITH_TIME",
+        "levels": [
+            {
+                "rangeId": null,
+                "spData": {
+                    "spType": "INCREASE_WITH_TIME",
+                    "levelUpCost": null,
+                    "maxChargeTime": 1,
+                    "spCost": 25,
+                    "initSp": 0,
+                    "increment": 1.0
+                },
+                "duration": -1.0,
+                "blackboard": [
+                    {
+                        "key": "scale",
+                        "value": 0.2,
+                        "valueStr": null
+                    },
+                    {
+                        "key": "hp_ratio",
+                        "value": 0.08,
+                        "valueStr": null
+                    }
+                ]
+            }
+        ]
+    },
+	"shmbmb_1": {
+		"tooltip": {
+			"zh": ["持续流失生命值，可被我方治疗；嘲讽等级1，不会被敌人攻击"],
+			"ja": ["継続的にHPが減少し、味方から治癒可能；挑発レベル1、敵から攻撃されない"],
+			"en": [
+				"Continuously loses health, but can be healed by allies; Taunt level 1, will not be attacked by enemies"
+			]
+		}
+	},
+	"shmbmb_explode":{
+		"tooltip": {
+			"zh": ["生命为0时对所有我方单位造成高额法术伤害"],
+			"ja": [""],
+			"en": [""]
+		}
+	},
+    "sktok_shchst": {
+        "name_zh": "“我的了！”",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": "击破后，可部署干员偷取1-2个商店物品，部署的干员无法再部署",
         "desc_ja": "",
         "desc_en": "",
         "skillType": "PASSIVE",
@@ -2772,109 +3154,24 @@
                 "spData": {
                     "spType": 8,
                     "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 999,
+                    "maxChargeTime": 0,
+                    "spCost": 0,
                     "initSp": 0,
                     "increment": 0.0
                 },
                 "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "sp",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "interval",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "sp_moon",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "damage_resistance",
-                        "value": 0.8,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "sp_warning",
-                        "value": 900.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "show_fx",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "branch_id",
-                        "value": 0.0,
-                        "valueStr": "enemy_mjcsdw"
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 999,
-                    "initSp": 0,
-                    "increment": 0.0
-                },
-                "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "sp",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "interval",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "sp_moon",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "damage_resistance",
-                        "value": 0.8,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "sp_warning",
-                        "value": 900.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "show_fx",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "branch_id",
-                        "value": 0.0,
-                        "valueStr": "enemy_mjcsdw"
-                    }
-                ]
+                "blackboard": []
             }
         ]
     },
-	"sktok_rgcssm": {
-        "name_zh": "古雕伥",
+	"sktok_shfort": {
+        "name_zh": "\"危朽\"",
         "name_ja": "",
         "name_en": "",
-        "desc_zh": "消耗20点部署费用，使古雕伥把嘴闭上一段时间，并停止吐出敌人",
+        "desc_zh": "会被“玻利瓦尔，症结之核”释放的“灾厄之口”转化为“崩解”",
         "desc_ja": "",
         "desc_en": "",
-        "skillType": "MANUAL",
+        "skillType": "PASSIVE",
         "durationType": "NONE",
         "spType": 8,
         "levels": [
@@ -2883,44 +3180,39 @@
                 "spData": {
                     "spType": 8,
                     "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 1,
-                    "initSp": 1,
+                    "maxChargeTime": 0,
+                    "spCost": 0,
+                    "initSp": 0,
                     "increment": 0.0
                 },
-                "duration": 150.0,
-                "blackboard": [
-                    {
-                        "key": "cost",
-                        "value": 20.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "stun",
-                        "value": 0.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "cnt",
-                        "value": 1.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "talent@interval",
-                        "value": 20.0,
-                        "valueStr": null
-                    },
-                    {
-                        "key": "enemy_key",
-                        "value": 0.0,
-                        "valueStr": "enemy_1303_mhshep_2"
-                    },
-                    {
-                        "key": "attack@enemy_key",
-                        "value": 0.0,
-                        "valueStr": "enemy_1303_mhshep_2"
-                    }
-                ]
+                "duration": -1.0,
+                "blackboard": []
+            }
+        ]
+    },
+	"sktok_shruin": {
+        "name_zh": "\"崩解\"",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": "会被“玻利瓦尔，症结之核”释放的“灾厄之口”摧毁",
+        "desc_ja": "",
+        "desc_en": "",
+        "skillType": "PASSIVE",
+        "durationType": "NONE",
+        "spType": 8,
+        "levels": [
+            {
+                "rangeId": null,
+                "spData": {
+                    "spType": 8,
+                    "levelUpCost": null,
+                    "maxChargeTime": 0,
+                    "spCost": 0,
+                    "initSp": 0,
+                    "increment": 0.0
+                },
+                "duration": -1.0,
+                "blackboard": []
             }
         ]
     }

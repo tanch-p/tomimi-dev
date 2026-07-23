@@ -1891,7 +1891,7 @@
 		],
 		"skills": ["sktok_dyrbox"],
 		"talents": [],
-		"special": [],
+		"special": ["thorn_box"],
 		"status_immune": []
 	},
 	"trap_225_dysbox": {
@@ -2681,5 +2681,325 @@
 		"talents": [],
 		"special": ["rgcssm_summon"],
 		"status_immune": []
-	}
+	},
+	"trap_323_shsbox": {
+		"key": "trap_323_shsbox",
+		"name_zh": "箱型恶笼草",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": null,
+		"desc_ja": "",
+		"desc_en": "",
+		"tauntLevel": -1,
+		"group": "ally",
+		"modelType": null,
+		"hideTile": false,
+		"stats": [
+			{
+				"hp": 5000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"blockCnt": 0,
+				"aspd": 1.0,
+				"rangeId": "0-1"
+			},
+			{
+				"hp": 295000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"blockCnt": 0,
+				"aspd": 1.0,
+				"rangeId": "0-1"
+			}
+		],
+		"skills": ["sktok_shsbox"],
+		"talents": [],
+		"special": [],
+		"status_immune": []
+	},
+	"trap_321_shnbox": {
+		"key": "trap_321_shnbox",
+		"name_zh": "恶笼草",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": null,
+		"desc_ja": "",
+		"desc_en": "",
+		"tauntLevel": -1,
+		"group": "ally",
+		"modelType": null,
+		"hideTile": false,
+		"stats": [
+			{
+				"hp": 5000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"blockCnt": 0,
+				"aspd": 1.0,
+				"rangeId": "0-1"
+			},
+			{
+				"hp": 295000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"blockCnt": 0,
+				"aspd": 1.0,
+				"rangeId": "0-1"
+			}
+		],
+		"skills": ["sktok_shnbox"],
+		"talents": [],
+		"special": [],
+		"status_immune": []
+	},
+	"trap_322_shrbox": {
+		"key": "trap_322_shrbox",
+		"name_zh": "畸变恶笼草",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": null,
+		"desc_ja": "",
+		"desc_en": "",
+		"tauntLevel": -1,
+		"group": "ally",
+		"modelType": null,
+		"hideTile": false,
+		"stats": [
+			{
+				"hp": 5000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"blockCnt": 0,
+				"aspd": 1.0,
+				"rangeId": "0-1"
+			},
+			{
+				"hp": 295000,
+				"atk": 0,
+				"def": 200,
+				"res": 0.0,
+				"blockCnt": 0,
+				"aspd": 1.0,
+				"rangeId": "0-1"
+			}
+		],
+		"skills": ["sktok_shrbox"],
+		"talents": [],
+		"special": ["thorn_box"],
+		"status_immune": []
+	},
+	"trap_320_shtlbx": {
+        "key": "trap_320_shtlbx",
+        "name_zh": "丰饶树冢",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": null,
+        "desc_ja": "",
+        "desc_en": "",
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 5000,
+                "atk": 0,
+                "def": 200,
+                "res": 10.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": "0-1"
+            }
+        ],
+        "skills": [
+            "sktok_shtlbx"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
+    },
+	"trap_253_boxnma": {
+        "key": "trap_253_boxnma",
+        "name_zh": "压力舒缓帮手",
+        "name_ja": "モヤモヤナクナール",
+        "name_en": "Stress-Relief Helper",
+        "desc_zh": "弹开“某种天命”并损失自身一定生命值",
+        "desc_ja": "「ある種の天命」を弾き飛ばし、HPを一定量失う",
+        "desc_en": "Bounces 'Certain Fates' away and loses some HP",
+        "tauntLevel": -1,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 35000,
+                "atk": 3000,
+                "def": 1500,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 7.0,
+                "rangeId": null
+            }
+        ],
+        "skills": [
+        ],
+        "talents": [],
+        "special": ["boxnma_wake"],
+        "status_immune": []
+    },
+	"trap_015_tree": {
+        "key": "trap_015_tree",
+        "name_zh": "巨蕈",
+        "name_ja": "おばけ茸",
+        "name_en": "Giant Mushroom",
+        "desc_zh": "相邻的我方干员防御提升",
+        "desc_ja": "隣接4マスにいる味方全員の防御力上昇",
+        "desc_en": "Increases the DEF of adjacent allied operators",
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 100,
+                "atk": 0,
+                "def": 0,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": "x-5"
+            }
+        ],
+        "skills": [
+            "sktok_tree"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
+    },
+	"trap_324_shmbmb": {
+        "key": "trap_324_shmbmb",
+        "name_zh": "源阶方模块",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": null,
+        "desc_ja": "",
+        "desc_en": "",
+        "tauntLevel": 1,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 7500,
+                "atk": 1650,
+                "def": 100,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": "0-1"
+            }
+        ],
+        "skills": [
+            "sktok_shmbmb"
+        ],
+        "talents": [],
+        "special": ["shmbmb_1","shmbmb_explode"],
+        "status_immune": []
+    },
+    "trap_327_shchst": {
+        "key": "trap_327_shchst",
+        "name_zh": "坎诺特保险柜",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": null,
+        "desc_ja": "",
+        "desc_en": "",
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 50000,
+                "atk": 100,
+                "def": 2000,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": "0-1"
+            }
+        ],
+        "skills": [
+            "sktok_shchst"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
+    },
+	"trap_325_shfort": {
+        "key": "trap_325_shfort",
+        "name_zh": "“危朽”",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": null,
+        "desc_ja": "",
+        "desc_en": "",
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 5000,
+                "atk": 0,
+                "def": 500,
+                "res": 0.0,
+                "blockCnt": 1,
+                "aspd": 1.0,
+                "rangeId": null
+            }
+        ],
+        "skills": [
+            "sktok_shfort"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
+    },
+	 "trap_326_shruin": {
+        "key": "trap_326_shruin",
+        "name_zh": "“崩解”",
+        "name_ja": "",
+        "name_en": "",
+        "desc_zh": null,
+        "desc_ja": "",
+        "desc_en": "",
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 2500,
+                "atk": 0,
+                "def": 100,
+                "res": 0.0,
+                "blockCnt": 1,
+                "aspd": 1.0,
+                "rangeId": null
+            }
+        ],
+        "skills": [
+            "sktok_shruin"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
+    }
 }

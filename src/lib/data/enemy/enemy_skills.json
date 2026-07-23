@@ -43,6 +43,13 @@
 			"zh": ["造成的伤害视为无来源"]
 		}
 	},
+	"cannot_be_damaged": {
+		"tooltip": {
+			"en": ["Cannot be damaged"],
+			"ja": ["ダメージを受けない"],
+			"zh": ["受到伤害时取消此伤害"]
+		}
+	},
 	"drop_relic": {
 		"tooltip": {
 			"en": ["Drops Treasure when defeated"],
@@ -55,6 +62,20 @@
 			"en": ["Friendly Unit"],
 			"ja": ["中立ユニット"],
 			"zh": ["中立单位"]
+		}
+	},
+	"skill_fly": {
+		"type": "skill",
+		"initCooldown": 5.0,
+		"cooldown": 15.0,
+		"value": 15,
+		"suffix": { "en": "Fly", "ja": "飛行", "zh": "起飞" },
+		"tooltip": {
+			"en": [
+				"Enters flying state for <v.value>s; lands and restarts the timer when the effect ends"
+			],
+			"ja": ["<v.value>秒以内に飛行ユニットとなり、効果終了後に着陸してタイマーがリセットされる"],
+			"zh": ["在<v.value>s内变为飞行单位，效果结束后降落并重新计时"]
 		}
 	},
 	"lower_cost_regen": {
@@ -113,6 +134,13 @@
 			"en": ["<ba.buffres>Resist</>"],
 			"ja": ["<ba.buffres>レジスト</>"],
 			"zh": ["持有<ba.buffres>抵抗</>"]
+		}
+	},
+	"resist_100": {
+		"tooltip": {
+			"en": ["Has 100% <ba.buffres>Resist</>"],
+			"ja": ["<ba.buffres>レジスト</>(100%)"],
+			"zh": ["持有<ba.buffres>抵抗</>（此抵抗令时间×100%而非×50%）"]
 		}
 	},
 	"no_block": {
@@ -197,6 +225,25 @@
 			"en": ["After <v.spCost> attacks, the next attack stuns the target for <v.duration> seconds"],
 			"ja": ["攻撃<v.spCost>回の度に次の攻撃に相手を<v.duration>秒スタンする"],
 			"zh": ["攻击<v.spCost>次后，下一次攻击会晕眩目标<v.duration>s"]
+		}
+	},
+	"chop_tree": {
+		"type": "skill",
+		"initSp": 0,
+		"spCost": 4,
+		"skillType": "INCREASE_WHEN_ATTACK",
+		"suffix": { "en": "Chop Tree", "ja": "伐採", "zh": "伐木" },
+		"can_silence": true,
+		"tooltip": {
+			"en": [
+				" The next attack destroys a Giant Mushroom or Stump within a range of 1.8, prioritizing the one closest to the Tiacauh Shredder; if a Giant Mushroom is destroyed this way, the Stump that would appear in its place will be destroyed as well"
+			],
+			"ja": ["半径1.8以内のおばけ茸や切り株を破壊し、ダメになった切り株（配置不可マス）にする"],
+			"zh": [
+				"仅半径1.8范围内存在巨蕈或<木桩>地形时可触发：强制击杀巨蕈或木桩上的我方单位，并在原巨蕈或木桩处部署一个0级的破损的木桩",
+				"※优先击杀巨蕈",
+				"※索敌不受阻挡影响 "
+			]
 		}
 	},
 	"atk_minus_block": {
@@ -1270,12 +1317,12 @@
 			"zh": ["攻击附加相当于攻击力<v.%value>%的{ba.dt.burning}"]
 		}
 	},
-	"dt_burning": {
+	"dt_rampage": {
 		"value": 0.1,
 		"tooltip": {
-			"en": ["Attack deals <v.%value>% of ATK as {ba.dt.burning}"],
-			"ja": ["攻撃で攻撃力の<v.%value>%の{ba.dt.burning}を与える"],
-			"zh": ["攻击附加相当于攻击力<v.%value>%的{ba.dt.burning}"]
+			"en": ["Attack deals <v.%value>% of ATK as {ba.dt.rampage}"],
+			"ja": ["攻撃で攻撃力の<v.%value>%の{ba.dt.rampage}を与える"],
+			"zh": ["攻击附加相当于攻击力<v.%value>%的{ba.dt.rampage}"]
 		}
 	},
 	"sy2_attackdef": {
@@ -2786,6 +2833,13 @@
 			"zh": ["优先攻击部署于最高处的我方单位"]
 		}
 	},
+	"atk_priority_high_block": {
+		"tooltip": {
+			"en": ["Prioritizes attacking targets with highest block"],
+			"ja": ["一番高いブロックの味方を優先して攻撃する"],
+			"zh": ["优先攻击阻挡数最高的目标"]
+		}
+	},
 	"sarkaz_guerilla_fighter": {
 		"tooltip": {
 			"en": [
@@ -2960,9 +3014,6 @@
 				"对2.5半径内距离自身最近的未处于晕眩状态的目标投掷一块石头，造成25s晕眩和70%攻击力{phys}普通伤害"
 			]
 		}
-	},
-	"arti": {
-		"※弹道始终使用缓存攻击力，造成的伤害视为无来源 ": ""
 	},
 	"csicer_rage": {
 		"tooltip": {
@@ -9588,8 +9639,12 @@
 	},
 	"dy_target": {
 		"tooltip": {
-			"en": ["Changes target to nearest Protection Objective if loses sight of initial target (from retreat, camouflage etc.)"],
-			"ja": ["出現時に決めたターゲットが撤退・無敵・迷彩などで対象にできない場合、自身の目的地を最寄りの防衛ラインに変更する"],
+			"en": [
+				"Changes target to nearest Protection Objective if loses sight of initial target (from retreat, camouflage etc.)"
+			],
+			"ja": [
+				"出現時に決めたターゲットが撤退・無敵・迷彩などで対象にできない場合、自身の目的地を最寄りの防衛ラインに変更する"
+			],
 			"zh": ["出现后如果目标消失（撤退，无敌，迷彩等），目标改为最靠近的蓝门"]
 		}
 	},
@@ -9599,8 +9654,14 @@
 		"cooldown": 54.0,
 		"suffix": { "en": "Summon Body", "ja": "躰召喚", "zh": "描躯" },
 		"tooltip": {
-			"en": ["When no <Body> summoned by this skill is present, summons 1 x <Body> at preset location","While <Body> is present, becomes invincible"],
-			"ja": ["マップ上にこのスキルに召喚された身形がいない時に使用可能、身形×1を召喚する","身形がマップ上にいる間、朔殻は無敵"],
+			"en": [
+				"When no <Body> summoned by this skill is present, summons 1 x <Body> at preset location",
+				"While <Body> is present, becomes invincible"
+			],
+			"ja": [
+				"マップ上にこのスキルに召喚された身形がいない時に使用可能、身形×1を召喚する",
+				"身形がマップ上にいる間、朔殻は無敵"
+			],
 			"zh": [
 				"仅自身未持有身形赋予的无敌时可触发：",
 				"以关卡预设路径召唤1节身形",
@@ -9612,11 +9673,16 @@
 		"type": "skill",
 		"initCooldown": 5.0,
 		"cooldown": 36.0,
-		"count":1,
+		"count": 1,
 		"suffix": { "en": "Drunken Stupor", "ja": "醉生", "zh": "醉生" },
 		"tooltip": {
-			"en": ["Adds <v.count> x Olden Pride to the Deployment Waiting Zone (Max 8)","Olden Pride - summons 1 Restrained Pride upon deployment. While having the relic [Merciless] additionally summons 1 <Hateful Carrion>"],
-			"ja": ["配置待機エリアに宿傲×<v.count>を追加。配置待機エリアに8体以上宿傲がいる場合、このスキルは失敗する"],
+			"en": [
+				"Adds <v.count> x Olden Pride to the Deployment Waiting Zone (Max 8)",
+				"Olden Pride - summons 1 Restrained Pride upon deployment. While having the relic [Merciless] additionally summons 1 <Hateful Carrion>"
+			],
+			"ja": [
+				"配置待機エリアに宿傲×<v.count>を追加。配置待機エリアに8体以上宿傲がいる場合、このスキルは失敗する"
+			],
 			"zh": [
 				"尝试向待部署区内添加<v.count>张宿傲（待部署区中已存在≥8张宿傲时尝试将失败）",
 				"※宿傲效果简述：部署后召唤1枚敛傲，若玩家持有【不赦】则额外召唤1只怨骸"
@@ -9629,8 +9695,13 @@
 		"cooldown": 36.0,
 		"suffix": { "en": "Summon Sword", "ja": "剣召喚", "zh": "溯律" },
 		"tooltip": {
-			"en": ["Used only when there are friendly units on the map","Selects up to (1 + no. of Olden Pride in Deployment Waiting Zone) targets within 13 tile radius, and spawns Restrained Pride on the spot, which moves towards their respective targets"],
-			"ja": ["半径13.0以内の味方を「配置待機エリアの宿傲の数+1」だけターゲットし、それぞれの位置に向けて移動する抑傲を召喚する"],
+			"en": [
+				"Used only when there are friendly units on the map",
+				"Selects up to (1 + no. of Olden Pride in Deployment Waiting Zone) targets within 13 tile radius, and spawns Restrained Pride on the spot, which moves towards their respective targets"
+			],
+			"ja": [
+				"半径13.0以内の味方を「配置待機エリアの宿傲の数+1」だけターゲットし、それぞれの位置に向けて移動する抑傲を召喚する"
+			],
 			"zh": [
 				"仅全场范围内存在我方干员/召唤物时可触发：",
 				"选择半径13.0范围内的至多(待部署区中的宿傲数量+1)名我方干员/召唤物为目标，在自身所在地块中心0.5边长正方形区域内的随机位置以各目标所在地块中心为路径终点各召唤1枚敛傲",
@@ -9650,8 +9721,14 @@
 		},
 		"value": 50,
 		"tooltip": {
-			"en": ["[Violence] gains +<v.value>% {phys}/{arts} evasion against units not blocking self","Gains +30% ATK for every Olden Pride in the Deployment Waiting Zone"],
-			"ja": ["【暴武】自身をブロックしていない味方からの{phys}・{arts}ダメージを<v.value>%の確率で回避する","配置待機エリアの装置<宿傲>1体につき、攻撃力+30%"],
+			"en": [
+				"[Violence] gains +<v.value>% {phys}/{arts} evasion against units not blocking self",
+				"Gains +30% ATK for every Olden Pride in the Deployment Waiting Zone"
+			],
+			"ja": [
+				"【暴武】自身をブロックしていない味方からの{phys}・{arts}ダメージを<v.value>%の確率で回避する",
+				"配置待機エリアの装置<宿傲>1体につき、攻撃力+30%"
+			],
 			"zh": [
 				"【暴武】：<v.value>%概率闪避非来源于自身阻挡单位的{phys}/{arts}伤害（含无来源伤害）",
 				"待部署区中每存在1张宿傲，自身攻击力+30%"
@@ -9691,8 +9768,12 @@
 	},
 	"dysuib_3": {
 		"tooltip": {
-			"en": ["On spawn, forcefully retreats friendly units on self-occupied tiles with -85% redeployment time"],
-			"ja": ["存在している間、自身のいるマスを配置不可マスにする。身形出現時にこの効果で撤退した味方の再配置時間は、元の15%に短縮される"],
+			"en": [
+				"On spawn, forcefully retreats friendly units on self-occupied tiles with -85% redeployment time"
+			],
+			"ja": [
+				"存在している間、自身のいるマスを配置不可マスにする。身形出現時にこの効果で撤退した味方の再配置時間は、元の15%に短縮される"
+			],
 			"zh": [
 				"登场时，强制撤退连续3格内的实体类型为默认类或装置类、且职业为干员或召唤物的我方单位/铁钳号·原型机（无视无法选择、孤立），受影响的我方干员/铁钳号·原型机的下次再部署时间缩短至15%；在场期间重写连续3格内的地块的部署类型为不可部署"
 			]
@@ -9700,8 +9781,18 @@
 	},
 	"dysuib_4": {
 		"tooltip": {
-			"en": ["While <Body> is on the field, grants the following effects","①<Vessel of Shuo> gains invincible","②<Arrogance Embodied> gains -50% {phys}/{arts} damage for every <Body> on field (stacks multiplicatively)","On defeat, stuns <Arrogance Embodied> for 15s"],
-			"ja": ["身形がマップ上にいる間、以下の効果が発生","①朔殻は無敵","②妄躯の物理・術の被ダメージ-50%（乗算で累積）","死亡時、妄躯を15秒間行動不能にする"],
+			"en": [
+				"While <Body> is on the field, grants the following effects",
+				"①<Vessel of Shuo> gains invincible",
+				"②<Arrogance Embodied> gains -50% {phys}/{arts} damage for every <Body> on field (stacks multiplicatively)",
+				"On defeat, stuns <Arrogance Embodied> for 15s"
+			],
+			"ja": [
+				"身形がマップ上にいる間、以下の効果が発生",
+				"①朔殻は無敵",
+				"②妄躯の物理・術の被ダメージ-50%（乗算で累積）",
+				"死亡時、妄躯を15秒間行動不能にする"
+			],
 			"zh": [
 				"在场期间自身未处于消失状态时：①使朔壳获得无敌；②使妄躯受到的物理/法术伤害降低至50%（可乘算叠加），自身退场时，若妄躯未处于技能【止戈】期间，则使妄躯尝试触发一次【晕眩】"
 			]
@@ -9743,11 +9834,13 @@
 		"type": "skill",
 		"initCooldown": 15.0,
 		"cooldown": 60.0,
-		"count":1,
+		"count": 1,
 		"suffix": { "en": "Flame of Intrigue", "ja": "謀炎", "zh": "谋炎" },
 		"tooltip": {
 			"en": ["Adds <v.count> x Olden Grudge to the Deployment Waiting Zone (Max 8)"],
-			"ja": ["配置待機エリアに宿怒×<v.count>を追加。配置待機エリアに8体以上宿怒がいる場合、このスキルは失敗する。"],
+			"ja": [
+				"配置待機エリアに宿怒×<v.count>を追加。配置待機エリアに8体以上宿怒がいる場合、このスキルは失敗する。"
+			],
 			"zh": [
 				"尝试向待部署区内添加<v.count>张宿怒（待部署区中已存在≥8张宿怒时尝试将失败）",
 				"※宿怒效果简述：部署后召唤1枚愠怒"
@@ -9760,8 +9853,12 @@
 		"cooldown": 40.0,
 		"suffix": { "en": "Woven Prison", "ja": "織牢", "zh": "织牢" },
 		"tooltip": {
-			"en": ["Targets a friendly unit and channels for 10 seconds, spawning a Fume of Anger towards the target every 0.49 seconds after a initial 2.5s wait"],
-			"ja": ["10秒間の詠唱状態に入り、「マップ上の味方1体へ移動する憤怒×1を召喚」を詠唱終了まで最大15回行う"],
+			"en": [
+				"Targets a friendly unit and channels for 10 seconds, spawning a Fume of Anger towards the target every 0.49 seconds after a initial 2.5s wait"
+			],
+			"ja": [
+				"10秒間の詠唱状態に入り、「マップ上の味方1体へ移動する憤怒×1を召喚」を詠唱終了まで最大15回行う"
+			],
 			"zh": [
 				"仅全场范围内存在我方干员/召唤物时可触发：技能触发的2.5s后至技能结束时的这一期间内，每0.49s在全场范围内选择1名我方干员/召唤物为目标，在自身所在地块中心向下偏移1.0的位置以目标所在地块中心为路径终点召唤1枚愠怒",
 				"※技能持续10s（意味着一次技能至多召唤15枚愠怒）"
@@ -9774,8 +9871,13 @@
 		"cooldown": 12.0,
 		"suffix": { "en": "Purifying Flame", "ja": "灸灼", "zh": "灸灼" },
 		"tooltip": {
-			"en": ["Used only when there are friendly units on the map","Selects up to (1 + no. of Olden Grudge in Deployment Waiting Zone) targets within 13 tile radius, and spawns Fume of Anger on the spot, which moves towards their respective targets"],
-			"ja": ["半径15.0以内の味方を「配置待機エリアの宿怒の数+1」だけターゲットし、それぞれの位置へ移動する憤怒を召喚する"],
+			"en": [
+				"Used only when there are friendly units on the map",
+				"Selects up to (1 + no. of Olden Grudge in Deployment Waiting Zone) targets within 13 tile radius, and spawns Fume of Anger on the spot, which moves towards their respective targets"
+			],
+			"ja": [
+				"半径15.0以内の味方を「配置待機エリアの宿怒の数+1」だけターゲットし、それぞれの位置へ移動する憤怒を召喚する"
+			],
 			"zh": [
 				"仅全场范围内存在我方干员/召唤物时可触发：选择半径15.0范围内的至多(待部署区中的宿怒数量+1)名我方干员/召唤物为目标，在自身所在地块中心向下偏移1.0的0.5边长正方形区域内的随机位置以各目标所在地块中心为路径终点各召唤1枚愠怒"
 			]
@@ -10108,6 +10210,638 @@
 			"zh": [
 				"半径1.5范围内存在我方阵营的任意单位/中立阵营的矿工游击队时，仅进行阻挡攻击",
 				"受到<指挥官指令>影响时，上述半径变为0.5"
+			]
+		}
+	},
+	"trslim_run": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"生命值首次低于50%时，切换至逃跑状态，无法被阻挡，移动速度+150%，持续3s{can_silence}{only_once}"
+			]
+		}
+	},
+	"shdopl_disguise": {
+		"value": "enemy_2133_shdopl",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["初始伪装成一个单位，受到伤害后现身", "现身时不会继承伪装时的任何效果与伤害"]
+		}
+	},
+	"shsdgo_bite": {
+		"type": "skill",
+		"initCooldown": 15.0,
+		"cooldown": 40.0,
+		"suffix": { "en": "Bite", "ja": "噛み", "zh": "持续撕咬" },
+		"tooltip": {
+			"en": [],
+			"ja": [],
+			"zh": [
+				"仅攻击范围内存在非飞行我方单位时可触发：传送至目标所在地块中心，随后的10秒内锁定目标持续攻击，每秒对目标造成攻击力100%的{arts}普通伤害，附加攻击力30%的{ba.dt.rampage}以及持续1.5秒的物理命中率与法术命中率最终降低至20%的减益（该减益不叠加）",
+				"持续攻击结束后，自身传送回技能开始时自身所在地块的中心",
+				"※技能期间持有失衡免疫、自缚、不可阻挡、晕眩免疫、冻结免疫、缴械免疫、寒冷免疫、恐惧免疫、诱导免疫、传送免疫、沉睡免疫"
+			]
+		}
+	},
+	"shcolo_stampede": {
+		"atk": { "multiplier": 0.5, "order": "final" },
+		"suffix": { "en": "Stampede", "ja": "足踏み", "zh": "移动" },
+		"hits": 1,
+		"dmg_element": "phys",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"每当进入新的地块时，对半径1.7范围内的我方单位造成攻击力50%的{phys}普通伤害（中点判定，不可对空){ignore_camou}"
+			]
+		}
+	},
+	"shcolo_bleed": {
+		"tooltip": {
+			"en": [],
+			"ja": [],
+			"zh": ["每受到10次伤害，自身每秒受到(Buff层数×300)无来源{true}普通伤害（上限10层）"]
+		}
+	},
+	"shrshep_backstep": {
+		"type": "skill",
+		"initCooldown": 0.0,
+		"cooldown": 10.0,
+		"suffix": { "en": "Backstep", "ja": "空蝉", "zh": "后撤" },
+		"tooltip": {
+			"en": [],
+			"ja": [],
+			"zh": [
+				"受到伤害时，若自身移动方向（仅限上下左右四个方向）的反方向距离2格的地块是一个自身可抵达的可通行地块，则以该地块为目标强制触发技能【后撤】 "
+			]
+		}
+	},
+	"shkrbt_blink": {
+		"type": "skill",
+		"initCooldown": 0.0,
+		"cooldown": 10.0,
+		"suffix": { "en": "Blink", "ja": "追跡", "zh": "追猎" },
+		"tooltip": {
+			"en": [],
+			"ja": [],
+			"zh": [
+				"获得30秒闪现冷却，随后闪现至目标地块（提供闪现保护）",
+				"在未被阻挡、且不具有闪现冷却的情况下，受到伤害时，若可以找到伤害来源，且伤害来源周围存在非保护目标的可通行地块（多个地块间优先选择直线距离自身最近），则以该地块为目标强制触发技能【追猎】（若目标地块为自身目前所在地块则不会触发技能） "
+			]
+		}
+	},
+	"shcan_found": {
+		"type": "skill",
+		"initCooldown": 0.0,
+		"cooldown": 1.0,
+		"suffix": { "en": "Lost is Found", "ja": "回収", "zh": "物归原主" },
+		"tooltip": {
+			"en": [],
+			"ja": [],
+			"zh": [
+				"仅攻击范围内存在坎诺特保险柜时可触发：",
+				"强制击杀该坎诺特保险柜（跳过重生），并获得一层永久的减伤效果（最多叠加5层）使自身受到的{phys}与{arts}降低至(100% - 层数 × 10%) "
+			]
+		}
+	},
+	"shcan_run": {
+		"tooltip": {
+			"en": ["On receiving damage, gains a Movespeed +0.9 buff for 8s (timer refreshes on proc)"],
+			"ja": ["ダメージを受けると移动速度が8秒間+0.9（持続時間中発動すると、持続時間が更新される）"],
+			"zh": ["受到伤害时获得8秒移动速度+0.9的增益（重复获得时仅刷新持续时间）"]
+		}
+	},
+	"ubba_shield": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"半径1.7范围内的所有敌方单位获得以下效果：即将受到的{phys}/{arts}伤害时，将该伤害降低至75%（不属于伤判效果；可乘算叠加）"
+			]
+		}
+	},
+	"sgmag_cast": {
+		"type": "skill",
+		"initCooldown": 5.0,
+		"cooldown": 10.0,
+		"suffix": { "en": "Skill", "ja": "煽り", "zh": "煽动" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["进行持续最多8秒的持续施法，施法期间每秒增加5点“血债账款” "]
+		}
+	},
+	"shchmr_change": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"被击倒后，进行持续3.6s的重生（回复100%生命值），随后触发【灾厄之口】，技能结束后进入下个阶段"
+			]
+		}
+	},
+	"shchmr_breath": {
+		"type": "skill",
+
+		"initCooldown": 60.0,
+		"cooldown": 60.0,
+		"atk": { "multiplier": 0.4, "order": "final" },
+		"suffix": { "en": "Breath", "ja": "ブレス", "zh": "灾厄之口" },
+		"hits": 40,
+		"dmg_element": "true",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"于第一形态/第二形态下不会自然触发；触发时：",
+				"①将场上的“危朽”变为“崩解”，或摧毁场上的“崩解”（若此项被削弱过，首次释放技能时该效果失效）",
+				"②选择并标记场上$生命值最高$的我方单位（不存在可选目标时，则选择并标记自身所在地块），在20s内持续喷射火焰：对目标及其周围8格的单位每0.5s造成攻击力<v.atk.multiplier>%的{true}伤害，并对场上其他单位每0.5s造成攻击力15%的{arts}伤害（对每个单位造成首次伤害后有2秒的最短触发间隔）；被标记的单位从场上离开时，技能持续时间+10s",
+				"③技能持续期间，进入待部署区域的单位再部署时间变为0，但被封印90s（若此项被削弱过，该效果失效） "
+			]
+		}
+	},
+	"shchmr_breath_splash": {
+		"atk": { "multiplier": 0.15, "order": "final" },
+		"suffix": { "en": "15%", "ja": "15%", "zh": "15%" },
+		"hits": 40,
+		"dmg_element": "arts",
+		"tooltip": null
+	},
+	"shchmr_breath_3": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["每60s，触发技能灾厄之口"]
+		}
+	},
+	"shchmr_napalm": {
+		"type": "skill",
+		"atk": { "multiplier": 1.2, "order": "final" },
+		"initCooldown": 6.0,
+		"cooldown": 12.0,
+		"hits": 1,
+		"dmg_element": "arts",
+		"suffix": { "en": "Napalm", "ja": "ナパーム", "zh": "未熄之地" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"对目标造成攻击力<v.atk.multiplier>%的{arts}伤害，并制造持续25s的燃烧区域：目标及其周围4格的单位每秒受到攻击力15%的{arts}伤害",
+				"※优先选择未处于燃烧区域内的我方单位为目标"
+			]
+		}
+	},
+	"shchmr_napalm_fly": {
+		"type": "skill",
+		"initCooldown": 1.0,
+		"cooldown": 4.0,
+		"suffix": { "en": "Napalm (Fly)", "ja": "ナパーム(飛行)", "zh": "未熄之地-飞行" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["处于飞行状态时可触发，效果与上述相同"]
+		}
+	},
+	"shophm_seal_tile": {
+		"type": "skill",
+		"initCooldown": 30,
+		"cooldown": 30,
+		"suffix": { "en": "Seal Tile", "ja": "地面封じ", "zh": "象限封锁" },
+		"value": 3,
+		"tooltip": {
+			"en": [
+				"Seals <v.value> random tiles within surrounding 8 tiles, preventing friendly units from being deployed on the sealed tiles and instantly defeating units on those tiles"
+			],
+			"ja": [
+				"周囲8マスに存在する、このスキルが未適用の配置可能マスをランダムに<v.value>マス選択して破壊し、封じられた地面に変える。封じられた地面となったマスは戦闘終了まで配置不可マスとなり、既に乗っていた味方は強制撤退させられる"
+			],
+			"zh": [
+				"随机封印自身周围8格内最多3个可部署地块（强制部署1个封印的地面，若该位置存在我方单位则将其强制击倒）"
+			]
+		}
+	},
+	"shophm_enter": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"到达路径终点后，击杀场上的源阶方并扣除30点目标生命值；随后在所在地块释放持续时间无限的法阵：令半径99范围内的我方单位每0.5s受到200{true}伤害"
+			]
+		}
+	},
+	"shophm_revive": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"每次被击倒后进行持续1s的重生（回复100%生命值），重生结束后：停止行动，无敌，并令场上的源阶方激活（源阶方结束激活后上述效果失效，自身恢复行动）"
+			]
+		}
+	},
+	"shophm_end": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["场上的源阶方退场时，自身立即退场 "]
+		}
+	},
+	"shorbb_start": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["场上的源阶方退场时，自身立即退场 "]
+		}
+	},
+	"shorbb_dmg_red": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["场上的源阶方退场时，自身立即退场 "]
+		}
+	},
+	"shorbb_branch_summon": {
+		"branches": [["boss_summon", 30, 999]],
+		"branchType": "single",
+		"branchRandom": false,
+		"type": "skill",
+		"initCooldown": 30,
+		"cooldown": 30,
+		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["按预设路径召唤一批敌人"]
+		}
+	},
+	"shorbb_spark": {
+		"type": "skill",
+		"initCooldown": 30,
+		"cooldown": 30,
+		"suffix": { "en": "Spark", "ja": "全体攻撃", "zh": "失链裂变" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"对全场我方单位造成攻击力100%的{arts}伤害",
+				"※该技能每8秒可触发1次；生命值低于50%时，每4秒可触发1次"
+			]
+		}
+	},
+	"shorbb_activate": {
+		"type": "skill",
+		"initCooldown": 1,
+		"cooldown": 1,
+		"suffix": { "en": "Startup", "ja": "起動", "zh": "激活" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["洛伦茨，扰动之谬进入重生时触发：解除自身无敌，5s后在预设位置召唤一定数量的源阶方模块"]
+		}
+	},
+	"shorbb_summon_plasma": {
+		"type": "skill",
+		"initCooldown": 1,
+		"cooldown": 5,
+		"suffix": { "en": "Summon Plasma", "ja": "プラズマ召喚", "zh": "召唤源阶粒素" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["按预设路径召唤源阶粒素", "生命值低于50%时，召唤的预设路径变更"]
+		}
+	},
+	"shorbb_deactivate": {
+		"type": "skill",
+		"initCooldown": 1,
+		"cooldown": 1,
+		"suffix": { "en": "Hibernate", "ja": "休止", "zh": "激活中止" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["场上不存在源阶方模块时可触发：获得无敌，洛伦茨，扰动之谬恢复行动"]
+		}
+	},
+	"shorsm_explode": {
+		"atk": { "multiplier": 2 },
+		"dmg_element": "true",
+		"suffix": { "en": "💥", "ja": "💥", "zh": "💥" },
+		"hits": 1,
+		"skillRange": 1.25,
+		"tooltip": {
+			"en": [
+				"Explodes on death, dealing <v.atk.multiplier>% ATK as {true} damage to nearby units{can_silence}{ignore_camou}"
+			],
+			"ja": [
+				"死亡時には爆発する、周囲に攻撃力<v.atk.multiplier>%の{true}ダメージを与える{can_silence}{ignore_camou}"
+			],
+			"zh": [
+				"死亡后对半径1.25范围内的友方单位造成攻击力<v.atk.multiplier>%{true}伤害{can_silence}{ignore_camou}"
+			]
+		}
+	},
+	"stationary_boss": {
+		"tooltip": {
+			"en": ["Unable to move, immune to unbalance, teleport"],
+			"ja": ["移動しない、転移・強制移動無効"],
+			"zh": ["持有自缚、失衡免疫、传送免疫"]
+		}
+	},
+	"cadesd_invincible": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["出场时，获得3秒无敌"]
+		}
+	},
+	"cadesd_defeat": {
+		"type": "buff",
+		"effects": {
+			"targets": ["enemy_2146_cadesd"],
+			"activeTargets": [],
+			"mods": [{ "key": "atk", "value": 0.3, "order": "initial", "mode": "mul" }],
+			"stackType": "add",
+			"maxCount": 2
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"退场时，令场上所有痛楚化身的攻击力+30%（可叠加，至多2层）并强制触发技能【行于荒原】，随后根据地图配置召唤一批敌人"
+			]
+		}
+	},
+	"wolf_howl": {
+		"type": "skill",
+		"initCooldown": 20,
+		"cooldown": 20,
+		"value": 8,
+		"suffix": { "en": "Howl", "ja": "吠え", "zh": "痛吼" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"若攻击范围半径内存在可选目标：对这些目标分别造成(350%÷目标数)倍率的{phys}伤害",
+				"若攻击范围半径内不存在可选目标：对全场所有可选我方单位造成80%攻击力的{phys}伤害并晕眩<v.value>秒"
+			]
+		}
+	},
+	"wolf_howl_1": {
+		"suffix": { "en": "Howl (Single)", "ja": "吠え(単体)", "zh": "痛吼(单体）" },
+		"atk": { "multiplier": 3.5 },
+		"dmg_element": "phys",
+		"hits": 1,
+		"tooltip": null
+	},
+	"cadesd_fly": {
+		"type": "skill",
+		"initCooldown": 0,
+		"cooldown": 0,
+		"suffix": { "en": "Move", "ja": "移動", "zh": "行于荒原" },
+		"atk": { "multiplier": 0.8 },
+		"dmg_element": "arts",
+		"hits": 1,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"在原地留下一个临时弹道，闪现至下一路径点",
+				"随后令弹道飞向自己所在位置，弹道对路径上碰撞到的所有我方单位造成攻击力80%的{arts}伤害，并令其10秒内攻击速度-70（同名技能效果不可叠加）",
+				"技能期间持有无敌、晕眩免疫、冻结免疫，且生命自然恢复速度(百分比)+5%",
+				"※弹道飞行速度10，碰撞半径1.5"
+			]
+		}
+	},
+	"cadesd_timeout": {
+		"type": "skill",
+		"initCooldown": 450,
+		"cooldown": 450,
+		"suffix": { "en": "End", "ja": "消滅", "zh": "湮灭" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["令关卡生命值-10，随后自身强制退场"]
+		}
+	},
+	"cadejo_1": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["首次被击倒时进入休整形态并释放当前波次"]
+		}
+	},
+	"cadejo_2": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["不攻击，持有无敌、孤立"]
+		}
+	},
+	"cadejo_summon": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["根据地图配置持续召唤敌人，以此召唤的所有敌人全部退场后，自身强制退场"]
+		}
+	},
+	"cadejo_fly": {
+		"type": "skill",
+		"initCooldown": 20,
+		"cooldown": 40,
+		"suffix": { "en": "Move", "ja": "移動", "zh": "行于荒原" },
+		"atk": { "multiplier": 0.8 },
+		"dmg_element": "arts",
+		"hits": 1,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"在原地留下一个临时弹道，闪现至下一路径点",
+				"随后令弹道飞向自己所在位置，弹道对路径上碰撞到的所有我方单位造成攻击力80%的{arts}伤害，并令其20秒内攻击速度-70（同名技能效果不可叠加）",
+				"技能期间持有无敌、晕眩免疫、冻结免疫",
+				"※弹道飞行速度10，碰撞半径1.5"
+			]
+		}
+	},
+	"cadejo_timeout": {
+		"type": "skill",
+		"initCooldown": 450,
+		"cooldown": 450,
+		"suffix": { "en": "End", "ja": "消滅", "zh": "湮灭" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["扣除30点关卡生命值，随后自身进入休整形态，然后强制退场"]
+		}
+	},
+	"shsggd_atk": {
+		"type": "buff",
+		"effects": {
+			"targets": ["enemy_2140_shsgzd", "enemy_2141_shsgz2"],
+			"activeTargets": [],
+			"mods": [{ "key": "atk", "value": 0.5, "order": "initial", "mode": "mul" }],
+			"stackType": "add",
+			"maxCount": 1
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"普通攻击仅攻击德莱昂，不造成伤害，而是使其强制触发技能【满载而归】，成功使其触发技能后自身退场"
+			]
+		}
+	},
+	"shsggd_enter": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["到达路径终点时，使德莱昂启用【赤金条增益】，并在战斗结束额外获得自然物<光彩松露>"]
+		}
+	},
+	"shsgzd_buff": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"登场后第0.1秒时进行一次检测，若场上不存在赤金条，启用【赤金条增益】：晕眩免疫、冻结免疫、恐惧免疫，攻击力+50%（此增益可受赤金条天赋影响而启用）"
+			]
+		}
+	},
+	"shsgzd_normal": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["受到伤害时，若未持有起飞冷却，进入轰炸模式并获得近地悬浮"]
+		}
+	},
+	"shsgzd_land": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"技能结束时，进入初始模式、解除近地悬浮、并获得25秒起飞冷却（在【赤金条增益】已启用的情况下，改为获得12.5秒起飞冷却）"
+			]
+		}
+	},
+	"shsgzd_fly": {
+		"value": 100,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["移动速度+100%，不进行普通攻击"]
+		}
+	},
+	"shsgzd_bombard": {
+		"suffix": { "en": "Bombard", "ja": "爆弾", "zh": "轰炸" },
+		"atk": { "multiplier": 2.0 },
+		"dmg_element": "phys",
+		"hits": 1,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"每0.2秒（存疑）检测一次，若检测间隔内自身进入了新的地块，则向自身所在位置发射一枚弹道，对半径2.0范围内的所有我方单位造成攻击力200%的{phys}普通伤害{ignore_camou}"
+			]
+		}
+	},
+	"shsgzd_gold": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【满载而归】技能结束时退场（视为无原因退场）",
+				"※技能期间持有无敌、自缚、失衡免疫、晕眩免疫、寒冷免疫、冻结免疫、沉睡免疫",
+				"※此技能可受赤金条普通攻击影响而强制触发 "
+			]
+		}
+	},
+	"shdbjg_flash": {
+		"type": "skill",
+		"initCooldown": 0,
+		"cooldown": 15,
+		"suffix": { "en": "Illum Rounds", "ja": "照明弾", "zh": "发射照明弹" },
+		"can_silence": true,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"仅攻击范围内存在我方单位时可触发{ignore_camou}{ignore_stealth}",
+				"向目标发射一枚照明弹弹道，照明弹对目标及周围8格内的所有我方单位造成攻击力100%的无途径物理伤害（无视隐匿、沉睡、迷彩），并令相同范围内的烟雾弹（无视孤立）的天赋【烟雾】失效15秒"
+			]
+		}
+	},
+	"shdbjg_atk": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"未被阻挡时触发的普通攻击为二连击，每击造成攻击力100%的远程途径物理伤害{ignore_camou}{ignore_stealth}"
+			]
+		}
+	},
+	"shdbjg_smoke": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"登场时，根据地图配置在若干指定地块中心各召唤1枚烟雾弹",
+				"退场时，强制击倒场上所有烟雾弹（视为无原因击杀）"
+			]
+		}
+	},
+	"shwksc_atk": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["可以进行持续攻击，每次攻击改为在自身所在地块中心以自身路径召唤1个“火种”"]
+		}
+	},
+	"shwksc_blink": {
+		"type": "skill",
+		"initCooldown": 0,
+		"cooldown": 30,
+		"suffix": { "en": "Teleport", "ja": "転移", "zh": "闪现" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["仅未被阻挡时可触发：开始施法，若技能期间未被打断，结束时闪现至下个路径点"]
+		}
+	},
+	"shwksc_defeat": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"退场后在自身所在位置留下一个法杖弹道，法杖令半径20.0范围内的所有敌方单位（无视其可选性）获得【埃尔伯特的增益】：攻击速度+50，移动速度最终提升至150%，同名效果不叠加"
+			]
+		}
+	},
+	"shdfb_spawn": {
+		"tooltip": {
+			"en": [
+				"Disappears after 10s",
+				"Explosion Radius, Damage, and Elemental Damage decrease linearly from their maximum values to 0 within 10 seconds of appearing (updated once per second), with maximum values of 2.0, 1000, and 200, respectively"
+			],
+			"ja": [
+				"10秒後消滅する",
+				"【爆発半径】、【ダメージ】、および【元素ダメージ】は、登場から10秒の間に最大値から0まで線形に減少する（1秒ごとに1回変化する）。これら3つの最大値は、それぞれ2.0 / 1000 / 200である"
+			],
+			"zh": [
+				"登场10秒后自身退场（视为无原因击杀）",
+				"【爆炸半径】、【法术伤害量】和【元素损伤量】在登场的10秒内由最大值线性降低至0（每秒变化一次），三者的最大值分别为2.0 / 1000 / 200"
+			]
+		}
+	},
+	"shdfb_explode": {
+		"tooltip": {
+			"en": [
+				"Explodes on contact with melee unit, dealing {arts} and {ba.dt.apoptosis} to units within range{ignore_camou}"
+			],
+			"ja": [
+				"地上にいる味方に触れると爆発、範囲内に{arts}と{ba.dt.apoptosis}を与える{ignore_camou}"
+			],
+			"zh": [
+				"爆炸对范围内所有友方单位造成{arts}普通伤害和{ba.dt.apoptosis}，随后自身消失{ignore_camou}"
 			]
 		}
 	}

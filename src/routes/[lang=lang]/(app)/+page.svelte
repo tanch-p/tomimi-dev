@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { PageData } from './$types';
+	import banner_black from '$lib/images/banner_black.webp';
 	import banner_mizuki from '$lib/images/banner_mizuki.webp';
 	import banner_phantom from '$lib/images/banner_phantom.webp';
 	import banner_sami from '$lib/images/banner_sami.webp';
@@ -16,6 +17,7 @@
 
 	$: language = data.language;
 	const is_banners = [
+		{ alt: 'rogue_black', src: banner_black, href: 'black' },
 		{ alt: 'rogue_yan', src: banner_sui, href: 'sui' },
 		{ alt: 'rogue_skz', src: banner_sarkaz, href: 'sarkaz' },
 		{ alt: 'rogue_sami', src: banner_sami, href: 'sami' },

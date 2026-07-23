@@ -1,0 +1,346 @@
+[
+	{
+		"id": "rogue_6_relic_final_3",
+		"name_zh": "怦然信标",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.2,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌人的生命+20%，我方单位的生命-40%，让探索开启不同的方向",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_start_3",
+		"name_zh": "襁褓巨龙",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.5,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "前两个探索区域的战斗中，所有敌人的最大生命-50%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_start_4",
+		"name_zh": "襁褓九头蛇",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌人的攻击和生命+30%，每进入新区域时我方攻击力和生命+10%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	
+	{
+		"id": "rogue_6_relic_fight_30",
+		"name_zh": "探测先锋",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["enemy_2137_shsdgo"],
+				"mods": [
+					{ "key": "hp", "value": 1.2, "mode": "mul" },
+					{ "key": "atk", "value": 1.2, "mode": "mul" }
+				]
+			}
+		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["enemy_2137_shsdgo"],
+						"mods": [
+							{ "key": "hp", "value": 1.2, "mode": "mul" },
+							{ "key": "atk", "value": 1.2, "mode": "mul" }
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["enemy_2137_shsdgo"],
+						"mods": [
+							{ "key": "hp", "value": 1.4, "mode": "mul" },
+							{ "key": "atk", "value": 1.4, "mode": "mul" }
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x3",
+				"effects": [
+					{
+						"targets": ["enemy_2137_shsdgo"],
+						"mods": [
+							{ "key": "hp", "value": 1.6, "mode": "mul" },
+							{ "key": "atk", "value": 1.6, "mode": "mul" }
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x4",
+				"effects": [
+					{
+						"targets": ["enemy_2137_shsdgo"],
+						"mods": [
+							{ "key": "hp", "value": 1.8, "mode": "mul" },
+							{ "key": "atk", "value": 1.8, "mode": "mul" }
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x5",
+				"effects": [
+					{
+						"targets": ["enemy_2137_shsdgo"],
+						"mods": [
+							{ "key": "hp", "value": 2.0, "mode": "mul" },
+							{ "key": "atk", "value": 2.0, "mode": "mul" }
+						]
+					}
+				]
+			}
+		],
+		"tooltip_zh": "完成“追猎”作战后叠加1层并使下个区域初始行动力-1，每层使“猎犬proto”的生命和攻击力+20%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_relic_cargo_12",
+		"name_zh": "猎印",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["enemy_2137_shsdgo"],
+				"mods": [{ "key": "atk", "value": 0.5, "mode": "mul" }]
+			}
+		],
+		"tooltip_zh": "猎犬proto的攻击力-50%；每拥有1层【探测先锋】，我方法术抗性+10",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_relic_cargo_11",
+		"name_zh": "厄运火杆",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.6,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "与“居民”作战时，敌人生命-40%，且作战胜利后所有干员的攻击速度永久+10",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_relic_fight_26",
+		"name_zh": "竞技场贵宾券",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ELITE"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.1,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "精英敌人的生命+10%，战斗获得的源石锭和指挥经验+40%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+
+	
+
+	{
+		"id": "rogue_6_relic_legacy_84",
+		"name_zh": "残破合影",
+		"name_ja": "古びた写真",
+		"name_en": "Worn-out Group Photo",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.9,
+						"mode": "mul"
+					},
+					{
+						"key": "hp",
+						"value": 0.95,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的生命-5%，防御力-10%",
+		"tooltip_ja": "敵全員の最大HP-5%、防御力-10%",
+		"tooltip_en": "All enemy units have -5% HP and -10% DEF."
+	},
+	{
+		"id": "rogue_6_relic_legacy_85",
+		"name_zh": "恐鱼干",
+		"name_ja": "恐魚の干物",
+		"name_en": "Sea Terror Jerky",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.8,
+						"mode": "mul"
+					},
+					{
+						"key": "hp",
+						"value": 0.9,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的生命-10%，防御力-20%",
+		"tooltip_ja": "敵全員の最大HP-10%、防御力-20%",
+		"tooltip_en": "All enemy units have -10% HP and -20% DEF."
+	},
+	{
+		"id": "rogue_6_relic_legacy_86",
+		"name_zh": "迷迭香之拥",
+		"name_ja": "ロスモンティスの抱擁",
+		"name_en": "Rosmontis's Embrace",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.7,
+						"mode": "mul"
+					},
+					{
+						"key": "hp",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的生命-15%，防御力-30%",
+		"tooltip_ja": "敵全員の最大HP-15%、防御力-30%",
+		"tooltip_en": "All enemy units have -15% HP and -30% DEF."
+	},
+	{
+		"id": "rogue_6_relic_legacy_87",
+		"name_zh": "“黑夜呢喃”",
+		"name_ja": "「闇に囁くもの」",
+		"name_en": "'The Whisperer in Darknight'",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的生命-15%",
+		"tooltip_ja": "敵全員の最大HP-15%",
+		"tooltip_en": "All enemy units have -15% HP"
+	},
+	{
+		"id": "rogue_6_relic_legacy_88",
+		"name_zh": "《大静谧》",
+		"name_ja": "『大いなる静謐』",
+		"name_en": "‘Profound Silence'",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.7,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌方单位的生命-30%",
+		"tooltip_ja": "敵全員の最大HP-30%",
+		"tooltip_en": "All enemy units have -30% HP."
+	},
+	{
+		"id": "rogue_6_relic_legacy_56",
+		"name_zh": "重力蔑视机关",
+		"name_ja": "重力蔑視装置",
+		"name_en": "Gravity Defying Machine",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [{ "key": "weight", "value": -2, "mode": "add" }]
+			}
+		],
+		"tooltip_zh": "所有敌人重量-2",
+		"tooltip_ja": "全ての敵の重量ランク-2",
+		"tooltip_en": "All enemies have -2 Weight"
+	}
+]

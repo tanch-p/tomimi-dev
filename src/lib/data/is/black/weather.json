@@ -1,0 +1,205 @@
+[
+	{
+		"id": "rogue_6_weather_1_a",
+		"name_zh": "“黑流地脉”",
+		"name_ja": "",
+		"name_en": "",
+		"iconId": "rogue_6_weather_1",
+		"level": 1,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.1,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "关卡中出现额外的猎犬proto，敌方攻击+10%，生命+10%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_weather_1_b",
+		"name_zh": "“黑流地脉”",
+		"name_ja": "",
+		"name_en": "",
+		"iconId": "rogue_6_weather_1",
+		"level": 2,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.2,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.2,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo"
+					},
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo2"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "关卡中出现额外的猎犬proto，敌方攻击+20%，生命+20%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_weather_1_c",
+		"name_zh": "“黑流地脉”",
+		"name_ja": "",
+		"name_en": "",
+		"iconId": "rogue_6_weather_1",
+		"level": 3,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo"
+					},
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo2"
+					},
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo3"
+					},
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shsdgo4"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "关卡中出现更多额外的猎犬proto，敌方攻击+30%，生命+30%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_weather_2_a",
+		"name_zh": "“倾斜沙丘”",
+		"name_ja": "",
+		"name_en": "",
+		"iconId": "rogue_6_weather_2",
+		"level": 1,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "场上出现随机方向的沙尘暴，部署方向与沙尘暴方向不同的干员攻击力降低20%，干员可以为其他干员挡住沙尘暴，敌方移速-15%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_weather_2_b",
+		"name_zh": "“倾斜沙丘”",
+		"name_ja": "",
+		"name_en": "",
+		"iconId": "rogue_6_weather_2",
+		"level": 2,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "场上出现随机方向的沙尘暴，部署方向与沙尘暴方向不同的干员攻击力降低35%，干员可以为其他干员挡住沙尘暴，敌方移速-15%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_weather_2_c",
+		"name_zh": "“倾斜沙丘”",
+		"name_ja": "",
+		"name_en": "",
+		"iconId": "rogue_6_weather_2",
+		"level": 3,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "场上出现随机方向的沙尘暴，部署方向与沙尘暴方向不同的干员攻击力降低50%，干员可以为其他干员挡住沙尘暴，敌方移速-15%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	}
+]

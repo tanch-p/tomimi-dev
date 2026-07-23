@@ -366,5 +366,15 @@
 			"type": "single",
 			"isRandom": false
 		}
+	},
+	"level_rogue6_b-5":{
+		"boss_trap": {
+			"type": "single",
+			"isRandom": false
+		},
+		"boss_summon": {
+			"type": "single",
+			"isRandom": false
+		}
 	}
 }

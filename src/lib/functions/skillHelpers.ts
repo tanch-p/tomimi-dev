@@ -77,25 +77,47 @@ export const getTrapStatSkills = (trap) => {
 
 export const getHandbookEnemySkills = (enemy, specialMods) => {
 	const skills = [];
+
 	const traitSkills = getEnemySkills(enemy, enemy.traits, 0, specialMods, 'trait').filter(
 		(skill) => skill.type === 'skill'
 	);
+
 	for (const skill of traitSkills) {
-		skills.push({ ...skill, formIndexes: enemy.forms.map((_, i) => i) });
+		skills.push({
+			...skill,
+			formIndexes: enemy.forms.map((_, index) => index)
+		});
 	}
-	enemy.forms.forEach((form, i) => {
-		const special = getEnemySkills(enemy, form.special, i, specialMods, 'special').filter(
-			(skill) => skill.type === 'skill'
-		);
-		for (const skill of special) {
-			const item = skills.find((ele) => ele.key === skill.key);
-			if (item && isEquals(item, skill)) {
-				item.formIndexes.push(i);
+
+	enemy.forms.forEach((form, formIndex) => {
+		const specialSkills = getEnemySkills(
+			enemy,
+			form.special,
+			formIndex,
+			specialMods,
+			'special'
+		).filter((skill) => skill.type === 'skill');
+
+		for (const skill of specialSkills) {
+			const existingSkill = skills.find((item) => {
+				const { formIndexes, ...skillWithoutFormIndexes } = item;
+
+				return isEquals(skillWithoutFormIndexes, skill);
+			});
+
+			if (existingSkill) {
+				if (!existingSkill.formIndexes.includes(formIndex)) {
+					existingSkill.formIndexes.push(formIndex);
+				}
 			} else {
-				skills.push({ ...skill, formIndexes: [i] });
+				skills.push({
+					...skill,
+					formIndexes: [formIndex]
+				});
 			}
 		}
 	});
+
 	return skills;
 };
 

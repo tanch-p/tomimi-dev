@@ -10,7 +10,7 @@
 		maxDiff = 15,
 		mode = 'normal';
 
-	const getStorageKey = (rogueTopic) => {
+	const getStorageKey = (rogueTopic: RogueTopic) => {
 		switch (rogueTopic) {
 			case 'rogue_mizuki':
 				return 'difficulty';

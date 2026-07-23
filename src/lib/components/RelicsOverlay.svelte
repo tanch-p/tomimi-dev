@@ -8,6 +8,7 @@
 	import samiRelics from '$lib/data/is/sami/relics_sami.json';
 	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
 	import suiRelics from '$lib/data/is/sui/relics_sui.json';
+	import blackRelics from '$lib/data/is/black/relics.json';
 
 	const dispatch = createEventDispatcher();
 
@@ -34,6 +35,8 @@
 				return skzRelics;
 			case 'rogue_yan':
 				return suiRelics;
+			case 'rogue_black':
+				return blackRelics;
 			default:
 				return [];
 		}

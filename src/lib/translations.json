@@ -121,10 +121,10 @@
 		"ja": "ステージ一覧",
 		"zh": "关卡一览"
 	},
-	"stage_choice":{
-		"en":"Variation",
-		"ja":"バリエーション",
-		"zh":"变体"
+	"stage_choice": {
+		"en": "Variation",
+		"ja": "バリエーション",
+		"zh": "变体"
 	},
 	"characterLimit": {
 		"en": "Deploy Limit",
@@ -296,6 +296,11 @@
 		"ja": "歳の界園志異",
 		"zh": "岁的界园志异"
 	},
+	"rogue_black": {
+		"en": "The Black Flow of the Drowning Seekers",
+		"ja": "黒流樹海",
+		"zh": "沉沦者的黑流树海"
+	},
 	"rogue_1": {
 		"en": "Phantom",
 		"ja": "ファントム",
@@ -320,6 +325,11 @@
 		"en": "Sui",
 		"ja": "歳",
 		"zh": "岁"
+	},
+	"rogue_6": {
+		"en": "Black Flow",
+		"ja": "黒流樹海",
+		"zh": "黑流树海"
 	},
 	"炽热溶洞": {
 		"en": "Blazing Cavern",
@@ -531,6 +541,16 @@
 		"ja": "征形態",
 		"zh": "征形态"
 	},
+	"initial_state": {
+		"en": "Initial State",
+		"ja": "初期状態",
+		"zh": "初始模式"
+	},
+	"shsgzd_bomb": {
+		"en": "Flying Mode",
+		"ja": "飛行モード",
+		"zh": "轰炸模式"
+	},
 	"multiform_prefix": {
 		"en": "",
 		"ja": "第",
@@ -560,22 +580,8 @@
 			"Blood-soaked Corridor",
 			"Hall of Desires"
 		],
-		"ja": [
-			"迷霧の岐路",
-			"落陽の庭園",
-			"凋落の故地",
-			"悪夢の幕開け",
-			"緋月の回路",
-			"渇欲の大広間"
-		],
-		"zh": [
-			"迷雾歧途",
-			"落阳庭院",
-			"故土残躯",
-			"噩梦之始",
-			"血月长廊",
-			"渴欲大厅"
-		]
+		"ja": ["迷霧の岐路", "落陽の庭園", "凋落の故地", "悪夢の幕開け", "緋月の回路", "渇欲の大広間"],
+		"zh": ["迷雾歧途", "落阳庭院", "故土残躯", "噩梦之始", "血月长廊", "渴欲大厅"]
 	},
 	"mizuki_levels": {
 		"en": [
@@ -594,14 +600,7 @@
 			"不可侵の洞窟",
 			"深海の密林"
 		],
-		"zh": [
-			"天光海岸",
-			"离岸孤岛",
-			"波涛略地",
-			"隐秘温床",
-			"失尘岩洞",
-			"幽海丛林"
-		]
+		"zh": ["天光海岸", "离岸孤岛", "波涛略地", "隐秘温床", "失尘岩洞", "幽海丛林"]
 	},
 	"sami_levels": {
 		"en": [
@@ -622,15 +621,7 @@
 			"遠見の巨構",
 			"永久の塵"
 		],
-		"zh": [
-			"初霜湖泽",
-			"密静林地",
-			"昧明冻土",
-			"积冰岩骸",
-			"无瑕花园",
-			"远见之构",
-			"永恒之尘"
-		]
+		"zh": ["初霜湖泽", "密静林地", "昧明冻土", "积冰岩骸", "无瑕花园", "远见之构", "永恒之尘"]
 	},
 	"sarkaz_levels": {
 		"en": [
@@ -672,29 +663,36 @@
 			"Ruwu Gate",
 			"Jianzi Shrine",
 			"Shimo Tomb",
-			"来去处",
-			"明灭顶"
+			"Laiqu Point",
+			"Mingmie Peak"
 		],
-		"ja": [
-			"洪陸楼",
-			"山水閣",
-			"雲瓦亭",
-			"汝吾門",
-			"見字祠",
-			"始末陵",
-			"来去处",
-			"明灭顶"
-		],
-		"zh": [
-			"洪陆楼",
-			"山水阁",
-			"云瓦亭",
-			"汝吾门",
-			"见字祠",
-			"始末陵",
-			"来去处",
-			"明灭顶"
-		]
+		"ja": ["洪陸楼", "山水閣", "雲瓦亭", "汝吾門", "見字祠", "始末陵", "来去処", "明滅頂"],
+		"zh": ["洪陆楼", "山水阁", "云瓦亭", "汝吾门", "见字祠", "始末陵", "来去处", "明灭顶"]
+	},
+	"black_levels": {
+		"en": ["玻利瓦尔肤层", "甜美的伤口", "血色空脉", "受害者腐殖", "卡德霍之颅", "源流交汇处"],
+		"ja": ["玻利瓦尔肤层", "甜美的伤口", "血色空脉", "受害者腐殖", "卡德霍之颅", "源流交汇处"],
+		"zh": ["玻利瓦尔肤层", "甜美的伤口", "血色空脉", "受害者腐殖", "卡德霍之颅", "源流交汇处"]
+	},
+	"black_weather": {
+		"en": "Utopia",
+		"ja": "ユートピア",
+		"zh": "实托邦"
+	},
+	"weather_level_1": {
+		"en": "Early Stage",
+		"ja": "初期",
+		"zh": "早期"
+	},
+	"weather_level_2": {
+		"en": "Mid-term",
+		"ja": "中期",
+		"zh": "中期"
+	},
+	"weather_level_3": {
+		"en": "Advanced",
+		"ja": "末期",
+		"zh": "晚期"
 	},
 	"phantom_variation_title": {
 		"en": "Hallucinations",
@@ -735,6 +733,11 @@
 		"en": "Entering Sui's Remnant Consciousness does not change floor count",
 		"ja": "<歳獣の残識>に入っても階数は変わりません",
 		"zh": "进入岁兽残识不会改变区域层数"
+	},
+	"black_sp_floor_tip": {
+		"en": "Entering <未萌生的摇篮> does not change floor count",
+		"ja": "<未萌生的摇篮>に入っても階数は変わりません",
+		"zh": "进入误入奇境节点不会改变区域层数"
 	},
 	"mizuki_seaborn_call": {
 		"en": "The Call of We Many",
@@ -870,6 +873,21 @@
 		"en": "FACE OFF",
 		"ja": "FACE OFF",
 		"zh": "狭路相逢"
+	},
+	"savage": {
+		"en": "SAVAGE",
+		"ja": "SAVAGE",
+		"zh": "狭路相逢"
+	},
+	"savage_battle": {
+		"en": "FACE OFF",
+		"ja": "FACE OFF",
+		"zh": "狭路相逢"
+	},
+	"chase_battle": {
+		"en": "CHASE",
+		"ja": "CHASE",
+		"zh": "追猎"
 	},
 	"route_left": {
 		"en": "Left Route",
@@ -2215,7 +2233,7 @@
 		"ja": "空癒師",
 		"zh": "守望者"
 	},
-	"supportiveranger":{
+	"supportiveranger": {
 		"en": "Support Ranger (?)",
 		"ja": "遊撃手",
 		"zh": "游击手"
@@ -3160,7 +3178,7 @@
 		"ja": "装置のバリア",
 		"zh": "装置屏障"
 	},
-	"barrier_break":{
+	"barrier_break": {
 		"en": "Barrier Broken",
 		"ja": "バリア破壊",
 		"zh": "屏障摧毁"
@@ -3460,12 +3478,12 @@
 		"ja": "侵蝕損傷",
 		"zh": "侵蚀损伤"
 	},
-	"rampage_burst":{
+	"rampage_burst": {
 		"en": "Rabies Duration",
 		"ja": "狂躁損傷爆発",
 		"zh": "狂躁损伤爆发"
 	},
-	"rampage":{
+	"rampage": {
 		"en": "Rabies Damage",
 		"ja": "狂躁損傷",
 		"zh": "狂躁损伤"
@@ -3606,6 +3624,11 @@
 		"en": "Slowdown?",
 		"ja": "迟钝(?)",
 		"zh": "迟钝"
+	},
+	"teleport": {
+		"en": "Teleport",
+		"ja": "転移",
+		"zh": "传送"
 	},
 	"unbalance": {
 		"en": "Unbalance",

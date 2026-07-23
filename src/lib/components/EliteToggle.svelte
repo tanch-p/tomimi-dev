@@ -1,6 +1,8 @@
 <script lang="ts">
-	import combat_icon from '$lib/images/is/combat_icon.webp';
+	import combatIcon from '$lib/images/is/combat_icon.webp';
 	import emergency_icon from '$lib/images/is/emergency_icon.webp';
+	import blackCombatIcon from '$lib/images/is/black/icon_battle_normal.webp';
+	import blackEliteIcon from '$lib/images/is/black/icon_battle_elite.webp';
 	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
 	import { getEliteColors } from '$lib/functions/lib';
@@ -61,18 +63,38 @@
 		if (stageId === 'level_rogue4_b-8') {
 			return `/images/relics/${relicLookup['rogue_4_relic_final_10']}.webp`;
 		}
+		if (rogueTopic === 'rogue_black') {
+			return blackEliteIcon;
+		}
 		return emergency_icon;
 	}
+	const iconCombat = rogueTopic === 'rogue_black' ? blackCombatIcon : combatIcon;
 </script>
 
 {#if mapEliteMods}
 	{#if inWaveOptions}
 		<!-- used in wave options -->
-		<EliteToggleBar {combatOpsColor} {eliteOpsColor} {eliteMode} {stageId} {getEliteIcon} />
+		<EliteToggleBar
+			{rogueTopic}
+			{combatOpsColor}
+			{eliteOpsColor}
+			{eliteMode}
+			{stageId}
+			{getEliteIcon}
+			{iconCombat}
+		/>
 	{:else}
 		<MediaQuery>
 			<div slot="pc" class="mt-8">
-				<EliteToggleBar {combatOpsColor} {eliteOpsColor} {eliteMode} {stageId} {getEliteIcon} />
+				<EliteToggleBar
+					{rogueTopic}
+					{combatOpsColor}
+					{eliteOpsColor}
+					{eliteMode}
+					{stageId}
+					{getEliteIcon}
+					{iconCombat}
+				/>
 			</div>
 			<button
 				slot="mobile"
@@ -83,12 +105,13 @@
 				on:click={() => eliteMode.set(!$eliteMode)}
 			>
 				<img
-					src={$eliteMode ? getEliteIcon(stageId) : combat_icon}
+					src={$eliteMode ? getEliteIcon(stageId) : iconCombat}
 					width="40px"
 					decoding="async"
 					loading="lazy"
 					alt={'elite toggle'}
-					class=""
+					class:scale-200={rogueTopic === 'rogue_black'}
+					class="select-none"
 				/>
 			</button>
 		</MediaQuery>

@@ -1,0 +1,410 @@
+{
+    "level_rogue6_b-1": {
+        "code": "ISW-NO",
+        "name_zh": "铁腕迷思",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-1-b": {
+        "code": "ISW-NO",
+        "name_zh": "哀悼铁腕",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-2": {
+        "code": "ISW-NO",
+        "name_zh": "光荣远征",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-2-b": {
+        "code": "ISW-NO",
+        "name_zh": "赤金厄运",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-3": {
+        "code": "ISW-NO",
+        "name_zh": "狂热敬虔",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-3-b": {
+        "code": "ISW-NO",
+        "name_zh": "冰冷流亡",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-4": {
+        "code": "ISW-DF",
+        "name_zh": "永无安宁",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-4-b": {
+        "code": "ISW-DF",
+        "name_zh": "痛苦将息",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-5": {
+        "code": "ISW-DF",
+        "name_zh": "混沌源阶理论",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_b-6": {
+        "code": "ISW-DF",
+        "name_zh": "畸症",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-1": {
+        "code": "ISW-NO",
+        "name_zh": "陌生旅伴",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-2": {
+        "code": "ISW-NO",
+        "name_zh": "安保措施",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-3": {
+        "code": "ISW-NO",
+        "name_zh": "开业剪彩",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-4": {
+        "code": "ISW-NO",
+        "name_zh": "合伙人会议",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-5": {
+        "code": "ISW-NO",
+        "name_zh": "湖中魇",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-6": {
+        "code": "ISW-NO",
+        "name_zh": "死箱",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-7": {
+        "code": "ISW-NO",
+        "name_zh": "活木",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-8": {
+        "code": "ISW-NO",
+        "name_zh": "强买强卖",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-8-b": {
+        "code": "ISW-NO",
+        "name_zh": "强买强卖",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-8-c": {
+        "code": "ISW-NO",
+        "name_zh": "强买强卖",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-9": {
+        "code": "ISW-NO",
+        "name_zh": "进退趋同",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-9-b": {
+        "code": "ISW-NO",
+        "name_zh": "进退趋同",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-9-c": {
+        "code": "ISW-NO",
+        "name_zh": "进退趋同",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-10": {
+        "code": "ISW-NO",
+        "name_zh": "枯枝",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-11": {
+        "code": "ISW-NO",
+        "name_zh": "败叶",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_t-12": {
+        "code": "ISW-NO",
+        "name_zh": "无效验尸",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-5": {
+        "code": "ISW-NO",
+        "name_zh": "“闹乐”",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-6": {
+        "code": "ISW-NO",
+        "name_zh": "“纵怒”",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-7": {
+        "code": "ISW-NO",
+        "name_zh": "“灭身”",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_d-1": {
+        "code": "ISW-NO",
+        "name_zh": "搏杀",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_d-2": {
+        "code": "ISW-NO",
+        "name_zh": "共斗",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-1": {
+        "code": "ISW-NO",
+        "name_zh": "血夜回魂",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-1-b": {
+        "code": "ISW-NO",
+        "name_zh": "毛绒游戏",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-1-c": {
+        "code": "ISW-NO",
+        "name_zh": "在劫难逃",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-2": {
+        "code": "ISW-NO",
+        "name_zh": "咩的朋友",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-3": {
+        "code": "ISW-NO",
+        "name_zh": "外显尖牙",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_c-4": {
+        "code": "ISW-NO",
+        "name_zh": "一视同仁",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_1-1": {
+        "code": "ISW-NO",
+        "name_zh": "猎犬病原",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_1-2": {
+        "code": "ISW-NO",
+        "name_zh": "遗忘时间",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_1-3": {
+        "code": "ISW-NO",
+        "name_zh": "急不可耐",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_1-4": {
+        "code": "ISW-NO",
+        "name_zh": "灌水贤者",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_2-1": {
+        "code": "ISW-NO",
+        "name_zh": "虫虫游戏厅",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_2-2": {
+        "code": "ISW-NO",
+        "name_zh": "无主地",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_2-3": {
+        "code": "ISW-NO",
+        "name_zh": "本性难移",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_2-4": {
+        "code": "ISW-NO",
+        "name_zh": "远北猎场",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_2-5": {
+        "code": "ISW-NO",
+        "name_zh": "枝头陷阱",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_3-1": {
+        "code": "ISW-NO",
+        "name_zh": "预算否决",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_3-2": {
+        "code": "ISW-NO",
+        "name_zh": "生存习性",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_3-3": {
+        "code": "ISW-NO",
+        "name_zh": "辟路行进",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_3-4": {
+        "code": "ISW-NO",
+        "name_zh": "趁火打劫",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_3-5": {
+        "code": "ISW-NO",
+        "name_zh": "焦土之家",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_3-6": {
+        "code": "ISW-NO",
+        "name_zh": "黑色逆流",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-1": {
+        "code": "ISW-NO",
+        "name_zh": "未来见闻",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-2": {
+        "code": "ISW-NO",
+        "name_zh": "种植园惊魂",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-3": {
+        "code": "ISW-NO",
+        "name_zh": "选边站",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-4": {
+        "code": "ISW-NO",
+        "name_zh": "诞生礼",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-5": {
+        "code": "ISW-NO",
+        "name_zh": "暴力押运",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-6": {
+        "code": "ISW-NO",
+        "name_zh": "长刀寒夜",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_4-7": {
+        "code": "ISW-NO",
+        "name_zh": "侵占家园",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-1": {
+        "code": "ISW-NO",
+        "name_zh": "一步之遥",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-2": {
+        "code": "ISW-NO",
+        "name_zh": "物欲遮天",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-3": {
+        "code": "ISW-NO",
+        "name_zh": "恶意讨薪",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-4": {
+        "code": "ISW-NO",
+        "name_zh": "送别仪式",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-5": {
+        "code": "ISW-NO",
+        "name_zh": "彼处水如酒",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-6": {
+        "code": "ISW-NO",
+        "name_zh": "丛林法则",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_5-7": {
+        "code": "ISW-NO",
+        "name_zh": "过度繁殖",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_6-1": {
+        "code": "ISW-NO",
+        "name_zh": "命运共享",
+        "name_ja": null,
+        "name_en": null
+    },
+    "level_rogue6_6-2": {
+        "code": "ISW-NO",
+        "name_zh": "同域共存",
+        "name_ja": null,
+        "name_en": null
+    }
+}

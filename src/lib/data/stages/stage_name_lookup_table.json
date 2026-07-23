@@ -5483,5 +5483,325 @@
 		"lang": "ja",
 		"key": "level_rogue5_7-2",
 		"topic": "rogue_yan"
-	}
+	},
+	 "ISW-NO_铁腕迷思": {
+        "lang": "zh",
+        "key": "level_rogue6_b-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_哀悼铁腕": {
+        "lang": "zh",
+        "key": "level_rogue6_b-1-b",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_光荣远征": {
+        "lang": "zh",
+        "key": "level_rogue6_b-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_赤金厄运": {
+        "lang": "zh",
+        "key": "level_rogue6_b-2-b",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_狂热敬虔": {
+        "lang": "zh",
+        "key": "level_rogue6_b-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_冰冷流亡": {
+        "lang": "zh",
+        "key": "level_rogue6_b-3-b",
+        "topic": "rogue_6"
+    },
+    "ISW-DF_永无安宁": {
+        "lang": "zh",
+        "key": "level_rogue6_b-4",
+        "topic": "rogue_6"
+    },
+    "ISW-DF_痛苦将息": {
+        "lang": "zh",
+        "key": "level_rogue6_b-4-b",
+        "topic": "rogue_6"
+    },
+    "ISW-DF_混沌源阶理论": {
+        "lang": "zh",
+        "key": "level_rogue6_b-5",
+        "topic": "rogue_6"
+    },
+    "ISW-DF_畸症": {
+        "lang": "zh",
+        "key": "level_rogue6_b-6",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_陌生旅伴": {
+        "lang": "zh",
+        "key": "level_rogue6_t-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_安保措施": {
+        "lang": "zh",
+        "key": "level_rogue6_t-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_开业剪彩": {
+        "lang": "zh",
+        "key": "level_rogue6_t-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_合伙人会议": {
+        "lang": "zh",
+        "key": "level_rogue6_t-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_湖中魇": {
+        "lang": "zh",
+        "key": "level_rogue6_t-5",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_死箱": {
+        "lang": "zh",
+        "key": "level_rogue6_t-6",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_活木": {
+        "lang": "zh",
+        "key": "level_rogue6_t-7",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_强买强卖": {
+        "lang": "zh",
+        "key": "level_rogue6_t-8-c",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_进退趋同": {
+        "lang": "zh",
+        "key": "level_rogue6_t-9-c",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_枯枝": {
+        "lang": "zh",
+        "key": "level_rogue6_t-10",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_败叶": {
+        "lang": "zh",
+        "key": "level_rogue6_t-11",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_无效验尸": {
+        "lang": "zh",
+        "key": "level_rogue6_t-12",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_“闹乐”": {
+        "lang": "zh",
+        "key": "level_rogue6_c-5",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_“纵怒”": {
+        "lang": "zh",
+        "key": "level_rogue6_c-6",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_“灭身”": {
+        "lang": "zh",
+        "key": "level_rogue6_c-7",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_搏杀": {
+        "lang": "zh",
+        "key": "level_rogue6_d-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_共斗": {
+        "lang": "zh",
+        "key": "level_rogue6_d-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_血夜回魂": {
+        "lang": "zh",
+        "key": "level_rogue6_c-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_毛绒游戏": {
+        "lang": "zh",
+        "key": "level_rogue6_c-1-b",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_在劫难逃": {
+        "lang": "zh",
+        "key": "level_rogue6_c-1-c",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_咩的朋友": {
+        "lang": "zh",
+        "key": "level_rogue6_c-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_外显尖牙": {
+        "lang": "zh",
+        "key": "level_rogue6_c-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_一视同仁": {
+        "lang": "zh",
+        "key": "level_rogue6_c-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_猎犬病原": {
+        "lang": "zh",
+        "key": "level_rogue6_1-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_遗忘时间": {
+        "lang": "zh",
+        "key": "level_rogue6_1-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_急不可耐": {
+        "lang": "zh",
+        "key": "level_rogue6_1-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_灌水贤者": {
+        "lang": "zh",
+        "key": "level_rogue6_1-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_虫虫游戏厅": {
+        "lang": "zh",
+        "key": "level_rogue6_2-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_无主地": {
+        "lang": "zh",
+        "key": "level_rogue6_2-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_本性难移": {
+        "lang": "zh",
+        "key": "level_rogue6_2-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_远北猎场": {
+        "lang": "zh",
+        "key": "level_rogue6_2-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_枝头陷阱": {
+        "lang": "zh",
+        "key": "level_rogue6_2-5",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_预算否决": {
+        "lang": "zh",
+        "key": "level_rogue6_3-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_生存习性": {
+        "lang": "zh",
+        "key": "level_rogue6_3-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_辟路行进": {
+        "lang": "zh",
+        "key": "level_rogue6_3-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_趁火打劫": {
+        "lang": "zh",
+        "key": "level_rogue6_3-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_焦土之家": {
+        "lang": "zh",
+        "key": "level_rogue6_3-5",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_黑色逆流": {
+        "lang": "zh",
+        "key": "level_rogue6_3-6",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_未来见闻": {
+        "lang": "zh",
+        "key": "level_rogue6_4-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_种植园惊魂": {
+        "lang": "zh",
+        "key": "level_rogue6_4-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_选边站": {
+        "lang": "zh",
+        "key": "level_rogue6_4-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_诞生礼": {
+        "lang": "zh",
+        "key": "level_rogue6_4-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_暴力押运": {
+        "lang": "zh",
+        "key": "level_rogue6_4-5",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_长刀寒夜": {
+        "lang": "zh",
+        "key": "level_rogue6_4-6",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_侵占家园": {
+        "lang": "zh",
+        "key": "level_rogue6_4-7",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_一步之遥": {
+        "lang": "zh",
+        "key": "level_rogue6_5-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_物欲遮天": {
+        "lang": "zh",
+        "key": "level_rogue6_5-2",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_恶意讨薪": {
+        "lang": "zh",
+        "key": "level_rogue6_5-3",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_送别仪式": {
+        "lang": "zh",
+        "key": "level_rogue6_5-4",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_彼处水如酒": {
+        "lang": "zh",
+        "key": "level_rogue6_5-5",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_丛林法则": {
+        "lang": "zh",
+        "key": "level_rogue6_5-6",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_过度繁殖": {
+        "lang": "zh",
+        "key": "level_rogue6_5-7",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_命运共享": {
+        "lang": "zh",
+        "key": "level_rogue6_6-1",
+        "topic": "rogue_6"
+    },
+    "ISW-NO_同域共存": {
+        "lang": "zh",
+        "key": "level_rogue6_6-2",
+        "topic": "rogue_6"
+    }
 }

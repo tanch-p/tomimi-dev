@@ -1,0 +1,282 @@
+[
+	{
+		"difficulty": 0,
+		"ruleDesc": "初始生命值上限更高，失败时下次探索获得“特勤任务影像”",
+		"ruleDescReplacements": null,
+		"bossValue": 0,
+		"addDesc": "黑流树海的探索险象环生，失败后将在下次探索时获得额外支持",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.0,
+			"hp": 1.0
+		}
+	},
+	{
+		"difficulty": 1,
+		"ruleDesc": "初始目标生命上限-2",
+		"ruleDescReplacements": null,
+		"bossValue": 0,
+		"addDesc": "黑流树海的探索险象环生，失败后将在下次探索时获得额外支持",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.0,
+			"hp": 1.0
+		}
+	},
+	{
+		"difficulty": 2,
+		"ruleDesc": "实托邦将会在区域中生成",
+		"ruleDescReplacements": null,
+		"bossValue": 0,
+		"addDesc": "黑流树海的探索险象环生，失败后将在下次探索时获得额外支持",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.0,
+			"hp": 1.0
+		}
+	},
+	{
+		"difficulty": 3,
+		"ruleDesc": "部分【险路尽头】节点不再提前揭示 ",
+		"ruleDescReplacements": null,
+		"bossValue": 0,
+		"addDesc": "黑流树海的探索险象环生，失败后将在下次探索时获得额外支持",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.0,
+			"hp": 1.0
+		}
+	},
+	{
+		"difficulty": 4,
+		"ruleDesc": "出现【“居民”据点】节点，失败后不再获得“特勤任务影像”",
+		"ruleDescReplacements": null,
+		"bossValue": 0,
+		"addDesc": "深入故事将面临更严峻的考验",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.0,
+			"hp": 1.0
+		}
+	},
+	{
+		"difficulty": 5,
+		"ruleDesc": "所有敌人最大生命+30%",
+		"ruleDescReplacements": null,
+		"bossValue": 1,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+1%",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"floorBuff": {
+			"atk": 1.01,
+			"hp": 1.01
+		}
+	},
+	{
+		"difficulty": 6,
+		"ruleDesc": "实托邦的效果提升至中期，将会更频繁地生成，并将添加实托邦·方针的效果",
+		"ruleDescReplacements": null,
+		"bossValue": 2,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+2%\\n实托邦的效果提升至中期",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.02,
+			"hp": 1.02
+		}
+	},
+	{
+		"difficulty": 7,
+		"ruleDesc": "零件箱的初始容量-2",
+		"ruleDescReplacements": null,
+		"bossValue": 3,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+3%\\n实托邦的效果提升至中期",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.03,
+			"hp": 1.03
+		}
+	},
+	{
+		"difficulty": 8,
+		"ruleDesc": "精英及领袖敌人攻击力+15%",
+		"ruleDescReplacements": null,
+		"bossValue": 5,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+5%\\n实托邦的效果提升至中期",
+		"effects": [
+			{
+				"targets": ["ELITE", "BOSS"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 1.15,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"floorBuff": {
+			"atk": 1.05,
+			"hp": 1.05
+		}
+	},
+	{
+		"difficulty": 9,
+		"ruleDesc": "进入下一区域时损失10%的源石锭",
+		"ruleDescReplacements": null,
+		"bossValue": 6,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+6%\\n实托邦的效果提升至中期",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.06,
+			"hp": 1.06
+		}
+	},
+	{
+		"difficulty": 10,
+		"ruleDesc": "可同时部署人数-1，初始目标生命上限-2",
+		"ruleDescReplacements": null,
+		"bossValue": 7,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+7%\\n实托邦的效果提升至中期",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.07,
+			"hp": 1.07
+		}
+	},
+	{
+		"difficulty": 11,
+		"ruleDesc": "领袖敌人受到的伤害降低20％",
+		"ruleDescReplacements": null,
+		"bossValue": 8,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+8%\\n实托邦的效果提升至中期",
+		"effects": [
+			{
+				"targets": ["BOSS"],
+				"mods": [
+					{
+						"key": "dmg_res",
+						"value": 0.2,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"floorBuff": {
+			"atk": 1.08,
+			"hp": 1.08
+		}
+	},
+	{
+		"difficulty": 12,
+		"ruleDesc": "实托邦的效果提升至晚期，单个实托邦影响的范围扩大",
+		"ruleDescReplacements": null,
+		"bossValue": 10,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+10%\\n实托邦的效果提升至晚期",
+		"effects": [],
+		"floorBuff": {
+			"atk": 1.1,
+			"hp": 1.1
+		}
+	},
+	{
+		"difficulty": 13,
+		"ruleDesc": "非初始招募五星干员的希望+1，“玻利瓦尔，症结之核”的防御力提升，“未熄之地”额外造成灼燃损伤",
+		"ruleDescReplacements": null,
+		"bossValue": 12,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+12%\\n实托邦的效果提升至晚期",
+		"effects": [
+			{
+				"targets": ["enemy_2150_shchmr"],
+				"mods": [
+					{
+						"key": "def",
+						"value": 1.5,
+						"mode": "mul"
+					}
+				],
+				"special": {}
+			}
+		],
+		"floorBuff": {
+			"atk": 1.12,
+			"hp": 1.12
+		}
+	},
+	{
+		"difficulty": 14,
+		"ruleDesc": "“猎犬proto”进入目标点后行动力-1，“源阶方”的最大生命值提升，激活后全场我方每秒流失生命",
+		"ruleDescReplacements": null,
+		"bossValue": 16,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+16%\\n实托邦的效果提升至晚期",
+		"effects": [
+			{
+				"targets": ["enemy_2148_shorbb"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 2.0,
+						"mode": "mul"
+					}
+				]
+			},
+			{
+				"targets": ["enemy_2137_shsdgo"],
+				"special": {
+					"new_ability_14": {
+						"tooltip": {
+							"en": [],
+							"ja": [],
+							"zh": ["$N14$ - 进入目标点后行动力-1"]
+						}
+					}
+				}
+			}
+		],
+		"floorBuff": {
+			"atk": 1.16,
+			"hp": 1.16
+		}
+	},
+	{
+		"difficulty": 15,
+		"ruleDesc": "非初始招募六星干员的希望+1，“猎犬proto”的最大生命值提升至150%，且攻击时会为“卡德霍，黑流之源”回复1%最大生命值",
+		"ruleDescReplacements": null,
+		"bossValue": 20,
+		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+20%\\n实托邦的效果提升至晚期",
+		"effects": [
+			{
+				"targets": ["enemy_2137_shsdgo"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.5,
+						"mode": "mul"
+					}
+				],
+				"special": {
+					"new_ability_15": {
+						"tooltip": {
+							"en": [],
+							"ja": [],
+							"zh": ["$N15$ - 攻击时会为“卡德霍，黑流之源”回复1%最大生命值"]
+						}
+					}
+				}
+			}
+		],
+		"floorBuff": {
+			"atk": 1.2,
+			"hp": 1.2
+		}
+	}
+]

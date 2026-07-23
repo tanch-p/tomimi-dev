@@ -7,6 +7,7 @@ export type RogueTopic =
 	| 'rogue_sami'
 	| 'rogue_skz'
 	| 'rogue_yan'
+	| 'rogue_black'
 	| null;
 export type StatKey =
 	| 'hp'
@@ -136,7 +137,7 @@ export interface Trap {
 	stageId: string;
 	name: string;
 	desc: string;
-	group: "enemy"|"ally";
+	group: 'enemy' | 'ally';
 	tauntLevel: number;
 	mainSkillLvl: number;
 	modelType: string;

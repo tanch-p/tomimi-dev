@@ -1,7 +1,11 @@
 <script lang="ts">
-	import combat_icon from '$lib/images/is/combat_icon.webp';
-
-	export let stageId: string, eliteMode, combatOpsColor, eliteOpsColor, getEliteIcon;
+	export let stageId: string,
+		eliteMode,
+		combatOpsColor,
+		eliteOpsColor,
+		getEliteIcon,
+		iconCombat,
+		rogueTopic;
 </script>
 
 <div class="grid grid-cols-2 font-bold text-lg text-gray-700 select-none">
@@ -12,7 +16,15 @@
 		}`}
 		on:click={() => eliteMode.set(false)}
 	>
-		<img src={combat_icon} width="50px" decoding="async" loading="lazy" alt="combat ops" class="" />
+		<img
+			src={iconCombat}
+			width="50px"
+			decoding="async"
+			loading="lazy"
+			alt="combat ops"
+			class:scale-200={rogueTopic === 'rogue_black'}
+			class="select-none"
+		/>
 	</button>
 	<button
 		id="elite-toggle"
@@ -27,7 +39,8 @@
 			decoding="async"
 			loading="lazy"
 			alt="elite ops"
-			class=""
+			class="select-none"
+			class:scale-200={rogueTopic === 'rogue_black'}
 		/>
 	</button>
 </div>

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+	.scale-200 {
+		--tw-scale-x: 2;
+		--tw-scale-y: 2;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+			skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+			scaleY(var(--tw-scale-y));
+	}
+}
+
 div {
 	touch-action: manipulation;
 }
@@ -46,7 +56,7 @@ li.list-cross {
 	content: url('../src/lib/images/is/list_x.svg');
 	position: absolute;
 	top: 6px;
-	left: -19px; 
+	left: -19px;
 	/* changed to -19px on 22/01/2025, previously was -23px */
 }
 
@@ -89,11 +99,11 @@ li.list-cross {
 
 @media (orientation: landscape) {
 	body {
-	  width: 100%;
-	  margin-left: 0;
-	  margin-right: 0;
-	  padding-left: 0;
-	  padding-right: 0;
-	  overflow-x: hidden;
+		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		overflow-x: hidden;
 	}
-  }
+}

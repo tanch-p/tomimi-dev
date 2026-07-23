@@ -62,6 +62,9 @@ const getTrapWeight = (key) => {
 		case 'trap_068_badbox':
 		case 'trap_110_smbbox':
 		case 'trap_758_skzmbx':
+		case 'trap_323_shsbox':
+		case 'trap_321_shnbox':
+		case 'trap_322_shrbox':
 			return 102;
 		default:
 			return 50;
@@ -104,6 +107,7 @@ export const parseTraps = (traps: MapConfigTrap[], language: Language) => {
 			};
 		});
 		const skills = [];
+		console.log(key);
 		const skillKey = trap.skills[skillIndex];
 		if (trapSkills[skillKey]) {
 			const skill = trapSkills[skillKey];
