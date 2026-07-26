@@ -8,6 +8,16 @@
 		"level": 1,
 		"effects": [
 			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "calamity"
+					}
+				]
+			},
+			{
 				"targets": ["enemy_2073_skzrck", "trap_760_skztzs"],
 				"mods": [
 					{
@@ -31,6 +41,16 @@
 		"iconId": "rogue_4_disaster_1",
 		"level": 2,
 		"effects": [
+				{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "calamity"
+					}
+				]
+			},
 			{
 				"targets": ["enemy_2073_skzrck", "trap_760_skztzs"],
 				"mods": [
@@ -55,6 +75,16 @@
 		"iconId": "rogue_4_disaster_1",
 		"level": 3,
 		"effects": [
+				{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "calamity"
+					}
+				]
+			},
 			{
 				"targets": ["enemy_2073_skzrck", "trap_760_skztzs"],
 				"mods": [

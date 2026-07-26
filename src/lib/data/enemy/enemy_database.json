@@ -27387,7 +27387,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"move_blink"}],
 				"special": []
 			},
 			{
@@ -27402,7 +27402,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"move_blink"}],
 				"special": []
 			}
 		],

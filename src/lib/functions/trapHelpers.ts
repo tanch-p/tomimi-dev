@@ -107,7 +107,6 @@ export const parseTraps = (traps: MapConfigTrap[], language: Language) => {
 			};
 		});
 		const skills = [];
-		console.log(key);
 		const skillKey = trap.skills[skillIndex];
 		if (trapSkills[skillKey]) {
 			const skill = trapSkills[skillKey];

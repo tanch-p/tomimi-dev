@@ -1007,6 +1007,21 @@
 		"name_en": "Flower: Duck Coin",
 		"effects": [
 			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "copper_r"
+					},
+					{
+						"key": "level_hidden_group_disable",
+						"value": 0.0,
+						"valueStr": "copper_d"
+					}
+				]
+			},
+			{
 				"targets": ["enemy_2085_skzjxd"],
 				"mods": [
 					{

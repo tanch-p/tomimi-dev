@@ -153,11 +153,12 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[selectedRelics, runes, allMods, difficultyMods],
-	([$selectedRelics, $runes, $allMods, $difficultyMods]) =>
+	[selectedRelics, runes, allMods, difficultyMods, disasterEffects],
+	([$selectedRelics, $runes, $allMods, $difficultyMods, $disasterEffects]) =>
 		compileSpecialMods(
 			$selectedRelics.map((relic) => relic.effects),
 			[$runes, $allMods],
-			$difficultyMods
+			$difficultyMods,
+			$disasterEffects.map((ele) => ele.effects)
 		)
 );

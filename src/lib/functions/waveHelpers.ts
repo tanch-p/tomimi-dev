@@ -336,7 +336,7 @@ export const getBaseCount = (mapConfig, eliteMode) => {
 				) {
 					continue;
 				}
-				if (isCountableAction(action.key, mapConfig)) {
+				if (isCountableAction(action, mapConfig)) {
 					totalCount += action['count'];
 				}
 			}
@@ -391,12 +391,12 @@ export const getEnemyCountPermutations = (
 			if (bonus?.type === 'fragment' && waveIdx === bonus.wave_index && i === bonus.frag_index)
 				return;
 			fragment.actions.forEach((action) => {
-				if (ACTION_TYPES_TO_PARSE.includes(action.actionType)) return;
+				if (action.actionType !== 'SPAWN') return;
 				if (
 					hiddenGroups.includes(action['hiddenGroup']) &&
 					!action['randomSpawnGroupKey'] &&
 					!action['randomSpawnGroupPackKey'] &&
-					isCountableAction(action.key, mapConfig)
+					isCountableAction(action, mapConfig)
 				) {
 					acc += action['count'];
 				}
@@ -424,7 +424,7 @@ export const getEnemyCountPermutations = (
 					}
 				}
 				for (const action of groupActions.filter(Boolean)) {
-					if (isCountableAction(action.key, mapConfig)) {
+					if (isCountableAction(action, mapConfig)) {
 						permutationCount += action['count'];
 					}
 				}
@@ -564,7 +564,7 @@ export const generateWaveTimeline = (
 			}
 			for (const action of groupActions) {
 				handleAction(action, spawns, waveBlockingSpawns, prevPhaseTime, enemyReplace);
-				if (isCountableAction(action.key, mapConfig)) {
+				if (isCountableAction(action, mapConfig)) {
 					totalCount += action['count'];
 				}
 			}
@@ -848,16 +848,34 @@ export const compileHiddenGroups = (
 	eliteMode,
 	mapConfig,
 	rogueTopic: RogueTopic,
-	relics
+	specialMods
 ) => {
-	const modeKey = eliteMode ? mapConfig?.['ELITE'].groupKey : mapConfig?.['NORMAL'].groupKey;
+	const enabledGroups = [];
+	if (rogueTopic === 'rogue_yan') {
+		enabledGroups.push('copper_d');
+	}
+	const disabledGroups = [];
+	if (specialMods.system) {
+		for (const mod of specialMods.system) {
+			switch (mod.key) {
+				case 'level_hidden_group_enable':
+					enabledGroups.push(mod.valueStr);
+					break;
+				case 'level_hidden_group_disable':
+					disabledGroups.push(mod.valueStr);
+					break;
+			}
+		}
+	}
 	let groups = structuredClone(hiddenGroups);
-	if (modeKey) {
-		groups = [...groups, modeKey];
+	const finalGroups = enabledGroups.filter((group) => !disabledGroups.includes(group));
+	if (rogueTopic !== 'rogue_black') {
+		const modeKey = eliteMode ? mapConfig?.['ELITE'].groupKey : mapConfig?.['NORMAL'].groupKey;
+		if (modeKey) {
+			groups = [...groups, modeKey];
+		}
 	}
-	if (rogueTopic === 'rogue_yan' && !relics?.some((item) => item.id === 'rogue_5_copper_S_1')) {
-		groups = [...groups, 'copper_d'];
-	}
+	groups = [...groups, ...finalGroups];
 	return groups;
 };
 

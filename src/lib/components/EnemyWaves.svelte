@@ -25,6 +25,7 @@
 		language: Language,
 		eliteMode: Boolean,
 		otherStores,
+		specialMods,
 		difficulty: number;
 
 	let hiddenGroups = [],
@@ -44,7 +45,7 @@
 		eliteMode,
 		mapConfig,
 		rogueTopic,
-		relics
+		$specialMods
 	);
 	$: baseCount = getBaseCount(mapConfig, eliteMode);
 	$: options = getOptions(mapConfig, rogueTopic, difficulty, language);
@@ -79,44 +80,6 @@
 	$: if (selectedCountIndex) {
 		selectedPermutationIdx = 0;
 	}
-	$: if (rogueTopic) {
-		switch (rogueTopic) {
-			case 'rogue_phantom':
-				if (
-					difficulty >= 12 &&
-					['level_rogue1_b-6', 'level_rogue1_b-7', 'level_rogue1_b-8', 'level_rogue1_b-9'].includes(
-						mapConfig?.levelId
-					)
-				) {
-					hiddenGroups = ['reforge'];
-					break;
-				}
-			case 'rogue_yan':
-				if (difficulty === 18) {
-					hiddenGroups = ['extra_enemy'];
-					break;
-				}
-			default:
-				hiddenGroups = [];
-		}
-	}
-
-	otherStores?.relics?.subscribe((v) => {
-		relics = v;
-		if (v?.some((item) => item.id === 'rogue_5_copper_S_1')) {
-			hiddenGroups = [...hiddenGroups, 'copper_r'];
-		} else {
-			hiddenGroups = hiddenGroups.filter((key) => key !== 'copper_r');
-		}
-	});
-
-	otherStores?.disaster?.subscribe((v) => {
-		if (v?.[0]?.iconId === 'rogue_4_disaster_1') {
-			hiddenGroups = [...hiddenGroups, 'calamity'];
-		} else {
-			hiddenGroups = hiddenGroups.filter((key) => key !== 'calamity');
-		}
-	});
 
 	const unsubscribeFns = [];
 	onMount(() => {

@@ -66,11 +66,6 @@
 					{
 						"key": "level_hidden_group_enable",
 						"value": 0.0,
-						"valueStr": "shsdgo"
-					},
-					{
-						"key": "level_hidden_group_enable",
-						"value": 0.0,
 						"valueStr": "shsdgo2"
 					}
 				]
@@ -106,21 +101,6 @@
 			{
 				"targets": ["system"],
 				"mods": [
-					{
-						"key": "level_hidden_group_enable",
-						"value": 0.0,
-						"valueStr": "shsdgo"
-					},
-					{
-						"key": "level_hidden_group_enable",
-						"value": 0.0,
-						"valueStr": "shsdgo2"
-					},
-					{
-						"key": "level_hidden_group_enable",
-						"value": 0.0,
-						"valueStr": "shsdgo3"
-					},
 					{
 						"key": "level_hidden_group_enable",
 						"value": 0.0,

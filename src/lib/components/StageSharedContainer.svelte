@@ -50,6 +50,7 @@
 		{rogueTopic}
 		{otherStores}
 		{difficulty}
+		{specialMods}
 	>
 		<EliteToggle
 			slot="eliteMods"

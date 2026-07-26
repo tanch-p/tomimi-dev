@@ -142,7 +142,7 @@ export const statMods = derived(
 		$allMods
 	]) => {
 		const relicMods = $selectedRelics.map((relic) => {
-			const effects = relic.stages ? relic.stages[relic.count-1]?.effects : relic.effects;
+			const effects = relic.stages ? relic.stages[relic.count - 1]?.effects : relic.effects;
 			return {
 				key: relic.id,
 				mods: [effects.filter((effect) => filterModCondition(effect, $stageType))]
@@ -168,6 +168,11 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[runes, allMods, difficultyMods],
-	([$runes, $allMods, $difficultyMods]) => compileSpecialMods([$runes, $allMods], $difficultyMods)
+	[runes, allMods, difficultyMods, selectedRelics],
+	([$runes, $allMods, $difficultyMods, $selectedRelics]) =>
+		compileSpecialMods(
+			[$runes, $allMods],
+			$difficultyMods,
+			$selectedRelics.map((relic) => relic.effects)
+		)
 );

@@ -70,7 +70,18 @@
 	{
 		"difficulty": 12,
 		"ruleDesc": "结局战斗的难度提升",
-		"effects": []
+		"effects": [
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "reforge"
+					}
+				]
+			}
+		]
 	},
 	{
 		"difficulty": 13,
