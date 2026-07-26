@@ -10352,7 +10352,7 @@
 		"cooldown": 60.0,
 		"atk": { "multiplier": 0.4, "order": "final" },
 		"suffix": { "en": "Breath", "ja": "ブレス", "zh": "灾厄之口" },
-		"hits": 40,
+		"hits": 36,
 		"dmg_element": "true",
 		"tooltip": {
 			"en": [""],
@@ -10368,7 +10368,7 @@
 	"shchmr_breath_splash": {
 		"atk": { "multiplier": 0.15, "order": "final" },
 		"suffix": { "en": "15%", "ja": "15%", "zh": "15%" },
-		"hits": 40,
+		"hits": 36,
 		"dmg_element": "arts",
 		"tooltip": null
 	},
