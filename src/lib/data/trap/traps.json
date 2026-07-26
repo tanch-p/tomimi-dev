@@ -2952,7 +2952,7 @@
         "desc_en": "",
         "tauntLevel": 0,
         "group": "ally",
-        "modelType": null,
+        "modelType": "texture",
         "hideTile": false,
         "stats": [
             {
@@ -2969,7 +2969,7 @@
             "sktok_shfort"
         ],
         "talents": [],
-        "special": [],
+        "special": ["allow_ranged","roadblock"],
         "status_immune": []
     },
 	 "trap_326_shruin": {

@@ -40,7 +40,7 @@
    "sp_terrain": null,
    "sp_enemy": null,
    "n_count": [
-    48
+    65
    ],
    "e_count": null,
    "traps": [],
@@ -89,7 +89,12 @@
      "elite_min_count": 2,
      "elite_max_count": 2,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1571_mirbst"
+       }
+      ]
      }
     },
     {

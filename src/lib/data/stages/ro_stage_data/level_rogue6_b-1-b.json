@@ -39,7 +39,7 @@
    "sp_terrain": null,
    "sp_enemy": null,
    "n_count": [
-    25
+    38
    ],
    "e_count": null,
    "traps": [],
@@ -55,7 +55,12 @@
      "elite_min_count": 9,
      "elite_max_count": 9,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1024_mortar_2"
+       }
+      ]
      }
     },
     {
@@ -154,7 +159,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1256_lyacpa"
+       }
+      ]
      }
     }
    ],

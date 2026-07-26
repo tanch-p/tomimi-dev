@@ -39,7 +39,7 @@
    "sp_terrain": null,
    "sp_enemy": null,
    "n_count": [
-    27
+    28
    ],
    "e_count": null,
    "traps": [
@@ -191,7 +191,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10043_sailor"
+       }
+      ]
      }
     },
     {
@@ -228,7 +233,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10044_wintun"
+       }
+      ]
      }
     }
    ],

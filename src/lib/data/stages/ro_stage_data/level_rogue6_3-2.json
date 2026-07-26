@@ -89,14 +89,14 @@
     }
    ],
    "sp_enemy": {
-    "normal": "17",
-    "elite": "19"
+    "normal": "23",
+    "elite": "25"
    },
    "n_count": [
-    16
+    22
    ],
    "e_count": [
-    18
+    24
    ],
    "traps": [
     {
@@ -293,7 +293,12 @@
      "elite_min_count": 6,
      "elite_max_count": 6,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1309_mhboar_2"
+       }
+      ]
      }
     },
     {

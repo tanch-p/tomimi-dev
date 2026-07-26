@@ -95,14 +95,18 @@
     }
    ],
    "sp_enemy": {
-    "normal": "6",
+    "normal": "19",
     "elite": null
    },
    "n_count": [
-    5
+    16,
+    17,
+    18
    ],
    "e_count": [
-    5
+    16,
+    17,
+    18
    ],
    "traps": [
     {

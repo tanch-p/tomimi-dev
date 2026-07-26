@@ -115,5 +115,65 @@
 				"Idle": "Idle_B"
 			}
 		]
+	},
+	"enemy_1545_shpkg": {
+		"anim": [
+			{
+				"Idle": "Idle_A",
+				"Move": "Move_A"
+			},
+			{
+				"Idle": "Idle_B",
+				"Move": "Move_B"
+			}
+		]
+	},
+	"enemy_1535_wlfmster": {
+		"anim": [
+			{
+				"Idle": "A_Idle",
+				"Move": "A_Move"
+			},
+			{
+				"Idle": "B_Idle",
+				"Move": "B_Move"
+			}
+		]
+	},
+	"enemy_2150_shchmr":{
+		"anim": [
+			{
+				"Idle": "A_Idle",
+				"Move": "A_Move"
+			},
+			{
+				"Idle": "B_Idle",
+				"Move": "B_Move"
+			}
+		]
+	},
+	"enemy_2140_shsgzd":{
+		"anim": [
+			{
+				"Idle": "Idle_a",
+				"Move": "Move_a"
+			},
+			{
+				"Idle": "Idle_b",
+				"Move": "Move_b"
+			}
+		]
+	},
+	"enemy_2141_shsgz2":{
+		"anim": [
+			{
+				"Idle": "Idle_a",
+				"Move": "Move_a"
+			},
+			{
+				"Idle": "Idle_b",
+				"Move": "Move_b"
+			}
+		]
 	}
 }

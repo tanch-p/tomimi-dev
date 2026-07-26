@@ -258,7 +258,7 @@ export type Skill = {
 	key: string;
 	type?: 'skill' | 'buff' | undefined;
 	remove?: boolean;
-	value?: number;
+	value?: number | string;
 	buffloss?: boolean; //for enemies that lose buffs upon death
 	initCooldown?: number;
 	cooldown?: number;

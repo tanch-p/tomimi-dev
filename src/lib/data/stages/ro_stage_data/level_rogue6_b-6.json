@@ -39,8 +39,8 @@
    "sp_terrain": null,
    "sp_enemy": null,
    "n_count": [
-    74,
-    75
+    101,
+    102
    ],
    "e_count": null,
    "traps": [
@@ -265,7 +265,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2135_shkrbt"
+       }
+      ]
      }
     },
     {
@@ -302,7 +307,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2150_shchmr"
+       }
+      ]
      }
     }
    ],

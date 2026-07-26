@@ -87,15 +87,15 @@
    ],
    "sp_terrain": null,
    "sp_enemy": {
-    "normal": "37 / 40",
-    "elite": "38 / 41"
+    "normal": "38 / 40",
+    "elite": "39 / 41"
    },
    "n_count": [
-    36,
+    37,
     39
    ],
    "e_count": [
-    37,
+    38,
     40
    ],
    "traps": [
@@ -286,7 +286,12 @@
      "elite_min_count": 0,
      "elite_max_count": 1,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1513_dekght"
+       }
+      ]
      }
     },
     {
@@ -399,7 +404,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1099_nbkght_2"
+       }
+      ]
      }
     },
     {
@@ -436,7 +446,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1513_dekght_2"
+       }
+      ]
      }
     },
     {
@@ -473,7 +488,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1104_lfkght_2"
+       }
+      ]
      }
     }
    ],

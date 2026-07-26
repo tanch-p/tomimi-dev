@@ -84,10 +84,10 @@
    "sp_terrain": null,
    "sp_enemy": null,
    "n_count": [
-    40
+    62
    ],
    "e_count": [
-    55
+    79
    ],
    "traps": [],
    "token_cards": [],
@@ -152,7 +152,12 @@
      "elite_min_count": 7,
      "elite_max_count": 7,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2034_sythef"
+       }
+      ]
      }
     },
     {
@@ -241,7 +246,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10162_mnctpt"
+       }
+      ]
      }
     },
     {
@@ -278,7 +288,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2001_duckmi"
+       }
+      ]
      }
     },
     {
@@ -315,7 +330,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2002_bearmi"
+       }
+      ]
      }
     },
     {
@@ -352,7 +372,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2085_skzjxd"
+       }
+      ]
      }
     },
     {

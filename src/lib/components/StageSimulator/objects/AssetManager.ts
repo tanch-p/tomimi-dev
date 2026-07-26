@@ -21,10 +21,17 @@ const ENEMY_KEYS_TO_IGNORE = [
 	'enemy_1398_dhdcr',
 	'enemy_10009_sggem',
 	'enemy_1294_duchns',
-	'enemy_2121_dyspl2'
+	'enemy_2121_dyspl2',
+	'enemy_2154_shdfb'
 ];
 
-const SPINE_TEXT_IDS = ['enemy_3010_mcreep', 'enemy_10120_uaghst', 'enemy_10120_uaghst_2','enemy_10121_uasnip','enemy_1571_mirbst'];
+const SPINE_TEXT_IDS = [
+	'enemy_3010_mcreep',
+	'enemy_10120_uaghst',
+	'enemy_10120_uaghst_2',
+	'enemy_10121_uasnip',
+	'enemy_1571_mirbst'
+];
 
 const ENEMY_KEYS_TO_REPLACE = {
 	enemy_2097_skzfdd: 'enemy_2082_skzdd',
@@ -467,9 +474,7 @@ export class AssetManager {
 					} else {
 						this.spineAssetManager.loadBinary(`${folder}/${fileKey}.skel`);
 					}
-					this.spineAssetManager.loadTextureAtlas(
-						`${folder}/${fileKey}.atlas`
-					);
+					this.spineAssetManager.loadTextureAtlas(`${folder}/${fileKey}.atlas`);
 
 					const checkLoading = () => {
 						if (this.spineAssetManager.isLoadingComplete()) {
@@ -481,9 +486,7 @@ export class AssetManager {
 
 					checkLoading();
 				}).then(() => {
-					const atlas = this.spineAssetManager.get(
-						`${folder}/${fileKey}.atlas`
-					);
+					const atlas = this.spineAssetManager.get(`${folder}/${fileKey}.atlas`);
 					const atlasLoader = new spine.AtlasAttachmentLoader(atlas);
 					let skeletonData;
 					if (SPINE_TEXT_IDS.includes(key)) {

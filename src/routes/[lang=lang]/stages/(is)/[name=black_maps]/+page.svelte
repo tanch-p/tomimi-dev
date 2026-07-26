@@ -65,7 +65,7 @@
 						{#each data.stageData.data as { suffix }, i}
 							<button
 								class="basis-1/3 grow {i !== configIndex
-									? 'bg-neutral-600 brightness-50 hover:brightness-75'
+									? 'bg-neutral-600 brightness-50 min-h-[50px] hover:brightness-75'
 									: 'bg-sky-500'}"
 								on:click={() => (configIndex = i)}
 							>

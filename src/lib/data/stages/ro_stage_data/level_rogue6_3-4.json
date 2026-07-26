@@ -82,14 +82,14 @@
    ],
    "sp_terrain": null,
    "sp_enemy": {
-    "normal": "10",
+    "normal": "21",
     "elite": null
    },
    "n_count": [
-    9
+    20
    ],
    "e_count": [
-    9
+    20
    ],
    "traps": [
     {
@@ -234,7 +234,12 @@
      "elite_min_count": 8,
      "elite_max_count": 8,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1356_egun"
+       }
+      ]
      }
     },
     {

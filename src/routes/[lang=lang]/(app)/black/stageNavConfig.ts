@@ -65,6 +65,7 @@ export const bossStageGroups: readonly StageGroup[] = [
 
 export const encounterRows = [
 	['level_rogue6_t-1', 'level_rogue6_t-2', 'level_rogue6_t-3', 'level_rogue6_t-4'],
+	['level_rogue6_c-5', 'level_rogue6_c-6', 'level_rogue6_c-7'],
 	['level_rogue6_t-5']
 ] as const;
 

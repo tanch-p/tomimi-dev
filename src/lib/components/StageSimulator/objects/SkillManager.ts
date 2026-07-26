@@ -36,8 +36,17 @@ export class SkillManager {
 				this.addParasiticSprite();
 			}
 		}
-
-		if (['enemy_2042_syboss', 'enemy_2089_skzjkl','enemy_2018_csdoll'].includes(this.enemy.key)) {
+		if (['enemy_2148_shorbb'].includes(this.enemy.key)) {
+			this.activeSkills = skills
+				.filter((ele) => ele.branches)
+				.map((skill) => new ActiveSkill(enemy, skill));
+			this.activeSkills.forEach((skill, i) => {
+				skill.skillBar.position.y = (i + 1) * -10;
+				enemy.meshGroup.add(skill.skillBar);
+			});
+		} else if (
+			['enemy_2042_syboss', 'enemy_2089_skzjkl', 'enemy_2018_csdoll'].includes(this.enemy.key)
+		) {
 			this.activeSkills = skills
 				.filter(
 					(ele) =>

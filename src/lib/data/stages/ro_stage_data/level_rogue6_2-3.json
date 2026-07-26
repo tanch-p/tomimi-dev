@@ -103,16 +103,16 @@
     }
    ],
    "sp_enemy": {
-    "normal": "3 / 5",
-    "elite": "10 / 12"
+    "normal": "29",
+    "elite": null
    },
    "n_count": [
-    2,
-    4
+    27,
+    28
    ],
    "e_count": [
-    9,
-    11
+    27,
+    28
    ],
    "traps": [
     {
@@ -302,7 +302,12 @@
      "elite_min_count": 2,
      "elite_max_count": 3,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1022_dmage"
+       }
+      ]
      }
     },
     {
@@ -335,7 +340,12 @@
       "tauntLevel": 0,
       "lifepoint": 1,
       "range": -1.0,
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1072_dlancer"
+       }
+      ]
      }
     },
     {
@@ -368,7 +378,12 @@
       "tauntLevel": 0,
       "lifepoint": 1,
       "range": -1.0,
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10079_mpmage"
+       }
+      ]
      }
     },
     {
@@ -411,7 +426,12 @@
       "tauntLevel": 0,
       "lifepoint": 1,
       "range": -1.0,
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1075_dmgswd"
+       }
+      ]
      }
     },
     {
@@ -444,7 +464,12 @@
       "tauntLevel": 0,
       "lifepoint": 1,
       "range": -1.0,
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1501_demonk"
+       }
+      ]
      }
     },
     {

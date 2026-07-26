@@ -13,6 +13,13 @@
 			"en": ["Can reroute ground enemies"]
 		}
 	},
+	"allow_ranged":{
+"tooltip": {
+			"zh": ["可在装置上部署高台干员"],
+			"ja": ["上に高台ユニットが配置可能"],
+			"en": ["Ranged operators can be deployed on this device"]
+		}
+	},
 	"neutral": {
 		"tooltip": {
 			"zh": ["无敌，不可阻挡，不进行攻击"],

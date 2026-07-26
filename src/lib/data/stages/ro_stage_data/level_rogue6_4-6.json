@@ -82,14 +82,14 @@
    ],
    "sp_terrain": null,
    "sp_enemy": {
-    "normal": "28",
-    "elite": "29"
+    "normal": "31",
+    "elite": "32"
    },
    "n_count": [
-    27
+    30
    ],
    "e_count": [
-    28
+    31
    ],
    "traps": [
     {

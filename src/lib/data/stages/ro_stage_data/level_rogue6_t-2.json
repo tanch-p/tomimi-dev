@@ -49,7 +49,7 @@
    ],
    "sp_enemy": null,
    "n_count": [
-    4
+    6
    ],
    "e_count": null,
    "traps": [],
@@ -65,7 +65,12 @@
      "elite_min_count": 2,
      "elite_max_count": 2,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2085_skzjxd"
+       }
+      ]
      }
     },
     {

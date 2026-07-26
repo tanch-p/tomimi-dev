@@ -50,7 +50,7 @@
    ],
    "sp_enemy": null,
    "n_count": [
-    27
+    55
    ],
    "e_count": null,
    "traps": [],
@@ -111,7 +111,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1283_sgkill_2"
+       }
+      ]
      }
     },
     {

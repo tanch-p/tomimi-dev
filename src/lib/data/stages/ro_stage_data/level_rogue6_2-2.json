@@ -95,16 +95,18 @@
    ],
    "sp_terrain": null,
    "sp_enemy": {
-    "normal": "20 / 23",
-    "elite": "23 / 26"
+    "normal": "31 / 34",
+    "elite": "29 / 32"
    },
    "n_count": [
-    19,
-    22
+    30,
+    32,
+    33
    ],
    "e_count": [
-    22,
-    25
+    28,
+    30,
+    31
    ],
    "traps": [
     {
@@ -333,7 +335,12 @@
      "elite_min_count": 3,
      "elite_max_count": 9,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10003_trwlpl"
+       }
+      ]
      }
     },
     {

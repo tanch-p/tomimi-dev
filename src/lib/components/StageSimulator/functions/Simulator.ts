@@ -94,6 +94,7 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 				gridPos: enemy.gridPos,
 				data: enemy.data,
 				key: enemy.key,
+				disguiseKey: enemy.disguiseKey,
 				spawnUID: enemy.spawnUID,
 				actions: enemy.actions,
 				hp: enemy.hp,
@@ -284,7 +285,8 @@ class GameSimManager {
 
 	update(delta: number) {
 		GameConfig.setValue('scaledElapsedTime', GameConfig.scaledElapsedTime + delta);
-		this.noWaveBlockingSpawns = this.enemiesOnMap.filter(enemy => !enemy.dontBlockWave).length === 0;
+		this.noWaveBlockingSpawns =
+			this.enemiesOnMap.filter((enemy) => !enemy.dontBlockWave).length === 0;
 		this.noEnemyAlive = this.enemiesOnMap.filter((enemy) => !enemy.notCountInTotal).length === 0;
 		for (const enemy of this.enemiesOnMap) {
 			enemy.update(delta);

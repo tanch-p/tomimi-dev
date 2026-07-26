@@ -75,6 +75,7 @@ export class Enemy {
 	reviveTimer = 0;
 	reviveDuration = 0;
 	disguiseSkel: spine.SkeletonMesh;
+	disguiseKey: string | null = null;
 	texture;
 
 	constructor(
@@ -87,6 +88,25 @@ export class Enemy {
 		formIndex = 0,
 		setData = null
 	) {
+		const disguiseSkill = getEnemySkills(
+			enemyData,
+			enemyData.traits,
+			formIndex,
+			GameConfig.specialMods,
+			'trait'
+		).find((skill) => skill.key === 'shdopl_disguise');
+		const summonedEnemyKey = typeof disguiseSkill?.value === 'string' ? disguiseSkill.value : null;
+		const summonedEnemy = summonedEnemyKey
+			? gameManager.enemies.find((enemy) => enemy.key === summonedEnemyKey)
+			: null;
+
+		// shdopl_disguise replaces this enemy with the referenced enemy. Keep the original
+		// key only so its model can be displayed as a translucent disguise overlay.
+		if (summonedEnemy && summonedEnemy.key !== enemyData.key) {
+			this.disguiseKey = enemyData.key;
+			enemyData = summonedEnemy;
+		}
+
 		this.assetManager = AssetManager.getInstance();
 		this.gameManager = gameManager;
 		gameManager.enemiesOnMap.push(this);
@@ -137,6 +157,7 @@ export class Enemy {
 			this.reviveDuration = setData.reviveDuration;
 			this.startDuration = setData.startDuration;
 			this.startElapsedTime = setData.startElapsedTime;
+			this.disguiseKey = setData.disguiseKey;
 		} else {
 			this.spawnUID = spawnUID;
 			this.formIndex = formIndex;
@@ -181,6 +202,9 @@ export class Enemy {
 				this.motionMode = 'BLINK';
 			}
 			this.actions = this.getActions(route);
+		}
+		if (this.traits.find((skill) => skill.key === 'not_count_in_total')) {
+			this.dontBlockWave = true;
 		}
 
 		this.meshGroup = new THREE.Group();
@@ -426,6 +450,18 @@ export class Enemy {
 				skel.skeleton.color.a = 0.4;
 				this.disguiseSkel = skel;
 				this.meshGroup.add(skel);
+			}
+			if (this.disguiseKey) {
+				this.skel.skeleton.color.a = 0.7;
+				const skelData = this.assetManager.spineMap.get(this.disguiseKey);
+				if (skelData) {
+					const skel = new spine.SkeletonMesh(skelData, (parameters) => {
+						parameters.depthTest = false;
+					});
+					skel.skeleton.color.a = 0.5;
+					this.disguiseSkel = skel;
+					this.meshGroup.add(skel);
+				}
 			}
 
 			const range = this.data.forms[this.formIndex].stats.range;
@@ -686,7 +722,9 @@ export class Enemy {
 		if (this.state === 'fall') return;
 
 		this.skillManager.update(delta);
-		if (this.currentActionIndex >= this.actions.length) {
+		if (this.key === 'enemy_1351_yhhshp') {
+			this.animState = 'Default';
+		} else if (this.currentActionIndex >= this.actions.length) {
 			if (this.motionMode === 'NONE') {
 				// special case for skzamb
 				this.animState = 'Idle';
@@ -695,7 +733,7 @@ export class Enemy {
 			this.onEnd();
 			return;
 		}
-		if(this.traits.some(skill => skill.key === "statue_enemy")){
+		if (this.traits.some((skill) => skill.key === 'statue_enemy')) {
 			return;
 		}
 		// 避障力
@@ -1146,7 +1184,10 @@ export class Enemy {
 		if (!animName) return;
 		if (!this.skel.state.hasAnimation(animName)) return;
 		if (this.disguiseSkel) {
-			this.disguiseSkel.state.setAnimation(0, animName.replace('A', 'B'), true);
+			const disguiseAnimName = animName.replace('A', 'B');
+			if (this.disguiseSkel.state.hasAnimation(disguiseAnimName)) {
+				this.disguiseSkel.state.setAnimation(0, disguiseAnimName, true);
+			}
 		}
 		if (animName === this.skel.state.currentAnimation) return;
 		const repeat = !['Start', 'Blink'].includes(this.animState);

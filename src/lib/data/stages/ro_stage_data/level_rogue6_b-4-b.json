@@ -39,7 +39,7 @@
    "sp_terrain": null,
    "sp_enemy": null,
    "n_count": [
-    30
+    74
    ],
    "e_count": null,
    "traps": [],
@@ -90,7 +90,12 @@
      "elite_min_count": 30,
      "elite_max_count": 30,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10073_mpcar_2"
+       }
+      ]
      }
     },
     {
@@ -127,7 +132,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_1273_stmgun"
+       }
+      ]
      }
     },
     {
@@ -278,7 +288,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_10077_mpbarr_2"
+       }
+      ]
      }
     },
     {

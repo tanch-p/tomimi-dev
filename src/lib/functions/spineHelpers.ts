@@ -18,8 +18,8 @@ export const getSpineMetaData = (key, skel) => {
 			height = 130;
 			break;
 	}
-	if(Number.isNaN(width)) width = 50;
-	if(Number.isNaN(height)) height = 50;
+	if (Number.isNaN(width)) width = 50;
+	if (Number.isNaN(height)) height = 50;
 	return { width, height };
 };
 
@@ -29,7 +29,7 @@ export const getSpineAnimations = (key: string, skelData: spine.SkeletonData) =>
 	// a set of states for each enemy form index, ignore hover/prisoner for now
 	// only deal with a handful of boss enemies with multiforms
 
-	if (key === '') {
+	if (key === 'enemy_2143_shwksc') {
 		console.log(skelData);
 	}
 
@@ -144,6 +144,8 @@ export function getIdleAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_2114_dylbgg':
 		case 'enemy_2115_dylbg2':
 		case 'enemy_10127_rkmbst':
+		case 'enemy_10126_rkbomb':
+		case 'enemy_10126_rkbomb_2':
 			return 'A_Idle';
 
 		case 'enemy_1418_mmkonm':
@@ -234,6 +236,8 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_2092_skzamy':
 		case 'enemy_2105_dyrnge':
 		case 'enemy_10127_rkmbst':
+		case 'enemy_10126_rkbomb':
+		case 'enemy_10126_rkbomb_2':
 			return 'A_Move';
 		case 'enemy_10058_cjfrog':
 		case 'enemy_10058_cjfrog_2':

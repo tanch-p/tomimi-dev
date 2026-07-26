@@ -2469,7 +2469,7 @@
    ],
    "sp_enemy": null,
    "n_count": [
-    12
+    20
    ],
    "e_count": null,
    "traps": [],
@@ -2505,7 +2505,12 @@
      "elite_min_count": 8,
      "elite_max_count": 8,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdopl_disguise",
+        "value": "enemy_2136_shcolo"
+       }
+      ]
      }
     },
     {

@@ -36569,6 +36569,9 @@
 				"traits": [
 					{
 						"key": "not_count_in_total"
+					},
+					{
+						"key":"self_bind_plus"
 					}
 				],
 				"special": []
@@ -72503,7 +72506,7 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"stationary_boss"},{"key":"shwksc_blink"},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
+				"traits": [{"key":"stationary_boss"},{"key":"move_skill_blink"},{"key":"shwksc_blink"},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
 				"special": []
 			}
 		],
@@ -72540,7 +72543,7 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"stationary_boss"},{"key":"shwksc_blink","cooldown":75},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
+				"traits": [{"key":"stationary_boss"},{"key":"move_skill_blink"},{"key":"shwksc_blink","cooldown":75},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
 				"special": []
 			}
 		],
@@ -72721,6 +72724,7 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
+					{"key":"self_bind"},
 					{ "key": "shorbb_start" },
 					{ "key": "shorbb_dmg_red" },
 					{ "key": "shorbb_branch_summon" },
