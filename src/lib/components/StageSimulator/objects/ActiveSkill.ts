@@ -30,14 +30,17 @@ export class ActiveSkill {
 	branchIntervalElapsedTime = 0;
 	branchElapsedTime = 0;
 	branchPhaseIndexHolder;
+	manualActivation = false;
+	isManuallyActive = false;
 
-	constructor(enemy: Enemy, skill: Skill) {
+	constructor(enemy: Enemy, skill: Skill, manualActivation = false) {
 		this.assetManager = AssetManager.getInstance();
 		this.enemy = enemy;
 		this.skill = skill;
+		this.manualActivation = manualActivation;
 		this.hasSp = this.skill.type === 'skill';
 		if (this.hasSp) {
-			if (skill.initCooldown) {
+			if (skill.initCooldown !== undefined) {
 				const { initSp, spCost } = this.convertCooldownToTimeRegen(skill);
 				this.initSp = initSp;
 				this.spCost = spCost;
@@ -125,6 +128,15 @@ export class ActiveSkill {
 		}
 		this.handleBranchUpdate(delta);
 		if (!this.hasSp) return;
+		if (this.manualActivation) {
+			if (!this.isManuallyActive) {
+				this.currSp = Math.min(this.currSp + delta, this.spCost);
+				if (this.mesh) {
+					this.mesh.material.uniforms.progress.value = this.currSp / this.spCost;
+				}
+			}
+			return;
+		}
 		if (this.maxUsageCount) {
 			if (this.currCount >= this.maxUsageCount) {
 				if (this.skill.key === 'mzk_extra_summon') {
@@ -138,7 +150,7 @@ export class ActiveSkill {
 		if (this.skillTimer > 0) {
 			this.skillTimer += delta;
 			if (this.skillTimer > this.duration) {
-				if(this.skill.needTarget) return;
+				if (this.skill.needTarget) return;
 				this.skillTimer = 0;
 				switch (this.actionType) {
 					case 'summonBranch':
@@ -173,6 +185,56 @@ export class ActiveSkill {
 				this.skillTimer += delta;
 				this.currSp = 0;
 			}
+		}
+	}
+
+	get isReady() {
+		return !this.isFinished && !this.isManuallyActive && this.currSp >= this.spCost;
+	}
+
+	activateManually() {
+		if (!this.isReady) return false;
+		if (this.maxUsageCount && this.currCount >= this.maxUsageCount) {
+			this.isFinished = true;
+			return false;
+		}
+		this.currSp = 0;
+		this.currCount++;
+		this.isManuallyActive = true;
+		if (this.mesh) {
+			this.mesh.material.uniforms.progress.value = 0;
+		}
+		return true;
+	}
+
+	finishManualActivation() {
+		this.isManuallyActive = false;
+	}
+
+	getManualData() {
+		if (!this.manualActivation) return null;
+		return {
+			key: this.skill.key,
+			currSp: this.currSp,
+			currCount: this.currCount,
+			isFinished: this.isFinished,
+			isManuallyActive: this.isManuallyActive
+		};
+	}
+
+	setManualData(data: {
+		currSp: number;
+		currCount: number;
+		isFinished: boolean;
+		isManuallyActive: boolean;
+	}) {
+		if (!this.manualActivation || !data) return;
+		this.currSp = data.currSp;
+		this.currCount = data.currCount;
+		this.isFinished = data.isFinished;
+		this.isManuallyActive = data.isManuallyActive;
+		if (this.mesh) {
+			this.mesh.material.uniforms.progress.value = this.currSp / this.spCost;
 		}
 	}
 	handleBranchUpdate(delta: number) {

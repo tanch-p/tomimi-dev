@@ -110,19 +110,15 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 				isMoving: enemy.isMoving,
 				blinkState: enemy.blinkState,
 				blinkElapsedTime: enemy.blinkElapsedTime,
+				skillBlinkState: enemy.skillBlinkState,
+				skillBlinkElapsedTime: enemy.skillBlinkElapsedTime,
+				skillBlinkSkillKey: enemy.skillBlinkSkillKey,
 				waitElapsedTime: enemy.waitElapsedTime,
 				exit: enemy.exit,
 				exitElapsedTime: enemy.exitElapsedTime,
 				traits: enemy.traits,
 				specials: enemy.specials,
-				skillData: enemy.skillManager.accelerateParams
-					? {
-							accelerationIntervalTimer: enemy.skillManager.accelerationIntervalTimer,
-							accelerationPreDelayTimer: enemy.skillManager.accelerationPreDelayTimer,
-							accelerateParams: enemy.skillManager.accelerateParams,
-							accelerationStacks: enemy.skillManager.accelerationStacks
-					  }
-					: null,
+				skillData: enemy.skillManager.getData(),
 				formIndex: enemy.formIndex,
 				spineAnimIndex: enemy.spineAnimIndex,
 				timeToWait: enemy.timeToWait,
@@ -131,6 +127,7 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 				fragmentKey: enemy.fragmentKey,
 				reviveTimer: enemy.reviveTimer,
 				reviveDuration: enemy.reviveDuration,
+				timeoutElapsedTime: enemy.timeoutElapsedTime,
 				startElapsedTime: enemy.startElapsedTime,
 				startDuration: enemy.startDuration
 			};

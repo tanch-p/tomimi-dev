@@ -10597,9 +10597,6 @@
 		"tooltip": null
 	},
 	"cadesd_fly": {
-		"type": "skill",
-		"initCooldown": 0,
-		"cooldown": 0,
 		"suffix": { "en": "Move", "ja": "移動", "zh": "行于荒原" },
 		"atk": { "multiplier": 0.8 },
 		"dmg_element": "arts",
@@ -10608,7 +10605,7 @@
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"在原地留下一个临时弹道，闪现至下一路径点",
+				"【行于荒原】","在原地留下一个临时弹道，闪现至下一路径点",
 				"随后令弹道飞向自己所在位置，弹道对路径上碰撞到的所有我方单位造成攻击力80%的{arts}伤害，并令其10秒内攻击速度-70（同名技能效果不可叠加）",
 				"技能期间持有无敌、晕眩免疫、冻结免疫，且生命自然恢复速度(百分比)+5%",
 				"※弹道飞行速度10，碰撞半径1.5"
@@ -10619,6 +10616,7 @@
 		"type": "skill",
 		"initCooldown": 450,
 		"cooldown": 450,
+		"timeout":450,
 		"suffix": { "en": "End", "ja": "消滅", "zh": "湮灭" },
 		"tooltip": {
 			"en": [""],
@@ -10651,6 +10649,9 @@
 		"type": "skill",
 		"initCooldown": 20,
 		"cooldown": 40,
+		"motionMode": "skill_blink",
+		"beginAnimation": "Skill_2_Begin",
+		"endAnimation": "Skill_2_End",
 		"suffix": { "en": "Move", "ja": "移動", "zh": "行于荒原" },
 		"atk": { "multiplier": 0.8 },
 		"dmg_element": "arts",
@@ -10803,6 +10804,9 @@
 		"type": "skill",
 		"initCooldown": 0,
 		"cooldown": 30,
+		"motionMode": "skill_blink",
+		"beginAnimation": "Skill_Begin",
+		"endAnimation": "Skill_End",
 		"duration":3,
 		"suffix": { "en": "Teleport", "ja": "転移", "zh": "闪现" },
 		"tooltip": {

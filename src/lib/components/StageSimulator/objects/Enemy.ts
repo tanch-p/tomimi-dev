@@ -30,7 +30,7 @@ export class Enemy {
 	state: string;
 	alive = true;
 	direction: THREE.Vector3;
-	motionMode: 'WALK' | 'FLY' | 'BLINK' | 'NONE';
+	motionMode: 'WALK' | 'FLY' | 'BLINK' | 'SKILL_BLINK' | 'NONE';
 	isMoving = false;
 	traits: Skill[];
 	specials: Skill[];
@@ -70,10 +70,20 @@ export class Enemy {
 	blinkElapsedTime = 0;
 	blinkStartDuration = 0;
 	blinkEndDuration = 0;
+	skillBlinkState: 'BEGIN' | 'END' | null = null;
+	skillBlinkElapsedTime = 0;
+	skillBlinkBeginDuration = 0;
+	skillBlinkEndDuration = 0;
+	skillBlinkTriggerKey: string | null = null;
+	skillBlinkBeginAnimation = 'Skill_Begin';
+	skillBlinkEndAnimation = 'Skill_End';
+	skillBlinkSkillKey: string | null = null;
 	spineAnimIndex = 0;
 	timeToWait = 0;
 	reviveTimer = 0;
 	reviveDuration = 0;
+	timeoutElapsedTime = 0;
+	timeoutDuration: number | null = null;
 	disguiseSkel: spine.SkeletonMesh;
 	disguiseKey: string | null = null;
 	texture;
@@ -140,6 +150,9 @@ export class Enemy {
 			this.isMoving = setData.isMoving;
 			this.blinkState = setData.blinkState;
 			this.blinkElapsedTime = setData.blinkElapsedTime;
+			this.skillBlinkState = setData.skillBlinkState ?? null;
+			this.skillBlinkElapsedTime = setData.skillBlinkElapsedTime ?? 0;
+			this.skillBlinkSkillKey = setData.skillBlinkSkillKey ?? null;
 			this.waitElapsedTime = setData.waitElapsedTime;
 			this.entry = false;
 			this.exit = setData.exit;
@@ -155,9 +168,12 @@ export class Enemy {
 			this.fragmentKey = setData.fragmentKey;
 			this.reviveTimer = setData.reviveTimer;
 			this.reviveDuration = setData.reviveDuration;
+			this.timeoutElapsedTime = setData.timeoutElapsedTime ?? 0;
 			this.startDuration = setData.startDuration;
 			this.startElapsedTime = setData.startElapsedTime;
 			this.disguiseKey = setData.disguiseKey;
+			this.configureSkillBlink();
+			this.configureTimeout();
 		} else {
 			this.spawnUID = spawnUID;
 			this.formIndex = formIndex;
@@ -195,12 +211,18 @@ export class Enemy {
 			if (this.traits.find((skill) => ['not_count_in_total'].includes(skill.key))) {
 				this.notCountInTotal = true;
 			}
-			if (this.traits.find((skill) => ['self_bind', 'self_bind_plus'].includes(skill.key))) {
+			if (
+				this.traits.find((skill) =>
+					['self_bind', 'self_bind_plus', 'stationary_boss'].includes(skill.key)
+				)
+			) {
 				this.motionMode = 'NONE';
 			}
 			if (this.traits.find((skill) => skill.key === 'move_blink')) {
 				this.motionMode = 'BLINK';
 			}
+			this.configureSkillBlink();
+			this.configureTimeout();
 			this.actions = this.getActions(route);
 		}
 		if (this.traits.find((skill) => skill.key === 'not_count_in_total')) {
@@ -282,14 +304,7 @@ export class Enemy {
 			}
 			this.skelData = this.assetManager.spineMap.get(this.key);
 			this.animations = getSpineAnimations(this.key, this.skelData);
-			if (this.motionMode === 'BLINK' && this.skelData) {
-				this.blinkStartDuration = this.skelData.animations.find(
-					(ele) => ele.name === 'Move_Begin'
-				)?.duration;
-				this.blinkEndDuration = this.skelData.animations.find(
-					(ele) => ele.name === 'Move_End'
-				)?.duration;
-			}
+			this.setBlinkAnimationDurations();
 			return;
 		}
 		const shadowGeometry = new THREE.PlaneGeometry(
@@ -391,14 +406,7 @@ export class Enemy {
 			if (!this.skelData) {
 				return;
 			}
-			if (this.motionMode === 'BLINK') {
-				this.blinkStartDuration = this.skelData.animations.find(
-					(ele) => ele.name === 'Move_Begin'
-				)?.duration;
-				this.blinkEndDuration = this.skelData.animations.find(
-					(ele) => ele.name === 'Move_End'
-				)?.duration;
-			}
+			this.setBlinkAnimationDurations();
 			this.animations = getSpineAnimations(this.key, this.skelData);
 			const skeletonMesh = new spine.SkeletonMesh(this.skelData, (parameters) => {
 				parameters.depthTest = false;
@@ -543,6 +551,44 @@ export class Enemy {
 			}
 		}
 	}
+
+	setBlinkAnimationDurations() {
+		if (!this.skelData) return;
+		if (this.motionMode === 'BLINK') {
+			this.blinkStartDuration = this.skelData.animations.find(
+				(ele) => ele.name === 'Move_Begin'
+			)?.duration;
+			this.blinkEndDuration = this.skelData.animations.find(
+				(ele) => ele.name === 'Move_End'
+			)?.duration;
+		}
+		if (this.motionMode === 'SKILL_BLINK') {
+			this.skillBlinkBeginDuration = this.skelData.animations.find(
+				(ele) => ele.name === this.skillBlinkBeginAnimation
+			)?.duration;
+			this.skillBlinkEndDuration = this.skelData.animations.find(
+				(ele) => ele.name === this.skillBlinkEndAnimation
+			)?.duration;
+		}
+	}
+
+	configureSkillBlink() {
+		const skills = this.traits.concat(this.specials);
+		const skillBlinkSkill = skills.find((skill) => skill.motionMode === 'skill_blink');
+		if (!skillBlinkSkill) return;
+
+		this.motionMode = 'SKILL_BLINK';
+		this.skillBlinkTriggerKey = skillBlinkSkill.key;
+		this.skillBlinkBeginAnimation = skillBlinkSkill.beginAnimation ?? 'Skill_Begin';
+		this.skillBlinkEndAnimation = skillBlinkSkill.endAnimation ?? 'Skill_End';
+	}
+
+	configureTimeout() {
+		const timeoutSkill = this.traits
+			.concat(this.specials)
+			.find((skill) => skill.timeout !== undefined);
+		this.timeoutDuration = timeoutSkill?.timeout ?? null;
+	}
 	handlePosChange() {
 		const gridPos = this.gameManager.getGridPosFromVectors(this.meshGroup.position);
 		if (gridPos !== this.gridPos) {
@@ -587,7 +633,11 @@ export class Enemy {
 				pathType: 'end'
 			}
 		];
-		if (this.motionMode === 'FLY' || this.motionMode === 'BLINK') {
+		if (
+			this.motionMode === 'FLY' ||
+			this.motionMode === 'BLINK' ||
+			this.motionMode === 'SKILL_BLINK'
+		) {
 			return actions;
 		}
 
@@ -715,6 +765,14 @@ export class Enemy {
 
 	update(delta: number) {
 		this.handleAnimUpdate(delta);
+		if (this.exit) return;
+		if (this.timeoutDuration !== null) {
+			this.timeoutElapsedTime += delta;
+			if (this.timeoutElapsedTime >= this.timeoutDuration) {
+				this.onEnd();
+				return;
+			}
+		}
 		if (this.startDuration > this.startElapsedTime) {
 			this.handleStart(delta);
 			return;
@@ -802,6 +860,50 @@ export class Enemy {
 								break;
 						}
 
+						return;
+					}
+					if (this.motionMode === 'SKILL_BLINK') {
+						if (!this.skelData) return;
+						switch (this.skillBlinkState) {
+							case null: {
+								if (!this.skillBlinkTriggerKey) {
+									this.animState = 'Idle';
+									return;
+								}
+								const skill = this.skillManager.activateReadyManualSkill(this.skillBlinkTriggerKey);
+								if (!skill) {
+									this.animState = 'Idle';
+									return;
+								}
+								this.skillBlinkSkillKey = skill.skill.key;
+								this.animState = 'SkillBlink';
+								this.skillBlinkState = 'BEGIN';
+								break;
+							}
+							case 'BEGIN':
+								this.skillBlinkElapsedTime += delta;
+								if (this.skillBlinkElapsedTime > this.skillBlinkBeginDuration) {
+									this.skillBlinkElapsedTime = 0;
+									const { x, y } = this.gameManager.getVectorCoordinates(position, reachOffset);
+									this.targetPos = new THREE.Vector3(x, y, GameConfig.baseZIndex);
+									this.raycastPos.copy(this.targetPos);
+									this.meshGroup.position.copy(this.targetPos);
+									this.skillBlinkState = 'END';
+								}
+								break;
+							case 'END':
+								this.skillBlinkElapsedTime += delta;
+								if (this.skillBlinkElapsedTime > this.skillBlinkEndDuration) {
+									this.skillBlinkElapsedTime = 0;
+									if (this.skillBlinkSkillKey) {
+										this.skillManager.finishManualSkill(this.skillBlinkSkillKey);
+									}
+									this.skillBlinkSkillKey = null;
+									this.skillBlinkState = null;
+									this.animState = 'Idle';
+									this.currentActionIndex++;
+								}
+						}
 						return;
 					}
 					if (!this.isMoving) {
@@ -1164,6 +1266,8 @@ export class Enemy {
 				GameConfig.specialMods,
 				'special'
 			);
+			this.configureSkillBlink();
+			this.configureTimeout();
 			this.skillManager.setSkills(this.traits.concat(this.specials));
 		}
 	}
@@ -1181,6 +1285,16 @@ export class Enemy {
 					break;
 			}
 		}
+		if (this.animState === 'SkillBlink') {
+			switch (this.skillBlinkState) {
+				case 'BEGIN':
+					animName = this.skillBlinkBeginAnimation;
+					break;
+				case 'END':
+					animName = this.skillBlinkEndAnimation;
+					break;
+			}
+		}
 		if (!animName) return;
 		if (!this.skel.state.hasAnimation(animName)) return;
 		if (this.disguiseSkel) {
@@ -1190,7 +1304,7 @@ export class Enemy {
 			}
 		}
 		if (animName === this.skel.state.currentAnimation) return;
-		const repeat = !['Start', 'Blink'].includes(this.animState);
+		const repeat = !['Start', 'Blink', 'SkillBlink'].includes(this.animState);
 		this.skel.state.setAnimation(0, animName, repeat);
 	}
 
@@ -1223,6 +1337,9 @@ export class Enemy {
 		this.isMoving = setData.isMoving;
 		this.blinkState = setData.blinkState;
 		this.blinkElapsedTime = setData.blinkElapsedTime;
+		this.skillBlinkState = setData.skillBlinkState ?? null;
+		this.skillBlinkElapsedTime = setData.skillBlinkElapsedTime ?? 0;
+		this.skillBlinkSkillKey = setData.skillBlinkSkillKey ?? null;
 		this.waitElapsedTime = setData.waitElapsedTime;
 		this.exit = setData.exit;
 		this.exitElapsedTime = setData.exitElapsedTime;
@@ -1234,6 +1351,7 @@ export class Enemy {
 		this.standbyTime = setData.standbyTime;
 		this.reviveTimer = setData.reviveTimer;
 		this.reviveDuration = setData.reviveDuration;
+		this.timeoutElapsedTime = setData.timeoutElapsedTime ?? 0;
 		this.startDuration = setData.startDuration;
 		this.startElapsedTime = setData.startElapsedTime;
 		this.countdownId = -1;

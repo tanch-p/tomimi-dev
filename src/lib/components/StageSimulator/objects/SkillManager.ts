@@ -58,12 +58,17 @@ export class SkillManager {
 				skill.skillBar.position.y = (i + 1) * -10;
 				enemy.meshGroup.add(skill.skillBar);
 			});
+		} else if (this.enemy.motionMode === 'SKILL_BLINK') {
+			this.activeSkills = skills
+				.filter((skill) => skill.key === this.enemy.skillBlinkTriggerKey)
+				.map((skill) => new ActiveSkill(enemy, skill, true));
+			this.activeSkills.forEach((skill, i) => {
+				skill.skillBar.position.y = (i + 1) * -10;
+				enemy.meshGroup.add(skill.skillBar);
+			});
 		}
 		if (skillData) {
-			this.accelerationIntervalTimer = skillData.accelerationIntervalTimer;
-			this.accelerationPreDelayTimer = skillData.accelerationPreDelayTimer;
-			this.accelerateParams = skillData.accelerateParams;
-			this.accelerationStacks = skillData.accelerationStacks;
+			this.set(skillData);
 		}
 	}
 	addParasiticSprite() {
@@ -127,6 +132,14 @@ export class SkillManager {
 				skill.skillBar.position.y = (i + 1) * -20;
 				this.enemy.meshGroup.add(skill.skillBar);
 			});
+		} else if (this.enemy.motionMode === 'SKILL_BLINK') {
+			this.activeSkills = skills
+				.filter((skill) => skill.key === this.enemy.skillBlinkTriggerKey)
+				.map((skill) => new ActiveSkill(this.enemy, skill, true));
+			this.activeSkills.forEach((skill, i) => {
+				skill.skillBar.position.y = (i + 1) * -20;
+				this.enemy.meshGroup.add(skill.skillBar);
+			});
 		}
 	}
 
@@ -148,12 +161,39 @@ export class SkillManager {
 		}
 	}
 
+	activateReadyManualSkill(key: string) {
+		const skill = this.activeSkills.find(
+			(skill) => skill.manualActivation && skill.skill.key === key && skill.isReady
+		);
+		return skill?.activateManually() ? skill : null;
+	}
+
+	finishManualSkill(key: string) {
+		this.activeSkills.find((skill) => skill.skill.key === key)?.finishManualActivation();
+	}
+
+	getData() {
+		const manualSkills = this.activeSkills.map((skill) => skill.getManualData()).filter(Boolean);
+		return {
+			accelerationIntervalTimer: this.accelerationIntervalTimer,
+			accelerationPreDelayTimer: this.accelerationPreDelayTimer,
+			accelerateParams: this.accelerateParams,
+			accelerationStacks: this.accelerationStacks,
+			manualSkills
+		};
+	}
+
 	set(data) {
 		if (!data) return;
 		this.accelerationIntervalTimer = data.accelerationIntervalTimer;
 		this.accelerationPreDelayTimer = data.accelerationPreDelayTimer;
 		this.accelerateParams = data.accelerateParams;
 		this.accelerationStacks = data.accelerationStacks;
+		for (const skillData of data.manualSkills ?? []) {
+			this.activeSkills
+				.find((skill) => skill.skill.key === skillData.key)
+				?.setManualData(skillData);
+		}
 	}
 
 	reset() {}

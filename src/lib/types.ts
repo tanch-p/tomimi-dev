@@ -265,6 +265,10 @@ export type Skill = {
 	initSp?: number;
 	spCost?: number;
 	duration?: number;
+	timeout?: number;
+	motionMode?: 'skill_blink';
+	beginAnimation?: string;
+	endAnimation?: string;
 	skillRange?: number;
 	skillType?: 'INCREASE_WITH_TIME' | 'INCREASE_WHEN_ATTACK';
 	needTarget?: boolean;

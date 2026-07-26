@@ -72237,7 +72237,7 @@
 					{ "key": "shdbjg_flash" },
 					{ "key": "shdbjg_atk" },
 					{ "key": "blocked_atk_up" },
-					{ "key": "shbdjg_smoke" }
+					{ "key": "shdbjg_smoke" }
 				],
 				"special": []
 			}
@@ -72280,7 +72280,7 @@
 					{ "key": "shdbjg_flash" },
 					{ "key": "shdbjg_atk" },
 					{ "key": "blocked_atk_up" },
-					{ "key": "shbdjg_smoke" }
+					{ "key": "shdbjg_smoke" }
 				],
 				"special": []
 			}
@@ -72506,7 +72506,7 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"stationary_boss"},{"key":"move_skill_blink"},{"key":"shwksc_blink"},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
+				"traits": [{"key":"stationary_boss"},{"key":"shwksc_blink"},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
 				"special": []
 			}
 		],
@@ -72543,7 +72543,7 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"stationary_boss"},{"key":"move_skill_blink"},{"key":"shwksc_blink","cooldown":75},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
+				"traits": [{"key":"stationary_boss"},{"key":"shwksc_blink","cooldown":75},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
 				"special": []
 			}
 		],
