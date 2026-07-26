@@ -29,7 +29,7 @@ export const getSpineAnimations = (key: string, skelData: spine.SkeletonData) =>
 	// a set of states for each enemy form index, ignore hover/prisoner for now
 	// only deal with a handful of boss enemies with multiforms
 
-	if (key === 'enemy_2143_shwksc') {
+	if (key === 'enemy_2153_shcan') {
 		console.log(skelData);
 	}
 
@@ -146,7 +146,10 @@ export function getIdleAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_10127_rkmbst':
 		case 'enemy_10126_rkbomb':
 		case 'enemy_10126_rkbomb_2':
+		case 'trap_258_rgcssm':
 			return 'A_Idle';
+		case 'trap_327_shchst':
+			return 'A_Idle_1';
 
 		case 'enemy_1418_mmkonm':
 		case 'enemy_1418_mmkonm_2':
@@ -228,6 +231,7 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 
 		case 'enemy_2070_skzfbx':
 		case 'enemy_2084_skzcan':
+		case 'enemy_2153_shcan':
 			return 'Move1';
 		case 'enemy_10047_shrknt':
 		case 'enemy_10047_shrknt_2':

@@ -2655,7 +2655,7 @@
 		"desc_en": "",
 		"tauntLevel": -1,
 		"group": "ally",
-		"modelType": null,
+		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
 			{
@@ -2692,7 +2692,7 @@
 		"desc_en": "",
 		"tauntLevel": -1,
 		"group": "ally",
-		"modelType": null,
+		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
 			{
@@ -2729,7 +2729,7 @@
 		"desc_en": "",
 		"tauntLevel": -1,
 		"group": "ally",
-		"modelType": null,
+		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
 			{
@@ -2766,7 +2766,7 @@
 		"desc_en": "",
 		"tauntLevel": -1,
 		"group": "ally",
-		"modelType": null,
+		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
 			{
@@ -2803,7 +2803,7 @@
         "desc_en": "",
         "tauntLevel": 0,
         "group": "ally",
-        "modelType": null,
+        "modelType": "spine",
         "hideTile": false,
         "stats": [
             {
@@ -2832,8 +2832,8 @@
         "desc_ja": "「ある種の天命」を弾き飛ばし、HPを一定量失う",
         "desc_en": "Bounces 'Certain Fates' away and loses some HP",
         "tauntLevel": -1,
-        "group": "ally",
-        "modelType": null,
+        "group": "enemy",
+        "modelType": "spine",
         "hideTile": false,
         "stats": [
             {
@@ -2862,7 +2862,7 @@
         "desc_en": "Increases the DEF of adjacent allied operators",
         "tauntLevel": 0,
         "group": "ally",
-        "modelType": null,
+        "modelType": "texture",
         "hideTile": false,
         "stats": [
             {
@@ -2891,7 +2891,7 @@
         "desc_ja": "",
         "desc_en": "",
         "tauntLevel": 1,
-        "group": "ally",
+        "group": "enemy",
         "modelType": null,
         "hideTile": false,
         "stats": [
@@ -2922,7 +2922,7 @@
         "desc_en": "",
         "tauntLevel": 0,
         "group": "ally",
-        "modelType": null,
+        "modelType": "spine",
         "hideTile": false,
         "stats": [
             {
