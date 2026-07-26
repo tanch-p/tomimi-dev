@@ -3001,5 +3001,35 @@
         "talents": [],
         "special": [],
         "status_immune": []
+    },
+	"trap_025_prison": {
+        "key": "trap_025_prison",
+        "name_zh": "禁锢装置",
+        "name_ja": "禁固装置",
+        "name_en": "Imprisonment Device",
+        "desc_zh": null,
+        "desc_ja": null,
+        "desc_en": null,
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": "texture",
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 2000,
+                "atk": 0,
+                "def": 0,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": "3-15"
+            }
+        ],
+        "skills": [
+            "sktok_prison"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
     }
 }

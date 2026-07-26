@@ -10807,7 +10807,6 @@
 		"motionMode": "skill_blink",
 		"beginAnimation": "Skill_Begin",
 		"endAnimation": "Skill_End",
-		"duration":3,
 		"suffix": { "en": "Teleport", "ja": "転移", "zh": "闪现" },
 		"tooltip": {
 			"en": [""],

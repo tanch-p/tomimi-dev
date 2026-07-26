@@ -3222,5 +3222,42 @@
                 "blackboard": []
             }
         ]
+    },
+	"sktok_prison": {
+        "name_zh": "启动禁锢！",
+        "name_ja": "禁固機能起動！",
+        "name_en": "Lock 'em Up!",
+        "desc_zh": "消耗<@ba.vup>5</>点部署费用，使范围内目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒，并立即进入禁锢状态（不会重置禁锢状态敌人的攻击计数）",
+        "desc_ja": "コスト<@ba.vup>5</>で使用可能、範囲内の敵全員を<@ba.vup>{stun}</>秒間<$ba.stun>スタン</>させ、禁固状態にする（すでに禁固状態中の敵の攻撃回数はリセットされない）",
+        "desc_en": "Consumes <@ba.vup>5</> DP to immediately <$ba.stun>Stun</> all targets within range for <@ba.vup>{stun}</> seconds and Imprison them (Will not reset the attack count of Imprisoned enemies)",
+        "skillType": "MANUAL",
+        "durationType": "NONE",
+        "spType": "INCREASE_WITH_TIME",
+        "levels": [
+            {
+                "rangeId": "3-15",
+                "spData": {
+                    "spType": "INCREASE_WITH_TIME",
+                    "levelUpCost": null,
+                    "maxChargeTime": 1,
+                    "spCost": 25,
+                    "initSp": 0,
+                    "increment": 1.0
+                },
+                "duration": 0.0,
+                "blackboard": [
+                    {
+                        "key": "stun",
+                        "value": 2.0,
+                        "valueStr": null
+                    },
+                    {
+                        "key": "cost",
+                        "value": 5.0,
+                        "valueStr": null
+                    }
+                ]
+            }
+        ]
     }
 }
