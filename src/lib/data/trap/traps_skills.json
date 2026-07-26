@@ -3259,5 +3259,94 @@
                 ]
             }
         ]
+    },
+	"sktok_xdice1": {
+        "name_zh": "雪崩",
+        "name_ja": "雪崩",
+        "name_en": "Avalanche",
+        "desc_zh": "对禁区内所有敌人造成真实伤害并<@ba.vup>特大力地</>推动；\\n对禁区内所有我方单位造成真实伤害并<@ba.vup>推动一格</>，若<@ba.vup>无法推动</>则造成更多真实伤害并晕眩;\\n<@ba.rem>推动方向为圣女像所指朝向</>",
+        "desc_ja": "警告エリア内の敵全員に確定ダメージを与え、<@ba.vup>極めて力強く</>突き飛ばす。\n警告エリア内の味方全員を<@ba.vup>1マス突き飛ばす</>。突き飛ばす先が配置不可で<@ba.vup>突き飛ばせない</>場合、より多くの確定ダメージを与え、さらに数秒スタンさせる。\n<@ba.rem>突き飛ばす方向は巫女像の向きに準じる</>",
+        "desc_en": "Deals True damage to all enemies in Avalanche Area and pushes them <@ba.vup>tremendously</>;\ndeals True damage to all allied units in Avalanche Area and pushes them by <@ba.vup>one tile</>, if they <@ba.vup>cannot be pushed</>, deals more True damage and inflicts Stun; \n<@ba.rem>Operators are pushed in the Saintess Statue's pointing direction</>",
+        "skillType": "AUTO",
+        "durationType": "NONE",
+        "spType": 8,
+        "levels": [
+            {
+                "rangeId": null,
+                "spData": {
+                    "spType": 8,
+                    "levelUpCost": null,
+                    "maxChargeTime": 1,
+                    "spCost": 15,
+                    "initSp": 5,
+                    "increment": 0.0
+                },
+                "duration": 2.0,
+                "blackboard": [
+                    {
+                        "key": "sp_ratio",
+                        "value": 0.8,
+                        "valueStr": null
+                    }
+                ]
+            },
+            {
+                "rangeId": null,
+                "spData": {
+                    "spType": 8,
+                    "levelUpCost": null,
+                    "maxChargeTime": 1,
+                    "spCost": 15,
+                    "initSp": 0,
+                    "increment": 0.0
+                },
+                "duration": 2.0,
+                "blackboard": [
+                    {
+                        "key": "sp_ratio",
+                        "value": 0.8,
+                        "valueStr": null
+                    }
+                ]
+            },
+            {
+                "rangeId": null,
+                "spData": {
+                    "spType": 8,
+                    "levelUpCost": null,
+                    "maxChargeTime": 1,
+                    "spCost": 15,
+                    "initSp": 8,
+                    "increment": 0.0
+                },
+                "duration": 2.0,
+                "blackboard": [
+                    {
+                        "key": "sp_ratio",
+                        "value": 0.8,
+                        "valueStr": null
+                    }
+                ]
+            },
+            {
+                "rangeId": null,
+                "spData": {
+                    "spType": 8,
+                    "levelUpCost": null,
+                    "maxChargeTime": 1,
+                    "spCost": 15,
+                    "initSp": 12,
+                    "increment": 0.0
+                },
+                "duration": 2.0,
+                "blackboard": [
+                    {
+                        "key": "sp_ratio",
+                        "value": 0.8,
+                        "valueStr": null
+                    }
+                ]
+            }
+        ]
     }
 }

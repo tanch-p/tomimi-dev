@@ -3031,5 +3031,35 @@
         "talents": [],
         "special": [],
         "status_immune": []
+    },
+	"trap_265_xdice1": {
+        "key": "trap_265_xdice1",
+        "name_zh": "圣女像",
+        "name_ja": "巫女像",
+        "name_en": "Saintess Statue",
+        "desc_zh": "敌人进入禁区时根据其重量增加雪崩预警值\\n在禁区内部署干员时增加一定量雪崩预警值",
+        "desc_ja": "敵が警告エリアに進入時、敵の重量に応じて雪崩警戒値が増加\n警告エリア内にオペレーターを配置時、雪崩警戒値が増加",
+        "desc_en": "Enemies increase the Avalanche Warning Index when entering the Avalanche Area\nDeploying Operators within the area will also increase the Index's value",
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": "texture",
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 5000,
+                "atk": 0,
+                "def": 0,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": null
+            }
+        ],
+        "skills": [
+            "sktok_xdice1"
+        ],
+        "talents": [],
+        "special": [],
+        "status_immune": []
     }
 }
