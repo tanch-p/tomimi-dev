@@ -679,6 +679,11 @@
 		"ja": "プラクトピア",
 		"zh": "实托邦"
 	},
+	"black_variation": {
+		"en": "Utopia",
+		"ja": "ユートピア",
+		"zh": "乌托邦"
+	},
 	"weather_level_1": {
 		"en": "Early Stage",
 		"ja": "初期",

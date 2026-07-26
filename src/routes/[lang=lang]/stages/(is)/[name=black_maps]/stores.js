@@ -13,7 +13,7 @@ if (browser && cookiesEnabled) {
 export const selectedRelics = writable([]);
 export const difficulty = writable(storedDifficulty);
 export const stageType = writable('');
-
+export const gold = writable(10);
 export const selectedFloor = writable(1);
 const effectiveFloorCount = derived(
 	[selectedFloor, selectedRelics],
