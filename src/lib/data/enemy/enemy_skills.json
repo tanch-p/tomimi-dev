@@ -10530,6 +10530,7 @@
 		"dmg_element": "true",
 		"suffix": { "en": "💥", "ja": "💥", "zh": "💥" },
 		"hits": 1,
+		"buffloss":true,
 		"skillRange": 1.25,
 		"tooltip": {
 			"en": [
