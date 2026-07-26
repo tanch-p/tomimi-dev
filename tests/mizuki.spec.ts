@@ -73,7 +73,7 @@ test('mizuki difficulty + mission + elite mods', async ({ page }) => {
 	await expect(page).toHaveTitle(/Crime and Punishment/);
 	const diffIncreButton = await page.$('#diff-plus');
 	let hp, atk, def;
-
+	await page.waitForTimeout(1500);
 	hp = await page.$eval('#enemy_1083_sotiab_2 p[data-id="hp-value"]', (el) => el.textContent);
 	atk = await page.$eval('#enemy_1083_sotiab_2 p[data-id="atk-value"]', (el) => el.textContent);
 	expect(hp).toBe('5000');
