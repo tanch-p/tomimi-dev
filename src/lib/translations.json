@@ -739,6 +739,11 @@
 		"ja": "<未萌生的摇篮>に入っても階数は変わりません",
 		"zh": "进入误入奇境节点不会改变区域层数"
 	},
+	"black_reenter_floor_tip": {
+		"en": "Re-entering a floor with <追忆> will increase floor count by 1",
+		"ja": "<追憶>で階層を再度入ると階層カウントが1増えます",
+		"zh": "使用追忆重新进入本区域会使层数+1"
+	},
 	"mizuki_seaborn_call": {
 		"en": "The Call of We Many",
 		"ja": "大群の呼び声",

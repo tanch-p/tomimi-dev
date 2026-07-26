@@ -1,5 +1,16 @@
 [
 	{
+		"id": "rogue_6_relic_artifact_5",
+		"name_zh": "追忆",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+		],
+		"tooltip_zh": "进入下一区域时，变为重新进入本区域，之后该收藏品失效(※使用后会使层数+1)",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
 		"id": "rogue_6_relic_final_3",
 		"name_zh": "怦然信标",
 		"name_ja": "",

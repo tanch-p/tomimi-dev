@@ -98,6 +98,7 @@ export const relicLookup = {
 	rogue_6_relic_final_6: 'rogue_6_relic_final_6',
 	rogue_6_start_3: 'rogue_6_start_3',
 	rogue_6_start_4: 'rogue_6_start_4',
+	rogue_6_relic_artifact_5: 'rogue_6_relic_artifact_5',
 
 	rogue_1_relic_q29: 'relic_spinach',
 	rogue_1_relic_p46: 'relic_hand_superspeed',

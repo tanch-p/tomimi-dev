@@ -15,9 +15,18 @@ export const difficulty = writable(storedDifficulty);
 export const stageType = writable('');
 
 export const selectedFloor = writable(1);
+const effectiveFloorCount = derived(
+	[selectedFloor, selectedRelics],
+	([$selectedFloor, $selectedRelics]) => {
+		const hasAdditionalFloorCount = Boolean(
+			$selectedRelics.find((relic) => relic.id === 'rogue_6_relic_artifact_5')
+		);
+		return $selectedFloor + (hasAdditionalFloorCount ? 1 : 0);
+	}
+);
 const floorDifficultyMods = derived(
-	[selectedFloor, difficulty],
-	([$selectedFloor, $difficulty]) => {
+	[effectiveFloorCount, difficulty],
+	([$effectiveFloorCount, $difficulty]) => {
 		const floorBuff = difficultyModsList[$difficulty].floorBuff;
 		return [
 			{
@@ -25,12 +34,12 @@ const floorDifficultyMods = derived(
 				mods: [
 					{
 						key: 'hp',
-						value: floorBuff.hp ** $selectedFloor,
+						value: floorBuff.hp ** $effectiveFloorCount,
 						mode: 'mul'
 					},
 					{
 						key: 'atk',
-						value: floorBuff.atk ** $selectedFloor,
+						value: floorBuff.atk ** $effectiveFloorCount,
 						mode: 'mul'
 					}
 				]

@@ -21,4 +21,5 @@
 		{/each}
 	</div>
 	<p class="text-center text-sm mt-4">※{getTranslations(language).black_sp_floor_tip}</p>
+	<p class="text-center text-sm mt-1">※{getTranslations(language).black_reenter_floor_tip}</p>
 </div>
