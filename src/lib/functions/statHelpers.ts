@@ -400,6 +400,13 @@ export const compileSpecialMods = (...modsList: [[Effects]]) => {
 								specialMods[target][key] = { ...specialMods[target][key], ...effect.special[key] };
 							}
 						}
+					} else if (effect.targets.includes('system')) {
+						if (!specialMods['system']) {
+							specialMods['system'] = [];
+						}
+						for (const mod of effect.mods) {
+							specialMods['system'].push(mod);
+						}
 					}
 				});
 			}
