@@ -268,7 +268,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_2135_shkrbt"
+        "enemy_key": "enemy_2135_shkrbt"
        }
       ]
      }
@@ -310,7 +310,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_2150_shchmr"
+        "enemy_key": "enemy_2150_shchmr"
        }
       ]
      }

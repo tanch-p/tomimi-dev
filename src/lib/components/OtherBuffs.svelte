@@ -43,7 +43,7 @@
 						</div>
 					{:else}
 						<img
-							src={buff.img || `/images/enemy_icons/${buff.key}.webp`}
+							src={buff.img || `/images/enemy_icons/${buff.imgKey}.webp`}
 							alt={buff.name}
 							width="60"
 							height="60"

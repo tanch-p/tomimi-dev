@@ -320,7 +320,12 @@
      "elite_min_count": 4,
      "elite_max_count": 4,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftxjl_grow",
+        "duration": "60"
+       }
+      ]
      }
     },
     {

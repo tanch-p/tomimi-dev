@@ -194,7 +194,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_10043_sailor"
+        "enemy_key": "enemy_10043_sailor"
        }
       ]
      }
@@ -236,7 +236,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_10044_wintun"
+        "enemy_key": "enemy_10044_wintun"
        }
       ]
      }

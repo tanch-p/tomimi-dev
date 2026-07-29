@@ -292,7 +292,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1049_eagent"
+        "enemy_key": "enemy_1049_eagent"
        }
       ]
      }
@@ -400,7 +400,13 @@
       "attractImmune": false,
       "lifepoint": 1,
       "range": -1.0,
-      "levelType": "NORMAL"
+      "levelType": "NORMAL",
+      "talentBlackboard": [
+       {
+        "key": "msnip_shot",
+        "duration": 10
+       }
+      ]
      }
     },
     {

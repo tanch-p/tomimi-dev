@@ -204,7 +204,15 @@
 						"mode": "mul"
 					}
 				],
-				"special": {}
+				"special": {
+					"new_ability_13": {
+						"tooltip": {
+							"en": [],
+							"ja": [],
+							"zh": ["$N13$ - “未熄之地”额外造成攻击力10%的{ba.dt.burning}"]
+						}
+					}
+				}
 			}
 		],
 		"floorBuff": {
@@ -227,7 +235,16 @@
 						"value": 2.0,
 						"mode": "mul"
 					}
-				]
+				],
+				"special": {
+					"new_ability_14": {
+						"tooltip": {
+							"en": [],
+							"ja": [],
+							"zh": ["$N14$ - 激活后全场我方每秒流失100点生命"]
+						}
+					}
+				}
 			},
 			{
 				"targets": ["enemy_2137_shsdgo"],

@@ -92,7 +92,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1571_mirbst"
+        "enemy_key": "enemy_1571_mirbst"
        }
       ]
      }

@@ -58,7 +58,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1024_mortar_2"
+        "enemy_key": "enemy_1024_mortar_2"
        }
       ]
      }
@@ -162,7 +162,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1256_lyacpa"
+        "enemy_key": "enemy_1256_lyacpa"
        }
       ]
      }

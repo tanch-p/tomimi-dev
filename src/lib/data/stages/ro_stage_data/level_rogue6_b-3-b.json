@@ -105,7 +105,25 @@
       "lifepoint": 0,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "shdfb_spawn",
+        "tooltip": {
+         "en": [
+          "Disappears after $6$s",
+          "Explosion Radius, Damage, and Elemental Damage $increase$ linearly from their maximum values to 0 within $6$ seconds of appearing (updated once per second), with maximum values of 1.5, 500, and 200, respectively"
+         ],
+         "ja": [
+          "$6$秒後消滅する",
+          "【爆発半径】、【ダメージ】、および【元素ダメージ】は、登場から6秒の間に0から最大値まで線形に$増加$する（1秒ごとに1回変化する）。これら3つの最大値は、それぞれ1.5 / 500 / 200である"
+         ],
+         "zh": [
+          "登场$6$秒后自身退场（视为无原因击杀）",
+          "【爆炸半径】、【法术伤害量】和【元素损伤量】在登场的$6$秒内由0至最大值线性$增加$（每秒变化一次），三者的最大值分别为1.5 / 500 / 200"
+         ]
+        }
+       }
+      ]
      }
     },
     {

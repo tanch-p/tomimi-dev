@@ -306,7 +306,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_2137_shsdgo"
+        "enemy_key": "enemy_2137_shsdgo"
        }
       ]
      }

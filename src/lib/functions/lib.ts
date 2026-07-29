@@ -252,7 +252,8 @@ export const setOtherBuffsList = (
 					replacedSkill.effects?.maxCount ||
 					Math.max(enemyCount.max_count, enemyCount.elite_max_count, 1);
 				const buff = {
-					key: replacedSkill.effects?.key || enemy.key,
+					key: replacedSkill.effects?.key || enemy.stageId,
+					imgKey: enemy.key,
 					name: enemy[`name_${language}`],
 					targets: replacedSkill.effects.targets,
 					activeTargets: replacedSkill.effects.activeTargets,

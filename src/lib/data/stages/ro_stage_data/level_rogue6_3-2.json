@@ -281,7 +281,12 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "NORMAL",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "standby",
+        "standby": 0
+       }
+      ]
      }
     },
     {
@@ -296,7 +301,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1309_mhboar_2"
+        "enemy_key": "enemy_1309_mhboar_2"
        }
       ]
      }

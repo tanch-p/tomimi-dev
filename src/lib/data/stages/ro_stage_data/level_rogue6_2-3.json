@@ -305,7 +305,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1022_dmage"
+        "enemy_key": "enemy_1022_dmage"
        }
       ]
      }
@@ -343,7 +343,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1072_dlancer"
+        "enemy_key": "enemy_1072_dlancer"
        }
       ]
      }
@@ -381,7 +381,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_10079_mpmage"
+        "enemy_key": "enemy_10079_mpmage"
        }
       ]
      }
@@ -429,7 +429,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1075_dmgswd"
+        "enemy_key": "enemy_1075_dmgswd"
        }
       ]
      }
@@ -467,7 +467,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1501_demonk"
+        "enemy_key": "enemy_1501_demonk"
        }
       ]
      }

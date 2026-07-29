@@ -122,7 +122,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1280_sgmag"
+        "enemy_key": "enemy_1280_sgmag"
        }
       ]
      }

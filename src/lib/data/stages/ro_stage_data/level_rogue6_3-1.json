@@ -401,7 +401,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_2135_shkrbt"
+        "enemy_key": "enemy_2135_shkrbt"
        }
       ]
      }

@@ -16054,7 +16054,15 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "icefield_arts_fighter_explode",
+						"atk": { "multiplier": 1.5 }
+					},
+					{
+						"key": "unbalance_damage"
+					}
+				],
 				"special": []
 			}
 		],
@@ -23188,7 +23196,8 @@
 				"epResistance": 0.0,
 				"traits": [
 					{
-						"key": "stealth"
+						"key": "stealth_fast",
+						"duration":1
 					},
 					{
 						"key": "payback_sgkill"
@@ -23231,7 +23240,8 @@
 				"epResistance": 0.0,
 				"traits": [
 					{
-						"key": "stealth"
+						"key": "stealth_fast",
+						"duration":1
 					},
 					{
 						"key": "payback_sgkill"
@@ -27387,7 +27397,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"move_blink"}],
+				"traits": [{ "key": "move_blink" }],
 				"special": []
 			},
 			{
@@ -27402,7 +27412,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"move_blink"}],
+				"traits": [{ "key": "move_blink" }],
 				"special": []
 			}
 		],
@@ -36571,7 +36581,7 @@
 						"key": "not_count_in_total"
 					},
 					{
-						"key":"self_bind_plus"
+						"key": "self_bind_plus"
 					}
 				],
 				"special": []
@@ -72189,7 +72199,7 @@
 				"def": 300,
 				"res": 20.0,
 				"aspd": 1.8,
-				"range": 2.0,
+				"range": 0.0,
 				"weight": 3,
 				"lifepoint": 1,
 				"ms": 1.3,
@@ -72506,7 +72516,12 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"stationary_boss"},{"key":"shwksc_blink"},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
+				"traits": [
+					{ "key": "stationary_boss" },
+					{ "key": "shwksc_blink" },
+					{ "key": "shwksc_atk" },
+					{ "key": "shwksc_defeat" }
+				],
 				"special": []
 			}
 		],
@@ -72543,7 +72558,12 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"stationary_boss"},{"key":"shwksc_blink","cooldown":75},{"key":"shwksc_atk"},{"key":"shwksc_defeat"}],
+				"traits": [
+					{ "key": "stationary_boss" },
+					{ "key": "shwksc_blink", "cooldown": 75 },
+					{ "key": "shwksc_atk" },
+					{ "key": "shwksc_defeat" }
+				],
 				"special": []
 			}
 		],
@@ -72580,7 +72600,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "stationary_boss" },{"key":"resist_100"}],
+				"traits": [{ "key": "stationary_boss" }, { "key": "resist_100" }],
 				"special": [
 					[
 						{ "key": "atk_priority_high_block" },
@@ -72636,7 +72656,7 @@
 				"epResistance": 0.0,
 				"traits": [
 					{ "key": "stationary_boss" },
-					{"key":"resist_100"},
+					{ "key": "resist_100" },
 					{ "key": "atk_priority_high_block" },
 					{ "key": "cadesd_invincible" },
 					{ "key": "cadesd_defeat" },
@@ -72724,7 +72744,7 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{"key":"self_bind"},
+					{ "key": "self_bind" },
 					{ "key": "shorbb_start" },
 					{ "key": "shorbb_dmg_red" },
 					{ "key": "shorbb_branch_summon" },
@@ -73073,7 +73093,11 @@
 				"ms": 2.5,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"invincible_type2"},{"key":"shdfb_spawn"},{"key":"shdfb_explode"}],
+				"traits": [
+					{ "key": "invincible_type2" },
+					{ "key": "shdfb_spawn" },
+					{ "key": "shdfb_explode" }
+				],
 				"special": []
 			}
 		],

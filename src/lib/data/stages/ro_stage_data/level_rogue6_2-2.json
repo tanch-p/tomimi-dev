@@ -338,7 +338,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_10003_trwlpl"
+        "enemy_key": "enemy_10003_trwlpl"
        }
       ]
      }

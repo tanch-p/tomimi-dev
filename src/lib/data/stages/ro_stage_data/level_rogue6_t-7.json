@@ -823,7 +823,12 @@
      "elite_min_count": 0,
      "elite_max_count": 0,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "sea_reaper_awaken",
+        "standby": 0
+       }
+      ]
      }
     }
    ],

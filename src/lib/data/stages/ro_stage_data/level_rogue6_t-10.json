@@ -251,7 +251,12 @@
      "elite_min_count": 1,
      "elite_max_count": 1,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "standby",
+        "standby": 0
+       }
+      ]
      }
     }
    ],

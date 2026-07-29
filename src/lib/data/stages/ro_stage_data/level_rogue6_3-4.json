@@ -237,7 +237,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1356_egun"
+        "enemy_key": "enemy_1356_egun"
        }
       ]
      }

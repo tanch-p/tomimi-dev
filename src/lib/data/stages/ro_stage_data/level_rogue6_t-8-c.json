@@ -88,7 +88,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_2136_shcolo"
+        "enemy_key": "enemy_2136_shcolo"
        }
       ]
      }

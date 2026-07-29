@@ -39,7 +39,103 @@
     "All enemy units have +20% ATK, +20% DEF, +20% Max HP",
     "&lt;system&gt;"
    ],
-   "all_mods": null,
+   "all_mods": [
+    {
+     "targets": [
+      "enemy_10081_mpplai"
+     ],
+     "special": {
+      "mods_1": [
+       {
+        "key": "hp",
+        "value": 2500,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "atk",
+        "value": 400,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "def",
+        "value": 100,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "res",
+        "value": 20,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "ms",
+        "value": -0.55,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "atk_interval",
+        "value": 1.3,
+        "mode": "add",
+        "order": "final"
+       },
+       {
+        "key": "weight",
+        "value": 1,
+        "mode": "add",
+        "order": "initial"
+       }
+      ],
+      "mods_2": [
+       {
+        "key": "hp",
+        "value": 2000,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "atk",
+        "value": 200,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "def",
+        "value": -200,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "res",
+        "value": 30,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "ms",
+        "value": -0.4,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "atk_interval",
+        "value": 3.0,
+        "mode": "add",
+        "order": "final"
+       },
+       {
+        "key": "weight",
+        "value": 1,
+        "mode": "add",
+        "order": "initial"
+       }
+      ]
+     }
+    }
+   ],
    "n_mods": null,
    "elite_mods": [
     {
@@ -279,7 +375,21 @@
      "elite_min_count": 6,
      "elite_max_count": 6,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "mpplai_avenger_stat",
+        "v_hp": 2500,
+        "v_atk": 400,
+        "v_def": 100,
+        "formIndex": 1
+       },
+       {
+        "key": "mpplai_caster_stat",
+        "v_def": "-200",
+        "v_atk": 200,
+        "formIndex": 2
+       }
+      ]
      }
     },
     {

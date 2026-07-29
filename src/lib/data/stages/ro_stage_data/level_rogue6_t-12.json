@@ -114,7 +114,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1283_sgkill_2"
+        "enemy_key": "enemy_1283_sgkill_2"
        }
       ]
      }

@@ -2,8 +2,8 @@
 	"move_blink": {
 		"tooltip": null
 	},
-	"move_skill_blink":{
-		"tooltip":null
+	"move_skill_blink": {
+		"tooltip": null
 	},
 	"disguise": {
 		"tooltip": null
@@ -112,10 +112,11 @@
 		}
 	},
 	"stealth_fast": {
+		"duration":0,
 		"tooltip": {
-			"en": ["Stealth (fast) - regains stealth 0s after not being blocked"],
-			"ja": ["ステルス(即)→ブロックされなくなる0秒後ステルス状態になる"],
-			"zh": ["隐匿(速)→解除阻挡0秒后恢复"]
+			"en": ["Stealth (fast) - regains stealth <v.duration>s after not being blocked"],
+			"ja": ["ステルス(即)→ブロックされなくなる<v.duration>秒後ステルス状態になる"],
+			"zh": ["隐匿(速)→解除阻挡<v.duration>秒后恢复"]
 		}
 	},
 	"stealth_atk": {
@@ -3876,6 +3877,17 @@
 		}
 	},
 	"payback_sgkill": {
+		"type": "buff",
+		"effects": {
+			"targets": ["enemy_1283_sgkill","enemy_1283_sgkill_2"],
+			"activeTargets": [],
+			"mods": [
+				{ "key": "atk", "value": 0.15, "order": "initial", "mode": "mul" },
+				{ "key": "def", "value": 0.15, "order": "initial", "mode": "mul" },
+				{ "key": "aspd", "value": 50, "order": "final", "mode": "add" }
+			],
+			"stackType": "add"
+		},
 		"tooltip": {
 			"en": ["During 'Payback Time', gains ATK +15%, DEF +15% and ASPD +50"],
 			"ja": ["「粛清の時」中、攻撃力・防御力+15%、攻撃速度+50"],
@@ -5980,15 +5992,16 @@
 		"hits": 1,
 		"atk": { "multiplier": 1 },
 		"dmg_element": "arts",
+		"duration":5,
 		"tooltip": {
 			"en": [
-				"<ba.straightshot>Straight Shot</> - Fires a bolt towards the target after a 1.5 seconds wind-up time, during which invisibility is nullified, dealing {arts} damage equal to ATK and Stunning the unit hit for 5 seconds{ignore_camou}"
+				"<ba.straightshot>Straight Shot</> - Fires a bolt towards the target after a 1.5 seconds wind-up time, during which invisibility is nullified, dealing {arts} damage equal to ATK and Stunning the unit hit for <v.duration> seconds{ignore_camou}"
 			],
 			"ja": [
-				"<ba.straightshot>直線射撃</>：1.5秒チャージした後（チャージ中ステルスが無効）、対象の方向に1本の矢を発射。矢に最初に触れた対象に、攻撃力の100%の{arts}ダメージを与え5秒間スタンさせる{ignore_camou}"
+				"<ba.straightshot>直線射撃</>：1.5秒チャージした後（チャージ中ステルスが無効）、対象の方向に1本の矢を発射。矢に最初に触れた対象に、攻撃力の100%の{arts}ダメージを与え<v.duration>秒間スタンさせる{ignore_camou}"
 			],
 			"zh": [
-				"<ba.straightshot>直击</>：蓄力1.5s后向目标方向发射1支弩箭(蓄力时失去隐匿)，对击中的首个目标造成攻击力100%的{arts}伤害与5s晕眩{ignore_camou}"
+				"<ba.straightshot>直击</>：蓄力1.5s后向目标方向发射1支弩箭(蓄力时失去隐匿)，对击中的首个目标造成攻击力100%的{arts}伤害与<v.duration>s晕眩{ignore_camou}"
 			]
 		}
 	},
@@ -7739,10 +7752,10 @@
 		"duration": 30,
 		"tooltip": {
 			"en": [
-				"HP and ATK linearly increases over time while outside the line of sight of a friendly unit, up to +<v.hpup>% HP and +<v.atkup>% ATK after 30 seconds"
+				"HP and ATK linearly increases over time while outside the line of sight of a friendly unit, up to +<v.hpup>% HP and +<v.atkup>% ATK after <v.duration> seconds"
 			],
 			"ja": [
-				"味方の攻撃範囲外にいると、最大HPと攻撃力が徐々に上昇する。30秒経過で上限に達し、最大HP+<v.hpup>%・攻撃力+<v.atkup>%。"
+				"味方の攻撃範囲外にいると、最大HPと攻撃力が徐々に上昇する。<v.duration>秒経過で上限に達し、最大HP+<v.hpup>%・攻撃力+<v.atkup>%。"
 			],
 			"zh": [
 				"位于我方单位有效视野范围外时，部分属性在<v.duration>s线性提升，最高提升至：最大生命值+<v.hpup>%、攻击力+<v.atkup>%",
@@ -7875,11 +7888,14 @@
 		}
 	},
 	"mpplai_avenger_stat": {
+		"v_hp":4000,
+		"v_atk":500,
+		"v_def":250,
 		"tooltip": {
 			"en": [],
 			"ja": [],
 			"zh": [
-				"最大生命值+4000，攻击力+500，防御力+250，法术抗性+20，移动速度-0.55，攻击间隔+1.3，重量等级+1"
+				"最大生命值+<v.v_hp>，攻击力+<v.v_atk>，防御力+<v.v_def>，法术抗性+20，移动速度-0.55，攻击间隔+1.3，重量等级+1"
 			]
 		}
 	},
@@ -7894,11 +7910,13 @@
 		}
 	},
 	"mpplai_caster_stat": {
+		"v_def":"+200",
+		"v_atk":300,
 		"tooltip": {
 			"en": [],
 			"ja": [],
 			"zh": [
-				"最大生命值+2000，攻击力+300，防御力+200，法术抗性+30，移动速度-0.4，攻击间隔+3.0，重量等级+1"
+				"最大生命值+2000，攻击力+<v.v_atk>，防御力<v.v_def>，法术抗性+30，移动速度-0.4，攻击间隔+3.0，重量等级+1"
 			]
 		}
 	},
@@ -10226,15 +10244,16 @@
 		}
 	},
 	"shdopl_disguise": {
-		"value": "enemy_2133_shdopl",
+		"enemy_key": "enemy_2133_shdopl",
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
-			"zh": ["初始伪装成一个单位，受到伤害后现身", "现身时不会继承伪装时的任何效果与伤害"]
+			"zh": ["初始伪装成一个<v.enemy_key>，受到伤害后现身", "现身时不会继承伪装时的任何效果与伤害"]
 		}
 	},
 	"shsdgo_bite": {
 		"type": "skill",
+		"skillRange": 2.0,
 		"initCooldown": 15.0,
 		"cooldown": 40.0,
 		"suffix": { "en": "Bite", "ja": "噛み", "zh": "持续撕咬" },
@@ -10461,7 +10480,9 @@
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
-			"zh": ["受到物理/法术伤害时，若自身占据列不包括伤害来源所在列则将该伤害降低至30%，否则将该伤害降低至70%"]
+			"zh": [
+				"受到物理/法术伤害时，若自身占据列不包括伤害来源所在列则将该伤害降低至30%，否则将该伤害降低至70%"
+			]
 		}
 	},
 	"shorbb_branch_summon": {
@@ -10530,7 +10551,7 @@
 		"dmg_element": "true",
 		"suffix": { "en": "💥", "ja": "💥", "zh": "💥" },
 		"hits": 1,
-		"buffloss":true,
+		"buffloss": true,
 		"skillRange": 1.25,
 		"tooltip": {
 			"en": [
@@ -10560,6 +10581,7 @@
 	},
 	"cadesd_defeat": {
 		"type": "buff",
+		"value": 30,
 		"effects": {
 			"targets": ["enemy_2146_cadesd"],
 			"activeTargets": [],
@@ -10571,7 +10593,7 @@
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"退场时，令场上所有痛楚化身的攻击力+30%（可叠加，至多2层）并强制触发技能【行于荒原】，随后根据地图配置召唤一批敌人"
+				"退场时，令场上所有痛楚化身的攻击力+<v.value>%（可叠加，至多2层）并强制触发技能【行于荒原】，随后根据地图配置召唤一批敌人"
 			]
 		}
 	},
@@ -10580,13 +10602,15 @@
 		"initCooldown": 20,
 		"cooldown": 20,
 		"value": 8,
+		"single": 350,
+		"global": 80,
 		"suffix": { "en": "Howl", "ja": "吠え", "zh": "痛吼" },
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"若攻击范围半径内存在可选目标：对这些目标分别造成(350%÷目标数)倍率的{phys}伤害",
-				"若攻击范围半径内不存在可选目标：对全场所有可选我方单位造成80%攻击力的{phys}伤害并晕眩<v.value>秒"
+				"若攻击范围半径内存在可选目标：对这些目标分别造成(<v.single>%÷目标数)倍率的{phys}伤害",
+				"若攻击范围半径内不存在可选目标：对全场所有可选我方单位造成<v.global>%攻击力的{phys}伤害并晕眩<v.value>秒"
 			]
 		}
 	},
@@ -10601,13 +10625,15 @@
 		"suffix": { "en": "Move", "ja": "移動", "zh": "行于荒原" },
 		"atk": { "multiplier": 0.8 },
 		"dmg_element": "arts",
+		"duration": 10,
 		"hits": 1,
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"【行于荒原】","在原地留下一个临时弹道，闪现至下一路径点",
-				"随后令弹道飞向自己所在位置，弹道对路径上碰撞到的所有我方单位造成攻击力80%的{arts}伤害，并令其10秒内攻击速度-70（同名技能效果不可叠加）",
+				"【行于荒原】",
+				"在原地留下一个临时弹道，闪现至下一路径点",
+				"随后令弹道飞向自己所在位置，弹道对路径上碰撞到的所有我方单位造成攻击力<v.atk.multiplier>%的{arts}伤害，并令其<v.duration>秒内攻击速度-70（同名技能效果不可叠加）",
 				"技能期间持有无敌、晕眩免疫、冻结免疫，且生命自然恢复速度(百分比)+5%",
 				"※弹道飞行速度10，碰撞半径1.5"
 			]
@@ -10617,7 +10643,7 @@
 		"type": "skill",
 		"initCooldown": 450,
 		"cooldown": 450,
-		"timeout":450,
+		"timeout": 450,
 		"suffix": { "en": "End", "ja": "消滅", "zh": "湮灭" },
 		"tooltip": {
 			"en": [""],
@@ -10816,6 +10842,17 @@
 		}
 	},
 	"shwksc_defeat": {
+		"type": "buff",
+		"effects": {
+			"targets": ["exclude:enemy_2143_shwksc|enemy_2144_shwks2|enemy_2154_shdfb"],
+			"activeTargets": [],
+			"mods": [
+				{ "key": "aspd", "value": 50, "order": "initial", "mode": "add" },
+				{ "key": "ms", "value": 1.5, "order": "final", "mode": "mul" }
+			],
+			"stackType": "add",
+			"maxCount": 1
+		},
 		"tooltip": {
 			"en": [""],
 			"ja": [""],

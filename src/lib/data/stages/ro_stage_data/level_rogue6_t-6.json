@@ -181,7 +181,7 @@
       "talentBlackboard": [
        {
         "key": "shdopl_disguise",
-        "value": "enemy_1404_msnip"
+        "enemy_key": "enemy_1404_msnip"
        }
       ]
      }
