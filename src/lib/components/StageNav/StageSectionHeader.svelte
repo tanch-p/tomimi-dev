@@ -18,7 +18,7 @@
 	{/if}
 
 	<th colspan="24">
-		<div class="flex items-center justify-center select-none">
+		<div class="flex items-center justify-center select-none pointer-events-none">
 			<img
 				{src}
 				{alt}
