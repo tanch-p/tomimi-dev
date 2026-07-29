@@ -36,6 +36,18 @@
 				rel="noopener noreferrer">哲三</a
 			>】
 		</li>
+		{#if rogueTopic === 'rogue_black'}
+			<li>
+				<a
+					href={'https://www.lubiao.wiki/tools/blackstream-route'}
+					class="text-blue-400 hover:text-blue-300 pr-2"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					黑流树海地图规划 (路标wiki)
+				</a>
+			</li>
+		{/if}
 		{#if rogueTopic === 'rogue_yan'}
 			<li>
 				<a
