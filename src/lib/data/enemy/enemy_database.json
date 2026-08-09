@@ -23197,7 +23197,7 @@
 				"traits": [
 					{
 						"key": "stealth_fast",
-						"duration":1
+						"duration": 1
 					},
 					{
 						"key": "payback_sgkill"
@@ -23241,7 +23241,7 @@
 				"traits": [
 					{
 						"key": "stealth_fast",
-						"duration":1
+						"duration": 1
 					},
 					{
 						"key": "payback_sgkill"
@@ -72745,20 +72745,41 @@
 				"epResistance": 0.0,
 				"traits": [
 					{ "key": "self_bind" },
-					{ "key": "shorbb_start" },
 					{ "key": "shorbb_dmg_red" },
-					{ "key": "shorbb_branch_summon" },
-					{ "key": "shorbb_summon_plasma" },
-					{ "key": "shorbb_spark" },
-					{ "key": "shorbb_activate" },
-					{ "key": "shorbb_deactivate" }
+					{ "key": "shorbb_branch_summon" }
 				],
-				"special": []
+				"special": [
+					[{ "key": "shorbb_start" }, { "key": "shorbb_activate" }],
+					[
+						{ "key": "shorbb_deactivate" },
+						{ "key": "shorbb_summon_plasma" },
+						{ "key": "shorbb_spark" },
+						{ "key": "shorbb_ms_buff" }
+					]
+				],
+				"form_mods": [[], []]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "initial_state",
+				"normal_attack": {
+					"atk_type": ["no_attack", "arts"],
+					"hits": 1
+				},
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"palsy",
+					"attract"
+				]
+			},
+			{
+				"title": "active_state",
 				"normal_attack": {
 					"atk_type": ["no_attack", "arts"],
 					"hits": 1

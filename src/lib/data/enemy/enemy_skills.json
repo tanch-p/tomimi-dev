@@ -10473,7 +10473,26 @@
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
-			"zh": ["初始无敌，<洛伦茨，扰动之谬>被击杀后解除无敌并开始行动，召唤数个<源阶方模块>"]
+			"zh": ["无敌"]
+		}
+	},
+	"shorbb_ms_buff": {
+		"type": "buff",
+		"effects": {
+			"targets": ["exclude:enemy_2148_shorbb|enemy_2147_shophm"],
+			"activeTargets": [],
+			"mods": [
+				{ "key": "ms", "value": 1, "order": "initial", "mode": "mul" }
+			],
+			"stackType": "add",
+			"maxCount": 1
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"使全场范围内的所有敌方单位移动速度+100%（无视目标可选性）"
+			]
 		}
 	},
 	"shorbb_dmg_red": {

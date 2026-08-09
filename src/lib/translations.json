@@ -551,6 +551,11 @@
 		"ja": "飛行モード",
 		"zh": "轰炸模式"
 	},
+	"active_state":{
+		"en": "Active State",
+		"ja": "起動状態",
+		"zh": "行动模式"
+	},
 	"multiform_prefix": {
 		"en": "",
 		"ja": "第",

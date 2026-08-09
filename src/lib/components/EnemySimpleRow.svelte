@@ -35,7 +35,7 @@
 	}
 	$: multispanKeys = getMultispanKeys(enemy?.forms);
 
-	const SHARE_HP_FORMS = ['prisoner_imprisoned', 'rage', 'normal_state'];
+	const SHARE_HP_FORMS = ['prisoner_imprisoned', 'rage', 'normal_state', 'initial_state'];
 
 	const getMultispanKeys = (forms: EnemyFormType[]) => {
 		const statKeys: string[] = [];
