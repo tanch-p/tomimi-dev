@@ -10,7 +10,7 @@ test('mizuki difficulty + variation + relic', async ({ page }) => {
 
 	await expect(page).toHaveTitle(/Destiny of We Many/);
 	const diffIncreButton = await page.$('#diff-plus');
-
+	await page.waitForTimeout(1500);
 	let hp = await page.$eval('#enemy_2039_syskad p[data-id="hp-value"]', (el) => el.textContent);
 	let atk = await page.$eval('#enemy_2039_syskad p[data-id="atk-value"]', (el) => el.textContent);
 	let res = await page.$eval('#enemy_2039_syskad p[data-id="res-value"]', (el) => el.textContent);
