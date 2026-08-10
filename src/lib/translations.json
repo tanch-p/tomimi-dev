@@ -3278,6 +3278,11 @@
 		"ja": "初回配置",
 		"zh": "首次部署"
 	},
+	"last_deploy": {
+		"en": "Last Deployment",
+		"ja": "最後配置",
+		"zh": "最后部署"
+	},
 	"next_operator": {
 		"en": "Next Operator",
 		"ja": "次に配置",
@@ -3644,6 +3649,11 @@
 		"en": "Teleport",
 		"ja": "転移",
 		"zh": "传送"
+	},
+	"groundbind": {
+		"en": "Groundbind(?)",
+		"ja": "縛地",
+		"zh": "缚地"
 	},
 	"unbalance": {
 		"en": "Unbalance",

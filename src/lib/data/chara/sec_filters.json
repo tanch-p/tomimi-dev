@@ -24,6 +24,7 @@
             "aak_dmg",
             "trigger_time",
             "laterano",
+            "liftoff",
             "enemy_on_grass_tile",
             "WARRIOR",
             "skill_active",
@@ -198,8 +199,10 @@
         ],
         "category":[
             "protect",
-            "others"
-        ]
+            "others",
+            "airprotect"
+        ],
+        "module":[]
     },
     "atk_down":{
         "order":[
@@ -253,6 +256,14 @@
             "surrounding_8_tile"
         ]
     },
+    "force":{
+        "value":[],
+        "conditions":[
+            "no_block_enemy",
+            "self_block",
+            "skill_end"
+        ]
+    },
     "respawn_time":{
         "value":[]
     },
@@ -300,6 +311,7 @@
         "value":[],
         "conditions":[
             "self_no_block",
+            "peak_performance",
             "seamonster"
         ]
     },
@@ -582,13 +594,6 @@
     "block":{
         "value":[]
     },
-    "force":{
-        "value":[],
-        "conditions":[
-            "no_block_enemy",
-            "skill_end"
-        ]
-    },
     "ally_heal_scale":{
         "value":[],
         "conditions":[
@@ -684,6 +689,12 @@
         ],
         "value":[],
         "duration":[],
+        "category":[
+            "airprotect",
+            "others",
+            "protect",
+            "substitute"
+        ],
         "conditions":[
             "flying",
             "hp_lt_40",
@@ -696,11 +707,6 @@
             "position_ranged",
             "ally_behind",
             "surrounding_8_tile"
-        ],
-        "category":[
-            "protect",
-            "others",
-            "substitute"
         ],
         "module":[]
     },
@@ -759,6 +765,7 @@
         "value":[],
         "conditions":[
             "self_enemy_block",
+            "barrier_break",
             "evasion",
             "melee",
             "first_hit",
@@ -958,6 +965,12 @@
     "cost_return":{
         "value":[]
     },
+    "ally_res_penetrate":{
+        "value":[],
+        "conditions":[
+            "mujica"
+        ]
+    },
     "bonus_lifepoint":{
         "value":[]
     },
@@ -989,12 +1002,6 @@
         "conditions":[
             "laterano",
             "surrounding_8_tile"
-        ]
-    },
-    "ally_res_penetrate":{
-        "value":[],
-        "conditions":[
-            "mujica"
         ]
     },
     "blockCnt":{
