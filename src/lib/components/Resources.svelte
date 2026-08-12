@@ -47,6 +47,16 @@
 					黑流树海地图规划 (路标wiki)
 				</a>
 			</li>
+			<li>
+				<a
+					href={'https://arkrog.com/tool/blackflowmap'}
+					class="text-blue-400 hover:text-blue-300 pr-2"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					黑流树海地图笔记（影语集）
+				</a>
+			</li>
 		{/if}
 		{#if rogueTopic === 'rogue_yan'}
 			<li>
