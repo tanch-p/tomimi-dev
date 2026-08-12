@@ -153,6 +153,18 @@
 						]
 					}
 				]
+			},
+			{
+				"suffix": "x6",
+				"effects": [
+					{
+						"targets": ["enemy_2137_shsdgo"],
+						"mods": [
+							{ "key": "hp", "value": 1.2, "mode": "mul", "order":"initial" },
+							{ "key": "atk", "value": 1.2, "mode": "mul", "order":"initial" }
+						]
+					}
+				]
 			}
 		],
 		"tooltip_zh": "完成“追猎”作战后叠加1层并使下个区域初始行动力-1，每层使“猎犬proto”的生命和攻击力+20%",
