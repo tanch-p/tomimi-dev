@@ -32,6 +32,7 @@
 			otherBuffsList,
 			rogueTopic,
 			data.enemies,
+			data.traps,
 			data.mapConfig,
 			language,
 			$difficulty
@@ -47,7 +48,7 @@
 	const rogueTopic: RogueTopic = data.rogueTopic;
 </script>
 
-<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
+<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
 	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
@@ -83,7 +84,7 @@
 <FooterBar {language} {rogueTopic} {selectedRelics} {selectedUniqueRelic}>
 	<div slot="banner" class="absolute right-0 z-[1] h-16 w-16 overflow-hidden">
 		{#if $capsule}
-			<img src={$capsule.src} width="" height="" class=""/>
+			<img src={$capsule.src} width="" height="" class="" />
 		{/if}
 	</div>
 	<div

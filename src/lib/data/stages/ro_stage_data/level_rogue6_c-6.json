@@ -45,6 +45,20 @@
    "e_count": null,
    "traps": [
     {
+     "key": "trap_092_vgctrl",
+     "alias": "trap_092_vgctrl",
+     "pos": {
+      "row": 0,
+      "col": 0
+     },
+     "direction": "UP",
+     "level": 1,
+     "skillIndex": 0,
+     "mainSkillLvl": 1,
+     "hidden": false,
+     "overrideSkillBlackboard": null
+    },
+    {
      "key": "trap_008_farm",
      "alias": "trap_008_farm#1",
      "pos": {

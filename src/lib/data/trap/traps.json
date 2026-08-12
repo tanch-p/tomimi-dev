@@ -3061,5 +3061,35 @@
         "talents": [],
         "special": [],
         "status_immune": []
+    },
+	"trap_092_vgctrl": {
+        "key": "trap_092_vgctrl",
+        "name_zh": "复仇黑手",
+        "name_ja": "報復の爪痕",
+        "name_en": "Vengeful Mafioso",
+        "desc_zh": null,
+        "desc_ja": null,
+        "desc_en": null,
+        "tauntLevel": 0,
+        "group": "ally",
+        "modelType": null,
+        "hideTile": false,
+        "stats": [
+            {
+                "hp": 100,
+                "atk": 0,
+                "def": 0,
+                "res": 0.0,
+                "blockCnt": 0,
+                "aspd": 1.0,
+                "rangeId": null
+            }
+        ],
+        "skills": [
+            "sktok_vgctrl"
+        ],
+        "talents": [],
+        "special": ["vgctrl_buff","vgctrl_buff_sgkill"],
+        "status_immune": []
     }
 }

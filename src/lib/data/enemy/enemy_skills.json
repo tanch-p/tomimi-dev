@@ -3877,17 +3877,6 @@
 		}
 	},
 	"payback_sgkill": {
-		"type": "buff",
-		"effects": {
-			"targets": ["enemy_1283_sgkill","enemy_1283_sgkill_2"],
-			"activeTargets": [],
-			"mods": [
-				{ "key": "atk", "value": 0.15, "order": "initial", "mode": "mul" },
-				{ "key": "def", "value": 0.15, "order": "initial", "mode": "mul" },
-				{ "key": "aspd", "value": 50, "order": "final", "mode": "add" }
-			],
-			"stackType": "add"
-		},
 		"tooltip": {
 			"en": ["During 'Payback Time', gains ATK +15%, DEF +15% and ASPD +50"],
 			"ja": ["「粛清の時」中、攻撃力・防御力+15%、攻撃速度+50"],

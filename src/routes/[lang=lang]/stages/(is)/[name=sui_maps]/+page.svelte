@@ -40,7 +40,7 @@
 
 	$: if (mapConfig) {
 		stageType.set(getStageType(mapConfig?.levelId, rogueTopic));
-		setOtherBuffsList(otherBuffsList, rogueTopic, enemies, mapConfig, language);
+		setOtherBuffsList(otherBuffsList, rogueTopic, enemies, traps, mapConfig, language);
 		runes.set(mapConfig?.n_mods);
 		allMods.set(mapConfig?.all_mods);
 	}

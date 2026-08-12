@@ -25,7 +25,14 @@
 
 	export let data: PageData;
 	$: if (data.mapConfig) {
-		setOtherBuffsList(otherBuffsList, rogueTopic, data.enemies, data.mapConfig, language);
+		setOtherBuffsList(
+			otherBuffsList,
+			rogueTopic,
+			data.enemies,
+			data.traps,
+			data.mapConfig,
+			language
+		);
 		eliteMode.set(false);
 		runes.set(data.mapConfig?.n_mods);
 		allMods.set(data.mapConfig?.all_mods);
@@ -35,7 +42,7 @@
 	const rogueTopic: RogueTopic = data.rogueTopic;
 </script>
 
-<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
+<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
 	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />

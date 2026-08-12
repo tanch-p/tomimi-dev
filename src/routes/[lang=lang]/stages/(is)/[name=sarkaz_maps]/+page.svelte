@@ -31,7 +31,14 @@
 
 	$: if (data.mapConfig) {
 		updateReqRelic(data.mapConfig?.levelId, selectedRelics);
-		setOtherBuffsList(otherBuffsList, rogueTopic, data.enemies, data.mapConfig, language);
+		setOtherBuffsList(
+			otherBuffsList,
+			rogueTopic,
+			data.enemies,
+			data.traps,
+			data.mapConfig,
+			language
+		);
 		runes.set(data.mapConfig?.n_mods);
 		allMods.set(data.mapConfig?.all_mods);
 	}

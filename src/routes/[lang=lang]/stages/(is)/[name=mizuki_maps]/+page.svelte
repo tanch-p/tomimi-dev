@@ -32,6 +32,7 @@
 			otherBuffsList,
 			rogueTopic,
 			data.enemies,
+			data.traps,
 			data.mapConfig,
 			language,
 			$difficulty
@@ -42,7 +43,7 @@
 	$: stageName = data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh;
 </script>
 
-<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language}/>
+<StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
 	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />

@@ -1,8 +1,9 @@
-import type { Enemy, Language, MapConfig, RogueTopic } from '$lib/types';
+import type { Enemy, Language, MapConfig, RogueTopic, Trap } from '$lib/types';
 import rogue_4_fragment_F_25 from '$lib/images/is/sarkaz/rogue_4_fragment_F_25.webp';
 import tileImg from '$lib/images/tiles/tile_infection.webp';
 import { checkIsTarget } from './statHelpers';
 import enemySkills from '$lib/data/enemy/enemy_skills.json';
+import trapSkills from '$lib/data/trap/traps_skills.json';
 import ISStages from '$lib/data/stages/stage_name_lookup_table.json';
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../routes/stores';
@@ -142,6 +143,7 @@ export const setOtherBuffsList = (
 	store,
 	rogueTopic: RogueTopic,
 	enemies: Enemy[],
+	traps: Trap[],
 	mapConfig: MapConfig,
 	language: Language,
 	difficulty = 0
@@ -230,6 +232,28 @@ export const setOtherBuffsList = (
 			],
 			maxCount: 1
 		});
+	}
+	for (const trap of traps) {
+		for (const skillKey of trap.special) {
+			const skill = trapSkills[skillKey];
+			if (!skill) {
+				continue;
+			}
+			if (skill.type === 'buff') {
+				const maxCount = skill.effects?.maxCount;
+				const buff = {
+					key: skillKey,
+					img: `/images/chara_icons/${trap.key}.webp`,
+					name: trap[`name_${language}`],
+					targets: skill.effects.targets,
+					activeTargets: skill.effects.activeTargets,
+					mods: skill.effects.mods,
+					stackType: skill.effects.stackType,
+					maxCount: maxCount
+				};
+				buffsList.push(buff);
+			}
+		}
 	}
 	for (const enemy of enemies) {
 		const list = [
