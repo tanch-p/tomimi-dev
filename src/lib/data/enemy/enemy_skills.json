@@ -81,6 +81,22 @@
 			"zh": ["在<v.value>s内变为飞行单位，效果结束后降落并重新计时"]
 		}
 	},
+	"skill_levitate": {
+		"type": "skill",
+		"initCooldown": 5.0,
+		"cooldown": 15.0,
+		"value": 15,
+		"suffix": { "en": "Fly", "ja": "飛行", "zh": "起飞" },
+		"tooltip": {
+			"en": [
+				"Enters <ba.float>Low-Altitude Hovering</> state for <v.value>s; lands and restarts the timer when the effect ends"
+			],
+			"ja": [
+				"<v.value>秒<ba.float>低空浮揚</>状態となり、効果終了後に着陸してタイマーがリセットされる"
+			],
+			"zh": ["获得<v.value>s<ba.float>近地悬浮</>，效果结束后降落并进入冷却"]
+		}
+	},
 	"lower_cost_regen": {
 		"value": 50,
 		"tooltip": {
@@ -112,7 +128,7 @@
 		}
 	},
 	"stealth_fast": {
-		"duration":0,
+		"duration": 0,
 		"tooltip": {
 			"en": ["Stealth (fast) - regains stealth <v.duration>s after not being blocked"],
 			"ja": ["ステルス(即)→ブロックされなくなる<v.duration>秒後ステルス状態になる"],
@@ -5981,7 +5997,7 @@
 		"hits": 1,
 		"atk": { "multiplier": 1 },
 		"dmg_element": "arts",
-		"duration":5,
+		"duration": 5,
 		"tooltip": {
 			"en": [
 				"<ba.straightshot>Straight Shot</> - Fires a bolt towards the target after a 1.5 seconds wind-up time, during which invisibility is nullified, dealing {arts} damage equal to ATK and Stunning the unit hit for <v.duration> seconds{ignore_camou}"
@@ -7877,9 +7893,9 @@
 		}
 	},
 	"mpplai_avenger_stat": {
-		"v_hp":4000,
-		"v_atk":500,
-		"v_def":250,
+		"v_hp": 4000,
+		"v_atk": 500,
+		"v_def": 250,
 		"tooltip": {
 			"en": [],
 			"ja": [],
@@ -7899,8 +7915,8 @@
 		}
 	},
 	"mpplai_caster_stat": {
-		"v_def":"+200",
-		"v_atk":300,
+		"v_def": "+200",
+		"v_atk": 300,
 		"tooltip": {
 			"en": [],
 			"ja": [],
@@ -10415,6 +10431,17 @@
 			"zh": ["处于飞行状态时可触发，效果与上述相同"]
 		}
 	},
+	"shchmr_relic": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【击坠“神明”】削弱：进入灾厄形态(一)时的效果①不会生效",
+				"【湮没“光明”】削弱：灾厄形态下，自身输出伤害时，将伤害降低至50%",
+				"【焚毁“文明”】削弱：进入灾厄形态时的效果②③不会生效"
+			]
+		}
+	},
 	"shophm_seal_tile": {
 		"type": "skill",
 		"initCooldown": 30,
@@ -10470,18 +10497,14 @@
 		"effects": {
 			"targets": ["exclude:enemy_2148_shorbb|enemy_2147_shophm"],
 			"activeTargets": [],
-			"mods": [
-				{ "key": "ms", "value": 1, "order": "initial", "mode": "mul" }
-			],
+			"mods": [{ "key": "ms", "value": 1, "order": "initial", "mode": "mul" }],
 			"stackType": "add",
 			"maxCount": 1
 		},
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
-			"zh": [
-				"使全场范围内的所有敌方单位移动速度+100%（无视目标可选性）"
-			]
+			"zh": ["使全场范围内的所有敌方单位移动速度+100%（无视目标可选性）"]
 		}
 	},
 	"shorbb_dmg_red": {

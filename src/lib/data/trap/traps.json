@@ -2909,7 +2909,7 @@
             "sktok_shmbmb"
         ],
         "talents": [],
-        "special": ["shmbmb_1","shmbmb_explode"],
+        "special": ["shmbmb_1","shmbmb_sp","shmbmb_explode"],
         "status_immune": []
     },
     "trap_327_shchst": {

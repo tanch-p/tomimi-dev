@@ -13,8 +13,8 @@
 			"en": ["Can reroute ground enemies"]
 		}
 	},
-	"allow_ranged":{
-"tooltip": {
+	"allow_ranged": {
+		"tooltip": {
 			"zh": ["可在装置上部署高台干员"],
 			"ja": ["上に高台ユニットが配置可能"],
 			"en": ["Ranged operators can be deployed on this device"]
@@ -3038,403 +3038,418 @@
 		]
 	},
 	"sktok_tree": {
-        "name_zh": "天然隐蔽",
-        "name_ja": "きのこガード",
-        "name_en": "Natural Camouflage",
-        "desc_zh": "相邻的我方单位防御<@ba.vup>提升</>；被<罗德岛临时雇员>清理后成为可部署的远程位",
-        "desc_ja": "隣接4マスにいる味方ユニットの防御力<@ba.vup>上昇</>\n<伐採作業員>の伐採後、オペレーター配置可能な遠距離マスになる",
-        "desc_en": "<@ba.vup>Increases</> the DEF of adjacent allied units; Aftering being cleared by a [Rhodes Island Temporary Employee], turns into a deployable Ranged tile",
-        "skillType": "PASSIVE",
-        "durationType": "NONE",
-        "spType": 8,
-        "levels": [
-            {
-                "rangeId": "x-5",
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 0,
-                    "spCost": 0,
-                    "initSp": 0,
-                    "increment": 0.0
-                },
-                "duration": 0.0,
-                "blackboard": [
-                    {
-                        "key": "def",
-                        "value": 150.0
-                    }
-                ]
-            }
-        ]
-    },
+		"name_zh": "天然隐蔽",
+		"name_ja": "きのこガード",
+		"name_en": "Natural Camouflage",
+		"desc_zh": "相邻的我方单位防御<@ba.vup>提升</>；被<罗德岛临时雇员>清理后成为可部署的远程位",
+		"desc_ja": "隣接4マスにいる味方ユニットの防御力<@ba.vup>上昇</>\n<伐採作業員>の伐採後、オペレーター配置可能な遠距離マスになる",
+		"desc_en": "<@ba.vup>Increases</> the DEF of adjacent allied units; Aftering being cleared by a [Rhodes Island Temporary Employee], turns into a deployable Ranged tile",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": "x-5",
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": 0.0,
+				"blackboard": [
+					{
+						"key": "def",
+						"value": 150.0
+					}
+				]
+			}
+		]
+	},
 	"sktok_shmbmb": {
-        "name_zh": "全域信息失真",
-        "name_ja": "",
-        "name_en": "",
-        "desc_zh": "对全场我方单位造成少量法术伤害，并使源阶方损失8%生命",
-        "desc_ja": "",
-        "desc_en": "",
-        "skillType": "AUTO",
-        "durationType": "NONE",
-        "spType": "INCREASE_WITH_TIME",
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 25,
-                    "initSp": 0,
-                    "increment": 1.0
-                },
-                "duration": -1.0,
-                "blackboard": [
-                    {
-                        "key": "scale",
-                        "value": 0.2
-                    },
-                    {
-                        "key": "hp_ratio",
-                        "value": 0.08
-                    }
-                ]
-            }
-        ]
-    },
+		"name_zh": "全域信息失真",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "对全场我方单位造成少量法术伤害，并使源阶方损失8%生命",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "AUTO",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 25,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "scale",
+						"value": 0.2
+					},
+					{
+						"key": "hp_ratio",
+						"value": 0.08
+					}
+				]
+			}
+		]
+	},
 	"shmbmb_1": {
 		"tooltip": {
-			"zh": ["持续流失生命值，可被我方治疗；嘲讽等级1，不会被敌人攻击"],
+			"zh": [
+				"持续流失生命值，可被我方治疗；嘲讽等级1，不会被敌人攻击",
+				"每0.5秒触发一次，每次触发使自身受到最大生命值(2%+已触发次数×0.1%)的无来源真实伤害（已触发次数不包括当次，参与计算的上限为30，也即达到上限后每次触发使自身受到5%最大生命值的无来源真实伤害）"
+			],
 			"ja": ["継続的にHPが減少し、味方から治癒可能；挑発レベル1、敵から攻撃されない"],
 			"en": [
 				"Continuously loses health, but can be healed by allies; Taunt level 1, will not be attacked by enemies"
 			]
 		}
 	},
-	"shmbmb_explode":{
+	"shmbmb_sp":{
 		"tooltip": {
-			"zh": ["生命为0时对所有我方单位造成高额法术伤害"],
+			"zh": [
+				"受到来自我方的技力调整值时，取消此技力调整值"
+			],
+			"ja": [],
+			"en": [
+			]
+		}
+	},
+	"shmbmb_explode": {
+		"tooltip": {
+			"zh": [
+				"生命值归0前，记录自身当前攻击力，随后（使用敌方阵营索敌）使全场范围内的所有我方单位（中点判定，不受迷彩制约）延迟0.8秒后受到记录攻击力100%的预计算无来源无途径法术普通伤害"
+			],
 			"ja": [""],
 			"en": [""]
 		}
 	},
-    "sktok_shchst": {
-        "name_zh": "“我的了！”",
-        "name_ja": "",
-        "name_en": "",
-        "desc_zh": "击破后，可部署干员偷取1-2个商店物品，部署的干员无法再部署",
-        "desc_ja": "",
-        "desc_en": "",
-        "skillType": "PASSIVE",
-        "durationType": "NONE",
-        "spType": 8,
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 0,
-                    "spCost": 0,
-                    "initSp": 0,
-                    "increment": 0.0
-                },
-                "duration": -1.0,
-                "blackboard": []
-            }
-        ]
-    },
+	"sktok_shchst": {
+		"name_zh": "“我的了！”",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "击破后，可部署干员偷取1-2个商店物品，部署的干员无法再部署",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": []
+			}
+		]
+	},
 	"sktok_shfort": {
-        "name_zh": "\"危朽\"",
-        "name_ja": "",
-        "name_en": "",
-        "desc_zh": "会被“玻利瓦尔，症结之核”释放的“灾厄之口”转化为“崩解”",
-        "desc_ja": "",
-        "desc_en": "",
-        "skillType": "PASSIVE",
-        "durationType": "NONE",
-        "spType": 8,
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 0,
-                    "spCost": 0,
-                    "initSp": 0,
-                    "increment": 0.0
-                },
-                "duration": -1.0,
-                "blackboard": []
-            }
-        ]
-    },
+		"name_zh": "\"危朽\"",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "会被“玻利瓦尔，症结之核”释放的“灾厄之口”转化为“崩解”",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": []
+			}
+		]
+	},
 	"sktok_shruin": {
-        "name_zh": "\"崩解\"",
-        "name_ja": "",
-        "name_en": "",
-        "desc_zh": "会被“玻利瓦尔，症结之核”释放的“灾厄之口”摧毁",
-        "desc_ja": "",
-        "desc_en": "",
-        "skillType": "PASSIVE",
-        "durationType": "NONE",
-        "spType": 8,
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 0,
-                    "spCost": 0,
-                    "initSp": 0,
-                    "increment": 0.0
-                },
-                "duration": -1.0,
-                "blackboard": []
-            }
-        ]
-    },
+		"name_zh": "\"崩解\"",
+		"name_ja": "",
+		"name_en": "",
+		"desc_zh": "会被“玻利瓦尔，症结之核”释放的“灾厄之口”摧毁",
+		"desc_ja": "",
+		"desc_en": "",
+		"skillType": "PASSIVE",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 0,
+					"spCost": 0,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": -1.0,
+				"blackboard": []
+			}
+		]
+	},
 	"sktok_prison": {
-        "name_zh": "启动禁锢！",
-        "name_ja": "禁固機能起動！",
-        "name_en": "Lock 'em Up!",
-        "desc_zh": "消耗<@ba.vup>5</>点部署费用，使范围内目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒，并立即进入禁锢状态（不会重置禁锢状态敌人的攻击计数）",
-        "desc_ja": "コスト<@ba.vup>5</>で使用可能、範囲内の敵全員を<@ba.vup>{stun}</>秒間<$ba.stun>スタン</>させ、禁固状態にする（すでに禁固状態中の敵の攻撃回数はリセットされない）",
-        "desc_en": "Consumes <@ba.vup>5</> DP to immediately <$ba.stun>Stun</> all targets within range for <@ba.vup>{stun}</> seconds and Imprison them (Will not reset the attack count of Imprisoned enemies)",
-        "skillType": "MANUAL",
-        "durationType": "NONE",
-        "spType": "INCREASE_WITH_TIME",
-        "levels": [
-            {
-                "rangeId": "3-15",
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 25,
-                    "initSp": 0,
-                    "increment": 1.0
-                },
-                "duration": 0.0,
-                "blackboard": [
-                    {
-                        "key": "stun",
-                        "value": 2.0
-                    },
-                    {
-                        "key": "cost",
-                        "value": 5.0
-                    }
-                ]
-            }
-        ]
-    },
+		"name_zh": "启动禁锢！",
+		"name_ja": "禁固機能起動！",
+		"name_en": "Lock 'em Up!",
+		"desc_zh": "消耗<@ba.vup>5</>点部署费用，使范围内目标<$ba.stun>晕眩</><@ba.vup>{stun}</>秒，并立即进入禁锢状态（不会重置禁锢状态敌人的攻击计数）",
+		"desc_ja": "コスト<@ba.vup>5</>で使用可能、範囲内の敵全員を<@ba.vup>{stun}</>秒間<$ba.stun>スタン</>させ、禁固状態にする（すでに禁固状態中の敵の攻撃回数はリセットされない）",
+		"desc_en": "Consumes <@ba.vup>5</> DP to immediately <$ba.stun>Stun</> all targets within range for <@ba.vup>{stun}</> seconds and Imprison them (Will not reset the attack count of Imprisoned enemies)",
+		"skillType": "MANUAL",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": "3-15",
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 25,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": 0.0,
+				"blackboard": [
+					{
+						"key": "stun",
+						"value": 2.0
+					},
+					{
+						"key": "cost",
+						"value": 5.0
+					}
+				]
+			}
+		]
+	},
 	"sktok_xdice1": {
-        "name_zh": "雪崩",
-        "name_ja": "雪崩",
-        "name_en": "Avalanche",
-        "desc_zh": "对禁区内所有敌人造成真实伤害并<@ba.vup>特大力地</>推动；\\n对禁区内所有我方单位造成真实伤害并<@ba.vup>推动一格</>，若<@ba.vup>无法推动</>则造成更多真实伤害并晕眩;\\n<@ba.rem>推动方向为圣女像所指朝向</>",
-        "desc_ja": "警告エリア内の敵全員に確定ダメージを与え、<@ba.vup>極めて力強く</>突き飛ばす。\n警告エリア内の味方全員を<@ba.vup>1マス突き飛ばす</>。突き飛ばす先が配置不可で<@ba.vup>突き飛ばせない</>場合、より多くの確定ダメージを与え、さらに数秒スタンさせる。\n<@ba.rem>突き飛ばす方向は巫女像の向きに準じる</>",
-        "desc_en": "Deals True damage to all enemies in Avalanche Area and pushes them <@ba.vup>tremendously</>;\ndeals True damage to all allied units in Avalanche Area and pushes them by <@ba.vup>one tile</>, if they <@ba.vup>cannot be pushed</>, deals more True damage and inflicts Stun; \n<@ba.rem>Operators are pushed in the Saintess Statue's pointing direction</>",
-        "skillType": "AUTO",
-        "durationType": "NONE",
-        "spType": 8,
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 15,
-                    "initSp": 5,
-                    "increment": 0.0
-                },
-                "duration": 2.0,
-                "blackboard": [
-                    {
-                        "key": "sp_ratio",
-                        "value": 0.8
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 15,
-                    "initSp": 0,
-                    "increment": 0.0
-                },
-                "duration": 2.0,
-                "blackboard": [
-                    {
-                        "key": "sp_ratio",
-                        "value": 0.8
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 15,
-                    "initSp": 8,
-                    "increment": 0.0
-                },
-                "duration": 2.0,
-                "blackboard": [
-                    {
-                        "key": "sp_ratio",
-                        "value": 0.8
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": 8,
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 15,
-                    "initSp": 12,
-                    "increment": 0.0
-                },
-                "duration": 2.0,
-                "blackboard": [
-                    {
-                        "key": "sp_ratio",
-                        "value": 0.8
-                    }
-                ]
-            }
-        ]
-    },
+		"name_zh": "雪崩",
+		"name_ja": "雪崩",
+		"name_en": "Avalanche",
+		"desc_zh": "对禁区内所有敌人造成真实伤害并<@ba.vup>特大力地</>推动；\\n对禁区内所有我方单位造成真实伤害并<@ba.vup>推动一格</>，若<@ba.vup>无法推动</>则造成更多真实伤害并晕眩;\\n<@ba.rem>推动方向为圣女像所指朝向</>",
+		"desc_ja": "警告エリア内の敵全員に確定ダメージを与え、<@ba.vup>極めて力強く</>突き飛ばす。\n警告エリア内の味方全員を<@ba.vup>1マス突き飛ばす</>。突き飛ばす先が配置不可で<@ba.vup>突き飛ばせない</>場合、より多くの確定ダメージを与え、さらに数秒スタンさせる。\n<@ba.rem>突き飛ばす方向は巫女像の向きに準じる</>",
+		"desc_en": "Deals True damage to all enemies in Avalanche Area and pushes them <@ba.vup>tremendously</>;\ndeals True damage to all allied units in Avalanche Area and pushes them by <@ba.vup>one tile</>, if they <@ba.vup>cannot be pushed</>, deals more True damage and inflicts Stun; \n<@ba.rem>Operators are pushed in the Saintess Statue's pointing direction</>",
+		"skillType": "AUTO",
+		"durationType": "NONE",
+		"spType": 8,
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 15,
+					"initSp": 5,
+					"increment": 0.0
+				},
+				"duration": 2.0,
+				"blackboard": [
+					{
+						"key": "sp_ratio",
+						"value": 0.8
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 15,
+					"initSp": 0,
+					"increment": 0.0
+				},
+				"duration": 2.0,
+				"blackboard": [
+					{
+						"key": "sp_ratio",
+						"value": 0.8
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 15,
+					"initSp": 8,
+					"increment": 0.0
+				},
+				"duration": 2.0,
+				"blackboard": [
+					{
+						"key": "sp_ratio",
+						"value": 0.8
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": 8,
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 15,
+					"initSp": 12,
+					"increment": 0.0
+				},
+				"duration": 2.0,
+				"blackboard": [
+					{
+						"key": "sp_ratio",
+						"value": 0.8
+					}
+				]
+			}
+		]
+	},
 	"sktok_vgctrl": {
-        "name_zh": "复仇黑手",
-        "name_ja": "報復の爪痕",
-        "name_en": "Vengeful Mafioso",
-        "desc_zh": "触发复仇状态",
-        "desc_ja": "復讐開始",
-        "desc_en": "Triggers the Vengeance status",
-        "skillType": "AUTO",
-        "durationType": "NONE",
-        "spType": "INCREASE_WITH_TIME",
-        "levels": [
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 500,
-                    "initSp": 0,
-                    "increment": 3.0
-                },
-                "duration": 35.0,
-                "blackboard": [
-                    {
-                        "key": "max_hp",
-                        "value": 0.0
-                    },
-                    {
-                        "key": "atk",
-                        "value": 0.2
-                    },
-                    {
-                        "key": "def",
-                        "value": 0.15
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 500,
-                    "initSp": 300,
-                    "increment": 3.0
-                },
-                "duration": 35.0,
-                "blackboard": [
-                    {
-                        "key": "max_hp",
-                        "value": 0.0
-                    },
-                    {
-                        "key": "atk",
-                        "value": 0.2
-                    },
-                    {
-                        "key": "def",
-                        "value": 0.15
-                    }
-                ]
-            },
-            {
-                "rangeId": null,
-                "spData": {
-                    "spType": "INCREASE_WITH_TIME",
-                    "levelUpCost": null,
-                    "maxChargeTime": 1,
-                    "spCost": 500,
-                    "initSp": 400,
-                    "increment": 3.0
-                },
-                "duration": 35.0,
-                "blackboard": [
-                    {
-                        "key": "max_hp",
-                        "value": 0.0
-                    },
-                    {
-                        "key": "atk",
-                        "value": 0.2
-                    },
-                    {
-                        "key": "def",
-                        "value": 0.15
-                    }
-                ]
-            }
-        ]
-    },
-	"vgctrl_buff":{
+		"name_zh": "复仇黑手",
+		"name_ja": "報復の爪痕",
+		"name_en": "Vengeful Mafioso",
+		"desc_zh": "触发复仇状态",
+		"desc_ja": "復讐開始",
+		"desc_en": "Triggers the Vengeance status",
+		"skillType": "AUTO",
+		"durationType": "NONE",
+		"spType": "INCREASE_WITH_TIME",
+		"levels": [
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 500,
+					"initSp": 0,
+					"increment": 3.0
+				},
+				"duration": 35.0,
+				"blackboard": [
+					{
+						"key": "max_hp",
+						"value": 0.0
+					},
+					{
+						"key": "atk",
+						"value": 0.2
+					},
+					{
+						"key": "def",
+						"value": 0.15
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 500,
+					"initSp": 300,
+					"increment": 3.0
+				},
+				"duration": 35.0,
+				"blackboard": [
+					{
+						"key": "max_hp",
+						"value": 0.0
+					},
+					{
+						"key": "atk",
+						"value": 0.2
+					},
+					{
+						"key": "def",
+						"value": 0.15
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 500,
+					"initSp": 400,
+					"increment": 3.0
+				},
+				"duration": 35.0,
+				"blackboard": [
+					{
+						"key": "max_hp",
+						"value": 0.0
+					},
+					{
+						"key": "atk",
+						"value": 0.2
+					},
+					{
+						"key": "def",
+						"value": 0.15
+					}
+				]
+			}
+		]
+	},
+	"vgctrl_buff": {
 		"type": "buff",
 		"effects": {
 			"targets": ["exclude:enemy_1283_sgkill|enemy_1283_sgkill_2"],
 			"activeTargets": [],
 			"mods": [
-				{ "key": "atk", "value": 0.20, "order": "initial", "mode": "mul" },
+				{ "key": "atk", "value": 0.2, "order": "initial", "mode": "mul" },
 				{ "key": "def", "value": 0.15, "order": "initial", "mode": "mul" }
 			],
 			"stackType": "add",
-			"maxCount":1
+			"maxCount": 1
 		},
-		"tooltip":null
+		"tooltip": null
 	},
-	"vgctrl_buff_sgkill":{
+	"vgctrl_buff_sgkill": {
 		"type": "buff",
 		"effects": {
-			"targets": ["enemy_1283_sgkill","enemy_1283_sgkill_2"],
+			"targets": ["enemy_1283_sgkill", "enemy_1283_sgkill_2"],
 			"activeTargets": [],
 			"mods": [
 				{ "key": "atk", "value": 0.35, "order": "initial", "mode": "mul" },
-				{ "key": "def", "value": 0.30, "order": "initial", "mode": "mul" },
+				{ "key": "def", "value": 0.3, "order": "initial", "mode": "mul" },
 				{ "key": "aspd", "value": 50, "order": "final", "mode": "add" }
 			],
 			"stackType": "add",
-			"maxCount":1
+			"maxCount": 1
 		},
-		"tooltip":null
+		"tooltip": null
 	}
 }

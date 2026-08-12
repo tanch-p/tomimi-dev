@@ -10,7 +10,7 @@
 		language: Language,
 		mode = 'table',
 		statusImmuneList: StatusImmune[] = [],
-		mapConfig:MapConfig;
+		mapConfig: MapConfig;
 
 	const getTooltip = (
 		entity: Enemy | Trap,
@@ -21,9 +21,12 @@
 		if (!skill.tooltip) return;
 
 		return skill.tooltip[language].map((line) => {
-			line = parseValues(entity, formIndex, skill, line, language,mapConfig, mode);
+			line = parseValues(entity, formIndex, skill, line, language, mapConfig, mode);
 			if (statusImmuneList.includes('silence')) {
 				line = line.replace('{can_silence}', '');
+			}
+			if (skill.buffloss) {
+				return line + '{buffloss}';
 			}
 			return line;
 		});

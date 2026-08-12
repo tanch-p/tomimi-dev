@@ -2843,6 +2843,11 @@
 		"ja": "一回のみ",
 		"zh": "仅限一次"
 	},
+	"buffloss":{
+		"en": "Buff Loss",
+		"ja": "バフ消失",
+		"zh": "丢失BUFF"
+	},
 	"min_damage": {
 		"en": "Minimum Damage",
 		"ja": "最低ダメージ",

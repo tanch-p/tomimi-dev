@@ -30,6 +30,7 @@
 		'ignore_camou',
 		'ignore_stealth',
 		'once_only',
+		'buffloss',
 		'INCREASE_WHEN_ATTACK'
 	];
 	const patternsToParse = [{ prefix: '$', suffix: '$', style: 'text-red-400 font-semibold' }];

@@ -72859,14 +72859,15 @@
 				"traits": [
 					{ "key": "def_down_hit", "value": 100 },
 					{ "key": "shchmr_breath" },
-					{ "key": "shchmr_breath_splash" }
+					{ "key": "shchmr_breath_splash" },
+					{"key":"shchmr_relic"}
 				],
 				"special": [
 					[{ "key": "shchmr_change" }],
 					[{ "key": "shchmr_napalm" }, { "key": "shchmr_change" }],
 					[
 						{ "key": "shchmr_breath_3" },
-						{ "key": "skill_fly", "value": 15 },
+						{ "key": "skill_levitate", "value": 15 },
 						{ "key": "shchmr_napalm" },
 						{ "key": "shchmr_napalm_fly" }
 					]

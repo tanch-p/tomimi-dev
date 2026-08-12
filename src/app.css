@@ -93,6 +93,9 @@ li.list-cross {
 .skilltag.ignore_camou {
 	background-color: #265624;
 }
+.skilltag.buffloss {
+	background-color: #c0aa52b1;
+}
 .skilltag.once_only {
 	background-color: #737373;
 }
