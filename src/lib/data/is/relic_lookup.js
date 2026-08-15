@@ -91,6 +91,7 @@ export const relicLookup = {
 	rogue_6_relic_cargo_12: 'rogue_6_relic_cargo_12',
 	rogue_6_relic_fight_30: 'rogue_6_relic_fight_30',
 	rogue_6_relic_cargo_11: 'rogue_6_relic_cargo_11',
+	rogue_6_relic_fight_25: 'rogue_6_relic_fight_25',
 	rogue_6_relic_fight_26: 'rogue_6_relic_fight_26',
 	rogue_6_relic_final_3: 'rogue_6_relic_final_3',
 	rogue_6_relic_final_4: 'rogue_6_relic_final_4',

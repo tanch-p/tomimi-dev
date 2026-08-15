@@ -10,6 +10,28 @@
 		"tooltip_ja": "",
 		"tooltip_en": ""
 	},
+		{
+		"id": "rogue_6_relic_fight_25",
+		"name_zh": "猎犬咖啡",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.0,
+						"mode": "mul",
+						"order":"initial"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "我方单位的生命和攻击力+30%，敌人出现时有3%概率生命+100%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
 	{
 		"id": "rogue_6_relic_final_3",
 		"name_zh": "怦然信标",
@@ -31,54 +53,6 @@
 		"tooltip_ja": "",
 		"tooltip_en": ""
 	},
-	{
-		"id": "rogue_6_start_3",
-		"name_zh": "襁褓巨龙",
-		"name_ja": "",
-		"name_en": "",
-		"effects": [
-			{
-				"targets": ["ALL"],
-				"mods": [
-					{
-						"key": "hp",
-						"value": 0.5,
-						"mode": "mul"
-					}
-				]
-			}
-		],
-		"tooltip_zh": "前两个探索区域的战斗中，所有敌人的最大生命-50%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
-	},
-	{
-		"id": "rogue_6_start_4",
-		"name_zh": "襁褓九头蛇",
-		"name_ja": "",
-		"name_en": "",
-		"effects": [
-			{
-				"targets": ["ALL"],
-				"mods": [
-					{
-						"key": "hp",
-						"value": 1.3,
-						"mode": "mul"
-					},
-					{
-						"key": "atk",
-						"value": 1.3,
-						"mode": "mul"
-					}
-				]
-			}
-		],
-		"tooltip_zh": "所有敌人的攻击和生命+30%，每进入新区域时我方攻击力和生命+10%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
-	},
-	
 	{
 		"id": "rogue_6_relic_fight_30",
 		"name_zh": "探测先锋",
@@ -365,5 +339,52 @@
 		"tooltip_zh": "所有敌人重量-2",
 		"tooltip_ja": "全ての敵の重量ランク-2",
 		"tooltip_en": "All enemies have -2 Weight"
+	},
+	{
+		"id": "rogue_6_start_3",
+		"name_zh": "襁褓巨龙",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.5,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "前两个探索区域的战斗中，所有敌人的最大生命-50%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
+	},
+	{
+		"id": "rogue_6_start_4",
+		"name_zh": "襁褓九头蛇",
+		"name_ja": "",
+		"name_en": "",
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip_zh": "所有敌人的攻击和生命+30%，每进入新区域时我方攻击力和生命+10%",
+		"tooltip_ja": "",
+		"tooltip_en": ""
 	}
 ]

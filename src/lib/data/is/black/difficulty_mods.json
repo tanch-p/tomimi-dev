@@ -272,6 +272,21 @@
 		"addDesc": "每进入一个新区域，所有敌人攻击力和生命值额外+20%\\n实托邦的效果提升至晚期",
 		"effects": [
 			{
+				"targets": ["trap_324_shmbmb"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.49,
+						"mode": "mul"
+					}
+					,{
+						"key": "atk",
+						"value": 1.49,
+						"mode": "mul"
+					}
+				]
+			},
+			{
 				"targets": ["enemy_2137_shsdgo"],
 				"mods": [
 					{

@@ -47,6 +47,26 @@
 		"tooltip_en": "All [Collapsals] gain Max HP +20%, Movement Speed +20%, and ASPD +20"
 	},
 	{
+		"id": "rogue_3_chaos_4",
+		"shared_id": "chaos_4",
+		"outerName_zh": "恐怖实体",
+		"innerName_zh": "恐怖实体",
+		"outerName_ja": "実体化する恐怖",
+		"innerName_ja": "実体化する恐怖",
+		"outerName_en": "Terrifying Entity",
+		"innerName_en": "Terrifying Entity",
+		"src": null,
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [{ "key": "hp", "value": 1.0, "mode": "mul", "order":"initial" }]
+			}
+		],
+		"tooltip_zh": "敌人出场时有5/10%概率生命值+100%",
+		"tooltip_ja": "敵は5/10%の確率で最大HP+100%の状態で登場する",
+		"tooltip_en": "Enemies have a 5/10% chance to appear on the battlefield with +100% Max HP"
+	},
+	{
 		"id": "rogue_3_chaos_9_a",
 		"shared_id": "chaos_9",
 		"outerName_zh": "睁眼瞎",

@@ -17943,7 +17943,14 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{
+						"key": "ammo",
+						"init": 1,
+						"max": 1
+					},
+					{
+						"key": "pathfinder_artifex"
+					}],
 				"special": []
 			}
 		],

@@ -5,6 +5,7 @@
 	import FloorSelect from './FloorSelect.svelte';
 	import linear from '$lib/images/is/sami/非线性.webp';
 	import blind from '$lib/images/is/sami/pic_rogue_3_chaos_9.webp';
+	import terrifyingEntity from '$lib/images/is/sami/pic_rogue_3_chaos_4.webp';
 	import chaosList from '$lib/data/is/sami/chaos_sami.json';
 	import portal from '$lib/images/is/node_portal.webp';
 	import { portalMods } from './stores';
@@ -32,7 +33,12 @@
 		portalSelected = Boolean(value);
 	});
 	chaosList.forEach((option) => {
-		option.src = option.shared_id === 'chaos_3' ? linear : blind;
+		option.src =
+			option.shared_id === 'chaos_3'
+				? linear
+				: option.shared_id === 'chaos_4'
+				? terrifyingEntity
+				: blind;
 	});
 
 	const handlePortalClick = () => {
