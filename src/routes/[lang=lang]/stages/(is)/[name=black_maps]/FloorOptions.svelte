@@ -52,12 +52,14 @@
 					{
 						key: 'hp',
 						value: 1 + goldVariation.buff.hp * $gold,
-						mode: 'mul'
+						mode: 'mul',
+						order: 'initial'
 					},
 					{
 						key: 'atk',
 						value: 1 + goldVariation.buff.atk * $gold,
-						mode: 'mul'
+						mode: 'mul',
+						order: 'initial'
 					}
 				]
 			}

@@ -546,6 +546,36 @@
 		"ja": "初期状態",
 		"zh": "初始模式"
 	},
+	"combined_state":{
+"en": "Combination State",
+		"ja": "合体状態",
+		"zh": "组合模式"
+	},
+	"ground_state":{
+"en": "Grounded State",
+		"ja": "地面モード",
+		"zh": "地面模式"
+	},
+	"dog_carry_state":{
+		"en": "Carrying State",
+		"ja": "輸送状態",
+		"zh": "伴随模式"
+	},
+	"dory_state_2":{
+	"en": "",
+		"ja": "",
+		"zh": "急匆匆的多利"
+	},
+	"rest_state":{
+			"en": "",
+		"ja": "",
+		"zh": "休眠状态"
+	},
+	"berserk_state":{
+			"en": "",
+		"ja": "",
+		"zh": "狂暴状态"
+	},
 	"shsgzd_bomb": {
 		"en": "Flying Mode",
 		"ja": "飛行モード",

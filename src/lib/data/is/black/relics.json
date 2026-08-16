@@ -4,13 +4,12 @@
 		"name_zh": "追忆",
 		"name_ja": "",
 		"name_en": "",
-		"effects": [
-		],
+		"effects": [],
 		"tooltip_zh": "进入下一区域时，变为重新进入本区域，之后该收藏品失效(※使用后会使层数+1)",
 		"tooltip_ja": "",
 		"tooltip_en": ""
 	},
-		{
+	{
 		"id": "rogue_6_relic_fight_25",
 		"name_zh": "猎犬咖啡",
 		"name_ja": "",
@@ -23,7 +22,7 @@
 						"key": "hp",
 						"value": 1.0,
 						"mode": "mul",
-						"order":"initial"
+						"order": "initial"
 					}
 				]
 			}
@@ -62,8 +61,8 @@
 			{
 				"targets": ["enemy_2137_shsdgo"],
 				"mods": [
-					{ "key": "hp", "value": 0.2, "mode": "mul", "order":"initial" },
-					{ "key": "atk", "value": 0.2, "mode": "mul", "order":"initial" }
+					{ "key": "hp", "value": 1.2, "mode": "mul" },
+					{ "key": "atk", "value": 1.2, "mode": "mul" }
 				]
 			}
 		],
@@ -74,8 +73,8 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 0.2, "mode": "mul", "order":"initial" },
-							{ "key": "atk", "value": 0.2, "mode": "mul", "order":"initial" }
+							{ "key": "hp", "value": 1.2, "mode": "mul" },
+							{ "key": "atk", "value": 1.2, "mode": "mul" }
 						]
 					}
 				]
@@ -86,8 +85,8 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 0.4, "mode": "mul", "order":"initial" },
-							{ "key": "atk", "value": 0.4, "mode": "mul", "order":"initial" }
+							{ "key": "hp", "value": 1.4, "mode": "mul" },
+							{ "key": "atk", "value": 1.4, "mode": "mul" }
 						]
 					}
 				]
@@ -98,8 +97,8 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 0.6, "mode": "mul", "order":"initial" },
-							{ "key": "atk", "value": 0.6, "mode": "mul", "order":"initial" }
+							{ "key": "hp", "value": 1.6, "mode": "mul" },
+							{ "key": "atk", "value": 1.6, "mode": "mul" }
 						]
 					}
 				]
@@ -110,8 +109,8 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 0.8, "mode": "mul", "order":"initial" },
-							{ "key": "atk", "value": 0.8, "mode": "mul", "order":"initial" }
+							{ "key": "hp", "value": 1.8, "mode": "mul" },
+							{ "key": "atk", "value": 1.8, "mode": "mul" }
 						]
 					}
 				]
@@ -122,8 +121,8 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 1.0, "mode": "mul", "order":"initial" },
-							{ "key": "atk", "value": 1.0, "mode": "mul", "order":"initial" }
+							{ "key": "hp", "value": 2.0, "mode": "mul" },
+							{ "key": "atk", "value": 2.0, "mode": "mul" }
 						]
 					}
 				]
@@ -134,8 +133,8 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 1.2, "mode": "mul", "order":"initial" },
-							{ "key": "atk", "value": 1.2, "mode": "mul", "order":"initial" }
+							{ "key": "hp", "value": 2.2, "mode": "mul" },
+							{ "key": "atk", "value": 2.2, "mode": "mul" }
 						]
 					}
 				]
@@ -153,7 +152,7 @@
 		"effects": [
 			{
 				"targets": ["enemy_2137_shsdgo"],
-				"mods": [{ "key": "atk", "value": -0.5, "mode": "mul", "order":"initial" }]
+				"mods": [{ "key": "atk", "value": -0.5, "mode": "mul", "order": "initial" }]
 			}
 		],
 		"tooltip_zh": "猎犬proto的攻击力-50%；每拥有1层【探测先锋】，我方法术抗性+10",
@@ -202,8 +201,6 @@
 		"tooltip_ja": "",
 		"tooltip_en": ""
 	},
-
-	
 
 	{
 		"id": "rogue_6_relic_legacy_84",

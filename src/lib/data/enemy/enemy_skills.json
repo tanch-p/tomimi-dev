@@ -277,6 +277,14 @@
 			"zh": ["攻击后使友方单位<v.duration>秒内减少<v.value>个阻挡数上限 (不可叠加) {can_silence}"]
 		}
 	},
+	"block_minus_aspd": {
+		"value": 80,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["被阻挡时使阻挡单位攻击速度-80%（直接乘算，不可叠加）"]
+		}
+	},
 	"RPG": {
 		"dmg_element": "phys",
 		"suffix": { "en": "RPG", "ja": "RPG", "zh": "RPG" },
@@ -2204,12 +2212,44 @@
 			]
 		}
 	},
+	"harchn_1": {
+		"type": "skill",
+		"initCooldown": 5,
+		"cooldown": 5,
+		"can_silence": true,
+		"suffix": { "en": "Spawn", "ja": "分裂", "zh": "分裂" },
+		"tooltip": {
+			"en": ["Spawns 1 Originiutant Excrescence with the same route"],
+			"ja": ["自分の進行経由を持つ変異腫瘍1体を召喚する"],
+			"zh": ["在自身位置以自身路径召唤1个畸变赘生物"]
+		}
+	},
+	"harchn_2": {
+		"type": "skill",
+		"initCooldown": 5,
+		"cooldown": 5,
+		"can_silence": true,
+		"suffix": { "en": "Spawn", "ja": "分裂", "zh": "分裂" },
+		"tooltip": {
+			"en": ["Spawns 1 Originiutant Tumor with the same route"],
+			"ja": ["自分の進行経由を持つ変異悪性腫瘍1体を召喚する"],
+			"zh": ["在自身位置以自身路径召唤1个畸变恶性瘤"]
+		}
+	},
 	"mutant_spawn": {
 		"value": 2,
 		"tooltip": {
 			"en": ["On death, this unit will spawn <v.value> Originiutant Excrescence {can_silence}"],
 			"ja": ["死亡時、変異腫瘍を<v.value>体召喚する{can_silence}"],
 			"zh": ["死亡后召唤<v.value>个畸变赘生物{can_silence}"]
+		}
+	},
+	"tumor_spawn": {
+		"value": 2,
+		"tooltip": {
+			"en": ["On death, this unit will spawn <v.value> Originiutant Tumor {can_silence}"],
+			"ja": ["死亡時、変異悪性腫瘍を<v.value>体召喚する{can_silence}"],
+			"zh": ["死亡后召唤<v.value>个畸变恶性瘤{can_silence}"]
 		}
 	},
 	"redmark_melee": {
@@ -3617,11 +3657,25 @@
 			"zh": ["死亡后召唤1只大君之触"]
 		}
 	},
+	"spawn_sci2": {
+		"tooltip": {
+			"en": ["Spawns 1 Touch of the Benevolence upon death"],
+			"ja": ["死亡すると、慈悲の触手を1体召喚する"],
+			"zh": ["死亡后召唤1只仁慈之触"]
+		}
+	},
 	"spawn_sci3": {
 		"tooltip": {
 			"en": ["Spawns 1 Gift of the Sanguinarch upon death"],
 			"ja": ["死亡すると、大君の祝福を1体召喚する"],
 			"zh": ["死亡后召唤1只大君之赐"]
+		}
+	},
+	"spawn_sci4": {
+		"tooltip": {
+			"en": ["Spawns 1 Gift of Magnanimity upon death"],
+			"ja": ["死亡すると、寛大な祝福を1体召喚する"],
+			"zh": ["死亡后召唤1只慷慨之赐"]
 		}
 	},
 	"heirbearer_ASV_buff": {
@@ -3644,6 +3698,13 @@
 			"en": ["For every 'Reborn Creations' on field, ATK is increased by 15%, max 6 stacks"],
 			"ja": ["マップ上の再生造物1体につき、攻撃力+15% (6体まで) "],
 			"zh": ["场上每存在1个'重生造物'，自身攻击力提升15%，最多叠加6层"]
+		}
+	},
+	"hateweaver_atk_buff_2": {
+		"tooltip": {
+			"en": ["For every 'Reborn Creations' on field, ATK is increased by 25%, max 6 stacks"],
+			"ja": ["マップ上の再生造物1体につき、攻撃力+25% (6体まで) "],
+			"zh": ["场上每存在1个'重生造物'，自身攻击力提升25%，最多叠加6层"]
 		}
 	},
 	"recharge_london_arti": {
@@ -3960,7 +4021,7 @@
 			"zh": ["下一次攻击会对攻击目标造成攻击力100%的伤害，向下个检查点移动1.5格"]
 		}
 	},
-	"imbalance_immune": {
+	"unbalance_immune": {
 		"tooltip": {
 			"en": ["Immune to Imbalance"],
 			"ja": ["強制移動無効"],
@@ -5001,15 +5062,16 @@
 		}
 	},
 	"e_enemy_overload": {
+		"duration": 20,
 		"tooltip": {
 			"en": [
-				"【Overload】- gains ASPD +120, DEF +100%, RES +30 for 20s, clears all energy thereafter"
+				"【Overload】- gains ASPD +120, DEF +100%, RES +30 for <v.duration>s, clears all energy thereafter"
 			],
 			"ja": [
-				"【過負荷】- 20秒間、最終防御力+100%、術耐性+30、攻撃速度+120。その後、エネルギーは0になる"
+				"【過負荷】- <v.duration>秒間、最終防御力+100%、術耐性+30、攻撃速度+120。その後、エネルギーは0になる"
 			],
 			"zh": [
-				"【过载】- 20s内攻击速度+120、防御力最终提升至200%、法术抗性+30，持续时间结束后清空能量"
+				"【过载】- <v.duration>s内攻击速度+120、防御力最终提升至200%、法术抗性+30，持续时间结束后清空能量"
 			]
 		}
 	},
@@ -5032,7 +5094,9 @@
 			"ja": [
 				"【過負荷】状態外の時、2秒ごとに半径2.2以内の過負荷状態でない敵全員からエネルギーを1点奪う"
 			],
-			"zh": ["未处于过载状态时，每2s夺取自身半径2.2范围内每个有能量且未处于过载状态的敌人1点能量"]
+			"zh": [
+				"免疫能量夺取；未处于过载状态时，每2s夺取自身半径2.2范围内每个有能量且未处于过载状态的敌人1点能量"
+			]
 		}
 	},
 	"durgrd_buff_1": {
@@ -6362,18 +6426,6 @@
 				"ボス・ロボット・空中の敵は乗せられない"
 			],
 			"zh": ["周围有领袖以外的非机械敌人时会将其装载为乘客 (最多4个) "]
-		}
-	},
-	"harchn_1": {
-		"type": "skill",
-		"initCooldown": 5,
-		"cooldown": 5,
-		"can_silence": true,
-		"suffix": { "en": "Spawn", "ja": "分裂", "zh": "分裂" },
-		"tooltip": {
-			"en": ["Spawns 1 Originiutant Excrescence with the same route"],
-			"ja": ["自分の進行経由を持つ変異腫瘍1体を召喚する"],
-			"zh": ["在自身位置以自身路径召唤1个畸变赘生物"]
 		}
 	},
 	"parasitic": {
@@ -10918,6 +10970,469 @@
 			],
 			"zh": [
 				"爆炸对范围内所有友方单位造成{arts}普通伤害和{ba.dt.apoptosis}，随后自身消失{ignore_camou}"
+			]
+		}
+	},
+	"fyshp_hover": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["<ba.float>近地悬浮</>受晕眩/无法行动/沉睡/冻结/缚地影响后切换至地面模式并晕眩1秒"]
+		}
+	},
+	"fyshp_can_combine": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【叠叠乐】可以与未受重伤影响的风情街“健美操盘手”进行“叠叠乐”：载客半径0.5（不可对空），卸客/召唤延迟1.0秒"
+			]
+		}
+	},
+	"fyshp_combined": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"近地悬浮，失衡免疫，进行远程攻击，不会攻击飞行单位",
+				"受晕眩/无法行动/沉睡/冻结/缚地影响后切换至地面模式并晕眩0.5秒"
+			]
+		}
+	},
+	"fyshp_grounded": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["无法进行“叠叠乐”"]
+		}
+	},
+	"death_carminesteam": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["被击败后在所处地块留下<ba.carminesteam>洋红蒸汽</>"]
+		}
+	},
+	"nhnrs_heal": {
+		"type": "skill",
+		"initCooldown": 5,
+		"cooldown": 15,
+		"suffix": { "en": "Heal", "ja": "治癒", "zh": "治愈" },
+		"can_silence": true,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"选择攻击范围内生命比例最低且生命值未满的汲营枯枝，对目标持续施法，每秒恢复目标最大生命值2%的生命值，持续8s"
+			]
+		}
+	},
+	"mjcdog_carry": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"在普通攻击击中角色类我方干员前一瞬间后的0.1秒内该目标死亡时，或半径0.25范围内存在晕眩的非飞行我方干员时，若目标未被其他安眠伴随兽/沉眠伴随兽“载客”，将其“载客”",
+				"载客上限1，卸客时将乘客的路径替换为自身的剩余路径",
+				"自身载有乘客时切换为伴随模式"
+			]
+		}
+	},
+	"mjcdog_carrying_state": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"自身占用阻挡数+(乘客的占用阻挡数或阻挡数)，移动速度+1.0，到达路径终点时额外扣除1关卡生命值"
+			]
+		}
+	},
+	"mjcdog_dropoff": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"载有①敌方乘客/②我方乘客的情况下：进入该模式①3.2秒/②3秒后或受到晕眩/冻结影响时，①卸客/②尽可能将目标按原部署方向",
+				"部署在自身所在格内并使其晕眩3秒，随后切换为通常模式，10秒内无法进行载客",
+				"自身被击倒时①卸客/②解除对目标的锁定"
+			]
+		}
+	},
+	"mntrjn_carry": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"载客上限5，载客半径0.5，载客条件为“非领袖且非机械类的地面敌人类敌方单位”，卸客区域为以伊利昂的木驮兽为中心的0.4边长正方形范围；卸客时将乘客的路径替换为自身的剩余路径",
+				"自身每装载有1名乘客，移动速度-20%（移动速度存在0.1数值下限）"
+			]
+		}
+	},
+	"ynshp_combine": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"可以与未持有重伤的温泉“淘气包”进行“叠叠乐”：载客半径0.5（不可对空），卸客/召唤延迟1.3秒"
+			]
+		}
+	},
+	"ynshp_combined_effect": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["组合模式下会使经过地块产生洋红蒸汽"]
+		}
+	},
+	"mgcshp": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["位于洋红蒸汽中，且未被阻挡时，可同时攻击3个目标 "]
+		}
+	},
+	"shpkg_barrier": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【绒毛屏障】：屏障值上限为150（屏障值于自身上方显示，每1颗星代表50点屏障值）",
+				"持有【绒毛屏障】时：近地悬浮，受到的物理/法术伤害降低70%"
+			]
+		}
+	},
+	"shpkg_barrier_2": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【绒毛屏障】的屏障值归0时，失去以上效果，并强制触发技能【坠落】",
+				"①每次受到景观喷泉周围四格干员的普通攻击/技能直接伤害时，【绒毛屏障】的屏障值-2",
+				"②受到水汽汽水瓶爆炸影响后，【绒毛屏障】的屏障值-50"
+			]
+		}
+	},
+	"shpkg_initial_atk": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"普通攻击优先选择部署于地面的单位，造成{arts}伤害，并在成功造成伤害后在目标地块生成<ba.carminesteam>洋红蒸汽</>"
+			]
+		}
+	},
+	"shpkg_revive": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"生命值首次变为0时，释放当前波次，进行20s重生，回复100%生命值，重生结束后进入急匆匆的多利形态并重置【绒毛屏障】"
+			]
+		}
+	},
+	"shpkg_line_atk": {
+		"type": "skill",
+		"initCooldown": 20,
+		"cooldown": 20,
+		"suffix": { "en": "", "ja": "", "zh": "欢快地喷火" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"选择场上一名单位，从上至下对其所在一列的地块喷火(间隔0.25s)，造成100%法术伤害，并使所有受影响的地块产生<ba.carminesteam>洋红蒸汽</>"
+			]
+		}
+	},
+	"shpkg_volcano": {
+		"type": "skill",
+		"initCooldown": 50,
+		"cooldown": 50,
+		"suffix": { "en": "", "ja": "", "zh": "不小心爆炸" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"停止攻击，进行约6秒的蓄力后持续施法，自右向左逐列引爆场上所有洋红蒸汽，每次引爆间隔1.2s，每格洋红蒸汽一次，对所在格及周围4格的我方单位造成50%{arts}伤害与250<ba.dt.burning>灼燃损伤</>",
+				"急匆匆的多利形态下，不再主动释放此技能 "
+			]
+		}
+	},
+	"shpkg_fall": {
+		"type": "skill",
+		"initCooldown": 0,
+		"cooldown": 0,
+		"suffix": { "en": "", "ja": "", "zh": "坠落" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"12s内，无法移动/进行攻击/触发其它技能。技能结束时，重置自身【绒毛屏障】；若为急匆匆的多利形态，则立刻触发【不小心爆炸】"
+			]
+		}
+	},
+	"shpkg_grounded": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"不进行普通攻击，无法被阻挡，在经过的地块生成洋红蒸汽",
+				"对进入自身半径0.5范围内的部署于地面的我方单位造成100%{arts}伤害与250<ba.dt.burning>灼燃损伤</>"
+			]
+		}
+	},
+	"wlfmster_1": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["进行近战攻击，免疫晕眩，受到的物理/法术伤害-30%"]
+		}
+	},
+	"wlfmster_revive": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"第一形态下被击倒后进行持续40s的重生，恢复100%生命值，重生期间【远古威慑】生效",
+				"重生开始时，释放当前波次，结束场上所有【溶血骇惧】技能效果",
+				"重生完成后进入第二形态，获得10s无敌"
+			]
+		}
+	},
+	"wlfmster_aoe_aspd_down": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["【远古威慑】：自身1.5半径范围内的我方单位攻击速度-50(指定状况下生效)"]
+		}
+	},
+	"wlfmster_2": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"攻击力+50%，攻击间隔-1.5",
+				"进行远程攻击，普通攻击为2连击，攻击范围半径1.25 ",
+				"【远古威慑】生效"
+			]
+		}
+	},
+	"wlfmster_fear": {
+		"type": "skill",
+		"initSp": 0,
+		"spCost": 55,
+		"skillType": "INCREASE_WITH_TIME",
+		"suffix": { "en": "", "ja": "", "zh": "溶血骇惧" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"使场上最多3名我方单位攻击速度-70，获得无法撤退，逐渐流失生命（从0/秒开始线性递增，在40秒后达到最大流失速度30%最大生命值/秒），持续时间无限",
+				"场上存在被此技能影响的单位时狼之主获得静默，每结束1个技能效果狼之主回复5SP，场上技能效果全部结束时狼之主获得7s静默",
+				"释放此技能时狼之主记录自身当前生命值，累计损失20%生命值后解除场上全部我方单位的技能效果"
+			]
+		}
+	},
+	"wlfmster_howl": {
+		"type": "skill",
+		"initCooldown": 5,
+		"cooldown": 40,
+		"suffix": { "en": "Stun Attack", "ja": "スタン攻撃", "zh": "晕眩攻击" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["5.5s内持续施法，每秒增加35点“血债账款”", "※仅不处于“清算时刻”时触发"]
+		}
+	},
+	"rllamb_atk": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"首次攻击时在目标及周围4格生成洋红蒸汽，并对位于其中的我方单位造成100%{arts}伤害，随后自身死亡",
+				"死亡后在自身所在地块中心0.6边长正方形范围内2个随机位置以自身路径召唤温泉“淘气包”与风情街“操盘手”各1只"
+			]
+		}
+	},
+	"xdelk_power": {
+		"type": "skill",
+		"initCooldown": 0,
+		"cooldown": 20,
+		"suffix": { "en": "", "ja": "", "zh": "角力对决" },
+		"can_silence": true,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"仅被阻挡时可触发：",
+				"蓄力6.6秒后对目标造成攻击力100%的{phys}伤害和一次雪崩效果②（雪崩详见对应关卡的特殊地形效果一栏；若关卡未配置雪崩环境、或目标为特殊角色类单位，则无法触发雪崩效果②；雪崩的伤害来源为乌顶巨角卢鲁）",
+				"※技能持续8秒"
+			]
+		}
+	},
+	"xdelk_fail": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"技能【角力对决】结束时，若未能尝试对目标造成伤害则进入5秒的失落状态，若还受晕眩/沉睡影响则改为进入4秒的失落状态",
+				"※失落状态期间不进行常规的攻击"
+			]
+		}
+	},
+	"smephi_heal": {
+		"type": "skill",
+		"initCooldown": 0,
+		"cooldown": 10,
+		"suffix": { "en": "", "ja": "", "zh": "治疗" },
+		"can_silence": true,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["治疗场上所有生命值未满的敌方单位，无法治疗自身"]
+		}
+	},
+	"smephi_poison": {
+		"value": 50,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【毒性】：无效果，最多可叠加5层，每层独立计算持续时间",
+				"【毒性粉尘】：每秒对场上所有我方单位造成自身【毒性】层数×<v.value>的无来源{true}无类型伤害，无视隐匿/迷彩"
+			]
+		}
+	},
+	"smephi_poison_release": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["【粉尘释放 】技能持续期间(1s)持有无敌+强制缴械效果"]
+		}
+	},
+	"smephi_possessed_buff": {
+		"type": "buff",
+		"effects": {
+			"targets": ["mutant"],
+			"activeTargets": [],
+			"mods": [
+				{ "key": "aspd", "value": 10, "order": "initial", "mode": "add" },
+				{ "key": "atk", "value": 0.1, "order": "initial", "mode": "mul" }
+			],
+			"stackType": "add",
+			"maxCount": 1
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["在场时，所有【宿主】敌人攻击力+10%，攻击速度+10"]
+		}
+	},
+	"smephi_possessed_buff_berserk": {
+		"type": "buff",
+		"effects": {
+			"key": "smephi_possessed_buff_berserk",
+			"targets": ["mutant"],
+			"activeTargets": [],
+			"mods": [
+				{ "key": "aspd", "value": 20, "order": "initial", "mode": "add" },
+				{ "key": "atk", "value": 0.2, "order": "initial", "mode": "mul" }
+			],
+			"stackType": "add",
+			"maxCount": 1
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["在场时，所有【宿主】敌人攻击力+20%，攻击速度+20"]
+		}
+	},
+	"smephi_hp": {
+		"value": 20,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["每损失<v.value>%生命值，自身获得1层持续30s的【毒性】，并强制触发技能【粉尘释放】"]
+		}
+	},
+	"smephi_revive_1": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["被击倒后释放当前波次，进行持续2.6s的重生，恢复100%生命值，重生结束后进入休眠状态"]
+		}
+	},
+	"smephi_rest": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"防御力+2200，法术抗性+50，每秒治疗自身200生命值",
+				"※该形态下持有强制缴械，无法攻击和触发技能"
+			]
+		}
+	},
+	"smephi_rest_break": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"休眠状态最多持续100s",
+				"休眠状态下被击倒或到达最大持续时间后释放当前波次，进行持续2.6s的重生，重生结束时以当前生命值(最低50%)进入狂暴状态"
+			]
+		}
+	},
+	"smephi_3": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["进入狂暴状态后获得2.6s无敌", "攻击力+20%"]
+		}
+	},
+	"muwiz_shield": {
+		"value": 1200,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"拥有【战争护盾】：格挡自身受到所有“伤害量低于1200”的{phys}/{arts}伤害，单次受到伤害量大于等于<v.value>的{phys}/{arts}伤害时此护盾失效"
+			]
+		}
+	},
+	"muwiz_shield_regen": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["【受<泄漏源>影响】：若自身的【战争护盾】未生效，则强制触发技能【获得护盾】"]
+		}
+	},
+	"muwiz_shield_buff": {
+		"suffix": { "en": "Barrier", "ja": "バリア", "zh": "护盾" },
+		"def": { "multiplier": 1.2 },
+		"res":{"fixed":-20},
+		"hits": 7,
+		"dmg_element": "arts",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"护盾生效期间自身防御力+20%、法术抗性-20"
+			]
+		}
+	},
+	"muwiz_steal": {
+		"type": "skill",
+		"initCooldown": 15,
+		"cooldown": 15,
+		"suffix": { "en": "", "ja": "", "zh": "聚焦" },
+		"atk": { "multiplier": 0.4 },
+		"hits": 7,
+		"dmg_element": "arts",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"锁定目标持续施法，最长持续7秒，每秒造成攻击力40%的{arts}持续伤害，成功造成伤害后偷取目标最多50攻击力（偷取量总上限为2050攻击力，会仁慈地为攻击目标保留1点攻击力）",
+				"※索敌不受阻挡影响"
 			]
 		}
 	}

@@ -469,6 +469,7 @@ export const checkIsTarget = (entity: Enemy | Trap | EnemyDBEntry, target: strin
 		case 'collapsal':
 		case 'sarkaz':
 		case 'animated':
+		case 'mutant':
 			return type?.includes(target);
 		case 'PHCS_BOSS':
 			return PHCS_BOSSES.includes(id);
