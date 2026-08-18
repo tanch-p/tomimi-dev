@@ -39,7 +39,29 @@
     "All enemy units have +20% ATK, +20% DEF, +50% Max HP",
     "&lt;system&gt;"
    ],
-   "all_mods": null,
+   "all_mods": [
+    {
+     "targets": [
+      "enemy_1514_smephi"
+     ],
+     "special": {
+      "mods_1": [
+       {
+        "key": "def",
+        "value": 6000,
+        "mode": "add",
+        "order": "initial"
+       },
+       {
+        "key": "res",
+        "value": 50,
+        "mode": "add",
+        "order": "initial"
+       }
+      ]
+     }
+    }
+   ],
    "n_mods": [
     {
      "targets": [
@@ -329,7 +351,19 @@
      "elite_min_count": 1,
      "elite_max_count": 1,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "smephi_rest_break",
+        "value": 60,
+        "formIndex": 1
+       },
+       {
+        "key": "smephi_rest",
+        "v_def": 6000,
+        "v_heal": 400,
+        "formIndex": 1
+       }
+      ]
      }
     },
     {

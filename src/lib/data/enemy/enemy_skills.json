@@ -3521,6 +3521,14 @@
 			"zh": ["自身每秒受到<v.value>{true}伤害"]
 		}
 	},
+	"bleed_true_fast": {
+		"value": 12,
+		"tooltip": {
+			"en": ["Takes <v.value> {true} damage every 0.1s"],
+			"ja": ["0.1秒毎に<v.value>の{true}ダメージを受ける"],
+			"zh": ["每0.1s受到<v.value>无来源{true}伤害"]
+		}
+	},
 	"shaman_explode": {
 		"atk": { "multiplier": 2 },
 		"dmg_element": "arts",
@@ -11362,21 +11370,24 @@
 		}
 	},
 	"smephi_rest": {
+		"v_def": 2200,
+		"v_heal": 200,
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"防御力+2200，法术抗性+50，每秒治疗自身200生命值",
+				"防御力+<v.v_def>，法术抗性+50，每秒治疗自身<v.v_heal>生命值",
 				"※该形态下持有强制缴械，无法攻击和触发技能"
 			]
 		}
 	},
 	"smephi_rest_break": {
+		"value": 100,
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"休眠状态最多持续100s",
+				"休眠状态最多持续<v.value>s",
 				"休眠状态下被击倒或到达最大持续时间后释放当前波次，进行持续2.6s的重生，重生结束时以当前生命值(最低50%)进入狂暴状态"
 			]
 		}
@@ -11408,15 +11419,13 @@
 	"muwiz_shield_buff": {
 		"suffix": { "en": "Barrier", "ja": "バリア", "zh": "护盾" },
 		"def": { "multiplier": 1.2 },
-		"res":{"fixed":-20},
+		"res": { "fixed": -20 },
 		"hits": 7,
 		"dmg_element": "arts",
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
-			"zh": [
-				"护盾生效期间自身防御力+20%、法术抗性-20"
-			]
+			"zh": ["护盾生效期间自身防御力+20%、法术抗性-20"]
 		}
 	},
 	"muwiz_steal": {
@@ -11433,6 +11442,260 @@
 			"zh": [
 				"锁定目标持续施法，最长持续7秒，每秒造成攻击力40%的{arts}持续伤害，成功造成伤害后偷取目标最多50攻击力（偷取量总上限为2050攻击力，会仁慈地为攻击目标保留1点攻击力）",
 				"※索敌不受阻挡影响"
+			]
+		}
+	},
+	"minima_barrier": {
+		"value": 9999,
+		"tooltip": {
+			"en": [
+				"Spawns with a barrier which absorbs up to <v.value> {phys}/{arts} damage",
+				"While barrier is active"
+			],
+			"ja": [
+				"出現時合計<v.value>の{phys}/{arts}攻撃を吸収するシールドを持ってる",
+				"シールド展開中："
+			],
+			"zh": [
+				"出场时，获得可吸收<v.value>点{phys}/{arts}伤害的屏障",
+				"屏障存在期间，自身攻击半径内除自身外所有未被阻挡的敌人获得隐匿"
+			]
+		}
+	},
+	"minima_barrier_reset": {
+		"type": "skill",
+		"initCooldown": 80,
+		"cooldown": 80,
+		"suffix": { "en": "Reset Barrier", "ja": "バリア再起動", "zh": "屏障重置指令" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["重置自身屏障"]
+		}
+	},
+	"minima_bombard": {
+		"type": "skill",
+		"initCooldown": 20,
+		"cooldown": 31,
+		"suffix": { "en": "Reset Barrier", "ja": "バリア再起動", "zh": "屏障重置指令" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"延迟4.17s后选择场上周围8格单位数最多的我方单位所在地块进行轰炸，每5s对该地块和周围8格的我方单位造成攻击力100%的{arts}溅射伤害，持续至下一次施放此技能或该形态下死亡",
+				"※无可选对象时，在自身所在地块释放"
+			]
+		}
+	},
+	"minima_stun_pulse": {
+		"type": "skill",
+		"initCooldown": 35,
+		"cooldown": 31,
+		"suffix": { "en": "Reset Barrier", "ja": "バリア再起動", "zh": "屏障重置指令" },
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"延迟4.17s后选择场上周围8格单位数最少的我方单位所在地块进行干扰，每5s对该地块和周围8格的我方单位造成3s<ba.stun>晕眩</>，持续至下一次施放此技能或该形态下死亡",
+				"※无可选对象时，在自身所在地块释放 "
+			]
+		}
+	},
+	"minima_buff": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["场上所有【机械】敌人攻击力+20%"]
+		}
+	},
+	"minima_atk": {
+		"suffix": { "en": "Normal Attack", "ja": "通常攻撃", "zh": "普攻" },
+		"atk": { "multiplier": 0.2 },
+		"hits": 15,
+		"dmg_element": "arts",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"普通攻击额外使目标在15s内每秒受到攻击力20%的{arts}持续伤害，优先攻击未受此效果影响的目标"
+			]
+		}
+	},
+	"minima_revive": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"初始形态下被击倒后，进行持续1s的重生，恢复100%生命值并弹出斯第奇，切换为地面单位",
+				"如果未经过预定位置，则闪现至预定位置，并释放当前波次"
+			]
+		}
+	},
+	"minima_stun": {
+		"value": 30,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["进入该形态时获得<v.value>s晕眩"]
+		}
+	},
+	"minima_2": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["防御力-400，法术抗性-40，移动速度最终提升至200%"]
+		}
+	},
+	"nsbomb": {
+		"suffix": { "en": "🍞", "ja": "パン", "zh": "面包" },
+		"atk": { "multiplier": 2.0 },
+		"hits": 1,
+		"dmg_element": "phys",
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"每2.5秒进行一次检测：若自身未被阻挡，则从自身模型向自身所在位置发射面包弹道，弹道命中时对半径1.0范围内的所有我方单位造成攻击力200%的{phys}溅射伤害（不可对空){ignore_camou}"
+			]
+		}
+	},
+	"nspace_revive": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"首次被击倒后进行重生，回复100%生命值，并将自身行动方式切换为地面（不改变寻路方式），期间持有自缚"
+			]
+		}
+	},
+	"nspace_drop": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"重生开始时检测自身所在地块：若为可通行地块，将自身变为非首要目标，判定为已处理（待处理目标计数+1）并将寻路方式改为地面寻路；否则在重生结束后退场"
+			]
+		}
+	},
+	"nspace_2": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"重生后获得：自缚、强制缴械、不可阻挡，防御力+100%，在场期间占用自身所在“可浮空区块”1层浮力 "
+			]
+		}
+	},
+	"nsheat_aoe": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"使半径2.0范围内（除炙烤螺旋桨/焦香螺旋桨以外）的所有我方/敌方单位（无视目标可选性）获得【螺旋桨的热浪】：每秒检测一次，若效果来源未受沉默影响，对效果持有者造成攻击力10%的<ba.dt.burning>灼燃损伤</>（同名效果不叠加）{can_silence}"
+			]
+		}
+	},
+	"nsheat_float": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["在场期间使所在的“可浮空区块”增加1层浮力"]
+		}
+	},
+	"ns_cola_accelerate": {
+		"accelerate": { "i": 0.5, "m": 0.3, "limit": 25, "preDelay": 0 },
+		"tooltip": {
+			"en": [
+				"When not being blocked, stun or bind, accelerates every 0.5s, increasing Movespeed by 30%, max 25 stacks",
+				"※Getting stunned or bind will reset Movespeed stacks to 0"
+			],
+			"ja": [
+				"被ブロック・スタン・バインド状態でない場合、0.5秒ごとに移動速度が30%上昇する。この効果は25回まで累積する",
+				"※スタン・バインドを受けると移動速度上昇がリセットされる"
+			],
+			"zh": [
+				"未处于被阻挡、眩晕、束缚状态时每0.5s尝试获得1层移动速度+30%的增益，最多尝试25次",
+				"※眩晕，束缚会清空移速叠加并重置加速尝试次数"
+			]
+		}
+	},
+	"tjgxb": {
+		"value": 3,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"除操戈/操戈·凌以外的普通或精英敌人类敌方单位（不可对空，无视孤立）进入自身半径0.8范围内时，若其持有的【操戈增益】低于<v.value>层，使其获得1层【操戈增益】，成功给予增益后自身立即退场"
+			]
+		}
+	},
+	"tjgxb_buff": {
+		"v_atk": 30,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"【操戈增益】：攻击力+(操戈攻击力的<v.v_atk>%)，防御力+(操戈防御力的100%)，法术抗性+(操戈法术抗性的100%)，最多叠加3层（各数值均基于操戈给予增益时的数值；叠加时仅以第一层的数值为基础进行翻倍，与后续操戈/操戈·凌的数值无关） "
+			]
+		}
+	},
+	"creep_stealth": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": ["位于溟痕时获得隐匿"]
+		}
+	},
+	"dsbskr_atk_buff": {
+		"type": "buff",
+		"effects": {
+			"targets": ["enemy_1235_dsbskr"],
+			"activeTargets": [],
+			"mods": [{ "key": "atk", "value": 0.1, "order": "initial", "mode": "mul" }],
+			"stackType": "add",
+			"maxCount": 15
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"每次成功造成伤害后，自身的攻击力+10%，最多叠加15层（脱离攻击状态3.5秒后及接下来每秒减少2层）"
+			]
+		}
+	},
+	"dsbskr2_atk_buff": {
+		"type": "buff",
+		"effects": {
+			"targets": ["enemy_1235_dsbskr_2"],
+			"activeTargets": [],
+			"mods": [{ "key": "atk", "value": 0.15, "order": "initial", "mode": "mul" }],
+			"stackType": "add",
+			"maxCount": 15
+		},
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"每次成功造成伤害后，自身的攻击力+15%，最多叠加15层（脱离攻击状态3.5秒后及接下来每秒减少2层）"
+			]
+		}
+	},
+	"ymgsld_barrier": {
+		"value": 8000,
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"拥有可吸收<v.value>{phys}或{arts}伤害的屏障，失去该屏障后/自身半径0.4范围内出现“某种天命”后/失衡移动结束后，每0.1秒尝试触发技能【失去盾牌】，成功触发技能时该屏障失效"
+			]
+		}
+	},
+	"ymgsld_no_shield": {
+		"tooltip": {
+			"en": [""],
+			"ja": [""],
+			"zh": [
+				"自身防御力-50% "
 			]
 		}
 	}

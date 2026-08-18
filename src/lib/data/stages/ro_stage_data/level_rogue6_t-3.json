@@ -122,7 +122,12 @@
      "elite_min_count": 8,
      "elite_max_count": 8,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "tjgxb",
+        "value": 10
+       }
+      ]
      }
     },
     {

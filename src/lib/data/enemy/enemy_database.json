@@ -11247,7 +11247,7 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-		"traits": [
+				"traits": [
 					{
 						"key": "harchn_2"
 					},
@@ -11567,7 +11567,7 @@
 				"ms": 1.9,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"block_minus_aspd"}],
+				"traits": [{ "key": "block_minus_aspd" }],
 				"special": []
 			}
 		],
@@ -12722,7 +12722,9 @@
 				"ms": 0.4,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [	{
+						"key": "egg_stab"
+					}],
 				"special": []
 			}
 		],
@@ -19853,7 +19855,7 @@
 				"ms": 1.2,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"creep_stealth"},{"key":"blocked_atk_up"},{"key":"dsbskr_atk_buff"}],
 				"special": []
 			}
 		],
@@ -19867,7 +19869,7 @@
 				"status_immune": []
 			}
 		],
-		"type": ["ranged", "seamonster", "ELITE"],
+		"type": ["melee","ranged", "seamonster", "ELITE"],
 		"notCountInTotal": false
 	},
 	"enemy_1235_dsbskr_2": {
@@ -19889,7 +19891,7 @@
 				"ms": 1.2,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"creep_stealth"},{"key":"blocked_atk_up"},{"key":"dsbskr2_atk_buff"}],
 				"special": []
 			}
 		],
@@ -19903,7 +19905,7 @@
 				"status_immune": []
 			}
 		],
-		"type": ["ranged", "seamonster", "ELITE"],
+		"type": ["melee","ranged", "seamonster", "ELITE"],
 		"notCountInTotal": false
 	},
 	"enemy_1235_dsbskr_4": {
@@ -27450,7 +27452,11 @@
 						{ "key": "smephi_rest" },
 						{ "key": "smephi_rest_break" }
 					],
-					[{ "key": "smephi_3" },{ "key": "smephi_hp","value":15 },{"key":"smephi_possessed_buff_berserk"}]
+					[
+						{ "key": "smephi_3" },
+						{ "key": "smephi_hp", "value": 15 },
+						{ "key": "smephi_possessed_buff_berserk" }
+					]
 				],
 				"form_mods": [
 					[],
@@ -27492,7 +27498,11 @@
 						{ "key": "smephi_rest" },
 						{ "key": "smephi_rest_break" }
 					],
-					[{ "key": "smephi_3" },{ "key": "smephi_hp","value":15 },{"key":"smephi_possessed_buff_berserk"}]
+					[
+						{ "key": "smephi_3" },
+						{ "key": "smephi_hp", "value": 15 },
+						{ "key": "smephi_possessed_buff_berserk" }
+					]
 				],
 				"form_mods": [
 					[],
@@ -28777,7 +28787,41 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [],
-				"special": []
+				"special": [
+					[
+						{ "key": "minima_barrier_reset" },
+						{ "key": "minima_stun_pulse" },
+						{ "key": "minima_bombard" },
+						{ "key": "minima_barrier" },
+						{ "key": "minima_buff" },
+						{ "key": "minima_atk" },
+						{ "key": "minima_revive" }
+					],
+					[{ "key": "minima_stun" }, { "key": "minima_2" }, { "key": "no_block_no_attack" }]
+				],
+				"form_mods": [
+					[],
+					[
+						{
+							"key": "def",
+							"value": -400,
+							"mode": "add",
+							"order": "initial"
+						},
+						{
+							"key": "res",
+							"value": -40,
+							"mode": "add",
+							"order": "initial"
+						},
+						{
+							"key": "ms",
+							"value": 2.0,
+							"mode": "mul",
+							"order": "final"
+						}
+					]
+				]
 			},
 			{
 				"hp": 75000,
@@ -28792,14 +28836,56 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [],
-				"special": []
+				"special": [
+					[
+						{ "key": "minima_barrier_reset", "initCooldown": 40, "cooldown": 40 },
+						{ "key": "minima_stun_pulse" },
+						{ "key": "minima_bombard" },
+						{ "key": "minima_barrier" },
+						{ "key": "minima_buff" },
+						{ "key": "minima_atk" },
+						{ "key": "minima_revive" }
+					],
+					[{ "key": "minima_stun" }, { "key": "minima_2" }, { "key": "no_block_no_attack" }]
+				],
+				"form_mods": [
+					[],
+					[
+						{
+							"key": "def",
+							"value": -400,
+							"mode": "add",
+							"order": "initial"
+						},
+						{
+							"key": "res",
+							"value": -40,
+							"mode": "add",
+							"order": "initial"
+						},
+						{
+							"key": "ms",
+							"value": 2.0,
+							"mode": "mul",
+							"order": "final"
+						}
+					]
+				]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "form",
 				"normal_attack": {
-					"atk_type": ["ranged", "arts"],
+					"atk_type": ["raw", "arts"],
+					"hits": 1
+				},
+				"status_immune": ["stun", "freeze", "sleep", "levitate", "silence"]
+			},
+			{
+				"title": "minima_state_2",
+				"normal_attack": {
+					"atk_type": ["no_attack", "arts"],
 					"hits": 1
 				},
 				"status_immune": ["silence"]
@@ -54990,9 +55076,11 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [	{
+				"traits": [
+					{
 						"key": "ftzlc_burn"
-					}],
+					}
+				],
 				"special": []
 			}
 		],
@@ -62426,12 +62514,21 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [],
-				"special": []
+				"special": [[{"key":"ymgsld_barrier"}],[{"key":"ymgsld_no_shield"}]],
+				"form_mods":[[],[{"key":"def","value":-0.5,"mode":"mul","order":"initial"}]]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "initial_state",
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			},
+				{
+				"title": "form",
 				"normal_attack": {
 					"atk_type": ["melee", "phys"],
 					"hits": 1
@@ -65208,7 +65305,7 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"bleed_true_fast"},{"key":"ns_cola_accelerate"}],
 				"special": []
 			}
 		],
@@ -65245,7 +65342,7 @@
 				"ms": 0.3,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"bleed_true_fast"},{"key":"ns_cola_accelerate"}],
 				"special": []
 			}
 		],
@@ -65282,7 +65379,7 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{ "key": "nsbomb" }],
 				"special": []
 			}
 		],
@@ -65319,7 +65416,7 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{ "key": "nsbomb" }],
 				"special": []
 			}
 		],
@@ -65327,7 +65424,7 @@
 			{
 				"title": null,
 				"normal_attack": {
-					"atk_type": ["melee", "phys"],
+					"atk_type": ["raw", "phys"],
 					"hits": 1
 				},
 				"status_immune": []
@@ -65504,7 +65601,7 @@
 				"ms": 0.4,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"nsheat_aoe"},{"key":"nsheat_float"}],
 				"special": []
 			}
 		],
@@ -65541,7 +65638,7 @@
 				"ms": 0.4,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"nsheat_aoe"},{"key":"nsheat_float"}],
 				"special": []
 			}
 		],
@@ -65579,14 +65676,26 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [],
-				"special": []
+				"special": [
+					[{ "key": "nspace_revive" }, { "key": "nspace_drop" }],
+					[{ "key": "nspace_2" }]
+				],
+				"form_mods": [[], [{ "key": "def", "value": 1, "mode": "mul", "order": "initial" }]]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "form",
 				"normal_attack": {
 					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			},
+			{
+				"title": "form",
+				"normal_attack": {
+					"atk_type": ["no_attack", "phys"],
 					"hits": 1
 				},
 				"status_immune": []
@@ -65616,14 +65725,26 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [],
-				"special": []
+				"special": [
+					[{ "key": "nspace_revive" }, { "key": "nspace_drop" }],
+					[{ "key": "nspace_2" }]
+				],
+				"form_mods": [[], [{ "key": "def", "value": 1, "mode": "mul", "order": "initial" }]]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "form",
 				"normal_attack": {
 					"atk_type": ["melee", "phys"],
+					"hits": 1
+				},
+				"status_immune": []
+			},
+			{
+				"title": "form",
+				"normal_attack": {
+					"atk_type": ["no_attack", "phys"],
 					"hits": 1
 				},
 				"status_immune": []
@@ -69767,7 +69888,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"tjgxb"},{"key":"tjgxb_buff"}],
 				"special": []
 			}
 		],
@@ -69804,7 +69925,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"tjgxb"},{"key":"tjgxb_buff","v_atk":50}],
 				"special": []
 			}
 		],
@@ -71732,7 +71853,13 @@
 				"ms": 0.55,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{"key":"splash"},{"key":"muwiz_steal"},{"key":"muwiz_shield"},{"key":"muwiz_shield_buff"},{"key":"muwiz_shield_regen"}],
+				"traits": [
+					{ "key": "splash" },
+					{ "key": "muwiz_steal" },
+					{ "key": "muwiz_shield" },
+					{ "key": "muwiz_shield_buff" },
+					{ "key": "muwiz_shield_regen" }
+				],
 				"special": []
 			}
 		],

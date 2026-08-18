@@ -296,7 +296,23 @@
      "elite_min_count": 12,
      "elite_max_count": 12,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "mhkryk_1",
+        "spineState": 1,
+        "tooltip": {
+         "en": [
+          "$Already holds shell on spawn$"
+         ],
+         "ja": [
+          "$出現時すでに甲羅所持状態$"
+         ],
+         "zh": [
+          "$出现时持有甲壳$"
+         ]
+        }
+       }
+      ]
      }
     },
     {
