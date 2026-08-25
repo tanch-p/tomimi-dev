@@ -28,13 +28,15 @@ const CHESTS = [
 	'trap_068_badbox',
 	'trap_110_smbbox',
 	'trap_758_skzmbx',
-	'trap_225_dysbox'
+	'trap_225_dysbox',
+	'trap_323_shsbox'
 ];
 const ENEMY_CHEST_KEYS = [
 	'enemy_2035_sybox',
 	'enemy_2059_smbox',
 	'enemy_2069_skzbox',
-	'enemy_2106_dyremy'
+	'enemy_2106_dyremy',
+	'enemy_2152_shezlc'
 ];
 
 const getFragmentName = (id, language: Language) => {
@@ -230,6 +232,17 @@ export const getOptions = (
 				]
 			);
 			break;
+		case 'rogue_black':
+			for (const key of predefines) {
+				if (key === 'trap_323_shsbox') {
+					options.push({
+						key: 'trap_323_shsbox',
+						src: '/images/chara_icons/trap_323_shsbox.webp',
+						name: getTranslations(language).treasure
+					});
+					continue;
+				}
+			}
 	}
 	return options;
 };
