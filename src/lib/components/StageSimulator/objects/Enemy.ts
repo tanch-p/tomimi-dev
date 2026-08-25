@@ -9,6 +9,7 @@ import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/functions/spineHelpers';
 import { SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
+import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
 
 const moveMultiplier = 0.5;
 export class Enemy {
@@ -1125,109 +1126,15 @@ export class Enemy {
 	}
 
 	visualisePath(paths, currentActionIndex, startPos, spawnOffset) {
-		const remainingPaths = paths.filter((ele, i) => i >= currentActionIndex);
-		const returnGroup = new THREE.Group();
-		returnGroup.renderOrder = 50;
-		const lineGroup = new THREE.Group();
-		const movePaths = paths.filter((ele) => ele.type === 'MOVE' || ele.type === 'APPEAR_AT_POS');
-		for (let i = 0; i < movePaths.length; i++) {
-			const startCoordinates = movePaths?.[i - 1]?.position || startPos;
-			const startOffSet = i - 1 === -1 ? spawnOffset : movePaths?.[i - 1].reachOffset;
-			const endCoordinates = movePaths[i].position;
-			const endOffset = movePaths?.[i].reachOffset;
-			// if(movePaths[i].type === "APPEAR_AT_POS"){
-			// continue;
-			// }
-
-			const startPoint = this.gameManager.getVectorCoordinates(startCoordinates, startOffSet);
-			const start = new THREE.Vector3(startPoint.x, startPoint.y, 0);
-			// Define start and end points
-			const endPoint = this.gameManager.getVectorCoordinates(endCoordinates, endOffset);
-			const end = new THREE.Vector3(endPoint.x, endPoint.y, 0);
-
-			// Create a geometry and add the points
-			const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
-
-			// Create a material for the line
-			const material = new THREE.LineBasicMaterial({
-				color: 0xff0000,
-				transparent: true,
-				depthTest: false
-			}); // Red line
-
-			// Create the line
-			const line = new THREE.Line(geometry, material);
-			line.position.z = 10;
-			lineGroup.add(line);
-		}
-		for (let i = 0; i < paths.length; i++) {
-			const { type, pathType, time, position, reachOffset } = paths[i];
-			const group = new THREE.Group();
-
-			switch (type) {
-				case 'MOVE':
-					if (pathType === 'cp') {
-						const texture = this.assetManager.textures.get('flag').texture;
-						const spriteMaterial = new THREE.SpriteMaterial({
-							map: texture,
-							transparent: true,
-							depthTest: false
-						});
-						const sprite = new THREE.Sprite(spriteMaterial);
-						sprite.scale.set(GameConfig.gridSize * 0.6, GameConfig.gridSize * 0.6, 1);
-						const { x, y } = this.gameManager.getVectorCoordinates(position, reachOffset);
-						sprite.position.set(x + 2, y + GameConfig.gridSize * 0.3, GameConfig.baseZIndex + 10);
-						group.renderOrder = 50;
-						sprite.renderOrder = 50;
-						group.add(sprite);
-					}
-					break;
-				case 'WAIT_FOR_SECONDS':
-					{
-						const geometry = new THREE.CircleGeometry(GameConfig.gridSize / 4, 32);
-						const material = new THREE.MeshBasicMaterial({
-							color: 0xb1b1b1,
-							transparent: true,
-							depthTest: false
-						});
-						const circle = new THREE.Mesh(geometry, material);
-						const ringGeometry = new THREE.RingGeometry(
-							GameConfig.gridSize / 4 - 2,
-							GameConfig.gridSize / 4,
-							32
-						);
-						const ringMaterial = new THREE.MeshBasicMaterial({
-							color: 0xdc143c,
-							transparent: true,
-							depthTest: false
-						});
-						const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-						ring.position.z = 2;
-						const waitPosition =
-							i === 0
-								? startPos
-								: paths[i - 1].type === 'DISAPPEAR'
-								? paths[i - 2].position
-								: paths[i - 1].position;
-						const offset = i === 0 ? spawnOffset : reachOffset;
-						const { x, y } = this.gameManager.getVectorCoordinates(waitPosition, offset);
-						const textMesh = this.gameManager.getTextSprite(time.toFixed() + 's', 16);
-						textMesh.position.z = 5;
-						group.add(textMesh, ring, circle);
-						group.position.set(x, y, GameConfig.baseZIndex + 15);
-						group.renderOrder = 50;
-						circle.renderOrder = 50;
-						textMesh.renderOrder = 50;
-						ring.renderOrder = 50;
-					}
-					break;
-				default:
-					break;
-			}
-			returnGroup.add(group);
-		}
-		returnGroup.add(lineGroup);
-		return returnGroup;
+		// Preserved for the future animated remaining-route preview.
+		void currentActionIndex;
+		return createPathVisualisation(
+			paths,
+			startPos,
+			spawnOffset,
+			this.assetManager,
+			this.gameManager
+		);
 	}
 
 	handleFormIndexChange() {
