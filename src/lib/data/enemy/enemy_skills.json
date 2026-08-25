@@ -203,6 +203,13 @@
 			"zh": ["优先攻击范围内生命比例最低的目标"]
 		}
 	},
+	"target_priority_word": {
+		"tooltip": {
+			"en": ["Prioritizes targeting friendly units on a Glyph Tile"],
+			"ja": ["字枠マスの味方を優先して攻撃する"],
+			"zh": ["优先攻击位于字格内的角色类单位"]
+		}
+	},
 	"dmg_res": {
 		"value": 50,
 		"tooltip": {
@@ -1131,6 +1138,14 @@
 			"zh": ["生命值低于50%时，攻击力提升<v.atk.multiplier>%", "(变身/重生均保留)"]
 		}
 	},
+	"barrier_phys_arts": {
+		"value": 3000,
+		"tooltip": {
+			"en": ["Gains a barrier which absorbs up to <v.value> {phys}/{arts} damage"],
+			"ja": ["合計<v.value>の{phys}/{arts}攻撃を吸収するシールドを持ってる"],
+			"zh": ["获得可吸收<v.value>点{phys}/{arts}伤害的屏障"]
+		}
+	},
 	"rat_king_sand_cross": {
 		"type": "skill",
 		"initCooldown": 20,
@@ -1975,9 +1990,9 @@
 	},
 	"hover": {
 		"tooltip": {
-			"en": ["<ba.float>Low-Altitude Hovering</>"],
-			"ja": ["<ba.float>低空浮揚</>"],
-			"zh": ["<ba.float>近地悬浮</>"]
+			"en": ["Low-Altitude Hovering"],
+			"ja": ["低空浮揚"],
+			"zh": ["近地悬浮"]
 		}
 	},
 	"hover_off_melee": {
@@ -2969,6 +2984,23 @@
 			]
 		}
 	},
+	"no_block_ranged_atk_splash": {
+		"suffix": { "en": "ranged", "ja": "遠", "zh": "远" },
+		"hits": 1,
+		"atk": { "multiplier": 0.5 },
+		"dmg_element": "phys",
+		"tooltip": {
+			"en": [
+				"Uses ranged attacks when not blocked, dealing <v.atk.multiplier>% of ATK as {phys} damage to the target and the 8 surrounding tiles{ignore_camou}"
+			],
+			"ja": [
+				"非ブロック時、通常攻撃で榴弾射撃(遠距離範囲{phys}攻撃)を行う。榴弾射撃は標的と周囲8マスに攻撃力<v.atk.multiplier>%の{phys}ダメージを与える{ignore_camou}"
+			],
+			"zh": [
+				"未被阻挡时会发射榴弹，爆炸范围为目标及其周围八格，造成相当于攻击力<v.atk.multiplier>%的{phys}伤害{ignore_camou}"
+			]
+		}
+	},
 	"no_block_ranged_atk": {
 		"atk": { "multiplier": 0.5 },
 		"dmg_element": "phys",
@@ -3684,6 +3716,30 @@
 			"en": ["Spawns 1 Gift of Magnanimity upon death"],
 			"ja": ["死亡すると、寛大な祝福を1体召喚する"],
 			"zh": ["死亡后召唤1只慷慨之赐"]
+		}
+	},
+	"dfat_stun": {
+		"type": "skill",
+		"initSp": 0,
+		"spCost": 3,
+		"skillType": "INCREASE_WHEN_ATTACK",
+		"atk": { "multiplier": 1.0 },
+		"dmg_element": "phys",
+		"suffix": { "en": "Skill", "ja": "責罰", "zh": "责罚" },
+		"hits": 1,
+		"can_silence": true,
+		"tooltip": {
+			"en": [
+				"Can only be used when an allied unit is within 1.0 tile radius",
+				"Deals 100% of ATK as {phys} damage and stuns allied units within range for 4s"
+			],
+			"ja": [
+				"半径1.0以内の味方全員を4秒間スタンさせ、攻撃力の100%の{phys}ダメージを与える",
+				"半径1.0以内に対象がいない場合は使用しない"
+			],
+			"zh": [
+				"自身半径1.0范围内存在我方单位时可触发：对范围内的我方单位造成4s晕眩与攻击力100%的{phys}伤害"
+			]
 		}
 	},
 	"heirbearer_ASV_buff": {
@@ -5083,6 +5139,13 @@
 			]
 		}
 	},
+	"ekulsr_energy_loss": {
+		"tooltip": {
+			"en": ["While not in Overload state, loses 1 Energy every 5 seconds"],
+			"ja": ["【過負荷】状態でない場合、5秒ごとにエネルギーを1失う"],
+			"zh": ["未处于过载状态时每5秒失去1点能量"]
+		}
+	},
 	"egun_charge": {
 		"type": "skill",
 		"initCooldown": 5,
@@ -5719,17 +5782,18 @@
 	},
 	"mmjump_1": {
 		"duration": 3.5,
-		"value": 1100,
+		"def": { "fixed": -1100, "order": "initial" },
+		"suffix": { "zh": "卸甲", "ja": "鎧なし", "en": "Armorless" },
 		"tooltip": {
 			"en": [
 				"When blocked or touches Stabilizer Chain for the first time, enters <ba.float>Low-Altitude Hovering</> for <v.duration>s",
-				"DEF -<v.value> when Low-Altitude Hovering ends"
+				"DEF <v.def.fixed> when Low-Altitude Hovering ends"
 			],
 			"ja": [
-				"初回ブロックされるか＜セーフティチェーン＞に触れると<v.duration>秒間<ba.float>低空浮揚</>状態になる。低空浮揚終了後、防御力-<v.value>"
+				"初回ブロックされるか＜セーフティチェーン＞に触れると<v.duration>秒間<ba.float>低空浮揚</>状態になる。低空浮揚終了後、防御力<v.def.fixed>"
 			],
 			"zh": [
-				"首次被阻挡/接触稳固锁链时获得<v.duration>s<ba.float>近地悬浮</>；持续时间结束后，防御力-<v.value>"
+				"首次被阻挡/接触稳固锁链时获得<v.duration>s<ba.float>近地悬浮</>；持续时间结束后，防御力<v.def.fixed>"
 			]
 		}
 	},
@@ -10032,6 +10096,13 @@
 			"zh": ["受到<指挥官指令>影响时，受到的{phys}与{arts}伤害-40%"]
 		}
 	},
+	"uacomd": {
+		"tooltip": {
+			"en": ["While on the map, gives commands and strengthen certain enemies"],
+			"ja": ["マップ上にいる間、一部の敵が強化される"],
+			"zh": ["在场时为全场集团军敌人提供<指挥官指令>"]
+		}
+	},
 	"no_target_flying": {
 		"tooltip": {
 			"en": ["Cannot target Flying units"],
@@ -11477,7 +11548,7 @@
 		"type": "skill",
 		"initCooldown": 20,
 		"cooldown": 31,
-		"suffix": { "en": "Reset Barrier", "ja": "バリア再起動", "zh": "屏障重置指令" },
+		"suffix": { "en": "", "ja": "", "zh": "屏障重置指令" },
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
@@ -11491,7 +11562,7 @@
 		"type": "skill",
 		"initCooldown": 35,
 		"cooldown": 31,
-		"suffix": { "en": "Reset Barrier", "ja": "バリア再起動", "zh": "屏障重置指令" },
+		"suffix": { "en": "", "ja": "", "zh": "屏障重置指令" },
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
@@ -11694,8 +11765,224 @@
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
+			"zh": ["自身防御力-50% "]
+		}
+	},
+	"ymgprc_slash": {
+		"type": "skill",
+		"initSp": 0,
+		"spCost": 3,
+		"skillType": "INCREASE_WHEN_ATTACK",
+		"suffix": { "en": "Skill", "ja": "寒暉", "zh": "寒晖" },
+		"atk": { "multiplier": 1.5 },
+		"hits": 2,
+		"dmg_element": "phys",
+		"tooltip": {
+			"en": ["Deals 150% ATK as {phys} damage twice"],
+			"ja": ["攻撃力の150%の{phys}ダメージを2回与える"],
+			"zh": ["对目标造成2次攻击力150%的{phys}伤害"]
+		}
+	},
+	"ymgpck_deflect": {
+		"tooltip": {
+			"en": ["Can deflect 'Certain Fates'"],
+			"ja": ["「ある種の天命」を弾き返すことができる"],
+			"zh": ["可以弹开“某种天命”"]
+		}
+	},
+	"snow_atk_up": {
+		"tooltip": {
+			"en": ["Gains +30% ATK when snowing"],
+			"ja": ["降雪時、攻撃力+30%"],
+			"zh": ["降雪时攻击力提升30%"]
+		}
+	},
+	"mjcbln_inflate": {
+		"value": 12,
+		"tooltip": {
+			"en": [
+				"Every attack inflates balloon by <v.value>%; upon 100% inflation, enters Hover state"
+			],
+			"ja": ["攻撃モーションを行うたびに風船が<v.value>%膨らみ、100%膨らむと低空浮揚状態になる"],
 			"zh": [
-				"自身防御力-50% "
+				"可以进行持续攻击，每次攻击改为为手中的气球累积<v.value>%充气值。若充气值达到100%，成功攻击后强制触发技能【起飞！】"
+			]
+		}
+	},
+	"mjcbln_deflate": {
+		"tooltip": {
+			"en": [
+				"When this barrier is destroyed, the balloon loses inflation and returns to ground state"
+			],
+			"ja": ["このバリアが破壊されると低空浮揚は解除され、風船の膨らみもリセットされる"],
+			"zh": ["该屏障被击破后：回到初始模式，获得0.8秒强制缴械、自缚，并立即清空充气值"]
+		}
+	},
+	"mjclun_powerup": {
+		"v_range": 0.04,
+		"tooltip": {
+			"en": [
+				"While illuminated by moonlight, gains +5% ATK and +<v.v_range> Attack Range every 3 seconds (stacks up to 30 times). This buff is consumed once every 3 attacks"
+			],
+			"ja": [
+				"月光に照らされている間、3秒ごとに攻撃力+5%・攻撃半径+<v.v_range>（30回まで累積）。このバフは、3回攻撃するごとに1回消費される"
+			],
+			"zh": [
+				"每3s检查一次自身状态，若自身受到月光影响则获得1层【渐长的剪刀】：攻击力+5%，攻击距离+<v.v_range>（最多叠加30层），不低于8层时出现蓝色特效",
+				"每第3次攻击后，尝试失去1层【渐长的剪刀】（累计次数不需要持有【渐长的剪刀】）"
+			]
+		}
+	},
+	"mnctpt_targeting": {
+		"tooltip": {
+			"en": [
+				"Each stone throw deals 100% ATK as {phys} damage to the target and all allies within 1.5 tile radiusignore_camou}",
+				"Targeting is not affected by block"
+			],
+			"ja": [
+				"各投石は、対象と半径1.5以内の味方全員に攻撃力の100%の物理ダメージを与える{ignore_camou}",
+				"ブロックは対象選択に影響しない"
+			],
+			"zh": [
+				"向目标发射石块对目标半径1.5范围内的所有我方单位造成物理普通伤害（此弹道不会强制击中主目标，碰撞无视迷彩），索敌不受阻挡影响，且不会因丢失目标而结束攻击{ignore_camou}"
+			]
+		}
+	},
+	"mnctpt_disoriented": {
+		"tooltip": {
+			"en": [
+				"While Immersed by a Fountain, attacks hit random tiles within a radius of 6 centered on the target with a splash damage radius of 0.5"
+			],
+			"ja": [
+				"「演技集中」状態の時、投石の位置が「対象を中心とした一辺6.0の正方形内のランダムな三ヶ所」に変更され、爆発半径も1.5→0.5に縮小する"
+			],
+			"zh": [
+				"自身持有入戏(敌方)时，普通攻击改为向目标边长6.0正方形区域内的随机位置发射伤害半径改为0.5的石块"
+			]
+		}
+	},
+	"mnctur_charge": {
+		"type": "skill",
+		"initCooldown": 5,
+		"cooldown": 10,
+		"suffix": { "en": "Charge", "ja": "突撃", "zh": "冲锋" },
+		"can_silence": true,
+		"tooltip": {
+			"en": [
+				"Only used while not blocked and there is at least one friendly unit in the same row/column",
+				"Charges toward the closest friendly unit in the same row/column"
+			],
+			"ja": [
+				"ブロックされておらず、移動方向の前方に地上の味方がいる場合に使用。突撃状態に移行し、対象のマスへ向かう"
+			],
+			"zh": [
+				"仅未被阻挡、且未处于冲锋冷却、且移动方向同一行/列的前方存在非飞行我方单位时可触发：",
+				"标记并开始追踪目标所在地块中心；技能结束时进入冲锋模式"
+			]
+		}
+	},
+	"mnctur_charging": {
+		"suffix": { "en": "Charging", "ja": "突撃", "zh": "冲锋" },
+		"atk": { "multiplier": 2 },
+		"hits": 1,
+		"dmg_element": "phys",
+		"tooltip": {
+			"en": [
+				"Deals 200% ATK as {phys} damage to allied units within 0.45 tile radius. Returns to Initial State after dealing damage or reaching target tile"
+			],
+			"ja": [
+				"半径0.45以内に入った味方に攻撃力の200%の{phys}ダメージを与える。ダメージを与えるか、対象のマスに到着すると通常状態に戻る"
+			],
+			"zh": [
+				"仅一次，对进入半径0.45的我方单位造成攻击力200%的无途径{phys}伤害（受入戏(敌方)影响后失效；每次进入该模式时刷新次数；不可对空），成功造成伤害后停止进行追踪并回到初始模式",
+				"到达追踪位置后回到初始模式"
+			]
+		}
+	},
+	"mnctur_charging_disoriented": {
+		"tooltip": {
+			"en": [
+				"When Immersed by a Fountain, the above damage does not happen; Continues to move past target and upon hitting a high ground tile or edge of map, triggers the [Crash] effect"
+			],
+			"ja": [
+				"「演技集中」状態になると、上記のダメージが発生しなくなり、対象のマスに到着しても移動し続ける高台か外周にぶつかると【壁にぶつかる】が発動する"
+			],
+			"zh": [
+				"追踪期间受入戏(敌方)影响后，改为追踪自身移动方向同一行/列的前方最远处的地块中心往移动方向额外偏移0.5处，达到后强制触发技能【撞墙】"
+			]
+		}
+	},
+	"mnctur_crash": {
+		"tooltip": {
+			"en": [
+				"[Crash] Deals 1000% of ATK as {true} damage to self, becomes stunned for 15s, and unable to use [Charge] for 20s. After the stun ends, returns to Initial State"
+			],
+			"ja": [
+				"【壁にぶつかる】自身に攻撃力の1000%の{true}ダメージを与え、15秒間スタンし、20秒間【突撃】を使用できなくなる。スタン終了後、通常状態に戻る"
+			],
+			"zh": [
+				"【撞墙】对自身造成攻击力1000%的无途径{true}伤害",
+				"技能结束时获得15秒晕眩和20秒冲锋冷却，该晕眩结束时回到初始模式"
+			]
+		}
+	},
+	"mephi_heal": {
+		"tooltip": {
+			"en": ["Heals up to 3 enemies at once; block does not affect target selection"],
+			"ja": ["最大3体の敵を同時に回復する、ブロックは対象選択に影響しない"],
+			"zh": ["普通攻击为治疗，可治疗生命值未满的敌方单位，最大目标数为3，治疗索敌不受阻挡影响"]
+		}
+	},
+	"mephi_hps_buff": {
+		"tooltip": {
+			"en": ["While on the field, increases the health regeneration rate of all enemies by 100%"],
+			"ja": ["自身がマップ上にいる時、全ての敵のHP回復速度+100%"],
+			"zh": ["在场时令所有敌方单位的生命回复速度+100%"]
+		}
+	},
+	"crvln_hero": {
+		"tooltip": {
+			"en": ["When attacking Hero's Sidekick/Destined Hero, damage is increased to 500%"],
+			"ja": ["主役系を攻撃する時、最終ダメージが500%までに上昇する"],
+			"zh": ["计算伤害时若目标为主角阵营角色/命定的主角，攻击倍率提高至500%"]
+		}
+	},
+	"crvln_act": {
+		"tooltip": {
+			"en": ["Upon entering a Filming area, enters Buffed State"],
+			"ja": ["初めて撮影エリアに入ると、2秒間台本を読んだ後、役に入り込む"],
+			"zh": ["位于摄影区域内时进入演出模式，否则进入初始模式"]
+		}
+	},
+	"crvln_acting_atk": {
+		"tooltip": {
+			"en": ["Attacks hit twice; prioritize attacking Hero's Sidekick/Destined Hero"],
+			"ja": ["撮影エリア内では2回攻撃になる、定められし主役系を優先的に攻撃する"],
+			"zh": [
+				"普通攻击索敌不受阻挡影响，攻击变为二连击，优先攻击主角阵营角色/命定的主角＞阻挡自身的单位＞其他我方单位，可以攻击飞行的主角阵营角色/命定的主角"
+			]
+		}
+	},
+	"crhro_villain": {
+		"tooltip": {
+			"en": ["When attacking Villain's Minion/Destined Villain, damage is increased to 500%"],
+			"ja": ["悪役系を攻撃する時、最終ダメージが500%までに上昇する"],
+			"zh": ["计算伤害时若目标为反派阵营角色/命定的反派，攻击倍率提高至500%"]
+		}
+	},
+	"crhro_revive": {
+		"tooltip": {
+			"en": ["When defeated for the first time, revives over 3s to 100% HP"],
+			"ja": ["HPが0になると、一度だけ3秒かけてHPを100%回復する"],
+			"zh": ["首次被击倒后进行持续3s的重生，恢复100%生命值并获得0s无敌"]
+		}
+	},
+	"crhro_buff": {
+		"tooltip": {
+			"en": ["Gains Attack Range +2.0; prioritize attacking Villain's Minion/Destined Villain"],
+			"ja": ["撮影エリア内にいると攻撃半径+2.0、悪役系を優先的に攻撃する"],
+			"zh": [
+				"攻击距离+2，普通攻击索敌不受阻挡影响，优先攻击反派阵营角色/命定的反派＞阻挡自身的单位＞其他我方单位"
 			]
 		}
 	}
