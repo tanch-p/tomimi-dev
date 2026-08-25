@@ -42449,7 +42449,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "groundbind"]
 			}
 		],
 		"type": ["melee", "sarkaz", "NORMAL"],
@@ -42493,7 +42493,7 @@
 					"atk_type": ["melee", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble"]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "groundbind"]
 			}
 		],
 		"type": ["melee", "sarkaz", "NORMAL"],
@@ -52913,7 +52913,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "levitate", "tremble", "fear", "attract"]
+				"status_immune": ["stun", "silence", "levitate", "tremble", "fear", "attract", "groundbind"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
@@ -59730,7 +59730,7 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear"]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear", "groundbind"]
 			}
 		],
 		"type": ["ranged", "origen", "BOSS"],
@@ -66835,7 +66835,7 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract"]
+				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract", "groundbind"]
 			}
 		],
 		"type": ["ranged", "BOSS"],
