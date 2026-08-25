@@ -57036,6 +57036,9 @@
 						"max": 1
 					},
 					{
+						"key": "no_normal_attack"
+					},
+					{
 						"key": "hlsnip_attack"
 					},
 					{
