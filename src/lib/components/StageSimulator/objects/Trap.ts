@@ -2,9 +2,11 @@ import * as THREE from 'three';
 import * as spine from '$lib/spine';
 import trapLookup from '$lib/data/trap/traps.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
+import branchInfo from '$lib/data/stages/branch_info.json';
 import { AssetManager } from './AssetManager';
 import { GameConfig } from './GameConfig';
 import { getAnimDuration, getIdleAnimName, getSpineMetaData } from '$lib/functions/spineHelpers';
+import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
 import type { GameManager } from './GameManager';
@@ -271,7 +273,37 @@ export class Trap {
 		this.summonAnimationElapsedTime = 0;
 	}
 
-	getPathActions(route: any) {
+	getSummonedEnemyMovementMode(route: any, action: any) {
+		const enemy = this.gameManager.enemies.find((enemy) => enemy.stageId === action.key);
+		if (!enemy) return route.motionMode;
+
+		let movementMode = route.motionMode;
+		const formIndex =
+			(branchInfo as any)?.[this.gameManager.config.levelId]?.[this.branchKey as string]
+				?.formIndex ?? 0;
+		const traits = getEnemySkills(enemy, enemy.traits, formIndex, GameConfig.specialMods, 'trait');
+		const specials = getEnemySkills(
+			enemy,
+			enemy.forms[formIndex]?.special ?? enemy.forms[0].special,
+			formIndex,
+			GameConfig.specialMods,
+			'special'
+		);
+		if (
+			traits.some((skill) => ['self_bind', 'self_bind_plus', 'stationary_boss'].includes(skill.key))
+		) {
+			movementMode = 'NONE';
+		}
+		if (traits.some((skill) => skill.key === 'move_blink')) {
+			movementMode = 'BLINK';
+		}
+		if (traits.concat(specials).some((skill) => skill.motionMode === 'skill_blink')) {
+			movementMode = 'SKILL_BLINK';
+		}
+		return movementMode;
+	}
+
+	getPathActions(route: any, movementMode = route.motionMode) {
 		const actions = [
 			...(route.checkpoints ?? []).map((checkpoint) => ({ ...checkpoint, pathType: 'cp' })),
 			{
@@ -282,6 +314,9 @@ export class Trap {
 				pathType: 'end'
 			}
 		];
+		if (['FLY', 'BLINK', 'SKILL_BLINK'].includes(movementMode)) {
+			return actions;
+		}
 		let currentPosition = route.startPosition;
 		return actions.reduce((pathActions, action) => {
 			if (action.type === 'APPEAR_AT_POS') {
@@ -333,8 +368,13 @@ export class Trap {
 			const originalRoute = config.extra_routes?.[action.routeIndex];
 			if (!originalRoute) continue;
 			const route = this.gameManager.convertMovementConfig(structuredClone(originalRoute));
+			const movementMode = this.getSummonedEnemyMovementMode(route, action);
 			paths.add(
-				this.visualisePath(this.getPathActions(route), route.startPosition, route.spawnOffset)
+				this.visualisePath(
+					this.getPathActions(route, movementMode),
+					route.startPosition,
+					route.spawnOffset
+				)
 			);
 		}
 		return paths;

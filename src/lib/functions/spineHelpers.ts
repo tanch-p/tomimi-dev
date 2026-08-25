@@ -2,9 +2,6 @@ import * as spine from '$lib/spine';
 import spineMetaData from '$lib/data/spine/spine_meta_data.json';
 
 export const getSpineMetaData = (key, skel) => {
-	if (key === 'trap_222_rgdysm') {
-		console.log(skel);
-	}
 	if (!skel) return;
 
 	let width = Math.min(100, skel.data.width * 0.3);
