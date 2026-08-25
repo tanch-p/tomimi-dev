@@ -3,6 +3,16 @@ import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
 import type { AssetManager } from '$lib/components/StageSimulator/objects/AssetManager';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 
+const animatedPathLength = GameConfig.gridSize * 2;
+const animatedPathSpeed = GameConfig.gridSize * 6;
+
+export type AnimatedPathVisualisation = {
+	group: THREE.Group;
+	completed: boolean;
+	update: (delta: number) => void;
+	dispose: () => void;
+};
+
 export function createPathVisualisation(
 	paths: any[],
 	startPos: any,
@@ -85,4 +95,186 @@ export function createPathVisualisation(
 	}
 	returnGroup.add(lineGroup);
 	return returnGroup;
+}
+
+/**
+ * Creates a one-shot, fixed-length line which travels over the remaining route.
+ * The line initially grows from the enemy, then its head and tail advance together.
+ */
+export function createAnimatedPathVisualisation(
+	paths: any[],
+	currentActionIndex: number,
+	currentPosition: THREE.Vector3,
+	gameManager: GameManager,
+	onWaitReached?: (time: number, position: THREE.Vector3) => void
+): AnimatedPathVisualisation | null {
+	type RouteSegment = {
+		points: THREE.Vector3[];
+		waits: { pointIndex: number; time: number }[];
+	};
+
+	const routeSegments: RouteSegment[] = [
+		{
+			points: [new THREE.Vector3(currentPosition.x, currentPosition.y, 0)],
+			waits: []
+		}
+	];
+	let activeSegment = routeSegments[0];
+	let disappeared = false;
+	const waitActionTypes = [
+		'WAIT_FOR_SECONDS',
+		'WAIT_CURRENT_FRAGMENT_TIME',
+		'WAIT_CURRENT_WAVE_TIME'
+	];
+
+	for (let i = 0; i < currentActionIndex; i++) {
+		if (paths[i].type === 'DISAPPEAR') disappeared = true;
+		if (paths[i].type === 'APPEAR_AT_POS') disappeared = false;
+	}
+
+	for (const path of paths.slice(currentActionIndex)) {
+		if (waitActionTypes.includes(path.type)) {
+			activeSegment.waits.push({
+				pointIndex: activeSegment.points.length - 1,
+				time: path.time
+			});
+			continue;
+		}
+		if (path.type === 'DISAPPEAR') {
+			disappeared = true;
+			continue;
+		}
+		if (path.type !== 'MOVE' && path.type !== 'APPEAR_AT_POS') continue;
+
+		const { x, y } = gameManager.getVectorCoordinates(path.position, path.reachOffset);
+		const point = new THREE.Vector3(x, y, 0);
+		if (path.type === 'APPEAR_AT_POS' && disappeared) {
+			activeSegment = { points: [point], waits: [] };
+			routeSegments.push(activeSegment);
+			disappeared = false;
+			continue;
+		}
+		if (disappeared) continue;
+		if (
+			point.distanceToSquared(activeSegment.points[activeSegment.points.length - 1]) >
+			Number.EPSILON
+		) {
+			activeSegment.points.push(point);
+		}
+	}
+
+	const segments = routeSegments
+		.map(({ points, waits }) => {
+			const distances = [0];
+			for (let i = 1; i < points.length; i++) {
+				distances.push(distances[i - 1] + points[i - 1].distanceTo(points[i]));
+			}
+			return {
+				points,
+				distances,
+				totalDistance: distances[distances.length - 1],
+				waits: waits.map(({ pointIndex, time }) => ({
+					distance: distances[pointIndex],
+					position: points[pointIndex],
+					time
+				}))
+			};
+		})
+		.filter((segment) => segment.totalDistance > Number.EPSILON);
+
+	if (segments.length === 0) return null;
+
+	let segmentIndex = 0;
+	let { points, distances, totalDistance } = segments[segmentIndex];
+	let waitIndex = 0;
+
+	const geometry = new THREE.BufferGeometry().setFromPoints([points[0], points[0]]);
+	const material = new THREE.LineBasicMaterial({
+		color: 0xff0000,
+		transparent: true,
+		depthTest: false
+	});
+	const line = new THREE.Line(geometry, material);
+	line.position.z = 11;
+	line.renderOrder = 51;
+
+	const group = new THREE.Group();
+	group.renderOrder = 51;
+	group.add(line);
+
+	let headDistance = 0;
+	let completed = false;
+
+	const setLinePoints = (visiblePoints: THREE.Vector3[]) => {
+		line.geometry.dispose();
+		line.geometry = new THREE.BufferGeometry().setFromPoints(visiblePoints);
+	};
+
+	const getPointAtDistance = (distance: number) => {
+		const clampedDistance = THREE.MathUtils.clamp(distance, 0, totalDistance);
+		for (let i = 1; i < distances.length; i++) {
+			if (clampedDistance <= distances[i]) {
+				const segmentLength = distances[i] - distances[i - 1];
+				const progress = segmentLength ? (clampedDistance - distances[i - 1]) / segmentLength : 0;
+				return points[i - 1].clone().lerp(points[i], progress);
+			}
+		}
+		return points[points.length - 1].clone();
+	};
+
+	const updateGeometry = (tailDistance: number, visibleHeadDistance: number) => {
+		const visiblePoints = [getPointAtDistance(tailDistance)];
+		for (let i = 1; i < points.length - 1; i++) {
+			if (distances[i] > tailDistance && distances[i] < visibleHeadDistance) {
+				visiblePoints.push(points[i]);
+			}
+		}
+		visiblePoints.push(getPointAtDistance(visibleHeadDistance));
+
+		setLinePoints(visiblePoints);
+	};
+
+	const showReachedWaits = (visibleHeadDistance: number) => {
+		const waits = segments[segmentIndex].waits;
+		while (waitIndex < waits.length && waits[waitIndex].distance <= visibleHeadDistance) {
+			const wait = waits[waitIndex];
+			onWaitReached?.(wait.time, wait.position.clone());
+			waitIndex++;
+		}
+	};
+
+	return {
+		group,
+		get completed() {
+			return completed;
+		},
+		update(delta: number) {
+			if (completed) return;
+
+			headDistance += animatedPathSpeed * delta;
+			showReachedWaits(Math.min(headDistance, totalDistance));
+			const tailDistance = Math.max(0, headDistance - animatedPathLength);
+			if (tailDistance >= totalDistance) {
+				segmentIndex++;
+				if (segmentIndex >= segments.length) {
+					completed = true;
+					group.visible = false;
+					return;
+				}
+
+				({ points, distances, totalDistance } = segments[segmentIndex]);
+				headDistance = 0;
+				waitIndex = 0;
+				setLinePoints([points[0], points[0]]);
+				return;
+			}
+
+			updateGeometry(tailDistance, Math.min(headDistance, totalDistance));
+		},
+		dispose() {
+			line.geometry.dispose();
+			material.dispose();
+			group.remove(line);
+		}
+	};
 }

@@ -375,7 +375,8 @@ export class Game {
 		this.isDragging = false;
 	}
 	render() {
-		const deltaTime = this.clock.getDelta() * GameConfig.speedFactor;
+		const frameDelta = this.clock.getDelta();
+		const deltaTime = frameDelta * GameConfig.speedFactor;
 		if (
 			this.config.levelId.includes('_d-') &&
 			GameConfig.stagePhaseIndex === 0 &&
@@ -394,6 +395,7 @@ export class Game {
 				GameConfig.setValue('isPaused', true);
 			}
 		}
+		this.gameManager.enemiesOnMap.forEach((enemy) => enemy.updatePathVisualisation(frameDelta));
 
 		if (this.spawnManager.isFinished && this.gameManager.noEnemyAlive) {
 			GameConfig.state = 'end';

@@ -9,8 +9,12 @@ import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/functions/spineHelpers';
 import { SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
-import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
 import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
+import {
+	createAnimatedPathVisualisation,
+	createPathVisualisation,
+	type AnimatedPathVisualisation
+} from '$lib/functions/pathVisualisationHelpers';
 
 const moveMultiplier = 0.5;
 export class Enemy {
@@ -48,7 +52,9 @@ export class Enemy {
 	notCountInTotal = false;
 
 	countdownId = -1;
+	animatedPathCountdownIds: number[] = [];
 	pathGroup;
+	animatedPathGroup: AnimatedPathVisualisation | null = null;
 	meshGroup: THREE.Group;
 	hitbox;
 	shadow;
@@ -248,7 +254,6 @@ export class Enemy {
 			this.meshGroup.position.set(setData.meshPos.x, setData.meshPos.y, GameConfig.baseZIndex);
 			this.pathGroup = this.visualisePath(
 				this.actions,
-				this.currentActionIndex,
 				this.route.startPosition,
 				this.route.spawnOffset
 			);
@@ -279,7 +284,6 @@ export class Enemy {
 			if (!this.gameManager.isSimulation) {
 				this.pathGroup = this.visualisePath(
 					this.actions,
-					this.currentActionIndex,
 					this.route.startPosition,
 					this.route.spawnOffset
 				);
@@ -836,12 +840,6 @@ export class Enemy {
 
 		const { type, position, pathType, time, reachOffset } = this.actions[this.currentActionIndex];
 
-		if (this.selected) {
-			if (!this.pathOn) {
-				this.visualisePath(this.actions, this.currentActionIndex, this.route.startPosition);
-				this.pathOn = true;
-			}
-		}
 		switch (type) {
 			case 'MOVE':
 				{
@@ -1123,6 +1121,8 @@ export class Enemy {
 	}
 
 	remove() {
+		this.clearAnimatedPathVisualisation();
+		this.clearAnimatedPathCountdowns();
 		if (!this.gameManager.isSimulation) {
 			if (!this.sprite) return;
 			let index = this.gameManager.game.objects.findIndex((ele) => ele.uuid === this.sprite.uuid);
@@ -1146,8 +1146,8 @@ export class Enemy {
 		// console.log(pos);
 		// console.log(this.route)
 		this.shadow.uniforms.isSelected.value = true;
-		this.gameManager.scene.add(this.pathGroup);
 		this.selected = true;
+		this.startAnimatedPathVisualisation();
 		if (this.waitElapsedTime > 0) {
 			this.gameManager.countdownManager.toggleCountdown(this.countdownId, true);
 		}
@@ -1157,6 +1157,7 @@ export class Enemy {
 		this.skillRangeMeshes.forEach((mesh) => (mesh.visible = true));
 	}
 	onDeselect() {
+		this.clearAnimatedPathCountdowns();
 		if (!this.gameManager.isSimulation) {
 			this.gameManager.scene.remove(this.pathGroup);
 			this.shadow.uniforms.isSelected.value = false;
@@ -1170,9 +1171,55 @@ export class Enemy {
 		}
 	}
 
-	visualisePath(paths, currentActionIndex, startPos, spawnOffset) {
-		// Preserved for the future animated remaining-route preview.
-		void currentActionIndex;
+	startAnimatedPathVisualisation() {
+		this.clearAnimatedPathVisualisation();
+		this.clearAnimatedPathCountdowns();
+		this.animatedPathGroup = createAnimatedPathVisualisation(
+			this.actions,
+			this.currentActionIndex,
+			this.meshGroup.position,
+			this.gameManager,
+			(time, position) => this.showAnimatedPathCountdown(time, position)
+		);
+		if (this.animatedPathGroup) {
+			this.gameManager.scene.add(this.animatedPathGroup.group);
+		}
+	}
+
+	clearAnimatedPathVisualisation() {
+		if (!this.animatedPathGroup) return;
+		this.gameManager.scene.remove(this.animatedPathGroup.group);
+		this.animatedPathGroup.dispose();
+		this.animatedPathGroup = null;
+	}
+
+	showAnimatedPathCountdown(time: number, position: THREE.Vector3) {
+		if (!this.selected) return;
+		const countdownId = this.gameManager.createCountdown(
+			time,
+			position.x,
+			position.y + 30,
+			'normal',
+			false
+		);
+		this.animatedPathCountdownIds.push(countdownId);
+		this.gameManager.countdownManager.toggleCountdown(countdownId, true);
+	}
+
+	clearAnimatedPathCountdowns() {
+		this.animatedPathCountdownIds.forEach((id) => this.gameManager.removeCountdown(id));
+		this.animatedPathCountdownIds = [];
+	}
+
+	updatePathVisualisation(delta: number) {
+		if (!this.animatedPathGroup) return;
+		this.animatedPathGroup.update(delta);
+		if (this.animatedPathGroup.completed) {
+			this.clearAnimatedPathVisualisation();
+		}
+	}
+
+	visualisePath(paths, startPos, spawnOffset) {
 		return createPathVisualisation(
 			paths,
 			startPos,

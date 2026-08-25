@@ -59,7 +59,7 @@ export class CountdownManager {
 		});
 	}
 
-	createCountdown(initialTime: number, colorKey = 'normal'): CountdownSprite {
+	createCountdown(initialTime: number, colorKey = 'normal', countsDown = true): CountdownSprite {
 		if (this.countdowns.has(this.indexCounter)) {
 			console.warn(
 				`Countdown with id ${this.indexCounter} already exists. Returning existing instance.`
@@ -70,7 +70,8 @@ export class CountdownManager {
 			this.indexCounter,
 			initialTime,
 			this.colors[colorKey],
-			this.shaderMaterial
+			this.shaderMaterial,
+			countsDown
 		);
 		this.countdowns.set(this.indexCounter, countdown);
 		this.indexCounter++;
@@ -137,6 +138,7 @@ export class CountdownSprite {
 
 	private assetManager: AssetManager;
 	private material: THREE.ShaderMaterial;
+	private countsDown: boolean;
 	private timeStr: string = '';
 
 	// Shared geometry
@@ -151,11 +153,13 @@ export class CountdownSprite {
 		id: number,
 		initialTime: number,
 		color: number,
-		sharedMaterial: THREE.ShaderMaterial
+		sharedMaterial: THREE.ShaderMaterial,
+		countsDown = true
 	) {
 		this.id = id;
 		this.time = initialTime;
 		this.color = color;
+		this.countsDown = countsDown;
 		this.assetManager = AssetManager.getInstance();
 
 		// Create a group to hold all meshes
@@ -326,6 +330,7 @@ export class CountdownSprite {
 	}
 
 	update(deltaTime: number): void {
+		if (!this.countsDown) return;
 		const newTime = this.time - deltaTime;
 		// Check if countdown has completed
 		if (newTime <= 0) {
