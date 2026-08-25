@@ -12,27 +12,28 @@
 		statusImmuneList: StatusImmune[] = [],
 		mapConfig: MapConfig;
 
-	const getTooltip = (
+	const buildTooltipLines = (
 		entity: Enemy | Trap,
 		formIndex: number,
 		skill: Skill,
 		language: Language
-	) => {
-		if (!skill.tooltip) return;
+	): string[] | undefined => {
+		const sourceLines = skill.tooltip?.[language];
+		if (!sourceLines) return undefined;
 
-		return skill.tooltip[language].map((line) => {
-			line = parseValues(entity, formIndex, skill, line, language, mapConfig, mode);
-			if (statusImmuneList.includes('silence')) {
+		const isSilenceImmune = statusImmuneList.includes('silence');
+		const suffix = skill.buffloss ? '{buffloss}' : '';
+
+		return sourceLines.map((sourceLine) => {
+			let line = parseValues(entity, formIndex, skill, sourceLine, language, mapConfig, mode);
+			if (isSilenceImmune) {
 				line = line.replace('{can_silence}', '');
 			}
-			if (skill.buffloss) {
-				return line + '{buffloss}';
-			}
-			return line;
+			return line + suffix;
 		});
 	};
 
-	$: tooltips = getTooltip(entity, formIndex, skill, language);
+	$: tooltips = buildTooltipLines(entity, formIndex, skill, language);
 	$: showSilenceIcon =
 		(skill.can_silence || skill.tooltip?.zh?.some((line) => line.includes('can_silence'))) &&
 		!statusImmuneList.includes('silence');
@@ -44,7 +45,7 @@
 			<SkillHead {entity} {skill} {language} {mode} {statusImmuneList} />
 		{/if}
 		{#each tooltips as line}
-			<TextParser {line} />
+			<TextParser {line} {language} />
 		{/each}
 	</li>
 {/if}

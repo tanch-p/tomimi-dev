@@ -16,52 +16,60 @@ export interface TaggedTextNodeText {
 	value: string;
 }
 
-type TaggedTextToken =
-	| {
-			type: 'open';
-			name: string;
-	  }
-	| {
-			type: 'close';
-	  }
-	| {
-			type: 'text';
-			value: string;
-	  };
-
 export function parseTaggedText(input: string): TaggedTextRootNode {
-	const tokens = tokenizeTaggedText(input);
 	const root: TaggedTextRootNode = {
 		type: 'root',
 		children: []
 	};
 	const stack: Array<TaggedTextRootNode | TaggedTextTagNode> = [root];
+	let cursor = 0;
+	let textStart = 0;
 
-	for (const token of tokens) {
-		const currentNode = stack[stack.length - 1];
-
-		switch (token.type) {
-			case 'text':
-				appendTextNode(currentNode.children, token.value);
-				break;
-			case 'open': {
-				const node: TaggedTextTagNode = {
-					type: 'tag',
-					name: token.name,
-					children: []
-				};
-				currentNode.children.push(node);
-				stack.push(node);
-				break;
-			}
-			case 'close':
-				if (stack.length === 1) {
-					throw new Error('Unexpected closing tag "</>" with no open tag to close.');
-				}
-				stack.pop();
-				break;
+	while (cursor < input.length) {
+		const tagStart = input.indexOf('<', cursor);
+		if (tagStart === -1) {
+			break;
 		}
+		cursor = tagStart;
+
+		if (input.startsWith('</>', cursor)) {
+			appendTextNode(stack[stack.length - 1].children, input.slice(textStart, cursor));
+			if (stack.length === 1) {
+				throw new Error('Unexpected closing tag "</>" with no open tag to close.');
+			}
+			stack.pop();
+			cursor += 3;
+			textStart = cursor;
+			continue;
+		}
+
+		const tagEnd = input.indexOf('>', cursor + 1);
+		if (tagEnd === -1) {
+			throw new Error(`Unterminated tag starting at index ${cursor}.`);
+		}
+
+		const tagName = input.slice(cursor + 1, tagEnd);
+		if (!tagName || tagName.includes('<')) {
+			throw new Error(`Invalid tag name "${tagName}" at index ${cursor}.`);
+		}
+		if (tagName.startsWith('/')) {
+			throw new Error(`Invalid closing tag syntax "<${tagName}>". Use "</>" instead.`);
+		}
+
+		const currentNode = stack[stack.length - 1];
+		appendTextNode(currentNode.children, input.slice(textStart, cursor));
+		const node: TaggedTextTagNode = {
+			type: 'tag',
+			name: tagName,
+			children: []
+		};
+		currentNode.children.push(node);
+		stack.push(node);
+		cursor = tagEnd + 1;
+		textStart = cursor;
 	}
+
+	appendTextNode(stack[stack.length - 1].children, input.slice(textStart));
 
 	if (stack.length > 1) {
 		const unclosedTags = stack
@@ -80,51 +88,6 @@ export function renderTaggedTextAsHtml(ast: TaggedTextRootNode): string {
 
 export function parseTaggedTextToHtml(input: string): string {
 	return renderTaggedTextAsHtml(parseTaggedText(input));
-}
-
-function tokenizeTaggedText(input: string): TaggedTextToken[] {
-	const tokens: TaggedTextToken[] = [];
-	let cursor = 0;
-
-	while (cursor < input.length) {
-		if (input.startsWith('</>', cursor)) {
-			tokens.push({ type: 'close' });
-			cursor += 3;
-			continue;
-		}
-
-		if (input[cursor] === '<') {
-			const tagEnd = input.indexOf('>', cursor + 1);
-			if (tagEnd === -1) {
-				throw new Error(`Unterminated tag starting at index ${cursor}.`);
-			}
-
-			const tagName = input.slice(cursor + 1, tagEnd);
-			if (!tagName || tagName.includes('<')) {
-				throw new Error(`Invalid tag name "${tagName}" at index ${cursor}.`);
-			}
-			if (tagName.startsWith('/')) {
-				throw new Error(`Invalid closing tag syntax "<${tagName}>". Use "</>" instead.`);
-			}
-
-			tokens.push({
-				type: 'open',
-				name: tagName
-			});
-			cursor = tagEnd + 1;
-			continue;
-		}
-
-		const nextTagStart = input.indexOf('<', cursor);
-		const textEnd = nextTagStart === -1 ? input.length : nextTagStart;
-		tokens.push({
-			type: 'text',
-			value: input.slice(cursor, textEnd)
-		});
-		cursor = textEnd;
-	}
-
-	return tokens;
 }
 
 function renderTaggedTextNodes(nodes: TaggedTextNode[]): string {
