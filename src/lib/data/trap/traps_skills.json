@@ -2223,6 +2223,7 @@
 	"rgdysm_summon": {
 		"interval": 15,
 		"enemy_key": "enemy_2101_dyspll",
+		"beginAnimation": "Skill",
 		"tooltip": {
 			"zh": ["每隔<v.interval>秒根据地图预定路径召唤一个<v.enemy_key>；技能结束时立刻进行召唤"],
 			"ja": ["<v.interval>毎に<v.enemy_key>を召喚する；スキルが終わるとすぐ召喚を行う"],

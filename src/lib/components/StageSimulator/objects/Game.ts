@@ -346,11 +346,21 @@ export class Game {
 					enemy.onSelect();
 				}
 			}
+			if (intersect?.object?.userData?.trap) {
+				const trap = intersect.object.userData.trap;
+				if (trap.selected) {
+					trap.activateBranch();
+				} else {
+					trap.onSelect();
+				}
+			}
 
-			const enemiesObjs = this.objects.filter((ele) => ele.userData.enemy);
-			enemiesObjs.forEach((ele) => {
+			const selectableObjects = this.objects.filter(
+				(ele) => ele.userData.enemy || ele.userData.trap
+			);
+			selectableObjects.forEach((ele) => {
 				if (ele.uuid !== intersect.object.uuid) {
-					ele.userData.enemy.onDeselect();
+					(ele.userData.enemy || ele.userData.trap).onDeselect();
 				}
 			});
 		}
@@ -360,7 +370,11 @@ export class Game {
 	}
 	render() {
 		const deltaTime = this.clock.getDelta() * GameConfig.speedFactor;
-		if (this.config.levelId.includes('_d-') && GameConfig.stagePhaseIndex === 0 && !GameConfig.isPaused) {
+		if (
+			this.config.levelId.includes('_d-') &&
+			GameConfig.stagePhaseIndex === 0 &&
+			!GameConfig.isPaused
+		) {
 			this.spawnManager.update(deltaTime);
 			this.gameManager.update(deltaTime);
 		} else {

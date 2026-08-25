@@ -23,7 +23,10 @@ const TRAPS_AFFECTED_BY_DIFFICULTY = [
 	'trap_224_dyrbox',
 	'trap_225_dysbox',
 	'trap_219_fttreant',
-	'trap_253_boxnma'
+	'trap_253_boxnma',
+	'trap_323_shsbox',
+	'trap_321_shnbox',
+	'trap_322_shrbox'
 ];
 
 const STATS = ['hp', 'atk', 'aspd', 'def', 'res', 'blockCnt'];

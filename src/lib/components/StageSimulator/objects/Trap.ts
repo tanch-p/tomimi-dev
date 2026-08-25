@@ -1,10 +1,12 @@
 import * as THREE from 'three';
 import * as spine from '$lib/spine';
 import trapLookup from '$lib/data/trap/traps.json';
+import trapSkills from '$lib/data/trap/traps_skills.json';
 import { AssetManager } from './AssetManager';
 import { GameConfig } from './GameConfig';
-import { getIdleAnimName } from '$lib/functions/spineHelpers';
+import { getAnimDuration, getIdleAnimName, getSpineMetaData } from '$lib/functions/spineHelpers';
 import { clearObjects } from '$lib/functions/threejsHelpers';
+import type { GameManager } from './GameManager';
 
 export class Trap {
 	assetManager: AssetManager;
@@ -18,8 +20,22 @@ export class Trap {
 	hideTile: boolean;
 	meshGroup = new THREE.Group();
 	isSimulation;
-	constructor(data, pos, isSimulation: boolean, blackboard) {
+	gameManager: GameManager;
+	branchKey: string | null = null;
+	branch: any = null;
+	isPeriodicSummoner = false;
+	summonInterval = 0;
+	summonElapsedTime = 0;
+	summonAnimation: string | null = null;
+	summonAnimationDuration = 0;
+	summonAnimationElapsedTime = 0;
+	previousAnimation: string | null = null;
+	pathGroup: THREE.Group | null = null;
+	sprite: THREE.Sprite | null = null;
+	selected = false;
+	constructor(data, pos, isSimulation: boolean, blackboard, gameManager?: GameManager) {
 		this.assetManager = AssetManager.getInstance();
+		this.gameManager = gameManager!;
 		const trap = trapLookup[data.key];
 		this.data = trap;
 		this.key = data.key;
@@ -28,6 +44,24 @@ export class Trap {
 		this.position = pos;
 		this.type = trap.modelType;
 		this.isSimulation = isSimulation;
+		const blackboards = [blackboard, data.overrideSkillBlackboard].filter(Array.isArray);
+		const blackboardEntries = blackboards.flat();
+		this.branchKey = blackboardEntries.find((entry) => entry.key === 'branch_id')?.valueStr ?? null;
+		this.branch = (gameManager?.config as any)?.branches?.[this.branchKey as string] ?? null;
+		this.isPeriodicSummoner = Boolean(
+			this.branchKey && this.branch && trap.special.includes('rgdysm_summon')
+		);
+		if (this.isPeriodicSummoner) {
+			const specialMod =
+				(GameConfig.specialMods as any)?.[this.key]?.rgdysm_summon ||
+				(GameConfig.specialMods as any)?.[data.alias]?.rgdysm_summon;
+			const summonSkill = { ...trapSkills.rgdysm_summon, ...specialMod };
+			const intervalOverride = blackboardEntries.find(
+				(entry) => entry.key === 'talent@interval' || entry.key === 'interval'
+			)?.value;
+			this.summonInterval = Number(intervalOverride ?? summonSkill.interval);
+			this.summonAnimation = summonSkill.beginAnimation ?? null;
+		}
 		!isSimulation && this.initModel(trap.modelType);
 		this.isRoadblock =
 			trap.special.some((skillRef) => ['roadblock'].includes(skillRef)) ||
@@ -55,8 +89,31 @@ export class Trap {
 					skeletonMesh.state;
 					const animName = getIdleAnimName(this.key, skeletonData);
 					this.skel.state.setAnimation(0, animName, true);
+					this.summonAnimationDuration = getAnimDuration(skeletonData, this.summonAnimation);
 					skeletonMesh.renderOrder = -1;
 					this.meshGroup.add(skeletonMesh);
+
+					if (this.branchKey && this.gameManager) {
+						const { width, height } = getSpineMetaData(this.key, skeletonMesh.skeleton) ?? {
+							width: 50,
+							height: 75
+						};
+						const sprite = new THREE.Sprite(
+							new THREE.SpriteMaterial({
+								transparent: true,
+								depthTest: false,
+								opacity: 0,
+								color: 0x000021
+							})
+						);
+						sprite.scale.set(Math.max(50, width), Math.max(75, height), 1);
+						sprite.position.z = GameConfig.gridSize / 2;
+						sprite.userData.trap = this;
+						this.sprite = sprite;
+						this.meshGroup.add(sprite);
+						this.gameManager.game.objects.push(sprite);
+						this.pathGroup = this.visualiseBranchPaths();
+					}
 				}
 				switch (this.direction) {
 					case 'LEFT':
@@ -150,16 +207,232 @@ export class Trap {
 	}
 
 	remove() {
+		const gameManager = this.gameManager;
+		const sprite = this.sprite;
+		if (sprite) {
+			const index = gameManager.game.objects.findIndex((object) => object.uuid === sprite.uuid);
+			if (index !== undefined && index !== -1) {
+				gameManager.game.objects.splice(index, 1);
+			}
+		}
+		if (this.pathGroup) {
+			this.gameManager?.scene.remove(this.pathGroup);
+			clearObjects(this.pathGroup);
+		}
 		clearObjects(this.meshGroup);
+	}
+
+	onSelect() {
+		if (!this.pathGroup || !this.gameManager || this.selected) return;
+		this.gameManager.scene.add(this.pathGroup);
+		this.selected = true;
+	}
+
+	onDeselect() {
+		if (!this.pathGroup || !this.gameManager || !this.selected) return;
+		this.gameManager.scene.remove(this.pathGroup);
+		this.selected = false;
+	}
+
+	activateBranch() {
+		if (!this.branchKey || !this.branch || !this.gameManager) return;
+		if (this.isPeriodicSummoner) {
+			this.onDeselect();
+			return;
+		}
+		this.gameManager.spawnManager.addBranch(this.branchKey, structuredClone(this.branch));
+		this.gameManager.traps.delete(`${this.position.col},${this.position.row}`);
+		this.remove();
+	}
+
+	summonBranch() {
+		if (!this.branchKey || !this.branch || !this.gameManager) return;
+		this.playSummonAnimation();
+		this.gameManager.spawnManager.addBranch(this.branchKey, structuredClone(this.branch));
+	}
+
+	playSummonAnimation() {
+		if (!this.skel || !this.summonAnimation || !this.summonAnimationDuration) return;
+		if (!this.skel.state.hasAnimation(this.summonAnimation)) return;
+		if (!this.previousAnimation) {
+			this.previousAnimation = this.skel.state.currentAnimation;
+		}
+		this.skel.state.setAnimation(0, this.summonAnimation, false);
+		this.summonAnimationElapsedTime = 0;
+	}
+
+	updateSummonAnimation(delta) {
+		if (!this.previousAnimation || !this.summonAnimationDuration) return;
+		this.summonAnimationElapsedTime += delta;
+		if (this.summonAnimationElapsedTime < this.summonAnimationDuration) return;
+		this.skel.state.setAnimation(0, this.previousAnimation, true);
+		this.previousAnimation = null;
+		this.summonAnimationElapsedTime = 0;
+	}
+
+	getPathActions(route: any) {
+		const actions = [
+			...(route.checkpoints ?? []).map((checkpoint) => ({ ...checkpoint, pathType: 'cp' })),
+			{
+				type: 'MOVE',
+				time: 0,
+				position: route.endPosition,
+				reachOffset: { x: 0, y: 0 },
+				pathType: 'end'
+			}
+		];
+		let currentPosition = route.startPosition;
+		return actions.reduce((pathActions, action) => {
+			if (action.type === 'APPEAR_AT_POS') {
+				currentPosition = action.position;
+				pathActions.push(action);
+				return pathActions;
+			}
+			if (action.type !== 'MOVE') {
+				pathActions.push(action);
+				return pathActions;
+			}
+			if (
+				currentPosition.row === action.position.row &&
+				currentPosition.col === action.position.col
+			) {
+				pathActions.push({ ...action, reachDistance: 0 });
+			} else {
+				const paths = this.gameManager.pathFinder
+					.findPath(currentPosition, action.position)
+					?.slice(1);
+				paths?.forEach(([col, row]) => {
+					const isCheckpoint =
+						action.pathType === 'cp' && row === action.position.row && col === action.position.col;
+					const isEnd =
+						action.pathType === 'end' && row === action.position.row && col === action.position.col;
+					pathActions.push({
+						type: 'MOVE',
+						time: 0,
+						position: { row, col },
+						reachOffset: isCheckpoint ? action.reachOffset : { x: 0, y: 0 },
+						pathType: isCheckpoint ? 'cp' : isEnd ? 'end' : 'intermediate'
+					});
+				});
+			}
+			currentPosition = action.position;
+			return pathActions;
+		}, []);
+	}
+
+	visualiseBranchPaths() {
+		const paths = new THREE.Group();
+		const config: any = this.gameManager.config;
+		const branch = this.branch;
+		const spawnActions: any[] =
+			branch?.phases
+				?.flatMap((phase: any) => phase.actions)
+				.filter((action: any) => action.actionType === 'SPAWN') ?? [];
+		for (const action of spawnActions) {
+			const originalRoute = config.extra_routes?.[action.routeIndex];
+			if (!originalRoute) continue;
+			const route = this.gameManager.convertMovementConfig(structuredClone(originalRoute));
+			paths.add(
+				this.visualisePath(this.getPathActions(route), route.startPosition, route.spawnOffset)
+			);
+		}
+		return paths;
+	}
+
+	visualisePath(paths: any[], startPos: any, spawnOffset: any) {
+		const pathGroup = new THREE.Group();
+		pathGroup.renderOrder = 50;
+		const lineGroup = new THREE.Group();
+		const movePaths = paths.filter((path) => path.type === 'MOVE' || path.type === 'APPEAR_AT_POS');
+		for (let i = 0; i < movePaths.length; i++) {
+			const startCoordinates = movePaths[i - 1]?.position || startPos;
+			const startOffset = i === 0 ? spawnOffset : movePaths[i - 1].reachOffset;
+			const startPoint = this.gameManager.getVectorCoordinates(startCoordinates, startOffset);
+			const endPoint = this.gameManager.getVectorCoordinates(
+				movePaths[i].position,
+				movePaths[i].reachOffset
+			);
+			const geometry = new THREE.BufferGeometry().setFromPoints([
+				new THREE.Vector3(startPoint.x, startPoint.y, 0),
+				new THREE.Vector3(endPoint.x, endPoint.y, 0)
+			]);
+			const line = new THREE.Line(
+				geometry,
+				new THREE.LineBasicMaterial({ color: 0xff0000, transparent: true, depthTest: false })
+			);
+			line.position.z = 10;
+			lineGroup.add(line);
+		}
+		for (let i = 0; i < paths.length; i++) {
+			const { type, pathType, time, position, reachOffset } = paths[i];
+			const group = new THREE.Group();
+			switch (type) {
+				case 'MOVE':
+					if (pathType === 'cp') {
+						const texture = this.assetManager.textures.get('flag').texture;
+						const sprite = new THREE.Sprite(
+							new THREE.SpriteMaterial({ map: texture, transparent: true, depthTest: false })
+						);
+						sprite.scale.set(GameConfig.gridSize * 0.6, GameConfig.gridSize * 0.6, 1);
+						const { x, y } = this.gameManager.getVectorCoordinates(position, reachOffset);
+						sprite.position.set(x + 2, y + GameConfig.gridSize * 0.3, GameConfig.baseZIndex + 10);
+						group.renderOrder = 50;
+						sprite.renderOrder = 50;
+						group.add(sprite);
+					}
+					break;
+				case 'WAIT_FOR_SECONDS': {
+					const circle = new THREE.Mesh(
+						new THREE.CircleGeometry(GameConfig.gridSize / 4, 32),
+						new THREE.MeshBasicMaterial({ color: 0xb1b1b1, transparent: true, depthTest: false })
+					);
+					const ring = new THREE.Mesh(
+						new THREE.RingGeometry(GameConfig.gridSize / 4 - 2, GameConfig.gridSize / 4, 32),
+						new THREE.MeshBasicMaterial({ color: 0xdc143c, transparent: true, depthTest: false })
+					);
+					ring.position.z = 2;
+					const waitPosition =
+						i === 0
+							? startPos
+							: paths[i - 1].type === 'DISAPPEAR'
+							? paths[i - 2].position
+							: paths[i - 1].position;
+					const { x, y } = this.gameManager.getVectorCoordinates(
+						waitPosition,
+						i === 0 ? spawnOffset : reachOffset
+					);
+					const text = this.gameManager.getTextSprite(time.toFixed() + 's', 16);
+					text.position.z = 5;
+					group.add(text, ring, circle);
+					group.position.set(x, y, GameConfig.baseZIndex + 15);
+					group.renderOrder = 50;
+					circle.renderOrder = 50;
+					text.renderOrder = 50;
+					ring.renderOrder = 50;
+					break;
+				}
+			}
+			pathGroup.add(group);
+		}
+		pathGroup.add(lineGroup);
+		return pathGroup;
 	}
 
 	update(delta) {
 		if (this.isSimulation) {
 			return;
 		}
+		if (this.isPeriodicSummoner && this.summonInterval > 0) {
+			this.summonElapsedTime += delta;
+			while (this.summonElapsedTime >= this.summonInterval) {
+				this.summonBranch();
+				this.summonElapsedTime -= this.summonInterval;
+			}
+		}
 		switch (this.type) {
 			case 'spine':
 				this.skel.update(delta);
+				this.updateSummonAnimation(delta);
 				break;
 
 			default:

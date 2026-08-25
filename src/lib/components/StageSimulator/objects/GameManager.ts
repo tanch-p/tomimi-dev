@@ -262,7 +262,7 @@ export class GameManager {
 			}
 		}
 		const pos = posType === 'game' ? this.gameToWorldPos(dataPos) : dataPos;
-		const trap = new Trap(data, pos, this.isSimulation, blackboard);
+		const trap = new Trap(data, pos, this.isSimulation, blackboard, this);
 		if (trap.isRoadblock) {
 			this.updateMazeLayout(pos, 1000);
 		}
