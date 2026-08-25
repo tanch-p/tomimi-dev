@@ -175,9 +175,9 @@
 		"name_zh": "近地悬浮",
 		"name_en": "Low-Altitude Hovering",
 		"name_ja": "低空浮揚",
-		"desc_zh": "无法被阻挡或近战攻击；失衡免疫；受到晕眩/沉睡/无法行动/冻结效果后失效，眩晕0.5s",
-		"desc_en": "Cannot be blocked or attacked by melee attacks; When under stun/sleep/frozen, loses Low-Altitude Hovering and becomes stunned for 0.5s",
-		"desc_ja": "ブロック不可、近距離攻撃の対象にされない；スタン/睡眠/凍結を受けると低空浮揚が解除され、0.5秒スタンされる"
+		"desc_zh": "无法被阻挡或近战攻击；失衡免疫；受到晕眩/沉睡/无法行动/冻结/缚地效果后失效，眩晕0.5s",
+		"desc_en": "Cannot be blocked or attacked by melee attacks; When under stun/sleep/frozen/groundbind, loses Low-Altitude Hovering and becomes stunned for 0.5s",
+		"desc_ja": "ブロック不可、近距離攻撃の対象にされない；スタン/睡眠/凍結/縛地を受けると低空浮揚が解除され、0.5秒スタンされる"
 	},
 	"ba.refraction": {
 		"termId": "ba.refraction",

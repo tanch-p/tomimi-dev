@@ -36567,7 +36567,7 @@
 				"epResistance": 0.0,
 				"traits": [],
 				"special": [
-					[{ "key": "fyshp_hover" }, { "key": "fyshp_can_combine" }],
+					[{ "key": "hover" }, { "key": "fyshp_can_combine" }],
 					[{ "key": "fyshp_combined" }],
 					[{ "key": "fyshp_grounded" }]
 				],
@@ -36634,7 +36634,7 @@
 				"epResistance": 0.0,
 				"traits": [],
 				"special": [
-					[{ "key": "fyshp_hover" }, { "key": "fyshp_can_combine" }],
+					[{ "key": "hover" }, { "key": "fyshp_can_combine" }],
 					[{ "key": "fyshp_combined" }],
 					[{ "key": "fyshp_grounded" }]
 				],

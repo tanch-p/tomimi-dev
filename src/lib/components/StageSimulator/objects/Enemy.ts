@@ -594,7 +594,10 @@ export class Enemy {
 		const gridPos = this.gameManager.getGridPosFromVectors(this.meshGroup.position);
 		if (gridPos !== this.gridPos) {
 			this.gridPos = gridPos;
-			if (!(this.motionMode === 'FLY' || this.traits.some((skill) => skill.key === 'hover'))) {
+			const isHovering =
+				this.traits.some((skill) => skill.key === 'hover') ||
+				this.specials.some((skill) => skill.key === 'hover');
+			if (!(this.motionMode === 'FLY' || isHovering)) {
 				this.handleTileInteraction();
 			}
 		}
