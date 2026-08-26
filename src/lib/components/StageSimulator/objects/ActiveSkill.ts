@@ -71,8 +71,25 @@ export class ActiveSkill {
 	}
 
 	convertCooldownToTimeRegen(skill) {
-		const { initCooldown, cooldown } = skill;
-		return { initSp: cooldown - initCooldown, spCost: cooldown };
+		const { initCooldown } = skill;
+		return { initSp: 0, spCost: initCooldown };
+	}
+
+	setNextCooldown() {
+		if (this.currCount === 0) {
+			if (this.skill.initCooldown !== undefined) this.spCost = this.skill.initCooldown;
+			return;
+		}
+		if (!this.skill.cooldowns?.length) {
+			if (this.skill.cooldown !== undefined) this.spCost = this.skill.cooldown;
+			return;
+		}
+		const cooldownIndex = Math.min(this.currCount - 1, this.skill.cooldowns.length - 1);
+		this.spCost = this.skill.cooldowns[cooldownIndex];
+	}
+
+	getSkillBarProgress() {
+		return this.spCost === 0 ? 1 : this.currSp / this.spCost;
 	}
 
 	createSkillBar() {
@@ -82,7 +99,7 @@ export class ActiveSkill {
 		// Create shader material
 		const shaderMaterial = new THREE.ShaderMaterial({
 			uniforms: {
-				progress: { value: this.currSp / this.spCost },
+				progress: { value: this.getSkillBarProgress() },
 				fillColor: {
 					value: new THREE.Vector4(fillColorVector.r, fillColorVector.g, fillColorVector.b, 1.0) // full opacity
 				},
@@ -132,7 +149,7 @@ export class ActiveSkill {
 			if (!this.isManuallyActive) {
 				this.currSp = Math.min(this.currSp + delta, this.spCost);
 				if (this.mesh) {
-					this.mesh.material.uniforms.progress.value = this.currSp / this.spCost;
+					this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
 				}
 			}
 			return;
@@ -170,7 +187,7 @@ export class ActiveSkill {
 		}
 		this.currSp += delta;
 		if (this.currSp < this.spCost && this.mesh) {
-			this.mesh.material.uniforms.progress.value = this.currSp / this.spCost;
+			this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
 		} else {
 			if (!this.enemy.skillManager.isUsingSkill) {
 				if (this.skill.anim) {
@@ -182,8 +199,12 @@ export class ActiveSkill {
 					}
 				}
 				this.currCount++;
+				this.setNextCooldown();
 				this.skillTimer += delta;
 				this.currSp = 0;
+				if (this.mesh) {
+					this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
+				}
 			}
 		}
 	}
@@ -200,9 +221,10 @@ export class ActiveSkill {
 		}
 		this.currSp = 0;
 		this.currCount++;
+		this.setNextCooldown();
 		this.isManuallyActive = true;
 		if (this.mesh) {
-			this.mesh.material.uniforms.progress.value = 0;
+			this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
 		}
 		return true;
 	}
@@ -231,10 +253,11 @@ export class ActiveSkill {
 		if (!this.manualActivation || !data) return;
 		this.currSp = data.currSp;
 		this.currCount = data.currCount;
+		this.setNextCooldown();
 		this.isFinished = data.isFinished;
 		this.isManuallyActive = data.isManuallyActive;
 		if (this.mesh) {
-			this.mesh.material.uniforms.progress.value = this.currSp / this.spCost;
+			this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
 		}
 	}
 	handleBranchUpdate(delta: number) {

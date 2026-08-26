@@ -269,6 +269,7 @@ export type Skill = {
 	timeout?: number;
 	motionMode?: 'skill_blink';
 	beginAnimation?: string;
+	loopAnimation?: string;
 	endAnimation?: string;
 	skillRange?: number;
 	skillType?: 'INCREASE_WITH_TIME' | 'INCREASE_WHEN_ATTACK';

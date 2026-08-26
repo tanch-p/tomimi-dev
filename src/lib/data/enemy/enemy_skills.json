@@ -11363,6 +11363,10 @@
 		"type": "skill",
 		"initCooldown": 30,
 		"cooldowns": [75,65,60,45,30,30],
+		"motionMode": "skill_blink",
+		"beginAnimation": "Move_begin",
+		"loopAnimation": "Move_loop",
+		"endAnimation": "Move_end",
 		"duration": 2.42,
 		"suffix": { "en": "Warp", "ja": "ワープ", "zh": "闪现" },
 		"tooltip": {

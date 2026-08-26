@@ -71,12 +71,14 @@ export class Enemy {
 	blinkElapsedTime = 0;
 	blinkStartDuration = 0;
 	blinkEndDuration = 0;
-	skillBlinkState: 'BEGIN' | 'END' | null = null;
+	skillBlinkState: 'BEGIN' | 'LOOP' | 'END' | null = null;
 	skillBlinkElapsedTime = 0;
 	skillBlinkBeginDuration = 0;
+	skillBlinkLoopDuration = 0;
 	skillBlinkEndDuration = 0;
 	skillBlinkTriggerKey: string | null = null;
 	skillBlinkBeginAnimation = 'Skill_Begin';
+	skillBlinkLoopAnimation: string | null = null;
 	skillBlinkEndAnimation = 'Skill_End';
 	skillBlinkSkillKey: string | null = null;
 	spineAnimIndex = 0;
@@ -564,12 +566,19 @@ export class Enemy {
 			)?.duration;
 		}
 		if (this.motionMode === 'SKILL_BLINK') {
-			this.skillBlinkBeginDuration = this.skelData.animations.find(
-				(ele) => ele.name === this.skillBlinkBeginAnimation
-			)?.duration;
-			this.skillBlinkEndDuration = this.skelData.animations.find(
-				(ele) => ele.name === this.skillBlinkEndAnimation
-			)?.duration;
+			this.skillBlinkBeginDuration = getAnimDuration(this.skelData, this.skillBlinkBeginAnimation);
+			this.skillBlinkEndDuration = getAnimDuration(this.skelData, this.skillBlinkEndAnimation);
+			const skillBlinkSkill = this.traits
+				.concat(this.specials)
+				.find((skill) => skill.key === this.skillBlinkTriggerKey);
+			this.skillBlinkLoopDuration = this.skillBlinkLoopAnimation
+				? Math.max(
+						0,
+						(skillBlinkSkill?.duration ?? 0) -
+							this.skillBlinkBeginDuration -
+							this.skillBlinkEndDuration
+				  )
+				: 0;
 		}
 	}
 
@@ -581,6 +590,7 @@ export class Enemy {
 		this.motionMode = 'SKILL_BLINK';
 		this.skillBlinkTriggerKey = skillBlinkSkill.key;
 		this.skillBlinkBeginAnimation = skillBlinkSkill.beginAnimation ?? 'Skill_Begin';
+		this.skillBlinkLoopAnimation = skillBlinkSkill.loopAnimation ?? null;
 		this.skillBlinkEndAnimation = skillBlinkSkill.endAnimation ?? 'Skill_End';
 	}
 
@@ -892,6 +902,14 @@ export class Enemy {
 									this.targetPos = new THREE.Vector3(x, y, GameConfig.baseZIndex);
 									this.raycastPos.copy(this.targetPos);
 									this.meshGroup.position.copy(this.targetPos);
+									this.handlePosChange();
+									this.skillBlinkState = this.skillBlinkLoopAnimation ? 'LOOP' : 'END';
+								}
+								break;
+							case 'LOOP':
+								this.skillBlinkElapsedTime += delta;
+								if (this.skillBlinkElapsedTime > this.skillBlinkLoopDuration) {
+									this.skillBlinkElapsedTime = 0;
 									this.skillBlinkState = 'END';
 								}
 								break;
@@ -1177,6 +1195,7 @@ export class Enemy {
 				'special'
 			);
 			this.configureSkillBlink();
+			this.setBlinkAnimationDurations();
 			this.configureTimeout();
 			this.skillManager.setSkills(this.traits.concat(this.specials));
 		}
@@ -1200,6 +1219,9 @@ export class Enemy {
 				case 'BEGIN':
 					animName = this.skillBlinkBeginAnimation;
 					break;
+				case 'LOOP':
+					animName = this.skillBlinkLoopAnimation;
+					break;
 				case 'END':
 					animName = this.skillBlinkEndAnimation;
 					break;
@@ -1214,7 +1236,9 @@ export class Enemy {
 			}
 		}
 		if (animName === this.skel.state.currentAnimation) return;
-		const repeat = !['Start', 'Blink', 'SkillBlink'].includes(this.animState);
+		const repeat =
+			!['Start', 'Blink', 'SkillBlink'].includes(this.animState) ||
+			(this.animState === 'SkillBlink' && this.skillBlinkState === 'LOOP');
 		this.skel.state.setAnimation(0, animName, repeat);
 	}
 
