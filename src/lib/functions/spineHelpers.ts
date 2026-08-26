@@ -29,8 +29,8 @@ export const getSpineAnimations = (key: string, skelData: spine.SkeletonData) =>
 	// a set of states for each enemy form index, ignore hover/prisoner for now
 	// only deal with a handful of boss enemies with multiforms
 
-	if (key === '') {
-		console.log(skelData);
+	if (key === 'enemy_1514_smephi') {
+		console.log(skelData?.animations);
 	}
 
 	if (spineMetaData[key]) {

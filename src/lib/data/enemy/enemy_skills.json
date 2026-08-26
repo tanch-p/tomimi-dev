@@ -11359,6 +11359,22 @@
 			]
 		}
 	},
+	"smephi_blink": {
+		"type": "skill",
+		"initCooldown": 30,
+		"cooldowns": [75,65,60,45,30,30],
+		"duration": 2.42,
+		"suffix": { "en": "Warp", "ja": "ワープ", "zh": "闪现" },
+		"tooltip": {
+			"en": [
+				"Disappears for <v.duration>s, then teleports to the next checkpoint. While teleporting, becomes invincible and immune to unbalance"
+			],
+			"ja": [
+				"<v.duration>秒間姿を消した後、次のチェックポイントへ瞬間移動する。瞬間移動中は無敵、ブロック・強制移動不可"
+			],
+			"zh": ["消失<v.duration>s后闪现至下一检查点。闪现期间持有无敌，不可阻挡，失衡免疫"]
+		}
+	},
 	"smephi_heal": {
 		"type": "skill",
 		"initCooldown": 0,
@@ -11372,12 +11388,13 @@
 		}
 	},
 	"smephi_poison": {
+		"stacks": 5,
 		"value": 50,
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
 			"zh": [
-				"【毒性】：无效果，最多可叠加5层，每层独立计算持续时间",
+				"【毒性】：无效果，最多可叠加<v.stacks>层，每层独立计算持续时间",
 				"【毒性粉尘】：每秒对场上所有我方单位造成自身【毒性】层数×<v.value>的无来源{true}无类型伤害，无视隐匿/迷彩"
 			]
 		}

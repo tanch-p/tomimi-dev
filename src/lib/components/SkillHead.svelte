@@ -21,8 +21,9 @@
 				>{skill.initCooldown}</span
 			>{getTranslations(language).seconds_abbr} / {getTranslations(language)
 				.cooldown}{#if language === 'en'}<sub>n</sub>&nbsp;{/if}<span
-				class={skill.overwrittenKeys.includes('cooldown') ? 'text-red-400 font-semibold' : ''}
-				>{skill.cooldown}</span
+				class={skill.overwrittenKeys.includes(skill.cooldowns ? 'cooldowns' : 'cooldown')
+					? 'text-red-400 font-semibold'
+					: ''}>{skill.cooldowns?.join('/') ?? skill.cooldown}</span
 			>{getTranslations(language).seconds_abbr}{#if mode === 'table'}){/if}
 		</div>
 	{:else}

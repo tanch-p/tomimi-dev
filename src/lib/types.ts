@@ -262,6 +262,7 @@ export type Skill = {
 	buffloss?: boolean; //for enemies that lose buffs upon death
 	initCooldown?: number;
 	cooldown?: number;
+	cooldowns?: number[];
 	initSp?: number;
 	spCost?: number;
 	duration?: number;

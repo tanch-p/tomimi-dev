@@ -72,13 +72,6 @@ export const getOptions = (
 	const predefines = [...new Set(list)];
 	switch (rogueTopic) {
 		case 'rogue_phantom':
-			if (predefines.includes('trap_051_vultres')) {
-				options.push({
-					key: 'trap_051_vultres',
-					src: '/images/chara_icons/trap_051_vultres.webp',
-					name: getTranslations(language).treasure
-				});
-			}
 			if (mapConfig?.elite_mods) {
 				options.push({
 					key: 'extra',
@@ -101,14 +94,6 @@ export const getOptions = (
 			break;
 		case 'rogue_mizuki':
 			for (const key of predefines) {
-				if (key === 'trap_068_badbox') {
-					options.push({
-						key: 'trap_068_badbox',
-						src: '/images/chara_icons/trap_068_badbox.webp',
-						name: getTranslations(language).treasure
-					});
-					continue;
-				}
 				if (key === 'trap_079_allydonq') {
 					options.push({
 						key: 'allydonq',
@@ -120,16 +105,6 @@ export const getOptions = (
 			}
 			break;
 		case 'rogue_sami':
-			for (const key of predefines) {
-				if (key === 'trap_110_smbbox') {
-					options.push({
-						key: 'trap_110_smbbox',
-						src: '/images/chara_icons/trap_110_smbbox.webp',
-						name: getTranslations(language).treasure
-					});
-					continue;
-				}
-			}
 			options.push(
 				...[
 					{
@@ -154,14 +129,6 @@ export const getOptions = (
 			break;
 		case 'rogue_skz':
 			for (const key of predefines) {
-				if (key === 'trap_758_skzmbx') {
-					options.push({
-						key: 'trap_758_skzmbx',
-						src: '/images/chara_icons/trap_758_skzmbx.webp',
-						name: getTranslations(language).treasure
-					});
-					continue;
-				}
 				if (key === 'trap_764_skzshp') {
 					options.push({
 						key: 'trap_764_skzshp',
@@ -207,16 +174,6 @@ export const getOptions = (
 			);
 			break;
 		case 'rogue_yan':
-			for (const key of predefines) {
-				if (key === 'trap_225_dysbox') {
-					options.push({
-						key: 'trap_225_dysbox',
-						src: '/images/chara_icons/trap_225_dysbox.webp',
-						name: getTranslations(language).treasure
-					});
-					continue;
-				}
-			}
 			options.push(
 				...[
 					{
@@ -232,17 +189,6 @@ export const getOptions = (
 				]
 			);
 			break;
-		case 'rogue_black':
-			for (const key of predefines) {
-				if (key === 'trap_323_shsbox') {
-					options.push({
-						key: 'trap_323_shsbox',
-						src: '/images/chara_icons/trap_323_shsbox.webp',
-						name: getTranslations(language).treasure
-					});
-					continue;
-				}
-			}
 	}
 	return options;
 };
@@ -560,12 +506,7 @@ export const generateWaveTimeline = (
 					const isBonusGroup = mapConfig?.bonus
 						? key === `w${mapConfig?.bonus.wave_index}f${Math.max(0, mapConfig?.bonus.frag_index)}`
 						: false;
-					choice = getPredefinedChoiceIndex(
-						list,
-						hiddenGroups,
-						bonusKey,
-						isBonusGroup ? mapConfig?.bonus : null
-					);
+					choice = getPredefinedChoiceIndex(list, bonusKey, isBonusGroup ? mapConfig?.bonus : null);
 					if (choice == undefined) {
 						choice = Math.floor(randomSeeds[randomSeedIndex] * list.length);
 						randomSeedIndex += 1;
@@ -739,12 +680,7 @@ export const parseWaves = (
 					const isBonusGroup = mapConfig?.bonus
 						? key === `w${mapConfig?.bonus.wave_index}f${Math.max(0, mapConfig?.bonus.frag_index)}`
 						: false;
-					choice = getPredefinedChoiceIndex(
-						list,
-						hiddenGroups,
-						bonusKey,
-						isBonusGroup ? mapConfig?.bonus : null
-					);
+					choice = getPredefinedChoiceIndex(list, bonusKey, isBonusGroup ? mapConfig?.bonus : null);
 					if (choice == undefined) {
 						choice = Math.floor(randomSeeds[randomSeedIndex] * list.length);
 						randomSeedIndex += 1;
@@ -790,10 +726,10 @@ export const parseWaves = (
 	return waves;
 };
 
-export const getPredefinedChoiceIndex = (list, hiddenGroups, bonusKey, bonus) => {
+export const getPredefinedChoiceIndex = (list, bonusKey, bonus) => {
 	if (!Array.isArray(list?.[0])) {
 		const badBoxIdx = list.findIndex((action) => CHESTS.includes(action.key.split('#')[0]));
-		if (badBoxIdx !== -1 && hiddenGroups.some((ele) => CHESTS.includes(ele))) {
+		if (badBoxIdx !== -1) {
 			return badBoxIdx;
 		}
 		if (bonus) {

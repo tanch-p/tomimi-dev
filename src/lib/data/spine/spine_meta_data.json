@@ -16,6 +16,11 @@
 			{ "Idle": "Idle", "Move_Begin": "Move_Begin", "Move_End": "Move_End", "Default": "Default" }
 		]
 	},
+	"enemy_1514_smephi": {
+		"anim": [
+			{ "Idle": "Idle", "Move_Begin": "Move_begin", "Move_End": "Move_end", "Move_Loop": "Move_loop", "Default": "Default" }
+		]
+	},
 	"enemy_2081_skztxs": {
 		"anim": [
 			{
@@ -140,7 +145,7 @@
 			}
 		]
 	},
-	"enemy_2150_shchmr":{
+	"enemy_2150_shchmr": {
 		"anim": [
 			{
 				"Idle": "A_Idle",
@@ -152,7 +157,7 @@
 			}
 		]
 	},
-	"enemy_2140_shsgzd":{
+	"enemy_2140_shsgzd": {
 		"anim": [
 			{
 				"Idle": "Idle_a",
@@ -164,7 +169,7 @@
 			}
 		]
 	},
-	"enemy_2141_shsgz2":{
+	"enemy_2141_shsgz2": {
 		"anim": [
 			{
 				"Idle": "Idle_a",

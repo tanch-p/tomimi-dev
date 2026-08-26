@@ -2654,7 +2654,7 @@
 		"desc_ja": "",
 		"desc_en": "",
 		"tauntLevel": -1,
-		"group": "ally",
+		"group": "enemy",
 		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
@@ -2691,7 +2691,7 @@
 		"desc_ja": "",
 		"desc_en": "",
 		"tauntLevel": -1,
-		"group": "ally",
+		"group": "enemy",
 		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
@@ -2728,7 +2728,7 @@
 		"desc_ja": "",
 		"desc_en": "",
 		"tauntLevel": -1,
-		"group": "ally",
+		"group": "enemy",
 		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
@@ -2765,7 +2765,7 @@
 		"desc_ja": "",
 		"desc_en": "",
 		"tauntLevel": -1,
-		"group": "ally",
+		"group": "enemy",
 		"modelType": "spine",
 		"hideTile": false,
 		"stats": [
@@ -2891,7 +2891,7 @@
         "desc_ja": "",
         "desc_en": "",
         "tauntLevel": 1,
-        "group": "enemy",
+        "group": "ally",
         "modelType": null,
         "hideTile": false,
         "stats": [
@@ -2921,7 +2921,7 @@
         "desc_ja": "",
         "desc_en": "",
         "tauntLevel": 0,
-        "group": "ally",
+		"group": "enemy",
         "modelType": "spine",
         "hideTile": false,
         "stats": [

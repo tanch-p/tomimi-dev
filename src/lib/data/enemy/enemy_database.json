@@ -27448,7 +27448,7 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{ "key": "move_blink" },
+					{ "key": "smephi_blink" },
 					{ "key": "stationary_boss" },
 					{ "key": "multi_target" },
 					{ "key": "smephi_heal" },
@@ -27494,7 +27494,7 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{ "key": "move_blink" },
+					{ "key": "smephi_blink", "duration":1.42, "initCooldown":90, "cooldowns": [105,180,120,120,120,120] },
 					{ "key": "stationary_boss" },
 					{ "key": "multi_target" },
 					{ "key": "smephi_heal" },
