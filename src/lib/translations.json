@@ -2379,9 +2379,9 @@
 		"zh": "炎"
 	},
 	"lungmen": {
-		"en": "Lungmen",
-		"ja": "龍門",
-		"zh": "龙门"
+		"en": "Yan - Lungmen",
+		"ja": "炎国・龍門",
+		"zh": "炎・龙门"
 	},
 	"ursus": {
 		"en": "Ursus",
@@ -2481,7 +2481,7 @@
 	"sui": {
 		"en": "Sui",
 		"ja": "歳",
-		"zh": "炎-岁"
+		"zh": "岁"
 	},
 	"action4": {
 		"en": "Op Team A4",
