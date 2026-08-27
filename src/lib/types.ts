@@ -263,6 +263,10 @@ export type Skill = {
 	initCooldown?: number;
 	cooldown?: number;
 	cooldowns?: number[];
+	count?: number;
+	delay?: number;
+	branch_id?: string | null;
+	enemy_key?: string | null;
 	initSp?: number;
 	spCost?: number;
 	duration?: number;

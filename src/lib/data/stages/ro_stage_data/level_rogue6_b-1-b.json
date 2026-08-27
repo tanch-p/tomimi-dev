@@ -1657,7 +1657,11 @@
       "tile_telout",
       0,
       0,
-      null,
+      {
+       "colorIndex": 0,
+       "direction": "down",
+       "type": "arrow"
+      },
       0
      ],
      [
@@ -2078,7 +2082,11 @@
       "tile_telin",
       0,
       0,
-      null,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
       0
      ],
      [

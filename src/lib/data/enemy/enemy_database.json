@@ -27494,7 +27494,12 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
-					{ "key": "smephi_blink", "duration":1.42, "initCooldown":90, "cooldowns": [105,180,120,120,120,120] },
+					{
+						"key": "smephi_blink",
+						"duration": 1.42,
+						"initCooldown": 90,
+						"cooldowns": [105, 180, 120, 120, 120, 120]
+					},
 					{ "key": "stationary_boss" },
 					{ "key": "multi_target" },
 					{ "key": "smephi_heal" },
@@ -55575,6 +55580,9 @@
 					},
 					{
 						"key": "ftprg_end"
+					},
+					{
+						"key": "ftprg_summon"
 					}
 				],
 				"special": []
@@ -55619,6 +55627,9 @@
 					},
 					{
 						"key": "ftprg_end"
+					},
+					{
+						"key": "ftprg_summon"
 					}
 				],
 				"special": []
@@ -59733,7 +59744,16 @@
 					"atk_type": ["ranged", "arts"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "tremble", "fear", "groundbind"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"tremble",
+					"fear",
+					"groundbind"
+				]
 			}
 		],
 		"type": ["ranged", "origen", "BOSS"],
@@ -66838,7 +66858,16 @@
 					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
-				"status_immune": ["stun", "silence", "sleep", "freeze", "levitate", "fear", "attract", "groundbind"]
+				"status_immune": [
+					"stun",
+					"silence",
+					"sleep",
+					"freeze",
+					"levitate",
+					"fear",
+					"attract",
+					"groundbind"
+				]
 			}
 		],
 		"type": ["ranged", "BOSS"],

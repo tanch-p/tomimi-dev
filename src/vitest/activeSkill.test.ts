@@ -1,6 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { Skill } from '$lib/types';
-import { ActiveSkill } from '$lib/components/StageSimulator/objects/ActiveSkill';
+import {
+	ActiveSkill,
+	isFtprgSummonSkill
+} from '$lib/components/StageSimulator/objects/ActiveSkill';
 
 describe('ActiveSkill cooldowns', () => {
 	it('starts an empty bar using the initial cooldown', () => {
@@ -49,5 +52,46 @@ describe('ActiveSkill cooldowns', () => {
 		activeSkill.spCost = 0;
 
 		expect(activeSkill.getSkillBarProgress()).toBe(1);
+	});
+});
+
+describe('ftprg summon skills', () => {
+	it('recognizes the base key and suffixed variants', () => {
+		expect(isFtprgSummonSkill('ftprg_summon')).toBe(true);
+		expect(isFtprgSummonSkill('ftprg_summon_2')).toBe(true);
+		expect(isFtprgSummonSkill('ftprg_summoner')).toBe(false);
+	});
+
+	it('activates its branch after the initial cooldown and then on each cooldown', () => {
+		const addBranch = vi.fn();
+		const activeSkill = Object.create(ActiveSkill.prototype) as ActiveSkill;
+		activeSkill.enemy = {
+			gameManager: { spawnManager: { addBranch } }
+		} as unknown as ActiveSkill['enemy'];
+		activeSkill.skill = {
+			key: 'ftprg_summon_2',
+			initCooldown: 30,
+			cooldown: 15
+		} as unknown as Skill;
+		activeSkill.isSummonSkill = true;
+		activeSkill.isFinished = false;
+		activeSkill.maxUsageCount = 2;
+		activeSkill.currCount = 0;
+		activeSkill.currSp = 0;
+		activeSkill.spCost = 30;
+		activeSkill.branchKey = 'summon_branch';
+		activeSkill.branch = { phases: [] };
+
+		activeSkill.update(29);
+		expect(addBranch).not.toHaveBeenCalled();
+
+		activeSkill.update(1);
+		expect(addBranch).toHaveBeenCalledTimes(1);
+		expect(activeSkill.spCost).toBe(15);
+
+		activeSkill.update(15);
+		expect(addBranch).toHaveBeenCalledTimes(2);
+		expect(activeSkill.currCount).toBe(2);
+		expect(activeSkill.isFinished).toBe(true);
 	});
 });

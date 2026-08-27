@@ -266,6 +266,9 @@ export class Enemy {
 				this.traits.concat(this.specials),
 				this.gameManager
 			);
+			if (this.skillManager.isHoldingForSummons) {
+				this.prepareForSummons();
+			}
 			const { x: actualX, y: actualY } = this.gameManager.getVectorCoordinates(
 				route.startPosition,
 				route.spawnOffset
@@ -787,13 +790,25 @@ export class Enemy {
 				return;
 			}
 		}
+		let skillsUpdated = false;
+		if (this.skillManager.isHoldingForSummons) {
+			this.skillManager.update(delta);
+			skillsUpdated = true;
+			if (this.skillManager.isHoldingForSummons) {
+				this.animState = 'Default';
+				return;
+			}
+			if (this.skillManager.startedEnemyAfterSummons) return;
+		}
 		if (this.startDuration > this.startElapsedTime) {
 			this.handleStart(delta);
 			return;
 		}
 		if (this.state === 'fall') return;
 
-		this.skillManager.update(delta);
+		if (!skillsUpdated) {
+			this.skillManager.update(delta);
+		}
 		if (this.key === 'enemy_1351_yhhshp') {
 			this.animState = 'Default';
 		} else if (this.currentActionIndex >= this.actions.length) {
@@ -1175,6 +1190,25 @@ export class Enemy {
 		if (this.startElapsedTime > this.startDuration) {
 			this.startDuration = 0;
 			this.startElapsedTime = 0;
+			this.animState = 'Idle';
+		}
+	}
+
+	prepareForSummons() {
+		this.startDuration = 0;
+		this.startElapsedTime = 0;
+		this.animState = 'Default';
+		this.isMoving = false;
+	}
+
+	startAfterSummons() {
+		this.startElapsedTime = 0;
+		this.animState = 'Start';
+		this.startDuration = getAnimDuration(
+			this.skelData,
+			this.animations?.[this.spineAnimIndex]?.Start
+		);
+		if (!this.startDuration) {
 			this.animState = 'Idle';
 		}
 	}

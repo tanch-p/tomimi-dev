@@ -604,7 +604,16 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 40.0,
+        "cooldown": 40.0,
+        "count": 8,
+        "branch_id": "dlancer_branch_1",
+        "enemy_key": "enemy_1072_dlancer"
+       }
+      ]
      }
     },
     {
@@ -641,7 +650,16 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 70.0,
+        "cooldown": 40.0,
+        "count": 8,
+        "branch_id": "dlancer_branch_2",
+        "enemy_key": "enemy_1072_dlancer"
+       }
+      ]
      }
     },
     {
@@ -728,7 +746,16 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 40.0,
+        "cooldown": 40.0,
+        "count": 8,
+        "branch_id": "dlancer_branch_3",
+        "enemy_key": "enemy_1072_dlancer_2"
+       }
+      ]
      }
     },
     {
@@ -765,7 +792,16 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 70.0,
+        "cooldown": 40.0,
+        "count": 8,
+        "branch_id": "dlancer_branch_4",
+        "enemy_key": "enemy_1072_dlancer_2"
+       }
+      ]
      }
     },
     {
@@ -1983,7 +2019,11 @@
       "tile_telout",
       0,
       0,
-      null,
+      {
+       "colorIndex": 2,
+       "direction": "down",
+       "type": "arrow"
+      },
       0
      ],
      [
@@ -2634,7 +2674,11 @@
       "tile_telin",
       0,
       0,
-      null,
+      {
+       "colorIndex": 2,
+       "direction": "up",
+       "type": "arrow"
+      },
       0
      ],
      [

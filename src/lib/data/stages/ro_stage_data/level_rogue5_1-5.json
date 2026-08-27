@@ -509,7 +509,16 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 45.0,
+        "cooldown": 25.0,
+        "count": 5,
+        "branch_id": "prg_branch_1",
+        "enemy_key": "enemy_1007_slime_2"
+       }
+      ]
      }
     },
     {

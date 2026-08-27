@@ -6,6 +6,9 @@ import { AssetManager } from './AssetManager';
 import { GameConfig } from './GameConfig';
 import { shuffleArray } from '$lib/functions/waveHelpers';
 
+export const isFtprgSummonSkill = (key: string) =>
+	key === 'ftprg_summon' || key.startsWith('ftprg_summon_');
+
 export class ActiveSkill {
 	assetManager: AssetManager;
 	enemy: Enemy;
@@ -32,11 +35,13 @@ export class ActiveSkill {
 	branchPhaseIndexHolder;
 	manualActivation = false;
 	isManuallyActive = false;
+	isSummonSkill = false;
 
 	constructor(enemy: Enemy, skill: Skill, manualActivation = false) {
 		this.assetManager = AssetManager.getInstance();
 		this.enemy = enemy;
 		this.skill = skill;
+		this.isSummonSkill = isFtprgSummonSkill(skill.key);
 		this.manualActivation = manualActivation;
 		this.hasSp = this.skill.type === 'skill';
 		if (this.hasSp) {
@@ -54,7 +59,7 @@ export class ActiveSkill {
 			this.createSkillBar();
 			this.skillBar.renderOrder = 1;
 		}
-		this.maxUsageCount = skill.max_count || 0;
+		this.maxUsageCount = this.isSummonSkill ? skill.count ?? 0 : skill.max_count || 0;
 
 		if (skill.branch_id) {
 			this.branchKey = skill.branch_id;
@@ -139,8 +144,18 @@ export class ActiveSkill {
 		this.skillBar.add(this.mesh);
 	}
 
+	setSkillBarColor(color: THREE.ColorRepresentation) {
+		if (!this.mesh) return;
+		const fillColor = new THREE.Color(color);
+		this.mesh.material.uniforms.fillColor.value.set(fillColor.r, fillColor.g, fillColor.b, 1);
+	}
+
 	update(delta) {
 		if (this.isFinished) {
+			return;
+		}
+		if (this.isSummonSkill) {
+			this.updateSummon(delta);
 			return;
 		}
 		this.handleBranchUpdate(delta);
@@ -209,6 +224,31 @@ export class ActiveSkill {
 		}
 	}
 
+	updateSummon(delta: number) {
+		if (this.maxUsageCount <= 0) {
+			this.isFinished = true;
+			return;
+		}
+
+		this.currSp += delta;
+		while (this.currCount < this.maxUsageCount && this.currSp >= this.spCost) {
+			this.currSp -= this.spCost;
+			if (this.branchKey) {
+				this.enemy.gameManager.spawnManager.addBranch(this.branchKey, structuredClone(this.branch));
+			}
+			this.currCount++;
+			if (this.currCount >= this.maxUsageCount) {
+				this.isFinished = true;
+				break;
+			}
+			this.setNextCooldown();
+		}
+
+		if (this.mesh) {
+			this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
+		}
+	}
+
 	get isReady() {
 		return !this.isFinished && !this.isManuallyActive && this.currSp >= this.spCost;
 	}
@@ -242,6 +282,25 @@ export class ActiveSkill {
 			isFinished: this.isFinished,
 			isManuallyActive: this.isManuallyActive
 		};
+	}
+
+	getSummonData() {
+		if (!this.isSummonSkill) return null;
+		return {
+			key: this.skill.key,
+			currSp: this.currSp,
+			currCount: this.currCount
+		};
+	}
+
+	setSummonData(data: { currSp: number; currCount: number }) {
+		if (!this.isSummonSkill || !data) return;
+		this.currSp = data.currSp;
+		this.currCount = data.currCount;
+		this.setNextCooldown();
+		if (this.mesh) {
+			this.mesh.material.uniforms.progress.value = this.getSkillBarProgress();
+		}
 	}
 
 	setManualData(data: {

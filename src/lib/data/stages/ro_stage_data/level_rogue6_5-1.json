@@ -683,16 +683,6 @@
      "overwrittenData": null
     },
     {
-     "id": "enemy_10071_ftprg_2",
-     "prefabKey": "enemy_10071_ftprg_2",
-     "level": 0,
-     "min_count": 0,
-     "max_count": 0,
-     "elite_min_count": 0,
-     "elite_max_count": 0,
-     "overwrittenData": null
-    },
-    {
      "id": "enemy_2134_shrshep",
      "prefabKey": "enemy_2134_shrshep",
      "level": 0,
@@ -746,7 +736,42 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 82.0,
+        "cooldown": 80.0,
+        "count": 2,
+        "branch_id": "prg_branch_1",
+        "enemy_key": "enemy_2134_shrshep"
+       },
+       {
+        "key": "ftprg_summon_2",
+        "initCooldown": 226.0,
+        "cooldown": 25.0,
+        "count": 2,
+        "branch_id": "prg_branch_1",
+        "enemy_key": "enemy_2134_shrshep",
+        "type": "skill",
+        "suffix": {
+         "en": "Summon #2",
+         "ja": "召喚#2",
+         "zh": "召唤#2"
+        },
+        "delay": 5,
+        "tooltip": {
+         "en": [
+          "After <v.initCooldown>, summons 1 <v.enemy_key> every <v.cooldown>s for <v.count> times"
+         ],
+         "ja": [
+          "<v.initCooldown>秒後、<v.cooldown>秒ごとに<v.enemy_key>を召喚し、これを<v.count>回繰り返す"
+         ],
+         "zh": [
+          "<v.initCooldown>s后，每隔<v.cooldown>秒以关卡预设路径召唤<v.enemy_key>，持续<v.count>次"
+         ]
+        }
+       }
+      ]
      }
     },
     {
@@ -783,7 +808,42 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 56.0,
+        "cooldown": 50.0,
+        "count": 3,
+        "branch_id": "prg_branch_2",
+        "enemy_key": "enemy_2134_shrshep"
+       },
+       {
+        "key": "ftprg_summon_2",
+        "initCooldown": 211.0,
+        "cooldown": 25.0,
+        "count": 2,
+        "branch_id": "prg_branch_2",
+        "enemy_key": "enemy_2134_shrshep",
+        "type": "skill",
+        "suffix": {
+         "en": "Summon #2",
+         "ja": "召喚#2",
+         "zh": "召唤#2"
+        },
+        "delay": 5,
+        "tooltip": {
+         "en": [
+          "After <v.initCooldown>, summons 1 <v.enemy_key> every <v.cooldown>s for <v.count> times"
+         ],
+         "ja": [
+          "<v.initCooldown>秒後、<v.cooldown>秒ごとに<v.enemy_key>を召喚し、これを<v.count>回繰り返す"
+         ],
+         "zh": [
+          "<v.initCooldown>s后，每隔<v.cooldown>秒以关卡预设路径召唤<v.enemy_key>，持续<v.count>次"
+         ]
+        }
+       }
+      ]
      }
     },
     {
@@ -820,7 +880,42 @@
       "lifepoint": 1,
       "range": -1.0,
       "levelType": "ELITE",
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "ftprg_summon",
+        "initCooldown": 38.0,
+        "cooldown": 40.0,
+        "count": 4,
+        "branch_id": "prg_branch_3",
+        "enemy_key": "enemy_2134_shrshep"
+       },
+       {
+        "key": "ftprg_summon_2",
+        "initCooldown": 206.0,
+        "cooldown": 25.0,
+        "count": 2,
+        "branch_id": "prg_branch_3",
+        "enemy_key": "enemy_2134_shrshep",
+        "type": "skill",
+        "suffix": {
+         "en": "Summon #2",
+         "ja": "召喚#2",
+         "zh": "召唤#2"
+        },
+        "delay": 5,
+        "tooltip": {
+         "en": [
+          "After <v.initCooldown>, summons 1 <v.enemy_key> every <v.cooldown>s for <v.count> times"
+         ],
+         "ja": [
+          "<v.initCooldown>秒後、<v.cooldown>秒ごとに<v.enemy_key>を召喚し、これを<v.count>回繰り返す"
+         ],
+         "zh": [
+          "<v.initCooldown>s后，每隔<v.cooldown>秒以关卡预设路径召唤<v.enemy_key>，持续<v.count>次"
+         ]
+        }
+       }
+      ]
      }
     }
    ],
@@ -4784,7 +4879,11 @@
       "tile_telin",
       0,
       0,
-      null,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
       0
      ],
      [
@@ -5155,7 +5254,11 @@
       "tile_telout",
       0,
       0,
-      null,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
       0
      ],
      [
@@ -5169,7 +5272,11 @@
       "tile_telout",
       0,
       0,
-      null,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
       0
      ],
      [
@@ -5183,7 +5290,11 @@
       "tile_telout",
       0,
       0,
-      null,
+      {
+       "colorIndex": 0,
+       "direction": "up",
+       "type": "arrow"
+      },
       0
      ],
      [

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { Skill } from '$lib/types';
 import { Enemy } from '$lib/components/StageSimulator/objects/Enemy';
 
@@ -37,5 +37,48 @@ describe('smephi_blink', () => {
 		expect(enemy.skillBlinkBeginDuration).toBe(0.4);
 		expect(enemy.skillBlinkLoopDuration).toBeCloseTo(1.52);
 		expect(enemy.skillBlinkEndDuration).toBe(0.5);
+	});
+});
+
+describe('ftprg summon startup', () => {
+	it('does not process route actions while summon skills are active', () => {
+		const enemy = Object.create(Enemy.prototype) as Enemy;
+		enemy.handleAnimUpdate = vi.fn();
+		enemy.exit = false;
+		enemy.timeoutDuration = null;
+		enemy.animState = 'Move';
+		enemy.currentActionIndex = 0;
+		enemy.skillManager = {
+			isHoldingForSummons: true,
+			startedEnemyAfterSummons: false,
+			update: vi.fn()
+		} as unknown as Enemy['skillManager'];
+
+		enemy.update(1);
+
+		expect(enemy.animState).toBe('Default');
+		expect(enemy.currentActionIndex).toBe(0);
+	});
+
+	it('holds the default animation and then plays Start', () => {
+		const enemy = Object.create(Enemy.prototype) as Enemy;
+		enemy.animState = 'Move';
+		enemy.isMoving = true;
+		enemy.startDuration = 4;
+		enemy.startElapsedTime = 2;
+		enemy.spineAnimIndex = 0;
+		enemy.animations = [{ Start: 'Start' }];
+		enemy.skelData = {
+			animations: [{ name: 'Start', duration: 1.5 }]
+		} as unknown as typeof enemy.skelData;
+
+		enemy.prepareForSummons();
+		expect(enemy.animState).toBe('Default');
+		expect(enemy.isMoving).toBe(false);
+		expect(enemy.startDuration).toBe(0);
+
+		enemy.startAfterSummons();
+		expect(enemy.animState).toBe('Start');
+		expect(enemy.startDuration).toBe(1.5);
 	});
 });

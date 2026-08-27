@@ -7933,27 +7933,47 @@
 		"tooltip": {
 			"en": [
 				"Initially appears as an Incursion Point",
-				"Does not move, cannot be blocked and is invincible while disguised",
-				"Summons additional enemies that are not included in the total enemy count periodically"
+				"Does not move, cannot be blocked and is invincible while disguised"
 			],
 			"ja": [
 				"敵出現地点に擬態して登場する。擬態中は無敵で、移動せずブロック不可",
-				"擬態中は自身のマスから敵を召喚し続ける。この敵は撃破数にカウントされない"
+				"擬態中は自身のマスから敵を召喚し続ける"
 			],
 			"zh": [
-				"初始处于伪装状态：无敌，不可阻挡，自缚，隐藏自身模型，重写自身所在地块为不可部署，激活隐藏敌人"
+				"初始处于伪装状态：无敌，不可阻挡，自缚，隐藏自身模型，重写自身所在地块为不可部署。以关卡预设路径召唤敌人"
+			]
+		}
+	},
+	"ftprg_summon": {
+		"type": "skill",
+		"enemy_key": null,
+		"initCooldown": 30,
+		"cooldown": 15,
+		"suffix": { "en": "Summon", "ja": "召喚", "zh": "召唤" },
+		"count": 10,
+		"delay": 5,
+		"branch_id": null,
+		"tooltip": {
+			"en": [
+				"After <v.initCooldown>, summons 1 <v.enemy_key> every <v.cooldown>s for <v.count> times"
+			],
+			"ja": [
+				"<v.initCooldown>秒後、<v.cooldown>秒ごとに<v.enemy_key>を召喚し、これを<v.count>回繰り返す"
+			],
+			"zh": [
+				"<v.initCooldown>s后，每隔<v.cooldown>秒以关卡预设路径召唤<v.enemy_key>，持续<v.count>次"
 			]
 		}
 	},
 	"ftprg_end": {
 		"tooltip": {
 			"en": [
-				"~6 seconds after summons are completed, or upon entering line of sight of friendly units, ends disguise permanently"
+				"5 seconds after summons are completed, or upon entering line of sight of friendly units, ends disguise permanently"
 			],
 			"ja": [
-				"決められた敵をすべて召喚してから6秒経過するか、味方の攻撃範囲に入ると擬態は解除される。"
+				"決められた敵をすべて召喚してから5秒経過するか、味方の攻撃範囲に入ると擬態は解除される。"
 			],
-			"zh": ["隐藏敌人召唤完毕约6s后或进入我方有效视野范围内时，退出伪装状态，上述效果永久失效"]
+			"zh": ["每0.5秒检测一次，敌人召唤完毕的5秒后退出伪装状态，上述效果永久失效"]
 		}
 	},
 	"mpwrj_explode": {
@@ -11362,7 +11382,7 @@
 	"smephi_blink": {
 		"type": "skill",
 		"initCooldown": 30,
-		"cooldowns": [75,65,60,45,30,30],
+		"cooldowns": [75, 65, 60, 45, 30, 30],
 		"motionMode": "skill_blink",
 		"beginAnimation": "Move_begin",
 		"loopAnimation": "Move_loop",
