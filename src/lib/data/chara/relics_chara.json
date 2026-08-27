@@ -8,7 +8,7 @@
 			"desc_zh": "所有干员技能触发后1秒内攻击力+60%",
 			"desc_ja": "全オペレーター、スキル発動後1秒間の攻撃力+60%",
 			"desc_en": "All friendly units have +60% ATK for one second after their skill becomes active",
-			"tag": "burst"
+			"tags": ["burst"]
 		},
 		{
 			"id": "rogue_1_relic_p41",
@@ -90,7 +90,7 @@
 			"desc_zh": "所有干员技能触发后1秒内攻击力+60%",
 			"desc_ja": "味方全員、スキル発動後1秒間の攻撃力+60%",
 			"desc_en": "All friendly units have +60% ATK for one second after their skill becomes active",
-			"tag": "burst"
+			"tags": ["burst"]
 		},
 		{
 			"id": "rogue_2_relic_fight_81",
@@ -202,7 +202,7 @@
 			"desc_zh": "所有干员技能触发后1秒内攻击力+60%",
 			"desc_ja": "味方全員、スキル発動後1秒間の攻撃力+60%",
 			"desc_en": "All friendly units have +60% ATK for one second after their skill becomes active",
-			"tag": "burst"
+			"tags": ["burst"]
 		},
 		{
 			"id": "rogue_3_relic_fight_18",
@@ -212,7 +212,7 @@
 			"desc_zh": "【召唤物】生命值+30%，攻击力+30%，且在场时使它所属的干员攻击力+60%",
 			"desc_ja": "【召喚ユニット】の最大HP+30%、攻撃力+30%。召喚ユニットが戦場に存在する間、召喚者の攻撃力+60%",
 			"desc_en": "Summons gain Max HP +30%, ATK +30%, and grant ATK +60% to their summoner",
-			"tag": "summon"
+			"tags": ["summon"]
 		},
 		{
 			"id": "rogue_3_relic_fight_34",
@@ -222,7 +222,7 @@
 			"desc_zh": "所有干员从异常状态恢复后，攻击力+60%并获得抵抗，持续15秒",
 			"desc_ja": "オペレーターが状態異常から回復すると、15秒間攻撃力+60%、さらに【レジスト】状態になる",
 			"desc_en": "All Operators gain ATK +60% and Resist for 15 seconds after recovering from a negative status",
-			"tag": "ally_ailment"
+			"tags": ["ally_ailment"]
 		},
 		{
 			"id": "rogue_3_relic_legacy_132",
@@ -344,7 +344,7 @@
 			"desc_zh": "所有干员技能触发后1秒内攻击力+60%",
 			"desc_ja": "全オペレーター、スキル発動後1秒間の攻撃力+60%",
 			"desc_en": "All friendly units have +60% ATK for one second after their skill becomes active",
-			"tag": "burst"
+			"tags": ["burst"]
 		},
 		{
 			"id": "rogue_4_relic_legacy_160",
@@ -354,7 +354,7 @@
 			"desc_zh": "【召唤物】生命值+30%，攻击力+30%，且在场时使它所属的干员攻击力+60%",
 			"desc_ja": "【召喚ユニット】の最大HP+30%、攻撃力+30%。召喚ユニットが戦場に存在する間、召喚者の攻撃力+60%",
 			"desc_en": "Summons gain Max HP +30%, ATK +30%, and grant ATK +60% to their summoner",
-			"tag": "summon"
+			"tags": ["summon"]
 		},
 		{
 			"id": "rogue_4_relic_legacy_163",
@@ -364,7 +364,7 @@
 			"desc_zh": "所有干员从异常状态恢复后，攻击力+60%并获得抵抗，持续15秒",
 			"desc_ja": "オペレーターが状態異常から回復すると、15秒間攻撃力+60%、さらに【レジスト】状態になる",
 			"desc_en": "All Operators gain ATK +60% and Resist for 15 seconds after recovering from a negative status",
-			"tag": "ally_ailment"
+			"tags": ["ally_ailment"]
 		},
 		{
 			"id": "rogue_4_relic_legacy_165",
@@ -454,6 +454,210 @@
 			"desc_zh": "不吃美愿的六星干员",
 			"desc_ja": "手秘宝がない星6オペレーター",
 			"desc_en": "Rarity 6 Operators without respective Hand Relic"
+		}
+	],
+	"rogue_5": [
+		{
+			"id": "rogue_5_relic_return_30",
+			"name_zh": "扣挠之手",
+			"name_ja": "藻掻く手",
+			"name_en": "Hand of Buckler",
+			"desc_zh": "【凝滞师】【削弱者】【护佑者】攻击时额外造成目标当前生命值3%的法术伤害",
+			"desc_ja": "【緩速師】・【呪詛師】・【祈祷師】の攻撃時、追加で攻撃対象の残りHPの3%にあたる術ダメージを与える",
+			"desc_en": "Decel Binder, Hexer, and Abjurer Operators' attacks deal additional Arts damage equal to 3% of the target's current HP",
+			"subProfessionId": ["slower", "underminer", "blessing"]
+		},
+		{
+			"id": "rogue_5_relic_return_31",
+			"name_zh": "掠食之手",
+			"name_ja": "捕食の手",
+			"name_en": "Hand of Predation",
+			"desc_zh": "【尖兵】【冲锋手】【战术家】每次开启技能时自身攻击力、防御力+10%（最多叠加10层）",
+			"desc_ja": "【先駆兵】・【突撃兵】・【戦術家】がスキルを発動するたび、自身の攻撃力・防御力+10%（最大10回まで）",
+			"desc_en": "Pioneer, Charger, and Tactician Operators gain +10% ATK and DEF on every skill activation (Stacks 10x)",
+			"subProfessionId": ["pioneer", "charger", "tactician"]
+		},
+		{
+			"id": "rogue_5_relic_return_32",
+			"name_zh": "裂岩之手",
+			"name_ja": "砕岩の手",
+			"name_en": "Hand of Rending",
+			"desc_zh": "【收割者】【武者】【斗士】攻击无视目标70%防御",
+			"desc_ja": "【鎌撃士】・【武者】・【闘士】の攻撃が対象の防御を70%無視",
+			"desc_en": "Reaper, Soloblade, and Fighter Operators ignore 70% of the target's DEF",
+			"subProfessionId": ["reaper", "musha", "fighter"]
+		},
+		{
+			"id": "rogue_5_relic_return_33",
+			"name_zh": "波纹之手",
+			"name_ja": "波紋の手",
+			"name_en": "Hand of Undulation",
+			"desc_zh": "【扩散术师】【链术师】【驭械术师】每对一个单位造成伤害就回复2点技力值",
+			"desc_ja": "【拡散術師】・【連鎖術師】・【操機術師】がダメージを与えた時、攻撃対象1体につきSP+2",
+			"desc_en": "Splash Caster, Chain Caster, and Mech-accord Caster Operators recover 2 SP each time they deal damage to an enemy unit",
+			"subProfessionId": ["splashcaster", "chain", "funnel"]
+		},
+		{
+			"id": "rogue_5_relic_return_34",
+			"name_zh": "久居之手",
+			"name_ja": "長居の手",
+			"name_en": "Hand of Protraction",
+			"desc_zh": "【伏击客】【行商】【怪杰】每在场上存在30秒，攻击力+25%（最多叠加5层）",
+			"desc_ja": "【潜伏者】・【行商人】・【鬼才】配置中、30秒ごとに攻撃力+25%（最大5回まで）",
+			"desc_en": "Ambusher, Merchant, and Geek Operators gain +25% ATK for every 30s they remain on the battlefield (Stacks 5x)",
+			"subProfessionId": ["stalker", "merchant", "geek"]
+		},
+		{
+			"id": "rogue_5_relic_return_35",
+			"name_zh": "烟花之手",
+			"name_ja": "花火の手",
+			"name_en": "Hand of Fireworks",
+			"desc_zh": "【速射手】【回环射手】【哨戒铁卫】每次攻击命中时，有25%概率发射一枚额外子弹，造成相当于攻击力200%的群体物理伤害",
+			"desc_ja": "【速射手】・【旋輪射手】・【哨戒衛士】が敵にダメージを与えるたびに、25%の確率で追加の弾を1発発射し、攻撃力の200%の範囲物理ダメージを与える",
+			"desc_en": "Marksman, Loopshooter, and Sentry Protector Operators have a 25% chance when an attack hits to shoot an extra projectile, dealing 200% ATK as AoE Physical Damage",
+			"subProfessionId": ["fastshot", "loopshooter", "shotprotector"]
+		}
+	],
+	"rogue_6": [
+		{
+			"id": "rogue_6_relic_hand_1",
+			"name_zh": "开拓之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "尖兵、冲锋手、策士的部署费用-6，技力需求-50%；拥有钝爪-先机时，开启技能会给其他场上干员回复2点技力",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["pioneer", "charger", "counsellor"]
+		},
+		{
+			"id": "rogue_6_relic_hand_2",
+			"name_zh": "诛戮之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "武者、无畏者、术战者对周围四格敌人造成的伤害提升至200%；拥有折戟-避锋时，击倒敌人后下次再部署时间和部署费用-50%",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["musha", "fearless", "artsfghter"]
+		},
+		{
+			"id": "rogue_6_relic_hand_3",
+			"name_zh": "坚御之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "铁卫、哨戒铁卫、不屈者部署时和技能结束后攻击力和最大生命+100%，加成在60秒内递减；拥有铁卫-轻行时，生命高于50%时阻挡数+3",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["protector", "shotprotector", "unyield"]
+		},
+		{
+			"id": "rogue_6_relic_hand_4",
+			"name_zh": "慑空之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "炮手、散射手、裂空炮手开启技能时攻击力+150%，持续5秒；拥有残弩-神准时，每3秒获得3点技力",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["aoesniper", "reaperrange", "skybreaker"]
+		},
+		{
+			"id": "rogue_6_relic_hand_5",
+			"name_zh": "波纹之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "轰击术师、链术师、驭械术师每对一个单位造成伤害就回复2点技力值，拥有断杖-同调时，造成伤害后3秒内攻击力+20%（最高+100%）",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["blastcaster", "funnel", "chain"]
+		},
+		{
+			"id": "rogue_6_relic_hand_6",
+			"name_zh": "护愈之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "疗养师、行医、护佑者攻击范围内的我方干员免疫异常状态，拥有医者-地缘策略时，溢出的治疗量可以转化成等量的屏障（最大为100%生命上限）",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["healer", "wandermedic", "blessing"]
+		},
+		{
+			"id": "rogue_6_relic_hand_7",
+			"name_zh": "剿袭之手",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "敌人进入秘术师、神射手、猎手的攻击范围内时，受到一次攻击力300%的法术或物理伤害和50%的法术或物理脆弱（持续3秒）",
+			"desc_ja": "",
+			"desc_en": "",
+			"subProfessionId": ["mystic", "longrange", "hunter"]
+		},
+		{
+			"id": "rogue_6_relic_assign_10",
+			"name_zh": "指中狼",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "下一个招募或进阶的干员无法开启技能，但攻击力+100%，攻击速度+50",
+			"desc_ja": "",
+			"desc_en": "",
+			"tags": ["coin_skill"]
+		},
+		{
+			"id": "rogue_6_relic_assign_12",
+			"name_zh": "发泡胶",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "下一个招募或进阶的干员攻击速度-50，攻击力+120%",
+			"desc_ja": "",
+			"desc_en": "",
+			"tags": ["aspd_unrelated"]
+		},
+		{
+			"id": "rogue_6_relic_fight_18",
+			"name_zh": "翱翼",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "我方每有1个起飞的单位，所有起飞的单位攻击力+25%",
+			"desc_ja": "",
+			"desc_en": "",
+			"blackboard": ["liftoff"]
+		},
+		{
+			"id": "rogue_6_relic_fight_22",
+			"name_zh": "河谷祭祈",
+			"name_ja": "",
+			"name_en": "",
+			"desc_zh": "凋亡损伤：造成的元素伤害提升至250%；目标攻击力额外最终降低至70%\n灼燃损伤：造成的元素伤害提升至380%；法术抗性额外-20\n神经损伤：立即造成的元素伤害翻倍（6000×2）；冷却期间每秒额外受到1000点元素伤害\n侵蚀损伤：防御力额外-120；每0.03秒额外受到1500无来源物理持续伤害（10次）",
+			"desc_ja": "",
+			"desc_en": "",
+			"tags": ["ele_dmg"]
+		},
+		{
+			"id": "rogue_6_relic_legacy_61",
+			"name_zh": "绿叶菜罐头",
+			"name_ja": "青菜の缶詰",
+			"name_en": "Spinach Pack",
+			"desc_zh": "所有干员技能触发后1秒内攻击力+60%",
+			"desc_ja": "全オペレーター、スキル発動後1秒間の攻撃力+60%",
+			"desc_en": "All friendly units have +60% ATK for one second after their skill becomes active",
+			"tags": ["burst"]
+		},
+		{
+			"id": "rogue_6_relic_legacy_134",
+			"name_zh": "散轶诗简",
+			"name_ja": "失われた詩の竹簡",
+			"name_en": "Timeworn Poetry Strips",
+			"desc_zh": "【召唤物】的生命值+30%、攻击力+30%，并且不再消耗部署位",
+			"desc_ja": "【召喚物】の最大HP+30%、攻撃力+30%、残り配置可能数を消費しない",
+			"desc_en": "Summons have +30% HP, +30% ATK, and will no longer use Deployment slots",
+			"tags": ["summon"]
+		},
+		{
+			"id": "rogue_6_relic_legacy_139",
+			"name_zh": "《炎国字汇》",
+			"name_ja": "『炎国字集』",
+			"name_en": "'Yanese Dictionary'",
+			"desc_zh": "弹药类技能每次开启后，首次剩余30%的弹药时，补充最大弹药数量30%的弹药",
+			"desc_ja": "弾薬消費系スキルを発動するたび、初めて残弾が30%以下となった際、弾薬上限の30%の弾薬を補充",
+			"desc_en": "When Operators use an ammo-type skill and consume 70% of ammo for the first time, replenishes 30% of max ammo count",
+			"blackboard": ["trigger_time"]
 		}
 	]
 }

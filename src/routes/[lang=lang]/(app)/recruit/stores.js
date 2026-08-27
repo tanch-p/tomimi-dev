@@ -110,8 +110,15 @@ export const filters = derived(
 					console.log(option.id, 'not found');
 				}
 				switch (true) {
-					case Boolean(relic.tag):
-						bbTagHolder.push({ key: relic.tag, type: 'tags' });
+					case Boolean(relic.tags):
+						bbTagHolder.push(...relic.tags.map((tag) => ({ key: tag, type: 'tags' })));
+						return () => true;
+					case Boolean(relic.blackboard):
+						bbTagHolder.push(
+							...relic.blackboard.map((key) => {
+								return { key, type: 'blackboard' };
+							})
+						);
 						return () => true;
 					case Boolean(relic.subProfessionId):
 						return (char) => relic.subProfessionId.includes(char.subProfessionId);

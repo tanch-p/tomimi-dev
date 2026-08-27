@@ -159,5 +159,12 @@ export const relicLookup = {
 	rogue_6_relic_hand_4: 'rogue_6_relic_hand_4',
 	rogue_6_relic_hand_5: 'rogue_6_relic_hand_5',
 	rogue_6_relic_hand_6: 'rogue_6_relic_hand_6',
-	rogue_6_relic_hand_7: 'rogue_6_relic_hand_7'
+	rogue_6_relic_hand_7: 'rogue_6_relic_hand_7',
+	rogue_6_relic_assign_10: 'rogue_6_relic_assign_10',
+	rogue_6_relic_assign_12: 'rogue_6_relic_assign_12',
+	rogue_6_relic_fight_18: 'rogue_6_relic_fight_18',
+	rogue_6_relic_fight_22: 'rogue_6_relic_fight_22',
+	rogue_6_relic_legacy_134: 'rogue_6_relic_legacy_134',
+	rogue_6_relic_legacy_139: 'rogue_6_relic_legacy_139',
+	rogue_6_relic_legacy_61: 'relic_spinach'
 };
