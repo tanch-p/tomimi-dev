@@ -75,7 +75,7 @@
         "value": 30,
         "effects": {
          "targets": [
-          "enemy_2146_cadesd"
+          "exclude:enemy_2145_cadejo"
          ],
          "activeTargets": [],
          "mods": [
@@ -241,7 +241,7 @@
         "value": 50,
         "effects": {
          "targets": [
-          "enemy_2146_cadesd"
+          "exclude:enemy_2145_cadejo"
          ],
          "activeTargets": [],
          "mods": [
@@ -318,7 +318,7 @@
         "value": 50,
         "effects": {
          "targets": [
-          "enemy_2146_cadesd"
+          "exclude:enemy_2145_cadejo"
          ],
          "activeTargets": [],
          "mods": [
