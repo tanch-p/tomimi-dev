@@ -46974,7 +46974,7 @@
 				"status_immune": ["silence"]
 			}
 		],
-		"type": ["no_attack", "NORMAL"],
+		"type": ["no_attack", "ELITE"],
 		"notCountInTotal": false
 	},
 	"enemy_2063_skzlch": {
