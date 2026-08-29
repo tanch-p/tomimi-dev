@@ -10,7 +10,7 @@ if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('black_difficulty') ?? '0');
 }
 
-export const selectedRelics = writable([]);
+export const selectedRelics = writable(/** @type {any[]} */ ([]));
 export const difficulty = writable(storedDifficulty);
 export const stageType = writable('');
 export const gold = writable(10);
