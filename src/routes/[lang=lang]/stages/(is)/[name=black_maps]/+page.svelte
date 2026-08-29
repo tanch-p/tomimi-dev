@@ -106,8 +106,8 @@
 		selectedRelics.set(initialRelics);
 		activeFloorEffects.set([]);
 
-		if (initialState.gold !== undefined && initialState.gold <= 100) {
-			gold.set(initialState.gold);
+		if (initialState.gold !== undefined) {
+			gold.set(Math.min(initialState.gold, 100));
 		}
 
 		if (initialState.variation) {
