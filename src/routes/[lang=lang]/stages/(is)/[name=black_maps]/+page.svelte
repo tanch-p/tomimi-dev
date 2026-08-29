@@ -37,7 +37,8 @@
 	import {
 		copyRunState,
 		type UserRunState,
-		type UserRunStateRelic
+		type UserRunStateRelic,
+		tryDecodeUserRunState
 	} from '$lib/functions/userRunStateHelpers';
 	import { createGoldVariationEffect, goldVariation } from './variationHelpers';
 
@@ -49,7 +50,7 @@
 		rogue_6_weather_1: weather1,
 		rogue_6_weather_2: weather2
 	};
-	let synchronising = Boolean(data.initialRunState);
+	let synchronising = false;
 
 	async function copyCurrentRunState() {
 		const relics: UserRunStateRelic[] = $selectedRelics.map((relic) => ({
@@ -75,9 +76,14 @@
 	}
 
 	onMount(() => {
-		const initialState = data.initialRunState;
+		const initialState = tryDecodeUserRunState(
+			new URLSearchParams(window.location.search).get('state'),
+			'ro6'
+		);
 
 		if (!initialState) return;
+
+		synchronising = true;
 
 		const hideLoaderTimeout = setTimeout(() => {
 			synchronising = false;
