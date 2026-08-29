@@ -76,6 +76,11 @@
 		"ja": "ライブ配信サイトへ",
 		"zh": "查看赛事直播"
 	},
+	"synchronising":{
+		"en": "Synchronising game state",
+		"ja": "同期中",
+		"zh": "正在同步"
+	},
 	"reset": {
 		"en": "Reset",
 		"ja": "リセット",

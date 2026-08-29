@@ -6,16 +6,15 @@
 	import FloorSelect from './FloorSelect.svelte';
 	import weather_1 from '$lib/images/is/black/rogue_6_weather_1.webp';
 	import weather_2 from '$lib/images/is/black/rogue_6_weather_2.webp';
-	import variation_7 from '$lib/images/is/black/variation_7.webp';
 	import rogueGold from '$lib/images/is/rogue_gold.webp';
 	import { difficulty, activeFloorEffects, gold } from './stores';
+	import { createGoldVariationEffect, goldVariation } from './variationHelpers';
 
 	export let optionsOpen: boolean, language: Language;
 
 	const lookup: Record<string, string> = {
 		rogue_6_weather_1: weather_1,
-		rogue_6_weather_2: weather_2,
-		rogue_6_variation_7: variation_7
+		rogue_6_weather_2: weather_2
 	};
 	type Weather = (typeof weather)[number] & { src: string };
 	const weatherOptions: Weather[] = weather.map((option) => ({
@@ -25,46 +24,7 @@
 	let options: Weather[] = [];
 	let level = 1;
 
-	const goldVariation = {
-		id: 'rogue_6_variation_7',
-		name_zh: '“源石之城”',
-		name_ja: '',
-		name_en: '',
-		buff: {
-			atk: 0.004,
-			hp: 0.01
-		},
-		iconId: 'rogue_6_variation_7',
-		tooltip_zh:
-			'完成节点后获得获得10源石锭，每拥有的1点源石锭为敌方提供1层攻击力+0.4%与生命值+1%的增益（最多叠加至100层）',
-		tooltip_ja: '',
-		tooltip_en: ''
-	};
-
-	$: goldVariationEffect = {
-		...goldVariation,
-		src: lookup[goldVariation.iconId],
-		level: 0,
-		effects: [
-			{
-				targets: ['ALL'],
-				mods: [
-					{
-						key: 'hp',
-						value: 1 + goldVariation.buff.hp * $gold,
-						mode: 'mul',
-						order: 'initial'
-					},
-					{
-						key: 'atk',
-						value: 1 + goldVariation.buff.atk * $gold,
-						mode: 'mul',
-						order: 'initial'
-					}
-				]
-			}
-		]
-	};
+	$: goldVariationEffect = createGoldVariationEffect($gold);
 
 	$: if (
 		$activeFloorEffects.length === 1 &&
