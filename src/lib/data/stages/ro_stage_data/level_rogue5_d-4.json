@@ -60,9 +60,9 @@
      "prefabKey": "enemy_2014_csicer",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -70,9 +70,9 @@
      "prefabKey": "enemy_2015_csicem",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -80,9 +80,9 @@
      "prefabKey": "enemy_1332_cbterm_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -100,9 +100,9 @@
      "prefabKey": "enemy_1329_cbshld",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -110,9 +110,9 @@
      "prefabKey": "enemy_1284_sgprst",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -120,9 +120,9 @@
      "prefabKey": "enemy_1342_frtuna",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -130,9 +130,9 @@
      "prefabKey": "enemy_10026_vtzepl",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -140,9 +140,9 @@
      "prefabKey": "enemy_10025_vtmstr_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -150,9 +150,9 @@
      "prefabKey": "enemy_2002_bearmi",
      "level": 2,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -160,9 +160,9 @@
      "prefabKey": "enemy_2001_duckmi",
      "level": 2,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -170,9 +170,9 @@
      "prefabKey": "enemy_2011_csppt",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -180,9 +180,9 @@
      "prefabKey": "enemy_2013_csbot",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -190,9 +190,9 @@
      "prefabKey": "enemy_10020_sgcat",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -200,9 +200,9 @@
      "prefabKey": "enemy_10019_sgmum_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -210,9 +210,9 @@
      "prefabKey": "enemy_2105_dyrnge",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -220,9 +220,9 @@
      "prefabKey": "enemy_2104_dycast",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -230,9 +230,9 @@
      "prefabKey": "enemy_10046_pshark",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -240,9 +240,9 @@
      "prefabKey": "enemy_10048_prtsld_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -250,9 +250,9 @@
      "prefabKey": "enemy_1207_sfji_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -270,9 +270,9 @@
      "prefabKey": "enemy_1205_sfpin_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -290,9 +290,9 @@
      "prefabKey": "enemy_1430_lrrook",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -300,9 +300,9 @@
      "prefabKey": "enemy_1423_lrfkkt",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -310,9 +310,9 @@
      "prefabKey": "enemy_1412_mmjump",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -320,9 +320,9 @@
      "prefabKey": "enemy_1414_mmleak",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -330,9 +330,9 @@
      "prefabKey": "enemy_1404_msnip",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -340,9 +340,9 @@
      "prefabKey": "enemy_1406_chghmr",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -350,9 +350,9 @@
      "prefabKey": "enemy_2103_dykens",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -360,9 +360,9 @@
      "prefabKey": "enemy_2106_dyremy",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -370,9 +370,9 @@
      "prefabKey": "enemy_1112_emppnt_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -380,9 +380,9 @@
      "prefabKey": "enemy_3001_upeopl",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -390,9 +390,9 @@
      "prefabKey": "enemy_1363_spnshd",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -400,9 +400,9 @@
      "prefabKey": "enemy_1366_dcolle",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -420,9 +420,9 @@
      "prefabKey": "enemy_1262_durplc_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -430,9 +430,9 @@
      "prefabKey": "enemy_1264_durgrd_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -440,9 +440,9 @@
      "prefabKey": "enemy_10088_hlsnip",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -450,9 +450,9 @@
      "prefabKey": "enemy_10089_hlsprt",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -470,9 +470,9 @@
      "prefabKey": "enemy_10077_mpbarr",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -480,9 +480,9 @@
      "prefabKey": "enemy_10075_mpwrj",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -540,9 +540,9 @@
      "prefabKey": "enemy_10113_ymgung_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -550,9 +550,9 @@
      "prefabKey": "enemy_10116_ymgtop_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -560,9 +560,9 @@
      "prefabKey": "enemy_10067_ftsjc",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -570,9 +570,9 @@
      "prefabKey": "enemy_1413_mmstck_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -580,9 +580,9 @@
      "prefabKey": "enemy_1072_dlancer_2",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -590,9 +590,9 @@
      "prefabKey": "enemy_1133_harchn",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -620,9 +620,9 @@
      "prefabKey": "enemy_1131_sbeast",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     },
     {
@@ -630,9 +630,9 @@
      "prefabKey": "enemy_10065_ftzlc",
      "level": 0,
      "min_count": 0,
-     "max_count": 3,
+     "max_count": 1,
      "elite_min_count": 0,
-     "elite_max_count": 3,
+     "elite_max_count": 1,
      "overwrittenData": null
     }
    ],
@@ -2078,12 +2078,7 @@
          "randomSpawnGroupPackKey": "r11",
          "weight": 50,
          "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
+        },
         {
          "actionType": "SPAWN",
          "key": "enemy_2015_csicem",
@@ -2093,7 +2088,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r1",
          "weight": 50,
          "dontBlockWave": false
@@ -2107,7 +2102,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r2",
          "weight": 50,
          "dontBlockWave": false
@@ -2121,7 +2116,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r3",
          "weight": 50,
          "dontBlockWave": false
@@ -2135,7 +2130,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r4",
          "weight": 50,
          "dontBlockWave": false
@@ -2149,7 +2144,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r5",
          "weight": 50,
          "dontBlockWave": false
@@ -2163,7 +2158,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r6",
          "weight": 50,
          "dontBlockWave": false
@@ -2177,7 +2172,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r7",
          "weight": 50,
          "dontBlockWave": false
@@ -2191,7 +2186,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r8",
          "weight": 50,
          "dontBlockWave": false
@@ -2205,7 +2200,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r9",
          "weight": 50,
          "dontBlockWave": false
@@ -2219,7 +2214,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r10",
          "weight": 50,
          "dontBlockWave": false
@@ -2233,7 +2228,7 @@
          "routeIndex": 1,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "r11",
          "weight": 50,
          "dontBlockWave": false
@@ -2326,12 +2321,7 @@
          "randomSpawnGroupPackKey": "n6",
          "weight": 5,
          "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
+        },
         {
          "actionType": "SPAWN",
          "key": "enemy_10089_hlsprt",
@@ -2341,7 +2331,7 @@
          "routeIndex": 3,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "n1",
          "weight": 5,
          "dontBlockWave": false
@@ -2355,7 +2345,7 @@
          "routeIndex": 4,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "n2",
          "weight": 5,
          "dontBlockWave": false
@@ -2369,7 +2359,7 @@
          "routeIndex": 3,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "n3",
          "weight": 5,
          "dontBlockWave": false
@@ -2383,7 +2373,7 @@
          "routeIndex": 3,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "n4",
          "weight": 5,
          "dontBlockWave": false
@@ -2397,7 +2387,7 @@
          "routeIndex": 3,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "n5",
          "weight": 5,
          "dontBlockWave": false
@@ -2411,7 +2401,7 @@
          "routeIndex": 3,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "n6",
          "weight": 5,
          "dontBlockWave": false
@@ -2504,12 +2494,7 @@
          "randomSpawnGroupPackKey": "e6",
          "weight": 50,
          "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
+        },
         {
          "actionType": "SPAWN",
          "key": "enemy_1414_mmleak",
@@ -2519,7 +2504,7 @@
          "routeIndex": 6,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "e1",
          "weight": 50,
          "dontBlockWave": false
@@ -2533,7 +2518,7 @@
          "routeIndex": 6,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "e2",
          "weight": 50,
          "dontBlockWave": false
@@ -2547,7 +2532,7 @@
          "routeIndex": 6,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "e3",
          "weight": 50,
          "dontBlockWave": false
@@ -2561,7 +2546,7 @@
          "routeIndex": 7,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "e4",
          "weight": 50,
          "dontBlockWave": false
@@ -2575,7 +2560,7 @@
          "routeIndex": 6,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "e5",
          "weight": 50,
          "dontBlockWave": false
@@ -2589,1371 +2574,7 @@
          "routeIndex": 6,
          "autoPreviewRoute": false,
          "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e6",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      }
-     ],
-     "advancedWaveTag": null
-    },
-    {
-     "preDelay": 0.0,
-     "postDelay": 0.0,
-     "maxTimeWaitingForNextWave": -1.0,
-     "fragments": [
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2014_csicer",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1332_cbterm_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1284_sgprst",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10026_vtzepl",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2002_bearmi",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2011_csppt",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r6",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10020_sgcat",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r7",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1430_lrrook",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r8",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2104_dycast",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r9",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10046_pshark",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r10",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1207_sfji_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r11",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2015_csicem",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1329_cbshld",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1342_frtuna",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10025_vtmstr_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2001_duckmi",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2013_csbot",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r6",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10019_sgmum_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r7",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1423_lrfkkt",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r8",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2105_dyrnge",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r9",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10048_prtsld_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r10",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1205_sfpin_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r11",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10088_hlsnip",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n1",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10077_mpbarr",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n2",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10113_ymgung_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n3",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10065_ftzlc",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n4",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1413_mmstck_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n5",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1133_harchn",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n6",
-         "weight": 5,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10089_hlsprt",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n1",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10075_mpwrj",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 4,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n2",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10116_ymgtop_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n3",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10067_ftsjc",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n4",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1072_dlancer_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n5",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1131_sbeast",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n6",
-         "weight": 5,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1412_mmjump",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1404_msnip",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2103_dykens",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_3001_upeopl",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1366_dcolle",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1262_durplc_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e6",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1414_mmleak",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1406_chghmr",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2106_dyremy",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1112_emppnt_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 7,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1363_spnshd",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1264_durgrd_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e6",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      }
-     ],
-     "advancedWaveTag": null
-    },
-    {
-     "preDelay": 0.0,
-     "postDelay": 0.0,
-     "maxTimeWaitingForNextWave": -1.0,
-     "fragments": [
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2014_csicer",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1332_cbterm_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1284_sgprst",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10026_vtzepl",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2002_bearmi",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2011_csppt",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r6",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10020_sgcat",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r7",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1430_lrrook",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r8",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2104_dycast",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r9",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10046_pshark",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r10",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1207_sfji_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 0,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g1",
-         "randomSpawnGroupPackKey": "r11",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2015_csicem",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1329_cbshld",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1342_frtuna",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10025_vtmstr_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2001_duckmi",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2013_csbot",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r6",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10019_sgmum_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r7",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1423_lrfkkt",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r8",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2105_dyrnge",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r9",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10048_prtsld_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r10",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1205_sfpin_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 1,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g2",
-         "randomSpawnGroupPackKey": "r11",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10088_hlsnip",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n1",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10077_mpbarr",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n2",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10113_ymgung_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n3",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10065_ftzlc",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n4",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1413_mmstck_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n5",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1133_harchn",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 2,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g3",
-         "randomSpawnGroupPackKey": "n6",
-         "weight": 5,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10089_hlsprt",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n1",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10075_mpwrj",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 4,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n2",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10116_ymgtop_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n3",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_10067_ftsjc",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n4",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1072_dlancer_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n5",
-         "weight": 5,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1131_sbeast",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 3,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g4",
-         "randomSpawnGroupPackKey": "n6",
-         "weight": 5,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1412_mmjump",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1404_msnip",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2103_dykens",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_3001_upeopl",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1366_dcolle",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1262_durplc_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 5,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g5",
-         "randomSpawnGroupPackKey": "e6",
-         "weight": 50,
-         "dontBlockWave": false
-        }
-       ]
-      },
-      {
-       "preDelay": 0.0,
-       "actions": [
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1414_mmleak",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e1",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1406_chghmr",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e2",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_2106_dyremy",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e3",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1112_emppnt_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 7,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e4",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1363_spnshd",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
-         "randomSpawnGroupPackKey": "e5",
-         "weight": 50,
-         "dontBlockWave": false
-        },
-        {
-         "actionType": "SPAWN",
-         "key": "enemy_1264_durgrd_2",
-         "count": 1,
-         "preDelay": 0.0,
-         "interval": 1.0,
-         "routeIndex": 6,
-         "autoPreviewRoute": false,
-         "hiddenGroup": null,
-         "randomSpawnGroupKey": "g6",
+         "randomSpawnGroupKey": null,
          "randomSpawnGroupPackKey": "e6",
          "weight": 50,
          "dontBlockWave": false

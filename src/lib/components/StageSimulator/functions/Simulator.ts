@@ -9,19 +9,10 @@ import { generateMaze } from '$lib/functions/mazeHelpers';
 import { Enemy } from '../objects/Enemy';
 import { AssetManager } from '../objects/AssetManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
+import { DUEL_STAGES } from '$lib/functions/lib';
 
 export function getSimulatedData(config: MapConfig, waveData, enemies: EnemyType[]) {
-	if (
-		[
-			'level_rogue4_b-8',
-			'level_rogue2_b-7',
-			'level_rogue1_b-7',
-			'level_rogue4_d-1',
-			'level_rogue4_d-2',
-			'level_rogue4_d-3',
-			'level_rogue4_d-b'
-		].includes(config.levelId)
-	) {
+	if (DUEL_STAGES.includes(config.levelId)) {
 		return;
 	}
 	if (['level_rogue4_b-7'].includes(config.levelId) && GameConfig.stagePhaseIndex == 1) {

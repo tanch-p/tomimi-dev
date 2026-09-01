@@ -10,6 +10,7 @@ import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/func
 import { SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
+import { DUEL_STAGES } from '$lib/functions/lib';
 
 const moveMultiplier = 0.5;
 export class Enemy {
@@ -782,6 +783,8 @@ export class Enemy {
 
 	update(delta: number) {
 		this.handleAnimUpdate(delta);
+		if (DUEL_STAGES.includes(this.gameManager.config.levelId) && GameConfig.stagePhaseIndex === 0)
+			return;
 		if (this.exit) return;
 		if (this.timeoutDuration !== null) {
 			this.timeoutElapsedTime += delta;

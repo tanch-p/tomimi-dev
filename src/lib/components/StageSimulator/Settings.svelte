@@ -18,32 +18,26 @@
 	let currentWaveIndex = 0;
 	let stagePhaseIndex = 0;
 
-	const stageOptions = {
-		'level_rogue4_d-1': [
-			{ wave: 0, display: '1' },
-			{ wave: 4, display: '2' }
-		],
-		'level_rogue4_d-2': [
-			{ wave: 0, display: '1' },
-			{ wave: 4, display: '2' }
-		],
-		'level_rogue4_d-3': [
-			{ wave: 0, display: '1' },
-			{ wave: 4, display: '2' }
-		],
-		'level_rogue4_d-b': [
-			{ wave: 0, display: '1' },
-			{ wave: 4, display: '2' }
-		],
-		'level_rogue4_b-7': [
-			{ wave: 0, display: '1' },
-			{ wave: 2, display: '2' }
-		],
-		'level_rogue4_b-8': [
-			{ wave: 1, display: '1' },
-			{ wave: 3, display: '2' },
-			{ wave: 5, display: '3' }
-		]
+	const DEFAULT_STAGE_WAVES = [0, 4];
+
+	const stageOptions: Record<string, number[]> = {
+		...Object.fromEntries(
+			[
+				'level_rogue4_d-1',
+				'level_rogue4_d-2',
+				'level_rogue4_d-3',
+				'level_rogue4_d-b',
+				'level_rogue5_d-1',
+				'level_rogue5_d-2',
+				'level_rogue5_d-3',
+				'level_rogue5_d-4',
+				'level_rogue6_d-1',
+				'level_rogue6_d-2'
+			].map((levelId) => [levelId, DEFAULT_STAGE_WAVES])
+		),
+
+		'level_rogue4_b-7': [0, 2],
+		'level_rogue4_b-8': [1, 3, 5]
 	};
 
 	const options = [
@@ -179,9 +173,9 @@
 </div>
 {#if stageOptions[mapConfig?.levelId]}
 	<div class="flex justify-center gap-x-3 mb-2">
-		{#each stageOptions[mapConfig?.levelId] as { wave, display }, idx}
+		{#each stageOptions[mapConfig.levelId] as wave, idx}
 			<button
-				class="rounded-sm px-2 py-1.5 {stagePhaseIndex == idx
+				class="rounded-sm px-2 py-1.5 {stagePhaseIndex === idx
 					? 'bg-gray-500'
 					: 'bg-gray-700 hover:bg-gray-600'}"
 				on:click={() => {
@@ -190,7 +184,7 @@
 					game.softReset(false);
 				}}
 			>
-				{getTranslations(language).mapstate_prefix}{display}{getTranslations(language)
+				{getTranslations(language).mapstate_prefix}{idx + 1}{getTranslations(language)
 					.mapstate_suffix}
 			</button>
 		{/each}

@@ -49,6 +49,9 @@ export class SpawnManager {
 		this.nextWaveType = waves[0].maxTimeWaitingForNextWave < 0 ? 'NO_ENEMIES' : 'TIME';
 		switch (this.gameManager.config.levelId) {
 			case 'level_rogue4_d-1':
+			case 'level_rogue5_d-1':
+			case 'level_rogue5_d-3':
+			case 'level_rogue6_d-1':
 				if (GameConfig.stagePhaseIndex === 1) {
 					this.addBranch('Walk');
 				}
@@ -56,6 +59,9 @@ export class SpawnManager {
 			case 'level_rogue4_d-2':
 			case 'level_rogue4_d-3':
 			case 'level_rogue4_d-b':
+			case 'level_rogue5_d-2':
+			case 'level_rogue5_d-4':
+			case 'level_rogue6_d-2':
 				if (GameConfig.stagePhaseIndex === 1) {
 					this.addBranch('Walk_1');
 					this.addBranch('Walk_2');

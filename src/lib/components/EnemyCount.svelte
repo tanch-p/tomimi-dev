@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { MapConfig, Language, RogueTopic } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
-	import { BONUS_ENEMY_KEYS } from '$lib/functions/lib';
+	import { BONUS_ENEMY_KEYS, DUEL_STAGES } from '$lib/functions/lib';
 
 	export let mapConfig: MapConfig,
 		enemies,
@@ -100,7 +100,7 @@
 						alt={enemy.id}
 						title={enemy[`name_${language}`] || enemy[`name_zh`]}
 					/>
-					{#if !['level_rogue4_d-1', 'level_rogue4_d-2', 'level_rogue4_d-3', 'level_rogue4_d-4'].includes(mapConfig?.levelId)}
+					{#if !DUEL_STAGES.includes(mapConfig?.levelId)}
 						<p
 							class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm"
 						>

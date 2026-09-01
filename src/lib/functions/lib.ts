@@ -29,6 +29,22 @@ export const BONUS_ENEMY_KEYS = [
 	'enemy_2152_shezlc'
 ];
 
+export const DUEL_STAGES = [
+	'level_rogue4_b-8',
+	'level_rogue2_b-7',
+	'level_rogue1_b-7',
+	'level_rogue4_d-1',
+	'level_rogue4_d-2',
+	'level_rogue4_d-3',
+	'level_rogue4_d-b',
+	'level_rogue5_d-1',
+	'level_rogue5_d-2',
+	'level_rogue5_d-3',
+	'level_rogue5_d-4',
+	'level_rogue6_d-1',
+	'level_rogue6_d-2'
+];
+
 export function isEquals(obj1, obj2) {
 	if (obj1 === null || obj2 === null) return obj1 === obj2;
 	if (typeof obj1 !== 'object' || typeof obj2 !== 'object') {
