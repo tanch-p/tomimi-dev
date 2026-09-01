@@ -355,58 +355,96 @@ export class SPFA {
 	smoothPath(path: GridCoordinate[]): GridCoordinate[] {
 		if (path.length <= 2) return path;
 
+		const start = path[0];
 		const target = path[path.length - 1];
-		const result: GridCoordinate[] = [path[0]];
-		let current = path[0];
+		const coordinates: GridCoordinate[] = [];
 
-		while (!this.coordinatesEqual(current, target)) {
-			const currentNode = this.grid.getNode(current[0], current[1]);
-			if (!currentNode || currentNode.distance === Infinity) return path;
+		for (let y = 0; y < this.grid.height; y++) {
+			for (let x = 0; x < this.grid.width; x++) {
+				const node = this.grid.getNode(x, y);
+				if (node && node.distance !== Infinity) coordinates.push([x, y]);
+			}
+		}
 
-			// Following nextNode is always a safe fallback. Searching the complete
-			// distance field, rather than path[], lets smoothing create waypoints that
-			// were not part of the raw SPFA path.
-			let bestCandidate = currentNode.nextNode;
-			let bestRemainingDistance = bestCandidate
-				? this.grid.getNode(bestCandidate[0], bestCandidate[1])?.distance ?? Infinity
-				: Infinity;
-			const bestCorridorCost = bestCandidate
-				? this.getClearCorridorCost(current, bestCandidate)
-				: Infinity;
-			let bestTotalCost = bestCorridorCost + bestRemainingDistance;
+		// SPFA distance strictly decreases along every raw edge. Use that ordering
+		// to find the cheapest complete sequence of clear corridors to the target.
+		coordinates.sort((a, b) => {
+			const distanceA = this.grid.getNode(a[0], a[1])?.distance ?? Infinity;
+			const distanceB = this.grid.getNode(b[0], b[1])?.distance ?? Infinity;
+			return distanceA - distanceB;
+		});
 
-			for (let y = 0; y < this.grid.height; y++) {
-				for (let x = 0; x < this.grid.width; x++) {
-					const candidateNode = this.grid.getNode(x, y);
-					if (!candidateNode || candidateNode.distance >= currentNode.distance) {
-						continue;
-					}
+		const targetKey = this.coordinateKey(target);
+		const routeCosts = new Map<string, number>([[targetKey, 0]]);
+		const routeWaypointCounts = new Map<string, number>([[targetKey, 0]]);
+		const nextWaypoints = new Map<string, GridCoordinate>();
 
-					const corridorCost = this.getClearCorridorCost(current, [x, y]);
-					if (corridorCost === Infinity) continue;
+		for (const current of coordinates) {
+			const currentKey = this.coordinateKey(current);
+			if (currentKey === targetKey) continue;
 
-					const totalCost = corridorCost + candidateNode.distance;
-					if (
-						totalCost < bestTotalCost - COST_EPSILON ||
-						(Math.abs(totalCost - bestTotalCost) <= COST_EPSILON &&
-							candidateNode.distance < bestRemainingDistance)
-					) {
-						bestCandidate = [x, y];
-						bestRemainingDistance = candidateNode.distance;
-						bestTotalCost = totalCost;
-					}
+			const currentDistance = this.grid.getNode(current[0], current[1])?.distance ?? Infinity;
+			let bestCost = Infinity;
+			let bestWaypointCount = Infinity;
+			let bestRemainingDistance = Infinity;
+			let bestCandidate: GridCoordinate | null = null;
+
+			for (const candidate of coordinates) {
+				const candidateNode = this.grid.getNode(candidate[0], candidate[1]);
+				if (!candidateNode || candidateNode.distance >= currentDistance) continue;
+
+				const candidateKey = this.coordinateKey(candidate);
+				const remainingCost = routeCosts.get(candidateKey);
+				const remainingWaypointCount = routeWaypointCounts.get(candidateKey);
+				if (remainingCost === undefined || remainingWaypointCount === undefined) continue;
+
+				const corridorCost = this.getClearCorridorCost(current, candidate);
+				if (corridorCost === Infinity) continue;
+
+				const totalCost = corridorCost + remainingCost;
+				const waypointCount = remainingWaypointCount + 1;
+				if (
+					totalCost < bestCost - COST_EPSILON ||
+					(Math.abs(totalCost - bestCost) <= COST_EPSILON &&
+						(waypointCount < bestWaypointCount ||
+							(waypointCount === bestWaypointCount &&
+								candidateNode.distance < bestRemainingDistance)))
+				) {
+					bestCost = totalCost;
+					bestWaypointCount = waypointCount;
+					bestRemainingDistance = candidateNode.distance;
+					bestCandidate = candidate;
 				}
 			}
 
-			// A raw SPFA path always supplies nextNode here. Keep this guard so a
-			// malformed/custom path cannot make smoothing loop forever.
-			if (!bestCandidate) return path;
+			if (bestCandidate) {
+				routeCosts.set(currentKey, bestCost);
+				routeWaypointCounts.set(currentKey, bestWaypointCount);
+				nextWaypoints.set(currentKey, bestCandidate);
+			}
+		}
 
-			result.push(bestCandidate);
-			current = bestCandidate;
+		const result: GridCoordinate[] = [start];
+		const visited = new Set<string>();
+		let current = start;
+
+		while (!this.coordinatesEqual(current, target)) {
+			const currentKey = this.coordinateKey(current);
+			if (visited.has(currentKey)) return path;
+			visited.add(currentKey);
+
+			const next = nextWaypoints.get(currentKey);
+			if (!next) return path;
+
+			result.push(next);
+			current = next;
 		}
 
 		return result;
+	}
+
+	private coordinateKey(coordinate: GridCoordinate): string {
+		return `${coordinate[0]},${coordinate[1]}`;
 	}
 
 	private coordinatesEqual(a: GridCoordinate, b: GridCoordinate): boolean {
