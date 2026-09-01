@@ -783,7 +783,11 @@ export class Enemy {
 
 	update(delta: number) {
 		this.handleAnimUpdate(delta);
-		if (DUEL_STAGES.includes(this.gameManager.config.levelId) && GameConfig.stagePhaseIndex === 0)
+		if (
+			this?.gameManager?.config &&
+			DUEL_STAGES.includes(this.gameManager.config.levelId) &&
+			GameConfig.stagePhaseIndex === 0
+		)
 			return;
 		if (this.exit) return;
 		if (this.timeoutDuration !== null) {
