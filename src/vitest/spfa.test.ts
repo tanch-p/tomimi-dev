@@ -8,7 +8,7 @@ const cases = [
 		5,
 		[
 			[8, 1],
-			[7, 3],
+			[2, 3],
 			[1, 4],
 			[0, 4]
 		]
@@ -21,7 +21,6 @@ const cases = [
 			[2, 4],
 			[3, 4],
 			[3, 3],
-			[4, 2],
 			[5, 1],
 			[6, 1],
 			[7, 1],
@@ -40,7 +39,6 @@ const cases = [
 			[3, 5],
 			[3, 4],
 			[3, 3],
-			[4, 2],
 			[5, 1],
 			[6, 1],
 			[7, 1],
@@ -135,6 +133,203 @@ test.each(cases)('SPFA: %s routeIndex %i', async (levelId, routeIndex, expected)
 		return acc;
 	}, []);
 	expect(movementRoute).toStrictEqual(expected);
+});
+
+test('SPFA prevents diagonal corner cutting', () => {
+	const pathFinder = new SPFA([
+		[0, Infinity],
+		[0, 0]
+	]);
+	const weightedPathFinder = new SPFA([
+		[0, 1000],
+		[0, 0]
+	]);
+
+	expect(pathFinder.canStep(0, 0, 1, 1)).toBe(false);
+	expect(pathFinder.canStep(0, 0, 0, 0)).toBe(false);
+	expect(weightedPathFinder.canStep(0, 0, 1, 0)).toBe(true);
+	expect(weightedPathFinder.canStep(0, 0, 1, 1)).toBe(false);
+	expect(pathFinder.findPath({ row: 0, col: 0 }, { row: 1, col: 1 }, false)).toStrictEqual([
+		[0, 0],
+		[0, 1],
+		[1, 1]
+	]);
+});
+
+test('SPFA checks the full 2x2 advancing corridor', () => {
+	const clearPathFinder = new SPFA([
+		[0, 0],
+		[0, 0],
+		[0, 0]
+	]);
+	const blockedPathFinder = new SPFA([
+		[0, 0],
+		[0, 0],
+		[Infinity, 0]
+	]);
+	const allowedWeightedPathFinder = new SPFA([
+		[0, 0],
+		[0, 0],
+		[100, 0]
+	]);
+	const rejectedWeightedPathFinder = new SPFA([
+		[0, 0],
+		[0, 0],
+		[101, 0]
+	]);
+
+	expect(clearPathFinder.hasClearCorridor([0, 0], [1, 2])).toBe(true);
+	expect(blockedPathFinder.hasClearCorridor([0, 0], [1, 2])).toBe(false);
+	expect(allowedWeightedPathFinder.hasClearCorridor([0, 0], [1, 2])).toBe(true);
+	expect(rejectedWeightedPathFinder.hasClearCorridor([0, 0], [1, 2])).toBe(false);
+});
+
+test('SPFA corridor cost includes the weight of every tile occupied by the corridor', () => {
+	const pathFinder = new SPFA([[0, 100, 0]]);
+	const rejectedWeightedPathFinder = new SPFA([[0, 1000, 0]]);
+	const blockedPathFinder = new SPFA([[0, Infinity, 0]]);
+	const smoothingPathFinder = new SPFA([
+		[0, 1000, 0],
+		[0, 0, 0]
+	]);
+
+	// Match SPFA's step model: one step enters the weighted center tile and one
+	// step enters the normal endpoint tile: 100 + 1.
+	expect(pathFinder.getClearCorridorCost([0, 0], [2, 0])).toBe(101);
+	expect(rejectedWeightedPathFinder.getClearCorridorCost([0, 0], [2, 0])).toBe(Infinity);
+	expect(blockedPathFinder.getClearCorridorCost([0, 0], [2, 0])).toBe(Infinity);
+	expect(smoothingPathFinder.findPath({ row: 0, col: 0 }, { row: 0, col: 2 })).toStrictEqual([
+		[0, 0],
+		[0, 1],
+		[2, 1],
+		[2, 0]
+	]);
+});
+
+test('SPFA smoothing avoids the weighted corner when moving to the first checkpoint', () => {
+	const pathFinder = new SPFA([
+		[
+			Infinity,
+			0,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			0,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity
+		],
+		[0, 0, 0, 0, 0, Infinity, Infinity, 0, 0, 0, Infinity, Infinity],
+		[Infinity, 0, Infinity, 0, 0, 1000, Infinity, Infinity, Infinity, 0, 0, Infinity],
+		[Infinity, 0, Infinity, Infinity, 0, 1000, Infinity, Infinity, 0, 0, 0, 0],
+		[Infinity, 0, 0, 0, 0, 1000, 0, 0, 0, 0, Infinity, Infinity],
+		[Infinity, Infinity, Infinity, 0, Infinity, 1000, 0, 0, 0, Infinity, Infinity, Infinity],
+		[0, 0, 0, 0, 0, 0, 0, Infinity, Infinity, Infinity, Infinity, Infinity],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, Infinity, Infinity, Infinity],
+		[
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity
+		]
+	]);
+
+	expect(pathFinder.getClearCorridorCost([5, 6], [6, 5])).toBe(Infinity);
+	expect(pathFinder.findPath({ row: 7, col: 0 }, { row: 5, col: 6 })).toStrictEqual([
+		[0, 7],
+		[6, 6],
+		[6, 5]
+	]);
+});
+
+test('SPFA smoothing may create a waypoint outside the raw path', () => {
+	const pathFinder = new SPFA([
+		[
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			0,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			0,
+			Infinity
+		],
+		[Infinity, Infinity, 0, 0, 0, Infinity, Infinity, 0, 0, 0, 0, 0],
+		[Infinity, 0, 0, Infinity, Infinity, Infinity, 0, 0, Infinity, Infinity, Infinity, Infinity],
+		[Infinity, Infinity, 0, 0, 0, Infinity, 0, 0, 0, 0, Infinity, Infinity],
+		[Infinity, 0, 0, Infinity, 0, Infinity, Infinity, 0, Infinity, 0, 0, Infinity],
+		[Infinity, 0, 0, 0, 0, Infinity, Infinity, 0, 0, 0, 0, Infinity],
+		[Infinity, 0, Infinity, Infinity, 0, 0, 0, 0, Infinity, 0, 0, Infinity],
+		[
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity,
+			Infinity
+		]
+	]);
+
+	const path = pathFinder.findPath({ row: 6, col: 10 }, { row: 1, col: 11 });
+	const rawPath = pathFinder.buildPath(10, 6);
+	const pathFromRowFive = pathFinder.findPath({ row: 5, col: 10 }, { row: 1, col: 11 });
+
+	expect(path[1]).toStrictEqual([9, 4]);
+	expect(rawPath.some(([x, y]) => x === 9 && y === 4)).toBe(false);
+	expect(path[path.length - 1]).toStrictEqual([11, 1]);
+	expect(pathFromRowFive[1]).toStrictEqual([9, 4]);
+	expect(pathFinder.getClearCorridorCost([10, 5], [9, 4])).toBeCloseTo(Math.SQRT2);
+	expect(pathFinder.getClearCorridorCost([10, 5], [7, 5])).toBe(3);
+	expect(
+		path.slice(1).every((coordinate, index) => pathFinder.hasClearCorridor(path[index], coordinate))
+	).toBe(true);
+});
+
+test('SPFA caches orthogonal and diagonal path graphs separately', () => {
+	const pathFinder = new SPFA([
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 0]
+	]);
+	const start = { row: 0, col: 0 };
+	const end = { row: 3, col: 3 };
+
+	const orthogonalPath = pathFinder.findPath(start, end, false);
+	const smoothedPath = pathFinder.findPath(start, end, true);
+
+	expect(orthogonalPath).toHaveLength(7);
+	expect(
+		orthogonalPath.slice(1).every(([x, y], index) => {
+			const [previousX, previousY] = orthogonalPath[index];
+			return Math.abs(x - previousX) + Math.abs(y - previousY) === 1;
+		})
+	).toBe(true);
+	expect(smoothedPath).toStrictEqual([
+		[0, 0],
+		[3, 3]
+	]);
 });
 
 const convertMovementConfig = (route, mazeLayout) => {

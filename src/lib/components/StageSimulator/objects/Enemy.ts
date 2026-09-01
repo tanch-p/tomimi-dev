@@ -1136,6 +1136,7 @@ export class Enemy {
 		// console.log(this.data);
 		// const pos = this.gameManager.getGridPosition(this.raycastPos);
 		// console.log(pos);
+		// console.log(this.route)
 		this.shadow.uniforms.isSelected.value = true;
 		this.gameManager.scene.add(this.pathGroup);
 		this.selected = true;
