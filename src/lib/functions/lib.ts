@@ -4,7 +4,6 @@ import tileImg from '$lib/images/tiles/tile_infection.webp';
 import { checkIsTarget } from './statHelpers';
 import enemySkills from '$lib/data/enemy/enemy_skills.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
-import ISStages from '$lib/data/stages/stage_name_lookup_table.json';
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../routes/stores';
 import pako from 'pako';
@@ -115,15 +114,6 @@ export function getFormTitle(title: string | undefined | null, row: number, lang
 
 	return getTranslations(language)[title];
 }
-
-export const getStageData = async (stageName) => {
-	const levelId = ISStages[stageName]?.key;
-	if (!levelId) return;
-	const data = await import(
-		`../data/stages/ro_stage_data/level_${levelId.replace('level_', '')}.json`
-	);
-	return data?.default;
-};
 
 export const getTrapFormIndex = (list, index) => {
 	const holder = {};

@@ -22,21 +22,20 @@
 	import { getStageType, setOtherBuffsList } from '$lib/functions/lib';
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
-	import { stageLoadMulti } from '$lib/functions/stageLoad';
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
 	import { getTranslations } from '$lib/functions/languageHelpers';
 
 	export let data: PageData;
 
 	const rogueTopic: RogueTopic = data.rogueTopic;
+	let configIndex = 0;
 	$: if (data) {
 		configIndex = 0;
 	}
-	$: configIndex = 0;
-	$: mapConfig = data.stageData.data[configIndex];
-	$: dataET = stageLoadMulti(data.stageData.data[configIndex], language);
-	$: enemies = dataET.enemies;
-	$: traps = dataET.traps;
+	$: selectedStage = data.stages[configIndex];
+	$: mapConfig = selectedStage.mapConfig;
+	$: enemies = selectedStage.enemies;
+	$: traps = selectedStage.traps;
 
 	$: if (mapConfig) {
 		stageType.set(getStageType(mapConfig?.levelId, rogueTopic));
