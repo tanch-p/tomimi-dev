@@ -23,44 +23,149 @@ function samplePath(points: THREE.Vector3[]) {
 	return sampledPoints;
 }
 
+function roundPathCorners(points: THREE.Vector3[], radius: number, segments = 4) {
+	if (points.length < 3) return points.map((p) => p.clone());
+
+	const result: THREE.Vector3[] = [points[0].clone()];
+
+	for (let i = 1; i < points.length - 1; i++) {
+		const previous = points[i - 1];
+		const current = points[i];
+		const next = points[i + 1];
+
+		const toPrevious = previous.clone().sub(current);
+		const toNext = next.clone().sub(current);
+
+		const previousLength = toPrevious.length();
+		const nextLength = toNext.length();
+
+		if (previousLength < Number.EPSILON || nextLength < Number.EPSILON) {
+			continue;
+		}
+
+		toPrevious.normalize();
+		toNext.normalize();
+
+		// Straight line — no rounding needed
+		const cross = toPrevious.x * toNext.y - toPrevious.y * toNext.x;
+
+		if (Math.abs(cross) < 0.0001) {
+			result.push(current.clone());
+			continue;
+		}
+
+		const cornerRadius = Math.min(radius, previousLength * 0.4, nextLength * 0.4);
+
+		const start = current.clone().addScaledVector(toPrevious, cornerRadius);
+
+		const end = current.clone().addScaledVector(toNext, cornerRadius);
+
+		result.push(start);
+
+		// Quadratic Bézier around the corner
+		for (let j = 1; j <= segments; j++) {
+			const t = j / segments;
+			const inverseT = 1 - t;
+
+			const point = new THREE.Vector3()
+				.addScaledVector(start, inverseT * inverseT)
+				.addScaledVector(current, 2 * inverseT * t)
+				.addScaledVector(end, t * t);
+
+			result.push(point);
+		}
+	}
+
+	result.push(points[points.length - 1].clone());
+
+	return result;
+}
+
 function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
-	const points = samplePath(pathPoints);
+	const roundedPoints = roundPathCorners(pathPoints, GameConfig.gridSize * 0.12, 5);
+
+	const points = samplePath(roundedPoints);
 	const geometry = new THREE.BufferGeometry();
+
+	if (points.length < 2) return geometry;
+
 	const positions: number[] = [];
 	const uvs: number[] = [];
 	const indices: number[] = [];
 	const distances = [0];
 
+	const halfWidth = width / 2;
+
 	for (let i = 1; i < points.length; i++) {
 		distances.push(distances[i - 1] + points[i - 1].distanceTo(points[i]));
 	}
+
 	const totalDistance = distances[distances.length - 1];
 
 	for (let i = 0; i < points.length; i++) {
-		const previousPoint = points[Math.max(0, i - 1)];
-		const nextPoint = points[Math.min(points.length - 1, i + 1)];
-		const tangent = new THREE.Vector3().subVectors(nextPoint, previousPoint).normalize();
-		const halfWidth = width / 2;
-		const normalX = -tangent.y * halfWidth;
-		const normalY = tangent.x * halfWidth;
+		const point = points[i];
+
+		let offsetX: number;
+		let offsetY: number;
+
+		if (i === 0) {
+			// Start point
+			const direction = new THREE.Vector3().subVectors(points[1], point).normalize();
+
+			offsetX = -direction.y * halfWidth;
+			offsetY = direction.x * halfWidth;
+		} else if (i === points.length - 1) {
+			// End point
+			const direction = new THREE.Vector3().subVectors(point, points[i - 1]).normalize();
+
+			offsetX = -direction.y * halfWidth;
+			offsetY = direction.x * halfWidth;
+		} else {
+			// Middle point / bend
+			const previousDirection = new THREE.Vector3().subVectors(point, points[i - 1]).normalize();
+
+			const nextDirection = new THREE.Vector3().subVectors(points[i + 1], point).normalize();
+
+			const previousNormal = new THREE.Vector2(-previousDirection.y, previousDirection.x);
+
+			const nextNormal = new THREE.Vector2(-nextDirection.y, nextDirection.x);
+
+			// Average the normals without extending them.
+			// This avoids the protruding miter spike at bends.
+			const normal = previousNormal.clone().add(nextNormal);
+
+			if (normal.lengthSq() < 0.000001) {
+				normal.copy(nextNormal);
+			} else {
+				normal.normalize();
+			}
+
+			offsetX = normal.x * halfWidth;
+			offsetY = normal.y * halfWidth;
+		}
+
 		const u = totalDistance > Number.EPSILON ? distances[i] / totalDistance : 0;
 
 		positions.push(
-			points[i].x + normalX,
-			points[i].y + normalY,
+			point.x + offsetX,
+			point.y + offsetY,
 			0,
-			points[i].x - normalX,
-			points[i].y - normalY,
+
+			point.x - offsetX,
+			point.y - offsetY,
 			0
 		);
+
 		uvs.push(u, 1, u, 0);
 
 		if (i < points.length - 1) {
 			const vertexIndex = i * 2;
+
 			indices.push(
 				vertexIndex,
 				vertexIndex + 1,
 				vertexIndex + 2,
+
 				vertexIndex + 1,
 				vertexIndex + 3,
 				vertexIndex + 2
@@ -69,8 +174,11 @@ function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 	}
 
 	geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+
 	geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+
 	geometry.setIndex(indices);
+
 	return geometry;
 }
 
