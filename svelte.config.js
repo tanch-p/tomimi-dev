@@ -10,15 +10,15 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-            routes: {
-				include: ['/*'],
-				exclude: ['<all>']
-            },
-			concurrency: 1
-        }),
+			routes: {
+				include: ['/'],
+				exclude: []
+			}
+		}),
 		prerender: {
-			handleMissingId:"ignore",
-			entries: pagesToRender
+			concurrency: 1,
+			handleMissingId: 'ignore',
+			entries: [...pagesToRender, '/sitemap.xml']
 		}
 	}
 };

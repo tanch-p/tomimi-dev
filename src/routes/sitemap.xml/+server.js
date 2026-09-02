@@ -1,7 +1,9 @@
 import { pagesToRender } from '$lib/pagesList';
 
+export const prerender = true;
+
 export async function GET() {
-	const mainUrl = "https://tomimi.dev"
+	const mainUrl = 'https://tomimi.dev';
 	return new Response(
 		`
         <?xml version="1.0" encoding="UTF-8" ?>
