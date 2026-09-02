@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { tableHeaders } from '../../routes/stores';
-	import { setLocalStorage } from '$lib/functions/lib';
+	import { setLocalStorage } from '$lib/functions/storageHelpers';
 	export let language: Language;
 	function updateHeaders(key) {
 		tableHeaders.update((list) => {

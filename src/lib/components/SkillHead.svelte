@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language, Skill, StatusImmune, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import { getFormTitle } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 	export let entity: Enemy | Trap,
 		skill: Skill,
 		language: Language,

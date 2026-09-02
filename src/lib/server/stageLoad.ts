@@ -1,7 +1,7 @@
 import enemyDatabase from '$lib/data/enemy/enemy_database.json';
 import ISStages from '$lib/data/stages/stage_name_lookup_table.json';
 import { overwriteBlackboard } from '$lib/functions/skillHelpers';
-import { sortEnemies } from '$lib/functions/lib';
+import { sortEnemies } from '$lib/functions/enemyHelpers';
 import { parseTraps } from '$lib/functions/trapHelpers';
 import type { Enemy, Language, MapConfig } from '$lib/types';
 

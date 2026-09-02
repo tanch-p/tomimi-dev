@@ -4,7 +4,7 @@
 	import { Game } from './objects/Game';
 	import BranchOption from './BranchOption.svelte';
 	import branchInfo from '$lib/data/stages/branch_info.json';
-	import { getFormTitle } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 
 	const BRANCHES_TO_IGNORE = ['skzjkl_stage_2', 'amiy_blink_1', 'amiy_blink_2'];
 

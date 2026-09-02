@@ -5,7 +5,7 @@
 	import HandbookAbilities from './HandbookAbilities.svelte';
 	import HandbookAtkType from './HandbookAtkType.svelte';
 	import HandBookStats from './HandBookStats.svelte';
-	import { getFormTitle } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 	import bossIcon from '$lib/images/is/boss_icon.webp';
 	import eliteIcon from '$lib/images/is/elite_icon.webp';
 	import life_blue from '$lib/images/is/sprite_base_hp.webp';

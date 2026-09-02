@@ -4,7 +4,7 @@
 	import SpTerrain from './SpTerrain.svelte';
 	import StageMap from './StageMap.svelte';
 	import TextParser from './TextParser.svelte';
-	import { getStageImg } from '$lib/functions/lib';
+	import { getStageImg } from '$lib/functions/stageHelpers';
 
 	export let mapConfig,
 		language: Language,

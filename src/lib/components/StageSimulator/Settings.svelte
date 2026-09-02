@@ -4,7 +4,7 @@
 	import { GameConfig } from './objects/GameConfig';
 	import { page } from '$app/stores';
 	import { Game } from './objects/Game';
-	import { setLocalStorage } from '$lib/functions/lib';
+	import { setLocalStorage } from '$lib/functions/storageHelpers';
 	import { onDestroy, onMount } from 'svelte';
 
 	export let game: Game, mapConfig: MapConfig;

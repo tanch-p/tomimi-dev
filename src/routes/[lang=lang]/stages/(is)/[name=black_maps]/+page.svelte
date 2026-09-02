@@ -19,7 +19,8 @@
 	import FooterBar from '$lib/components/FooterBar.svelte';
 	import FloorTitle from './FloorTitle.svelte';
 	import StageHeader from '$lib/components/StageHeader.svelte';
-	import { getStageType, setOtherBuffsList } from '$lib/functions/lib';
+	import { setOtherBuffsList } from '$lib/functions/buffHelpers';
+	import { getStageType } from '$lib/functions/stageHelpers';
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 	import TitleBlock from '$lib/components/TitleBlock.svelte';

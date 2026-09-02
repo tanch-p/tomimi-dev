@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Enemy, Language } from '$lib/types';
-	import { getFormTitle } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 
 	export let enemy: Enemy, row: number, language: Language;
 

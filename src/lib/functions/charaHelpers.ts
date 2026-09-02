@@ -1,6 +1,6 @@
 import type { Language } from '$lib/types';
 import filterOptions from '$lib/data/chara/filter_options.json';
-import { decompressGzipToJson } from './lib';
+import { decompressGzipToJson } from './gzipHelpers';
 import { getTranslations } from '$lib/functions/languageHelpers';
 
 const SEARCH_IN_TAGS = [

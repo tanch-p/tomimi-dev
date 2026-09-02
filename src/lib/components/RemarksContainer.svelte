@@ -5,7 +5,7 @@
 	import StatusImmune from '$lib/components/StatusImmune.svelte';
 	import EnemyFormTitle from './EnemyFormTitle.svelte';
 	import { getEnemySkills, getStatusImmune } from '$lib/functions/skillHelpers';
-	import { isEquals } from '$lib/functions/lib';
+	import { isEquals } from '$lib/functions/equalityHelpers';
 
 	export let enemy: Enemy, row: number, language: Language, specialMods, mapConfig;
 	$: traits = getEnemySkills(enemy, enemy.traits, row, $specialMods, 'trait');

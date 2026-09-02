@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import Icon from './Icon.svelte';
-	import { setLocalStorage } from '$lib/functions/lib';
+	import { setLocalStorage } from '$lib/functions/storageHelpers';
 
 	export let title = 'title',
 		key = '',

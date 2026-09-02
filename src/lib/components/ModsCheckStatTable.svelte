@@ -5,7 +5,7 @@
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import aspdIcon from '$lib/images/is/aspd.webp';
 	import msIcon from '$lib/images/is/movespeed.webp';
-	import { round } from '$lib/functions/lib';
+	import { round } from '$lib/functions/numberHelpers';
 	import ModsCheckIcon from './ModsCheckIcon.svelte';
 
 	const STATS_KEY_TABLE = {

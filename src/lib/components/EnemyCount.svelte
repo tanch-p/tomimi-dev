@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { MapConfig, Language, RogueTopic } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
-	import { BONUS_ENEMY_KEYS, DUEL_STAGES } from '$lib/functions/lib';
+	import { BONUS_ENEMY_KEYS, DUEL_STAGES } from '$lib/functions/enemyHelpers';
 
 	export let mapConfig: MapConfig,
 		enemies,

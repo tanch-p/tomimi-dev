@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
-	import { getFormTitle } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 
 	export let enemy, formIndex, key, language: Language;
 </script>

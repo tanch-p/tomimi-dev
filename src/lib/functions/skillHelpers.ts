@@ -11,7 +11,7 @@ import enemySkills from '$lib/data/enemy/enemy_skills.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
 import enemyDb from '$lib/data/enemy/enemy_database.json';
 import { checkIsTarget, getStatSkillValue } from '$lib/functions/statHelpers';
-import { isEquals } from './lib';
+import { isEquals } from './equalityHelpers';
 
 export const overwriteBlackboard = (stats, blackboard) => {
 	const traits = stats.traits;

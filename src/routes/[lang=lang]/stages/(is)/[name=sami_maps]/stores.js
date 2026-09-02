@@ -3,7 +3,7 @@ import difficultyModsList from '$lib/data/is/sami/difficulty_mods_sami.json';
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../../../stores';
 import { compileSpecialMods } from '$lib/functions/statHelpers';
-import { consolidateOtherMods } from '$lib/functions/lib';
+import { consolidateOtherMods } from '$lib/functions/buffHelpers';
 
 let storedDifficulty = 0;
 if (browser && cookiesEnabled) {
@@ -84,13 +84,13 @@ export const statMods = derived(
 			};
 		});
 		return {
-			runes: { key: $eliteMode ? "elite_ops" : "combat_ops", mods: [$runes,$allMods] },
+			runes: { key: $eliteMode ? 'elite_ops' : 'combat_ops', mods: [$runes, $allMods] },
 			diff: { key: 'difficulty', mods: $difficultyMods, stackType: 'add' },
 			others: [
 				{ key: 'floor_diff', mods: [$floorDifficultyMods] },
 				{
 					key: 'sami_chaos',
-					mods: $activeChaosEffects.map((ele) => ele.effects),
+					mods: $activeChaosEffects.map((ele) => ele.effects)
 				},
 				{ key: 'sami_portal', mods: [$portalMods] },
 				...relicMods,
@@ -102,6 +102,11 @@ export const statMods = derived(
 
 // SAMI Diff Mods are added internally before being added to final calculation
 
-export const specialMods = derived([runes,allMods, selectedRelics], ([$runes,$allMods, $selectedRelics]) =>
-	compileSpecialMods([$runes,$allMods],$selectedRelics.map((relic) => relic.effects))
+export const specialMods = derived(
+	[runes, allMods, selectedRelics],
+	([$runes, $allMods, $selectedRelics]) =>
+		compileSpecialMods(
+			[$runes, $allMods],
+			$selectedRelics.map((relic) => relic.effects)
+		)
 );

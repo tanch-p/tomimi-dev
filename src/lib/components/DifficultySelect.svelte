@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import { spring } from 'svelte/motion';
-	import { setLocalStorage } from '$lib/functions/lib.js';
+	import { setLocalStorage } from '$lib/functions/storageHelpers';
 
 	export let language: Language,
 		difficulty,

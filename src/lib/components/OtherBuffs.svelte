@@ -5,7 +5,7 @@
 		getApplicableBuffsList,
 		getOtherBuffsCount,
 		updateOtherBuffsList
-	} from '$lib/functions/lib';
+	} from '$lib/functions/buffHelpers';
 
 	export let language: Language,
 		otherBuffsList,

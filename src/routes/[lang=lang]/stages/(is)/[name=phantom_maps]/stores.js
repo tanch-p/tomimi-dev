@@ -1,5 +1,5 @@
 import difficultyModsList from '$lib/data/is/phantom/difficulty_mods_phantom.json';
-import { consolidateOtherMods } from '$lib/functions/lib';
+import { consolidateOtherMods } from '$lib/functions/buffHelpers';
 import { compileSpecialMods } from '$lib/functions/statHelpers';
 import { writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
@@ -88,7 +88,7 @@ export const statMods = derived(
 			});
 		}
 		return {
-			runes: { key: $eliteMode ? 'elite_ops' : 'combat_ops', mods: [$runes,$allMods] },
+			runes: { key: $eliteMode ? 'elite_ops' : 'combat_ops', mods: [$runes, $allMods] },
 			diff: { key: 'difficulty', mods: $difficultyMods, stackType: 'mul' },
 			others: [
 				{
@@ -113,11 +113,11 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[selectedRelics, runes, allMods,activeFloorEffects],
-	([$selectedRelics, $runes,$allMods, $activeFloorEffects]) =>
+	[selectedRelics, runes, allMods, activeFloorEffects],
+	([$selectedRelics, $runes, $allMods, $activeFloorEffects]) =>
 		compileSpecialMods(
 			$selectedRelics.map((relic) => relic.effects),
-			[$runes,$allMods],
+			[$runes, $allMods],
 			$activeFloorEffects.map((ele) => ele.effects)
 		)
 );

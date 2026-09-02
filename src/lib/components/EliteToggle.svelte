@@ -5,7 +5,7 @@
 	import blackEliteIcon from '$lib/images/is/black/icon_battle_elite.webp';
 	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
-	import { getEliteColors } from '$lib/functions/lib';
+	import { getEliteColors } from '$lib/functions/stageHelpers';
 	import MediaQuery from './MediaQuery.svelte';
 	import EliteToggleBar from './EliteToggleBar.svelte';
 

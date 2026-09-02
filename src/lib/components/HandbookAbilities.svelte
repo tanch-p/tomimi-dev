@@ -5,7 +5,7 @@
 	import EnemyFormTitle from './EnemyFormTitle.svelte';
 	import { getEnemySkills, getHandbookEnemySkills } from '$lib/functions/skillHelpers';
 	import HandbookSkills from './HandbookSkills.svelte';
-	import { isEquals } from '$lib/functions/lib';
+	import { isEquals } from '$lib/functions/equalityHelpers';
 
 	export let enemy: Enemy, language: Language, specialMods, statusImmuneList, formIndex, mapConfig;
 	$: traits = getEnemySkills(enemy, enemy.traits, 0, $specialMods, 'trait').filter(

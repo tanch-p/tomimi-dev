@@ -3,7 +3,7 @@ import trapLookup from '$lib/data/trap/traps.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
 import { compileMods, getDmgReductionVal, getModdedStat } from './statHelpers';
 import { getOverwrittenKeys } from './skillHelpers';
-import { isEquals } from './lib';
+import { isEquals } from './equalityHelpers';
 
 const TRAPS_AFFECTED_BY_DIFFICULTY = [
 	'trap_054_dancdol',
@@ -33,6 +33,18 @@ const TRAPS_AFFECTED_BY_DIFFICULTY = [
 const STATS = ['hp', 'atk', 'aspd', 'def', 'res', 'blockCnt'];
 
 const skillValueKeys = ['cost', 'duration1', 'enhance_duration', 'value'];
+
+export const getTrapFormIndex = (list, index) => {
+	const holder = {};
+	let counter = 0;
+	list.forEach((item, i) => {
+		if (typeof item !== 'string') {
+			holder[i] = counter;
+			counter += 1;
+		}
+	});
+	return holder[index];
+};
 
 export const getTrapModelType = (key) => {
 	const trap = trapLookup[key];

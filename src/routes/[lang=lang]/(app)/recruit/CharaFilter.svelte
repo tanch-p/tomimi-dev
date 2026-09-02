@@ -13,7 +13,7 @@
 		getSelectedFilterOptions,
 		updateFilters
 	} from '$lib/functions/charaHelpers';
-	import { setLocalStorage } from '$lib/functions/lib';
+	import { setLocalStorage } from '$lib/functions/storageHelpers';
 
 	export let language: Language;
 

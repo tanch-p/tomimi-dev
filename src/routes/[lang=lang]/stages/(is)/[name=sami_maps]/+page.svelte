@@ -19,7 +19,7 @@
 	import FloorTitle from './FloorTitle.svelte';
 	import StageHeader from '$lib/components/StageHeader.svelte';
 	import StageDrops from './StageDrops.svelte';
-	import { setOtherBuffsList } from '$lib/functions/lib';
+	import { setOtherBuffsList } from '$lib/functions/buffHelpers';
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 

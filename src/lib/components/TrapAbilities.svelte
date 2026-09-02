@@ -5,9 +5,9 @@
 	import TextParser from './TextParser.svelte';
 	import TrapSkill from './TrapSkill.svelte';
 	import Remark from './Remark.svelte';
-	import { getFormTitle, getTrapFormIndex } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 	import RangeParser from './RangeParser.svelte';
-	import { getTrapSpecialSkill } from '$lib/functions/trapHelpers';
+	import { getTrapFormIndex, getTrapSpecialSkill } from '$lib/functions/trapHelpers';
 
 	export let trap: Trap,
 		mode = 'handbook',

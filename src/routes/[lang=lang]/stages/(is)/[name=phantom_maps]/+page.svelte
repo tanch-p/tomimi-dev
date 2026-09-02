@@ -21,7 +21,7 @@
 	import StageHeader from '$lib/components/StageHeader.svelte';
 	import FloorTitle from './FloorTitle.svelte';
 	import StageNav from '../../../(app)/phantom/PhantomNav.svelte';
-	import { setOtherBuffsList } from '$lib/functions/lib';
+	import { setOtherBuffsList } from '$lib/functions/buffHelpers';
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import DifficultySelect from '$lib/components/DifficultySelect.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';

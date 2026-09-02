@@ -3,7 +3,7 @@ import difficultyModsList from '$lib/data/is/sarkaz/difficulty_mods_sarkaz.json'
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../../../stores';
 import { compileSpecialMods } from '$lib/functions/statHelpers';
-import { consolidateOtherMods } from '$lib/functions/lib';
+import { consolidateOtherMods } from '$lib/functions/buffHelpers';
 
 let storedDifficulty = 0;
 if (browser && cookiesEnabled) {

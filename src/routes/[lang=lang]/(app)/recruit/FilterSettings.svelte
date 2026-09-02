@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { filterModeStore } from './stores';
-	import { setLocalStorage } from '$lib/functions/lib';
+	import { setLocalStorage } from '$lib/functions/storageHelpers';
 
 	export let language: Language;
 

@@ -9,7 +9,7 @@ import { generateMaze } from '$lib/functions/mazeHelpers';
 import { Enemy } from '../objects/Enemy';
 import { AssetManager } from '../objects/AssetManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
-import { DUEL_STAGES } from '$lib/functions/lib';
+import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
 
 export function getSimulatedData(config: MapConfig, waveData, enemies: EnemyType[]) {
 	if (DUEL_STAGES.includes(config.levelId)) {

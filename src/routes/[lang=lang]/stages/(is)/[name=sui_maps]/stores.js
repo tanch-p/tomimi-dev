@@ -3,7 +3,7 @@ import difficultyModsList from '$lib/data/is/sui/difficulty_mods_sui.json';
 import { browser } from '$app/environment';
 import { cookiesEnabled } from '../../../../stores';
 import { compileSpecialMods, filterModCondition } from '$lib/functions/statHelpers';
-import { consolidateOtherMods } from '$lib/functions/lib';
+import { consolidateOtherMods } from '$lib/functions/buffHelpers';
 
 let storedDifficulty = 0;
 if (browser && cookiesEnabled) {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pruneExtraEnemies } from '$lib/functions/lib';
+	import { pruneExtraEnemies } from '$lib/functions/enemyHelpers';
 	import { applyMods } from '$lib/functions/statHelpers';
 	import { applyTrapMods, filterTraps } from '$lib/functions/trapHelpers';
 	import { onDestroy } from 'svelte';

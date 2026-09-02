@@ -7,7 +7,7 @@
 	import AtkSuffix from '$lib/components/AtkSuffix.svelte';
 	import StatSkills from '$lib/components/StatSkills.svelte';
 	import OtherBuffs from './OtherBuffs.svelte';
-	import { isEquals } from '$lib/functions/lib';
+	import { isEquals } from '$lib/functions/equalityHelpers';
 
 	export let enemy: Enemy,
 		index: number,

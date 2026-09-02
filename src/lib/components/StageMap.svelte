@@ -4,7 +4,7 @@
 	import SpEnemy from '$lib/components/SpEnemy.svelte';
 	import skz_calamity from '$lib/images/is/sarkaz/skz_calamity.webp';
 	import unknown from '$lib/images/is/skz_unknown.webp';
-	import { getStageImg } from '$lib/functions/lib';
+	import { getStageImg } from '$lib/functions/stageHelpers';
 	export let mapConfig, rogueTopic: RogueTopic, language: Language, eliteMode;
 
 	let index = 0;

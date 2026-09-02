@@ -10,7 +10,7 @@ import type {
 	Skill,
 	StatKey
 } from '$lib/types';
-import { round } from './lib';
+import { round } from './numberHelpers';
 
 /*
 PLEASE READ https://prts.wiki/w/游戏数据基础#属性的定义

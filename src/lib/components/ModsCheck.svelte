@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Enemy, Language } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
-	import { getFormTitle } from '$lib/functions/lib';
+	import { getFormTitle } from '$lib/functions/formHelpers';
 	import DraggableContainer from './DraggableContainer.svelte';
 	import ModsCheckStatTable from './ModsCheckStatTable.svelte';
 
