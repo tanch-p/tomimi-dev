@@ -2,17 +2,74 @@ import * as THREE from 'three';
 import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
 import type { AssetManager } from '$lib/components/StageSimulator/objects/AssetManager';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
-import { Line2 } from 'three/addons/lines/Line2.js';
-import { LineGeometry } from 'three/addons/lines/LineGeometry.js';
-import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 
 const animatedPathLength = GameConfig.gridSize * 2;
 const animatedPathSpeed = GameConfig.gridSize * 6;
 const animatedPathRenderOrder = Number.MAX_SAFE_INTEGER;
+const animatedPathWidth = GameConfig.gridSize * 0.6;
 
-function createAnimatedLineGeometry(points: THREE.Vector3[]) {
-	const geometry = new LineGeometry();
-	geometry.setPositions(points.flatMap((point) => [point.x, point.y, point.z]));
+function samplePath(points: THREE.Vector3[]) {
+	const sampledPoints = [points[0].clone()];
+	const sampleSpacing = GameConfig.gridSize * 0.1;
+	for (let i = 1; i < points.length; i++) {
+		const start = points[i - 1];
+		const end = points[i];
+		const sampleCount = Math.max(1, Math.ceil(start.distanceTo(end) / sampleSpacing));
+		for (let sampleIndex = 1; sampleIndex <= sampleCount; sampleIndex++) {
+			sampledPoints.push(start.clone().lerp(end, sampleIndex / sampleCount));
+		}
+	}
+	return sampledPoints;
+}
+
+function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
+	const points = samplePath(pathPoints);
+	const geometry = new THREE.BufferGeometry();
+	const positions: number[] = [];
+	const uvs: number[] = [];
+	const indices: number[] = [];
+	const distances = [0];
+
+	for (let i = 1; i < points.length; i++) {
+		distances.push(distances[i - 1] + points[i - 1].distanceTo(points[i]));
+	}
+	const totalDistance = distances[distances.length - 1];
+
+	for (let i = 0; i < points.length; i++) {
+		const previousPoint = points[Math.max(0, i - 1)];
+		const nextPoint = points[Math.min(points.length - 1, i + 1)];
+		const tangent = new THREE.Vector3().subVectors(nextPoint, previousPoint).normalize();
+		const halfWidth = width / 2;
+		const normalX = -tangent.y * halfWidth;
+		const normalY = tangent.x * halfWidth;
+		const u = totalDistance > Number.EPSILON ? distances[i] / totalDistance : 0;
+
+		positions.push(
+			points[i].x + normalX,
+			points[i].y + normalY,
+			0,
+			points[i].x - normalX,
+			points[i].y - normalY,
+			0
+		);
+		uvs.push(u, 1, u, 0);
+
+		if (i < points.length - 1) {
+			const vertexIndex = i * 2;
+			indices.push(
+				vertexIndex,
+				vertexIndex + 1,
+				vertexIndex + 2,
+				vertexIndex + 1,
+				vertexIndex + 3,
+				vertexIndex + 2
+			);
+		}
+	}
+
+	geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+	geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+	geometry.setIndex(indices);
 	return geometry;
 }
 
@@ -198,54 +255,69 @@ export function createAnimatedPathVisualisation(
 	let { points, distances, totalDistance } = segments[segmentIndex];
 	let waitIndex = 0;
 
-	let geometry = createAnimatedLineGeometry([points[0], points[0]]);
-	const glowMaterial = new LineMaterial({
-		color: 0xff2020,
-		linewidth: 10,
-		transparent: true,
-		opacity: 0.3,
-		depthTest: false,
-		depthWrite: false,
-		blending: THREE.AdditiveBlending,
-		alphaToCoverage: true
-	});
-	const coreMaterial = new LineMaterial({
-		color: 0xffaaaa,
-		linewidth: 2,
-		transparent: true,
-		opacity: 1,
-		depthTest: false,
-		depthWrite: false,
-		blending: THREE.AdditiveBlending,
-		alphaToCoverage: true
-	});
-	const lineResolution = gameManager.game.renderer.getSize(new THREE.Vector2());
-	glowMaterial.resolution.copy(lineResolution);
-	coreMaterial.resolution.copy(lineResolution);
+	let geometry = createRibbonGeometry([points[0], points[0]], animatedPathWidth);
+	const material = new THREE.ShaderMaterial({
+		uniforms: {
+			uCoreColor: { value: new THREE.Color(0xffb3b3) },
+			uGlowColor: { value: new THREE.Color(0xff1008) },
+			uOpacity: { value: 1 }
+		},
+		vertexShader: `
+			varying vec2 vUv;
 
-	const glowLine = new Line2(geometry, glowMaterial);
-	glowLine.position.z = 11;
-	glowLine.renderOrder = animatedPathRenderOrder - 1;
-	const coreLine = new Line2(geometry, coreMaterial);
-	coreLine.position.z = 11;
-	coreLine.renderOrder = animatedPathRenderOrder;
+			void main() {
+				vUv = uv;
+				gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+			}
+		`,
+		fragmentShader: `
+			varying vec2 vUv;
+			uniform vec3 uCoreColor;
+			uniform vec3 uGlowColor;
+			uniform float uOpacity;
+
+			void main() {
+				float crossDistance = abs(vUv.y - 0.5) * 2.0;
+				float core = 1.0 - smoothstep(0.02, 0.13, crossDistance);
+				float glow = 1.0 - smoothstep(0.0, 1.0, crossDistance);
+				glow = pow(glow, 2.0);
+
+				float tailFade = pow(
+    smoothstep(0.0, 0.5, vUv.x),
+    2.0
+);
+				float headFade = smoothstep(0.0, 0.05, 1.0 - vUv.x);
+				float endFade = tailFade * headFade;
+
+				vec3 color = uCoreColor * core * 1.8 + uGlowColor * glow * 0.6;
+				float alpha = clamp(core + glow * 0.5, 0.0, 1.0) * endFade * uOpacity;
+				gl_FragColor = vec4(color, alpha);
+			}
+		`,
+		transparent: true,
+		depthTest: false,
+		depthWrite: false,
+		blending: THREE.AdditiveBlending,
+		side: THREE.DoubleSide,
+		toneMapped: false
+	});
+
+	const beamMesh = new THREE.Mesh(geometry, material);
+	beamMesh.position.z = 11;
+	beamMesh.renderOrder = animatedPathRenderOrder;
 
 	const group = new THREE.Group();
 	group.renderOrder = animatedPathRenderOrder;
-	group.add(glowLine, coreLine);
+	group.add(beamMesh);
 
 	let headDistance = 0;
 	let completed = false;
 
 	const setLinePoints = (visiblePoints: THREE.Vector3[]) => {
-		const nextGeometry = createAnimatedLineGeometry(visiblePoints);
-		glowLine.geometry = nextGeometry;
-		coreLine.geometry = nextGeometry;
+		const nextGeometry = createRibbonGeometry(visiblePoints, animatedPathWidth);
+		beamMesh.geometry = nextGeometry;
 		geometry.dispose();
 		geometry = nextGeometry;
-		gameManager.game.renderer.getSize(lineResolution);
-		glowMaterial.resolution.copy(lineResolution);
-		coreMaterial.resolution.copy(lineResolution);
 	};
 
 	const getPointAtDistance = (distance: number) => {
@@ -311,9 +383,8 @@ export function createAnimatedPathVisualisation(
 		},
 		dispose() {
 			geometry.dispose();
-			glowMaterial.dispose();
-			coreMaterial.dispose();
-			group.remove(glowLine, coreLine);
+			material.dispose();
+			group.remove(beamMesh);
 		}
 	};
 }
