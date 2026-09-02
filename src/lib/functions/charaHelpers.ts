@@ -3,7 +3,7 @@ import filterOptions from '$lib/data/chara/filter_options.json';
 import { decompressGzipToJson } from './gzipHelpers';
 import { getTranslations } from '$lib/functions/languageHelpers';
 
-const SEARCH_IN_TAGS = [
+const SEARCH_IN_TAGS = new Set([
 	'phys',
 	'arts',
 	'true',
@@ -137,8 +137,8 @@ const SEARCH_IN_TAGS = [
 	'mujica',
 	'kjerag',
 	'not_moving'
-];
-const SEARCH_IN_BLACKBOARD = [
+]);
+const SEARCH_IN_BLACKBOARD = new Set([
 	'max_target',
 	'stealth',
 	'camouflage',
@@ -218,7 +218,7 @@ const SEARCH_IN_BLACKBOARD = [
 	'enemy_damage_share',
 	'sp_module',
 	'hp_ratio_dmg'
-];
+]);
 
 // keys not here will just use their respective key in translations
 const DISPLAY_KEYS_TABLE = {
@@ -917,12 +917,12 @@ export const addOptionsToAcc = (acc, options) => {
 	const blackboardIndex = acc.findIndex((ele) => ele.key === 'blackboard');
 	const tagsIndex = acc.findIndex((ele) => ele.key === 'tags');
 	const blackboardOptions = options
-		.filter((value) => SEARCH_IN_BLACKBOARD.includes(value))
+		.filter((value) => SEARCH_IN_BLACKBOARD.has(value))
 		.map((value) => {
 			return { value, selected: false };
 		});
 	const tagOptions = options
-		.filter((value) => SEARCH_IN_TAGS.includes(value))
+		.filter((value) => SEARCH_IN_TAGS.has(value))
 		.map((value) => {
 			return { value, selected: false };
 		});
@@ -945,7 +945,7 @@ export const addOptionsToAcc = (acc, options) => {
 };
 
 export const getCategory = (value) => {
-	return SEARCH_IN_BLACKBOARD.includes(value) ? 'blackboard' : 'tags';
+	return SEARCH_IN_BLACKBOARD.has(value) ? 'blackboard' : 'tags';
 };
 
 export const getSelectedFilterOptions = (categories, filtersStore) => {
