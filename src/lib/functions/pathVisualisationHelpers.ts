@@ -3,12 +3,13 @@ import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
 import type { AssetManager } from '$lib/components/StageSimulator/objects/AssetManager';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 
-const animatedPathLength = GameConfig.gridSize * 3.5;
+const animatedPathLength = GameConfig.gridSize * 3.4;
 const animatedPathSpeed = GameConfig.gridSize * 7;
 const animatedPathRenderOrder = Number.MAX_SAFE_INTEGER;
 const animatedPathWidth = GameConfig.gridSize * 0.6;
 const animatedPathGap = GameConfig.gridSize * -0.2;
 
+//settled for rounded joins, miter join causes a protuding section...
 function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 	const geometry = new THREE.BufferGeometry();
 
