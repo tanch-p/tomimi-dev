@@ -347,7 +347,11 @@ export class Game {
 			if (intersect?.object?.userData?.enemy) {
 				const enemy = intersect?.object?.userData?.enemy;
 				if (enemy.selected) {
-					enemy.onDeselect();
+					if (enemy.pathVisualisationStage === 'static') {
+						enemy.startAnimatedPathVisualisation();
+					} else {
+						enemy.onDeselect();
+					}
 				} else {
 					enemy.onSelect();
 				}

@@ -42,6 +42,7 @@ export class Enemy {
 	specials: Skill[];
 	skillManager: SkillManager;
 	selected = false;
+	pathVisualisationStage: 'none' | 'static' | 'animated' = 'none';
 	buffs = [];
 	waitElapsedTime = 0;
 	standbyTime = 0;
@@ -1145,9 +1146,14 @@ export class Enemy {
 		// const pos = this.gameManager.getGridPosition(this.raycastPos);
 		// console.log(pos);
 		// console.log(this.route)
+		this.clearAnimatedPathVisualisation();
+		this.clearAnimatedPathCountdowns();
 		this.shadow.uniforms.isSelected.value = true;
 		this.selected = true;
-		this.startAnimatedPathVisualisation();
+		this.pathVisualisationStage = 'static';
+		if (this.pathGroup) {
+			this.gameManager.scene.add(this.pathGroup);
+		}
 		if (this.waitElapsedTime > 0) {
 			this.gameManager.countdownManager.toggleCountdown(this.countdownId, true);
 		}
@@ -1158,8 +1164,11 @@ export class Enemy {
 	}
 	onDeselect() {
 		this.clearAnimatedPathCountdowns();
+		this.pathVisualisationStage = 'none';
 		if (!this.gameManager.isSimulation) {
-			this.gameManager.scene.remove(this.pathGroup);
+			if (this.pathGroup) {
+				this.gameManager.scene.remove(this.pathGroup);
+			}
 			this.shadow.uniforms.isSelected.value = false;
 			this.selected = false;
 			!GameConfig.showAllTimers &&
@@ -1172,8 +1181,12 @@ export class Enemy {
 	}
 
 	startAnimatedPathVisualisation() {
+		if (this.pathGroup) {
+			this.gameManager.scene.remove(this.pathGroup);
+		}
 		this.clearAnimatedPathVisualisation();
 		this.clearAnimatedPathCountdowns();
+		this.pathVisualisationStage = 'animated';
 		this.animatedPathGroup = createAnimatedPathVisualisation(
 			this.actions,
 			this.currentActionIndex,

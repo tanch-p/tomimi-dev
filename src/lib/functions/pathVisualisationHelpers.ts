@@ -2,9 +2,19 @@ import * as THREE from 'three';
 import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
 import type { AssetManager } from '$lib/components/StageSimulator/objects/AssetManager';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
+import { Line2 } from 'three/addons/lines/Line2.js';
+import { LineGeometry } from 'three/addons/lines/LineGeometry.js';
+import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 
 const animatedPathLength = GameConfig.gridSize * 2;
 const animatedPathSpeed = GameConfig.gridSize * 6;
+const animatedPathRenderOrder = Number.MAX_SAFE_INTEGER;
+
+function createAnimatedLineGeometry(points: THREE.Vector3[]) {
+	const geometry = new LineGeometry();
+	geometry.setPositions(points.flatMap((point) => [point.x, point.y, point.z]));
+	return geometry;
+}
 
 export type AnimatedPathVisualisation = {
 	group: THREE.Group;
@@ -188,26 +198,54 @@ export function createAnimatedPathVisualisation(
 	let { points, distances, totalDistance } = segments[segmentIndex];
 	let waitIndex = 0;
 
-	const geometry = new THREE.BufferGeometry().setFromPoints([points[0], points[0]]);
-	const material = new THREE.LineBasicMaterial({
-		color: 0xff0000,
+	let geometry = createAnimatedLineGeometry([points[0], points[0]]);
+	const glowMaterial = new LineMaterial({
+		color: 0xff2020,
+		linewidth: 10,
 		transparent: true,
-		depthTest: false
+		opacity: 0.3,
+		depthTest: false,
+		depthWrite: false,
+		blending: THREE.AdditiveBlending,
+		alphaToCoverage: true
 	});
-	const line = new THREE.Line(geometry, material);
-	line.position.z = 11;
-	line.renderOrder = 51;
+	const coreMaterial = new LineMaterial({
+		color: 0xffaaaa,
+		linewidth: 2,
+		transparent: true,
+		opacity: 1,
+		depthTest: false,
+		depthWrite: false,
+		blending: THREE.AdditiveBlending,
+		alphaToCoverage: true
+	});
+	const lineResolution = gameManager.game.renderer.getSize(new THREE.Vector2());
+	glowMaterial.resolution.copy(lineResolution);
+	coreMaterial.resolution.copy(lineResolution);
+
+	const glowLine = new Line2(geometry, glowMaterial);
+	glowLine.position.z = 11;
+	glowLine.renderOrder = animatedPathRenderOrder - 1;
+	const coreLine = new Line2(geometry, coreMaterial);
+	coreLine.position.z = 11;
+	coreLine.renderOrder = animatedPathRenderOrder;
 
 	const group = new THREE.Group();
-	group.renderOrder = 51;
-	group.add(line);
+	group.renderOrder = animatedPathRenderOrder;
+	group.add(glowLine, coreLine);
 
 	let headDistance = 0;
 	let completed = false;
 
 	const setLinePoints = (visiblePoints: THREE.Vector3[]) => {
-		line.geometry.dispose();
-		line.geometry = new THREE.BufferGeometry().setFromPoints(visiblePoints);
+		const nextGeometry = createAnimatedLineGeometry(visiblePoints);
+		glowLine.geometry = nextGeometry;
+		coreLine.geometry = nextGeometry;
+		geometry.dispose();
+		geometry = nextGeometry;
+		gameManager.game.renderer.getSize(lineResolution);
+		glowMaterial.resolution.copy(lineResolution);
+		coreMaterial.resolution.copy(lineResolution);
 	};
 
 	const getPointAtDistance = (distance: number) => {
@@ -272,9 +310,10 @@ export function createAnimatedPathVisualisation(
 			updateGeometry(tailDistance, Math.min(headDistance, totalDistance));
 		},
 		dispose() {
-			line.geometry.dispose();
-			material.dispose();
-			group.remove(line);
+			geometry.dispose();
+			glowMaterial.dispose();
+			coreMaterial.dispose();
+			group.remove(glowLine, coreLine);
 		}
 	};
 }
