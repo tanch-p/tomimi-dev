@@ -10,7 +10,7 @@ import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/func
 import { SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
-import { DUEL_STAGES } from '$lib/functions/lib';
+import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
 
 const moveMultiplier = 0.5;
 export class Enemy {
@@ -109,7 +109,8 @@ export class Enemy {
 			GameConfig.specialMods,
 			'trait'
 		).find((skill) => skill.key === 'shdopl_disguise');
-		const summonedEnemyKey = typeof disguiseSkill?.value === 'string' ? disguiseSkill.value : null;
+		const summonedEnemyKey =
+			typeof disguiseSkill?.enemy_key === 'string' ? disguiseSkill.enemy_key : null;
 		const summonedEnemy = summonedEnemyKey
 			? gameManager.enemies.find((enemy) => enemy.key === summonedEnemyKey)
 			: null;
