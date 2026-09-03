@@ -125,4 +125,39 @@ describe('animated path visualisation', () => {
 		expect(visualisation?.group.children).toEqual([]);
 		expect(onCheckpointReached).not.toHaveBeenCalled();
 	});
+
+	it('uses an instant reversal without protruding geometry for a U-turn', () => {
+		const gameManager = {
+			getVectorCoordinates: ({ col, row }: { col: number; row: number }) => ({
+				x: col * GameConfig.gridSize,
+				y: row * GameConfig.gridSize
+			})
+		} as unknown as GameManager;
+		const visualisation = createAnimatedPathVisualisation(
+			[
+				{
+					type: 'MOVE',
+					pathType: 'intermediate',
+					position: { col: 1, row: 0 }
+				},
+				{
+					type: 'MOVE',
+					pathType: 'end',
+					position: { col: 0, row: 0 }
+				}
+			],
+			0,
+			new THREE.Vector3(),
+			gameManager
+		);
+
+		visualisation?.update(2 / 7);
+
+		const beam = visualisation?.group.children[1] as THREE.Mesh;
+		const positions = Array.from(beam.geometry.getAttribute('position').array);
+		const xCoordinates = positions.filter((_, index) => index % 3 === 0);
+		expect(positions.every(Number.isFinite)).toBe(true);
+		expect(Math.min(...xCoordinates)).toBeGreaterThanOrEqual(-0.001);
+		expect(Math.max(...xCoordinates)).toBeLessThanOrEqual(GameConfig.gridSize + 0.001);
+	});
 });

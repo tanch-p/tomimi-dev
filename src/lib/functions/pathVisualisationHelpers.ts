@@ -52,6 +52,7 @@ function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 	};
 
 	const sections: Section[] = [];
+	let sideFlipped = false;
 
 	const getDirection = (from: THREE.Vector3, to: THREE.Vector3) => {
 		return new THREE.Vector2(to.x - from.x, to.y - from.y).normalize();
@@ -85,11 +86,19 @@ function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 	};
 
 	const addSection = (left: THREE.Vector2, right: THREE.Vector2, u: number) => {
-		sections.push({
-			left,
-			right,
-			u
-		});
+		if (sideFlipped) {
+			sections.push({
+				left: right,
+				right: left,
+				u
+			});
+		} else {
+			sections.push({
+				left,
+				right,
+				u
+			});
+		}
 	};
 
 	// Start
@@ -132,6 +141,25 @@ function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 		const dot = THREE.MathUtils.clamp(previousDirection.dot(nextDirection), -1, 1);
 
 		const u = totalDistance > Number.EPSILON ? distances[i] / totalDistance : 0;
+
+		// Treat a near-180° turn as an instant direction reversal. A rounded
+		// join here would create a protruding semicircle beyond the turn point.
+		if (dot < -0.98) {
+			const previousLeft = center.clone().addScaledVector(previousNormal, halfWidth);
+			const previousRight = center.clone().addScaledVector(previousNormal, -halfWidth);
+
+			addSection(previousLeft, previousRight, u);
+
+			// Direction has reversed, so preserve the physical sides of the ribbon.
+			sideFlipped = !sideFlipped;
+
+			const nextLeft = center.clone().addScaledVector(nextNormal, halfWidth);
+			const nextRight = center.clone().addScaledVector(nextNormal, -halfWidth);
+
+			addSection(nextLeft, nextRight, u);
+
+			continue;
+		}
 
 		// Straight line
 		if (Math.abs(turn) < 0.0001 && dot > 0) {
