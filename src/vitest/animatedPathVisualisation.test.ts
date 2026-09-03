@@ -5,7 +5,7 @@ import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 import { createAnimatedPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
 
-describe('animated path checkpoint flags', () => {
+describe('animated path visualisation', () => {
 	it('reports a checkpoint when the beam reaches it', () => {
 		const onCheckpointReached = vi.fn();
 		const gameManager = {
@@ -68,5 +68,29 @@ describe('animated path checkpoint flags', () => {
 		expect(scene.children).not.toContain(sprite);
 		expect(enemy.animatedPathFlags).toEqual([]);
 		expect(dispose).toHaveBeenCalledOnce();
+	});
+
+	it('stops and removes the animated path when the enemy is deselected', () => {
+		const enemy = Object.create(Enemy.prototype) as Enemy;
+		const scene = new THREE.Scene();
+		const group = new THREE.Group();
+		const dispose = vi.fn();
+		scene.add(group);
+		enemy.gameManager = { scene, isSimulation: true } as unknown as Enemy['gameManager'];
+		enemy.animatedPathGroup = {
+			group,
+			completed: false,
+			update: vi.fn(),
+			dispose
+		};
+		enemy.animatedPathCountdowns = [];
+		enemy.animatedPathFlags = [];
+
+		enemy.onDeselect();
+
+		expect(scene.children).not.toContain(group);
+		expect(dispose).toHaveBeenCalledOnce();
+		expect(enemy.animatedPathGroup).toBeNull();
+		expect(enemy.pathVisualisationStage).toBe('none');
 	});
 });

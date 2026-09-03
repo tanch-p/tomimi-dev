@@ -1168,6 +1168,7 @@ export class Enemy {
 		this.skillRangeMeshes.forEach((mesh) => (mesh.visible = true));
 	}
 	onDeselect() {
+		this.clearAnimatedPathVisualisation();
 		this.clearAnimatedPathCountdowns();
 		this.clearAnimatedPathFlags();
 		this.pathVisualisationStage = 'none';
