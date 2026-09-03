@@ -13,12 +13,15 @@ const animatedPathGap = GameConfig.gridSize * -0.2;
 function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 	const geometry = new THREE.BufferGeometry();
 
-	// Remove consecutive duplicate points
-	const points = pathPoints.filter((point, i) => {
-		if (i === 0) return true;
-
-		return point.distanceToSquared(pathPoints[i - 1]) > Number.EPSILON;
-	});
+	// Remove invalid and consecutive duplicate points before doing vector math.
+	const points: THREE.Vector3[] = [];
+	for (const point of pathPoints) {
+		if (![point.x, point.y, point.z].every(Number.isFinite)) continue;
+		if (points.length > 0 && point.distanceToSquared(points[points.length - 1]) <= Number.EPSILON) {
+			continue;
+		}
+		points.push(point);
+	}
 
 	if (points.length < 2) {
 		geometry.setAttribute('position', new THREE.Float32BufferAttribute([], 3));
@@ -281,6 +284,12 @@ function createRibbonGeometry(pathPoints: THREE.Vector3[], width: number) {
 			vertexIndex + 3,
 			vertexIndex + 2
 		);
+	}
+
+	if (!positions.every(Number.isFinite)) {
+		geometry.setAttribute('position', new THREE.Float32BufferAttribute([], 3));
+		geometry.setAttribute('uv', new THREE.Float32BufferAttribute([], 2));
+		return geometry;
 	}
 
 	geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
@@ -570,6 +579,7 @@ export function createAnimatedPathVisualisation(
 		completed: false
 	};
 	let completed = false;
+	let disposed = false;
 
 	const setLinePoints = (beam: BeamState, visiblePoints: THREE.Vector3[]) => {
 		const nextGeometry = createRibbonGeometry(visiblePoints, animatedPathWidth);
@@ -686,7 +696,7 @@ export function createAnimatedPathVisualisation(
 			return completed;
 		},
 		update(delta: number) {
-			if (completed) return;
+			if (completed || disposed || !Number.isFinite(delta)) return;
 
 			const distanceDelta = animatedPathSpeed * delta;
 			updateBeam(firstBeam, distanceDelta, true);
@@ -698,11 +708,15 @@ export function createAnimatedPathVisualisation(
 			}
 		},
 		dispose() {
+			if (disposed) return;
+			disposed = true;
+			completed = true;
+			group.visible = false;
+			group.remove(beamMesh1, beamMesh2);
 			firstBeam.geometry.dispose();
 			secondBeam.geometry.dispose();
 			material1.dispose();
 			material2.dispose();
-			group.remove(beamMesh1, beamMesh2);
 		}
 	};
 }

@@ -93,4 +93,36 @@ describe('animated path visualisation', () => {
 		expect(enemy.animatedPathGroup).toBeNull();
 		expect(enemy.pathVisualisationStage).toBe('none');
 	});
+
+	it('does not update geometry after the visualisation is disposed', () => {
+		const onCheckpointReached = vi.fn();
+		const gameManager = {
+			getVectorCoordinates: ({ col, row }: { col: number; row: number }) => ({
+				x: col * GameConfig.gridSize,
+				y: row * GameConfig.gridSize
+			})
+		} as unknown as GameManager;
+		const visualisation = createAnimatedPathVisualisation(
+			[
+				{
+					type: 'MOVE',
+					pathType: 'cp',
+					position: { col: 2, row: 0 }
+				}
+			],
+			0,
+			new THREE.Vector3(),
+			gameManager,
+			undefined,
+			onCheckpointReached
+		);
+
+		visualisation?.dispose();
+		visualisation?.update(1);
+		visualisation?.dispose();
+
+		expect(visualisation?.completed).toBe(true);
+		expect(visualisation?.group.children).toEqual([]);
+		expect(onCheckpointReached).not.toHaveBeenCalled();
+	});
 });
