@@ -17,7 +17,7 @@ import {
 } from '$lib/functions/pathVisualisationHelpers';
 
 const moveMultiplier = 0.5;
-const animatedPathCountdownFadeDuration = 3;
+const animatedPathCountdownFadeDuration = 4;
 
 export class Enemy {
 	raycastPos: THREE.Vector3; //光标坐标在移动逻辑中被大量使用，造成了一些反直觉的现象
