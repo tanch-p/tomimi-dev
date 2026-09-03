@@ -17,6 +17,8 @@ import {
 } from '$lib/functions/pathVisualisationHelpers';
 
 const moveMultiplier = 0.5;
+const animatedPathCountdownFadeDuration = 3;
+
 export class Enemy {
 	raycastPos: THREE.Vector3; //光标坐标在移动逻辑中被大量使用，造成了一些反直觉的现象
 	targetPos: THREE.Vector3;
@@ -53,7 +55,7 @@ export class Enemy {
 	notCountInTotal = false;
 
 	countdownId = -1;
-	animatedPathCountdownIds: number[] = [];
+	animatedPathCountdowns: { id: number; elapsed: number }[] = [];
 	pathGroup;
 	animatedPathGroup: AnimatedPathVisualisation | null = null;
 	meshGroup: THREE.Group;
@@ -1215,16 +1217,33 @@ export class Enemy {
 			'normal',
 			false
 		);
-		this.animatedPathCountdownIds.push(countdownId);
+		this.animatedPathCountdowns.push({ id: countdownId, elapsed: 0 });
 		this.gameManager.countdownManager.toggleCountdown(countdownId, true);
 	}
 
 	clearAnimatedPathCountdowns() {
-		this.animatedPathCountdownIds.forEach((id) => this.gameManager.removeCountdown(id));
-		this.animatedPathCountdownIds = [];
+		this.animatedPathCountdowns.forEach(({ id }) => this.gameManager.removeCountdown(id));
+		this.animatedPathCountdowns = [];
+	}
+
+	updateAnimatedPathCountdowns(delta: number) {
+		this.animatedPathCountdowns = this.animatedPathCountdowns.filter((countdown) => {
+			countdown.elapsed += delta;
+			if (countdown.elapsed >= animatedPathCountdownFadeDuration) {
+				this.gameManager.removeCountdown(countdown.id);
+				return false;
+			}
+
+			this.gameManager.countdownManager.setCountdownOpacity(
+				countdown.id,
+				1 - countdown.elapsed / animatedPathCountdownFadeDuration
+			);
+			return true;
+		});
 	}
 
 	updatePathVisualisation(delta: number) {
+		this.updateAnimatedPathCountdowns(delta);
 		if (!this.animatedPathGroup) return;
 		this.animatedPathGroup.update(delta);
 		if (this.animatedPathGroup.completed) {

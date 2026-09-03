@@ -28,7 +28,8 @@ export class CountdownManager {
 			uniforms: {
 				fontTexture: { value: this.assetManager.textures.get('0').texture },
 				color: { value: new THREE.Color(0xffffff) },
-				time: { value: 0.0 }
+				time: { value: 0.0 },
+				fadeOpacity: { value: 1.0 }
 			},
 			vertexShader: `
 		  varying vec2 vUv;
@@ -40,6 +41,7 @@ export class CountdownManager {
 			fragmentShader: `
 		  uniform sampler2D fontTexture;
 		  uniform vec3 color;
+		  uniform float fadeOpacity;
 		  varying vec2 vUv;
 		  
 		  void main() {
@@ -50,7 +52,7 @@ export class CountdownManager {
         vec4 texColor = texture2D(fontTexture, vUv);
         float alpha = smoothstep(threshold - smoothing, threshold + smoothing, texColor.a);        
         alpha = max(alpha, 0.0);
-			gl_FragColor = vec4(color, alpha);
+			gl_FragColor = vec4(color, alpha * fadeOpacity);
       }
 		`,
 			transparent: true,
@@ -87,6 +89,10 @@ export class CountdownManager {
 		const countdown = this.countdowns.get(id);
 		if (!countdown) return;
 		countdown.getGroup().visible = val;
+	}
+
+	setCountdownOpacity(id: number, opacity: number): void {
+		this.countdowns.get(id)?.setOpacity(opacity);
 	}
 
 	// Remove a countdown
@@ -211,6 +217,13 @@ export class CountdownSprite {
 	// Set position of the countdown
 	setPosition(x: number, y: number, z = 0): void {
 		this.group.position.set(x, y, z);
+	}
+
+	setOpacity(opacity: number): void {
+		const clampedOpacity = THREE.MathUtils.clamp(opacity, 0, 1);
+		this.material.uniforms.fadeOpacity.value = clampedOpacity;
+		(this.circleMesh.material as THREE.MeshBasicMaterial).opacity = clampedOpacity;
+		(this.ringMesh.material as THREE.MeshBasicMaterial).opacity = clampedOpacity;
 	}
 
 	// Set position relative to grid (compatible with your original code)
@@ -346,6 +359,7 @@ export class CountdownSprite {
 
 	// Dispose resources
 	dispose(): void {
+		this.group.removeFromParent();
 		this.material.dispose();
 		this.textGeometry.dispose();
 		(this.circleMesh.material as THREE.MeshBasicMaterial).dispose();
