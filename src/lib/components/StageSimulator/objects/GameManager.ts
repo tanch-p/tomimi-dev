@@ -63,8 +63,8 @@ export class GameManager {
 		return { x, y };
 	};
 
-	createCountdown(time: number, x: number, y: number, colorKey = 'normal') {
-		const countdown = this.countdownManager.createCountdown(time, colorKey);
+	createCountdown(time: number, x: number, y: number, colorKey = 'normal', countsDown = true) {
+		const countdown = this.countdownManager.createCountdown(time, colorKey, countsDown);
 		countdown.setPosition(x, y);
 		this.addToScene(countdown.getGroup());
 		return countdown.id;

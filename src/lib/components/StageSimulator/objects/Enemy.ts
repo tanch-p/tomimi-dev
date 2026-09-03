@@ -9,10 +9,16 @@ import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/functions/spineHelpers';
 import { SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
-import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
 import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
+import {
+	createAnimatedPathVisualisation,
+	createPathVisualisation,
+	type AnimatedPathVisualisation
+} from '$lib/functions/pathVisualisationHelpers';
 
 const moveMultiplier = 0.5;
+const animatedPathCountdownFadeDuration = 4;
+
 export class Enemy {
 	raycastPos: THREE.Vector3; //光标坐标在移动逻辑中被大量使用，造成了一些反直觉的现象
 	targetPos: THREE.Vector3;
@@ -38,6 +44,7 @@ export class Enemy {
 	specials: Skill[];
 	skillManager: SkillManager;
 	selected = false;
+	pathVisualisationStage: 'none' | 'static' | 'animated' = 'none';
 	buffs = [];
 	waitElapsedTime = 0;
 	standbyTime = 0;
@@ -48,7 +55,9 @@ export class Enemy {
 	notCountInTotal = false;
 
 	countdownId = -1;
+	animatedPathCountdowns: { id: number; elapsed: number }[] = [];
 	pathGroup;
+	animatedPathGroup: AnimatedPathVisualisation | null = null;
 	meshGroup: THREE.Group;
 	hitbox;
 	shadow;
@@ -248,7 +257,6 @@ export class Enemy {
 			this.meshGroup.position.set(setData.meshPos.x, setData.meshPos.y, GameConfig.baseZIndex);
 			this.pathGroup = this.visualisePath(
 				this.actions,
-				this.currentActionIndex,
 				this.route.startPosition,
 				this.route.spawnOffset
 			);
@@ -279,7 +287,6 @@ export class Enemy {
 			if (!this.gameManager.isSimulation) {
 				this.pathGroup = this.visualisePath(
 					this.actions,
-					this.currentActionIndex,
 					this.route.startPosition,
 					this.route.spawnOffset
 				);
@@ -836,12 +843,6 @@ export class Enemy {
 
 		const { type, position, pathType, time, reachOffset } = this.actions[this.currentActionIndex];
 
-		if (this.selected) {
-			if (!this.pathOn) {
-				this.visualisePath(this.actions, this.currentActionIndex, this.route.startPosition);
-				this.pathOn = true;
-			}
-		}
 		switch (type) {
 			case 'MOVE':
 				{
@@ -1123,6 +1124,8 @@ export class Enemy {
 	}
 
 	remove() {
+		this.clearAnimatedPathVisualisation();
+		this.clearAnimatedPathCountdowns();
 		if (!this.gameManager.isSimulation) {
 			if (!this.sprite) return;
 			let index = this.gameManager.game.objects.findIndex((ele) => ele.uuid === this.sprite.uuid);
@@ -1145,9 +1148,14 @@ export class Enemy {
 		// const pos = this.gameManager.getGridPosition(this.raycastPos);
 		// console.log(pos);
 		// console.log(this.route)
+		this.clearAnimatedPathVisualisation();
+		this.clearAnimatedPathCountdowns();
 		this.shadow.uniforms.isSelected.value = true;
-		this.gameManager.scene.add(this.pathGroup);
 		this.selected = true;
+		this.pathVisualisationStage = 'static';
+		if (this.pathGroup) {
+			this.gameManager.scene.add(this.pathGroup);
+		}
 		if (this.waitElapsedTime > 0) {
 			this.gameManager.countdownManager.toggleCountdown(this.countdownId, true);
 		}
@@ -1157,8 +1165,12 @@ export class Enemy {
 		this.skillRangeMeshes.forEach((mesh) => (mesh.visible = true));
 	}
 	onDeselect() {
+		this.clearAnimatedPathCountdowns();
+		this.pathVisualisationStage = 'none';
 		if (!this.gameManager.isSimulation) {
-			this.gameManager.scene.remove(this.pathGroup);
+			if (this.pathGroup) {
+				this.gameManager.scene.remove(this.pathGroup);
+			}
 			this.shadow.uniforms.isSelected.value = false;
 			this.selected = false;
 			!GameConfig.showAllTimers &&
@@ -1170,9 +1182,76 @@ export class Enemy {
 		}
 	}
 
-	visualisePath(paths, currentActionIndex, startPos, spawnOffset) {
-		// Preserved for the future animated remaining-route preview.
-		void currentActionIndex;
+	startAnimatedPathVisualisation() {
+		if (this.pathGroup) {
+			this.gameManager.scene.remove(this.pathGroup);
+		}
+		this.clearAnimatedPathVisualisation();
+		this.clearAnimatedPathCountdowns();
+		this.pathVisualisationStage = 'animated';
+		this.animatedPathGroup = createAnimatedPathVisualisation(
+			this.actions,
+			this.currentActionIndex,
+			this.meshGroup.position,
+			this.gameManager,
+			(time, position) => this.showAnimatedPathCountdown(time, position)
+		);
+		if (this.animatedPathGroup) {
+			this.gameManager.scene.add(this.animatedPathGroup.group);
+		}
+	}
+
+	clearAnimatedPathVisualisation() {
+		if (!this.animatedPathGroup) return;
+		this.gameManager.scene.remove(this.animatedPathGroup.group);
+		this.animatedPathGroup.dispose();
+		this.animatedPathGroup = null;
+	}
+
+	showAnimatedPathCountdown(time: number, position: THREE.Vector3) {
+		if (!this.selected) return;
+		const countdownId = this.gameManager.createCountdown(
+			time,
+			position.x,
+			position.y + 30,
+			'normal',
+			false
+		);
+		this.animatedPathCountdowns.push({ id: countdownId, elapsed: 0 });
+		this.gameManager.countdownManager.toggleCountdown(countdownId, true);
+	}
+
+	clearAnimatedPathCountdowns() {
+		this.animatedPathCountdowns.forEach(({ id }) => this.gameManager.removeCountdown(id));
+		this.animatedPathCountdowns = [];
+	}
+
+	updateAnimatedPathCountdowns(delta: number) {
+		this.animatedPathCountdowns = this.animatedPathCountdowns.filter((countdown) => {
+			countdown.elapsed += delta;
+			if (countdown.elapsed >= animatedPathCountdownFadeDuration) {
+				this.gameManager.removeCountdown(countdown.id);
+				return false;
+			}
+
+			this.gameManager.countdownManager.setCountdownOpacity(
+				countdown.id,
+				1 - countdown.elapsed / animatedPathCountdownFadeDuration
+			);
+			return true;
+		});
+	}
+
+	updatePathVisualisation(delta: number) {
+		this.updateAnimatedPathCountdowns(delta);
+		if (!this.animatedPathGroup) return;
+		this.animatedPathGroup.update(delta);
+		if (this.animatedPathGroup.completed) {
+			this.clearAnimatedPathVisualisation();
+		}
+	}
+
+	visualisePath(paths, startPos, spawnOffset) {
 		return createPathVisualisation(
 			paths,
 			startPos,

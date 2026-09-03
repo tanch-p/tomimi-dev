@@ -347,7 +347,11 @@ export class Game {
 			if (intersect?.object?.userData?.enemy) {
 				const enemy = intersect?.object?.userData?.enemy;
 				if (enemy.selected) {
-					enemy.onDeselect();
+					if (enemy.pathVisualisationStage === 'static') {
+						enemy.startAnimatedPathVisualisation();
+					} else {
+						enemy.onDeselect();
+					}
 				} else {
 					enemy.onSelect();
 				}
@@ -375,7 +379,8 @@ export class Game {
 		this.isDragging = false;
 	}
 	render() {
-		const deltaTime = this.clock.getDelta() * GameConfig.speedFactor;
+		const frameDelta = this.clock.getDelta();
+		const deltaTime = frameDelta * GameConfig.speedFactor;
 		if (
 			this.config.levelId.includes('_d-') &&
 			GameConfig.stagePhaseIndex === 0 &&
@@ -394,6 +399,7 @@ export class Game {
 				GameConfig.setValue('isPaused', true);
 			}
 		}
+		this.gameManager.enemiesOnMap.forEach((enemy) => enemy.updatePathVisualisation(frameDelta));
 
 		if (this.spawnManager.isFinished && this.gameManager.noEnemyAlive) {
 			GameConfig.state = 'end';
