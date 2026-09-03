@@ -392,17 +392,20 @@ export function createAnimatedPathVisualisation(
 	currentActionIndex: number,
 	currentPosition: THREE.Vector3,
 	gameManager: GameManager,
-	onWaitReached?: (time: number, position: THREE.Vector3) => void
+	onWaitReached?: (time: number, position: THREE.Vector3) => void,
+	onCheckpointReached?: (position: THREE.Vector3) => void
 ): AnimatedPathVisualisation | null {
 	type RouteSegment = {
 		points: THREE.Vector3[];
 		waits: { pointIndex: number; time: number }[];
+		checkpoints: { pointIndex: number }[];
 	};
 
 	const routeSegments: RouteSegment[] = [
 		{
 			points: [new THREE.Vector3(currentPosition.x, currentPosition.y, 0)],
-			waits: []
+			waits: [],
+			checkpoints: []
 		}
 	];
 	let activeSegment = routeSegments[0];
@@ -435,7 +438,7 @@ export function createAnimatedPathVisualisation(
 		const { x, y } = gameManager.getVectorCoordinates(path.position, path.reachOffset);
 		const point = new THREE.Vector3(x, y, 0);
 		if (path.type === 'APPEAR_AT_POS' && disappeared) {
-			activeSegment = { points: [point], waits: [] };
+			activeSegment = { points: [point], waits: [], checkpoints: [] };
 			routeSegments.push(activeSegment);
 			disappeared = false;
 			continue;
@@ -447,10 +450,15 @@ export function createAnimatedPathVisualisation(
 		) {
 			activeSegment.points.push(point);
 		}
+		if (path.type === 'MOVE' && path.pathType === 'cp') {
+			activeSegment.checkpoints.push({
+				pointIndex: activeSegment.points.length - 1
+			});
+		}
 	}
 
 	const segments = routeSegments
-		.map(({ points, waits }) => {
+		.map(({ points, waits, checkpoints }) => {
 			const distances = [0];
 			for (let i = 1; i < points.length; i++) {
 				distances.push(distances[i - 1] + points[i - 1].distanceTo(points[i]));
@@ -463,6 +471,10 @@ export function createAnimatedPathVisualisation(
 					distance: distances[pointIndex],
 					position: points[pointIndex],
 					time
+				})),
+				checkpoints: checkpoints.map(({ pointIndex }) => ({
+					distance: distances[pointIndex],
+					position: points[pointIndex]
 				}))
 			};
 		})
@@ -535,6 +547,7 @@ export function createAnimatedPathVisualisation(
 		segmentIndex: number;
 		headDistance: number;
 		waitIndex: number;
+		checkpointIndex: number;
 		completed: boolean;
 	};
 
@@ -544,6 +557,7 @@ export function createAnimatedPathVisualisation(
 		segmentIndex: 0,
 		headDistance: 0,
 		waitIndex: 0,
+		checkpointIndex: 0,
 		completed: false
 	};
 	const secondBeam: BeamState = {
@@ -552,6 +566,7 @@ export function createAnimatedPathVisualisation(
 		segmentIndex: 0,
 		headDistance: -animatedPathLength - animatedPathGap,
 		waitIndex: 0,
+		checkpointIndex: 0,
 		completed: false
 	};
 	let completed = false;
@@ -609,7 +624,22 @@ export function createAnimatedPathVisualisation(
 		}
 	};
 
-	const updateBeam = (beam: BeamState, distanceDelta: number, showWaits: boolean) => {
+	const showReachedCheckpoints = (
+		beam: BeamState,
+		segment: (typeof segments)[number],
+		visibleHeadDistance: number
+	) => {
+		while (
+			beam.checkpointIndex < segment.checkpoints.length &&
+			segment.checkpoints[beam.checkpointIndex].distance <= visibleHeadDistance
+		) {
+			const checkpoint = segment.checkpoints[beam.checkpointIndex];
+			onCheckpointReached?.(checkpoint.position.clone());
+			beam.checkpointIndex++;
+		}
+	};
+
+	const updateBeam = (beam: BeamState, distanceDelta: number, showMarkers: boolean) => {
 		if (beam.completed) return;
 
 		beam.headDistance += distanceDelta;
@@ -621,13 +651,17 @@ export function createAnimatedPathVisualisation(
 		while (!beam.completed) {
 			const segment = segments[beam.segmentIndex];
 			const visibleHeadDistance = Math.min(beam.headDistance, segment.totalDistance);
-			if (showWaits) showReachedWaits(beam, segment, visibleHeadDistance);
+			if (showMarkers) {
+				showReachedWaits(beam, segment, visibleHeadDistance);
+				showReachedCheckpoints(beam, segment, visibleHeadDistance);
+			}
 
 			const tailDistance = Math.max(0, beam.headDistance - animatedPathLength);
 			if (tailDistance >= segment.totalDistance) {
 				const overflow = tailDistance - segment.totalDistance;
 				beam.segmentIndex++;
 				beam.waitIndex = 0;
+				beam.checkpointIndex = 0;
 				if (beam.segmentIndex >= segments.length) {
 					beam.completed = true;
 					beam.mesh.visible = false;
