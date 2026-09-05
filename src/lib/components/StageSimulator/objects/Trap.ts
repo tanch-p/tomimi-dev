@@ -15,7 +15,8 @@ export class Trap {
 	assetManager: AssetManager;
 	isRoadblock: 0 | 1;
 	data;
-	key;
+	key: string;
+	alias: string;
 	type;
 	skel;
 	direction;
@@ -42,6 +43,7 @@ export class Trap {
 		const trap = trapLookup[data.key];
 		this.data = trap;
 		this.key = data.key;
+		this.alias = data.alias;
 		this.hideTile = trap.hideTile;
 		this.direction = data.direction;
 		this.position = pos;
