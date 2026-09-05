@@ -26,6 +26,7 @@ export class Trap {
 	isSimulation;
 	gameManager: GameManager;
 	branchKey: string | null = null;
+	actionIndex: number | null = null;
 	branch: any = null;
 	isPeriodicSummoner = false;
 	summonInterval = 0;
@@ -53,6 +54,18 @@ export class Trap {
 		const blackboardEntries = blackboards.flat();
 		this.branchKey = blackboardEntries.find((entry) => entry.key === 'branch_id')?.valueStr ?? null;
 		this.branch = (gameManager?.config as any)?.branches?.[this.branchKey as string] ?? null;
+		const actionIndex: number | null =
+			blackboardEntries.find((entry) => entry.key === 'action_index')?.value ?? null;
+		this.actionIndex = actionIndex;
+		if (this.branch && actionIndex !== null) {
+			this.branch = {
+				...this.branch,
+				phases: this.branch.phases.map((phase: any) => ({
+					...phase,
+					actions: phase.actions.slice(actionIndex, actionIndex + 1)
+				}))
+			};
+		}
 		this.isPeriodicSummoner = Boolean(
 			this.branchKey && this.branch && trap.special.includes('rgdysm_summon')
 		);
