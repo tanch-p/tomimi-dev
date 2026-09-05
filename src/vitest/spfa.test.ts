@@ -253,43 +253,45 @@ test('SPFA smoothing avoids the weighted corner when moving to the first checkpo
 	]);
 });
 
+const smoothingWaypointGrid = [
+	[
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		0,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		0,
+		Infinity
+	],
+	[Infinity, Infinity, 0, 0, 0, Infinity, Infinity, 0, 0, 0, 0, 0],
+	[Infinity, 0, 0, Infinity, Infinity, Infinity, 0, 0, Infinity, Infinity, Infinity, Infinity],
+	[Infinity, Infinity, 0, 0, 0, Infinity, 0, 0, 0, 0, Infinity, Infinity],
+	[Infinity, 0, 0, Infinity, 0, Infinity, Infinity, 0, Infinity, 0, 0, Infinity],
+	[Infinity, 0, 0, 0, 0, Infinity, Infinity, 0, 0, 0, 0, Infinity],
+	[Infinity, 0, Infinity, Infinity, 0, 0, 0, 0, Infinity, 0, 0, Infinity],
+	[
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity,
+		Infinity
+	]
+];
+
 test('SPFA smoothing may create a waypoint outside the raw path', () => {
-	const pathFinder = new SPFA([
-		[
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			0,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			0,
-			Infinity
-		],
-		[Infinity, Infinity, 0, 0, 0, Infinity, Infinity, 0, 0, 0, 0, 0],
-		[Infinity, 0, 0, Infinity, Infinity, Infinity, 0, 0, Infinity, Infinity, Infinity, Infinity],
-		[Infinity, Infinity, 0, 0, 0, Infinity, 0, 0, 0, 0, Infinity, Infinity],
-		[Infinity, 0, 0, Infinity, 0, Infinity, Infinity, 0, Infinity, 0, 0, Infinity],
-		[Infinity, 0, 0, 0, 0, Infinity, Infinity, 0, 0, 0, 0, Infinity],
-		[Infinity, 0, Infinity, Infinity, 0, 0, 0, 0, Infinity, 0, 0, Infinity],
-		[
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity,
-			Infinity
-		]
-	]);
+	const pathFinder = new SPFA(smoothingWaypointGrid);
 
 	const path = pathFinder.findPath({ row: 6, col: 10 }, { row: 1, col: 11 });
 	const rawPath = pathFinder.buildPath(10, 6);
@@ -304,6 +306,13 @@ test('SPFA smoothing may create a waypoint outside the raw path', () => {
 	expect(
 		path.slice(1).every((coordinate, index) => pathFinder.hasClearCorridor(path[index], coordinate))
 	).toBe(true);
+});
+
+test('SPFA smoothing selects the correct waypoint from row five', () => {
+	const pathFinder = new SPFA(smoothingWaypointGrid);
+	const path = pathFinder.findPath({ row: 5, col: 9 }, { row: 1, col: 11 });
+
+	expect(path[1]).toStrictEqual([9, 3]);
 });
 
 test('SPFA caches orthogonal and diagonal path graphs separately', () => {

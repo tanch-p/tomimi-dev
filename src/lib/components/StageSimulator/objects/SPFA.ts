@@ -376,7 +376,6 @@ export class SPFA {
 
 		const targetKey = this.coordinateKey(target);
 		const routeCosts = new Map<string, number>([[targetKey, 0]]);
-		const routeWaypointCounts = new Map<string, number>([[targetKey, 0]]);
 		const nextWaypoints = new Map<string, GridCoordinate>();
 
 		for (const current of coordinates) {
@@ -385,7 +384,6 @@ export class SPFA {
 
 			const currentDistance = this.grid.getNode(current[0], current[1])?.distance ?? Infinity;
 			let bestCost = Infinity;
-			let bestWaypointCount = Infinity;
 			let bestRemainingDistance = Infinity;
 			let bestCandidate: GridCoordinate | null = null;
 
@@ -395,23 +393,18 @@ export class SPFA {
 
 				const candidateKey = this.coordinateKey(candidate);
 				const remainingCost = routeCosts.get(candidateKey);
-				const remainingWaypointCount = routeWaypointCounts.get(candidateKey);
-				if (remainingCost === undefined || remainingWaypointCount === undefined) continue;
+				if (remainingCost === undefined) continue;
 
 				const corridorCost = this.getClearCorridorCost(current, candidate);
 				if (corridorCost === Infinity) continue;
 
 				const totalCost = corridorCost + remainingCost;
-				const waypointCount = remainingWaypointCount + 1;
 				if (
 					totalCost < bestCost - COST_EPSILON ||
 					(Math.abs(totalCost - bestCost) <= COST_EPSILON &&
-						(waypointCount < bestWaypointCount ||
-							(waypointCount === bestWaypointCount &&
-								candidateNode.distance < bestRemainingDistance)))
+						candidateNode.distance < bestRemainingDistance - COST_EPSILON)
 				) {
 					bestCost = totalCost;
-					bestWaypointCount = waypointCount;
 					bestRemainingDistance = candidateNode.distance;
 					bestCandidate = candidate;
 				}
@@ -419,7 +412,6 @@ export class SPFA {
 
 			if (bestCandidate) {
 				routeCosts.set(currentKey, bestCost);
-				routeWaypointCounts.set(currentKey, bestWaypointCount);
 				nextWaypoints.set(currentKey, bestCandidate);
 			}
 		}
