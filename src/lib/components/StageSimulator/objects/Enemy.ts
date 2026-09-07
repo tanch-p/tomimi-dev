@@ -496,6 +496,9 @@ export class Enemy {
 				this.traits.some((skill) => ['no_block_ranged_atk'].includes(skill.key))
 			) {
 				const group = new THREE.Group();
+				group.position.set(0, 0, 0);
+				// Offset due to camera angle
+				group.position.y += GameConfig.gridSize * 0.2;
 				const radius = range * GameConfig.gridSize;
 				const circleGeometry = new THREE.CircleGeometry(radius, 32);
 				const ringGeometry = new THREE.RingGeometry(radius - 2, radius, 64);
@@ -540,6 +543,9 @@ export class Enemy {
 			);
 			for (const skill of skillsWithRange) {
 				const group = new THREE.Group();
+				group.position.set(0, 0, 0);
+				// Offset due to camera angle
+				group.position.y += GameConfig.gridSize * 0.2;
 				const radius = skill.skillRange * GameConfig.gridSize;
 				const circleGeometry = new THREE.CircleGeometry(radius, 32);
 				const ringGeometry = new THREE.RingGeometry(radius - 2, radius, 64);
