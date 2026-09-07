@@ -12,7 +12,7 @@ import { clearObjects } from '$lib/functions/threejsHelpers';
 import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
 
 export function getSimulatedData(config: MapConfig, waveData, enemies: EnemyType[]) {
-	if (DUEL_STAGES.includes(config.levelId)) {
+	if (DUEL_STAGES.concat(['level_rogue2_b-7', 'level_rogue1_b-7']).includes(config.levelId)) {
 		return;
 	}
 	if (['level_rogue4_b-7'].includes(config.levelId) && GameConfig.stagePhaseIndex == 1) {

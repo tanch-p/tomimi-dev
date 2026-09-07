@@ -853,11 +853,6 @@ export class Enemy {
 		switch (type) {
 			case 'MOVE':
 				{
-					if (this.gameManager.config.levelId.includes('_d-') && GameConfig.stagePhaseIndex === 0) {
-						// workaround for duel stages to prevent enemy from moving
-						this.animState = 'Idle';
-						return;
-					}
 					if (this.standbyTime > 0) {
 						break;
 					}

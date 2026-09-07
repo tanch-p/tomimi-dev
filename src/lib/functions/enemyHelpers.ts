@@ -20,9 +20,6 @@ export const BONUS_ENEMY_KEYS = [
 ];
 
 export const DUEL_STAGES = [
-	'level_rogue4_b-8',
-	'level_rogue2_b-7',
-	'level_rogue1_b-7',
 	'level_rogue4_d-1',
 	'level_rogue4_d-2',
 	'level_rogue4_d-3',
