@@ -36573,7 +36573,7 @@
 				"traits": [],
 				"special": [
 					[{ "key": "hover" },{"key":"no_normal_attack"},  { "key": "fyshp_can_combine" }],
-					[{ "key": "fyshp_combined" }],
+					[{ "key": "hover" },{ "key": "fyshp_combined" }],
 					[{ "key": "fyshp_grounded" }]
 				],
 				"form_mods": [
@@ -36640,7 +36640,7 @@
 				"traits": [],
 				"special": [
 					[{ "key": "hover" }, {"key":"no_normal_attack"}, { "key": "fyshp_can_combine" }],
-					[{ "key": "fyshp_combined" }],
+					[{ "key": "hover" },{ "key": "fyshp_combined" }],
 					[{ "key": "fyshp_grounded" }]
 				],
 				"form_mods": [
