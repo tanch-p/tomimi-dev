@@ -18,6 +18,7 @@ describe('smephi_blink', () => {
 			}
 		] as Skill[];
 		enemy.specials = [];
+		enemy.skills = enemy.traits.concat(enemy.specials);
 		enemy.skelData = {
 			animations: [
 				{ name: 'Move_begin', duration: 0.4 },

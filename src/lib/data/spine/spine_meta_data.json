@@ -11,6 +11,13 @@
 			{ "Idle": "Idle_B", "Move": "Move_B", "Default": "Default_B" }
 		]
 	},
+	"enemy_1347_fyshp_2": {
+		"anim": [
+			{ "Idle": "Idle", "Move": "Move", "Default": "Default" },
+			{ "Idle": "C_Idle", "Move": "C_Move", "Default": "C_Default" },
+			{ "Idle": "B_Idle", "Move": "B_Move", "Default": "B_Default" }
+		]
+	},
 	"enemy_2056_smedzi": {
 		"anim": [
 			{ "Idle": "Idle", "Move_Begin": "Move_Begin", "Move_End": "Move_End", "Default": "Default" }
@@ -18,7 +25,13 @@
 	},
 	"enemy_1514_smephi": {
 		"anim": [
-			{ "Idle": "Idle", "Move_Begin": "Move_begin", "Move_End": "Move_end", "Move_Loop": "Move_loop", "Default": "Default" }
+			{
+				"Idle": "Idle",
+				"Move_Begin": "Move_begin",
+				"Move_End": "Move_end",
+				"Move_Loop": "Move_loop",
+				"Default": "Default"
+			}
 		]
 	},
 	"enemy_2081_skztxs": {

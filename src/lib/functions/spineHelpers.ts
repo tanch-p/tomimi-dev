@@ -30,7 +30,7 @@ export const getSpineAnimations = (key: string, skelData: spine.SkeletonData) =>
 	// only deal with a handful of boss enemies with multiforms
 
 	if (key === '') {
-		console.log(skelData?.animations);
+		console.info(skelData?.animations);
 	}
 
 	if (spineMetaData[key]) {
@@ -133,6 +133,8 @@ export function getIdleAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_10045_parrot':
 		case 'enemy_2108_dypryg':
 		case 'enemy_2109_dypry2':
+		case 'enemy_10001_trslim':
+		case 'enemy_10001_trslim_2':
 			return 'Idle_A';
 		case 'enemy_1388_wingnt':
 		case 'trap_226_dychss':
@@ -147,6 +149,9 @@ export function getIdleAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_10126_rkbomb':
 		case 'enemy_10126_rkbomb_2':
 		case 'trap_258_rgcssm':
+		case 'enemy_10107_mjcdog':
+		case 'enemy_10107_mjcdog_2':
+		case 'enemy_10081_mpplai':
 			return 'A_Idle';
 		case 'trap_327_shchst':
 			return 'A_Idle_1';
@@ -242,6 +247,9 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_10127_rkmbst':
 		case 'enemy_10126_rkbomb':
 		case 'enemy_10126_rkbomb_2':
+		case 'enemy_10107_mjcdog':
+		case 'enemy_10107_mjcdog_2':
+		case 'enemy_10081_mpplai':
 			return 'A_Move';
 		case 'enemy_10058_cjfrog':
 		case 'enemy_10058_cjfrog_2':
@@ -260,6 +268,8 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_10045_parrot':
 		case 'enemy_2108_dypryg':
 		case 'enemy_2109_dypry2':
+		case 'enemy_10001_trslim':
+		case 'enemy_10001_trslim_2':
 			return 'Move_A';
 
 		case 'enemy_1418_mmkonm':

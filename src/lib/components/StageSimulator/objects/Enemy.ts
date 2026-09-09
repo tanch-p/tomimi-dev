@@ -42,6 +42,7 @@ export class Enemy {
 	isMoving = false;
 	traits: Skill[];
 	specials: Skill[];
+	skills: Skill[];
 	skillManager: SkillManager;
 	selected = false;
 	pathVisualisationStage: 'none' | 'static' | 'animated' = 'none';
@@ -176,6 +177,7 @@ export class Enemy {
 			this.traits = setData.traits;
 			this.specials = setData.specials;
 			this.formIndex = setData.formIndex;
+			this.skills = this.traits.concat(this.specials);
 			this.spineAnimIndex = setData.spineAnimIndex;
 			this.timeToWait = setData.timeToWait;
 			this.standbyTime = setData.standbyTime;
@@ -223,6 +225,7 @@ export class Enemy {
 				GameConfig.specialMods,
 				'special'
 			);
+			this.skills = this.traits.concat(this.specials);
 			if (this.traits.find((skill) => ['not_count_in_total'].includes(skill.key))) {
 				this.notCountInTotal = true;
 			}
@@ -248,12 +251,7 @@ export class Enemy {
 		this.meshGroup.renderOrder = 1;
 		this.initModel();
 		if (setData) {
-			this.skillManager = new SkillManager(
-				this,
-				this.traits.concat(this.specials),
-				this.gameManager,
-				setData.skillData
-			);
+			this.skillManager = new SkillManager(this, this.skills, this.gameManager, setData.skillData);
 			this.handleAnimUpdate(0.01);
 			this.meshGroup.position.set(setData.meshPos.x, setData.meshPos.y, GameConfig.baseZIndex);
 			this.pathGroup = this.visualisePath(
@@ -272,11 +270,7 @@ export class Enemy {
 					this.animations?.[this.spineAnimIndex]?.[this.animState]
 				);
 			}
-			this.skillManager = new SkillManager(
-				this,
-				this.traits.concat(this.specials),
-				this.gameManager
-			);
+			this.skillManager = new SkillManager(this, this.skills, this.gameManager);
 			if (this.skillManager.isHoldingForSummons) {
 				this.prepareForSummons();
 			}
@@ -294,7 +288,7 @@ export class Enemy {
 			}
 			const { x, y } = this.gameManager.getVectorCoordinates(route.startPosition, null);
 			this.raycastPos = new THREE.Vector3(x, y, GameConfig.baseZIndex);
-			const standbyTime = this.traits.concat(this.specials).find((skill) => skill.standby)?.standby;
+			const standbyTime = this.skills.find((skill) => skill.standby)?.standby;
 			if (standbyTime) {
 				this.state = 'standby';
 				this.standbyTime = standbyTime;
@@ -422,6 +416,21 @@ export class Enemy {
 			if (!this.skelData) {
 				return;
 			}
+			const spineStateSkill = this.skills.find((skill) => skill.spineState !== undefined);
+			if (spineStateSkill) {
+				this.spineAnimIndex = spineStateSkill.spineState;
+				if (this.data.forms.length > 1 && this.formIndex !== this.spineAnimIndex) {
+					this.formIndex = this.spineAnimIndex;
+					this.specials = getEnemySkills(
+						this.data,
+						this.data.forms[this.formIndex].special,
+						this.formIndex,
+						GameConfig.specialMods,
+						'special'
+					);
+					this.skills = this.traits.concat(this.specials);
+				}
+			}
 			this.setBlinkAnimationDurations();
 			this.animations = getSpineAnimations(this.key, this.skelData);
 			const skeletonMesh = new spine.SkeletonMesh(this.skelData, (parameters) => {
@@ -524,21 +533,11 @@ export class Enemy {
 				this.atkRangeMesh = group;
 				this.meshGroup.add(group);
 			}
-			const allSkills = this.traits.concat(this.specials);
-			if (allSkills.some((skill) => skill.key.includes('stealth'))) {
+			if (this.skills.some((skill) => skill.key.includes('stealth'))) {
 				this.buffs.push('stealth');
 				this.darkness = 0.4;
 			}
-			const spineStateSkill = allSkills.find((skill) => skill.spineState);
-			if (spineStateSkill) {
-				this.spineAnimIndex = spineStateSkill.spineState;
-			}
-			if (allSkills.some((skill) => skill.key.includes('stealth'))) {
-				this.buffs.push('stealth');
-				this.darkness = 0.4;
-			}
-
-			const skillsWithRange = allSkills.filter(
+			const skillsWithRange = this.skills.filter(
 				(skill) => skill.skillRange && (skill.skillRange !== range || !normalAtkIsRanged)
 			);
 			for (const skill of skillsWithRange) {
@@ -587,9 +586,7 @@ export class Enemy {
 		if (this.motionMode === 'SKILL_BLINK') {
 			this.skillBlinkBeginDuration = getAnimDuration(this.skelData, this.skillBlinkBeginAnimation);
 			this.skillBlinkEndDuration = getAnimDuration(this.skelData, this.skillBlinkEndAnimation);
-			const skillBlinkSkill = this.traits
-				.concat(this.specials)
-				.find((skill) => skill.key === this.skillBlinkTriggerKey);
+			const skillBlinkSkill = this.skills.find((skill) => skill.key === this.skillBlinkTriggerKey);
 			this.skillBlinkLoopDuration = this.skillBlinkLoopAnimation
 				? Math.max(
 						0,
@@ -602,8 +599,7 @@ export class Enemy {
 	}
 
 	configureSkillBlink() {
-		const skills = this.traits.concat(this.specials);
-		const skillBlinkSkill = skills.find((skill) => skill.motionMode === 'skill_blink');
+		const skillBlinkSkill = this.skills.find((skill) => skill.motionMode === 'skill_blink');
 		if (!skillBlinkSkill) return;
 
 		this.motionMode = 'SKILL_BLINK';
@@ -614,9 +610,7 @@ export class Enemy {
 	}
 
 	configureTimeout() {
-		const timeoutSkill = this.traits
-			.concat(this.specials)
-			.find((skill) => skill.timeout !== undefined);
+		const timeoutSkill = this.skills.find((skill) => skill.timeout !== undefined);
 		this.timeoutDuration = timeoutSkill?.timeout ?? null;
 	}
 	handlePosChange() {
@@ -1368,10 +1362,11 @@ export class Enemy {
 				GameConfig.specialMods,
 				'special'
 			);
+			this.skills = this.traits.concat(this.specials);
 			this.configureSkillBlink();
 			this.setBlinkAnimationDurations();
 			this.configureTimeout();
-			this.skillManager.setSkills(this.traits.concat(this.specials));
+			this.skillManager.setSkills(this.skills);
 		}
 	}
 
@@ -1452,8 +1447,14 @@ export class Enemy {
 		this.exit = setData.exit;
 		this.exitElapsedTime = setData.exitElapsedTime;
 		this.animState = setData.animState;
+		if (this.formIndex !== setData.formIndex) {
+			this.formIndex = setData.formIndex;
+			this.traits = setData.traits;
+			this.specials = setData.specials;
+			this.skills = this.traits.concat(this.specials);
+			this.skillManager.setSkills(this.skills);
+		}
 		this.skillManager.set(setData.skillData);
-		this.formIndex = setData.formIndex;
 		this.spineAnimIndex = setData.spineAnimIndex;
 		this.timeToWait = setData.timeToWait;
 		this.standbyTime = setData.standbyTime;

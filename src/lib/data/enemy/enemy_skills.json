@@ -97,14 +97,10 @@
 			"zh": ["获得<v.value>s<ba.float>近地悬浮</>，效果结束后降落并进入冷却"]
 		}
 	},
-	"flying_no_attack":{
+	"flying_no_attack": {
 		"tooltip": {
-			"en": [
-				"When flying, does not attack normally"
-			],
-			"ja": [
-				"飛行状態で通常攻撃を行わない"
-			],
+			"en": ["When flying, does not attack normally"],
+			"ja": ["飛行状態で通常攻撃を行わない"],
 			"zh": ["飞行形态中不进行普通攻击"]
 		}
 	},
@@ -10572,14 +10568,14 @@
 			"zh": ["每60s，触发技能灾厄之口"]
 		}
 	},
-	"shchmr_buff_2":{
+	"shchmr_buff_2": {
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
 			"zh": ["最大生命值+50%，攻击力+20%"]
 		}
 	},
-	"shchmr_buff_3":{
+	"shchmr_buff_3": {
 		"tooltip": {
 			"en": [""],
 			"ja": [""],

@@ -319,7 +319,23 @@
      "elite_min_count": 4,
      "elite_max_count": 4,
      "overwrittenData": {
-      "talentBlackboard": []
+      "talentBlackboard": [
+       {
+        "key": "fyshp_new",
+        "spineState": 1,
+        "tooltip": {
+         "en": [
+          "$Begins in combined state$"
+         ],
+         "ja": [
+          "$出現時すでに合体状態$"
+         ],
+         "zh": [
+          "$以组合模式出现$"
+         ]
+        }
+       }
+      ]
      }
     },
     {

@@ -10,6 +10,7 @@ import { Enemy } from '../objects/Enemy';
 import { AssetManager } from '../objects/AssetManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
+import { getEnemySkills } from '$lib/functions/skillHelpers';
 
 export function getSimulatedData(config: MapConfig, waveData, enemies: EnemyType[]) {
 	if (DUEL_STAGES.concat(['level_rogue2_b-7', 'level_rogue1_b-7']).includes(config.levelId)) {
@@ -78,6 +79,20 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 		fragmentPreDelayTimer: spawnManager.fragmentPreDelayTimer,
 		postDelayTimer: spawnManager.postDelayTimer,
 		enemiesOnMap: gameSimManager.enemiesOnMap.map((enemy) => {
+			const spineStateSkill = enemy.skills.find((skill) => skill.spineState !== undefined);
+			const spineAnimIndex = spineStateSkill?.spineState ?? enemy.spineAnimIndex;
+			const formIndex =
+				spineStateSkill && enemy.data.forms.length > 1 ? spineAnimIndex : enemy.formIndex;
+			const specials =
+				formIndex !== enemy.formIndex
+					? getEnemySkills(
+							enemy.data,
+							enemy.data.forms[formIndex].special,
+							formIndex,
+							GameConfig.specialMods,
+							'special'
+					  )
+					: enemy.specials;
 			return {
 				meshPos: structuredClone(enemy.meshGroup.position),
 				raycastPos: structuredClone(enemy.raycastPos),
@@ -108,10 +123,10 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 				exit: enemy.exit,
 				exitElapsedTime: enemy.exitElapsedTime,
 				traits: enemy.traits,
-				specials: enemy.specials,
+				specials,
 				skillData: enemy.skillManager.getData(),
-				formIndex: enemy.formIndex,
-				spineAnimIndex: enemy.spineAnimIndex,
+				formIndex,
+				spineAnimIndex,
 				timeToWait: enemy.timeToWait,
 				standbyTime: enemy.standbyTime,
 				pathFinder: enemy.pathFinder,
