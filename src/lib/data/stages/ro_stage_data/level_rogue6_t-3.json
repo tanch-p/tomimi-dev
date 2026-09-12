@@ -126,6 +126,10 @@
        {
         "key": "tjgxb",
         "value": 10
+       },
+       {
+        "key": "tjgxb_buff",
+        "count": 10
        }
       ]
      }
