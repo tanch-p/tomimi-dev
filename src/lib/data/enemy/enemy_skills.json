@@ -10957,12 +10957,16 @@
 			]
 		}
 	},
+	"shsgzd_bombard_range":{
+		"skillRange":2.0,
+		"tooltip":null
+	},
 	"shsgzd_fly": {
 		"value": 100,
 		"tooltip": {
 			"en": [""],
 			"ja": [""],
-			"zh": ["移动速度+100%，不进行普通攻击"]
+			"zh": ["移动速度+<v.value>%，不进行普通攻击"]
 		}
 	},
 	"shsgzd_bombard": {

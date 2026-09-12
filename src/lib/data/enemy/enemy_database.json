@@ -36572,8 +36572,8 @@
 				"epResistance": 0.0,
 				"traits": [],
 				"special": [
-					[{ "key": "hover" },{"key":"no_normal_attack"},  { "key": "fyshp_can_combine" }],
-					[{ "key": "hover" },{ "key": "fyshp_combined" }],
+					[{ "key": "hover" }, { "key": "no_normal_attack" }, { "key": "fyshp_can_combine" }],
+					[{ "key": "hover" }, { "key": "fyshp_combined" }],
 					[{ "key": "fyshp_grounded" }]
 				],
 				"form_mods": [
@@ -36615,7 +36615,7 @@
 				"status_immune": []
 			}
 		],
-		"type": ["melee","ranged", "ELITE"],
+		"type": ["melee", "ranged", "ELITE"],
 		"notCountInTotal": false
 	},
 	"enemy_1347_fyshp_2": {
@@ -36639,8 +36639,8 @@
 				"epResistance": 0.0,
 				"traits": [],
 				"special": [
-					[{ "key": "hover" }, {"key":"no_normal_attack"}, { "key": "fyshp_can_combine" }],
-					[{ "key": "hover" },{ "key": "fyshp_combined" }],
+					[{ "key": "hover" }, { "key": "no_normal_attack" }, { "key": "fyshp_can_combine" }],
+					[{ "key": "hover" }, { "key": "fyshp_combined" }],
 					[{ "key": "fyshp_grounded" }]
 				],
 				"form_mods": [
@@ -36682,7 +36682,7 @@
 				"status_immune": []
 			}
 		],
-		"type": ["melee","ranged", "ELITE"],
+		"type": ["melee", "ranged", "ELITE"],
 		"notCountInTotal": false
 	},
 	"enemy_1348_rllamb": {
@@ -73005,7 +73005,11 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "shsgzd_buff" }, { "key": "shsgzd_gold" }],
+				"traits": [
+					{ "key": "shsgzd_buff" },
+					{ "key": "shsgzd_gold" },
+					{ "key": "shsgzd_bombard_range" }
+				],
 				"special": [
 					[{ "key": "shsgzd_normal" }],
 					[{ "key": "shsgzd_fly" }, { "key": "shsgzd_bombard" }, { "key": "shsgzd_land" }]
@@ -73064,7 +73068,11 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "shsgzd_buff" }, { "key": "shsgzd_gold" }],
+				"traits": [
+					{ "key": "shsgzd_buff" },
+					{ "key": "shsgzd_gold" },
+					{ "key": "shsgzd_bombard_range" }
+				],
 				"special": [
 					[{ "key": "shsgzd_normal" }],
 					[
@@ -73285,7 +73293,7 @@
 						{ "key": "wolf_howl_1" },
 						{ "key": "cadejo_fly" },
 						{ "key": "cadejo_timeout" },
-						{"key":"cadejo_1"}
+						{ "key": "cadejo_1" }
 					],
 					[{ "key": "invincible_no_attack" }, { "key": "cadejo_summon" }]
 				]
@@ -73542,12 +73550,12 @@
 				],
 				"special": [
 					[{ "key": "shchmr_change" }],
-					[{"key":"shchmr_buff_2"},{ "key": "shchmr_napalm" }, { "key": "shchmr_change" }],
+					[{ "key": "shchmr_buff_2" }, { "key": "shchmr_napalm" }, { "key": "shchmr_change" }],
 					[
-						{"key":"shchmr_buff_3"},
+						{ "key": "shchmr_buff_3" },
 						{ "key": "shchmr_breath_3" },
 						{ "key": "skill_levitate", "value": 15 },
-						{"key":"flying_no_attack"},
+						{ "key": "flying_no_attack" },
 						{ "key": "shchmr_napalm" },
 						{ "key": "shchmr_napalm_fly" }
 					]
