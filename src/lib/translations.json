@@ -2573,6 +2573,11 @@
 		"ja": "脆弱",
 		"zh": "脆弱"
 	},
+	"magicarcane":{
+		"en": "magicarcane",
+		"ja": "脆弱",
+		"zh": "术法充盈"
+	},
 	"weaken": {
 		"en": "Enfeeble",
 		"ja": "虚弱",

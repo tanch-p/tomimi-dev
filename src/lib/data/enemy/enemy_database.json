@@ -72804,7 +72804,7 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "shkrbt_blink" }],
+				"traits": [{"key":"melee_ranged_atk"},{ "key": "shkrbt_blink" }],
 				"special": []
 			}
 		],
@@ -73543,6 +73543,7 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
+					{"key":"melee_ranged_atk"},
 					{ "key": "def_down_hit", "value": 100 },
 					{ "key": "shchmr_breath" },
 					{ "key": "shchmr_breath_splash" },
@@ -73642,7 +73643,7 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "def_down_hit", "value": 50 }],
+				"traits": [{"key":"melee_ranged_atk"},{ "key": "def_down_hit", "value": 50 }],
 				"special": []
 			}
 		],
@@ -73764,6 +73765,7 @@
 				"traits": [
 					{ "key": "no_block_no_attack" },
 					{ "key": "shcan_found" },
+					{"key":"shcan_defeat"},
 					{ "key": "shcan_run" },
 					{ "key": "steal_gold", "value": 99 }
 				],
