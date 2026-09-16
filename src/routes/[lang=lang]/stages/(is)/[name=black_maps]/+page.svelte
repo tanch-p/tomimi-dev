@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { dev } from '$app/environment';
 	import type { RogueTopic } from '$lib/types';
 	import type { PageData } from './$types';
 	import {
@@ -17,7 +16,7 @@
 		activeFloorEffects,
 		gold
 	} from './stores';
-	import DifficultySelect from '$lib/components/DifficultySelect.svelte';
+	import CombinedSettings from './CombinedSettings.svelte';
 	import StageNav from '../../../(app)/black/StageNav.svelte';
 	import StageInfo from '$lib/components/StageInfo.svelte';
 	import FooterBar from '$lib/components/FooterBar.svelte';
@@ -35,12 +34,7 @@
 	import weatherOptions from '$lib/data/is/black/weather.json';
 	import weather1 from '$lib/images/is/black/rogue_6_weather_1.webp';
 	import weather2 from '$lib/images/is/black/rogue_6_weather_2.webp';
-	import {
-		copyRunState,
-		type UserRunState,
-		type UserRunStateRelic,
-		tryDecodeUserRunState
-	} from '$lib/functions/userRunStateHelpers';
+	import { type UserRunState, tryDecodeUserRunState } from '$lib/functions/userRunStateHelpers';
 	import { createGoldVariationEffect, goldVariation } from './variationHelpers';
 
 	export let data: PageData;
@@ -52,41 +46,13 @@
 		rogue_6_weather_2: weather2
 	};
 	let synchronising = false;
+	let hideLoaderTimeout: ReturnType<typeof setTimeout> | undefined;
 
-	async function copyCurrentRunState() {
-		const relics: UserRunStateRelic[] = $selectedRelics.map((relic) => ({
-			id: relic.id,
-			...(relic.stages && Number.isSafeInteger(relic.count) ? { count: relic.count } : {})
-		}));
-		const variation = $activeFloorEffects[0]?.iconId;
-		const state: UserRunState = {
-			topic: 'ro6',
-			relics,
-			diff: $difficulty,
-			...(variation ? { variation } : {}),
-			gold: $gold,
-			floor: $selectedFloor,
-			...(configIndex !== 0 ? { configIndex } : {})
-		};
-
-		try {
-			await copyRunState(state);
-		} catch (err) {
-			dev && console.error(err);
-		}
-	}
-
-	onMount(() => {
-		const initialState = tryDecodeUserRunState(
-			new URLSearchParams(window.location.search).get('state'),
-			'ro6'
-		);
-
-		if (!initialState) return;
-
+	function applyRunState(initialState: UserRunState) {
 		synchronising = true;
 
-		const hideLoaderTimeout = setTimeout(() => {
+		clearTimeout(hideLoaderTimeout);
+		hideLoaderTimeout = setTimeout(() => {
 			synchronising = false;
 		}, 300);
 
@@ -134,13 +100,18 @@
 			selectedFloor.set(initialState.floor);
 		}
 
-		if (
-			initialState.configIndex !== undefined &&
-			initialState.configIndex > 0 &&
-			initialState.configIndex < data.stageData.data.length
-		) {
-			configIndex = initialState.configIndex;
-		}
+		const nextConfigIndex = initialState.configIndex ?? 0;
+		configIndex =
+			nextConfigIndex >= 0 && nextConfigIndex < data.stageData.data.length ? nextConfigIndex : 0;
+	}
+
+	onMount(() => {
+		const initialState = tryDecodeUserRunState(
+			new URLSearchParams(window.location.search).get('state'),
+			'ro6'
+		);
+
+		if (initialState) applyRunState(initialState);
 
 		return () => clearTimeout(hideLoaderTimeout);
 	});
@@ -200,7 +171,15 @@
 		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}>
 			<!-- <StageDrops slot="drops" mapConfig={mapConfig} {language} {rogueTopic} {selectedFloor} /> -->
 		</StageInfo>
-		<DifficultySelect {language} {difficulty} {rogueTopic} maxDiff={15} />
+		<CombinedSettings
+			{language}
+			{difficulty}
+			{rogueTopic}
+			{eliteMode}
+			{mapConfig}
+			{configIndex}
+			onLoadState={applyRunState}
+		/>
 		<StageSharedContainer
 			{language}
 			{traps}

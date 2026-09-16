@@ -5,12 +5,13 @@
 		eliteOpsColor,
 		getEliteIcon,
 		iconCombat,
-		rogueTopic;
+		rogueTopic,
+		idPrefix = '';
 </script>
 
 <div class="grid grid-cols-2 font-bold text-lg text-gray-700 select-none">
 	<button
-		id="normal-toggle"
+		id={idPrefix ? `${idPrefix}-normal-toggle` : 'normal-toggle'}
 		class={`flex justify-center items-center py-1 ${combatOpsColor} ${
 			!$eliteMode ? 'text-gray-900' : 'opacity-30'
 		}`}
@@ -27,7 +28,7 @@
 		/>
 	</button>
 	<button
-		id="elite-toggle"
+		id={idPrefix ? `${idPrefix}-elite-toggle` : 'elite-toggle'}
 		class={`flex justify-center items-center ${eliteOpsColor} ${
 			$eliteMode ? 'text-black' : 'opacity-30'
 		}`}
