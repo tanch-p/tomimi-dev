@@ -136,7 +136,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="px-1.5 mt-3">
+			<div class="px-3 mt-3">
 				<div
 					class="flex flex-col items-center min-w-28 p-3 pb-1 bg-[#161616] bg-opacity-80 rounded float-right"
 				>
