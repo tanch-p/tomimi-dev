@@ -15,12 +15,9 @@
 		tooltip_en: string;
 	};
 	export let language: Language;
+	export let idPrefix = '';
 
-	let selected = false;
-
-	activeFloorEffects.subscribe((list) => {
-		selected = Boolean(list.find((ele) => ele.id === effect.id));
-	});
+	$: selected = $activeFloorEffects.some((item) => item.id === effect.id);
 
 	function handleClick() {
 		if (!$activeFloorEffects.find((ele) => ele.id === effect.id)) {
@@ -33,7 +30,8 @@
 </script>
 
 <button
-	id={effect.iconId}
+	id={idPrefix ? `${idPrefix}-${effect.id}` : effect.iconId}
+	type="button"
 	class={`grid grid-cols-[75px_auto] items-center gap-x-2 text-start ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}

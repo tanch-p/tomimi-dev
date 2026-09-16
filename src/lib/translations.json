@@ -1793,6 +1793,51 @@
 		"ja": "設定",
 		"zh": "设定"
 	},
+	"run_state_code": {
+		"en": "Run state code",
+		"ja": "プレイ状態コード",
+		"zh": "运行状态代码"
+	},
+	"copy_code": {
+		"en": "Copy code",
+		"ja": "コードをコピー",
+		"zh": "复制代码"
+	},
+	"copied": {
+		"en": "Copied",
+		"ja": "コピーしました",
+		"zh": "已复制"
+	},
+	"copy_failed": {
+		"en": "Could not copy the code",
+		"ja": "コードをコピーできませんでした",
+		"zh": "无法复制代码"
+	},
+	"load_settings": {
+		"en": "Load settings",
+		"ja": "設定を読み込む",
+		"zh": "载入设置"
+	},
+	"paste_run_state_code": {
+		"en": "Paste a run state code",
+		"ja": "プレイ状態コードを貼り付け",
+		"zh": "粘贴运行状态代码"
+	},
+	"invalid_run_state_code": {
+		"en": "Invalid run state code",
+		"ja": "無効なプレイ状態コードです",
+		"zh": "运行状态代码无效"
+	},
+	"load": {
+		"en": "Load",
+		"ja": "読み込む",
+		"zh": "载入"
+	},
+	"cancel": {
+		"en": "Cancel",
+		"ja": "キャンセル",
+		"zh": "取消"
+	},
 	"general_search": {
 		"en": "General Search",
 		"ja": "一般検索",
