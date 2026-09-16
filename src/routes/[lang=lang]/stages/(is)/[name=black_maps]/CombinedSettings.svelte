@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import { getEliteColors } from '$lib/functions/stageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
@@ -82,7 +82,7 @@
 			copyError = false;
 			copied = true;
 			clearTimeout(copyResetTimeout);
-			copyResetTimeout = setTimeout(() => (copied = false), 2000);
+			copyResetTimeout = setTimeout(() => (copied = false), 1500);
 		} catch {
 			copyError = true;
 		}
@@ -151,36 +151,52 @@
 				title={copied ? translations.copied : translations.copy_code}
 				class="flex h-9 w-9 shrink-0 items-center justify-center rounded hover:bg-neutral-700"
 			>
-				{#if copied}
-					<svg
-						transition:fade={{ duration: 150 }}
-						class="h-6 w-6 text-green-400"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2.5"
-						aria-hidden="true"
-					>
-						<path stroke-linecap="round" stroke-linejoin="round" d="m5 12 4 4L19 6" />
-					</svg>
-				{:else}
-					<svg
-						transition:fade={{ duration: 150 }}
-						class="h-6 w-6"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						aria-hidden="true"
-					>
-						<rect x="8" y="8" width="12" height="12" rx="2" />
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"
-						/>
-					</svg>
-				{/if}
+				<span class="relative grid h-6 w-6 place-items-center">
+					{#if copied}
+						<span
+							class="absolute inset-0 grid place-items-center"
+							in:scale={{ duration: 120, start: 0.7 }}
+							out:scale={{ duration: 100, start: 0.7 }}
+						>
+							<svg
+								class="absolute h-6 w-6 text-green-400"
+								in:fade={{ duration: 120 }}
+								out:fade={{ duration: 100 }}
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2.5"
+								aria-hidden="true"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="m5 12 4 4L19 6" />
+							</svg>
+						</span>
+					{:else}
+						<span
+							class="absolute inset-0 grid place-items-center"
+							in:scale={{ duration: 120, start: 0.7 }}
+							out:scale={{ duration: 100, start: 0.7 }}
+						>
+							<svg
+								class="absolute h-6 w-6"
+								in:fade={{ duration: 120 }}
+								out:fade={{ duration: 100 }}
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								aria-hidden="true"
+							>
+								<rect x="8" y="8" width="12" height="12" rx="2" />
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"
+								/>
+							</svg>
+						</span>
+					{/if}
+				</span>
 			</button>
 		</div>
 		{#if copyError}
