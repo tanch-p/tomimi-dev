@@ -62,110 +62,132 @@
 			{#if data.stageData.data.length > 1}
 				<TitleBlock title={getTranslations(language).stage_choice} size="subheading">
 					<div class="flex flex-wrap md:grid grid-flow-col auto-cols-fr">
-						{#each data.stageData.data as { suffix }, i}
+						{#each data.stageData.data as { suffix, levelId }, i}
 							<button
 								class="basis-1/3 grow {i !== configIndex
 									? 'bg-neutral-600 brightness-50 min-h-[50px] hover:brightness-75'
 									: 'bg-sky-500'}"
 								on:click={() => (configIndex = i)}
 							>
-								{#if suffix === 'choice_yi'}
+								{#if levelId === 'level_rogue6_t-8'}
 									<div class="flex items-center justify-center gap-x-1.5">
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2118_dylbhm.webp`}
+											src={`/images/enemy_icons/enemy_10073_mpcar.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'yi'}
+											alt={'mpcar'}
 										/>
-										<span
-											>{{ zh: '化镇抚', ja: '鎮撫と化す', en: 'Suppressive strike' }[
-												language
-											]}</span
-										>
+										<img
+											class="select-none"
+											src={`/images/enemy_icons/enemy_10077_mpbarr.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'mpbarr'}
+										/>
+										<span>{suffix}</span>
 									</div>
-								{:else if suffix === 'choice_sui'}
+								{:else if levelId === 'level_rogue6_t-8-b'}
 									<div class="flex items-center justify-center gap-x-1.5">
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2119_dyshhj.webp`}
+											src={`/images/enemy_icons/enemy_1152_dsurch.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'sui'}
+											alt={'dsurch'}
 										/>
-										<span>{{ zh: '溯承形', ja: '承形を遡る', en: 'Inheritance' }[language]}</span>
+										<img
+											class="select-none"
+											src={`/images/enemy_icons/enemy_1148_dssbr.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'dssbr'}
+										/>
+										<span>{suffix}</span>
 									</div>
-								{:else if suffix === 'choice_wang'}
+								{:else if levelId === 'level_rogue6_t-8-c'}
 									<div class="flex items-center justify-center gap-x-1.5">
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2120_dywqgs.webp`}
+											src={`/images/enemy_icons/enemy_2136_shcolo.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'wang'}
+											alt={'shcolo'}
 										/>
-										<span>{{ zh: '改对弈', ja: '対局に改める', en: 'Match' }[language]}</span>
+										<img
+											class="select-none"
+											src={`/images/enemy_icons/enemy_1392_dhshld.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'dhshld'}
+										/>
+										<span>{suffix}</span>
 									</div>
-								{:else if suffix === 'choice_rgdysm'}
+								{:else if levelId === 'level_rogue6_t-9'}
 									<div class="flex items-center justify-center gap-x-1.5">
 										<img
 											class="select-none"
-											src={`/images/chara_icons/trap_222_rgdysm.webp`}
+											src={`/images/enemy_icons/enemy_1439_dslntf_2.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'cyue'}
+											alt={'dslntf_2'}
 										/>
-										<span>{{ zh: '塑旧历', ja: '旧暦を塑す', en: 'Calendar' }[language]}</span>
+										<img
+											class="select-none"
+											src={`/images/enemy_icons/enemy_1436_dsdivi_2.webp`}
+											height="50px"
+											width="50px"
+											decoding="async"
+											alt={'dsdivi_2'}
+										/>
+										<span>{suffix}</span>
 									</div>
-								{:else if suffix === 'choice_tgr'}
+								{:else if levelId === 'level_rogue6_t-9-b'}
 									<div class="flex items-center justify-center gap-x-1.5">
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2126_dycyue.webp`}
+											src={`/images/enemy_icons/enemy_10089_hlsprt.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'cyue'}
+											alt={'hlsprt'}
 										/>
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2127_dysuih.webp`}
+											src={`/images/enemy_icons/enemy_10126_rkbomb_2.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'suih'}
+											alt={'rkbomb_2'}
 										/>
-										<span
-											>{{ zh: '定本源', ja: '根源を定める', en: 'Define a source' }[language]}</span
-										>
+										<span>{suffix}</span>
 									</div>
-								{:else if suffix === 'choice_normal'}
-									<span class="font-bold text-lg">
-										{{ zh: '普通', ja: '通常', en: 'Normal' }[language]}
-									</span>
-								{:else if suffix === 'choice_all'}
+								{:else if levelId === 'level_rogue6_t-9-c'}
 									<div class="flex items-center justify-center gap-x-1.5">
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2126_dycyue.webp`}
+											src={`/images/enemy_icons/enemy_10081_mpplai.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'cyue'}
+											alt={'mpplai'}
 										/>
 										<img
 											class="select-none"
-											src={`/images/enemy_icons/enemy_2127_dysuih.webp`}
+											src={`/images/enemy_icons/enemy_1270_nhstlk.webp`}
 											height="50px"
 											width="50px"
 											decoding="async"
-											alt={'suih'}
+											alt={'nhstlk'}
 										/>
-										<span>{{ zh: '役群兽', ja: '群獣を役す', en: 'Wage war' }[language]}</span>
+										<span>{suffix}</span>
 									</div>
 								{:else}
 									{suffix}
