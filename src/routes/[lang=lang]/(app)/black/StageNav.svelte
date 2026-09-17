@@ -128,6 +128,13 @@
 	table :global(td) {
 		border: 1px solid gray;
 	}
+	table :global(tr[class*='bg-'] td) {
+		border-color: rgba(255, 255, 255, 0.12);
+	}
+
+	table :global(tr[data-has-label='true']) {
+		border-top: 2px solid rgba(255, 255, 255, 0.25);
+	}
 
 	table :global(th) {
 		padding: 6px 0;

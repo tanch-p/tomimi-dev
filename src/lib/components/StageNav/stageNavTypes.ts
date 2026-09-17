@@ -1,6 +1,7 @@
 export type StageGroup = {
 	label?: string | number;
 	rows: readonly (readonly string[])[];
+	backgroundClass?: string;
 };
 
 export type StageInfo = {

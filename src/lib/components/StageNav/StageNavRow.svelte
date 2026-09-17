@@ -9,6 +9,7 @@
 	export let stages: StageCollection | undefined = undefined;
 	export let label: string | number | undefined = undefined;
 	export let labelRowspan = 1;
+	export let backgroundClass: string | undefined = undefined;
 
 	const COLUMN_SPANS: Record<number, number> = {
 		1: 24,
@@ -24,9 +25,9 @@
 	}
 </script>
 
-<tr>
+<tr class={backgroundClass} data-has-label={label !== undefined}>
 	{#if label !== undefined}
-		<td colspan="2" rowspan={labelRowspan}>{label}</td>
+		<td colspan="2" rowspan={labelRowspan} class="font-bold">{label}</td>
 	{/if}
 
 	{#each items as levelId (levelId)}

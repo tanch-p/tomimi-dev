@@ -18,5 +18,6 @@
 		{stages}
 		label={index === 0 ? group.label : undefined}
 		labelRowspan={group.rows.length}
+		backgroundClass={group.backgroundClass}
 	/>
 {/each}
