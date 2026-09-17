@@ -1,0 +1,99 @@
+{
+	"level_rogue5_b-9-a": {
+		"icons": [{ "type": "enemy", "id": "enemy_2118_dylbhm" }],
+		"label": {
+			"zh": "化镇抚",
+			"ja": "鎮撫と化す",
+			"en": "Suppressive strike"
+		}
+	},
+	"level_rogue5_b-9-b": {
+		"icons": [{ "type": "enemy", "id": "enemy_2119_dyshhj" }],
+		"label": {
+			"zh": "溯承形",
+			"ja": "承形を遡る",
+			"en": "Inheritance"
+		}
+	},
+	"level_rogue5_b-9-c": {
+		"icons": [{ "type": "enemy", "id": "enemy_2120_dywqgs" }],
+		"label": {
+			"zh": "改对弈",
+			"ja": "対局に改める",
+			"en": "Match"
+		}
+	},
+	"level_rogue5_b-9-d": {
+		"icons": [{ "type": "chara", "id": "trap_222_rgdysm" }],
+		"label": {
+			"zh": "塑旧历",
+			"ja": "旧暦を塑す",
+			"en": "Calendar"
+		}
+	},
+	"level_rogue5_b-9-e": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_2126_dycyue" },
+			{ "type": "enemy", "id": "enemy_2127_dysuih" }
+		],
+		"label": {
+			"zh": "役群兽",
+			"ja": "群獣を役す",
+			"en": "Wage war"
+		}
+	},
+	"level_rogue5_b-10": {
+		"label": {
+			"zh": "普通",
+			"ja": "通常",
+			"en": "Normal"
+		}
+	},
+	"level_rogue5_b-10-b": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_2126_dycyue" },
+			{ "type": "enemy", "id": "enemy_2127_dysuih" }
+		],
+		"label": {
+			"zh": "定本源",
+			"ja": "根源を定める",
+			"en": "Define a source"
+		}
+	},
+	"level_rogue6_t-8": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_10073_mpcar" },
+			{ "type": "enemy", "id": "enemy_10077_mpbarr" }
+		]
+	},
+	"level_rogue6_t-8-b": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_1152_dsurch" },
+			{ "type": "enemy", "id": "enemy_1148_dssbr" }
+		]
+	},
+	"level_rogue6_t-8-c": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_2136_shcolo" },
+			{ "type": "enemy", "id": "enemy_1392_dhshld" }
+		]
+	},
+	"level_rogue6_t-9": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_1439_dslntf_2" },
+			{ "type": "enemy", "id": "enemy_1436_dsdivi_2" }
+		]
+	},
+	"level_rogue6_t-9-b": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_10089_hlsprt" },
+			{ "type": "enemy", "id": "enemy_10126_rkbomb_2" }
+		]
+	},
+	"level_rogue6_t-9-c": {
+		"icons": [
+			{ "type": "enemy", "id": "enemy_10081_mpplai" },
+			{ "type": "enemy", "id": "enemy_1270_nhstlk" }
+		]
+	}
+}

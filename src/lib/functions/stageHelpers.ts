@@ -54,3 +54,9 @@ export function getStageType(levelId: string, rogueTopic: RogueTopic) {
 	}
 	return '';
 }
+
+export function getIconPath(icon: { type: 'enemy' | 'chara'; id: string }) {
+	const folder = icon.type === 'enemy' ? 'enemy_icons' : 'chara_icons';
+
+	return `/images/${folder}/${icon.id}.webp`;
+}
