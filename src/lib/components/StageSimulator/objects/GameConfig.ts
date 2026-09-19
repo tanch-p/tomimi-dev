@@ -16,15 +16,21 @@ export class GameConfig {
 	static state = 'loading';
 	static subscribers = new Set();
 	static tokenCard = null;
+	static tokensDisabled = false;
+	static totalDeductedCost = 0;
+	static tokenCooldownDuration = 0;
+	static tokenCooldownRemaining = 0;
 	static eliteMode = false;
 	static cameraLock = true;
 	static currentWaveIndex = 0;
 	static specialMods = {};
 	static stagePhaseIndex = 0;
+	static steeringEnabled = true;
 
 	static subscribe(key: string, callback) {
-		this.subscribers.add({ key, callback });
-		return () => this.subscribers.delete({ key, callback });
+		const subscriber = { key, callback };
+		this.subscribers.add(subscriber);
+		return () => this.subscribers.delete(subscriber);
 	}
 
 	static setValue(key: string, value: unknown) {

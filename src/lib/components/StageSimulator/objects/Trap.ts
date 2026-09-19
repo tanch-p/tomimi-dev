@@ -9,11 +9,26 @@ import { getAnimDuration, getIdleAnimName, getSpineMetaData } from '$lib/functio
 import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
+import escapeButtonUrl from '$lib/images/battlecommon/btn_escape.webp';
+import selectionFrameUrl from '$lib/images/battlecommon/sprite_character_menu_frame.webp';
 import type { GameManager } from './GameManager';
+
+let escapeButtonTexture: THREE.Texture | null = null;
+let selectionFrameTexture: THREE.Texture | null = null;
+
+function loadUITexture(url: string) {
+	const texture = new THREE.TextureLoader().load(url);
+	texture.colorSpace = THREE.SRGBColorSpace;
+	texture.minFilter = THREE.LinearFilter;
+	texture.magFilter = THREE.LinearFilter;
+	return texture;
+}
 
 export class Trap {
 	assetManager: AssetManager;
 	isRoadblock: 0 | 1;
+	roadblockApplied = false;
+	roadblockPreviousValue: number | null = null;
 	data;
 	key: string;
 	alias: string;
@@ -37,6 +52,9 @@ export class Trap {
 	previousAnimation: string | null = null;
 	pathGroup: THREE.Group | null = null;
 	sprite: THREE.Sprite | null = null;
+	showUI: THREE.Group | null = null;
+	uiInteractiveObjects: THREE.Object3D[] = [];
+	userPlacementId: string | null = null;
 	selected = false;
 	constructor(data, pos, isSimulation: boolean, blackboard, gameManager?: GameManager) {
 		this.assetManager = AssetManager.getInstance();
@@ -88,6 +106,78 @@ export class Trap {
 
 	getMesh() {
 		return this.meshGroup;
+	}
+
+	initSelectionUI() {
+		if (
+			this.isSimulation ||
+			!this.gameManager ||
+			this.showUI ||
+			(!this.branchKey && !this.isRoadblock)
+		) {
+			return;
+		}
+
+		if (!this.sprite) {
+			this.createSelectionSprite();
+		}
+
+		selectionFrameTexture ??= loadUITexture(selectionFrameUrl);
+		const frame = new THREE.Sprite(
+			new THREE.SpriteMaterial({
+				map: selectionFrameTexture,
+				transparent: true,
+				depthTest: false,
+				depthWrite: false
+			})
+		);
+		frame.name = 'selection-frame';
+		frame.scale.set(GameConfig.gridSize * 6.1, GameConfig.gridSize * 6.1, 1);
+		frame.renderOrder = 100;
+
+		const ui = new THREE.Group();
+		ui.name = 'trap-selection-ui';
+		ui.position.copy(this.meshGroup.position);
+		ui.visible = false;
+		ui.add(frame);
+
+		if (this.isRoadblock) {
+			escapeButtonTexture ??= loadUITexture(escapeButtonUrl);
+			const escapeButton = new THREE.Sprite(
+				new THREE.SpriteMaterial({
+					map: escapeButtonTexture,
+					transparent: true,
+					depthTest: false,
+					depthWrite: false
+				})
+			);
+			escapeButton.name = 'escape-button';
+			escapeButton.position.set(GameConfig.gridSize * -1.4, GameConfig.gridSize * 1.3, 0.01);
+			escapeButton.scale.set(GameConfig.gridSize * 1.125, GameConfig.gridSize * 1.125, 1);
+			escapeButton.renderOrder = 101;
+			escapeButton.userData.roadblockRemove = this;
+			ui.add(escapeButton);
+			this.uiInteractiveObjects.push(escapeButton);
+		}
+
+		this.showUI = ui;
+		this.gameManager.scene.add(ui);
+	}
+
+	private createSelectionSprite() {
+		const selectionSprite = new THREE.Sprite(
+			new THREE.SpriteMaterial({
+				transparent: true,
+				depthTest: false,
+				opacity: 0
+			})
+		);
+		selectionSprite.scale.set(GameConfig.gridSize * 0.85, GameConfig.gridSize * 0.85, 1);
+		selectionSprite.position.z = GameConfig.gridSize / 2;
+		selectionSprite.userData.trap = this;
+		this.sprite = selectionSprite;
+		this.meshGroup.add(selectionSprite);
+		this.gameManager.game.objects.push(selectionSprite);
 	}
 
 	initModel(type) {
@@ -226,30 +316,64 @@ export class Trap {
 
 	remove() {
 		const gameManager = this.gameManager;
-		const sprite = this.sprite;
-		if (sprite) {
-			const index = gameManager.game.objects.findIndex((object) => object.uuid === sprite.uuid);
-			if (index !== undefined && index !== -1) {
-				gameManager.game.objects.splice(index, 1);
+		gameManager?.removeTrap(this);
+		if (gameManager) {
+			for (const interactiveObject of [this.sprite, ...(this.uiInteractiveObjects ?? [])]) {
+				if (!interactiveObject) continue;
+				const index = gameManager.game.objects.findIndex(
+					(object) => object.uuid === interactiveObject.uuid
+				);
+				if (index !== -1) gameManager.game.objects.splice(index, 1);
 			}
 		}
+		if (this.showUI) {
+			this.gameManager?.scene.remove(this.showUI);
+			clearObjects(this.showUI);
+			this.showUI = null;
+		}
+		this.uiInteractiveObjects = [];
 		if (this.pathGroup) {
 			this.gameManager?.scene.remove(this.pathGroup);
 			clearObjects(this.pathGroup);
 		}
+		this.selected = false;
+		this.syncTokensDisabled();
 		clearObjects(this.meshGroup);
 	}
 
 	onSelect() {
-		if (!this.pathGroup || !this.gameManager || this.selected) return;
-		this.gameManager.scene.add(this.pathGroup);
+		if (!this.gameManager || this.selected) return;
+		if (this.pathGroup) this.gameManager.scene.add(this.pathGroup);
+		if (this.showUI) this.showUI.visible = true;
+		for (const interactiveObject of this.uiInteractiveObjects) {
+			if (!this.gameManager.game.objects.includes(interactiveObject)) {
+				this.gameManager.game.objects.push(interactiveObject);
+			}
+		}
 		this.selected = true;
+		this.syncTokensDisabled();
 	}
 
 	onDeselect() {
-		if (!this.pathGroup || !this.gameManager || !this.selected) return;
-		this.gameManager.scene.remove(this.pathGroup);
+		if (!this.gameManager || !this.selected) return;
+		if (this.pathGroup) this.gameManager.scene.remove(this.pathGroup);
+		if (this.showUI) this.showUI.visible = false;
+		for (const interactiveObject of this.uiInteractiveObjects) {
+			const index = this.gameManager.game.objects.indexOf(interactiveObject);
+			if (index !== -1) this.gameManager.game.objects.splice(index, 1);
+		}
 		this.selected = false;
+		this.syncTokensDisabled();
+	}
+
+	private syncTokensDisabled() {
+		const traps = this.gameManager?.traps;
+		const tokensDisabled =
+			this.selected || Boolean(traps && Array.from(traps.values()).some((trap) => trap.selected));
+		if (GameConfig.tokensDisabled !== tokensDisabled) {
+			GameConfig.setValue('tokensDisabled', tokensDisabled);
+		}
+		if (tokensDisabled) this.gameManager?.game.hideRollOverMesh?.();
 	}
 
 	activateBranch() {

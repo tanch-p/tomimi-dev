@@ -18,7 +18,7 @@ import {
 
 const moveMultiplier = 0.5;
 const animatedPathCountdownFadeDuration = 4;
-
+const movementFrameInterval = 1 / 30;
 export class Enemy {
 	raycastPos: THREE.Vector3; //光标坐标在移动逻辑中被大量使用，造成了一些反直觉的现象
 	targetPos: THREE.Vector3;
@@ -26,6 +26,7 @@ export class Enemy {
 	assetManager: AssetManager;
 	gameManager: GameManager;
 	pathFinder: SPFA;
+	pathRevision = 0;
 	data;
 	key: string;
 	spawnUID: string;
@@ -38,6 +39,11 @@ export class Enemy {
 	state: string;
 	alive = true;
 	direction: THREE.Vector3;
+	avoidanceForce = new THREE.Vector3();
+	avoidanceFrameCounter = 0;
+	halfBodyWidth = 0.2;
+	inertia = new THREE.Vector3();
+	movementFrameAccumulator = 0;
 	motionMode: 'WALK' | 'FLY' | 'BLINK' | 'SKILL_BLINK' | 'NONE';
 	isMoving = false;
 	traits: Skill[];
@@ -164,6 +170,15 @@ export class Enemy {
 				: null;
 			this.motionMode = setData.motionMode;
 			this.isMoving = setData.isMoving;
+			this.avoidanceForce.set(
+				setData.avoidanceForce?.x ?? 0,
+				setData.avoidanceForce?.y ?? 0,
+				setData.avoidanceForce?.z ?? 0
+			);
+			this.avoidanceFrameCounter = setData.avoidanceFrameCounter ?? 0;
+			this.halfBodyWidth = setData.halfBodyWidth ?? 0.2;
+			this.inertia.set(setData.inertia?.x ?? 0, setData.inertia?.y ?? 0, setData.inertia?.z ?? 0);
+			this.movementFrameAccumulator = setData.movementFrameAccumulator ?? 0;
 			this.blinkState = setData.blinkState;
 			this.blinkElapsedTime = setData.blinkElapsedTime;
 			this.skillBlinkState = setData.skillBlinkState ?? null;
@@ -181,7 +196,7 @@ export class Enemy {
 			this.spineAnimIndex = setData.spineAnimIndex;
 			this.timeToWait = setData.timeToWait;
 			this.standbyTime = setData.standbyTime;
-			this.pathFinder = setData.pathFinder;
+			this.pathFinder = gameManager.pathFinder;
 			this.fragmentKey = setData.fragmentKey;
 			this.reviveTimer = setData.reviveTimer;
 			this.reviveDuration = setData.reviveDuration;
@@ -243,6 +258,7 @@ export class Enemy {
 			this.configureTimeout();
 			this.actions = this.getActions(route);
 		}
+		this.pathRevision = this.pathFinder.revision;
 		if (this.traits.find((skill) => skill.key === 'not_count_in_total')) {
 			this.dontBlockWave = true;
 		}
@@ -289,6 +305,7 @@ export class Enemy {
 			const { x, y } = this.gameManager.getVectorCoordinates(route.startPosition, null);
 			this.raycastPos = new THREE.Vector3(x, y, GameConfig.baseZIndex);
 			const standbyTime = this.skills.find((skill) => skill.standby)?.standby;
+			this.gridPos = `${route.startPosition.col},${route.startPosition.row}`;
 			if (standbyTime) {
 				this.state = 'standby';
 				this.standbyTime = standbyTime;
@@ -642,9 +659,72 @@ export class Enemy {
 		return new THREE.Vector3(x, y - GameConfig.gridSize * 0.2, z);
 	}
 
+	private getAvoidanceForce(direction: THREE.Vector3) {
+		if (this.motionMode !== 'WALK') return new THREE.Vector3();
+		if (this.avoidanceFrameCounter === 0) {
+			this.avoidanceForce.copy(
+				this.gameManager.calculateAvoidanceForce?.(
+					this.raycastPos,
+					this.getFootpoint(),
+					direction,
+					this.halfBodyWidth
+				) ?? new THREE.Vector3()
+			);
+		}
+		this.avoidanceFrameCounter = (this.avoidanceFrameCounter + 1) % 3;
+		return this.avoidanceForce.clone();
+	}
+
+	private clampMagnitude(vector: THREE.Vector3, maximum: number) {
+		if (maximum <= 0) return vector.set(0, 0, 0);
+		if (vector.lengthSq() > maximum * maximum) vector.setLength(maximum);
+		return vector;
+	}
+
+	private calculateMovementVelocity(direction: THREE.Vector3, theoreticalSpeed: number) {
+		const steeringFactor = GameConfig.steeringEnabled ? (this.motionMode === 'FLY' ? 20 : 8) : 100;
+		const maxSteeringForce = GameConfig.steeringEnabled
+			? this.motionMode === 'FLY'
+				? 100
+				: 10
+			: 100;
+		const speedRatio = theoreticalSpeed > 0 ? this.inertia.length() / theoreticalSpeed : 0;
+		const actualAvoidance = this.getAvoidanceForce(direction).multiplyScalar(
+			Math.max(speedRatio, 0.5)
+		);
+		const acceleration = direction
+			.clone()
+			.multiplyScalar(theoreticalSpeed)
+			.sub(this.inertia)
+			.multiplyScalar(steeringFactor)
+			.add(actualAvoidance);
+		this.clampMagnitude(acceleration, maxSteeringForce);
+
+		const velocity = acceleration.multiplyScalar(movementFrameInterval).add(this.inertia);
+		this.clampMagnitude(velocity, theoreticalSpeed);
+		this.inertia.copy(velocity);
+		return velocity;
+	}
+
+	private getMovementDirection(reachOffset) {
+		const direction = new THREE.Vector3().subVectors(this.targetPos, this.raycastPos).normalize();
+		if (direction.x !== 0) return direction;
+
+		let nextCheckPoint;
+		for (let i = this.currentActionIndex; i < this.actions.length; i++) {
+			if (['cp', 'end'].includes(this.actions[i].pathType)) {
+				nextCheckPoint = this.actions[i].position;
+			}
+		}
+		if (!nextCheckPoint) nextCheckPoint = this.actions[this.actions.length - 1]?.position;
+		if (!nextCheckPoint) return direction;
+		const { x, y } = this.gameManager.getVectorCoordinates(nextCheckPoint, reachOffset);
+		return new THREE.Vector3(x, y, GameConfig.baseZIndex).sub(this.raycastPos).normalize();
+	}
+
 	getActions(route) {
 		const actions = [
-			...route.checkpoints.map((cp) => {
+			...(route.checkpoints ?? []).map((cp) => {
 				return { ...cp, pathType: 'cp' };
 			}),
 			{
@@ -671,44 +751,11 @@ export class Enemy {
 		// WALK
 		let currentPosition = this.route.startPosition; //spawnOffset not applied
 		const routedActions = actions.reduce((acc, action) => {
-			const { type, pathType, position, reachOffset } = action;
+			const { type, position } = action;
 			switch (type) {
 				case 'MOVE':
 					{
-						// Special case where Movement in same position but with reachOffset ro2_4_5
-						if (currentPosition.row === position.row && currentPosition.col === position.col) {
-							acc.push({
-								type: 'MOVE',
-								time: 0.0,
-								position: position,
-								reachOffset: reachOffset,
-								reachDistance: 0.0,
-								pathType: 'cp'
-							});
-							break;
-						}
-						const paths = this.pathFinder.findPath(currentPosition, position);
-						const relevantPaths = paths?.slice(1);
-						if (relevantPaths) {
-							relevantPaths.forEach(([col, row]) => {
-								const isCheckPoint =
-									pathType === 'cp' && row === position.row && col === position.col;
-								const isEnd = pathType === 'end' && row === position.row && col === position.col;
-								acc.push({
-									type: 'MOVE',
-									time: 0.0,
-									position: { row, col },
-									reachOffset: isCheckPoint
-										? reachOffset
-										: {
-												x: 0.0,
-												y: 0.0
-										  },
-									reachDistance: 0.0,
-									pathType: isCheckPoint ? 'cp' : isEnd ? 'end' : 'intermediate'
-								});
-							});
-						}
+						acc.push(...this.buildMovementActions(currentPosition, action));
 						currentPosition = position;
 					}
 					break;
@@ -724,6 +771,88 @@ export class Enemy {
 			return acc;
 		}, []);
 		return routedActions;
+	}
+
+	private buildMovementActions(currentPosition, action, allowBlockedStart = false) {
+		const { pathType, position, reachOffset } = action;
+		if (currentPosition.row === position.row && currentPosition.col === position.col) {
+			return [{ ...action, reachDistance: 0.0, pathBlocked: false }];
+		}
+
+		const path = this.pathFinder.findPath(
+			currentPosition,
+			position,
+			this.route.allowDiagonalMove !== false,
+			allowBlockedStart
+		);
+		if (path.length === 0) {
+			return [{ ...action, reachDistance: 0.0, pathBlocked: true }];
+		}
+
+		return path.slice(1).map(([col, row]) => {
+			const isCheckpoint = pathType === 'cp' && row === position.row && col === position.col;
+			const isEnd = pathType === 'end' && row === position.row && col === position.col;
+			return {
+				type: 'MOVE',
+				time: 0.0,
+				position: { row, col },
+				reachOffset: isCheckpoint || isEnd ? reachOffset : { x: 0.0, y: 0.0 },
+				reachDistance: 0.0,
+				pathType: isCheckpoint ? 'cp' : isEnd ? 'end' : 'intermediate',
+				pathBlocked: false
+			};
+		});
+	}
+
+	rerouteForMapChange() {
+		this.pathFinder = this.gameManager.pathFinder;
+		this.pathRevision = this.pathFinder.revision;
+		if (this.motionMode !== 'WALK' || this.currentActionIndex >= this.actions.length) return;
+
+		const [col, row] = this.gridPos.split(',').map(Number);
+		let currentPosition = { row, col };
+		let isFirstMovement = true;
+		const remainingActions = [];
+
+		for (const action of this.actions.slice(this.currentActionIndex)) {
+			if (action.type === 'MOVE') {
+				if (action.pathType === 'intermediate') continue;
+				remainingActions.push(
+					...this.buildMovementActions(currentPosition, action, isFirstMovement)
+				);
+				currentPosition = action.position;
+				isFirstMovement = false;
+				continue;
+			}
+
+			remainingActions.push(action);
+			if (action.type === 'APPEAR_AT_POS') {
+				currentPosition = action.position;
+				isFirstMovement = true;
+			}
+		}
+
+		this.actions = [...this.actions.slice(0, this.currentActionIndex), ...remainingActions];
+		this.isMoving = false;
+		this.targetPos = null;
+		this.avoidanceForce.set(0, 0, 0);
+		this.avoidanceFrameCounter = 0;
+		this.refreshPathVisualisation();
+	}
+
+	private refreshPathVisualisation() {
+		if (this.gameManager.isSimulation) return;
+		if (this.pathGroup) {
+			this.gameManager.scene.remove(this.pathGroup);
+			clearObjects(this.pathGroup);
+		}
+		this.pathGroup = this.visualisePath(
+			this.actions,
+			this.currentActionIndex,
+			this.route.startPosition,
+			this.route.spawnOffset
+		);
+		if (this.selected) this.gameManager.scene.add(this.pathGroup);
 	}
 
 	entryColorChange(delta) {
@@ -791,6 +920,12 @@ export class Enemy {
 	}
 
 	update(delta: number) {
+		if (
+			this.gameManager?.pathFinder &&
+			this.pathRevision !== this.gameManager.pathFinder.revision
+		) {
+			this.rerouteForMapChange();
+		}
 		this.handleAnimUpdate(delta);
 		if (
 			this?.gameManager?.config &&
@@ -839,28 +974,44 @@ export class Enemy {
 		if (this.traits.some((skill) => skill.key === 'statue_enemy')) {
 			return;
 		}
-		// 避障力
-		// const force = this.gameManager.calculateAvoidanceForce(this.raycastPos,this.getFootpoint(),this.direction);
-
-		const { type, position, pathType, time, reachOffset } = this.actions[this.currentActionIndex];
+		const { type, position, pathType, time, reachOffset, pathBlocked } =
+			this.actions[this.currentActionIndex];
+		if (type !== 'MOVE') this.movementFrameAccumulator = 0;
 
 		switch (type) {
 			case 'MOVE':
 				{
+					if (pathBlocked) {
+						this.isMoving = false;
+						this.animState = 'Idle';
+						this.movementFrameAccumulator = 0;
+						return;
+					}
+					if (this.gameManager.config.levelId.includes('_d-') && GameConfig.stagePhaseIndex === 0) {
+						// workaround for duel stages to prevent enemy from moving
+						this.animState = 'Idle';
+						this.movementFrameAccumulator = 0;
+						return;
+					}
 					if (this.standbyTime > 0) {
+						this.movementFrameAccumulator = 0;
 						break;
 					}
 					if (this.skillManager.isUsingSkill) {
+						this.movementFrameAccumulator = 0;
 						break;
 					}
 					if (this.state === 'revive') {
+						this.movementFrameAccumulator = 0;
 						this.handleRevive(delta);
 						break;
 					}
 					if (this.motionMode === 'NONE') {
+						this.movementFrameAccumulator = 0;
 						return;
 					}
 					if (this.motionMode === 'BLINK') {
+						this.movementFrameAccumulator = 0;
 						// smedzi
 						if (!this.skelData) return;
 						switch (this.blinkState) {
@@ -897,6 +1048,7 @@ export class Enemy {
 						return;
 					}
 					if (this.motionMode === 'SKILL_BLINK') {
+						this.movementFrameAccumulator = 0;
 						if (!this.skelData) return;
 						switch (this.skillBlinkState) {
 							case null: {
@@ -955,49 +1107,40 @@ export class Enemy {
 						this.isMoving = true;
 						this.animState = 'Move';
 					}
-					let direction = new THREE.Vector3()
-						.subVectors(this.targetPos, this.raycastPos)
-						.normalize();
-					if (direction.x === 0) {
-						let nextCheckPoint;
-						for (let i = this.currentActionIndex; i < this.actions.length; i++) {
-							if (['cp', 'end'].includes(this.actions[i].pathType)) {
-								nextCheckPoint = this.actions[i].position;
-							}
-						}
-						if (!nextCheckPoint) {
-							nextCheckPoint = this.actions[this.actions.length - 1]?.position;
-						}
-						const { x, y } = this.gameManager.getVectorCoordinates(nextCheckPoint, reachOffset);
-						direction = new THREE.Vector3()
-							.subVectors(new THREE.Vector3(x, y, GameConfig.baseZIndex), this.raycastPos)
-							.normalize();
-					}
-					this.direction = direction;
-					this.updateSpriteOrientation();
+					this.movementFrameAccumulator += delta;
+					while (this.movementFrameAccumulator >= movementFrameInterval) {
+						this.movementFrameAccumulator -= movementFrameInterval;
+						const direction = this.getMovementDirection(reachOffset);
+						const theoreticalSpeed = this.moddedSpeed * moveMultiplier;
+						const velocity = this.calculateMovementVelocity(direction, theoreticalSpeed);
+						if (velocity.lengthSq() > 0) this.direction = velocity.clone().normalize();
+						else this.direction = direction;
+						this.updateSpriteOrientation();
 
-					const distance = this.raycastPos.distanceTo(this.targetPos);
-					const adjustedSpeed = this.moddedSpeed * delta * GameConfig.gridSize * moveMultiplier;
-					let arrivalThreshold = this.arrivalThreshold;
-					if (['cp', 'end'].includes(pathType)) {
-						arrivalThreshold = adjustedSpeed;
-					}
-					if (distance > arrivalThreshold) {
-						const moveDistance = Math.min(adjustedSpeed, distance);
-
-						const dx = this.targetPos.x - this.raycastPos.x;
-						const dy = this.targetPos.y - this.raycastPos.y;
-
-						this.meshGroup.position.x += (dx / distance) * moveDistance;
-						this.raycastPos.x += (dx / distance) * moveDistance;
-						this.meshGroup.position.y += (dy / distance) * moveDistance;
-						this.raycastPos.y += (dy / distance) * moveDistance;
-					} else {
-						this.isMoving = false;
-						if (['cp', 'end'].includes(pathType)) {
-							this.raycastPos.copy(this.targetPos);
+						const distance = this.raycastPos.distanceTo(this.targetPos);
+						const frameDistance = velocity.length() * movementFrameInterval * GameConfig.gridSize;
+						const arrivalThreshold = ['cp', 'end'].includes(pathType)
+							? frameDistance
+							: this.arrivalThreshold;
+						if (distance <= arrivalThreshold) {
+							this.isMoving = false;
+							if (['cp', 'end'].includes(pathType)) this.raycastPos.copy(this.targetPos);
+							this.currentActionIndex++;
+							this.movementFrameAccumulator = 0;
+							break;
 						}
-						this.currentActionIndex++;
+
+						const displacement = velocity.multiplyScalar(
+							movementFrameInterval * GameConfig.gridSize
+						);
+						if (displacement.length() > distance) displacement.setLength(distance);
+						const correctedDisplacement =
+							this.gameManager.correctMovementForObstacle?.(
+								this.meshGroup.position,
+								displacement
+							) ?? displacement;
+						this.meshGroup.position.add(correctedDisplacement);
+						this.raycastPos.add(correctedDisplacement);
 					}
 				}
 				break;
@@ -1051,13 +1194,14 @@ export class Enemy {
 				this.currentActionIndex++;
 				break;
 
-			case 'APPEAR_AT_POS':
+			case 'APPEAR_AT_POS': {
 				this.meshGroup.visible = true;
 				const { x, y } = this.gameManager.getVectorCoordinates(position, reachOffset);
 				this.meshGroup.position.set(x, y, GameConfig.baseZIndex);
 				this.raycastPos = new THREE.Vector3(x, y, GameConfig.baseZIndex);
 				this.currentActionIndex++;
 				break;
+			}
 			default:
 				console.warn(type, ' action is undefined');
 		}
@@ -1438,6 +1582,15 @@ export class Enemy {
 			? new THREE.Vector3(setData.direction.x, setData.direction.y, setData.direction.z)
 			: null;
 		this.isMoving = setData.isMoving;
+		this.avoidanceForce.set(
+			setData.avoidanceForce?.x ?? 0,
+			setData.avoidanceForce?.y ?? 0,
+			setData.avoidanceForce?.z ?? 0
+		);
+		this.avoidanceFrameCounter = setData.avoidanceFrameCounter ?? 0;
+		this.halfBodyWidth = setData.halfBodyWidth ?? 0.2;
+		this.inertia.set(setData.inertia?.x ?? 0, setData.inertia?.y ?? 0, setData.inertia?.z ?? 0);
+		this.movementFrameAccumulator = setData.movementFrameAccumulator ?? 0;
 		this.blinkState = setData.blinkState;
 		this.blinkElapsedTime = setData.blinkElapsedTime;
 		this.skillBlinkState = setData.skillBlinkState ?? null;

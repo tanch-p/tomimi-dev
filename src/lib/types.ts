@@ -188,6 +188,7 @@ export interface MapConfig {
 	initialCost: number;
 	maxCost: number;
 	costIncreaseTime: number;
+	steeringEnabled?: boolean;
 	floors: number[] | null;
 	routes: [] | null;
 	code: string;

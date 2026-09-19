@@ -1,11 +1,12 @@
 import * as THREE from 'three';
-import type { Enemy as EnemyType, MapConfig } from '$lib/types';
+import type { Enemy as EnemyType, MapConfig, Position } from '$lib/types';
 import { GameMap } from './GameMap';
 import { SpawnManager } from './SpawnManager';
 import { GameConfig } from './GameConfig';
 import { GameManager } from './GameManager';
 import { writable } from 'svelte/store';
 import { clearObjects } from '$lib/functions/threejsHelpers';
+import { obstacleEventStore } from '../stores/obstacleEvents';
 
 export class Game {
 	canvas: HTMLCanvasElement;
@@ -25,6 +26,7 @@ export class Game {
 	gameManager: GameManager;
 	isDragging = false;
 	previousMousePosition = { x: 0, y: 0 };
+	unsubscribeTokenCard: () => void = () => undefined;
 
 	constructor(canvasElement: HTMLCanvasElement, config: MapConfig, waveData, enemies: EnemyType[]) {
 		this.canvas = canvasElement;
@@ -33,6 +35,12 @@ export class Game {
 		this.enemies = enemies;
 		this.objects = [];
 		GameConfig.setValue('levelId', config.levelId);
+		obstacleEventStore.reset(config.levelId);
+		GameConfig.setValue('steeringEnabled', config.steeringEnabled ?? true);
+		GameConfig.setValue('tokensDisabled', false);
+		GameConfig.setValue('totalDeductedCost', 0);
+		GameConfig.setValue('tokenCooldownDuration', 0);
+		GameConfig.setValue('tokenCooldownRemaining', 0);
 		GameConfig.setValue('tokenCard', null);
 		if (config.token_cards?.length > 0) {
 			const card = config.token_cards.find((ele) => ele.key === 'trap_001_crate');
@@ -80,6 +88,12 @@ export class Game {
 		this.gameManager = new GameManager(config, this, enemies);
 		this.map = new GameMap(this.gameManager);
 		this.spawnManager = new SpawnManager(waveData, this.map, this.gameManager);
+		this.unsubscribeTokenCard = GameConfig.subscribe(
+			'tokenCard',
+			(card: { selected?: boolean } | null) => {
+				if (!card?.selected) this.hideRollOverMesh();
+			}
+		);
 
 		this.renderer.setAnimationLoop(() => this.render());
 	}
@@ -135,10 +149,16 @@ export class Game {
 
 		GameConfig.setValue('scaledElapsedTime', 0);
 		GameConfig.setValue('waveElapsedTime', 0);
+		obstacleEventStore.reset(this.config.levelId);
+		GameConfig.setValue('steeringEnabled', this.config.steeringEnabled ?? true);
+		GameConfig.setValue('tokensDisabled', false);
+		GameConfig.setValue('totalDeductedCost', 0);
+		GameConfig.setValue('tokenCooldownDuration', 0);
+		GameConfig.setValue('tokenCooldownRemaining', 0);
 		GameConfig.setValue('tokenCard', null);
 		if (this.config.token_cards?.length > 0) {
 			const card = this.config.token_cards.find((ele) => ele.key === 'trap_001_crate');
-			card && GameConfig.setValue('tokenCard', card);
+			card && GameConfig.setValue('tokenCard', { ...card, selected: true });
 		}
 		this.objects = [];
 		clearObjects(this.scene);
@@ -222,8 +242,76 @@ export class Game {
 		this.renderer.setSize(width, height);
 		this.render();
 	}
+	hideRollOverMesh() {
+		const key = GameConfig.tokenCard?.key;
+		const mesh = key ? this.gameManager.rollOverMeshes.get(key)?.getMesh() : null;
+		if (mesh) mesh.visible = false;
+	}
+
+	setRollOverPlacementValidity(mesh: THREE.Object3D, canPlace: boolean) {
+		mesh.visible = true;
+		mesh.traverse((object) => {
+			const renderable = object as THREE.Mesh;
+			if (!renderable.material) return;
+
+			if (!object.userData.rollOverMaterialsCloned) {
+				renderable.material = Array.isArray(renderable.material)
+					? renderable.material.map((material) => material.clone())
+					: renderable.material.clone();
+				object.userData.rollOverMaterialsCloned = true;
+			}
+
+			const materials = Array.isArray(renderable.material)
+				? renderable.material
+				: [renderable.material];
+			for (const material of materials) {
+				if (material.userData.rollOverOriginalOpacity === undefined) {
+					material.userData.rollOverOriginalOpacity = material.opacity;
+					material.userData.rollOverOriginalTransparent = material.transparent;
+					material.userData.rollOverOriginalDepthWrite = material.depthWrite;
+				}
+				material.opacity = canPlace
+					? material.userData.rollOverOriginalOpacity
+					: material.userData.rollOverOriginalOpacity * 0.45;
+				material.transparent = canPlace ? material.userData.rollOverOriginalTransparent : true;
+				material.depthWrite = canPlace ? material.userData.rollOverOriginalDepthWrite : false;
+				material.needsUpdate = true;
+			}
+		});
+	}
+
+	getObstaclePlacement(plane: THREE.Intersection) {
+		const card = GameConfig.tokenCard;
+		if (
+			GameConfig.tokensDisabled ||
+			GameConfig.tokenCooldownRemaining > 0 ||
+			!card?.selected ||
+			card.count <= 0
+		) {
+			return null;
+		}
+
+		const trap = this.gameManager.rollOverMeshes.get(card.key);
+		const mesh = trap?.getMesh();
+		if (!trap || !mesh) return null;
+
+		const gridKey = this.gameManager.getGridPosFromVectors(plane.point);
+		const [col, row] = gridKey.split(',').map(Number);
+		const position: Position = { row, col };
+		const { x, y } = this.gameManager.getVectorCoordinates(position, null);
+		mesh.position.set(x, y, 0.01);
+
+		return {
+			canPlace: this.gameManager.canPlaceRoadblock(position),
+			mesh,
+			position,
+			trap
+		};
+	}
+
 	onPointerMove(event) {
 		if (!GameConfig.cameraLock) {
+			this.hideRollOverMesh();
 			if (!this.isDragging) return;
 			const deltaMove = {
 				x: event.clientX - this.previousMousePosition.x,
@@ -249,9 +337,11 @@ export class Game {
 		}
 
 		if (!event.target.isSameNode(this.canvas)) {
+			this.hideRollOverMesh();
 			return;
 		}
-		if (!GameConfig.tokenCard || !GameConfig.tokenCard.selected) {
+		if (GameConfig.tokensDisabled || !GameConfig.tokenCard || !GameConfig.tokenCard.selected) {
+			this.hideRollOverMesh();
 			return;
 		}
 		const rect = this.renderer.domElement.getBoundingClientRect(); // Get canvas size and position
@@ -262,24 +352,19 @@ export class Game {
 		this.raycaster.setFromCamera(this.pointer, this.camera);
 
 		const intersects = this.raycaster.intersectObjects(this.objects, false);
-		// if (intersects.length > 0) {
-		// 	const plane = intersects.find((ele) => ele?.object?.userData?.name === 'plane');
-		// 	if (!plane) {
-		// 		return;
-		// 	}
-		// 	const mesh = this.gameManager.rollOverMeshes.get(GameConfig.tokenCard.key)?.getMesh();
-		// 	mesh.position.copy(plane.point).add(plane.face.normal);
-		// 	const gridPos = this.gameManager.getGridPosFromVectors(mesh.position);
-		// 	const tile = this.gameManager.tiles.get(gridPos);
-		// 	const trap = this.gameManager.traps.get(gridPos);
-		// 	if (tile?.buildableType == 0 || tile?.heightType == 1 || trap) {
-		// 		mesh.visible = false;
-		// 		return;
-		// 	}
+		const plane = intersects.find((ele) => ele?.object?.userData?.name === 'plane');
+		if (!plane) {
+			this.hideRollOverMesh();
+			return;
+		}
 
-		// 	mesh.visible = true;
-		// 	this.render();
-		// }
+		const placement = this.getObstaclePlacement(plane);
+		if (!placement) {
+			this.hideRollOverMesh();
+			return;
+		}
+		this.setRollOverPlacementValidity(placement.mesh, placement.canPlace);
+		this.render();
 	}
 	onPointerDown(event) {
 		if (!GameConfig.cameraLock) {
@@ -305,45 +390,56 @@ export class Game {
 		const intersects = this.raycaster.intersectObjects(this.objects, false);
 
 		if (intersects.length > 0) {
+			if (this.handleRoadblockInteraction(intersects)) return;
 			const intersect = intersects[0];
 			const plane = intersects.find((ele) => ele?.object?.userData?.name === 'plane');
 
-			// if (plane && GameConfig.tokenCard?.selected) {
-			// 	const trap = this.gameManager.rollOverMeshes.get(GameConfig.tokenCard.key);
-			// 	const mesh = trap.getMesh();
-			// 	mesh.position.copy(plane.point).add(plane.face.normal);
-			// 	mesh.position
-			// 		.divideScalar(GameConfig.gridSize)
-			// 		.floor()
-			// 		.multiplyScalar(GameConfig.gridSize)
-			// 		.addScalar(50);
-			// 	mesh.position.z = 0.01;
-			// 	const { x, y } = mesh.position;
-			// 	const tile = this.gameManager.tiles.get(gridPos);
-			// 	const placedTrap = this.gameManager.traps.get(gridPos);
-			// 	const [col, row] = gridPos.split(',');
-			// 	if (tile?.buildableType == 0 || tile.heightType == 1 || placedTrap) {
-			// 		mesh.visible = false;
-			// 	} else {
-			// 		this.gameManager.addTrap(
-			// 			{
-			// 				key: trap.key,
-			// 				direction: 'UP',
-			// 				pos: { row, col }
-			// 			},
-			// 			null,
-			// 			'world'
-			// 		);
-			// 		GameConfig.setValue('tokenCard', {
-			// 			...GameConfig.tokenCard,
-			// 			count: GameConfig.tokenCard.count - 1
-			// 		});
-			// 		if (GameConfig.tokenCard.count === 0) {
-			// 			GameConfig.setValue('tokenCard', null);
-			// 		}
-			// 		return;
-			// 	}
-			// }
+			if (plane && !GameConfig.tokensDisabled && GameConfig.tokenCard?.selected) {
+				const placement = this.getObstaclePlacement(plane);
+				if (!placement?.canPlace) {
+					if (placement) {
+						this.setRollOverPlacementValidity(placement.mesh, false);
+					} else {
+						this.hideRollOverMesh();
+					}
+					return;
+				}
+				if (GameConfig.tokenCooldownRemaining > 0) return;
+
+				const card = GameConfig.tokenCard;
+				const placedTrap = this.gameManager.addTrap(
+					{
+						key: placement.trap.key,
+						direction: 'UP',
+						pos: placement.position
+					},
+					null,
+					'world'
+				);
+				if (!placedTrap) {
+					this.setRollOverPlacementValidity(placement.mesh, false);
+					return;
+				}
+				placedTrap.userPlacementId = obstacleEventStore.recordPlacement(
+					GameConfig.scaledElapsedTime,
+					placement.position,
+					placedTrap.key
+				);
+				placement.mesh.visible = false;
+				const tokenStats = placedTrap.data?.stats?.[0] ?? placement.trap.data?.stats?.[0];
+				const tokenCost = Number(card.cost ?? tokenStats?.cost ?? 5);
+				const cooldownDuration = Math.max(0, Number(tokenStats?.respawnTime ?? 0));
+				GameConfig.setValue('totalDeductedCost', GameConfig.totalDeductedCost + tokenCost);
+				GameConfig.setValue('tokenCooldownDuration', cooldownDuration);
+				GameConfig.setValue('tokenCooldownRemaining', cooldownDuration);
+
+				const remainingCount = Math.max(0, card.count - 1);
+				GameConfig.setValue(
+					'tokenCard',
+					remainingCount > 0 ? { ...card, count: remainingCount } : null
+				);
+				return;
+			}
 			if (intersect?.object?.userData?.enemy) {
 				const enemy = intersect?.object?.userData?.enemy;
 				if (enemy.selected) {
@@ -374,6 +470,35 @@ export class Game {
 				}
 			});
 		}
+	}
+
+	private handleRoadblockInteraction(intersects: THREE.Intersection[]) {
+		const removeIntersection = intersects.find(
+			(intersection) => intersection.object.userData.roadblockRemove
+		);
+		if (removeIntersection) {
+			const roadblock = removeIntersection.object.userData.roadblockRemove;
+			obstacleEventStore.recordRemoval(
+				GameConfig.scaledElapsedTime,
+				roadblock.position,
+				roadblock.key,
+				roadblock.userPlacementId
+			);
+			roadblock.remove();
+			return true;
+		}
+
+		const roadblockIntersection = intersects.find(
+			(intersection) => intersection.object.userData.trap?.isRoadblock
+		);
+		if (!roadblockIntersection) return false;
+		const roadblock = roadblockIntersection.object.userData.trap;
+		roadblock.onSelect();
+		for (const object of this.objects) {
+			const selectable = object.userData.enemy || object.userData.trap;
+			if (selectable && selectable !== roadblock) selectable.onDeselect();
+		}
+		return true;
 	}
 	onPointerUp() {
 		this.isDragging = false;
@@ -408,6 +533,8 @@ export class Game {
 	}
 
 	cleanup() {
+		this.unsubscribeTokenCard();
+
 		if (this.renderer) {
 			this.renderer.setAnimationLoop(null);
 		}
@@ -418,6 +545,10 @@ export class Game {
 		}
 		GameConfig.setValue('scaledElapsedTime', 0);
 		GameConfig.setValue('waveElapsedTime', 0);
+		GameConfig.setValue('tokensDisabled', false);
+		GameConfig.setValue('totalDeductedCost', 0);
+		GameConfig.setValue('tokenCooldownDuration', 0);
+		GameConfig.setValue('tokenCooldownRemaining', 0);
 
 		this.scene = null;
 		this.camera = null;

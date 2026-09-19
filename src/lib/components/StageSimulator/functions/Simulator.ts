@@ -30,7 +30,7 @@ export function getSimulatedData(config: MapConfig, waveData, enemies: EnemyType
 	let isEnded = false;
 	let i = 1;
 	let count = 0;
-	let data = {};
+	const data = {};
 	let enemiesToHighlight = [];
 	setData(count, data, spawnManager, gameSimManager);
 	enemiesToHighlight = spawnManager.enemiesToHighlight;
@@ -114,6 +114,11 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 				direction: structuredClone(enemy.direction),
 				motionMode: enemy.motionMode,
 				isMoving: enemy.isMoving,
+				avoidanceForce: structuredClone(enemy.avoidanceForce),
+				avoidanceFrameCounter: enemy.avoidanceFrameCounter,
+				halfBodyWidth: enemy.halfBodyWidth,
+				inertia: structuredClone(enemy.inertia),
+				movementFrameAccumulator: enemy.movementFrameAccumulator,
 				blinkState: enemy.blinkState,
 				blinkElapsedTime: enemy.blinkElapsedTime,
 				skillBlinkState: enemy.skillBlinkState,
@@ -249,9 +254,7 @@ class GameSimManager {
 	};
 
 	updateMazeLayout(pos: Position, value: number) {
-		const { row, col } = pos;
-		this.mazeLayout[row][col] = value;
-		this.pathFinder = new SPFA(this.mazeLayout);
+		this.pathFinder.updateTile(pos, value);
 	}
 
 	initTraps(traps) {
@@ -282,7 +285,7 @@ class GameSimManager {
 		const pos = posType === 'game' ? this.gameToWorldPos(data.pos) : data.pos;
 		const trap = new Trap(data, pos, this.isSimulation);
 		if (trap.isRoadblock) {
-			this.updateMazeLayout(pos, 1000);
+			this.updateMazeLayout(pos, Number.POSITIVE_INFINITY);
 		}
 	}
 

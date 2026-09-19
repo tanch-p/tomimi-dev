@@ -39,9 +39,13 @@ class PathGrid {
 	}
 
 	isValid(x: number, y: number): boolean {
-		if (x < 0 || y < 0 || x >= this.width || y >= this.height) return false;
+		if (!this.isInBounds(x, y)) return false;
 		if (this.grid[y][x] === Number.POSITIVE_INFINITY) return false;
 		return true;
+	}
+
+	isInBounds(x: number, y: number): boolean {
+		return x >= 0 && y >= 0 && x < this.width && y < this.height;
 	}
 
 	getNode(x: number, y: number): Node | undefined {
@@ -95,6 +99,7 @@ export class PathCache {
 
 export class SPFA {
 	grid: PathGrid;
+	revision = 0;
 	directions: GridCoordinate[] = [
 		[0, 1], // up
 		[1, 0], // right
@@ -111,13 +116,39 @@ export class SPFA {
 	debug = false;
 	pathCache = new PathCache();
 
-	findPath(start: Position, end: Position, allowDiagonal = true): GridCoordinate[] {
+	findPath(
+		start: Position,
+		end: Position,
+		allowDiagonal = true,
+		allowBlockedStart = false
+	): GridCoordinate[] {
+		return this.findPathInternal(start, end, allowDiagonal, allowBlockedStart, true);
+	}
+
+	hasPath(start: Position, end: Position, allowDiagonal = true): boolean {
+		return this.findPathInternal(start, end, allowDiagonal, false, false).length > 0;
+	}
+
+	private findPathInternal(
+		start: Position,
+		end: Position,
+		allowDiagonal: boolean,
+		allowBlockedStart: boolean,
+		smoothResult: boolean
+	): GridCoordinate[] {
 		const startX = start.col;
 		const startY = start.row;
 		const targetX = end.col;
 		const targetY = end.row;
 
 		if (!this.grid.isValid(startX, startY)) {
+			if (
+				allowBlockedStart &&
+				this.grid.isInBounds(startX, startY) &&
+				this.grid.grid[startY][startX] === Number.POSITIVE_INFINITY
+			) {
+				return this.findPathFromBlockedStart(start, end, allowDiagonal, smoothResult);
+			}
 			return [];
 		}
 
@@ -131,7 +162,7 @@ export class SPFA {
 			// Clone the cached grid to avoid modifications affecting the cache
 			this.grid = this.pathCache.cloneGrid(cachedGrid);
 			const path = this.buildPath(startX, startY);
-			return allowDiagonal ? this.smoothPath(path) : path;
+			return allowDiagonal && smoothResult ? this.smoothPath(path) : path;
 		}
 
 		// If no cache exists, calculate new path
@@ -199,12 +230,69 @@ export class SPFA {
 		this.pathCache.set(targetX, targetY, allowDiagonal, this.grid);
 
 		const path = this.buildPath(startX, startY);
-		return allowDiagonal ? this.smoothPath(path) : path;
+		return allowDiagonal && smoothResult ? this.smoothPath(path) : path;
+	}
+
+	private findPathFromBlockedStart(
+		start: Position,
+		end: Position,
+		allowDiagonal: boolean,
+		smoothResult: boolean
+	): GridCoordinate[] {
+		let bestPath: GridCoordinate[] = [];
+		let bestCost = Infinity;
+
+		// An enemy already occupying a newly blocked tile must be allowed to leave
+		// it. Exit orthogonally so it cannot cut through a blocked corner.
+		for (const [dx, dy] of this.directions.slice(0, 4)) {
+			const neighborX = start.col + dx;
+			const neighborY = start.row + dy;
+			if (!this.grid.isValid(neighborX, neighborY)) continue;
+
+			const candidate = this.findPathInternal(
+				{ row: neighborY, col: neighborX },
+				end,
+				allowDiagonal,
+				false,
+				smoothResult
+			);
+			if (candidate.length === 0) continue;
+
+			let cost = 1;
+			for (let index = 0; index < candidate.length - 1; index++) {
+				cost += this.getClearCorridorCost(candidate[index], candidate[index + 1]);
+			}
+			if (cost < bestCost) {
+				bestCost = cost;
+				bestPath = candidate;
+			}
+		}
+
+		return bestPath.length > 0 ? [[start.col, start.row], ...bestPath] : [];
 	}
 
 	// Method to invalidate cache (useful when map changes)
 	invalidateCache(): void {
 		this.pathCache.clear();
+	}
+
+	updateTile(position: Position, value: number): boolean {
+		return this.updateTiles([{ position, value }]);
+	}
+
+	updateTiles(changes: Array<{ position: Position; value: number }>): boolean {
+		let changed = false;
+		for (const { position, value } of changes) {
+			const { row, col } = position;
+			if (!this.grid.isInBounds(col, row) || this.grid.grid[row][col] === value) continue;
+			this.grid.grid[row][col] = value;
+			changed = true;
+		}
+		if (!changed) return false;
+
+		this.revision++;
+		this.invalidateCache();
+		return true;
 	}
 
 	canStep(x1: number, y1: number, x2: number, y2: number): boolean {
@@ -362,7 +450,7 @@ export class SPFA {
 		for (let y = 0; y < this.grid.height; y++) {
 			for (let x = 0; x < this.grid.width; x++) {
 				const node = this.grid.getNode(x, y);
-				if (node && node.distance !== Infinity) coordinates.push([x, y]);
+				if (node && node.distance < 1000 && node.distance !== Infinity) coordinates.push([x, y]);
 			}
 		}
 

@@ -13,6 +13,14 @@ import { CountdownManager } from './ShaderCountdownManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { Game } from './Game';
 
+type MovementRoute = {
+	motionMode?: string;
+	startPosition?: Position;
+	endPosition?: Position;
+	checkpoints?: Array<{ type: string; position?: Position }>;
+	allowDiagonalMove?: boolean;
+};
+
 export class GameManager {
 	assetManager: AssetManager;
 	scene: THREE.Scene;
@@ -20,6 +28,7 @@ export class GameManager {
 	game: Game;
 	config;
 	mazeLayout: number[][];
+	baseMazeLayout: number[][];
 	enemies: EnemyType[];
 	enemiesOnMap: Enemy[] = [];
 	traps = new Map();
@@ -31,6 +40,7 @@ export class GameManager {
 	tiles = new Map();
 	tileManager: TileManager;
 	rollOverMeshes = new Map();
+	roadblockReachabilityCache = new Map<string, boolean>();
 	countdownManager: CountdownManager;
 	isSimulation = false;
 
@@ -43,6 +53,7 @@ export class GameManager {
 		this.camera = game.camera;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);
 		this.mazeLayout = mazeLayout;
+		this.baseMazeLayout = structuredClone(mazeLayout);
 		this.pathFinder = new SPFA(mazeLayout);
 		this.tileManager = new TileManager(config.levelId);
 		this.countdownManager = CountdownManager.getInstance();
@@ -98,35 +109,126 @@ export class GameManager {
 	}
 
 	getGridPosition = (vector: THREE.Vector3) => {
-		// Get the column (x coordinate)
-		const col = Math.floor(
-			(vector.x - GameConfig.gridSize / 2) / GameConfig.gridSize + this.mazeLayout[0].length / 2
-		);
-
-		// Get the row (y coordinate)
-		// Note the negative sign because y is inverted in your original function
-		const row = Math.floor(
-			(-vector.y - GameConfig.gridSize / 2) / GameConfig.gridSize + this.mazeLayout.length / 2
-		);
+		const gridWorldWidth = this.mazeLayout[0].length * GameConfig.gridSize;
+		const gridWorldHeight = this.mazeLayout.length * GameConfig.gridSize;
+		const col = Math.floor((vector.x + gridWorldWidth / 2) / GameConfig.gridSize);
+		const row = Math.floor((gridWorldHeight / 2 - vector.y) / GameConfig.gridSize);
 
 		return [col, row];
 	};
 
-	calculateAvoidanceForce = (
+	calculateAvoidanceForce(
 		raycastPos: THREE.Vector3,
 		footpoint: THREE.Vector3,
-		direction: THREE.Vector3
-	) => {
-		const gridPos = this.getGridPosition(raycastPos);
-		const tile = this.tiles.get(`${gridPos[0]},${gridPos[1]}`);
-		// let avoidanceIntermediate;
+		direction: THREE.Vector3,
+		halfBodyWidth = 0.2
+	) {
+		const [centerCol, centerRow] = this.getGridPosition(raycastPos);
+		if (!this.isGridPositionInBounds(centerCol, centerRow)) return new THREE.Vector3();
 
-		// if (!this.isPassable(currentTile)) {
-		// 	avoidanceIntermediate = this.findNearestPassableTileVector(currentTile);
-		// } else {
-		// 	avoidanceIntermediate = this.calculateSurroundingAvoidance(enemy, currentTile);
-		// }
-	};
+		const center = this.getGridCenter(centerCol, centerRow);
+		let avoidanceIntermediate: THREE.Vector3;
+		if (this.isAvoidanceObstacle(centerCol, centerRow)) {
+			avoidanceIntermediate = this.findNearestPassableTileVector(centerCol, centerRow);
+		} else {
+			avoidanceIntermediate = new THREE.Vector3();
+			for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
+				for (let colOffset = -1; colOffset <= 1; colOffset++) {
+					if (colOffset === 0 && rowOffset === 0) continue;
+					const col = centerCol + colOffset;
+					const row = centerRow + rowOffset;
+					if (!this.isGridPositionInBounds(col, row)) continue;
+					if (!this.isAvoidanceObstacle(col, row)) continue;
+
+					// Grid rows increase downward while world-space Y increases upward.
+					const relativeX = colOffset;
+					const relativeY = -rowOffset;
+					const nearestPointX = footpoint.x + relativeX * halfBodyWidth * GameConfig.gridSize;
+					const nearestPointY = footpoint.y;
+					const positiveOffsetX = Math.max(
+						((nearestPointX - center.x) / GameConfig.gridSize) * relativeX,
+						0
+					);
+					const positiveOffsetY = Math.max(
+						((nearestPointY - center.y) / GameConfig.gridSize) * relativeY,
+						0
+					);
+					const effectiveOffsetX = (positiveOffsetX - 0.25) * Math.abs(relativeX);
+					const effectiveOffsetY = (positiveOffsetY - 0.25) * Math.abs(relativeY);
+
+					const isEdgeNeighbor = relativeX === 0 || relativeY === 0;
+					if (isEdgeNeighbor && (effectiveOffsetX > 0 || effectiveOffsetY > 0)) {
+						avoidanceIntermediate.x -= effectiveOffsetX * relativeX;
+						avoidanceIntermediate.y -= effectiveOffsetY * relativeY;
+					} else if (!isEdgeNeighbor && effectiveOffsetX > 0 && effectiveOffsetY > 0) {
+						const averageOffset = (effectiveOffsetX + effectiveOffsetY) / 2;
+						avoidanceIntermediate.x -= averageOffset * relativeX;
+						avoidanceIntermediate.y -= averageOffset * relativeY;
+					}
+				}
+			}
+			if (avoidanceIntermediate.lengthSq() > 0) avoidanceIntermediate.normalize();
+		}
+
+		const normalizedDirection = direction.clone().setZ(0);
+		if (normalizedDirection.lengthSq() === 0) return avoidanceIntermediate;
+		normalizedDirection.normalize();
+		const projection = normalizedDirection.multiplyScalar(
+			avoidanceIntermediate.dot(normalizedDirection)
+		);
+		return avoidanceIntermediate.sub(projection).setZ(0);
+	}
+
+	correctMovementForObstacle(entityPosition: THREE.Vector3, displacement: THREE.Vector3) {
+		const [currentCol, currentRow] = this.getGridPosition(entityPosition);
+		const nextPosition = entityPosition.clone().add(displacement);
+		const [nextCol, nextRow] = this.getGridPosition(nextPosition);
+		if (currentCol === nextCol && currentRow === nextRow) return displacement.clone();
+		if (!this.isAvoidanceObstacle(nextCol, nextRow)) return displacement.clone();
+
+		const obstacleDirection = this.getGridCenter(nextCol, nextRow).sub(entityPosition).setZ(0);
+		if (obstacleDirection.lengthSq() === 0) return displacement.clone();
+		obstacleDirection.normalize();
+		const projection = obstacleDirection.multiplyScalar(displacement.dot(obstacleDirection));
+		return displacement.clone().sub(projection.multiplyScalar(2)).setZ(0);
+	}
+
+	private isGridPositionInBounds(col: number, row: number) {
+		return row >= 0 && col >= 0 && row < this.mazeLayout.length && col < this.mazeLayout[0].length;
+	}
+
+	private isAvoidanceObstacle(col: number, row: number) {
+		if (!this.isGridPositionInBounds(col, row)) return false;
+		if (this.mazeLayout[row][col] === Number.POSITIVE_INFINITY) return true;
+		return Boolean(this.traps.get(`${col},${row}`)?.isRoadblock);
+	}
+
+	private getGridCenter(col: number, row: number) {
+		const { x, y } = this.getVectorCoordinates({ col, row }, null);
+		return new THREE.Vector3(x, y, GameConfig.baseZIndex);
+	}
+
+	private findNearestPassableTileVector(centerCol: number, centerRow: number) {
+		const directions = [
+			[0, -1],
+			[1, -1],
+			[1, 0],
+			[1, 1],
+			[0, 1],
+			[-1, 1],
+			[-1, 0],
+			[-1, -1]
+		].sort((a, b) => Math.hypot(a[0], a[1]) - Math.hypot(b[0], b[1]));
+
+		for (const [colOffset, rowOffset] of directions) {
+			const col = centerCol + colOffset;
+			const row = centerRow + rowOffset;
+			if (!this.isGridPositionInBounds(col, row)) continue;
+			if (this.isAvoidanceObstacle(col, row)) continue;
+			return new THREE.Vector3(colOffset, -rowOffset, 0);
+		}
+		return new THREE.Vector3();
+	}
 
 	convertMovementConfig = (route) => {
 		const height = this.mazeLayout.length;
@@ -156,9 +258,147 @@ export class GameManager {
 	}
 
 	updateMazeLayout(pos: Position, value: number) {
-		const { row, col } = pos;
-		this.mazeLayout[row][col] = value;
-		this.pathFinder = new SPFA(this.mazeLayout);
+		return this.updateMazeLayouts([{ position: pos, value }]);
+	}
+
+	updateMazeLayouts(changes: Array<{ position: Position; value: number }>) {
+		if (
+			changes.some(
+				({ position, value }) =>
+					value === Number.POSITIVE_INFINITY && this.isRouteEndPosition(position)
+			)
+		) {
+			return false;
+		}
+		const changed = this.pathFinder.updateTiles(changes);
+		if (!changed) return false;
+		this.roadblockReachabilityCache.clear();
+
+		for (const enemy of this.enemiesOnMap) {
+			enemy.rerouteForMapChange();
+		}
+		return true;
+	}
+
+	restoreMazeLayout(pos: Position) {
+		const value = this.baseMazeLayout[pos.row]?.[pos.col];
+		if (value === undefined) return false;
+		return this.updateMazeLayout(pos, value);
+	}
+
+	isRouteEndPosition(pos: Position) {
+		const routes = this.getConfiguredRoutes();
+		return (
+			routes.some((route) => {
+				if (!route?.endPosition) return false;
+				const endPosition = this.gameToWorldPos(route.endPosition);
+				return endPosition.row === pos.row && endPosition.col === pos.col;
+			}) ||
+			this.enemiesOnMap.some((enemy) => {
+				const endPosition = enemy.route?.endPosition;
+				return endPosition?.row === pos.row && endPosition?.col === pos.col;
+			})
+		);
+	}
+
+	private getConfiguredRoutes(): MovementRoute[] {
+		const config = this.config as unknown as {
+			routes?: MovementRoute[];
+			extra_routes?: MovementRoute[];
+		};
+		return [...(config.routes ?? []), ...(config.extra_routes ?? [])];
+	}
+
+	private isEnemyOnTile(pos: Position) {
+		const key = `${pos.col},${pos.row}`;
+		return this.enemiesOnMap.some((enemy) => {
+			if (enemy.alive === false) return false;
+			const enemyGridPosition = enemy.meshGroup
+				? this.getGridPosition(enemy.meshGroup.position).join(',')
+				: enemy.gridPos;
+			return enemyGridPosition === key;
+		});
+	}
+
+	private areRoutesReachableWithRoadblock(pos: Position) {
+		const cacheKey = `${this.pathFinder.revision}:${pos.col},${pos.row}`;
+		const cached = this.roadblockReachabilityCache.get(cacheKey);
+		if (cached !== undefined) return cached;
+
+		const hypotheticalLayout = this.mazeLayout.map((row) => [...row]);
+		if (!hypotheticalLayout[pos.row] || hypotheticalLayout[pos.row][pos.col] === undefined) {
+			return false;
+		}
+		hypotheticalLayout[pos.row][pos.col] = Number.POSITIVE_INFINITY;
+		const hypotheticalPathFinder = new SPFA(hypotheticalLayout);
+		const reachable = this.getConfiguredRoutes().every((route) =>
+			this.isRouteReachable(route, hypotheticalPathFinder)
+		);
+		this.roadblockReachabilityCache.set(cacheKey, reachable);
+		return reachable;
+	}
+
+	private isRouteReachable(route: MovementRoute, pathFinder: SPFA) {
+		if ((route.motionMode ?? 'WALK') !== 'WALK') return true;
+		if (!route.startPosition || !route.endPosition) return true;
+		const pathFinderWithoutHoles = new SPFA(
+			pathFinder.grid.grid.map((row) =>
+				row.map((value) => (value === 1000 ? Number.POSITIVE_INFINITY : value))
+			)
+		);
+
+		let currentPosition = this.gameToWorldPos(route.startPosition);
+		const actions = [...(route.checkpoints ?? []), { type: 'MOVE', position: route.endPosition }];
+
+		for (const action of actions) {
+			if (!action.position) continue;
+			const position = this.gameToWorldPos(action.position);
+			if (action.type === 'APPEAR_AT_POS') {
+				currentPosition = position;
+				continue;
+			}
+			if (action.type !== 'MOVE') continue;
+
+			if (
+				!pathFinderWithoutHoles.hasPath(
+					currentPosition,
+					position,
+					route.allowDiagonalMove !== false
+				)
+			) {
+				return false;
+			}
+			currentPosition = position;
+		}
+		return true;
+	}
+
+	canPlaceRoadblock(pos: Position) {
+		const key = `${pos.col},${pos.row}`;
+		const tile = this.tiles.get(key);
+		return Boolean(
+			tile &&
+				tile.buildableType != 0 &&
+				tile.heightType !== 1 &&
+				!this.traps.has(key) &&
+				!this.isRouteEndPosition(pos) &&
+				!this.isEnemyOnTile(pos) &&
+				this.areRoutesReachableWithRoadblock(pos)
+		);
+	}
+
+	removeTrap(trap: Trap) {
+		const key = `${trap.position.col},${trap.position.row}`;
+		if (this.traps.get(key) === trap) this.traps.delete(key);
+		if (trap.isRoadblock && trap.roadblockApplied) {
+			trap.roadblockApplied = false;
+			const value = trap.roadblockPreviousValue;
+			if (value === null) {
+				this.restoreMazeLayout(trap.position);
+			} else {
+				this.updateMazeLayout(trap.position, value);
+			}
+		}
 	}
 
 	getTextSprite(text, size = 20, color = 0xffffff) {
@@ -200,13 +440,10 @@ export class GameManager {
 	initRollOverMeshes() {
 		this.rollOverMeshes.clear();
 		if (GameConfig.tokenCard) {
-			const key = 'trap_001_crate';
-			const trap = new Trap({
-				key,
-				direction: 'UP',
-				position: { row: 0, col: 0 }
-			});
-			this.rollOverMeshes.set('trap_001_crate', trap);
+			const key = GameConfig.tokenCard.key;
+			const position = { row: 0, col: 0 };
+			const trap = new Trap({ key, direction: 'UP', position }, position, false, null, this);
+			this.rollOverMeshes.set(key, trap);
 			const mesh = trap.getMesh();
 			mesh.visible = false;
 			mesh.position.set(0, 0, 0);
@@ -263,8 +500,13 @@ export class GameManager {
 		}
 		const pos = posType === 'game' ? this.gameToWorldPos(dataPos) : dataPos;
 		const trap = new Trap(data, pos, this.isSimulation, blackboard, this);
-		if (trap.isRoadblock) {
-			this.updateMazeLayout(pos, 1000);
+		if (trap.isRoadblock && posType === 'world' && !this.canPlaceRoadblock(pos)) {
+			trap.remove();
+			return null;
+		}
+		if (trap.isRoadblock && this.isRouteEndPosition(pos)) {
+			trap.remove();
+			return null;
 		}
 		const { x, y } = this.getVectorCoordinates(pos, null);
 		const tile = this.tiles.get(`${pos.col},${pos.row}`);
@@ -276,9 +518,16 @@ export class GameManager {
 			z = 40;
 		}
 		this.traps.set(`${pos.col},${pos.row}`, trap);
+		if (trap.isRoadblock) {
+			trap.roadblockPreviousValue = this.mazeLayout[pos.row][pos.col];
+			trap.roadblockApplied = true;
+			this.updateMazeLayout(pos, Number.POSITIVE_INFINITY);
+		}
 
 		trap.getMesh().position.set(x, y, z + 0.03);
 		this.addToScene(trap.getMesh());
+		trap.initSelectionUI();
+		return trap;
 	}
 	addToScene(mesh: THREE.Mesh | THREE.Group) {
 		if (!this.isSimulation) {
@@ -310,12 +559,14 @@ export class GameManager {
 	}
 
 	reset(config, enemies) {
+		this.clearEnemies();
+		this.clearTraps();
 		this.enemies = enemies;
 		this.config = config;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);
 		this.mazeLayout = mazeLayout;
-		this.clearEnemies();
-		this.clearTraps();
+		this.baseMazeLayout = structuredClone(mazeLayout);
+		this.roadblockReachabilityCache.clear();
 		this.noEnemyAlive = false;
 		this.pathFinder = new SPFA(mazeLayout);
 		this.tiles.clear();
@@ -355,6 +606,12 @@ export class GameManager {
 
 	update(delta: number) {
 		this.countdownManager.update(delta);
+		if (GameConfig.tokenCooldownRemaining > 0) {
+			GameConfig.setValue(
+				'tokenCooldownRemaining',
+				Math.max(0, GameConfig.tokenCooldownRemaining - delta)
+			);
+		}
 		this.traps.forEach((trap, pos) => {
 			trap.update(delta);
 		});

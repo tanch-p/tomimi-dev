@@ -7,6 +7,14 @@
 	import Icon from '../Icon.svelte';
 	import spriteCost from '$lib/images/is/sprite_cost.webp';
 	import SeekBar from './SeekBar.svelte';
+	import iconToken from '$lib/images/is/icon_profession_token.webp';
+
+	type TokenCard = {
+		count: number;
+		cost?: number;
+		key: string;
+		selected: boolean;
+	} & Record<string, unknown>;
 
 	export let game,
 		initialCost,
@@ -16,13 +24,21 @@
 		simulatedData,
 		maxCost = 99;
 
-	let card = GameConfig.tokenCard,
+	let card: TokenCard | null = GameConfig.tokenCard,
 		totalTime = 0,
 		min = 0,
 		sec = 0,
+		totalDeductedCost = GameConfig.totalDeductedCost,
+		tokenCooldownDuration = GameConfig.tokenCooldownDuration,
+		tokenCooldownRemaining = GameConfig.tokenCooldownRemaining,
 		unsubscribeFns = [],
 		isPaused = false,
 		simMode = 'wave_normal';
+
+	$: cooldownProgress =
+		tokenCooldownDuration > 0
+			? Math.min(1, Math.max(0, 1 - tokenCooldownRemaining / tokenCooldownDuration))
+			: 1;
 
 	function handleSpeedFactor() {
 		switch (GameConfig.speedFactor) {
@@ -42,6 +58,27 @@
 		randomSeeds = Array.from(Array(50)).map((_) => Math.random());
 		game.softReset();
 	}
+	function toggleTokenCard() {
+		if (!card || card.count <= 0) return;
+
+		GameConfig.setValue('tokenCard', { ...card, selected: !card.selected });
+	}
+	function handleKeydown(event: KeyboardEvent) {
+		const target = event.target;
+		if (
+			event.key.toLowerCase() !== 'r' ||
+			event.repeat ||
+			event.ctrlKey ||
+			event.metaKey ||
+			event.altKey ||
+			(target instanceof HTMLElement &&
+				(target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName)))
+		) {
+			return;
+		}
+
+		toggleTokenCard();
+	}
 	// Sync class -> store
 	onMount(() => {
 		unsubscribeFns.push(
@@ -56,8 +93,23 @@
 			})
 		);
 		unsubscribeFns.push(
-			GameConfig.subscribe('tokenCard', (value) => {
+			GameConfig.subscribe('tokenCard', (value: TokenCard | null) => {
 				card = value;
+			})
+		);
+		unsubscribeFns.push(
+			GameConfig.subscribe('totalDeductedCost', (value: number) => {
+				totalDeductedCost = value;
+			})
+		);
+		unsubscribeFns.push(
+			GameConfig.subscribe('tokenCooldownDuration', (value: number) => {
+				tokenCooldownDuration = value;
+			})
+		);
+		unsubscribeFns.push(
+			GameConfig.subscribe('tokenCooldownRemaining', (value: number) => {
+				tokenCooldownRemaining = value;
 			})
 		);
 		unsubscribeFns.push(
@@ -76,6 +128,8 @@
 		unsubscribeFns.forEach((fn) => fn());
 	});
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 {#if simulatedData && simMode === 'wave_normal'}
 	<SeekBar {game} {simulatedData} />
@@ -136,23 +190,69 @@
 	class="absolute right-4 bottom-[24%] grid grid-cols-[20px_33px] items-center gap-x-2 px-1.5 bg-neutral-800 bg-opacity-80 pointer-events-none font-light"
 >
 	<img src={spriteCost} width="20" alt="Cost:" />
-	<span class="text-3xl">{Math.min(maxCost, Math.floor(initialCost + totalTime))}</span>
+	<span class="text-3xl">
+		{Math.max(0, Math.min(maxCost, Math.floor(initialCost + totalTime)) - totalDeductedCost)}
+	</span>
 </div>
 
 <div class="absolute bottom-0 right-0">
 	{#if card?.count > 0}
 		<button
 			class="relative border border-[#ffffff80] {card.selected ? '' : 'opacity-50'}"
-			on:click={() => {
-				GameConfig.setValue('tokenCard', { ...card, selected: !card.selected });
-			}}
+			on:click={toggleTokenCard}
+			aria-keyshortcuts="R"
 		>
-			<div class="absolute top-0 left-1/2 -translate-x-1/2 flex items-center">
-				<!-- <img src="/images/chara_icons/token.webp" width="10" height="10" alt="" /> -->
-				<span class="bg-black bg-opacity-80 px-1.5 text-sm">5</span>
+			<img
+				src="/images/chara_icons/{card.key}.webp"
+				width="75"
+				height="75"
+				alt=""
+				class="relative z-0"
+			/>
+			{#if tokenCooldownRemaining > 0}
+				<div
+					class="absolute inset-0 z-10 pointer-events-none"
+					style="background-color: rgba(126, 22, 22, 0.78);"
+				/>
+				<svg
+					class="absolute z-20 inset-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 pointer-events-none"
+					width="58"
+					height="58"
+					viewBox="0 0 64 64"
+					aria-hidden="true"
+				>
+					<circle
+						cx="32"
+						cy="32"
+						r="26"
+						fill="none"
+						stroke="rgba(255, 255, 255, 0.32)"
+						stroke-width="4"
+					/>
+					<circle
+						cx="32"
+						cy="32"
+						r="26"
+						fill="none"
+						stroke="white"
+						stroke-width="4"
+						stroke-linecap="round"
+						pathLength="1"
+						stroke-dasharray="1"
+						stroke-dashoffset={1 - cooldownProgress}
+					/>
+				</svg>
+				<span
+					class="absolute z-30 inset-0 flex items-center justify-center text text-white pointer-events-none"
+				>
+					{tokenCooldownRemaining.toFixed(1)}
+				</span>
+			{/if}
+			<div class="absolute z-40 top-0 left-1/2 -translate-x-1/2 flex items-center opacity-80">
+				<img src={iconToken} width="16" height="12" alt="" />
+				<span class="bg-black bg-opacity-80 px-1.5 text-sm">{card.cost ?? 5}</span>
 			</div>
-			<img src="/images/chara_icons/{card.key}.webp" width="75" height="75" alt="" />
-			<span class="absolute right-2 bottom-0 text-sm">X{card.count}</span>
+			<span class="absolute z-40 right-1 bottom-0 text-xs">X{card.count}</span>
 		</button>
 	{/if}
 </div>

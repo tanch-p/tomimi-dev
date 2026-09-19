@@ -156,6 +156,53 @@ test('SPFA prevents diagonal corner cutting', () => {
 	]);
 });
 
+test('SPFA invalidates cached target graphs when a tile changes', () => {
+	const pathFinder = new SPFA([
+		[0, 0, 0],
+		[0, 0, 0],
+		[0, 0, 0]
+	]);
+	const start = { row: 1, col: 0 };
+	const end = { row: 1, col: 2 };
+
+	expect(pathFinder.findPath(start, end)).toStrictEqual([
+		[0, 1],
+		[2, 1]
+	]);
+	expect(pathFinder.hasPath(start, end)).toBe(true);
+	expect(pathFinder.updateTile({ row: 1, col: 1 }, Infinity)).toBe(true);
+	expect(pathFinder.revision).toBe(1);
+	expect(pathFinder.findPath(start, end)).not.toContainEqual([1, 1]);
+	expect(pathFinder.updateTile({ row: 1, col: 1 }, Infinity)).toBe(false);
+	expect(pathFinder.revision).toBe(1);
+
+	expect(pathFinder.updateTile({ row: 1, col: 1 }, 0)).toBe(true);
+	expect(pathFinder.revision).toBe(2);
+	expect(pathFinder.findPath(start, end)).toStrictEqual([
+		[0, 1],
+		[2, 1]
+	]);
+});
+
+test('SPFA can route an enemy out of a tile that was just blocked', () => {
+	const pathFinder = new SPFA([
+		[0, 0, 0],
+		[0, 0, 0],
+		[0, 0, 0]
+	]);
+	const start = { row: 1, col: 1 };
+	const end = { row: 1, col: 2 };
+	pathFinder.updateTile(start, Infinity);
+
+	expect(pathFinder.findPath(start, end)).toStrictEqual([]);
+	const escapePath = pathFinder.findPath(start, end, true, true);
+	expect(escapePath[0]).toStrictEqual([1, 1]);
+	expect(escapePath.at(-1)).toStrictEqual([2, 1]);
+
+	pathFinder.updateTile(end, Infinity);
+	expect(pathFinder.findPath(start, end, true, true)).toStrictEqual([]);
+});
+
 test('SPFA checks the full 2x2 advancing corridor', () => {
 	const clearPathFinder = new SPFA([
 		[0, 0],
