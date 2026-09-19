@@ -40,6 +40,12 @@ export class Enemy {
 	state: string;
 	alive = true;
 	direction: THREE.Vector3;
+	movementDirectionScratch = new THREE.Vector3();
+	facingDirectionScratch = new THREE.Vector3();
+	cachedFacingActions: unknown = null;
+	cachedFacingActionIndex = -1;
+	cachedFacingTarget: THREE.Vector3 | null = null;
+	cachedFacingPreservesFacing = false;
 	avoidanceForce = new THREE.Vector3();
 	avoidanceFrameCounter = 0;
 	halfBodyWidth = 0.2;
@@ -714,20 +720,74 @@ export class Enemy {
 		return velocity;
 	}
 
-	private getMovementDirection(reachOffset) {
-		const direction = new THREE.Vector3().subVectors(this.targetPos, this.raycastPos).normalize();
-		if (direction.x !== 0) return direction;
+	private getMovementDirection() {
+		return this.movementDirectionScratch.subVectors(this.targetPos, this.raycastPos).normalize();
+	}
 
-		let nextCheckPoint;
-		for (let i = this.currentActionIndex; i < this.actions.length; i++) {
-			if (['cp', 'end'].includes(this.actions[i].pathType)) {
-				nextCheckPoint = this.actions[i].position;
+	private updateFacingPlanCache() {
+		if (
+			this.cachedFacingActions === this.actions &&
+			this.cachedFacingActionIndex === this.currentActionIndex
+		) {
+			return;
+		}
+
+		this.cachedFacingActions = this.actions;
+		this.cachedFacingActionIndex = this.currentActionIndex;
+		this.cachedFacingTarget = null;
+		this.cachedFacingPreservesFacing = false;
+
+		const currentAction = this.actions[this.currentActionIndex];
+		if (currentAction?.type !== 'MOVE') return;
+
+		let previousPosition = this.route?.startPosition;
+		for (let i = this.currentActionIndex - 1; i >= 0; i--) {
+			const action = this.actions[i];
+			if (action.type === 'MOVE' || action.type === 'APPEAR_AT_POS') {
+				previousPosition = action.position;
+				break;
 			}
 		}
-		if (!nextCheckPoint) nextCheckPoint = this.actions[this.actions.length - 1]?.position;
-		if (!nextCheckPoint) return direction;
-		const { x, y } = this.gameManager.getVectorCoordinates(nextCheckPoint, reachOffset);
-		return new THREE.Vector3(x, y, GameConfig.baseZIndex).sub(this.raycastPos).normalize();
+		if (!previousPosition || Number(currentAction.position.col) !== Number(previousPosition.col)) {
+			return;
+		}
+
+		const hasPendingCheckpoint = this.actions
+			.slice(this.currentActionIndex)
+			.some((action) => action.type === 'MOVE' && action.pathType === 'cp');
+		if (!hasPendingCheckpoint) {
+			this.cachedFacingPreservesFacing = true;
+			return;
+		}
+
+		const currentColumn = Number(currentAction.position.col);
+		for (let i = this.currentActionIndex + 1; i < this.actions.length; i++) {
+			const action = this.actions[i];
+			if (action.type !== 'MOVE' || Number(action.position.col) === currentColumn) continue;
+
+			const { x, y } = this.gameManager.getVectorCoordinates(action.position, null);
+			this.cachedFacingTarget = new THREE.Vector3(x, y, GameConfig.baseZIndex);
+			return;
+		}
+	}
+
+	private getFacingDirection(movementDirection: THREE.Vector3) {
+		this.updateFacingPlanCache();
+		if (this.cachedFacingPreservesFacing) {
+			return this.direction?.x
+				? this.direction
+				: this.facingDirectionScratch.set(this.skel?.scale.x ?? 1, 0, 0);
+		}
+
+		if (!this.cachedFacingTarget) {
+			return this.facingDirectionScratch.copy(movementDirection);
+		}
+
+		this.facingDirectionScratch.subVectors(this.cachedFacingTarget, this.raycastPos).normalize();
+
+		return this.facingDirectionScratch.x
+			? this.facingDirectionScratch
+			: this.facingDirectionScratch.copy(movementDirection);
 	}
 
 	getActions(route) {
@@ -1121,11 +1181,10 @@ export class Enemy {
 					this.movementFrameAccumulator += delta;
 					while (this.movementFrameAccumulator >= movementFrameInterval) {
 						this.movementFrameAccumulator -= movementFrameInterval;
-						const direction = this.getMovementDirection(reachOffset);
+						const movementDirection = this.getMovementDirection();
 						const theoreticalSpeed = this.moddedSpeed * moveMultiplier;
-						const velocity = this.calculateMovementVelocity(direction, theoreticalSpeed);
-						if (velocity.lengthSq() > 0) this.direction = velocity.clone().normalize();
-						else this.direction = direction;
+						const velocity = this.calculateMovementVelocity(movementDirection, theoreticalSpeed);
+						this.direction = this.getFacingDirection(movementDirection);
 						this.updateSpriteOrientation();
 
 						const distance = this.raycastPos.distanceTo(this.targetPos);
@@ -1295,11 +1354,14 @@ export class Enemy {
 	}
 
 	onSelect() {
-		// console.log(this.spawnUID);
-		// console.log(this.data);
+		// console.info(this.spawnUID);
+		// console.info(this.data);
 		// const pos = this.gameManager.getGridPosition(this.raycastPos);
-		// console.log(pos);
-		// console.log(this.route)
+		// console.info(pos);
+		// console.info(this.actions);
+		// console.info(this.route);
+		// console.info(this.direction);
+		// console.info(this.skel.scale.x);
 		this.clearAnimatedPathVisualisation();
 		this.clearAnimatedPathCountdowns();
 		this.clearAnimatedPathFlags();
