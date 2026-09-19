@@ -12,6 +12,7 @@ import { createPathVisualisation } from '$lib/functions/pathVisualisationHelpers
 import escapeButtonUrl from '$lib/images/battlecommon/btn_escape.webp';
 import selectionFrameUrl from '$lib/images/battlecommon/sprite_character_menu_frame.webp';
 import type { GameManager } from './GameManager';
+import { getStageRuntime } from './StageRuntime';
 
 let escapeButtonTexture: THREE.Texture | null = null;
 let selectionFrameTexture: THREE.Texture | null = null;
@@ -88,9 +89,9 @@ export class Trap {
 			this.branchKey && this.branch && trap.special.includes('rgdysm_summon')
 		);
 		if (this.isPeriodicSummoner) {
+			const specialMods = getStageRuntime(gameManager).specialMods as any;
 			const specialMod =
-				(GameConfig.specialMods as any)?.[this.key]?.rgdysm_summon ||
-				(GameConfig.specialMods as any)?.[data.alias]?.rgdysm_summon;
+				specialMods?.[this.key]?.rgdysm_summon || specialMods?.[data.alias]?.rgdysm_summon;
 			const summonSkill = { ...trapSkills.rgdysm_summon, ...specialMod };
 			const intervalOverride = blackboardEntries.find(
 				(entry) => entry.key === 'talent@interval' || entry.key === 'interval'
@@ -367,6 +368,7 @@ export class Trap {
 	}
 
 	private syncTokensDisabled() {
+		if (this.isSimulation) return;
 		const traps = this.gameManager?.traps;
 		const tokensDisabled =
 			this.selected || Boolean(traps && Array.from(traps.values()).some((trap) => trap.selected));
@@ -420,12 +422,13 @@ export class Trap {
 		const formIndex =
 			(branchInfo as any)?.[this.gameManager.config.levelId]?.[this.branchKey as string]
 				?.formIndex ?? 0;
-		const traits = getEnemySkills(enemy, enemy.traits, formIndex, GameConfig.specialMods, 'trait');
+		const specialMods = getStageRuntime(this.gameManager).specialMods;
+		const traits = getEnemySkills(enemy, enemy.traits, formIndex, specialMods, 'trait');
 		const specials = getEnemySkills(
 			enemy,
 			enemy.forms[formIndex]?.special ?? enemy.forms[0].special,
 			formIndex,
-			GameConfig.specialMods,
+			specialMods,
 			'special'
 		);
 		if (

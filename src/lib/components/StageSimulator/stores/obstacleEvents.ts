@@ -25,7 +25,11 @@ function createObstacleEventStore() {
 	let nextPlacementId = 1;
 
 	function append(event: ObstacleEvent) {
-		store.update((state) => ({ ...state, events: [...state.events, event] }));
+		store.update((state) => ({
+			...state,
+			// An action after seeking backwards creates a new timeline branch.
+			events: [...state.events.filter((existing) => existing.time <= event.time), event]
+		}));
 	}
 	function getSnapshot(): ObstacleEventSnapshot {
 		const state = get(store);

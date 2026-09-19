@@ -45,3 +45,34 @@ test('reset clears events and restarts deterministic placement IDs', () => {
 	expect(obstacleEventStore.getSnapshot().levelId).toBe('level_second');
 	expect(obstacleEventStore.getSnapshot().events).toHaveLength(1);
 });
+
+test('recording after a backward seek discards events from the abandoned future', () => {
+	obstacleEventStore.reset('level_branch');
+	obstacleEventStore.recordPlacement(100, { row: 1, col: 1 }, 'trap_001_crate');
+	obstacleEventStore.recordPlacement(300, { row: 2, col: 2 }, 'trap_001_crate');
+	obstacleEventStore.recordRemoval(350, { row: 2, col: 2 }, 'trap_001_crate', 'obstacle-2');
+
+	const branchedPlacementId = obstacleEventStore.recordPlacement(
+		200,
+		{ row: 3, col: 3 },
+		'trap_001_crate'
+	);
+
+	expect(branchedPlacementId).toBe('obstacle-3');
+	expect(obstacleEventStore.getSnapshot().events).toStrictEqual([
+		{
+			action: 'place',
+			time: 100,
+			position: { row: 1, col: 1 },
+			trapKey: 'trap_001_crate',
+			placementId: 'obstacle-1'
+		},
+		{
+			action: 'place',
+			time: 200,
+			position: { row: 3, col: 3 },
+			trapKey: 'trap_001_crate',
+			placementId: 'obstacle-3'
+		}
+	]);
+});

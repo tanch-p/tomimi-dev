@@ -5,6 +5,7 @@ import { Enemy } from './Enemy';
 import { AssetManager } from './AssetManager';
 import { GameConfig } from './GameConfig';
 import { shuffleArray } from '$lib/functions/waveHelpers';
+import { getStageRuntime } from './StageRuntime';
 
 export const isFtprgSummonSkill = (key: string) =>
 	key === 'ftprg_summon' || key.startsWith('ftprg_summon_');
@@ -36,6 +37,9 @@ export class ActiveSkill {
 	manualActivation = false;
 	isManuallyActive = false;
 	isSummonSkill = false;
+	get runtime() {
+		return getStageRuntime(this.enemy?.gameManager);
+	}
 
 	constructor(enemy: Enemy, skill: Skill, manualActivation = false) {
 		this.assetManager = AssetManager.getInstance();
@@ -71,7 +75,10 @@ export class ActiveSkill {
 			this.branch = structuredClone(this.enemy.gameManager.config.branches?.[skill.branches[0][0]]);
 		}
 		if (this.skill.branchType === 'single' && this.skill.branchRandom) {
-			this.branchPhaseIndexHolder = shuffleArray(this.branch.phases.map((_, i) => i));
+			this.branchPhaseIndexHolder = shuffleArray(
+				this.branch.phases.map((_, i) => i),
+				() => this.runtime.random()
+			);
 		}
 	}
 
@@ -189,7 +196,7 @@ export class ActiveSkill {
 						this.enemy.gameManager.spawnManager.addBranch(
 							this.branchKey,
 							this.branch,
-							Math.floor(Math.random() * this.branch.phases.length)
+							Math.floor(this.runtime.random() * this.branch.phases.length)
 						);
 						break;
 				}
@@ -336,7 +343,10 @@ export class ActiveSkill {
 					this.enemy.gameManager.config.branches?.[this.skill.branches[this.currentBranchIndex][0]]
 				);
 				if (this.skill.branchType === 'single' && this.skill.branchRandom) {
-					this.branchPhaseIndexHolder = shuffleArray(this.branch.phases.map((_, i) => i));
+					this.branchPhaseIndexHolder = shuffleArray(
+						this.branch.phases.map((_, i) => i),
+						() => this.runtime.random()
+					);
 				}
 			}
 			return;
@@ -348,7 +358,7 @@ export class ActiveSkill {
 			} else if (this.skill.branchType === 'single') {
 				index = this.branchSummonIndex;
 			} else if (this.skill.branchRandom) {
-				index = Math.floor(Math.random() * this.branch.phases.length);
+				index = Math.floor(this.runtime.random() * this.branch.phases.length);
 			}
 			this.enemy.gameManager.spawnManager.addBranch(
 				this.branchKey,
@@ -360,7 +370,9 @@ export class ActiveSkill {
 			if (this.branchSummonIndex >= this.branch.phases.length) {
 				this.branchSummonIndex = 0;
 				if (this.skill.branchType === 'single' && this.skill.branchRandom) {
-					this.branchPhaseIndexHolder = shuffleArray(this.branchPhaseIndexHolder);
+					this.branchPhaseIndexHolder = shuffleArray(this.branchPhaseIndexHolder, () =>
+						this.runtime.random()
+					);
 				}
 			}
 		}

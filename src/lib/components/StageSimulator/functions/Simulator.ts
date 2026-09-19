@@ -11,59 +11,130 @@ import { AssetManager } from '../objects/AssetManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
 import { getEnemySkills } from '$lib/functions/skillHelpers';
+import type { ObstacleEvent, ObstacleEventSnapshot } from '../stores/obstacleEvents';
+import {
+	OfflineStageRuntime,
+	type OfflineStageRuntimeOptions,
+	type StageRuntime
+} from '../objects/StageRuntime';
 
-export function getSimulatedData(config: MapConfig, waveData, enemies: EnemyType[]) {
+type SimulationOptions = Partial<OfflineStageRuntimeOptions> & {
+	obstacleEvents?: ObstacleEventSnapshot;
+	shouldCancel?: () => boolean;
+	yieldBudgetMs?: number;
+};
+
+const now = () => (typeof performance === 'undefined' ? Date.now() : performance.now());
+
+function yieldToMainThread() {
+	return new Promise<void>((resolve) => {
+		if (typeof requestAnimationFrame === 'function') {
+			requestAnimationFrame(() => resolve());
+		} else {
+			setTimeout(resolve, 0);
+		}
+	});
+}
+
+export async function getSimulatedData(
+	config: MapConfig,
+	waveData,
+	enemies: EnemyType[],
+	options: SimulationOptions = {}
+) {
 	if (DUEL_STAGES.concat(['level_rogue2_b-7', 'level_rogue1_b-7']).includes(config.levelId)) {
 		return;
 	}
-	if (['level_rogue4_b-7'].includes(config.levelId) && GameConfig.stagePhaseIndex == 1) {
+	const runtime = new OfflineStageRuntime({
+		mode: options.mode ?? GameConfig.mode,
+		currentWaveIndex: options.currentWaveIndex ?? 0,
+		stagePhaseIndex: options.stagePhaseIndex ?? GameConfig.stagePhaseIndex,
+		eliteMode: options.eliteMode ?? GameConfig.eliteMode,
+		specialMods: options.specialMods ?? GameConfig.specialMods,
+		steeringEnabled: options.steeringEnabled ?? GameConfig.steeringEnabled,
+		seed: options.seed
+	});
+	if (['level_rogue4_b-7'].includes(config.levelId) && runtime.stagePhaseIndex == 1) {
 		return;
 	}
 	const assetManager = AssetManager.getInstance();
 	if (!assetManager.texturesLoaded) {
 		return;
 	}
-	GameConfig.setValue('isPaused', true);
-	const gameSimManager = new GameSimManager(config, enemies);
-	const map = new GameMap(gameSimManager);
-	const spawnManager = new SpawnManager(waveData, map, gameSimManager);
+	const gameSimManager = new GameSimManager(config, enemies, runtime);
+	const map = new GameMap(gameSimManager as any);
+	const spawnManager = new SpawnManager(waveData, map, gameSimManager as any);
 	let isEnded = false;
 	let i = 1;
 	let count = 0;
 	const data = {};
 	let enemiesToHighlight = [];
-	setData(count, data, spawnManager, gameSimManager);
-	enemiesToHighlight = spawnManager.enemiesToHighlight;
-
-	// Simulate at 60fps, 1x speed
-	while (!isEnded) {
-		const deltaTime = 1 / 60;
-		spawnManager.update(deltaTime);
-		gameSimManager.update(deltaTime);
-
-		if (i === 60) {
-			i = 1;
-			count++;
-			setData(count, data, spawnManager, gameSimManager);
-			if (Object.keys(data).length > 1800) {
-				break;
-			}
-		} else {
-			i++;
-		}
-		if (spawnManager.isFinished && gameSimManager.noEnemyAlive) {
-			isEnded = true;
-		}
+	const events =
+		options.obstacleEvents?.levelId === config.levelId
+			? structuredClone(options.obstacleEvents.events).sort((a, b) => a.time - b.time)
+			: [];
+	let eventIndex = 0;
+	while (events[eventIndex]?.time <= 0) {
+		gameSimManager.applyObstacleEvent(events[eventIndex]);
+		eventIndex++;
 	}
-	GameConfig.setValue('scaledElapsedTime', 0);
-	GameConfig.setValue('waveElapsedTime', 0);
-	GameConfig.setValue('currentWaveIndex', 0);
-	cleanup(gameSimManager);
+	setData(count, data, spawnManager, gameSimManager, runtime);
+	enemiesToHighlight = spawnManager.enemiesToHighlight;
+	let lastYieldTime = now();
+	const yieldBudgetMs = options.yieldBudgetMs ?? 8;
 
-	return { enemiesToHighlight: enemiesToHighlight, t: data };
+	try {
+		// Simulate at 60fps, 1x speed, yielding often enough for the live game to keep rendering.
+		while (!isEnded) {
+			if (options.shouldCancel?.()) return;
+			const frameEnd = runtime.scaledElapsedTime + 1 / 60;
+			while (events[eventIndex] && events[eventIndex].time <= frameEnd) {
+				const eventTime = Math.max(runtime.scaledElapsedTime, events[eventIndex].time);
+				const segmentDelta = eventTime - runtime.scaledElapsedTime;
+				if (segmentDelta > 0) {
+					spawnManager.update(segmentDelta);
+					gameSimManager.update(segmentDelta);
+				}
+				gameSimManager.applyObstacleEvent(events[eventIndex]);
+				eventIndex++;
+			}
+			const remainingDelta = frameEnd - runtime.scaledElapsedTime;
+			if (remainingDelta > 0) {
+				spawnManager.update(remainingDelta);
+				gameSimManager.update(remainingDelta);
+			}
+
+			if (i === 60) {
+				i = 1;
+				count++;
+				setData(count, data, spawnManager, gameSimManager, runtime);
+				if (count > 1800) break;
+			} else {
+				i++;
+			}
+			if (spawnManager.isFinished && gameSimManager.noEnemyAlive) {
+				isEnded = true;
+			}
+
+			if (now() - lastYieldTime >= yieldBudgetMs) {
+				await yieldToMainThread();
+				lastYieldTime = now();
+			}
+		}
+
+		return { enemiesToHighlight: enemiesToHighlight, t: data };
+	} finally {
+		cleanup(gameSimManager);
+	}
 }
 
-function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSimManager) {
+function setData(
+	count,
+	data,
+	spawnManager: SpawnManager,
+	gameSimManager: GameSimManager,
+	runtime: StageRuntime
+) {
 	data[count] = {
 		waveElapsedTime: spawnManager.waveElapsedTime,
 		currentWaveIndex: spawnManager.currentWaveIndex,
@@ -78,6 +149,13 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 		preDelayTimer: spawnManager.preDelayTimer,
 		fragmentPreDelayTimer: spawnManager.fragmentPreDelayTimer,
 		postDelayTimer: spawnManager.postDelayTimer,
+		roadblocks: [...gameSimManager.traps.values()]
+			.filter((trap) => trap.isRoadblock)
+			.map((trap) => ({
+				key: trap.key,
+				position: { ...trap.position },
+				placementId: trap.userPlacementId
+			})),
 		enemiesOnMap: gameSimManager.enemiesOnMap.map((enemy) => {
 			const spineStateSkill = enemy.skills.find((skill) => skill.spineState !== undefined);
 			const spineAnimIndex = spineStateSkill?.spineState ?? enemy.spineAnimIndex;
@@ -89,7 +167,7 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 							enemy.data,
 							enemy.data.forms[formIndex].special,
 							formIndex,
-							GameConfig.specialMods,
+							runtime.specialMods,
 							'special'
 					  )
 					: enemy.specials;
@@ -147,6 +225,13 @@ function setData(count, data, spawnManager: SpawnManager, gameSimManager: GameSi
 }
 
 function cleanup(gameSimManager: GameSimManager) {
+	for (const enemy of gameSimManager.enemiesOnMap) {
+		enemy.skillManager?.activeSkills.forEach((skill) => skill.dispose());
+		clearObjects(enemy.meshGroup);
+	}
+	for (const trap of gameSimManager.traps.values()) {
+		clearObjects(trap.getMesh());
+	}
 	gameSimManager.objects.forEach((obj: THREE.Group) => {
 		clearObjects(obj);
 	});
@@ -156,6 +241,7 @@ class GameSimManager {
 	objects = [];
 	config;
 	mazeLayout: number[][];
+	baseMazeLayout: number[][];
 	enemies: EnemyType[];
 	enemiesOnMap: Enemy[] = [];
 	spawnManager: SpawnManager;
@@ -166,12 +252,16 @@ class GameSimManager {
 	killedCount = 0;
 	tiles = new Map();
 	isSimulation = true;
+	runtime: StageRuntime;
+	game = { objects: [], hideRollOverMesh: () => undefined };
 
-	constructor(config: MapConfig, enemies: EnemyType[]) {
+	constructor(config: MapConfig, enemies: EnemyType[], runtime: StageRuntime) {
 		this.enemies = enemies;
 		this.config = config;
+		this.runtime = runtime;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);
 		this.mazeLayout = mazeLayout;
+		this.baseMazeLayout = structuredClone(mazeLayout);
 		this.pathFinder = new SPFA(mazeLayout);
 	}
 
@@ -258,7 +348,7 @@ class GameSimManager {
 	}
 
 	initTraps(traps) {
-		const predefineChanges = GameConfig.eliteMode && this.config.elite_runes?.predefine_changes;
+		const predefineChanges = this.runtime.eliteMode && this.config.elite_runes?.predefine_changes;
 		const trapList = structuredClone(traps);
 		if (predefineChanges) {
 			for (const [key, value] of predefineChanges) {
@@ -274,7 +364,7 @@ class GameSimManager {
 		}
 	}
 
-	addTrap(data, actionKey, posType = 'game') {
+	addTrap(data, actionKey = null, posType = 'game') {
 		if (!data) {
 			data = this.config.traps.find((ele) => ele.alias === actionKey || ele.key === actionKey);
 		}
@@ -283,14 +373,52 @@ class GameSimManager {
 			return;
 		}
 		const pos = posType === 'game' ? this.gameToWorldPos(data.pos) : data.pos;
-		const trap = new Trap(data, pos, this.isSimulation);
+		const positionKey = `${pos.col},${pos.row}`;
+		const existing = this.traps.get(positionKey);
+		if (existing) existing.remove();
+		const trap = new Trap(data, pos, this.isSimulation, null, this as any);
+		this.traps.set(positionKey, trap);
 		if (trap.isRoadblock) {
+			trap.roadblockPreviousValue = this.mazeLayout[pos.row][pos.col];
+			trap.roadblockApplied = true;
 			this.updateMazeLayout(pos, Number.POSITIVE_INFINITY);
 		}
+		return trap;
+	}
+
+	removeTrap(trap: Trap) {
+		const positionKey = `${trap.position.col},${trap.position.row}`;
+		if (this.traps.get(positionKey) === trap) this.traps.delete(positionKey);
+		if (!trap.isRoadblock || !trap.roadblockApplied) return;
+		trap.roadblockApplied = false;
+		this.updateMazeLayout(
+			trap.position,
+			trap.roadblockPreviousValue ?? this.baseMazeLayout[trap.position.row][trap.position.col]
+		);
+	}
+
+	applyObstacleEvent(event: ObstacleEvent) {
+		const positionKey = `${event.position.col},${event.position.row}`;
+		if (event.action === 'place') {
+			const trap = this.addTrap(
+				{ key: event.trapKey, direction: 'UP', pos: event.position },
+				null,
+				'world'
+			);
+			if (trap) trap.userPlacementId = event.placementId;
+			return;
+		}
+
+		const trap = event.placementId
+			? [...this.traps.values()].find(
+					(candidate) => candidate.userPlacementId === event.placementId
+			  )
+			: this.traps.get(positionKey);
+		if (trap?.isRoadblock && trap.key === event.trapKey) trap.remove();
 	}
 
 	update(delta: number) {
-		GameConfig.setValue('scaledElapsedTime', GameConfig.scaledElapsedTime + delta);
+		this.runtime.setValue('scaledElapsedTime', this.runtime.scaledElapsedTime + delta);
 		this.noWaveBlockingSpawns =
 			this.enemiesOnMap.filter((enemy) => !enemy.dontBlockWave).length === 0;
 		this.noEnemyAlive = this.enemiesOnMap.filter((enemy) => !enemy.notCountInTotal).length === 0;

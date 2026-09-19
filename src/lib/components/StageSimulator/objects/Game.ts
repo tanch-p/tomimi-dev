@@ -6,7 +6,12 @@ import { GameConfig } from './GameConfig';
 import { GameManager } from './GameManager';
 import { writable } from 'svelte/store';
 import { clearObjects } from '$lib/functions/threejsHelpers';
-import { obstacleEventStore } from '../stores/obstacleEvents';
+import {
+	obstacleEventStore,
+	type ObstacleEvent,
+	type ObstacleEventSnapshot
+} from '../stores/obstacleEvents';
+import trapLookup from '$lib/data/trap/traps.json';
 
 export class Game {
 	canvas: HTMLCanvasElement;
@@ -27,6 +32,10 @@ export class Game {
 	isDragging = false;
 	previousMousePosition = { x: 0, y: 0 };
 	unsubscribeTokenCard: () => void = () => undefined;
+	unsubscribeObstacleEvents: () => void = () => undefined;
+	obstacleEvents: ObstacleEvent[] = [];
+	obstacleReplayIndex = 0;
+	renderLoopRequested = false;
 
 	constructor(canvasElement: HTMLCanvasElement, config: MapConfig, waveData, enemies: EnemyType[]) {
 		this.canvas = canvasElement;
@@ -50,6 +59,7 @@ export class Game {
 		this.onPointerMove = this.onPointerMove.bind(this);
 		this.onPointerDown = this.onPointerDown.bind(this);
 		this.onPointerUp = this.onPointerUp.bind(this);
+		this.onVisibilityChange = this.onVisibilityChange.bind(this);
 		// threejs
 		const frustumSize = GameConfig.FrustumSize;
 		const rect = this.canvas.getBoundingClientRect();
@@ -84,6 +94,7 @@ export class Game {
 		window.addEventListener('resize', this.onWindowResize);
 		document.addEventListener('pointermove', this.onPointerMove);
 		document.addEventListener('pointerup', this.onPointerUp);
+		document.addEventListener('visibilitychange', this.onVisibilityChange);
 		canvasElement.addEventListener('pointerdown', this.onPointerDown);
 		this.gameManager = new GameManager(config, this, enemies);
 		this.map = new GameMap(this.gameManager);
@@ -94,8 +105,29 @@ export class Game {
 				if (!card?.selected) this.hideRollOverMesh();
 			}
 		);
+		this.unsubscribeObstacleEvents = obstacleEventStore.subscribe((snapshot) => {
+			this.setObstacleEvents(snapshot);
+		});
 
-		this.renderer.setAnimationLoop(() => this.render());
+		this.startRenderLoop();
+	}
+	private isDocumentHidden() {
+		return typeof document !== 'undefined' && document.hidden;
+	}
+	private startRenderLoop() {
+		this.renderLoopRequested = true;
+		if (this.isDocumentHidden()) return;
+		this.clock.getDelta();
+		this.renderer?.setAnimationLoop(() => this.render());
+	}
+	private onVisibilityChange() {
+		if (this.isDocumentHidden()) {
+			this.renderer?.setAnimationLoop(null);
+			return;
+		}
+		if (!this.renderLoopRequested) return;
+		this.clock.getDelta();
+		this.renderer?.setAnimationLoop(() => this.render());
 	}
 	initLights() {
 		if (!this.scene) return;
@@ -110,6 +142,7 @@ export class Game {
 	stop() {
 		GameConfig.state = 'stop';
 		GameConfig.setValue('isPaused', true);
+		this.renderLoopRequested = false;
 		this.renderer?.setAnimationLoop(null);
 	}
 
@@ -168,8 +201,7 @@ export class Game {
 		this.initLights();
 		this.initCamera();
 		GameConfig.state = 'ready';
-		this.clock.getDelta(); //throwaway last frame due to large timing taken to reset
-		this.renderer?.setAnimationLoop(() => this.render());
+		this.startRenderLoop();
 	}
 	initCamera() {
 		if (!this.camera) return;
@@ -500,10 +532,71 @@ export class Game {
 		}
 		return true;
 	}
+
+	private setObstacleEvents(snapshot: ObstacleEventSnapshot) {
+		this.obstacleEvents = snapshot.events.map((event) => ({
+			...event,
+			position: { ...event.position }
+		}));
+		this.updateObstacleReplayIndex(GameConfig.scaledElapsedTime);
+	}
+
+	setObstacleReplayTime(time: number) {
+		this.updateObstacleReplayIndex(time);
+		this.syncTokenStateAt(time);
+	}
+
+	private updateObstacleReplayIndex(time: number) {
+		this.obstacleReplayIndex = this.obstacleEvents.findIndex((event) => event.time > time);
+		if (this.obstacleReplayIndex === -1) this.obstacleReplayIndex = this.obstacleEvents.length;
+	}
+
+	private syncTokenStateAt(time: number) {
+		const initialCard = (this.config as any).token_cards?.find(
+			(card: { key: string; count: number; cost?: number }) => card.key === 'trap_001_crate'
+		);
+		if (!initialCard) return;
+		const placements = this.obstacleEvents.filter(
+			(event) => event.action === 'place' && event.time <= time
+		);
+		const trapData = (trapLookup as Record<string, any>)[initialCard.key];
+		const stats = trapData?.stats?.[0];
+		const cost = Number(initialCard.cost ?? stats?.cost ?? 5);
+		const cooldownDuration = Math.max(0, Number(stats?.respawnTime ?? 0));
+		const latestPlacement = placements[placements.length - 1];
+		const cooldownRemaining = latestPlacement
+			? Math.max(0, cooldownDuration - (time - latestPlacement.time))
+			: 0;
+		const currentCard = GameConfig.tokenCard as { selected?: boolean } | null;
+		const count = Math.max(0, initialCard.count - placements.length);
+
+		GameConfig.setValue('totalDeductedCost', placements.length * cost);
+		GameConfig.setValue('tokenCooldownDuration', cooldownDuration);
+		GameConfig.setValue('tokenCooldownRemaining', cooldownRemaining);
+		GameConfig.setValue(
+			'tokenCard',
+			count > 0 ? { ...initialCard, count, selected: currentCard?.selected ?? true } : null
+		);
+	}
+
+	private replayObstacleEventsThrough(time: number) {
+		let replayed = false;
+		while (
+			this.obstacleReplayIndex < this.obstacleEvents.length &&
+			this.obstacleEvents[this.obstacleReplayIndex].time <= time
+		) {
+			const event = this.obstacleEvents[this.obstacleReplayIndex];
+			this.gameManager.applyObstacleEvent(event);
+			this.obstacleReplayIndex++;
+			replayed = true;
+		}
+		if (replayed) this.syncTokenStateAt(time);
+	}
 	onPointerUp() {
 		this.isDragging = false;
 	}
 	render() {
+		if (this.isDocumentHidden()) return;
 		const frameDelta = this.clock.getDelta();
 		const deltaTime = frameDelta * GameConfig.speedFactor;
 		if (
@@ -524,6 +617,7 @@ export class Game {
 				GameConfig.setValue('isPaused', true);
 			}
 		}
+		this.replayObstacleEventsThrough(GameConfig.scaledElapsedTime);
 		this.gameManager.enemiesOnMap.forEach((enemy) => enemy.updatePathVisualisation(frameDelta));
 
 		if (this.spawnManager.isFinished && this.gameManager.noEnemyAlive) {
@@ -534,6 +628,8 @@ export class Game {
 
 	cleanup() {
 		this.unsubscribeTokenCard();
+		this.unsubscribeObstacleEvents();
+		this.renderLoopRequested = false;
 
 		if (this.renderer) {
 			this.renderer.setAnimationLoop(null);
@@ -558,5 +654,6 @@ export class Game {
 		this.canvas.removeEventListener('pointerdown', this.onPointerDown);
 		document.removeEventListener('pointermove', this.onPointerMove);
 		document.removeEventListener('pointerup', this.onPointerUp);
+		document.removeEventListener('visibilitychange', this.onVisibilityChange);
 	}
 }

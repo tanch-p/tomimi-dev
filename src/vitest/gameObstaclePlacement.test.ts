@@ -164,6 +164,75 @@ test('token cooldown decreases with scaled game time and stops at zero', () => {
 	expect(GameConfig.tokenCooldownRemaining).toBe(0);
 });
 
+test('game render loop suspends while hidden and resumes without a hidden-tab delta', () => {
+	const setAnimationLoop = vi.fn();
+	const getDelta = vi.fn();
+	const game = Object.create(Game.prototype) as any;
+	Object.assign(game, {
+		renderer: { setAnimationLoop },
+		clock: { getDelta },
+		renderLoopRequested: true,
+		isDocumentHidden: () => true
+	});
+
+	game.onVisibilityChange();
+	expect(setAnimationLoop).toHaveBeenLastCalledWith(null);
+
+	game.isDocumentHidden = () => false;
+	game.onVisibilityChange();
+	expect(getDelta).toHaveBeenCalledOnce();
+	expect(setAnimationLoop).toHaveBeenLastCalledWith(expect.any(Function));
+});
+
+test('a stopped game stays stopped when its tab becomes visible', () => {
+	const setAnimationLoop = vi.fn();
+	const game = Object.create(Game.prototype) as any;
+	Object.assign(game, {
+		renderer: { setAnimationLoop },
+		clock: { getDelta: vi.fn() },
+		renderLoopRequested: false,
+		isDocumentHidden: () => false
+	});
+
+	game.onVisibilityChange();
+	expect(setAnimationLoop).not.toHaveBeenCalled();
+});
+
+test('future obstacle events replay after seeking behind them', () => {
+	const game = Object.create(Game.prototype) as any;
+	const applyObstacleEvent = vi.fn();
+	Object.assign(game, {
+		config: { token_cards: [{ key: 'trap_001_crate', count: 2 }] },
+		gameManager: { applyObstacleEvent },
+		obstacleEvents: [
+			{
+				action: 'place',
+				time: 300,
+				position: { row: 4, col: 11 },
+				trapKey: 'trap_001_crate',
+				placementId: 'obstacle-1'
+			}
+		],
+		obstacleReplayIndex: 0
+	});
+	GameConfig.setValue('tokenCard', {
+		key: 'trap_001_crate',
+		count: 2,
+		selected: true
+	});
+
+	game.setObstacleReplayTime(200);
+	game.replayObstacleEventsThrough(299.9);
+	expect(applyObstacleEvent).not.toHaveBeenCalled();
+
+	game.replayObstacleEventsThrough(300);
+	expect(applyObstacleEvent).toHaveBeenCalledOnce();
+	expect(applyObstacleEvent).toHaveBeenCalledWith(game.obstacleEvents[0]);
+	expect(GameConfig.totalDeductedCost).toBe(5);
+	expect(GameConfig.tokenCard.count).toBe(1);
+	expect(GameConfig.tokenCooldownRemaining).toBe(5);
+});
+
 test('an invalid obstacle preview remains visible and semi-transparent', () => {
 	const game = Object.create(Game.prototype) as any;
 	const sharedMaterial = new THREE.MeshBasicMaterial({ opacity: 0.8 });

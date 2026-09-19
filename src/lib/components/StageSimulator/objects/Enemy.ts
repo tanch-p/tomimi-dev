@@ -15,6 +15,7 @@ import {
 	createPathVisualisation,
 	type AnimatedPathVisualisation
 } from '$lib/functions/pathVisualisationHelpers';
+import { getStageRuntime } from './StageRuntime';
 
 const moveMultiplier = 0.5;
 const animatedPathCountdownFadeDuration = 4;
@@ -108,6 +109,9 @@ export class Enemy {
 	disguiseSkel: spine.SkeletonMesh;
 	disguiseKey: string | null = null;
 	texture;
+	get runtime() {
+		return getStageRuntime(this.gameManager);
+	}
 
 	constructor(
 		enemyData: EnemyType,
@@ -123,7 +127,7 @@ export class Enemy {
 			enemyData,
 			enemyData.traits,
 			formIndex,
-			GameConfig.specialMods,
+			getStageRuntime(gameManager).specialMods,
 			'trait'
 		).find((skill) => skill.key === 'shdopl_disguise');
 		const summonedEnemyKey =
@@ -230,14 +234,14 @@ export class Enemy {
 				this.data,
 				this.data.traits,
 				this.formIndex,
-				GameConfig.specialMods,
+				this.runtime.specialMods,
 				'trait'
 			);
 			this.specials = getEnemySkills(
 				this.data,
 				this.data.forms[this.formIndex].special,
 				this.formIndex,
-				GameConfig.specialMods,
+				this.runtime.specialMods,
 				'special'
 			);
 			this.skills = this.traits.concat(this.specials);
@@ -442,7 +446,7 @@ export class Enemy {
 						this.data,
 						this.data.forms[this.formIndex].special,
 						this.formIndex,
-						GameConfig.specialMods,
+						this.runtime.specialMods,
 						'special'
 					);
 					this.skills = this.traits.concat(this.specials);
@@ -682,8 +686,12 @@ export class Enemy {
 	}
 
 	private calculateMovementVelocity(direction: THREE.Vector3, theoreticalSpeed: number) {
-		const steeringFactor = GameConfig.steeringEnabled ? (this.motionMode === 'FLY' ? 20 : 8) : 100;
-		const maxSteeringForce = GameConfig.steeringEnabled
+		const steeringFactor = this.runtime.steeringEnabled
+			? this.motionMode === 'FLY'
+				? 20
+				: 8
+			: 100;
+		const maxSteeringForce = this.runtime.steeringEnabled
 			? this.motionMode === 'FLY'
 				? 100
 				: 10
@@ -930,7 +938,7 @@ export class Enemy {
 		if (
 			this?.gameManager?.config &&
 			DUEL_STAGES.includes(this.gameManager.config.levelId) &&
-			GameConfig.stagePhaseIndex === 0
+			this.runtime.stagePhaseIndex === 0
 		)
 			return;
 		if (this.exit) return;
@@ -987,7 +995,10 @@ export class Enemy {
 						this.movementFrameAccumulator = 0;
 						return;
 					}
-					if (this.gameManager.config.levelId.includes('_d-') && GameConfig.stagePhaseIndex === 0) {
+					if (
+						this.gameManager.config.levelId.includes('_d-') &&
+						this.runtime.stagePhaseIndex === 0
+					) {
 						// workaround for duel stages to prevent enemy from moving
 						this.animState = 'Idle';
 						this.movementFrameAccumulator = 0;
@@ -1157,7 +1168,7 @@ export class Enemy {
 								time - this.gameManager.spawnManager.fragmentsTimeTracker.get(this.fragmentKey);
 							break;
 						case 'WAIT_CURRENT_WAVE_TIME':
-							this.timeToWait = time - GameConfig.waveElapsedTime;
+							this.timeToWait = time - this.runtime.waveElapsedTime;
 							break;
 						default:
 							this.timeToWait = time;
@@ -1503,7 +1514,7 @@ export class Enemy {
 				this.data,
 				this.data.forms[this.formIndex].special,
 				this.formIndex,
-				GameConfig.specialMods,
+				this.runtime.specialMods,
 				'special'
 			);
 			this.skills = this.traits.concat(this.specials);

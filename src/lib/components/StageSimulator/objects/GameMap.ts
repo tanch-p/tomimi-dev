@@ -15,7 +15,7 @@ export class GameMap {
 	assetManager: AssetManager;
 	gameManager: GameManager;
 
-	constructor(gameManager:GameManager) {
+	constructor(gameManager: GameManager) {
 		this.assetManager = AssetManager.getInstance();
 		this.gameManager = gameManager;
 		this.config = gameManager.config;
@@ -27,7 +27,7 @@ export class GameMap {
 
 	setup(mapData) {
 		const forbiddenTiles =
-			(GameConfig.eliteMode && this.config.elite_runes?.forbid_locations) || [];
+			(this.gameManager.runtime?.eliteMode && this.config.elite_runes?.forbid_locations) || [];
 		const { map, tiles } = mapData;
 		map.forEach((row, rowIdx) =>
 			row.forEach((tileIndex, colIdx) => {

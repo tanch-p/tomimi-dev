@@ -12,6 +12,7 @@ import { TileManager } from './TileManager';
 import { CountdownManager } from './ShaderCountdownManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { Game } from './Game';
+import { liveStageRuntime, type StageRuntime } from './StageRuntime';
 
 type MovementRoute = {
 	motionMode?: string;
@@ -43,8 +44,10 @@ export class GameManager {
 	roadblockReachabilityCache = new Map<string, boolean>();
 	countdownManager: CountdownManager;
 	isSimulation = false;
+	runtime: StageRuntime;
 
 	constructor(config: MapConfig, game: Game, enemies: Enemy[]) {
+		this.runtime = liveStageRuntime;
 		this.enemies = enemies;
 		this.config = config;
 		this.game = game;
@@ -468,7 +471,7 @@ export class GameManager {
 		}
 	}
 
-	addTrap(data, actionKey, posType = 'game') {
+	addTrap(data, actionKey = null, posType = 'game') {
 		if (!data) {
 			data = this.config.traps.find((ele) => ele.alias === actionKey || ele.key === actionKey);
 		}
@@ -500,11 +503,12 @@ export class GameManager {
 		}
 		const pos = posType === 'game' ? this.gameToWorldPos(dataPos) : dataPos;
 		const trap = new Trap(data, pos, this.isSimulation, blackboard, this);
+		const isSnapshot = posType === 'snapshot';
 		if (trap.isRoadblock && posType === 'world' && !this.canPlaceRoadblock(pos)) {
 			trap.remove();
 			return null;
 		}
-		if (trap.isRoadblock && this.isRouteEndPosition(pos)) {
+		if (trap.isRoadblock && !isSnapshot && this.isRouteEndPosition(pos)) {
 			trap.remove();
 			return null;
 		}
@@ -577,6 +581,7 @@ export class GameManager {
 
 	set(data) {
 		this.countdownManager.removeAllCountdowns();
+		this.syncRoadblocks(data.roadblocks ?? []);
 		const enemiesToRemove = [];
 		this.enemiesOnMap.forEach((enemy) => {
 			if (!data.enemiesOnMap.find((e) => enemy.spawnUID === e.spawnUID)) {
@@ -602,6 +607,72 @@ export class GameManager {
 			);
 		});
 		// console.log('after', this.enemiesOnMap,data.enemiesOnMap);
+	}
+
+	syncRoadblocks(
+		roadblocks: Array<{
+			key: string;
+			position: Position;
+			placementId: string | null;
+		}>
+	) {
+		const desiredByPosition = new Map(
+			roadblocks.map((roadblock) => [
+				`${roadblock.position.col},${roadblock.position.row}`,
+				roadblock
+			])
+		);
+
+		for (const [positionKey, trap] of [...this.traps.entries()]) {
+			if (!trap.isRoadblock) continue;
+			const desired = desiredByPosition.get(positionKey);
+			if (desired && desired.key === trap.key && desired.placementId === trap.userPlacementId) {
+				desiredByPosition.delete(positionKey);
+				continue;
+			}
+			trap.remove();
+		}
+
+		for (const roadblock of desiredByPosition.values()) {
+			const trap = this.addTrap(
+				{
+					key: roadblock.key,
+					direction: 'UP',
+					pos: roadblock.position
+				},
+				null,
+				'snapshot'
+			);
+			if (trap) trap.userPlacementId = roadblock.placementId;
+		}
+	}
+
+	applyObstacleEvent(event: {
+		action: 'place' | 'remove';
+		position: Position;
+		trapKey: string;
+		placementId: string | null;
+	}) {
+		const positionKey = `${event.position.col},${event.position.row}`;
+		if (event.action === 'place') {
+			const existing = this.traps.get(positionKey);
+			if (existing?.userPlacementId === event.placementId) return;
+			if (existing?.isRoadblock) existing.remove();
+			const trap = this.addTrap(
+				{ key: event.trapKey, direction: 'UP', pos: event.position },
+				null,
+				'snapshot'
+			);
+			if (trap) trap.userPlacementId = event.placementId;
+			return;
+		}
+
+		const trap = event.placementId
+			? [...this.traps.values()].find(
+					(candidate) => candidate.userPlacementId === event.placementId
+			  )
+			: this.traps.get(positionKey);
+		if (trap?.isRoadblock && trap.key === event.trapKey) trap.remove();
 	}
 
 	update(delta: number) {

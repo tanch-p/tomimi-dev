@@ -2,7 +2,9 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { GameConfig } from './objects/GameConfig';
 
-	export let game, simulatedData;
+	export let game,
+		simulatedData,
+		isSimulationRunning = false;
 
 	$: totalTime = (Object?.keys(simulatedData?.t)?.length ?? 1) - 1;
 
@@ -41,7 +43,7 @@
 
 	// Handle mouse move for tooltip
 	function handleMouseMove(event) {
-		if (!seekbarElement) return;
+		if (!seekbarElement || isSimulationRunning) return;
 		const rect = seekbarElement.getBoundingClientRect();
 		const clientX = getClientX(event);
 		const hoverPosition = clientX - rect.left;
@@ -71,6 +73,7 @@
 
 	// Start dragging
 	function handleMouseDown(event) {
+		if (isSimulationRunning) return;
 		isDragging = true;
 		GameConfig.setValue('isPaused', true);
 
@@ -126,11 +129,13 @@
 	}
 
 	function updateValue(time) {
+		if (isSimulationRunning) return;
 		if (time === GameConfig.scaledElapsedTime) return;
 		GameConfig.setValue('scaledElapsedTime', time);
 		if (game) {
 			game.spawnManager.set(simulatedData.t[time]);
 			game.gameManager.set(simulatedData.t[time]);
+			game.setObstacleReplayTime(time);
 		}
 	}
 	const unsubscribeFns = [];
@@ -151,11 +156,17 @@
 </script>
 
 <div
-	class="group absolute z-[1] bottom-[10px] md:bottom-[20px] left-1/2 -translate-x-1/2 flex items-center justify-center w-full max-w-[70vw] sm:max-w-[70%]"
+	class="group absolute z-[1] bottom-[10px] md:bottom-[20px] left-1/2 -translate-x-1/2 flex items-center justify-center w-full max-w-[70vw] sm:max-w-[70%] {isSimulationRunning
+		? 'opacity-40'
+		: ''}"
+	aria-busy={isSimulationRunning}
+	aria-disabled={isSimulationRunning}
 >
 	<div class="absolute top-1/2 -translate-y-2/3 bg-[rgba(0,0,0,0.5)] w-full h-[40px] opacity-0" />
 	<div
-		class="relative w-full cursor-pointer select-none touch-none"
+		class="relative w-full select-none touch-none {isSimulationRunning
+			? 'cursor-wait pointer-events-none'
+			: 'cursor-pointer'}"
 		bind:this={seekbarElement}
 		on:mousemove={handleMouseMove}
 		on:mousedown={handleMouseDown}

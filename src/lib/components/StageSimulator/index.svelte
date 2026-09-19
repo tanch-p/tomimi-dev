@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Enemy, Language, MapConfig } from '$lib/types';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount, tick } from 'svelte';
 	import { Game } from './objects/Game';
 	import { AssetManager } from './objects/AssetManager';
 	import LoadingScreen from './LoadingScreen.svelte';
@@ -11,6 +11,7 @@
 	import { getSimulatedData } from './functions/Simulator';
 	import BranchSummons from './BranchSummons.svelte';
 	import { generateBranchTimeline } from '$lib/functions/waveHelpers';
+	import { obstacleEventStore, type ObstacleEventSnapshot } from './stores/obstacleEvents';
 
 	export let timeline,
 		mapConfig: MapConfig,
@@ -25,22 +26,95 @@
 	let assetManager = AssetManager.getInstance(),
 		canvasElement: HTMLCanvasElement,
 		game: Game,
-		simulatedData;
+		simulatedData,
+		isSimulationRunning = false,
+		assetsReady = false,
+		simulationGeneration = 0,
+		simulationInputVersion = 0,
+		lastSimulationRequestKey = '',
+		latestObstacleSnapshot: ObstacleEventSnapshot = obstacleEventStore.getSnapshot(),
+		initialSimulationWaveIndex = 0;
 
 	$: if (timeline) {
 		resetGame();
 	}
-	$: if (waveData) {
-		simulatedData = getSimulatedData(mapConfig, waveData, enemies);
+	$: simulationInputsChanged(mapConfig, waveData, enemies, timeline, randomSeeds);
+
+	function simulationInputsChanged(...inputs: unknown[]) {
+		if (inputs.some((input) => !input)) return;
+		simulationInputVersion++;
+		requestSimulation(latestObstacleSnapshot);
 	}
 
 	function resetGame() {
 		if (game) {
 			game.reset(mapConfig, waveData, enemies);
+			initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		}
 	}
 
+	function simulationRequestKey(snapshot: ObstacleEventSnapshot) {
+		return JSON.stringify([
+			simulationInputVersion,
+			GameConfig.stagePhaseIndex,
+			initialSimulationWaveIndex,
+			snapshot.levelId,
+			snapshot.events
+		]);
+	}
+
+	function requestSimulation(snapshot: ObstacleEventSnapshot, force = false) {
+		if (!assetsReady) return;
+		const requestKey = simulationRequestKey(snapshot);
+		if (!force && requestKey === lastSimulationRequestKey) return;
+		lastSimulationRequestKey = requestKey;
+		void rerunSimulation(snapshot);
+	}
+
+	function simulationSeed(levelId: string) {
+		let hash = 2166136261;
+		for (let i = 0; i < levelId.length; i++) {
+			hash ^= levelId.charCodeAt(i);
+			hash = Math.imul(hash, 16777619);
+		}
+		return hash >>> 0;
+	}
+
+	async function rerunSimulation(snapshot: ObstacleEventSnapshot) {
+		if (!assetsReady || !mapConfig || !waveData || !enemies) return;
+		const generation = ++simulationGeneration;
+		isSimulationRunning = true;
+		await tick();
+
+		try {
+			const result = await getSimulatedData(mapConfig, waveData, enemies, {
+				obstacleEvents: snapshot,
+				mode: 'wave_normal',
+				currentWaveIndex: initialSimulationWaveIndex,
+				stagePhaseIndex: GameConfig.stagePhaseIndex,
+				eliteMode: GameConfig.eliteMode,
+				specialMods: GameConfig.specialMods,
+				steeringEnabled: GameConfig.steeringEnabled,
+				seed: simulationSeed(mapConfig.levelId),
+				shouldCancel: () => generation !== simulationGeneration
+			});
+
+			if (generation === simulationGeneration) simulatedData = result;
+		} catch (error) {
+			console.error('Failed to rerun stage simulation', error);
+		} finally {
+			if (generation === simulationGeneration) isSimulationRunning = false;
+		}
+	}
+
+	function handleObstacleEvents(snapshot: ObstacleEventSnapshot) {
+		latestObstacleSnapshot = snapshot;
+		requestSimulation(snapshot);
+	}
+
 	async function loadGame(mapConfig) {
+		assetsReady = false;
+		simulationGeneration++;
 		if (game) {
 			game.stop();
 		}
@@ -52,19 +126,33 @@
 			game = new Game(canvasElement, mapConfig, waveData, enemies);
 			GameConfig.state = 'ready';
 		}
+		initialSimulationWaveIndex = GameConfig.currentWaveIndex;
+		assetsReady = true;
+		requestSimulation(latestObstacleSnapshot, true);
 	}
 
 	const unsubscribeFns = [];
 	onMount(() => {
+		unsubscribeFns.push(obstacleEventStore.subscribe(handleObstacleEvents));
 		unsubscribeFns.push(
 			GameConfig.subscribe('mode', (mode) => {
 				simMode = mode;
 				game && assetManager.texturesLoaded && game.softReset(false);
 			})
 		);
+		unsubscribeFns.push(
+			GameConfig.subscribe('stagePhaseIndex', () => {
+				queueMicrotask(() => {
+					initialSimulationWaveIndex = GameConfig.currentWaveIndex;
+					requestSimulation(latestObstacleSnapshot);
+				});
+			})
+		);
 	});
 
 	onDestroy(() => {
+		assetsReady = false;
+		simulationGeneration++;
 		unsubscribeFns.forEach((fn) => fn());
 		assetManager.cleanup();
 		assetManager.texturesLoaded = false;
@@ -92,6 +180,7 @@
 		/>
 		<Interface
 			{simulatedData}
+			{isSimulationRunning}
 			bind:randomSeeds
 			{game}
 			initialCost={mapConfig?.initialCost}

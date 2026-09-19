@@ -44,9 +44,9 @@ const getFragmentName = (id, language: Language) => {
 	return fragment[`name_${language}`] || fragment['name_zh'];
 };
 
-export function shuffleArray(array) {
+export function shuffleArray(array, random = Math.random) {
 	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
+		const j = Math.floor(random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]]; // Swap elements
 	}
 	return array;

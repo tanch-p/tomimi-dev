@@ -1,9 +1,9 @@
 import { shuffleArray } from '$lib/functions/waveHelpers';
 import { Enemy } from './Enemy';
-import { GameConfig } from './GameConfig';
 import { GameManager } from './GameManager';
 import { SpawnManager } from './SpawnManager';
 import branchInfo from '$lib/data/stages/branch_info.json';
+import { getStageRuntime } from './StageRuntime';
 
 export class BranchManager {
 	routes;
@@ -18,6 +18,9 @@ export class BranchManager {
 	isFinished = false;
 	phasePreDelayTimer = 0;
 	phaseTimer = 0;
+	get runtime() {
+		return getStageRuntime(this.gameManager);
+	}
 	constructor(branchKey, branch, gameManager: GameManager, spawnManager: SpawnManager) {
 		this.branchKey = branchKey;
 		this.branch = branch;
@@ -25,7 +28,7 @@ export class BranchManager {
 		this.gameManager = gameManager;
 		this.routes = gameManager.config.extra_routes;
 		const indexes = Array.from({ length: branch.phases.length }, (_, i) => i);
-		const shuffledIndexes = shuffleArray(indexes);
+		const shuffledIndexes = shuffleArray(indexes, () => this.runtime.random());
 		this.phases = branch.phases.map((phase, i) => {
 			return { preDelay: phase.preDelay, actions: branch.phases[shuffledIndexes[i]].actions };
 		});
@@ -90,11 +93,11 @@ export class BranchManager {
 			}
 
 			// Handle spawning
-			const timeSinceLastSpawn = GameConfig.scaledElapsedTime - state.lastSpawnTime;
+			const timeSinceLastSpawn = this.runtime.scaledElapsedTime - state.lastSpawnTime;
 			if (state.spawnCount === 0 || timeSinceLastSpawn >= state.action.interval) {
 				this.spawnEntity(state.action, index);
 				state.spawnCount++;
-				state.lastSpawnTime = GameConfig.scaledElapsedTime;
+				state.lastSpawnTime = this.runtime.scaledElapsedTime;
 
 				// Check if action is complete
 				if (state.spawnCount >= state.action.count) {

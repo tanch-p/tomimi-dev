@@ -3,6 +3,7 @@ import { Enemy } from './Enemy';
 import { GameConfig } from './GameConfig';
 import { GameManager } from './GameManager';
 import { GameMap } from './GameMap';
+import { getStageRuntime } from './StageRuntime';
 
 const ENEMIES_TO_HIGHLIGHT = [
 	'enemy_2001_duckmi',
@@ -38,13 +39,18 @@ export class SpawnManager {
 	enemiesToHighlight = []; //for use in simulation only
 	spawnIdx = 0;
 
+	get runtime() {
+		return getStageRuntime(this.gameManager);
+	}
+
 	constructor(waves, map, gameManager: GameManager) {
 		this.map = map;
 		this.waves = waves;
 		this.gameManager = gameManager;
 		gameManager.spawnManager = this;
 		this.routes = gameManager.config.routes;
-		this.currentWaveIndex = GameConfig.currentWaveIndex;
+		this.currentWaveIndex = this.runtime.currentWaveIndex;
+		this.waveElapsedTime = this.runtime.waveElapsedTime;
 		this.currentFragmentIndex = 0;
 		this.nextWaveType = waves[0].maxTimeWaitingForNextWave < 0 ? 'NO_ENEMIES' : 'TIME';
 		switch (this.gameManager.config.levelId) {
@@ -52,7 +58,7 @@ export class SpawnManager {
 			case 'level_rogue5_d-1':
 			case 'level_rogue5_d-3':
 			case 'level_rogue6_d-1':
-				if (GameConfig.stagePhaseIndex === 1) {
+				if (this.runtime.stagePhaseIndex === 1) {
 					this.addBranch('Walk');
 				}
 				break;
@@ -62,18 +68,18 @@ export class SpawnManager {
 			case 'level_rogue5_d-2':
 			case 'level_rogue5_d-4':
 			case 'level_rogue6_d-2':
-				if (GameConfig.stagePhaseIndex === 1) {
+				if (this.runtime.stagePhaseIndex === 1) {
 					this.addBranch('Walk_1');
 					this.addBranch('Walk_2');
 				}
 				break;
 			case 'level_rogue4_b-7':
-				if (GameConfig.stagePhaseIndex === 1) {
+				if (this.runtime.stagePhaseIndex === 1) {
 					this.addBranch('skzjkl_stage_2');
 				}
 				break;
 			case 'level_rogue4_b-8':
-				switch (GameConfig.stagePhaseIndex) {
+				switch (this.runtime.stagePhaseIndex) {
 					case 1:
 						this.addBranch('amiy_blink_1');
 						break;
@@ -93,8 +99,8 @@ export class SpawnManager {
 		this.branches.forEach((branch) => {
 			branch.update(delta);
 		});
-		if (GameConfig.mode !== 'wave_normal') {
-			GameConfig.setValue('waveElapsedTime', GameConfig.waveElapsedTime + delta);
+		if (this.runtime.mode !== 'wave_normal') {
+			this.addWaveElapsedTime(delta);
 			return;
 		}
 
@@ -105,7 +111,7 @@ export class SpawnManager {
 		this.isFinished = this.currentWaveIndex >= this.waves.length && this.isBranchesComplete();
 		if (this.currentWaveIndex >= this.waves.length) {
 			if (!this.gameManager.noEnemyAlive) {
-				GameConfig.setValue('waveElapsedTime', GameConfig.waveElapsedTime + delta);
+				this.addWaveElapsedTime(delta);
 			}
 			return;
 		}
@@ -116,11 +122,7 @@ export class SpawnManager {
 			this.preDelayTimer += delta;
 			return;
 		}
-		if (this.gameManager.isSimulation) {
-			this.waveElapsedTime += delta;
-		} else {
-			GameConfig.setValue('waveElapsedTime', GameConfig.waveElapsedTime + delta);
-		}
+		this.addWaveElapsedTime(delta);
 		// Process fragments
 		if (this.currentFragmentIndex < currentWave.fragments.length) {
 			this.processFragment(currentWave.fragments[this.currentFragmentIndex], delta);
@@ -131,19 +133,21 @@ export class SpawnManager {
 		} else {
 			// Move to next wave
 			this.currentWaveIndex++;
-			GameConfig.setValue('currentWaveIndex', this.currentWaveIndex);
+			this.runtime.setValue('currentWaveIndex', this.currentWaveIndex);
 			this.currentFragmentIndex = 0;
-			if (this.gameManager.isSimulation) {
-				this.waveElapsedTime = 0;
-			} else {
-				GameConfig.setValue('waveElapsedTime', 0);
-			}
+			this.waveElapsedTime = 0;
+			this.runtime.setValue('waveElapsedTime', 0);
 			this.preDelayTimer = 0;
 			this.postDelayTimer = 0;
 			this.nextWaveTimer = 0;
 			this.nextWaveType =
 				this.waves[this.currentWaveIndex]?.maxTimeWaitingForNextWave < 0 ? 'NO_ENEMIES' : 'TIME';
 		}
+	}
+
+	private addWaveElapsedTime(delta: number) {
+		this.waveElapsedTime += delta;
+		this.runtime.setValue('waveElapsedTime', this.waveElapsedTime);
 	}
 
 	checkNextWaveFlag(delta) {
@@ -215,11 +219,11 @@ export class SpawnManager {
 			}
 
 			// Handle spawning
-			const timeSinceLastSpawn = GameConfig.scaledElapsedTime - state.lastSpawnTime;
+			const timeSinceLastSpawn = this.runtime.scaledElapsedTime - state.lastSpawnTime;
 			if (state.spawnCount === 0 || timeSinceLastSpawn >= state.action.interval) {
 				this.spawnEntity(state.action, index);
 				state.spawnCount++;
-				state.lastSpawnTime = GameConfig.scaledElapsedTime;
+				state.lastSpawnTime = this.runtime.scaledElapsedTime;
 
 				// Check if action is complete
 				if (state.spawnCount >= state.action.count) {
@@ -267,7 +271,7 @@ export class SpawnManager {
 		const originalRoute = this.routes[action['routeIndex']];
 		const route = this.gameManager.convertMovementConfig(structuredClone(originalRoute));
 		let enemyKey = action.key;
-		const enemyReplace = GameConfig.eliteMode
+		const enemyReplace = this.runtime.eliteMode
 			? this.gameManager.config.elite_runes?.enemy_replace || {}
 			: {};
 		if (enemyReplace[action.key]) {
@@ -283,8 +287,8 @@ export class SpawnManager {
 		const enemy = new Enemy(enemyData, action, route, this.gameManager, key, spawnUID);
 		if (ENEMIES_TO_HIGHLIGHT.includes(enemyData.key) || enemyData.type.includes('BOSS')) {
 			if (['enemy_2093_skzams'].includes(enemyData.key)) return;
-			if (GameConfig.scaledElapsedTime < 1) return;
-			this.enemiesToHighlight.push({ t: GameConfig.scaledElapsedTime, key: enemyData.key });
+			if (this.runtime.scaledElapsedTime < 1) return;
+			this.enemiesToHighlight.push({ t: this.runtime.scaledElapsedTime, key: enemyData.key });
 		}
 	}
 
@@ -307,9 +311,10 @@ export class SpawnManager {
 	}
 
 	set(data) {
-		GameConfig.setValue('waveElapsedTime', data.waveElapsedTime);
+		this.waveElapsedTime = data.waveElapsedTime;
+		this.runtime.setValue('waveElapsedTime', this.waveElapsedTime);
 		this.currentWaveIndex = data.currentWaveIndex;
-		GameConfig.setValue('currentWaveIndex', data.currentWaveIndex);
+		this.runtime.setValue('currentWaveIndex', data.currentWaveIndex);
 		this.currentFragmentIndex = data.currentFragmentIndex;
 		this.activeActions = structuredClone(data.activeActions);
 		this.completedActions = structuredClone(data.completedActions);
@@ -327,12 +332,24 @@ export class SpawnManager {
 	// Helper method to reset the manager
 	reset() {
 		this.branches.clear();
+		this.branchIndex = 0;
 		this.currentWaveIndex = 0;
+		this.runtime.setValue('currentWaveIndex', 0);
 		this.currentFragmentIndex = 0;
 		this.activeActions.clear();
 		this.completedActions.clear();
+		this.fragmentsTimeTracker.clear();
 		this.isProcessingFragment = false;
+		this.nextWaveTimer = 0;
+		this.nextWaveType = this.waves[0]?.maxTimeWaitingForNextWave < 0 ? 'NO_ENEMIES' : 'TIME';
+		this.enterNextWaveFlag = false;
+		this.isFinished = false;
 		this.preDelayTimer = 0;
+		this.fragmentPreDelayTimer = 0;
 		this.postDelayTimer = 0;
+		this.waveElapsedTime = 0;
+		this.runtime.setValue('waveElapsedTime', 0);
+		this.enemiesToHighlight = [];
+		this.spawnIdx = 0;
 	}
 }

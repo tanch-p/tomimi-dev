@@ -22,6 +22,7 @@
 		count: number,
 		randomSeeds,
 		simulatedData,
+		isSimulationRunning = false,
 		maxCost = 99;
 
 	let card: TokenCard | null = GameConfig.tokenCard,
@@ -132,7 +133,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if simulatedData && simMode === 'wave_normal'}
-	<SeekBar {game} {simulatedData} />
+	<SeekBar {game} {simulatedData} {isSimulationRunning} />
 {/if}
 <div class="absolute z-[1] right-4 flex gap-x-2 md:gap-x-4 mt-4">
 	<button
