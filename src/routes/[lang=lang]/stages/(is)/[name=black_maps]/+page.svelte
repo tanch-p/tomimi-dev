@@ -28,8 +28,6 @@
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 	import StageVariantSelector from '$lib/components/StageVariantSelector.svelte';
 	import SynchroLoader from '$lib/components/SynchroLoader.svelte';
-	import TitleBlock from '$lib/components/TitleBlock.svelte';
-	import { getTranslations } from '$lib/functions/languageHelpers';
 	import blackRelics from '$lib/data/is/black/relics.json';
 	import weatherOptions from '$lib/data/is/black/weather.json';
 	import weather1 from '$lib/images/is/black/rogue_6_weather_1.webp';
