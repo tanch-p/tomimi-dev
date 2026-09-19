@@ -159,15 +159,6 @@
 <main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">
 	<div class="w-screen sm:w-full max-w-7xl mx-auto">
 		<StageVariantSelector variants={data.stageData.data} bind:selectedIndex={configIndex} />
-		{#if dev}
-			<button
-				type="button"
-				class="mx-6 mb-4 rounded bg-sky-600 px-4 py-2 hover:bg-sky-500"
-				on:click={copyCurrentRunState}
-			>
-				Copy run state
-			</button>
-		{/if}
 		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}>
 			<!-- <StageDrops slot="drops" mapConfig={mapConfig} {language} {rogueTopic} {selectedFloor} /> -->
 		</StageInfo>
