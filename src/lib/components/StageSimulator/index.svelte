@@ -183,6 +183,7 @@
 			{isSimulationRunning}
 			bind:randomSeeds
 			{game}
+			{mapConfig}
 			initialCost={mapConfig?.initialCost}
 			{language}
 			count={timeline?.count}

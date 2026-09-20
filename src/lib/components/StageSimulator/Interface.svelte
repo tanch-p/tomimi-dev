@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
-	import type { Language } from '$lib/types';
+	import type { Language, MapConfig } from '$lib/types';
 	import { onDestroy, onMount } from 'svelte';
 	import { GameConfig } from './objects/GameConfig';
 	import enemyCount from '$lib/images/is/enemy_count.webp';
@@ -17,6 +17,7 @@
 	} & Record<string, unknown>;
 
 	export let game,
+		mapConfig: MapConfig,
 		initialCost,
 		language: Language,
 		count: number,
@@ -40,6 +41,7 @@
 		tokenCooldownDuration > 0
 			? Math.min(1, Math.max(0, 1 - tokenCooldownRemaining / tokenCooldownDuration))
 			: 1;
+	$: if (mapConfig?.levelId === 'level_rogue6_c-2' && card) card.cost = 10;
 
 	function handleSpeedFactor() {
 		switch (GameConfig.speedFactor) {
@@ -192,7 +194,7 @@
 >
 	<img src={spriteCost} width="20" alt="Cost:" />
 	<span class="text-3xl">
-		{Math.max(0, Math.min(maxCost, Math.floor(initialCost + totalTime)) - totalDeductedCost)}
+		{Math.max(0, Math.min(maxCost, Math.floor(initialCost + totalTime) - totalDeductedCost))}
 	</span>
 </div>
 
@@ -251,9 +253,16 @@
 			{/if}
 			<div class="absolute z-40 top-0 left-1/2 -translate-x-1/2 flex items-center opacity-80">
 				<img src={iconToken} width="16" height="12" alt="" />
-				<span class="bg-black bg-opacity-80 px-1.5 text-sm">{card.cost ?? 5}</span>
+				<span class="bg-black bg-opacity-80 px-1 text-sm">{card.cost ?? 5}</span>
 			</div>
-			<span class="absolute z-40 right-1 bottom-0 text-xs">X{card.count}</span>
+			<span class="absolute top-0 left-0 inline-flex items-center gap-1 text-[10px] uppercase">
+				<kbd
+					class="grid place-items-center min-w-[18px] border border-[#aaa] bg-[#292929] font-mono text-sm font-bold shadow-[inset_0_-2px_0_rgba(255,255,255,0.15)]"
+				>
+					R
+				</kbd>
+			</span>
+			<span class="absolute z-40 right-1 bottom-0 text-xs">x{card.count}</span>
 		</button>
 	{/if}
 </div>
