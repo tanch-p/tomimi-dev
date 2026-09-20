@@ -2,7 +2,12 @@
 	import type { Language } from '$lib/types';
 	import StageNavButton from './StageNavButton.svelte';
 
-	export let items, language: Language;
+	interface Props {
+		items: any;
+		language: Language;
+	}
+
+	let { items, language }: Props = $props();
 </script>
 
 <tr>

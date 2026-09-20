@@ -1,18 +1,24 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
-	import ro4 from "$lib/data/stages/ro4.json"
-	import { page } from '$app/stores';
+	import ro4 from '$lib/data/stages/ro4.json';
+	import { page } from '$app/state';
 
-	export let stageName: string, language: Language;
-
-	$: currentStageName = $page?.data?.mapConfig?.name_zh;
-
-	const stageInfo = ro4[stageName];
-	if (!stageInfo) {
-		throw new Error(`${stageName} is not found!`);
+	interface Props {
+		stageName: string;
+		language: Language;
 	}
-	$: name = stageInfo[`name_${language}`] || stageInfo['name_zh'];
-	$: stageUrl = name==="「」" ? "ro4_b_9" :stageInfo.code + '_' + name;
+
+	let { stageName, language }: Props = $props();
+
+	let currentStageName = $derived(page?.data?.mapConfig?.name_zh);
+
+	let stageInfo = $derived.by(() => {
+		const info = ro4[stageName];
+		if (!info) throw new Error(`${stageName} is not found!`);
+		return info;
+	});
+	let name = $derived(stageInfo[`name_${language}`] || stageInfo['name_zh']);
+	let stageUrl = $derived(name === '「」' ? 'ro4_b_9' : stageInfo.code + '_' + name);
 </script>
 
 <a href={`/${language}/stages/${stageUrl}`}>

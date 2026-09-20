@@ -7,40 +7,49 @@
 	import CharaFilterToggle from './CharaFilterToggle.svelte';
 	import FilterOptionsToggle from './FilterOptionsToggle.svelte';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const updateSecFilters = (key, subKey, value, type = 'options') => {
 		secFiltersStore.update((list) => {
-			const catIndex = list.findIndex((ele) => ele.key === key);
-			const subIndex = list[catIndex].list.findIndex((ele) => ele.subKey === subKey);
+			// Svelte 5 tracks each-block dependencies more precisely, so publish new
+			// nested references instead of mutating the current store value in place.
+			const updatedList = structuredClone(list);
+			const catIndex = updatedList.findIndex((ele) => ele.key === key);
+			const subIndex = updatedList[catIndex].list.findIndex((ele) => ele.subKey === subKey);
 			switch (type) {
 				case 'sign':
-					if (list[catIndex].list[subIndex].sign === 'gte')
-						list[catIndex].list[subIndex].sign = 'lte';
-					else list[catIndex].list[subIndex].sign = 'gte';
+					if (updatedList[catIndex].list[subIndex].sign === 'gte')
+						updatedList[catIndex].list[subIndex].sign = 'lte';
+					else updatedList[catIndex].list[subIndex].sign = 'gte';
 					break;
 				case 'value':
 					if (!/\D/.test(value) && value) {
-						list[catIndex].list[subIndex].value = parseInt(value);
+						updatedList[catIndex].list[subIndex].value = parseInt(value);
 					}
 					break;
-				default:
-					const optionIndex = list[catIndex].list[subIndex].options.findIndex(
+				default: {
+					const optionIndex = updatedList[catIndex].list[subIndex].options.findIndex(
 						(ele) => ele.value === value
 					);
-					list[catIndex].list[subIndex].options[optionIndex].selected =
-						!list[catIndex].list[subIndex].options[optionIndex].selected;
+					updatedList[catIndex].list[subIndex].options[optionIndex].selected =
+						!updatedList[catIndex].list[subIndex].options[optionIndex].selected;
+				}
 			}
 
-			return list;
+			return updatedList;
 		});
 	};
 	const reset = (key) => {
 		secFiltersStore.update((list) => {
-			const catIndex = list.findIndex((ele) => ele.key === key);
-			list[catIndex] = {
+			const updatedList = structuredClone(list);
+			const catIndex = updatedList.findIndex((ele) => ele.key === key);
+			updatedList[catIndex] = {
 				key,
-				list: list[catIndex].list.map((subItem) => {
+				list: updatedList[catIndex].list.map((subItem) => {
 					if (subItem.type === 'options')
 						return {
 							...subItem,
@@ -51,7 +60,7 @@
 					else return subItem;
 				})
 			};
-			return list;
+			return updatedList;
 		});
 	};
 
@@ -69,7 +78,7 @@
 			<div class="flex flex-wrap sm:grid grid-cols-2 gap-3">
 				{#each $secFiltersStore as { key, list }}
 					<div class="relative w-full rounded border p-3 bg-gray-200">
-						<button class="absolute flex right-2" on:click={() => reset(key)}>
+						<button class="absolute flex right-2" onclick={() => reset(key)}>
 							<Icon name="trash" className="h-[18px] mt-[1px]" />
 							{getTranslations(language).filter_reset}
 						</button>
@@ -91,11 +100,11 @@
 												: getOptionTranslation(
 														key,
 														language
-												  )}{#if language === 'en'}&nbsp;{/if}{getTranslations(language)[suffix]}
+													)}{#if language === 'en'}&nbsp;{/if}{getTranslations(language)[suffix]}
 										</span>
 										<button
 											class="text-lg bg-gray-300 hover:bg-gray-400 rounded px-3"
-											on:click={() => updateSecFilters(key, subKey, sign, 'sign')}
+											onclick={() => updateSecFilters(key, subKey, sign, 'sign')}
 										>
 											{#if sign === 'gte'}
 												&ge;
@@ -106,8 +115,7 @@
 										<input
 											class="w-[50px] pl-1.5"
 											value="0"
-											on:input={(v) =>
-												updateSecFilters(key, subKey, v.currentTarget.value, 'value')}
+											oninput={(v) => updateSecFilters(key, subKey, v.currentTarget.value, 'value')}
 											type="number"
 											pattern="[0-9]*"
 											inputmode="numeric"
@@ -132,7 +140,7 @@
 													id="sec-{value}"
 													class="filter-btn"
 													class:active={selected}
-													on:click={() => updateSecFilters(key, subKey, value, type)}
+													onclick={() => updateSecFilters(key, subKey, value, type)}
 												>
 													{parseConditions(value, language)}
 												</button>

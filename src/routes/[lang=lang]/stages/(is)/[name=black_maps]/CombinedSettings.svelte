@@ -16,27 +16,32 @@
 	import FloorSettingsContent from './FloorSettingsContent.svelte';
 	import { selectedRelics, selectedFloor, activeFloorEffects, gold } from './stores';
 
-	export let language: Language;
-	export let rogueTopic: RogueTopic;
-	export let mapConfig;
-	export let difficulty;
-	export let eliteMode;
-	export let configIndex: number;
-	export let onLoadState: (state: UserRunState) => void;
+	interface Props {
+		language: Language;
+		rogueTopic: RogueTopic;
+		mapConfig: any;
+		difficulty: any;
+		eliteMode: any;
+		configIndex: number;
+		onLoadState: (state: UserRunState) => void;
+	}
 
-	let dialog: HTMLDialogElement;
-	let loadDialog: HTMLDialogElement;
-	let trigger: HTMLButtonElement;
-	let loadTrigger: HTMLButtonElement;
-	let pastedCode = '';
-	let loadError = false;
-	let copyError = false;
-	let copied = false;
+	let { language, rogueTopic, mapConfig, difficulty, eliteMode, configIndex, onLoadState }: Props =
+		$props();
+
+	let dialog: HTMLDialogElement = $state();
+	let loadDialog: HTMLDialogElement = $state();
+	let trigger: HTMLButtonElement = $state();
+	let loadTrigger: HTMLButtonElement = $state();
+	let pastedCode = $state('');
+	let loadError = $state(false);
+	let copyError = $state(false);
+	let copied = $state(false);
 	let copyResetTimeout: ReturnType<typeof setTimeout> | undefined;
 
-	$: translations = getTranslations(language);
-	$: [combatOpsColor, eliteOpsColor] = getEliteColors(rogueTopic ?? 'rogue_black');
-	$: currentState = {
+	let translations = $derived(getTranslations(language));
+	let [combatOpsColor, eliteOpsColor] = $derived(getEliteColors(rogueTopic ?? 'rogue_black'));
+	let currentState = $derived({
 		topic: 'ro6' as const,
 		relics: $selectedRelics.map((relic) => ({
 			id: relic.id,
@@ -47,9 +52,11 @@
 		gold: $gold,
 		floor: $selectedFloor,
 		...(configIndex !== 0 ? { configIndex } : {})
-	};
-	$: runStateCode = encodeUserRunState(currentState);
-	$: if (runStateCode) copied = false;
+	});
+	let runStateCode = $derived(encodeUserRunState(currentState));
+	$effect(() => {
+		if (runStateCode) copied = false;
+	});
 
 	onDestroy(() => clearTimeout(copyResetTimeout));
 
@@ -110,7 +117,7 @@
 		bind:this={trigger}
 		type="button"
 		aria-haspopup="dialog"
-		on:click={openSettings}
+		onclick={openSettings}
 		class="rounded bg-neutral-700 px-4 py-2 font-semibold hover:bg-neutral-600"
 	>
 		{translations.settings} · {translations.difficulty}
@@ -119,12 +126,11 @@
 </div>
 
 <!-- Escape is handled by the native dialog; this click handler only targets the backdrop. -->
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <dialog
 	bind:this={dialog}
 	aria-labelledby="combined-settings-title"
-	on:click={closeOnBackdropClick}
-	on:close={() => trigger?.focus()}
+	onclick={closeOnBackdropClick}
+	onclose={() => trigger?.focus()}
 	class="w-[calc(100vw-1rem)] max-w-[720px] max-h-[calc(100vh-1rem)] overflow-hidden rounded-md bg-neutral-900 p-0 text-near-white shadow-2xl"
 >
 	<div class="flex items-center justify-between border-b border-neutral-700 px-4 py-3">
@@ -134,7 +140,7 @@
 		<button
 			type="button"
 			aria-label={translations.relic_overlay_close}
-			on:click={closeSettings}
+			onclick={closeSettings}
 			class="rounded px-2 text-2xl leading-none hover:bg-neutral-700">×</button
 		>
 	</div>
@@ -146,7 +152,7 @@
 			>
 			<button
 				type="button"
-				on:click={copyCode}
+				onclick={copyCode}
 				aria-label={copied ? translations.copied : translations.copy_code}
 				title={copied ? translations.copied : translations.copy_code}
 				class="flex h-9 w-9 shrink-0 items-center justify-center rounded hover:bg-neutral-700"
@@ -155,13 +161,13 @@
 					{#if copied}
 						<span
 							class="absolute inset-0 grid place-items-center"
-							in:scale={{ duration: 120, start: 0.7 }}
-							out:scale={{ duration: 100, start: 0.7 }}
+							in:scale|global={{ duration: 120, start: 0.7 }}
+							out:scale|global={{ duration: 100, start: 0.7 }}
 						>
 							<svg
 								class="absolute h-6 w-6 text-green-400"
-								in:fade={{ duration: 120 }}
-								out:fade={{ duration: 100 }}
+								in:fade|global={{ duration: 120 }}
+								out:fade|global={{ duration: 100 }}
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
@@ -174,13 +180,13 @@
 					{:else}
 						<span
 							class="absolute inset-0 grid place-items-center"
-							in:scale={{ duration: 120, start: 0.7 }}
-							out:scale={{ duration: 100, start: 0.7 }}
+							in:scale|global={{ duration: 120, start: 0.7 }}
+							out:scale|global={{ duration: 100, start: 0.7 }}
 						>
 							<svg
 								class="absolute h-6 w-6"
-								in:fade={{ duration: 120 }}
-								out:fade={{ duration: 100 }}
+								in:fade|global={{ duration: 120 }}
+								out:fade|global={{ duration: 100 }}
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
@@ -205,7 +211,7 @@
 		<button
 			bind:this={loadTrigger}
 			type="button"
-			on:click={openLoadDialog}
+			onclick={openLoadDialog}
 			class="mt-4 rounded bg-neutral-700 px-4 py-2 hover:bg-neutral-600"
 		>
 			{translations.load_settings}
@@ -233,21 +239,25 @@
 </dialog>
 
 <!-- Escape is handled by the native dialog; this click handler only targets the backdrop. -->
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <dialog
 	bind:this={loadDialog}
 	aria-labelledby="load-settings-title"
-	on:click={closeOnBackdropClick}
-	on:close={() => loadTrigger?.focus()}
+	onclick={closeOnBackdropClick}
+	onclose={() => loadTrigger?.focus()}
 	class="w-[calc(100vw-1rem)] max-w-[560px] rounded-md bg-neutral-900 p-5 text-near-white shadow-2xl"
 >
-	<form on:submit|preventDefault={loadSettings}>
+	<form
+		onsubmit={(event) => {
+			event.preventDefault();
+			loadSettings();
+		}}
+	>
 		<h2 id="load-settings-title" class="text-xl font-semibold">{translations.load_settings}</h2>
 		<label for="run-state-input" class="mt-4 block">{translations.paste_run_state_code}</label>
 		<input
 			id="run-state-input"
 			bind:value={pastedCode}
-			on:input={() => (loadError = false)}
+			oninput={() => (loadError = false)}
 			autocomplete="off"
 			autocapitalize="off"
 			autocorrect="off"
@@ -260,7 +270,7 @@
 		<div class="mt-4 flex justify-end gap-2">
 			<button
 				type="button"
-				on:click={() => loadDialog.close()}
+				onclick={() => loadDialog.close()}
 				class="rounded px-4 py-2 hover:bg-neutral-700">{translations.cancel}</button
 			>
 			<button type="submit" class="rounded bg-sky-600 px-4 py-2 hover:bg-sky-500"

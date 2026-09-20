@@ -4,7 +4,14 @@
 	import { relicLookup } from '$lib/data/is/relic_lookup';
 	import { getFormTitle } from '$lib/functions/formHelpers';
 
-	export let enemy, formIndex, key, language: Language;
+	interface Props {
+		enemy: any;
+		formIndex: any;
+		key: any;
+		language: Language;
+	}
+
+	let { enemy, formIndex, key, language }: Props = $props();
 </script>
 
 <div class="absolute top-[125%] left-1/2 -translate-x-[calc(50%_-_10px)] w-max text-xs">
@@ -14,6 +21,7 @@
 		<img
 			class="select-none"
 			src={`/images/enemy_icons/${key}.webp`}
+			alt={key}
 			height="30px"
 			width="30px"
 			decoding="async"
@@ -22,6 +30,7 @@
 		<img
 			class="select-none"
 			src={`/images/chara_icons/${key}.webp`}
+			alt={key}
 			height="30px"
 			width="30px"
 			decoding="async"

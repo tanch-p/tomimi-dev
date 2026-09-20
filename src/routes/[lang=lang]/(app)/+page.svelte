@@ -13,9 +13,13 @@
 	import toolsLogo from '$lib/images/CRA-X.webp';
 	import FriendLinks from '$lib/components/FriendLinks.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: language = data.language;
+	let { data }: Props = $props();
+
+	let language = $derived(data.language);
 	const is_banners = [
 		{ alt: 'rogue_black', src: banner_black, href: 'black' },
 		{ alt: 'rogue_yan', src: banner_sui, href: 'sui' },
@@ -35,7 +39,7 @@
 </svelte:head>
 
 <section>
-	<div class="h-[10vh]" />
+	<div class="h-[10vh]"></div>
 	<div class="w-screen sm:w-full max-w-7xl mx-auto pb-32">
 		<div class="flex flex-col items-center mx-auto gap-x-4 gap-y-8 px-2 sm:px-8 justify-center">
 			<FriendLinks {language} />

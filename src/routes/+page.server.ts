@@ -10,17 +10,17 @@ export const load = (async ({ request }) => {
 	const userAgent = request.headers.get('user-agent');
 
 	if (!userAgent) {
-		throw redirect(308, `/en`);
+		redirect(308, `/en`);
 	} else if (userAgent.toLowerCase().includes('baidu')) {
-		throw redirect(308, `/zh`);
+		redirect(308, `/zh`);
 	} else if (userAgent.toLowerCase().includes('bot')) {
-		throw redirect(308, '/en');
+		redirect(308, '/en');
 	}
 
 	const acceptLanguage = request.headers.get('accept-language')?.split(',')[0];
 
 	if (!acceptLanguage) {
-		throw redirect(307, `/en`);
+		redirect(307, `/en`);
 	}
 
 	if (acceptLanguage.match(/ja|ja/i)) {
@@ -29,5 +29,5 @@ export const load = (async ({ request }) => {
 		language = 'zh';
 	}
 
-	throw redirect(307, `/${language}`);
+	redirect(307, `/${language}`);
 }) satisfies PageServerLoad;

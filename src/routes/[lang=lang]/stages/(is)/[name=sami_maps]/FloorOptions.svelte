@@ -10,7 +10,12 @@
 	import portal from '$lib/images/is/node_portal.webp';
 	import { portalMods } from './stores';
 
-	export let optionsOpen: boolean, language: Language;
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+	}
+
+	let { optionsOpen = $bindable(), language }: Props = $props();
 	const portalDesc = {
 		en: 'All enemies have Movement Speed -50%, but gain DEF +800, RES +30 and Weight level +1.',
 		ja: '敵全員の移動速度50%減少、重量ランク1増加、防御力800増加、術耐性30増加',
@@ -28,7 +33,7 @@
 		}
 	];
 
-	let portalSelected = false;
+	let portalSelected = $state(false);
 	portalMods.subscribe((value) => {
 		portalSelected = Boolean(value);
 	});
@@ -37,8 +42,8 @@
 			option.shared_id === 'chaos_3'
 				? linear
 				: option.shared_id === 'chaos_4'
-				? terrifyingEntity
-				: blind;
+					? terrifyingEntity
+					: blind;
 	});
 
 	const handlePortalClick = () => {
@@ -63,7 +68,7 @@
 				class={`grid grid-cols-[75px_auto] gap-x-2 mt-2 hover:cursor-pointer text-start ${
 					portalSelected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 				}`}
-				on:click={handlePortalClick}
+				onclick={handlePortalClick}
 			>
 				<div class="relative flex items-center justify-center">
 					<img
@@ -74,7 +79,7 @@
 						class="z-[1]"
 					/>
 					{#if portalSelected}
-						<div class="absolute w-[55px] h-[55px] portal-active" />
+						<div class="absolute w-[55px] h-[55px] portal-active"></div>
 					{/if}
 				</div>
 				<div class="flex flex-col">

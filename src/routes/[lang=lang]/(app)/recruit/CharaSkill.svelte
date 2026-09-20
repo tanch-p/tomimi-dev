@@ -7,14 +7,21 @@
 	import RangeParser from '$lib/components/RangeParser.svelte';
 	import { getSkillImgUrl } from '$lib/functions/charaHelpers';
 
-	export let skill,
-		language: Language,
-		rangeId,
-		overrideRangeId,
-		layout = 'default';
+	interface Props {
+		skill: any;
+		language: Language;
+		rangeId: any;
+		overrideRangeId: any;
+		layout?: string;
+	}
 
-	const hasMastery = skill.levels.length > 1;
-	let mastery: number = hasMastery ? 3 : 0;
+	let { skill, language, rangeId, overrideRangeId, layout = 'default' }: Props = $props();
+
+	let hasMastery = $derived(skill.levels.length > 1);
+	let mastery: number = $state(0);
+	$effect(() => {
+		mastery = hasMastery ? 3 : 0;
+	});
 
 	function getMasteryLvl(mastery: number) {
 		if (!hasMastery) return mastery;
@@ -59,7 +66,7 @@
 			<button
 				class:cursor-default={!hasMastery}
 				class="grid grid-cols-[1fr_30px] w-max mt-1.5"
-				on:click={() => (mastery = getMasteryLvl(mastery))}
+				onclick={() => (mastery = getMasteryLvl(mastery))}
 			>
 				<div class="flex items-center border border-[#3e3e3e] bg-[#272727] pl-2 pr-1 h-[24px]">
 					<p class="leading-tight">RANK</p>
@@ -103,7 +110,7 @@
 			<button
 				class:cursor-default={!hasMastery}
 				class="relative flex items-center justify-center w-[70px] h-[70px] shadow-md"
-				on:click={() => (mastery = getMasteryLvl(mastery))}
+				onclick={() => (mastery = getMasteryLvl(mastery))}
 			>
 				<img
 					src="/images/skill_icons/skill_icon_{getSkillImgUrl(skill.skillId)}.webp"

@@ -1,15 +1,19 @@
 <script lang="ts">
 	import TextParser from './TextParser.svelte';
 
-	export let description: string[],
-		blackboard = {};
+	interface Props {
+		description: string[];
+		blackboard?: any;
+	}
+
+	let { description, blackboard = {} }: Props = $props();
 
 	//temp hack before the format for spTerrain replacement is sorted out
 	const percentKeys = ['atk', 'atk_scale', 'HP_RECOVERY_PER_SEC_BY_MAX_HP_RATIO'];
 
-	$: fullDesc = description;
-	$: if (blackboard) {
-		fullDesc = description.map((line) => {
+	let fullDesc = $derived.by(() => {
+		if (!blackboard) return description;
+		return description.map((line) => {
 			let temp = line;
 			for (const key in blackboard) {
 				if (percentKeys.includes(key)) {
@@ -20,7 +24,7 @@
 			}
 			return temp;
 		});
-	}
+	});
 </script>
 
 <td class="border border-gray-400 px-2 py-1.5">

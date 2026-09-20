@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig, Trap } from '$lib/types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import TextParser from './TextParser.svelte';
 	import TrapSkill from './TrapSkill.svelte';
 	import Remark from './Remark.svelte';
@@ -9,18 +9,21 @@
 	import RangeParser from './RangeParser.svelte';
 	import { getTrapFormIndex, getTrapSpecialSkill } from '$lib/functions/trapHelpers';
 
-	export let trap: Trap,
-		mode = 'handbook',
-		specialMods,
+	interface Props {
+		trap: Trap;
+		mode?: string;
+		specialMods: any;
 		mapConfig: MapConfig;
-	let language: Language;
-	$: language = $page.data.language;
+	}
+
+	let { trap, mode = 'handbook', specialMods, mapConfig }: Props = $props();
+	let language: Language = $derived(page.data.language);
 </script>
 
 {#if trap.desc}
 	{#if mode === 'handbook'}
 		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-			{getTranslations(language).trait}<span class="font-normal" />
+			{getTranslations(language).trait}<span class="font-normal"></span>
 		</p>
 	{/if}
 	<ul class="list-disc pl-4 {mode === 'handbook' ? 'py-1' : ''}">
@@ -32,7 +35,7 @@
 {#if trap.special.length > 0}
 	{#if mode === 'handbook'}
 		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
-			{getTranslations(language).handbook_mechanics}<span class="font-normal" />
+			{getTranslations(language).handbook_mechanics}<span class="font-normal"></span>
 		</p>
 	{/if}
 	<ul class="list-disc pl-4 py-1">
@@ -87,9 +90,7 @@
 				<div class="py-1.5 {talent.rangeId ? 'grid grid-cols-[1fr_72px] gap-x-2' : ''}">
 					<TextParser line={talent.desc} />
 					{#if talent.rangeId}
-						<div
-							class="flex flex-col items-center w-[72px] p-2 pb-1 bg-[#161616] bg-opacity-80 rounded h-max"
-						>
+						<div class="flex flex-col items-center w-[72px] p-2 pb-1 bg-[#161616]/80 rounded h-max">
 							<div class="flex items-center h-full">
 								<RangeParser rangeId={talent.rangeId} size="small" />
 							</div>

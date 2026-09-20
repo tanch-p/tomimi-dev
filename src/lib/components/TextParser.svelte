@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { getTooltipHtml, renderTextLine } from '$lib/functions/textParser';
 	import type { Language } from '$lib/types';
 
@@ -11,14 +11,18 @@
 		style: string;
 	};
 
-	export let line: string;
-	export let className = '';
-	export let language: Language | undefined = undefined;
+	interface Props {
+		line: string;
+		className?: string;
+		language?: Language | undefined;
+	}
 
-	let container: HTMLElement;
-	let activeTooltips: ActiveTooltip[] = [];
-	$: activeLanguage = language ?? $page.data.language;
-	$: parsedLine = renderTextLine(line, activeLanguage);
+	let { line, className = '', language = undefined }: Props = $props();
+
+	let container: HTMLElement = $state();
+	let activeTooltips: ActiveTooltip[] = $state([]);
+	let activeLanguage = $derived(language ?? page.data.language);
+	let parsedLine = $derived(renderTextLine(line, activeLanguage));
 
 	function openTooltip(target: EventTarget | null) {
 		if (!(target instanceof Element)) {
@@ -121,14 +125,15 @@
 </script>
 
 <div
+	role="presentation"
 	bind:this={container}
 	class="relative {className}"
-	on:focusin={(event) => openTooltip(event.target)}
-	on:focusout={handleFocusOut}
-	on:click={(event) => openTooltip(event.target)}
-	on:keydown={handleKeydown}
-	on:pointerover={(event) => openTooltip(event.target)}
-	on:pointerout={handlePointerOut}
+	onfocusin={(event) => openTooltip(event.target)}
+	onfocusout={handleFocusOut}
+	onclick={(event) => openTooltip(event.target)}
+	onkeydown={handleKeydown}
+	onpointerover={(event) => openTooltip(event.target)}
+	onpointerout={handlePointerOut}
 >
 	{@html parsedLine}
 	{#each activeTooltips as tooltip, index (tooltip.anchor)}

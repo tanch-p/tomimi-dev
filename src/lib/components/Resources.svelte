@@ -3,7 +3,12 @@
 	import type { Language, RogueTopic } from '$lib/types';
 	import TitleBlock from './TitleBlock.svelte';
 
-	export let language: Language, rogueTopic: RogueTopic;
+	interface Props {
+		language: Language;
+		rogueTopic: RogueTopic;
+	}
+
+	let { language, rogueTopic }: Props = $props();
 </script>
 
 <TitleBlock title={getTranslations(language).resource}>

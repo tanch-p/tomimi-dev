@@ -3,3 +3,7 @@ allowBuilds:
   core-js: true
   esbuild: true
   svelte-preprocess: true
+  workerd: true
+
+overrides:
+  cookie: 0.7.2

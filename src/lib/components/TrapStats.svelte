@@ -2,19 +2,22 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
-	import { page } from '$app/stores';
-	export let trap: Trap;
+	import { page } from '$app/state';
+	interface Props {
+		trap: Trap;
+	}
 
-	let language: Language;
-	$: language = $page.data.language;
+	let { trap }: Props = $props();
 
-	$: statKeys = ['hp', 'blockCnt', 'atk', 'aspd', 'def', 'res'];
+	let language: Language = $derived(page.data.language);
+
+	let statKeys = $derived(['hp', 'blockCnt', 'atk', 'aspd', 'def', 'res']);
 </script>
 
 <div>
 	<div class="grid grid-cols-2 2 gap-x-2 gap-y-1.5 w-full h-min text-sm">
 		{#each statKeys as statKey}
-			<div class="grid grid-cols-[14px_1fr] gap-x-1 pl-1 pr-1.5 py-0.5 bg-[#161616] bg-opacity-80">
+			<div class="grid grid-cols-[14px_1fr] gap-x-1 pl-1 pr-1.5 py-0.5 bg-[#161616]/80">
 				<img src={charaAssets[statKey]} width="14px" height="14px" alt="" class="mt-[3px]" />
 				<div>
 					<span

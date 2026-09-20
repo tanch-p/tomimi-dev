@@ -13,7 +13,15 @@
 		getTokenPosition
 	} from '$lib/functions/charaHelpers';
 
-	export let tokens, chara, moduleIndex, moduleStage, language: Language;
+	interface Props {
+		tokens: any;
+		chara: any;
+		moduleIndex: any;
+		moduleStage: any;
+		language: Language;
+	}
+
+	let { tokens, chara, moduleIndex, moduleStage, language }: Props = $props();
 
 	const tokensWithoutIcon = [
 		'token_10012_rosmon_shield',
@@ -23,9 +31,9 @@
 	];
 	const statKeys = ['hp', 'respawnTime', 'atk', 'cost', 'def', 'blockCnt', 'res', 'aspd'];
 
-	let tokenSkillIndex = 0;
-	const tokenToSkill1to1Linked = chara.tokens.length === chara.skills.length;
-	const tokenToSkillManyLinked = chara.tokens[0].skills.length === chara.skills.length;
+	let tokenSkillIndex = $state(0);
+	let tokenToSkill1to1Linked = $derived(chara.tokens.length === chara.skills.length);
+	let tokenToSkillManyLinked = $derived(chara.tokens[0].skills.length === chara.skills.length);
 </script>
 
 <p class="mt-6">
@@ -34,9 +42,9 @@
 {#if tokenToSkill1to1Linked || tokenToSkillManyLinked}
 	<div class="flex justify-evenly mt-6">
 		{#each chara.skills as skill, skillIdx}
-			<button class="relative" on:click={() => (tokenSkillIndex = skillIdx)}>
+			<button class="relative" onclick={() => (tokenSkillIndex = skillIdx)}>
 				{#if tokenSkillIndex === skillIdx}
-					<div class="absolute w-full h-full border-[3px] border-[#0098dc]" />
+					<div class="absolute w-full h-full border-[3px] border-[#0098dc]"></div>
 				{/if}
 				<img
 					src="/images/skill_icons/skill_icon_{getSkillImgUrl(skill.skillId)}.webp"
@@ -72,7 +80,7 @@
 			</div>
 		</div>
 		<div class="grid grid-cols-[130px_1fr] sm:grid-cols-[1fr_2fr] gap-2 mt-4">
-			<div class="flex flex-col items-center w-full p-2 pb-1 bg-[#161616] bg-opacity-80 rounded">
+			<div class="flex flex-col items-center w-full p-2 pb-1 bg-[#161616]/80 rounded">
 				<div class="flex items-center h-full">
 					<RangeParser rangeId={token.stats.rangeId} />
 				</div>
@@ -87,9 +95,7 @@
 							?.tokenAttributeBlackboard?.[token.id]
 					)}
 
-					<div
-						class="grid grid-cols-[20px_1fr] items-center gap-x-2 bg-[#161616] bg-opacity-80 h-[25px]"
-					>
+					<div class="grid grid-cols-[20px_1fr] items-center gap-x-2 bg-[#161616]/80 h-[25px]">
 						<div class="flex items-center bg-[#444] h-full px-[1px]">
 							<img src={charaAssets[statKey]} width="18px" height="18px" alt="" />
 						</div>

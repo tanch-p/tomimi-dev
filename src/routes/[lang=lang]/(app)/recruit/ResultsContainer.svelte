@@ -7,21 +7,21 @@
 	import CharaViewDetail from './CharaViewDetail.svelte';
 	import { filtersStore, relicFiltersStore } from './stores';
 
-	export let characters, language: Language;
-
-	let displayMode = 'grid';
-	let visibleItems = [];
-	let itemsPerLoad = 50;
-	let currentIndex = 0;
-	let showAlt = false;
-	$: showAlt =
-		$filtersStore.some(({ _, options }) => options.some((item) => item.selected)) ||
-		$relicFiltersStore.some((item) => item.selected);
-	$: if (characters?.length) {
-		visibleItems = [];
-		currentIndex = 0;
-		loadMoreItems();
+	interface Props {
+		characters: any;
+		language: Language;
 	}
+
+	let { characters, language }: Props = $props();
+
+	let displayMode = $state('grid');
+	let visibleItems = $state([]);
+	let itemsPerLoad = 50;
+	let currentIndex = $state(0);
+	let showAlt = $derived(
+		$filtersStore.some(({ _, options }) => options.some((item) => item.selected)) ||
+			$relicFiltersStore.some((item) => item.selected)
+	);
 
 	function loadMoreItems() {
 		if (currentIndex >= characters.length) return;
@@ -51,6 +51,13 @@
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
+	$effect(() => {
+		if (characters?.length) {
+			visibleItems = [];
+			currentIndex = 0;
+			loadMoreItems();
+		}
+	});
 </script>
 
 <div class="max-w-5xl mx-auto">
@@ -62,14 +69,14 @@
 				<button
 					class="display-style-button rounded-full p-[9px]"
 					class:active={displayMode === 'grid'}
-					on:click={() => (displayMode = 'grid')}
+					onclick={() => (displayMode = 'grid')}
 				>
 					<Icon name="grid-view" size={24} />
 				</button>
 				<button
 					class="display-style-button rounded-full p-[10px]"
 					class:active={displayMode === 'list'}
-					on:click={() => (displayMode = 'list')}
+					onclick={() => (displayMode = 'list')}
 				>
 					<Icon name="icon-list" size={22} />
 				</button>

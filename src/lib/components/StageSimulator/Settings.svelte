@@ -2,21 +2,25 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
 	import { GameConfig } from './objects/GameConfig';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Game } from './objects/Game';
 	import { setLocalStorage } from '$lib/functions/storageHelpers';
 	import { onDestroy, onMount } from 'svelte';
 
-	export let game: Game, mapConfig: MapConfig;
-	let language: Language;
-	$: language = $page.data.language;
+	interface Props {
+		game: Game;
+		mapConfig: MapConfig;
+	}
 
-	let showTimeline = true;
+	let { game, mapConfig }: Props = $props();
+	let language: Language = $derived(page.data.language);
+
+	let showTimeline = $state(true);
 	const maxFrustumSize = 1500;
 	const minFrustumSize = 500;
-	let zoomSize = (GameConfig.FrustumSize + minFrustumSize) / maxFrustumSize;
+	let zoomSize = $state((GameConfig.FrustumSize + minFrustumSize) / maxFrustumSize);
 	let currentWaveIndex = 0;
-	let stagePhaseIndex = 0;
+	let stagePhaseIndex = $state(0);
 
 	const DEFAULT_STAGE_WAVES = [0, 4];
 
@@ -106,7 +110,7 @@
 		game.onWindowResize();
 	}
 
-	$: lookup = { showTimeline };
+	let lookup = $derived({ showTimeline });
 
 	const unsubscribeFns = [];
 	onMount(() => {
@@ -138,18 +142,18 @@
 	{#each options as { key, texts, icon, type, fn }}
 		{@const value = type === 'store' ? lookup[key] : GameConfig[key]}
 		<button
-			class="grid grid-cols-[1fr_30px] gap-x-1 rounded-sm px-2 py-1.5 w-max {value
+			class="grid grid-cols-[1fr_30px] gap-x-1 rounded-xs px-2 py-1.5 w-max {value
 				? 'bg-gray-500'
 				: 'bg-gray-700 hover:bg-gray-600'} "
-			on:click={() => fn(key)}
+			onclick={() => fn(key)}
 		>
 			<span>{icon} {texts[language]}: </span>
 			<span class="text-center">{value ? 'YES' : 'NO'}</span>
 		</button>
 	{/each}
 	<button
-		class="bg-gray-500 rounded-sm px-2 py-1.5 w-max active:bg-gray-600"
-		on:click={() => game && game.onWindowResize()}
+		class="bg-gray-500 rounded-xs px-2 py-1.5 w-max active:bg-gray-600"
+		onclick={() => game && game.onWindowResize()}
 	>
 		{getTranslations(language).adjust_screen}
 	</button>
@@ -165,7 +169,7 @@
 		min={0.5}
 		max={1.5}
 		step="0.05"
-		on:input={updateCamera}
+		oninput={updateCamera}
 		class="w-[150px] md:w-[200px] h-1.5 bg-gray-300 rounded-lg appearance-none cursor-pointer"
 	/>
 	<span class="w-[50px]">{zoomSize.toFixed(2)}x</span>
@@ -174,10 +178,10 @@
 	<div class="flex justify-center gap-x-3 mb-2">
 		{#each stageOptions[mapConfig.levelId] as wave, idx}
 			<button
-				class="rounded-sm px-2 py-1.5 {stagePhaseIndex === idx
+				class="rounded-xs px-2 py-1.5 {stagePhaseIndex === idx
 					? 'bg-gray-500'
 					: 'bg-gray-700 hover:bg-gray-600'}"
-				on:click={() => {
+				onclick={() => {
 					GameConfig.setValue('stagePhaseIndex', idx);
 					GameConfig.setValue('currentWaveIndex', wave);
 					game.softReset(false);

@@ -1,4 +1,4 @@
-import pako from 'pako';
+import { inflate } from 'pako';
 
 export async function decompressGzipToJson(url: string) {
 	const response = await fetch(url);
@@ -16,7 +16,7 @@ export async function decompressGzipToJson(url: string) {
 			const isGzipped = firstBytes[0] === 0x1f && firstBytes[1] === 0x8b;
 
 			if (isGzipped) {
-				const decompressed = pako.inflate(new Uint8Array(arrayBuffer), { to: 'string' });
+				const decompressed = inflate(new Uint8Array(arrayBuffer), { to: 'string' });
 				return JSON.parse(decompressed);
 			}
 

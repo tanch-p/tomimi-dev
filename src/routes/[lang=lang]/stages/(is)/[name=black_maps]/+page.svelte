@@ -35,7 +35,11 @@
 	import { type UserRunState, tryDecodeUserRunState } from '$lib/functions/userRunStateHelpers';
 	import { createGoldVariationEffect, goldVariation } from './variationHelpers';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	type BlackRelic = (typeof blackRelics)[number] & { count?: number };
 
@@ -43,7 +47,7 @@
 		rogue_6_weather_1: weather1,
 		rogue_6_weather_2: weather2
 	};
-	let synchronising = false;
+	let synchronising = $state(false);
 	let hideLoaderTimeout: ReturnType<typeof setTimeout> | undefined;
 
 	function applyRunState(initialState: UserRunState) {
@@ -114,34 +118,35 @@
 		return () => clearTimeout(hideLoaderTimeout);
 	});
 
-	const rogueTopic: RogueTopic = data.rogueTopic;
-	let configIndex = 0;
-	let previousStageId;
+	let rogueTopic: RogueTopic = $derived(data.rogueTopic);
+	let configIndex = $state(0);
+	let previousStageId = $state();
 
-	$: if (data.stageData.id !== previousStageId) {
-		previousStageId = data.stageData.id;
-		configIndex = 0;
-	}
-
-	$: {
+	$effect(() => {
+		if (data.stageData.id !== previousStageId) {
+			previousStageId = data.stageData.id;
+			configIndex = 0;
+		}
+	});
+	$effect(() => {
 		if (configIndex >= data.stages.length) {
 			configIndex = 0;
 		}
-	}
-	$: selectedStage = data.stages[configIndex];
-	$: mapConfig = selectedStage.mapConfig;
-	$: enemies = selectedStage.enemies;
-	$: traps = selectedStage.traps;
-
-	$: if (mapConfig) {
-		stageType.set(getStageType(mapConfig?.levelId, mapConfig?.tags, rogueTopic));
-		setOtherBuffsList(otherBuffsList, rogueTopic, enemies, traps, mapConfig, language);
-		runes.set(mapConfig?.n_mods);
-		allMods.set(mapConfig?.all_mods);
-	}
-
-	$: language = data.language;
-	$: stageName = mapConfig ? mapConfig?.[`name_${language}`] || mapConfig?.name_zh : '';
+	});
+	let selectedStage = $derived(data.stages[configIndex]);
+	let mapConfig = $derived(selectedStage.mapConfig);
+	let enemies = $derived(selectedStage.enemies);
+	let traps = $derived(selectedStage.traps);
+	let language = $derived(data.language);
+	$effect(() => {
+		if (mapConfig) {
+			stageType.set(getStageType(mapConfig?.levelId, mapConfig?.tags, rogueTopic));
+			setOtherBuffsList(otherBuffsList, rogueTopic, enemies, traps, mapConfig, language);
+			runes.set(mapConfig?.n_mods);
+			allMods.set(mapConfig?.all_mods);
+		}
+	});
+	let stageName = $derived(mapConfig ? mapConfig?.[`name_${language}`] || mapConfig?.name_zh : '');
 </script>
 
 <StageHeadMeta {mapConfig} {stageName} {language} />
@@ -151,15 +156,16 @@
 {/if}
 
 <StageHeader {language}>
-	<FloorTitle slot="floorTitle" stageFloors={mapConfig?.floors || []} {language} />
+	{#snippet floorTitle()}
+		<FloorTitle stageFloors={mapConfig?.floors || []} {language} />
+	{/snippet}
 </StageHeader>
 
 <main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">
 	<div class="w-screen sm:w-full max-w-7xl mx-auto">
 		<StageVariantSelector variants={data.stageData.data} bind:selectedIndex={configIndex} />
-		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}>
-			<!-- <StageDrops slot="drops" mapConfig={mapConfig} {language} {rogueTopic} {selectedFloor} /> -->
-		</StageInfo>
+		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}
+		></StageInfo>
 		<CombinedSettings
 			{language}
 			{difficulty}
@@ -184,7 +190,9 @@
 			otherStores={{ relics: selectedRelics }}
 			difficulty={$difficulty}
 		>
-			<StageNav {language} slot="nav" />
+			{#snippet nav()}
+				<StageNav {language} />
+			{/snippet}
 		</StageSharedContainer>
 	</div>
 </main>

@@ -2,7 +2,15 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Trap, Language } from '$lib/types';
 	import TrapTableRow from './TrapTableRow.svelte';
-	export let traps: Trap[], language: Language, specialMods, otherBuffsList, mapConfig;
+	interface Props {
+		traps: Trap[];
+		language: Language;
+		specialMods: any;
+		otherBuffsList: any;
+		mapConfig: any;
+	}
+
+	let { traps, language, specialMods, otherBuffsList, mapConfig }: Props = $props();
 
 	const tableHeaders = [
 		'icon',

@@ -13,12 +13,16 @@
 	import ClearButton from './ClearButton.svelte';
 	import Settings from './FilterSettings.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	let language: Language;
-	$: language = data.language;
+	let { data }: Props = $props();
+
+	let language: Language = $derived(data.language);
+
 	let loading = true;
-	let characters = [];
+	let characters = $state([]);
 
 	const loadData = async (language: Language) => {
 		characters = await getCharaList(language);

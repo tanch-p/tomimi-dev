@@ -6,10 +6,19 @@
 	import disasters from '$lib/data/is/sarkaz/disasters.json';
 	import { actualDifficulty, disasterEffects } from './stores';
 
-	export let optionsOpen: boolean,
-		language: Language,
-		level = 1,
-		options = [];
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+		level?: number;
+		options?: any;
+	}
+
+	let {
+		optionsOpen = $bindable(),
+		language,
+		level = $bindable(1),
+		options = $bindable([])
+	}: Props = $props();
 
 	actualDifficulty.subscribe((n) => {
 		switch (true) {

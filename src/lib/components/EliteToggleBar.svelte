@@ -1,12 +1,25 @@
 <script lang="ts">
-	export let stageId: string,
+	interface Props {
+		stageId: string;
+		eliteMode: any;
+		combatOpsColor: any;
+		eliteOpsColor: any;
+		getEliteIcon: any;
+		iconCombat: any;
+		rogueTopic: any;
+		idPrefix?: string;
+	}
+
+	let {
+		stageId,
 		eliteMode,
 		combatOpsColor,
 		eliteOpsColor,
 		getEliteIcon,
 		iconCombat,
 		rogueTopic,
-		idPrefix = '';
+		idPrefix = ''
+	}: Props = $props();
 </script>
 
 <div class="grid grid-cols-2 font-bold text-lg text-gray-700 select-none">
@@ -15,7 +28,7 @@
 		class={`flex justify-center items-center py-1 ${combatOpsColor} ${
 			!$eliteMode ? 'text-gray-900' : 'opacity-30'
 		}`}
-		on:click={() => eliteMode.set(false)}
+		onclick={() => eliteMode.set(false)}
 	>
 		<img
 			src={iconCombat}
@@ -32,7 +45,7 @@
 		class={`flex justify-center items-center ${eliteOpsColor} ${
 			$eliteMode ? 'text-black' : 'opacity-30'
 		}`}
-		on:click={() => eliteMode.set(true)}
+		onclick={() => eliteMode.set(true)}
 	>
 		<img
 			src={getEliteIcon(stageId)}

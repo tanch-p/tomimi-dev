@@ -2,22 +2,26 @@
 	import type { Language } from '$lib/types';
 	import { activeFloorEffects } from './stores';
 
-	export let effect: {
-		id: string;
-		iconId: string;
-		level: number;
-		src: string;
-		name_zh: string;
-		name_ja: string;
-		name_en: string;
-		tooltip_zh: string;
-		tooltip_ja: string;
-		tooltip_en: string;
-	};
-	export let language: Language;
-	export let idPrefix = '';
+	interface Props {
+		effect: {
+			id: string;
+			iconId: string;
+			level: number;
+			src: string;
+			name_zh: string;
+			name_ja: string;
+			name_en: string;
+			tooltip_zh: string;
+			tooltip_ja: string;
+			tooltip_en: string;
+		};
+		language: Language;
+		idPrefix?: string;
+	}
 
-	$: selected = $activeFloorEffects.some((item) => item.id === effect.id);
+	let { effect, language, idPrefix = '' }: Props = $props();
+
+	let selected = $derived($activeFloorEffects.some((item) => item.id === effect.id));
 
 	function handleClick() {
 		if (!$activeFloorEffects.find((ele) => ele.id === effect.id)) {
@@ -26,7 +30,7 @@
 			activeFloorEffects.set([]);
 		}
 	}
-	$: name = effect[`name_${language}`] || effect[`name_zh`];
+	let name = $derived(effect[`name_${language}`] || effect[`name_zh`]);
 </script>
 
 <button
@@ -35,7 +39,7 @@
 	class={`grid grid-cols-[75px_auto] items-center gap-x-2 text-start ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
 >
 	<div class="relative flex items-center justify-center rounded-full">
 		<img src={effect.src} alt={name} loading="lazy" decoding="async" class="" />

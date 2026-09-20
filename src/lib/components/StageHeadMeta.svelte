@@ -2,7 +2,13 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
 
-	export let mapConfig: MapConfig, stageName: string, language: Language;
+	interface Props {
+		mapConfig: MapConfig;
+		stageName: string;
+		language: Language;
+	}
+
+	let { mapConfig, stageName, language }: Props = $props();
 </script>
 
 <svelte:head>

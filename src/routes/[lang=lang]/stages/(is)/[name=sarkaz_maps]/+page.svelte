@@ -27,49 +27,57 @@
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 
-	export let data: PageData;
-
-	$: if (data.mapConfig) {
-		updateReqRelic(data.mapConfig?.levelId, selectedRelics);
-		setOtherBuffsList(
-			otherBuffsList,
-			rogueTopic,
-			data.enemies,
-			data.traps,
-			data.mapConfig,
-			language
-		);
-		runes.set(data.mapConfig?.n_mods);
-		allMods.set(data.mapConfig?.all_mods);
+	interface Props {
+		data: PageData;
 	}
+
+	let { data }: Props = $props();
+
 	const ro4_ALTER_BOSS_STAGES = ['level_rogue4_b-4-b', 'level_rogue4_b-5-b'];
 
-	$: language = data.language;
-	$: stageName = data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh;
-	const rogueTopic: RogueTopic = data.rogueTopic;
+	let rogueTopic: RogueTopic = $derived(data.rogueTopic);
 
-	function updateReqRelic(levelId, selectedRelics) {
+	function updateReqRelic(levelId, selectedRelicsValue, selectedRelicsStore) {
 		if (
 			ro4_ALTER_BOSS_STAGES.includes(levelId) &&
-			!$selectedRelics.find((item) => item.id === 'rogue_4_relic_explore_7')
+			!selectedRelicsValue.find((item) => item.id === 'rogue_4_relic_explore_7')
 		) {
 			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_explore_7');
-			selectedRelics.update((list) => (list = [...list, relic]));
+			selectedRelicsStore.update((list) => (list = [...list, relic]));
 		}
 		if (
 			['level_rogue4_b-7'].includes(levelId) &&
-			!$selectedRelics.find((item) => item.id === 'rogue_4_relic_final_6')
+			!selectedRelicsValue.find((item) => item.id === 'rogue_4_relic_final_6')
 		) {
 			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_final_6');
-			selectedRelics.update((list) => (list = [...list, relic]));
+			selectedRelicsStore.update((list) => (list = [...list, relic]));
 		}
 	}
+	let language = $derived(data.language);
+	$effect(() => {
+		if (data.mapConfig) {
+			updateReqRelic(data.mapConfig?.levelId, $selectedRelics, selectedRelics);
+			setOtherBuffsList(
+				otherBuffsList,
+				rogueTopic,
+				data.enemies,
+				data.traps,
+				data.mapConfig,
+				language
+			);
+			runes.set(data.mapConfig?.n_mods);
+			allMods.set(data.mapConfig?.all_mods);
+		}
+	});
+	let stageName = $derived(data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh);
 </script>
 
 <StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
-	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
+	{#snippet floorTitle()}
+		<FloorTitle stageFloors={data.mapConfig?.floors} {language} />
+	{/snippet}
 </StageHeader>
 
 <main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">
@@ -82,7 +90,9 @@
 			{rogueTopic}
 			difficulty={$difficulty}
 		>
-			<StageDrops slot="drops" mapConfig={data.mapConfig} {language} {rogueTopic} {selectedFloor} />
+			{#snippet drops()}
+				<StageDrops mapConfig={data.mapConfig} {language} {rogueTopic} {selectedFloor} />
+			{/snippet}
 		</StageInfo>
 		<DifficultySelect {language} {difficulty} {rogueTopic} maxDiff={18} mode={$difficultyMode}>
 			<div class="flex gap-1.5 mt-1.5 mb-2.5">
@@ -91,7 +101,7 @@
 					'normal'
 						? ''
 						: 'brightness-[.6] hover:brightness-100'}"
-					on:click={() => difficultyMode.set('normal')}
+					onclick={() => difficultyMode.set('normal')}
 				>
 					{getTranslations(language).normal_state}
 				</button>
@@ -100,7 +110,7 @@
 					'normal'
 						? 'brightness-[.6] hover:brightness-100'
 						: ''}"
-					on:click={() => difficultyMode.set('deepseek')}
+					onclick={() => difficultyMode.set('deepseek')}
 				>
 					{{ en: 'selbaF edisecanruF', ja: '談奇辺炉', zh: '语奇终无' }[language]}
 				</button>
@@ -121,7 +131,9 @@
 			otherStores={{ disaster: disasterEffects }}
 			difficulty={$difficulty}
 		>
-			<NavTemp {language} slot="nav" />
+			{#snippet nav()}
+				<NavTemp {language} />
+			{/snippet}
 		</StageSharedContainer>
 	</div>
 </main>

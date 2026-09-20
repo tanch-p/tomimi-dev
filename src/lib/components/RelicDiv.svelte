@@ -1,17 +1,20 @@
 <script lang="ts">
 	import type { Language, RogueTopic } from '$lib/types';
 	import { relicLookup } from '$lib/data/is/relic_lookup';
-	export let relic, language: Language, rogueTopic: RogueTopic, selectedRelics;
+	interface Props {
+		relic: any;
+		language: Language;
+		rogueTopic: RogueTopic;
+		selectedRelics: any;
+	}
 
-	$: name = relic[`name_${language}`] || relic[`name_zh`];
-	$: tooltip = relic[`tooltip_${language}`] || relic[`tooltip_zh`];
+	let { relic = $bindable(), language, rogueTopic, selectedRelics }: Props = $props();
 
-	let selected = false;
+	let name = $derived(relic[`name_${language}`] || relic[`name_zh`]);
+	let tooltip = $derived(relic[`tooltip_${language}`] || relic[`tooltip_zh`]);
+
 	relic.count = relic?.count || 0;
-
-	selectedRelics.subscribe((list) => {
-		selected = Boolean(list.find((item) => item.id === relic.id));
-	});
+	let selected = $derived(Boolean($selectedRelics.find((item) => item.id === relic.id)));
 
 	function handleClick() {
 		if (relic.stages) {
@@ -52,13 +55,17 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
+	role="button"
+	tabindex="0"
 	id={relic.id}
 	class={`relic grid grid-cols-[75px_auto] sm:grid-cols-[95px_auto] gap-x-2 ${
 		selected ? 'bg-neutral-800' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
+	onkeydown={(event) => {
+		if (event.key === 'Enter' || event.key === ' ') handleClick();
+	}}
 >
 	<img
 		src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"

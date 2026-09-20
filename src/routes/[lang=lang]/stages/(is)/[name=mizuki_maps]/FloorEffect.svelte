@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import { activeFloorEffects } from './stores';
-	export let effect, language: Language;
+	interface Props {
+		effect: any;
+		language: Language;
+	}
 
-	let selected = false;
+	let { effect, language }: Props = $props();
+
+	let selected = $state(false);
 
 	activeFloorEffects.subscribe((list) => {
 		selected = Boolean(list.find((ele) => ele.id === effect.id));
@@ -22,16 +27,20 @@
 			activeFloorEffects.update((list) => (list = list.filter((ele) => ele.id !== effect.id)));
 		}
 	}
-	$: name = effect[`outerName_${language}`];
+	let name = $derived(effect[`outerName_${language}`]);
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
+	role="button"
+	tabindex="0"
 	id={effect[`outerName_en`].replaceAll(' ', '_')}
 	class={`grid grid-cols-[75px_auto] gap-x-2 hover:cursor-pointer ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
+	onkeydown={(event) => {
+		if (event.key === 'Enter' || event.key === ' ') handleClick();
+	}}
 >
 	<span class="flex items-center justify-center">
 		<img src={effect.src} alt={name} loading="lazy" decoding="async" /></span

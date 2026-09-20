@@ -7,13 +7,18 @@
 	import StatusImmune from './StatusImmune.svelte';
 	import TrapAbilities from './TrapAbilities.svelte';
 
-	export let trap: Trap,
-		tableHeaders,
-		index,
-		language: Language,
-		specialMods,
-		otherBuffsList,
+	interface Props {
+		trap: Trap;
+		tableHeaders: any;
+		index: any;
+		language: Language;
+		specialMods: any;
+		otherBuffsList: any;
 		mapConfig: MapConfig;
+	}
+
+	let { trap, tableHeaders, index, language, specialMods, otherBuffsList, mapConfig }: Props =
+		$props();
 </script>
 
 <tr id={trap.key} class={`scroll-mt-24 ${index % 2 === 1 ? ' bg-[#333333]' : 'bg-neutral-800'}`}>
@@ -39,7 +44,7 @@
 			<td class={`border border-gray-400 text-center px-1`}>
 				{#if trap.stats.rangeId}
 					<div
-						class="flex flex-col items-center w-[72px] mx-auto p-2 pb-1 bg-[#161616] bg-opacity-80 rounded h-max"
+						class="flex flex-col items-center w-[72px] mx-auto p-2 pb-1 bg-[#161616]/80 rounded h-max"
 					>
 						<div class="flex items-center">
 							<RangeParser rangeId={trap.stats.rangeId} size="small" />

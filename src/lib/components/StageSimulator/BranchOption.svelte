@@ -9,23 +9,37 @@
 	import { isChestBranch } from '$lib/functions/waveHelpers';
 	import TextParser from '../TextParser.svelte';
 
-	export let mapConfig: MapConfig,
-		game: Game,
-		language: Language,
-		key: string,
-		branchKey: string,
+	interface Props {
+		mapConfig: MapConfig;
+		game: Game;
+		language: Language;
+		key: string;
+		branchKey: string;
 		branchIndex: number;
+	}
 
-	let isOpen = false;
-	const branchExtraInfo = branchInfo?.[mapConfig?.levelId]?.[key];
-	const branchType = branchExtraInfo?.type;
-	const branchRandom = branchExtraInfo?.isRandom || false;
-	const tooltip = branchExtraInfo?.tooltip?.[language] || [];
-	const hasMultipleOptions =
-		mapConfig?.branches?.[key]?.phases?.length > 1 && branchType === 'single';
-	const title = isChestBranch(mapConfig?.branches, key)
-		? getTranslations(language).mimic
-		: branchExtraInfo?.[`name_${language}`] || key;
+	let {
+		mapConfig,
+		game,
+		language,
+		key,
+		branchKey = $bindable(),
+		branchIndex = $bindable()
+	}: Props = $props();
+
+	let isOpen = $state(false);
+	let branchExtraInfo = $derived(branchInfo?.[mapConfig?.levelId]?.[key]);
+	let branchType = $derived(branchExtraInfo?.type);
+	let branchRandom = $derived(branchExtraInfo?.isRandom || false);
+	let tooltip = $derived(branchExtraInfo?.tooltip?.[language] || []);
+	let hasMultipleOptions = $derived(
+		mapConfig?.branches?.[key]?.phases?.length > 1 && branchType === 'single'
+	);
+	let title = $derived(
+		isChestBranch(mapConfig?.branches, key)
+			? getTranslations(language).mimic
+			: branchExtraInfo?.[`name_${language}`] || key
+	);
 	function handleTitleClick(key) {
 		if (hasMultipleOptions) {
 			isOpen = !isOpen;
@@ -44,7 +58,7 @@
 <div class="">
 	<button
 		class="flex items-center gap-x-1.5 justify-between bg-neutral-600 w-full px-2 py-0.5 text-xs text-end text-near-white hover:bg-near-white hover:text-gray-900 transition-all whitespace-nowrap"
-		on:click={() => handleTitleClick(key)}
+		onclick={() => handleTitleClick(key)}
 	>
 		{#if hasMultipleOptions}
 			{#if isOpen}
@@ -58,19 +72,19 @@
 		<span>{title}</span>
 	</button>
 	{#if isOpen}
-		<div transition:slide|local={{ duration: 300 }}>
+		<div transition:slide={{ duration: 300 }}>
 			<div class="mt-1.5 flex flex-wrap gap-2 w-full">
 				{#each mapConfig?.branches?.[key]?.phases as _, index}
 					<button
 						class="flex items-center justify-center bg-neutral-600 w-[14px] h-[20px] px-2 py-0.5 text-xs text-near-white hover:bg-near-white hover:text-gray-900 transition-all"
-						on:click={() => handleBranchSummon(key, index)}
+						onclick={() => handleBranchSummon(key, index)}
 					>
 						{index + 1}
 					</button>
 				{/each}
 			</div>
 			{#if tooltip.length > 0}
-				<div class="mt-1.5 mb-2.5 text-xs p-1 bg-gray-500 bg-opacity-80">
+				<div class="mt-1.5 mb-2.5 text-xs p-1 bg-gray-500/80">
 					{#each tooltip as line}
 						<TextParser {line} />
 					{/each}

@@ -1,12 +1,16 @@
 <script lang="ts">
 	import TextParser from './TextParser.svelte';
-	export let text: string,
-		position = 'bottom';
+	interface Props {
+		text: string;
+		position?: string;
+	}
+
+	let { text, position = 'bottom' }: Props = $props();
 
 	const positionStyles = {
 		top: 'bottom-full',
 		bottom: '',
-		right:""
+		right: ''
 	};
 </script>
 

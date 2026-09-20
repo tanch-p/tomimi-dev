@@ -6,7 +6,11 @@
 	import boss from '$lib/images/is/sami/sami_boss.webp';
 	import encounter from '$lib/images/is/sami/sami_encounter.webp';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	let allNormalStages = [
 		['死囚之夜', '度假村冤魂', '苔手', '待宰的兽群', '事不过四'],
@@ -43,7 +47,7 @@
 	<table class="text-xs sm:text-base">
 		<tbody>
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -79,25 +83,19 @@
 				</tr>
 				{#if rowSpan === 2}
 					{@const btmRowStages = stages.slice(4)}
-					{#if btmRowStages.length >= 3}
+					<tr>
 						{#each btmRowStages as stageName}
 							<td colspan={Math.floor(24 / btmRowStages.length)}>
 								<StageNavButton {stageName} {language} />
 							</td>
 						{/each}
-					{:else}
-						{#each btmRowStages as stageName}
-							<td colspan={Math.floor(24 / btmRowStages.length)}>
-								<StageNavButton {stageName} {language} />
-							</td>
-						{/each}
-					{/if}
+					</tr>
 				{/if}
 			{/each}
 
 			<!-- boss -->
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -165,7 +163,7 @@
 			<!-- encounter -->
 
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img

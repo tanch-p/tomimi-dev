@@ -1,22 +1,28 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import ro6 from '$lib/data/stages/ro6.json';
 	import type { Language } from '$lib/types';
 	import type { StageCollection } from './stageNavTypes';
 
-	export let levelId: string;
-	export let language: Language;
-	export let stages: StageCollection = ro6 as StageCollection;
-
-	$: currentLevelId = $page.data?.mapConfig?.levelId;
-	$: stageInfo = levelId ? stages[levelId] : undefined;
-
-	$: if (levelId && !stageInfo) {
-		throw new Error(`Stage "${levelId}" was not found.`);
+	interface Props {
+		levelId: string;
+		language: Language;
+		stages?: StageCollection;
 	}
 
-	$: name = stageInfo ? stageInfo[`name_${language}`] || stageInfo.name_zh : '';
-	$: href = stageInfo ? `/${language}/stages/${stageInfo.code}_${name}` : '';
+	let { levelId, language, stages = ro6 as StageCollection }: Props = $props();
+
+	let currentLevelId = $derived(page.data?.mapConfig?.levelId);
+	let stageInfo = $derived.by(() => {
+		const info = levelId ? stages[levelId] : undefined;
+		if (levelId && !info) {
+			throw new Error(`Stage "${levelId}" was not found.`);
+		}
+		return info;
+	});
+
+	let name = $derived(stageInfo ? stageInfo[`name_${language}`] || stageInfo.name_zh : '');
+	let href = $derived(stageInfo ? `/${language}/stages/${stageInfo.code}_${name}` : '');
 </script>
 
 {#if levelId}

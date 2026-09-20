@@ -3,9 +3,13 @@
 	import type { Language } from '$lib/types';
 	import TitleBlock from './TitleBlock.svelte';
 
-	export let list,
-		docLink = null,
+	interface Props {
+		list: any;
+		docLink?: any;
 		language: Language;
+	}
+
+	let { list, docLink = null, language }: Props = $props();
 
 	const moreBugs = {
 		zh: `想查看更多或反馈bug，可以在这里查看`,

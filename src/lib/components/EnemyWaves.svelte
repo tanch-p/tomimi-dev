@@ -19,67 +19,80 @@
 	import { GameConfig } from './StageSimulator/objects/GameConfig';
 	import { onDestroy, onMount } from 'svelte';
 
-	export let mapConfig,
+	interface Props {
+		mapConfig: any;
+		enemies: any;
+		rogueTopic: RogueTopic;
+		language: Language;
+		eliteMode: Boolean;
+		otherStores: any;
+		specialMods: any;
+		difficulty: number;
+		eliteMods?: import('svelte').Snippet;
+	}
+
+	let {
+		mapConfig,
 		enemies,
-		rogueTopic: RogueTopic,
-		language: Language,
-		eliteMode: Boolean,
+		rogueTopic,
+		language,
+		eliteMode,
 		otherStores,
 		specialMods,
-		difficulty: number;
+		difficulty,
+		eliteMods
+	}: Props = $props();
 
-	let hiddenGroups = [],
-		enemyCounts = [],
+	let hiddenGroups = $state([]),
 		relics = [],
-		selectedPermGroups = {},
-		selectedCountIndex = 0,
-		selectedPermutationIdx = 0,
-		randomSeeds = Array.from(Array(50)).map((_) => Math.random()),
-		mode = 'predefined',
-		simMode = 'wave_normal',
-		bonusKey = '',
-		baseCount = 0;
+		selectedPermGroups = $state({}),
+		selectedCountIndex = $state(0),
+		selectedPermutationIdx = $state(0),
+		randomSeeds = $state(Array.from(Array(50)).map((_) => Math.random())),
+		mode = $state('predefined'),
+		simMode = $state('wave_normal'),
+		bonusKey = $state('');
 
-	$: compiledHiddenGroups = compileHiddenGroups(
-		hiddenGroups,
-		eliteMode,
-		mapConfig,
-		rogueTopic,
-		$specialMods
+	let compiledHiddenGroups = $derived(
+		compileHiddenGroups(hiddenGroups, eliteMode, mapConfig, rogueTopic, $specialMods)
 	);
-	$: baseCount = getBaseCount(mapConfig, eliteMode);
-	$: options = getOptions(mapConfig, rogueTopic, difficulty, language);
-	$: maxPermutations = eliteMode
-		? mapConfig?.ELITE.max_permutations
-		: mapConfig?.NORMAL.max_permutations;
-	$: permutations = getEnemyCountPermutations(
-		mapConfig,
-		compiledHiddenGroups,
-		eliteMode,
-		bonusKey,
-		baseCount
+	let baseCount = $derived(getBaseCount(mapConfig, eliteMode));
+	let options = $derived(getOptions(mapConfig, rogueTopic, difficulty, language));
+	let maxPermutations = $derived(
+		eliteMode ? mapConfig?.ELITE.max_permutations : mapConfig?.NORMAL.max_permutations
 	);
-	$: enemyCounts = permutations.reduce((acc, { count }) => {
-		if (!acc.includes(count)) {
-			acc.push(count);
+	let permutations = $derived(
+		getEnemyCountPermutations(mapConfig, compiledHiddenGroups, eliteMode, bonusKey, baseCount)
+	);
+	let enemyCounts = $derived(
+		permutations.reduce((acc, { count }) => {
+			if (!acc.includes(count)) {
+				acc.push(count);
+			}
+			return acc;
+		}, [])
+	);
+	let permutationsToShow = $derived(
+		permutations.reduce((acc, { count, permutation }) => {
+			if (count === enemyCounts[selectedCountIndex]) {
+				acc.push({ count, permutation });
+			}
+			return acc;
+		}, [])
+	);
+	$effect(() => {
+		if (mapConfig) {
+			selectedCountIndex = 0;
+			selectedPermutationIdx = 0;
+			bonusKey = '';
+			GameConfig.setValue('mode', 'wave_normal');
 		}
-		return acc;
-	}, []);
-	$: permutationsToShow = permutations.reduce((acc, { count, permutation }) => {
-		if (count === enemyCounts[selectedCountIndex]) {
-			acc.push({ count, permutation });
+	});
+	$effect(() => {
+		if (selectedCountIndex) {
+			selectedPermutationIdx = 0;
 		}
-		return acc;
-	}, []);
-	$: if (mapConfig) {
-		selectedCountIndex = 0;
-		selectedPermutationIdx = 0;
-		bonusKey = '';
-		GameConfig.setValue('mode', 'wave_normal');
-	}
-	$: if (selectedCountIndex) {
-		selectedPermutationIdx = 0;
-	}
+	});
 
 	const unsubscribeFns = [];
 	onMount(() => {
@@ -114,7 +127,7 @@
 						key
 							? 'bg-gray-600'
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-						on:click={() => GameConfig.setValue('mode', key)}
+						onclick={() => GameConfig.setValue('mode', key)}
 					>
 						{getTranslations(language)[key]}
 					</button>
@@ -124,7 +137,7 @@
 		{#if simMode === 'wave_normal'}
 			{#if mapConfig?.elite_mods}
 				<p class="title {language}">{getTranslations(language).operation_type}</p>
-				<slot name="eliteMods" />
+				{@render eliteMods?.()}
 			{/if}
 			{#if options?.length > 0}
 				<p class="title {language}">{getTranslations(language).hidden_options}</p>
@@ -135,7 +148,7 @@
 							class="flex flex-col items-center justify-center border border-neutral-700 p-1 {selected
 								? 'bg-gray-600'
 								: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-							on:click={() =>
+							onclick={() =>
 								(hiddenGroups = handleOptionsUpdate(
 									hiddenGroups,
 									key,
@@ -162,7 +175,7 @@
 						key
 							? 'bg-gray-600'
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-						on:click={() => (mode = key)}
+						onclick={() => (mode = key)}
 					>
 						{getTranslations(language)[key]}
 					</button>
@@ -170,7 +183,7 @@
 			</div>
 			{#if mode === 'predefined'}
 				{#if maxPermutations > 32 || permutations.length <= 0}
-					<p class="title {language}" />
+					<p class="title {language}"></p>
 					<div class="flex justify-center items-center">
 						{getTranslations(language).max_perm_msg.replace('{perm}', `(${maxPermutations})`)}
 					</div>
@@ -184,11 +197,11 @@
 									key
 										? 'bg-slate-700'
 										: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-									on:click={() => (bonusKey = key)}
+									onclick={() => (bonusKey = key)}
 								>
 									{#if key === ''}
 										<div class="flex items-center justify-center w-[50px] h-[50px]">
-											<div class="w-[46px] h-[46px] border" />
+											<div class="w-[46px] h-[46px] border"></div>
 										</div>
 									{:else}
 										<img src="/images/enemy_icons/{key}.webp" width="55" alt="" />
@@ -205,7 +218,7 @@
 								i
 									? 'bg-gray-600'
 									: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-								on:click={() => (selectedCountIndex = i)}
+								onclick={() => (selectedCountIndex = i)}
 							>
 								{count}
 							</button>
@@ -223,7 +236,7 @@
 									i
 										? 'bg-neutral-600'
 										: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-									on:click={() => (selectedPermutationIdx = i)}
+									onclick={() => (selectedPermutationIdx = i)}
 								>
 									{i + 1}
 								</button>

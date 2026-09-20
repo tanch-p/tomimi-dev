@@ -1,15 +1,27 @@
 <script lang="ts">
-	import type { SvelteComponent } from 'svelte';
+	import type { Component } from 'svelte';
 	import type { Language } from '$lib/types';
 	import type { StageCollection } from './stageNavTypes';
 
-	export let items: readonly string[];
-	export let language: Language;
-	export let button: typeof SvelteComponent;
-	export let stages: StageCollection | undefined = undefined;
-	export let label: string | number | undefined = undefined;
-	export let labelRowspan = 1;
-	export let backgroundClass: string | undefined = undefined;
+	interface Props {
+		items: readonly string[];
+		language: Language;
+		button: Component<any>;
+		stages?: StageCollection | undefined;
+		label?: string | number | undefined;
+		labelRowspan?: number;
+		backgroundClass?: string | undefined;
+	}
+
+	let {
+		items,
+		language,
+		button,
+		stages = undefined,
+		label = undefined,
+		labelRowspan = 1,
+		backgroundClass = undefined
+	}: Props = $props();
 
 	const COLUMN_SPANS: Record<number, number> = {
 		1: 24,
@@ -18,11 +30,13 @@
 		4: 6
 	};
 
-	$: columnSpan = COLUMN_SPANS[items.length];
-
-	$: if (!columnSpan) {
-		throw new Error(`Unsupported stage row length: ${items.length}`);
-	}
+	let columnSpan = $derived.by(() => {
+		const span = COLUMN_SPANS[items.length];
+		if (!span) {
+			throw new Error(`Unsupported stage row length: ${items.length}`);
+		}
+		return span;
+	});
 </script>
 
 <tr class={backgroundClass} data-has-label={label !== undefined}>
@@ -31,8 +45,9 @@
 	{/if}
 
 	{#each items as levelId (levelId)}
+		{@const SvelteComponent_1 = button}
 		<td colspan={columnSpan}>
-			<svelte:component this={button} {levelId} {language} {stages} />
+			<SvelteComponent_1 {levelId} {language} {stages} />
 		</td>
 	{/each}
 </tr>

@@ -2,9 +2,13 @@
 	import { onMount } from 'svelte';
 	import Icon from './Icon.svelte';
 
-	export let hasBtm = false;
-	let showTop: Boolean = false,
-		showBtm: Boolean = false;
+	interface Props {
+		hasBtm?: boolean;
+	}
+
+	let { hasBtm = false }: Props = $props();
+	let showTop: Boolean = $state(false),
+		showBtm: Boolean = $state(false);
 	onMount(() => {
 		if (window) {
 			window.onscroll = function () {
@@ -27,7 +31,7 @@
 		class="absolute {hasBtm
 			? 'bottom-[150px]'
 			: 'bottom-[90px]'} right-[20px] md:right-[40px] pointer-events-auto"
-		on:click={() => window.scrollTo(0, 0)}
+		onclick={() => window.scrollTo(0, 0)}
 		id="scroll-top-button"
 	>
 		<div
@@ -40,7 +44,7 @@
 		<button
 			hidden={!showBtm}
 			class="absolute bottom-[90px] right-[20px] md:right-[40px] pointer-events-auto"
-			on:click={scrollToNav}
+			onclick={scrollToNav}
 			id="scroll-btm-button"
 		>
 			<div

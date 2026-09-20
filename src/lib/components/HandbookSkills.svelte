@@ -4,7 +4,16 @@
 	import RangeParser from './RangeParser.svelte';
 	import Remark from './Remark.svelte';
 
-	export let enemy: Enemy, skills, language: Language, statusImmuneList, formIndex, mapConfig;
+	interface Props {
+		enemy: Enemy;
+		skills: any;
+		language: Language;
+		statusImmuneList: any;
+		formIndex: any;
+		mapConfig: any;
+	}
+
+	let { enemy, skills, language, statusImmuneList, formIndex, mapConfig }: Props = $props();
 </script>
 
 {#if skills.length > 0}
@@ -25,7 +34,7 @@
 				/>
 				<!-- {#if skill.rangeId}
 						<div
-							class="flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616] bg-opacity-80 rounded"
+							class="flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616]/80 rounded"
 						>
 							<div class="flex items-center h-full">
 								<RangeParser rangeId={skill.rangeId} size="small" />

@@ -3,7 +3,11 @@
 	import type { Language } from '$lib/types';
 	import { selectedFloor } from './stores.js';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const floors = new Array(6);
 </script>
@@ -12,7 +16,7 @@
 	<div class="grid grid-cols-6">
 		{#each floors as _, i}
 			<button
-				on:click={() => selectedFloor.set(i + 1)}
+				onclick={() => selectedFloor.set(i + 1)}
 				class={`py-2 px-2 ${$selectedFloor === i + 1 ? 'bg-gray-500' : ''}`}
 				type="button"
 			>

@@ -15,7 +15,11 @@
 	} from '$lib/functions/charaHelpers';
 	import { setLocalStorage } from '$lib/functions/storageHelpers';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const filterLayout = [
 		{
@@ -73,19 +77,19 @@
 			]
 		}
 	];
-	let relicDisplayMode = 'grid';
-	let selectedRelics = [];
+	let relicDisplayMode = $state('grid');
+	let selectedRelics = $state([]);
 
-	$: isSelected = (key, value) => {
+	let isSelected = $derived((key, value) => {
 		return $filtersStore.find((ele) => ele.key === key).options.find((ele) => ele.value === value)
 			?.selected;
-	};
+	});
 	relicFiltersStore.subscribe((list) => {
 		selectedRelics = list.filter((relic) => relic.selected);
 	});
-	$: isRelicSelected = (id) => {
+	let isRelicSelected = $derived((id) => {
 		return $relicFiltersStore.find((relic) => relic.id === id)?.selected;
-	};
+	});
 	const updateRelicFilters = (id) => {
 		relicFiltersStore.update((list) => {
 			const index = list.findIndex((ele) => ele.id === id);
@@ -111,7 +115,7 @@
 					<button
 						class="filter-btn"
 						class:active={$releaseStatusStore === value}
-						on:click={() => updateReleaseStatus(value)}
+						onclick={() => updateReleaseStatus(value)}
 					>
 						{getTranslations(language).chara_filter[value]}
 					</button>
@@ -123,7 +127,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('rarity', value)}
-						on:click={() => updateFilters('rarity', value, filtersStore)}
+						onclick={() => updateFilters('rarity', value, filtersStore)}
 					>
 						{getTranslations(language)[value]}
 					</button>
@@ -135,7 +139,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('profession', value)}
-						on:click={() => updateFilters('profession', value, filtersStore)}
+						onclick={() => updateFilters('profession', value, filtersStore)}
 					>
 						{getTranslations(language)[value]}
 					</button>
@@ -149,7 +153,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('deployable_tile', value)}
-						on:click={() => updateFilters('deployable_tile', value, filtersStore)}
+						onclick={() => updateFilters('deployable_tile', value, filtersStore)}
 					>
 						{getTranslations(language)[getDisplayKey(value)]}
 					</button>
@@ -161,7 +165,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('tags', value)}
-						on:click={() => updateFilters('tags', value, filtersStore)}
+						onclick={() => updateFilters('tags', value, filtersStore)}
 					>
 						{getTranslations(language)[value]}
 					</button>
@@ -173,7 +177,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('tags', value)}
-						on:click={() => updateFilters('tags', value, filtersStore)}
+						onclick={() => updateFilters('tags', value, filtersStore)}
 					>
 						{getTranslations(language)[value]}
 					</button>
@@ -187,7 +191,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('blockCnt', value)}
-						on:click={() => updateFilters('blockCnt', value, filtersStore)}
+						onclick={() => updateFilters('blockCnt', value, filtersStore)}
 					>
 						{value}
 					</button>
@@ -201,7 +205,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected(getCategory(value), value)}
-						on:click={() => updateFilters(getCategory(value), value, filtersStore)}
+						onclick={() => updateFilters(getCategory(value), value, filtersStore)}
 					>
 						{getTranslations(language)[value]}
 					</button>
@@ -215,7 +219,7 @@
 					<button
 						class="filter-btn"
 						class:active={isSelected('spType', value)}
-						on:click={() => updateFilters('spType', value, filtersStore)}
+						onclick={() => updateFilters('spType', value, filtersStore)}
 					>
 						{getTranslations(language)[value]}
 					</button>
@@ -239,7 +243,7 @@
 							<button
 								class="filter-btn"
 								class:active={isSelected('subProfessionId', value)}
-								on:click={() => updateFilters('subProfessionId', value, filtersStore)}
+								onclick={() => updateFilters('subProfessionId', value, filtersStore)}
 							>
 								{getTranslations(language)[value]}
 							</button>
@@ -260,7 +264,7 @@
 						<button
 							class="filter-btn"
 							class:active={isSelected('group', value)}
-							on:click={() => updateFilters('group', value, filtersStore)}
+							onclick={() => updateFilters('group', value, filtersStore)}
 						>
 							{getTranslations(language)[value]}
 						</button>
@@ -290,7 +294,7 @@
 									id={value}
 									class="filter-btn"
 									class:active={isSelected(getCategory(value), value)}
-									on:click={() => updateFilters(getCategory(value), value, filtersStore)}
+									onclick={() => updateFilters(getCategory(value), value, filtersStore)}
 								>
 									{getTranslations(language).table_headers[key] ??
 										getTranslations(language)[key] ??
@@ -300,28 +304,29 @@
 						</div>
 					{/each}
 				</div>
-				<div
-					slot="triangle"
-					class="side-triangle absolute right-0 bottom-0 {color} h-[60px] w-[60px]"
-				/>
-				<div slot="selected">
-					{#if selectedOptions.length > 0}
-						<div class="flex flex-wrap gap-2 border-t py-3 mx-3 md:mx-4">
-							{#each selectedOptions as value}
-								{@const key = getDisplayKey(value)}
-								<button
-									class="relative filter-btn"
-									class:active={isSelected(getCategory(value), value)}
-									on:click={() => updateFilters(getCategory(value), value, filtersStore)}
-								>
-									{getTranslations(language).table_headers[key] ??
-										getTranslations(language)[key] ??
-										getTranslations(language).types[key]}
-								</button>
-							{/each}
-						</div>
-					{/if}
-				</div>
+				{#snippet triangle()}
+					<div class="side-triangle absolute right-0 bottom-0 {color} h-[60px] w-[60px]"></div>
+				{/snippet}
+				{#snippet selected()}
+					<div>
+						{#if selectedOptions.length > 0}
+							<div class="flex flex-wrap gap-2 border-t py-3 mx-3 md:mx-4">
+								{#each selectedOptions as value}
+									{@const key = getDisplayKey(value)}
+									<button
+										class="relative filter-btn"
+										class:active={isSelected(getCategory(value), value)}
+										onclick={() => updateFilters(getCategory(value), value, filtersStore)}
+									>
+										{getTranslations(language).table_headers[key] ??
+											getTranslations(language)[key] ??
+											getTranslations(language).types[key]}
+									</button>
+								{/each}
+							</div>
+						{/if}
+					</div>
+				{/snippet}
 			</CharaFilterToggle>
 		</div>
 	{/each}
@@ -336,14 +341,14 @@
 				<button
 					class="display-style-button rounded-full p-[9px]"
 					class:active={relicDisplayMode === 'grid'}
-					on:click={() => (relicDisplayMode = 'grid')}
+					onclick={() => (relicDisplayMode = 'grid')}
 				>
 					<Icon name="grid-view" size={24} className="fill-black" />
 				</button>
 				<button
 					class="display-style-button rounded-full p-[10px]"
 					class:active={relicDisplayMode === 'list'}
-					on:click={() => (relicDisplayMode = 'list')}
+					onclick={() => (relicDisplayMode = 'list')}
 				>
 					<Icon name="icon-list" size={22} />
 				</button>
@@ -353,7 +358,7 @@
 					<button
 						class:active={$rogueTopic === topic}
 						class="filter-btn"
-						on:click={() => rogueTopic.set(topic)}
+						onclick={() => rogueTopic.set(topic)}
 					>
 						{getTranslations(language)[topic]}
 					</button>
@@ -374,7 +379,7 @@
 								? 'text-center'
 								: 'grid grid-cols-[100px_1fr] gap-2 text-left'}
 							class:bg-slate-300={isRelicSelected(relic.id)}
-							on:click={() => updateRelicFilters(relic.id)}
+							onclick={() => updateRelicFilters(relic.id)}
 						>
 							<img
 								src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
@@ -397,35 +402,37 @@
 					{/each}
 				</div>
 			</div>
-			<div slot="selected">
-				{#if selectedRelics.length > 0}
-					<div class="flex flex-wrap gap-2 border-t py-3 mx-3">
-						{#each selectedRelics as { id }}
-							{@const relic = relics[$rogueTopic].find((ele) => ele.id === id)}
-							<button
-								class="text-center"
-								class:bg-slate-300={isRelicSelected(relic.id)}
-								on:click={() => updateRelicFilters(relic.id)}
-							>
-								<img
-									src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
-									alt={relic[`name_${language}`] || relic['name_zh']}
-									width="75"
-									height="75"
-									loading="lazy"
-									decoding="async"
-									class="mx-auto"
-								/>
-								<div class="px-2">
-									<p class="text-sm">
-										{relic[`name_${language}`] || relic['name_zh']}
-									</p>
-								</div>
-							</button>
-						{/each}
-					</div>
-				{/if}
-			</div>
+			{#snippet selected()}
+				<div>
+					{#if selectedRelics.length > 0}
+						<div class="flex flex-wrap gap-2 border-t py-3 mx-3">
+							{#each selectedRelics as { id }}
+								{@const relic = relics[$rogueTopic].find((ele) => ele.id === id)}
+								<button
+									class="text-center"
+									class:bg-slate-300={isRelicSelected(relic.id)}
+									onclick={() => updateRelicFilters(relic.id)}
+								>
+									<img
+										src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
+										alt={relic[`name_${language}`] || relic['name_zh']}
+										width="75"
+										height="75"
+										loading="lazy"
+										decoding="async"
+										class="mx-auto"
+									/>
+									<div class="px-2">
+										<p class="text-sm">
+											{relic[`name_${language}`] || relic['name_zh']}
+										</p>
+									</div>
+								</button>
+							{/each}
+						</div>
+					{/if}
+				</div>
+			{/snippet}
 		</CharaFilterToggle>
 	</div>
 </div>

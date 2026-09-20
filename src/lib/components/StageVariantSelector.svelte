@@ -3,14 +3,17 @@
 	import stageVariantDisplay from '$lib/data/stages/stage_variant_lookup.json';
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { getIconPath } from '$lib/functions/stageHelpers';
 
-	export let variants;
-	export let selectedIndex = 0;
+	interface Props {
+		variants: any;
+		selectedIndex?: number;
+	}
 
-	let language: Language;
-	$: language = $page.data.language;
+	let { variants, selectedIndex = $bindable(0) }: Props = $props();
+
+	let language: Language = $derived(page.data.language);
 </script>
 
 {#if variants.length > 1}
@@ -27,13 +30,13 @@
 				<button
 					type="button"
 					aria-pressed={i === selectedIndex}
-					class="min-h-[96px] min-w-0 grow rounded-lg border px-2 py-2 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 md:basis-0 {variants.length ===
+					class="min-h-[96px] min-w-0 grow rounded-lg border px-2 py-2 shadow-md focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 md:basis-0 {variants.length ===
 					4
 						? 'basis-[calc(50%_-_0.25rem)]'
 						: 'basis-[calc(33.333333%_-_0.333333rem)]'} {i !== selectedIndex
 						? 'border-neutral-500 bg-neutral-700 text-neutral-300 hover:border-neutral-300 hover:bg-neutral-600 hover:text-white'
 						: 'border-sky-300 bg-sky-500 text-white shadow-sky-950/40'}"
-					on:click={() => (selectedIndex = i)}
+					onclick={() => (selectedIndex = i)}
 				>
 					<div class="flex items-center justify-center gap-x-1 md:gap-x-1.5">
 						{#each display?.icons ?? [] as icon}

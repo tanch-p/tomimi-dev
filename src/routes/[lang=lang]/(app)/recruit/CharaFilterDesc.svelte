@@ -8,11 +8,15 @@
 	import { generateSkillDesc as generateSkillDesc_ja } from '$lib/functions/filterDescHelpers_ja';
 	import { generateSkillDesc as generateSkillDesc_en } from '$lib/functions/filterDescHelpers_en';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
 
-	$: defaultLine = getTranslations(language).chara_filter_start;
+	let { language }: Props = $props();
 
-	$: line = defaultLine;
+	let defaultLine = $derived(getTranslations(language).chara_filter_start);
+
+	let line = $derived(defaultLine);
 
 	const generateDescFunc = (
 		activeOptions,

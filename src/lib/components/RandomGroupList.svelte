@@ -9,11 +9,27 @@
 		compileSpawnTimeActions
 	} from '$lib/functions/waveHelpers';
 
-	export let selectedPermGroups, mapConfig, eliteMode, hiddenGroups, language: Language;
-
-	$: if (mapConfig) {
-		selectedPermGroups = initialisePermGroupsChoices(mapConfig, eliteMode, hiddenGroups);
+	interface Props {
+		selectedPermGroups: any;
+		mapConfig: any;
+		eliteMode: any;
+		hiddenGroups: any;
+		language: Language;
 	}
+
+	let {
+		selectedPermGroups = $bindable(),
+		mapConfig,
+		eliteMode,
+		hiddenGroups,
+		language
+	}: Props = $props();
+
+	$effect(() => {
+		if (mapConfig) {
+			selectedPermGroups = initialisePermGroupsChoices(mapConfig, eliteMode, hiddenGroups);
+		}
+	});
 
 	function updatePermGroup(key, groupKey, choice) {
 		const holder = structuredClone(selectedPermGroups);
@@ -47,7 +63,7 @@
 													class={selectedPermGroups?.[key]?.[groupKey] === i
 														? ''
 														: 'brightness-50 hover:brightness-90'}
-													on:click={() => {
+													onclick={() => {
 														updatePermGroup(key, groupKey, i);
 													}}
 												>
@@ -55,7 +71,7 @@
 														{#each compiledActions as action}
 															{#if action.key === ''}
 																<div class="flex items-center justify-center w-[50px] h-[50px]">
-																	<div class="w-[46px] h-[46px] border" />
+																	<div class="w-[46px] h-[46px] border"></div>
 																</div>
 															{:else}
 																{@const prefabKey = action.key.includes('trap')
@@ -90,14 +106,14 @@
 													class={selectedPermGroups?.[key]?.[groupKey] === i
 														? ''
 														: 'brightness-50 hover:brightness-90'}
-													on:click={() => {
+													onclick={() => {
 														updatePermGroup(key, groupKey, i);
 													}}
 												>
 													<div class="flex items-center justify-center">
 														{#if action.key === ''}
 															<div class="flex items-center justify-center w-[50px] h-[50px]">
-																<div class="w-[46px] h-[46px] border" />
+																<div class="w-[46px] h-[46px] border"></div>
 															</div>
 														{:else}
 															{@const prefabKey = action.key.includes('trap')

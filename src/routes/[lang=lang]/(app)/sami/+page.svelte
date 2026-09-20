@@ -8,8 +8,12 @@
 	import TitleBlock from '$lib/components/TitleBlock.svelte';
 	import Resources from '$lib/components/Resources.svelte';
 
-	export let data: PageData;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let language = $derived(data.language);
 </script>
 
 <svelte:head>

@@ -4,13 +4,25 @@
 	import { parseValues } from '$lib/functions/skillHelpers';
 	import SkillHead from './SkillHead.svelte';
 
-	export let entity: Enemy | Trap,
-		formIndex: number,
-		skill: Skill,
-		language: Language,
-		mode = 'table',
-		statusImmuneList: StatusImmune[] = [],
+	interface Props {
+		entity: Enemy | Trap;
+		formIndex: number;
+		skill: Skill;
+		language: Language;
+		mode?: string;
+		statusImmuneList?: StatusImmune[];
 		mapConfig: MapConfig;
+	}
+
+	let {
+		entity,
+		formIndex,
+		skill,
+		language,
+		mode = 'table',
+		statusImmuneList = [],
+		mapConfig
+	}: Props = $props();
 
 	const buildTooltipLines = (
 		entity: Enemy | Trap,
@@ -33,10 +45,11 @@
 		});
 	};
 
-	$: tooltips = buildTooltipLines(entity, formIndex, skill, language);
-	$: showSilenceIcon =
+	let tooltips = $derived(buildTooltipLines(entity, formIndex, skill, language));
+	let showSilenceIcon = $derived(
 		(skill.can_silence || skill.tooltip?.zh?.some((line) => line.includes('can_silence'))) &&
-		!statusImmuneList.includes('silence');
+			!statusImmuneList.includes('silence')
+	);
 </script>
 
 {#if tooltips}

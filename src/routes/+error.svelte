@@ -3,9 +3,9 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { browser, dev } from '$app/environment';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
-	let language:Language = 'en';
+	let language: Language = $state('en');
 	let redirectTime = 10000;
 	let timer = redirectTime / 1000;
 	onMount(() => {
@@ -21,7 +21,7 @@
 			}, redirectTime);
 		}
 	});
-	const message = $page.error?.message;
+	const message = page.error?.message;
 
 	const infoText = {
 		zh: '如果无法访问关卡页面，请尝试更新浏览器或使用其他浏览器，如Firefox/Chrome。',
@@ -40,9 +40,9 @@
 			{#if message === 'Not Found'}
 				The page you requested could not be found
 			{:else}
-				An unexpected error occured while loading the page. 
+				An unexpected error occured while loading the page.
 			{/if}
-			<br /><br/>
+			<br /><br />
 			{infoText[language]}
 			<br /><br />
 			You will be redirected to the homepage in {timer} seconds...<br />

@@ -21,11 +21,15 @@
 	import CharaTokens from './CharaTokens.svelte';
 	import DraggableContainer from '$lib/components/DraggableContainer.svelte';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const statKeys = ['hp', 'respawnTime', 'atk', 'cost', 'def', 'blockCnt', 'res', 'aspd'];
-	$: hasModule = ['TIER_4', 'TIER_5', 'TIER_6'].includes($selectedChara?.rarity);
-	$: moduleStage = 2;
+	let hasModule = $derived(['TIER_4', 'TIER_5', 'TIER_6'].includes($selectedChara?.rarity));
+	let moduleStage = $state(2);
 
 	selectedChara.subscribe((val) => {
 		if (!val) {
@@ -42,16 +46,15 @@
 <div class="overlay" class:visible={$selectedChara}>
 	<div
 		class:visible={$selectedChara}
-		class="popup text-near-white bg-neutral-800 bg-opacity-95 pb-12 no-scrollbar"
-		use:clickOutside
-		on:outclick={() => selectedChara.set(null)}
+		class="popup text-near-white bg-neutral-800/95 pb-12 no-scrollbar"
+		{@attach clickOutside(() => selectedChara.set(null))}
 	>
 		{#if $selectedChara}
 			{@const phase = ['TIER_1', 'TIER_2'].includes($selectedChara.rarity)
 				? 0
 				: $selectedChara.rarity === 'TIER_3'
-				? 1
-				: 2}
+					? 1
+					: 2}
 			<div class="grid grid-cols-[100px_1fr] pr-10">
 				<img
 					src={`/images/chara_icons/${$selectedChara.id}.webp`}
@@ -107,9 +110,7 @@
 									?.attributeBlackboard
 							)}
 							<div
-								class={`flex flex-col bg-[#161616] bg-opacity-80 px-1 ${
-									language === 'en' ? 'text-sm' : ''
-								}`}
+								class={`flex flex-col bg-[#161616]/80 px-1 ${language === 'en' ? 'text-sm' : ''}`}
 							>
 								<div class="grid grid-cols-[16px_1fr] items-center gap-x-1">
 									<img src={charaAssets[statKey]} width="16px" height="16px" alt="" />
@@ -138,7 +139,7 @@
 			</div>
 			<div class="px-3 mt-3">
 				<div
-					class="flex flex-col items-center min-w-28 p-3 pb-1 bg-[#161616] bg-opacity-80 rounded float-right"
+					class="flex flex-col items-center min-w-28 p-3 pb-1 bg-[#161616]/80 rounded float-right"
 				>
 					<div class="flex items-center min-h-[50px] max-w-[90px]">
 						<RangeParser rangeId={getAttackRangeId($selectedChara, $moduleIndex, moduleStage)} />
@@ -191,7 +192,7 @@
 						</p>
 						<div class="mt-4 px-4">
 							{#if $selectedChara.uniequip.length === 0}
-								<div class="module none" />
+								<div class="module none"></div>
 							{:else}
 								<DraggableContainer
 									className="overflow-y-visible no-scrollbar snap-proximity snap-x "
@@ -205,7 +206,7 @@
 												<button
 													class:active={$moduleIndex === idx}
 													class="module flex-col snap-center shrink-0"
-													on:click={() => moduleIndex.set(idx)}
+													onclick={() => moduleIndex.set(idx)}
 												>
 													<div class="grid place-items-center h-[48px]">
 														<img
@@ -234,7 +235,7 @@
 													{#if $moduleIndex === idx}
 														<button
 															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-[1px] px-4"
-															on:click={() => {
+															onclick={() => {
 																if (moduleStage === 2) return (moduleStage = 0);
 																return (moduleStage += 1);
 															}}
@@ -355,7 +356,10 @@
 		max-height: max(500px, 70vh);
 		margin: auto;
 		pointer-events: none;
-		transition: transform 0.3s, opacity 0.2s, -webkit-transform 0.3s;
+		transition:
+			transform 0.3s,
+			opacity 0.2s,
+			-webkit-transform 0.3s;
 		opacity: 0;
 		overflow-y: auto;
 		overflow-x: clip;

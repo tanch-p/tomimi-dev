@@ -8,7 +8,15 @@
 	import Icon from './Icon.svelte';
 	import { parseValues } from '$lib/functions/skillHelpers';
 
-	export let trap: Trap, skill: Skill, language: Language, mode, mapConfig: MapConfig;
+	interface Props {
+		trap: Trap;
+		skill: Skill;
+		language: Language;
+		mode: any;
+		mapConfig: MapConfig;
+	}
+
+	let { trap, skill, language, mode, mapConfig }: Props = $props();
 </script>
 
 {#if mode === 'handbook'}
@@ -47,7 +55,7 @@
 		</div>
 		{#if skill.rangeId}
 			<div
-				class="self-center flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616] bg-opacity-80 rounded"
+				class="self-center flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616]/80 rounded"
 			>
 				<div class="flex items-center h-full">
 					<RangeParser rangeId={skill.rangeId} size="small" />
@@ -116,7 +124,7 @@
 			/>
 			{#if skill.rangeId}
 				<div
-					class="flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616] bg-opacity-80 rounded"
+					class="flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616]/80 rounded"
 				>
 					<div class="flex items-center h-full">
 						<RangeParser rangeId={skill.rangeId} size="small" />

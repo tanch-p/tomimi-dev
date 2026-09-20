@@ -17,19 +17,24 @@
 	import RangeParser from '$lib/components/RangeParser.svelte';
 	import CharaSkill from './CharaSkill.svelte';
 
-	export let chara, language: Language, showAlt;
+	interface Props {
+		chara: any;
+		language: Language;
+		showAlt: any;
+	}
 
-	let talents = [],
-		skills = [];
+	let { chara, language, showAlt }: Props = $props();
 
-	$: talents = [...new Set(chara.activeTalents)].sort().map((i) => {
-		let talent = chara.talents[i];
-		if (i === -1) {
-			talent = getModuleNewTalent(chara.uniequip[chara.activeModuleIndex], 2);
-		}
-		return { talent, idx: i };
-	});
-	$: skills = [...new Set(chara.activeSkills)].sort().map((i) => chara.skills[i]);
+	let talents = $derived(
+		[...new Set(chara.activeTalents)].sort().map((i) => {
+			let talent = chara.talents[i];
+			if (i === -1) {
+				talent = getModuleNewTalent(chara.uniequip[chara.activeModuleIndex], 2);
+			}
+			return { talent, idx: i };
+		})
+	);
+	let skills = $derived([...new Set(chara.activeSkills)].sort().map((i) => chara.skills[i]));
 
 	const rarityBgColors = {
 		TIER_1: 'bg-[#c1c1c1]',
@@ -47,14 +52,16 @@
 		moduleIndex.set(chara.activeModuleIndex);
 	};
 
-	const phase = ['TIER_1', 'TIER_2'].includes(chara.rarity) ? 0 : chara.rarity === 'TIER_3' ? 1 : 2;
+	let phase = $derived(
+		['TIER_1', 'TIER_2'].includes(chara.rarity) ? 0 : chara.rarity === 'TIER_3' ? 1 : 2
+	);
 </script>
 
 <div class="max-w-[500px] w-full mx-auto">
 	<div class="relative z-[1] {rarityBgColors[chara.rarity]} pl-1.5 rounded-md">
 		<button
 			class="grid grid-cols-[130px_1fr] p-1.5 pb-0 w-full shadow-md rounded-md bg-white text-start"
-			on:click={() => handleClick(chara)}
+			onclick={() => handleClick(chara)}
 		>
 			<div class="relative pl-[1.125rem] pr-4 h-[102px]">
 				<div class="absolute z-[1] top-0 left-0 bg-[#2c2c2c] p-1 rounded-md">
@@ -109,7 +116,7 @@
 						</clipPath>
 					</svg>
 					<div class="raindrop-wrap">
-						<div class="raindrop-shadow w-[47px] h-[68px]" />
+						<div class="raindrop-shadow w-[47px] h-[68px]"></div>
 					</div>
 					<div
 						class="absolute bottom-3 left-[50%] -translate-x-[50%] flex items-center justify-center"
@@ -135,7 +142,7 @@
 							{#if chara.uniequip.length === 0}
 								<div
 									class="relative shrink-0 module none mt-3 mr-1 w-[40px] h-[40px] border-4 border-[#ccc]"
-								/>
+								></div>
 							{:else}
 								<div
 									class="relative flex items-center justify-center shrink-0 module mt-3 mr-1 w-[40px] h-[40px] {chara.activeModuleIndex
@@ -148,7 +155,7 @@
 										<div
 											class="w-[32px] h-[32px] bg-center bg-contain bg-no-repeat"
 											style="background-image: url(/images/color_equip_icons/{typeIcon}.webp);"
-										/>
+										></div>
 									{/if}
 								</div>
 							{/if}
@@ -228,7 +235,7 @@
 			{/if}
 		</div>
 	{/if}
-	<div />
+	<div></div>
 </div>
 
 <style>

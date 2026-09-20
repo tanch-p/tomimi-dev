@@ -5,7 +5,11 @@
 	import { sortOptions } from './stores';
 	import Icon from '$lib/components/Icon.svelte';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	const reset = () => {
 		sortOptions.update((list) =>
@@ -40,14 +44,14 @@
 <div class="bg-near-white text-almost-black rounded-md p-3 md:p-4 mt-5">
 	<p class="border-b text-center pb-1 md:pb-2">{getTranslations(language).sort}</p>
 	<div class="relative">
-		<button class="absolute right-2 flex" on:click={reset}>
+		<button class="absolute right-2 flex" onclick={reset}>
 			<Icon name="trash" className="h-[18px] mt-[1px]" />
 			{getTranslations(language).filter_reset}
 		</button>
 		<div class="grid grid-cols-[minmax(75px,auto)_50px_1fr] gap-2 md:gap-3 mt-2 md:mt-3">
 			<p>{getTranslations(language).filter_option}</p>
 			<p class="text-center">{getTranslations(language).sort_priority}</p>
-			<p />
+			<p></p>
 			{#each $sortOptions as { key, subKey, suffix, order, priority }}
 				<p class="py-[5px] capitalize">
 					{getOptionTranslation(
@@ -60,14 +64,14 @@
 					<button
 						class="filter-btn"
 						class:active={order === 1}
-						on:click={() => updateSortOptions(key, subKey, 1)}
+						onclick={() => updateSortOptions(key, subKey, 1)}
 					>
 						{getTranslations(language)['asc']}
 					</button>
 					<button
 						class="filter-btn"
 						class:active={order === -1}
-						on:click={() => updateSortOptions(key, subKey, -1)}
+						onclick={() => updateSortOptions(key, subKey, -1)}
 					>
 						{getTranslations(language)['desc']}
 					</button>

@@ -8,7 +8,12 @@
 	import rogue_1_capsule_8 from '$lib/images/is/phantom/rogue_1_capsule_8.webp';
 	import rogue_1_capsule_21 from '$lib/images/is/phantom/rogue_1_capsule_21.webp';
 
-	export let optionsOpen: boolean, language: string;
+	interface Props {
+		optionsOpen: boolean;
+		language: string;
+	}
+
+	let { optionsOpen = $bindable(), language }: Props = $props();
 
 	capsulesList.forEach((ele, i) => (ele.src = i === 0 ? rogue_1_capsule_8 : rogue_1_capsule_21));
 </script>

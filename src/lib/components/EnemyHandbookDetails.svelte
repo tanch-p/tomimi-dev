@@ -15,22 +15,28 @@
 	import OtherBuffs from './OtherBuffs.svelte';
 	import DraggableContainer from './DraggableContainer.svelte';
 
-	export let enemy: Enemy,
-		language: Language,
-		statMods: StatMods,
-		specialMods,
-		otherBuffsList,
-		mode,
-		mapConfig;
+	interface Props {
+		enemy: Enemy;
+		language: Language;
+		statMods: StatMods;
+		specialMods: any;
+		otherBuffsList: any;
+		mode: any;
+		mapConfig: any;
+	}
+
+	let { enemy, language, statMods, specialMods, otherBuffsList, mode, mapConfig }: Props = $props();
 
 	const enemyLevels = ['NORMAL', 'ELITE', 'BOSS'];
 
-	let formIndex = 0;
+	let formIndex = $state(0);
 
-	$: statusImmuneList = getStatusImmune(enemy, enemy.forms[formIndex].status_immune, $specialMods);
+	let statusImmuneList = $derived(
+		getStatusImmune(enemy, enemy.forms[formIndex].status_immune, $specialMods)
+	);
 </script>
 
-<div id={enemy.stageId} class="scroll-mt-16 px-2 bg-neutral-900 bg-opacity-40">
+<div id={enemy.stageId} class="scroll-mt-16 px-2 bg-neutral-900/40">
 	<div class="relative">
 		{#if enemy.type.includes('BOSS')}
 			<img
@@ -117,7 +123,7 @@
 								class={`text-sm py-1 px-2 ${
 									formIndex === index ? 'bg-almost-black' : 'opacity-60'
 								}`}
-								on:click={() => (formIndex = index)}
+								onclick={() => (formIndex = index)}
 							>
 								{getFormTitle(form.title, index, language)}
 							</button>

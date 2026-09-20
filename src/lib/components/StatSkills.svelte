@@ -4,33 +4,39 @@
 	import { getDmgEleHighlight } from '$lib/functions/parseAtkType';
 	import { getStatSkillValue } from '$lib/functions/statHelpers';
 
-	export let entity: Enemy | Trap,
-		formIndex: number,
-		skills: Skill[],
-		stat: StatKey,
-		statValue: number,
+	interface Props {
+		entity: Enemy | Trap;
+		formIndex: number;
+		skills: Skill[];
+		stat: StatKey;
+		statValue: number;
 		language: Language;
-	$: separator = language === 'en' ? '/' : '・';
-	$: skillsToParse = skills
-		.map((skill) => {
-			if (skill.remove) return;
-			if (skill[stat]) {
-				const { suffix, hits, dmg_element } = skill;
-				let value = statValue;
-				if (skill[stat].value) {
-					value = skill[stat].value;
-				} else {
-					if (entity.key.includes('trap')) {
-						value = entity.stats[stat] * skill[stat].multiplier;
+	}
+
+	let { entity, formIndex, skills, stat, statValue, language }: Props = $props();
+	let separator = $derived(language === 'en' ? '/' : '・');
+	let skillsToParse = $derived(
+		skills
+			.map((skill) => {
+				if (skill.remove) return;
+				if (skill[stat]) {
+					const { suffix, hits, dmg_element } = skill;
+					let value = statValue;
+					if (skill[stat].value) {
+						value = skill[stat].value;
 					} else {
-						value = getStatSkillValue(entity, formIndex, skill, stat);
+						if (entity.key.includes('trap')) {
+							value = entity.stats[stat] * skill[stat].multiplier;
+						} else {
+							value = getStatSkillValue(entity, formIndex, skill, stat);
+						}
 					}
+					return { suffix, value, hits: hits ?? 0, dmgEle: dmg_element ?? '' };
 				}
-				return { suffix, value, hits: hits ?? 0, dmgEle: dmg_element ?? '' };
-			}
-			return;
-		})
-		.filter(Boolean);
+				return;
+			})
+			.filter(Boolean)
+	);
 </script>
 
 {#each skillsToParse as skill}

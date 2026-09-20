@@ -3,12 +3,16 @@
 	import type { Enemy, Language, Skill, StatusImmune, Trap } from '$lib/types';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { getFormTitle } from '$lib/functions/formHelpers';
-	export let entity: Enemy | Trap,
-		skill: Skill,
-		language: Language,
-		mode = 'table',
-		statusImmuneList: StatusImmune[] = [];
-	$: skillType = skill.skillType || 'COOLDOWN';
+	interface Props {
+		entity: Enemy | Trap;
+		skill: Skill;
+		language: Language;
+		mode?: string;
+		statusImmuneList?: StatusImmune[];
+	}
+
+	let { entity, skill, language, mode = 'table', statusImmuneList = [] }: Props = $props();
+	let skillType = $derived(skill.skillType || 'COOLDOWN');
 </script>
 
 <div class="flex flex-wrap items-center mb-0.5">

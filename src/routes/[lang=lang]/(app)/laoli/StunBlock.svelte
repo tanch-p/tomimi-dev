@@ -1,8 +1,6 @@
-<script>
-	export let resolution, fValues, moduleLevel;
+<script lang="ts">
+	let { resolution, fValues, moduleLevel } = $props();
 
-	$: stunDuration = moduleLevel >= 2 ? 4 * 30 : 3 * 30;
-	$: stunTimings = getStunTimings(fValues, stunDuration);
 	function reducer(acc, curr) {
 		return acc + curr.value;
 	}
@@ -81,6 +79,8 @@
 		}
 		return newAcc;
 	}
+	let stunDuration = $derived(moduleLevel >= 2 ? 4 * 30 : 3 * 30);
+	let stunTimings = $derived(getStunTimings(fValues, stunDuration));
 </script>
 
 <div class="flex w-max">

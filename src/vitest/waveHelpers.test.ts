@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getBaseCount, getEnemyCountPermutations } from '$lib/functions/waveHelpers';
-import stageData from '../lib/data/stages/ro_stage_data/level_rogue6_1-1.json' assert { type: 'json' };
+import stageData from '../lib/data/stages/ro_stage_data/level_rogue6_1-1.json' with { type: 'json' };
 
 describe('enemy wave counts', () => {
 	it('counts the normal version of rogue6_1-1 as 15 enemies', () => {

@@ -2,11 +2,11 @@
 	import { selectedChara, moduleIndex, sortOptions, secFilters } from './stores';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import { getPrioritySortValues } from '$lib/functions/charaHelpers';
-	export let chara;
+	let { chara } = $props();
 
-	$: equip = chara.activeModuleIndex && chara.uniequip?.[chara.activeModuleIndex];
+	let equip = $derived(chara.activeModuleIndex && chara.uniequip?.[chara.activeModuleIndex]);
 
-	$: values = getPrioritySortValues(chara, $sortOptions, $secFilters);
+	let values = $derived(getPrioritySortValues(chara, $sortOptions, $secFilters));
 
 	const handleClick = (chara) => {
 		selectedChara.set(chara);
@@ -14,10 +14,7 @@
 	};
 </script>
 
-<button
-	on:click={() => handleClick(chara)}
-	class="relative select-none border border-gray-600 border-opacity-50"
->
+<button onclick={() => handleClick(chara)} class="relative select-none border border-gray-600/50">
 	<div class="relative">
 		<div class="absolute top-0 left-0 bg-[#1f1f1f]">
 			<img
@@ -29,9 +26,7 @@
 			/>
 		</div>
 		{#if values?.length > 0}
-			<div
-				class="absolute bottom-0 w-full gradient-dark bg-opacity-50 pl-3 pt-3 truncate text-left"
-			>
+			<div class="absolute bottom-0 w-full gradient-dark pl-3 pt-3 truncate text-left">
 				{#each values as value, i}
 					{#if i > 0}
 						&nbsp;<span class="text-[#c9c9c9] text-sm">/</span>
@@ -52,14 +47,9 @@
 			<div
 				class="absolute -right-1 -top-1 w-[40px] h-[40px] bg-center bg-cover"
 				style="background-image: url(/images/color_equip_icons/{typeIcon}.webp);"
-			/>
+			></div>
 		{/if}
-		<img
-			src={`/images/chara_icons/${chara.id}.webp`}
-			width="100"
-			height="100"
-			alt={chara.name}
-		/>
+		<img src={`/images/chara_icons/${chara.id}.webp`} width="100" height="100" alt={chara.name} />
 	</div>
 </button>
 

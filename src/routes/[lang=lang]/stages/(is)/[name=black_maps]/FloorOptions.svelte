@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Language } from '$lib/types';
 	import weather from '$lib/data/is/black/weather.json';
 	import weather_1 from '$lib/images/is/black/rogue_6_weather_1.webp';
@@ -7,7 +8,12 @@
 	import { difficulty, activeFloorEffects, gold } from './stores';
 	import { createGoldVariationEffect, goldVariation } from './variationHelpers';
 
-	export let optionsOpen: boolean, language: Language;
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+	}
+
+	let { optionsOpen = $bindable(), language }: Props = $props();
 
 	const lookup: Record<string, string> = {
 		rogue_6_weather_1: weather_1,
@@ -20,38 +26,42 @@
 	}));
 	let level = 1;
 
-	$: goldVariationEffect = createGoldVariationEffect($gold);
+	let goldVariationEffect = $derived(createGoldVariationEffect($gold));
 
-	$: if (
-		$activeFloorEffects.length === 1 &&
-		$activeFloorEffects[0].id === goldVariation.id &&
-		$activeFloorEffects[0] !== goldVariationEffect
-	) {
-		activeFloorEffects.set([goldVariationEffect]);
-	}
-
-	difficulty.subscribe((n) => {
-		switch (true) {
-			case n <= 5:
-				level = 1;
-				break;
-			case n <= 11:
-				level = 2;
-				break;
-			default:
-				level = 3;
-		}
-		if ($activeFloorEffects.length > 0) {
-			if ($activeFloorEffects[0]?.id === goldVariation.id) {
-				activeFloorEffects.set([goldVariationEffect]);
-				return;
-			}
-			const weatherEffect = weatherOptions.find(
-				(ele) => ele.iconId === $activeFloorEffects[0]?.iconId && ele.level === level
-			);
-			activeFloorEffects.set(weatherEffect ? [weatherEffect] : []);
+	$effect(() => {
+		if (
+			$activeFloorEffects.length === 1 &&
+			$activeFloorEffects[0].id === goldVariation.id &&
+			$activeFloorEffects[0] !== goldVariationEffect
+		) {
+			activeFloorEffects.set([goldVariationEffect]);
 		}
 	});
+
+	onMount(() =>
+		difficulty.subscribe((n) => {
+			switch (true) {
+				case n <= 5:
+					level = 1;
+					break;
+				case n <= 11:
+					level = 2;
+					break;
+				default:
+					level = 3;
+			}
+			if ($activeFloorEffects.length > 0) {
+				if ($activeFloorEffects[0]?.id === goldVariation.id) {
+					activeFloorEffects.set([goldVariationEffect]);
+					return;
+				}
+				const weatherEffect = weatherOptions.find(
+					(ele) => ele.iconId === $activeFloorEffects[0]?.iconId && ele.level === level
+				);
+				activeFloorEffects.set(weatherEffect ? [weatherEffect] : []);
+			}
+		})
+	);
 </script>
 
 <div

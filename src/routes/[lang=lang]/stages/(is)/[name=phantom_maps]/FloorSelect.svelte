@@ -4,10 +4,10 @@
 </script>
 
 <div class="w-[70%] mx-auto py-3 mt-4">
-	<div class="grid grid-cols-6 ">
+	<div class="grid grid-cols-6">
 		{#each floors as n, i}
 			<button
-				on:click={() => selectedFloor.set(i + 1)}
+				onclick={() => selectedFloor.set(i + 1)}
 				class={`py-2 px-2 ${$selectedFloor === i + 1 ? 'bg-gray-500' : ''}`}
 				type="button"
 			>

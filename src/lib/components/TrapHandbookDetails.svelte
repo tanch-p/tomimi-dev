@@ -1,22 +1,25 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig, Trap } from '$lib/types';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import StatusImmune from './StatusImmune.svelte';
 	import TrapStats from './TrapStats.svelte';
 	import RangeParser from './RangeParser.svelte';
 	import TrapAbilities from './TrapAbilities.svelte';
 	import OtherBuffs from './OtherBuffs.svelte';
 
-	export let trap: Trap, otherBuffsList, specialMods, mapConfig: MapConfig;
-	let language: Language;
-	$: language = $page.data.language;
+	interface Props {
+		trap: Trap;
+		otherBuffsList: any;
+		specialMods: any;
+		mapConfig: MapConfig;
+	}
+
+	let { trap, otherBuffsList, specialMods, mapConfig }: Props = $props();
+	let language: Language = $derived(page.data.language);
 </script>
 
-<div
-	id={trap.key}
-	class="scroll-mt-16 p-2 bg-neutral-900 bg-opacity-40 sm:max-w-[500px] w-full mx-auto"
->
+<div id={trap.key} class="scroll-mt-16 p-2 bg-neutral-900/40 sm:max-w-[500px] w-full mx-auto">
 	<div class="relative pt-3">
 		<div class="flex items-center">
 			{#if trap.overwritten}
@@ -43,7 +46,7 @@
 			</div> -->
 			{#if trap.stats.rangeId}
 				<div
-					class="flex flex-col items-center max-w-[90px] w-full mx-auto p-2 pb-1 bg-[#161616] bg-opacity-80 rounded h-max"
+					class="flex flex-col items-center max-w-[90px] w-full mx-auto p-2 pb-1 bg-[#161616]/80 rounded h-max"
 				>
 					<div class="flex items-center">
 						<RangeParser rangeId={trap.stats.rangeId} size="small" />

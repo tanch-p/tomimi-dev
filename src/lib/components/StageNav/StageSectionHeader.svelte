@@ -1,11 +1,23 @@
 <script lang="ts">
-	export let src: string;
-	export let alt: string;
-	export let type: 'long' | 'square' = 'long';
-	export let adjustSize = false;
-	export let includeLabelColumn = true;
-	export let label: string | number | undefined = undefined;
-	export let labelRowspan = 1;
+	interface Props {
+		src: string;
+		alt: string;
+		type?: 'long' | 'square';
+		adjustSize?: boolean;
+		includeLabelColumn?: boolean;
+		label?: string | number | undefined;
+		labelRowspan?: number;
+	}
+
+	let {
+		src,
+		alt,
+		type = 'long',
+		adjustSize = false,
+		includeLabelColumn = true,
+		label = undefined,
+		labelRowspan = 1
+	}: Props = $props();
 </script>
 
 <tr>
@@ -13,7 +25,7 @@
 		{#if label !== undefined}
 			<td colspan="2" rowspan={labelRowspan}>{label}</td>
 		{:else}
-			<th colspan="2" class="empty" />
+			<th colspan="2" class="empty"></th>
 		{/if}
 	{/if}
 

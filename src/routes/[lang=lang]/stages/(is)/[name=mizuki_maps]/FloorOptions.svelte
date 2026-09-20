@@ -9,7 +9,12 @@
 	import 众我 from '$lib/images/is/mizuki/众我.webp';
 	import 给养 from '$lib/images/is/mizuki/给养.webp';
 
-	export let optionsOpen: boolean, language: Language;
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+	}
+
+	let { optionsOpen = $bindable(), language }: Props = $props();
 
 	const mizukiOptionsSrc = [争斗, 给养, 众我, 徒长];
 	mizukiOptions.forEach((option, index) => {

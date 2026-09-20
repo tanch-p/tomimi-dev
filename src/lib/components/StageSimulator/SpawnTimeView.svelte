@@ -1,23 +1,27 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import { GameConfig } from './objects/GameConfig';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { wavePrefixSuffix, getTranslations } from '$lib/functions/languageHelpers';
 	import { onDestroy, onMount } from 'svelte';
 	import { compileSpawnTimeActions, getImageForWaves } from '$lib/functions/waveHelpers';
 
-	export let waves, mapConfig, branchKey, branchIndex: number;
+	interface Props {
+		waves: any;
+		mapConfig: any;
+		branchKey: any;
+		branchIndex: number;
+	}
 
-	let timelineContainer: HTMLDivElement, actionsContainer: HTMLDivElement;
-	let currWaveIndex = 0;
-	let waveElapsedTime = 0;
-	let language: Language;
-	let showTimeline = true;
-	let index = -1;
-	let prevIndexSize = 0;
-	let simMode = 'wave_normal';
+	let { waves, mapConfig, branchKey, branchIndex }: Props = $props();
 
-	$: language = $page.data.language;
+	let timelineContainer: HTMLDivElement = $state(),
+		actionsContainer: HTMLDivElement = $state();
+	let currWaveIndex = $state(0);
+	let waveElapsedTime = $state(0);
+	let language: Language = $derived(page.data.language);
+	let showTimeline = $state(true);
+	let simMode = $state('wave_normal');
 
 	// Sync class -> store
 	const unsubscribeFns = [];
@@ -69,11 +73,6 @@
 		unsubscribeFns.forEach((fn) => fn());
 	});
 
-	$: prevIndexSize = getPrevActionsSize(currWaveIndex);
-	$: index = updateActionIndex(waveElapsedTime, prevIndexSize);
-
-	$: trackAndScrollContainer(index);
-
 	function updateActionIndex(waveElapsedTime: number, prevIndexSize: number) {
 		const currActionIndex = getCurrActionIndex(waveElapsedTime);
 		return prevIndexSize + currActionIndex;
@@ -114,11 +113,17 @@
 		}
 		return timeline.length - 1;
 	}
+
+	let prevIndexSize = $derived(getPrevActionsSize(currWaveIndex));
+	let index = $derived(updateActionIndex(waveElapsedTime, prevIndexSize));
+	$effect(() => {
+		trackAndScrollContainer(index);
+	});
 </script>
 
 {#if waves}
 	<div
-		class="absolute w-[110px] md:w-[163px] h-full p-3 bg-neutral-800 bg-opacity-80 text-sm {showTimeline
+		class="absolute w-[110px] md:w-[163px] h-full p-3 bg-neutral-800/80 text-sm {showTimeline
 			? ''
 			: 'opacity-0 pointer-events-none'}"
 	>

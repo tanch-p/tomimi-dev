@@ -2,7 +2,11 @@
 	import type { Language } from '$lib/types';
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import favicon from '$lib/images/favicon.webp';
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 </script>
 
 <header class="bg-[#161417] text-near-white">

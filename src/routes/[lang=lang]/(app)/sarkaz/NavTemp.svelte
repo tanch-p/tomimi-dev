@@ -9,7 +9,11 @@
 	import duelIcon from '$lib/images/is/sarkaz/node_duel.webp';
 	import shop from '$lib/images/is/sarkaz/node_shop.webp';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 
 	let allNormalStages = [
 		['坏邻居', '公害', '安全检查', '夺路而跳', '冰川期'],
@@ -71,7 +75,7 @@
 	<table class="text-xs sm:text-base">
 		<tbody>
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -167,7 +171,7 @@
 			</tr>
 			<!-- boss -->
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -220,7 +224,7 @@
 				{/each}
 			</tr>
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img
@@ -274,7 +278,7 @@
 			<!-- encounter -->
 
 			<tr>
-				<th colspan="2" class="empty" />
+				<th colspan="2" class="empty"></th>
 				<th colspan="24">
 					<div class="flex justify-center items-center">
 						<img

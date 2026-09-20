@@ -12,9 +12,14 @@
 	import floor6 from '$lib/images/is/black/zone_6.webp';
 	import Icon from '$lib/components/Icon.svelte';
 
-	export let stageFloors: number[], language: Language;
+	interface Props {
+		stageFloors: number[];
+		language: Language;
+	}
 
-	let optionsOpen = false;
+	let { stageFloors, language }: Props = $props();
+
+	let optionsOpen = $state(false);
 
 	const floorIcons = [floor1, floor2, floor3, floor4, floor5, floor6];
 
@@ -23,14 +28,16 @@
 			selectedFloor.set(Math.min(...stageFloors));
 		}
 	}
-	$: updateFloor(stageFloors);
+	$effect(() => {
+		updateFloor(stageFloors);
+	});
 </script>
 
-<div use:clickOutside on:outclick={() => (optionsOpen = false)} class="mx-auto select-none">
+<div {@attach clickOutside(() => (optionsOpen = false))} class="mx-auto select-none">
 	<button
 		id="floor-options"
 		class="px-3 py-0.5 md:hover:bg-neutral-500"
-		on:click={() => (optionsOpen = !optionsOpen)}
+		onclick={() => (optionsOpen = !optionsOpen)}
 	>
 		<div class="flex justify-center items-center gap-x-1">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />

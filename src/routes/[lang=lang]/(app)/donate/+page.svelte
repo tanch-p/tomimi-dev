@@ -5,8 +5,12 @@
 	import kofiBadge from '$lib/images/kofi_badge_beige.png';
 	import afdian from '$lib/images/afdian.jpg';
 
-	export let data: PageData, language: Language;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let language: Language = $derived(data.language);
 
 	const sponsors = [
 		'瓦楞纸',
@@ -74,10 +78,3 @@
 		{/each}
 	</div>
 </div>
-
-<style>
-	td {
-		padding: 2px 0;
-		border-width: 1px 0;
-	}
-</style>

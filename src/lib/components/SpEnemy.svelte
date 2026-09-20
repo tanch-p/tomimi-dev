@@ -6,7 +6,12 @@
 	import combat_icon from '$lib/images/is/combat_icon.webp';
 	import emergency_icon from '$lib/images/is/emergency_icon.webp';
 
-	export let spEnemyInfo, language: Language;
+	interface Props {
+		spEnemyInfo: any;
+		language: Language;
+	}
+
+	let { spEnemyInfo, language }: Props = $props();
 </script>
 
 <div class="w-max mx-auto overflow-hidden mt-6 mb-4">

@@ -8,15 +8,29 @@
 	import { getEliteColors } from '$lib/functions/stageHelpers';
 	import MediaQuery from './MediaQuery.svelte';
 	import EliteToggleBar from './EliteToggleBar.svelte';
+	import { untrack } from 'svelte';
 
-	export let mapEliteMods: any,
-		mapNormalMods: any,
-		rogueTopic: string,
-		runes: any,
-		selectedRelics: any,
-		stageId: string,
+	interface Props {
+		mapEliteMods: any;
+		mapNormalMods: any;
+		rogueTopic: string;
+		runes: any;
+		selectedRelics: any;
+		stageId: string;
+		eliteMode: any;
+		inWaveOptions?: boolean;
+	}
+
+	let {
+		mapEliteMods,
+		mapNormalMods,
+		rogueTopic,
+		runes,
+		selectedRelics,
+		stageId,
 		eliteMode,
-		inWaveOptions = false;
+		inWaveOptions = false
+	}: Props = $props();
 
 	const ro4_SP7_BOSS_STAGES = [
 		'level_rogue4_b-4',
@@ -52,9 +66,12 @@
 		}
 	};
 
-	eliteMode.subscribe((v) => updateEliteMods(v));
+	$effect(() => {
+		const enabled = $eliteMode;
+		untrack(() => updateEliteMods(enabled));
+	});
 
-	$: [combatOpsColor, eliteOpsColor] = getEliteColors(rogueTopic);
+	let [combatOpsColor, eliteOpsColor] = $derived(getEliteColors(rogueTopic));
 
 	function getEliteIcon(stageId: string) {
 		if (ro4_SP7_BOSS_STAGES.includes(stageId)) {
@@ -68,7 +85,7 @@
 		}
 		return emergency_icon;
 	}
-	const iconCombat = rogueTopic === 'rogue_black' ? blackCombatIcon : combatIcon;
+	let iconCombat = $derived(rogueTopic === 'rogue_black' ? blackCombatIcon : combatIcon);
 </script>
 
 {#if mapEliteMods}
@@ -85,35 +102,38 @@
 		/>
 	{:else}
 		<MediaQuery>
-			<div slot="pc" class="mt-8">
-				<EliteToggleBar
-					{rogueTopic}
-					{combatOpsColor}
-					{eliteOpsColor}
-					{eliteMode}
-					{stageId}
-					{getEliteIcon}
-					{iconCombat}
-				/>
-			</div>
-			<button
-				slot="mobile"
-				id="elite-toggle"
-				class={`fixed z-[3] bottom-[210px] right-[20px] md:right-[40px] flex items-center justify-center rounded-full w-[45px] h-[45px] pointer-events-auto ${
-					$eliteMode ? `${eliteOpsColor}` : `${combatOpsColor}`
-				}`}
-				on:click={() => eliteMode.set(!$eliteMode)}
-			>
-				<img
-					src={$eliteMode ? getEliteIcon(stageId) : iconCombat}
-					width="40px"
-					decoding="async"
-					loading="lazy"
-					alt={'elite toggle'}
-					class:scale-200={rogueTopic === 'rogue_black'}
-					class="select-none"
-				/>
-			</button>
+			{#snippet pc()}
+				<div class="mt-8">
+					<EliteToggleBar
+						{rogueTopic}
+						{combatOpsColor}
+						{eliteOpsColor}
+						{eliteMode}
+						{stageId}
+						{getEliteIcon}
+						{iconCombat}
+					/>
+				</div>
+			{/snippet}
+			{#snippet mobile()}
+				<button
+					id="elite-toggle"
+					class={`fixed z-[3] bottom-[210px] right-[20px] md:right-[40px] flex items-center justify-center rounded-full w-[45px] h-[45px] pointer-events-auto ${
+						$eliteMode ? `${eliteOpsColor}` : `${combatOpsColor}`
+					}`}
+					onclick={() => eliteMode.set(!$eliteMode)}
+				>
+					<img
+						src={$eliteMode ? getEliteIcon(stageId) : iconCombat}
+						width="40px"
+						decoding="async"
+						loading="lazy"
+						alt={'elite toggle'}
+						class:scale-200={rogueTopic === 'rogue_black'}
+						class="select-none"
+					/>
+				</button>
+			{/snippet}
 		</MediaQuery>
 	{/if}
 {/if}

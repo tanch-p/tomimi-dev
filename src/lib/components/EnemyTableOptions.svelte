@@ -3,7 +3,11 @@
 	import type { Language } from '$lib/types';
 	import { tableHeaders } from '../../routes/stores';
 	import { setLocalStorage } from '$lib/functions/storageHelpers';
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
 	function updateHeaders(key) {
 		tableHeaders.update((list) => {
 			const index = list.findIndex((ele) => ele.key === key);
@@ -12,7 +16,9 @@
 		});
 	}
 
-	$: setLocalStorage('table_headers', JSON.stringify($tableHeaders));
+	$effect(() => {
+		setLocalStorage('table_headers', JSON.stringify($tableHeaders));
+	});
 </script>
 
 <div class="border border-gray-400 mt-3 mb-4">
@@ -20,7 +26,7 @@
 		{#each $tableHeaders as { key, show }}
 			<button
 				class={`rounded-full px-4 py-1 ${show ? 'bg-sky-600' : 'bg-gray-400'}`}
-				on:click={() => updateHeaders(key)}
+				onclick={() => updateHeaders(key)}
 			>
 				{getTranslations(language).table_headers[key] || getTranslations(language)[key]}
 			</button>

@@ -6,12 +6,27 @@
 	import TextParser from './TextParser.svelte';
 	import { getStageImg } from '$lib/functions/stageHelpers';
 
-	export let mapConfig,
-		language: Language,
-		stageName: string,
+	interface Props {
+		mapConfig: any;
+		language: Language;
+		stageName: string;
+		eliteMode: any;
+		difficulty?: number;
+		rogueTopic?: RogueTopic;
+		children?: import('svelte').Snippet;
+		drops?: import('svelte').Snippet;
+	}
+
+	let {
+		mapConfig,
+		language,
+		stageName,
 		eliteMode,
 		difficulty = 0,
-		rogueTopic: RogueTopic = null;
+		rogueTopic = null,
+		children,
+		drops
+	}: Props = $props();
 
 	const getEliteDescColor = (rogueTopic: RogueTopic) => {
 		switch (rogueTopic) {
@@ -105,8 +120,8 @@
 		</div>
 	</div>
 </div>
-<slot />
-<slot name="drops" />
+{@render children?.()}
+{@render drops?.()}
 {#if mapConfig?.sp_terrain || rogueTopic === 'rogue_skz'}
 	<SpTerrain {difficulty} spTerrain={mapConfig?.sp_terrain} {rogueTopic} {language} />
 {/if}

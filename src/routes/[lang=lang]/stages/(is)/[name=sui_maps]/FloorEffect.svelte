@@ -4,9 +4,14 @@
 	import wrath_bg from '$lib/images/is/sui/wrath_bad_back.webp';
 	import wrath0_bg from '$lib/images/is/sui/wrath_bg_variation_color.png';
 
-	export let effect, language: Language;
+	interface Props {
+		effect: any;
+		language: Language;
+	}
 
-	let selected = false;
+	let { effect, language }: Props = $props();
+
+	let selected = $state(false);
 
 	activeFloorEffects.subscribe((list) => {
 		selected = Boolean(list.find((ele) => ele.id === effect.id));
@@ -24,7 +29,7 @@
 			activeFloorEffects.set([effect]);
 		}
 	}
-	$: name = effect[`name_${language}`] || effect[`name_zh`];
+	let name = $derived(effect[`name_${language}`] || effect[`name_zh`]);
 </script>
 
 <button
@@ -32,7 +37,7 @@
 	class={`grid grid-cols-[75px_auto] items-center gap-x-2 text-start ${
 		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
 	}`}
-	on:click={handleClick}
+	onclick={handleClick}
 >
 	<div class="relative flex items-center justify-center rounded-full h-7 overflow-hidden">
 		<img

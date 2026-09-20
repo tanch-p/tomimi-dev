@@ -7,7 +7,12 @@
 	import wrath_8 from '$lib/images/is/sui/rogue_5_wrath_8.webp';
 	import { difficulty, activeFloorEffects } from './stores';
 
-	export let optionsOpen: boolean, language: Language;
+	interface Props {
+		optionsOpen: boolean;
+		language: Language;
+	}
+
+	let { optionsOpen = $bindable(), language }: Props = $props();
 
 	const lookup = {
 		rogue_5_wrath_8: wrath_8
@@ -15,8 +20,8 @@
 	suiWrathList.forEach((option) => {
 		option.src = lookup[option.iconId];
 	});
-	let options = [];
-	let level = 1;
+	let options = $state([]);
+	let level = $state(1);
 
 	difficulty.subscribe((n) => {
 		switch (true) {

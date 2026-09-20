@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import enemyDB from '../lib/data/enemy/enemy_database.json' assert { type: 'json' };
-import enemySkills from '../lib/data/enemy/enemy_skills.json' assert { type: 'json' };
-import trapsDB from '../lib/data/trap/traps.json' assert { type: 'json' };
-import trapSkills from '../lib/data/trap/traps_skills.json' assert { type: 'json' };
+import enemyDB from '../lib/data/enemy/enemy_database.json' with { type: 'json' };
+import enemySkills from '../lib/data/enemy/enemy_skills.json' with { type: 'json' };
+import trapsDB from '../lib/data/trap/traps.json' with { type: 'json' };
+import trapSkills from '../lib/data/trap/traps_skills.json' with { type: 'json' };
 
 describe('Skill key check', () => {
 	it('enemy skills', () => {

@@ -13,21 +13,32 @@
 	import { generateBranchTimeline } from '$lib/functions/waveHelpers';
 	import { obstacleEventStore, type ObstacleEventSnapshot } from './stores/obstacleEvents';
 
-	export let timeline,
-		mapConfig: MapConfig,
-		waveData,
-		language: Language,
-		enemies: Enemy[],
-		randomSeeds;
+	interface Props {
+		timeline: any;
+		mapConfig: MapConfig;
+		waveData: any;
+		language: Language;
+		enemies: Enemy[];
+		randomSeeds: any;
+	}
 
-	let simMode = 'wave_normal',
-		branchKey = null,
-		branchIndex = -1;
+	let {
+		timeline,
+		mapConfig,
+		waveData,
+		language,
+		enemies,
+		randomSeeds = $bindable()
+	}: Props = $props();
+
+	let simMode = $state('wave_normal'),
+		branchKey = $state(null),
+		branchIndex = $state(-1);
 	let assetManager = AssetManager.getInstance(),
-		canvasElement: HTMLCanvasElement,
-		game: Game,
-		simulatedData,
-		isSimulationRunning = false,
+		canvasElement: HTMLCanvasElement = $state(),
+		game: Game = $state(),
+		simulatedData = $state(),
+		isSimulationRunning = $state(false),
 		assetsReady = false,
 		simulationGeneration = 0,
 		simulationInputVersion = 0,
@@ -36,11 +47,6 @@
 		initialSimulationWaveIndex = 0,
 		assetLoadGeneration = 0,
 		isDestroyed = false;
-
-	$: if (timeline) {
-		resetGame();
-	}
-	$: simulationInputsChanged(mapConfig, waveData, enemies, timeline, randomSeeds);
 
 	function simulationInputsChanged(...inputs: unknown[]) {
 		if (inputs.some((input) => !input)) return;
@@ -173,6 +179,14 @@
 		latestObstacleSnapshot = obstacleEventStore.getSnapshot();
 		assetManager.cleanup();
 	});
+	$effect(() => {
+		if (timeline) {
+			resetGame();
+		}
+	});
+	$effect(() => {
+		simulationInputsChanged(mapConfig, waveData, enemies, timeline, randomSeeds);
+	});
 </script>
 
 <Settings {game} {mapConfig} />
@@ -207,7 +221,7 @@
 			Failed to load the stage simulator:<br />{error?.message ?? String(error)}
 		</p>
 	{/await}
-	<canvas bind:this={canvasElement} />
+	<canvas bind:this={canvasElement}></canvas>
 </div>
 
 <style>

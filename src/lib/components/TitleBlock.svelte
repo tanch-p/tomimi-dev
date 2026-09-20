@@ -1,9 +1,21 @@
 <script lang="ts">
-	export let title = 'title',
+	interface Props {
+		title?: string;
+		size?: string;
+		className?: string;
+		titleIcon?: string;
+		description?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		title = 'title',
 		size = 'large',
 		className = '',
 		titleIcon = '',
-		description = '';
+		description = '',
+		children
+	}: Props = $props();
 </script>
 
 <div class="sm:px-6 {className}">
@@ -19,5 +31,5 @@
 		{/if}
 	</div>
 	<hr class="border-gray-500 my-1" />
-	<slot>No children given</slot>
+	{#if children}{@render children()}{:else}No children given{/if}
 </div>

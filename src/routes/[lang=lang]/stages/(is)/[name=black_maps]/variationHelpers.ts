@@ -21,8 +21,8 @@ export function createGoldVariationEffect(goldAmount: number) {
 			{
 				targets: ['ALL'],
 				mods: [
-					{ key: 'hp', value: 0.01 * goldAmount, mode: 'mul', order: 'initial' },
-					{ key: 'atk', value: 0.004 * goldAmount, mode: 'mul', order: 'initial' }
+					{ key: 'hp', value: 1 + 0.01 * goldAmount, mode: 'mul', order: 'initial' },
+					{ key: 'atk', value: 1 + 0.004 * goldAmount, mode: 'mul', order: 'initial' }
 				]
 			}
 		]

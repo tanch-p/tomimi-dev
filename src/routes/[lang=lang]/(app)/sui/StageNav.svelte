@@ -25,9 +25,13 @@
 		shopRows
 	} from './stageNavConfig';
 
-	export let language: Language;
+	interface Props {
+		language: Language;
+	}
 
-	$: translations = getTranslations(language);
+	let { language }: Props = $props();
+
+	let translations = $derived(getTranslations(language));
 </script>
 
 <div class="mx-auto w-full min-w-0 max-w-6xl overflow-x-auto">

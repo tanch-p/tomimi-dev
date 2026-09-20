@@ -4,11 +4,15 @@
 	import TogglePanel from './TogglePanel.svelte';
 	import { BONUS_ENEMY_KEYS, DUEL_STAGES } from '$lib/functions/enemyHelpers';
 
-	export let mapConfig: MapConfig,
-		enemies,
-		eliteMode: boolean,
-		language: Language,
+	interface Props {
+		mapConfig: MapConfig;
+		enemies: any;
+		eliteMode: boolean;
+		language: Language;
 		rogueTopic: RogueTopic;
+	}
+
+	let { mapConfig, enemies, eliteMode, language, rogueTopic }: Props = $props();
 
 	function getMinMaxCount(id, eliteMode) {
 		const data = mapConfig?.enemies.find((enemy) => id === enemy.id);
@@ -17,13 +21,13 @@
 				? {
 						min: data.elite_min_count,
 						max: data.elite_max_count
-				  }
+					}
 				: { min: data.min_count, max: data.max_count };
 		}
 		return { min: 0, max: 0 };
 	}
 	function getTotalCountStr(mapConfig, eliteMode: boolean) {
-		const data = eliteMode ? mapConfig?.e_count ?? mapConfig?.n_count : mapConfig?.n_count;
+		const data = eliteMode ? (mapConfig?.e_count ?? mapConfig?.n_count) : mapConfig?.n_count;
 		const lastIndex = data.length - 1;
 		let min = data[0];
 		let max = data[lastIndex];

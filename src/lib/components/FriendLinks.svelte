@@ -38,9 +38,9 @@
 				<div class="group relative">
 					<img class="selectƒ-none mx-auto" src={tts_banner} decoding="async" alt={'banner'} />
 					<div
-						class="hidden group-hover:flex absolute inset-0 m-auto items-center justify-center bg-black bg-opacity-50 text-xl"
+						class="hidden group-hover:flex absolute inset-0 m-auto items-center justify-center bg-black/50 text-xl"
 					>
-						<div class="bg-neutral-900 bg-opacity-70 px-4 py-1.5">
+						<div class="bg-neutral-900/70 px-4 py-1.5">
 							{getTranslations(language).go_to_link}→
 						</div>
 					</div>

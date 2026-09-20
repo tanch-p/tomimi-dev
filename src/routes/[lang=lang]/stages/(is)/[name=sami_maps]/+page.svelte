@@ -23,29 +23,37 @@
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 
-	export let data: PageData;
-	$: if (data.mapConfig) {
-		setOtherBuffsList(
-			otherBuffsList,
-			rogueTopic,
-			data.enemies,
-			data.traps,
-			data.mapConfig,
-			language
-		);
-		eliteMode.set(false);
-		runes.set(data.mapConfig?.n_mods);
-		allMods.set(data.mapConfig?.all_mods);
+	interface Props {
+		data: PageData;
 	}
-	$: language = data.language;
-	$: stageName = data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh;
-	const rogueTopic: RogueTopic = data.rogueTopic;
+
+	let { data }: Props = $props();
+	let rogueTopic: RogueTopic = $derived(data.rogueTopic);
+	let language = $derived(data.language);
+	$effect(() => {
+		if (data.mapConfig) {
+			setOtherBuffsList(
+				otherBuffsList,
+				rogueTopic,
+				data.enemies,
+				data.traps,
+				data.mapConfig,
+				language
+			);
+			eliteMode.set(false);
+			runes.set(data.mapConfig?.n_mods);
+			allMods.set(data.mapConfig?.all_mods);
+		}
+	});
+	let stageName = $derived(data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh);
 </script>
 
 <StageHeadMeta mapConfig={data.mapConfig} {stageName} {language} />
 
 <StageHeader {language}>
-	<FloorTitle slot="floorTitle" stageFloors={data.mapConfig?.floors} {language} />
+	{#snippet floorTitle()}
+		<FloorTitle stageFloors={data.mapConfig?.floors} {language} />
+	{/snippet}
 </StageHeader>
 
 <main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">
@@ -57,7 +65,9 @@
 			eliteMode={$eliteMode}
 			{rogueTopic}
 		>
-			<StageDrops slot="drops" mapConfig={data.mapConfig} {language} {rogueTopic} {selectedFloor} />
+			{#snippet drops()}
+				<StageDrops mapConfig={data.mapConfig} {language} {rogueTopic} {selectedFloor} />
+			{/snippet}
 		</StageInfo>
 		<DifficultySelect {language} {difficulty} {rogueTopic} />
 		<StageSharedContainer
@@ -74,7 +84,9 @@
 			{selectedRelics}
 			difficulty={$difficulty}
 		>
-			<SamiNav slot="nav" {language} />
+			{#snippet nav()}
+				<SamiNav {language} />
+			{/snippet}
 		</StageSharedContainer>
 	</div>
 </main>

@@ -2,10 +2,15 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { getDmgEleHighlight } from '$lib/functions/parseAtkType';
-	export let attack, language: Language;
-	$: atk_type = attack.atk_type;
-	$: hits = attack.hits;
-	$: separator = language === 'en' ? '/' : '・';
+	interface Props {
+		attack: any;
+		language: Language;
+	}
+
+	let { attack, language }: Props = $props();
+	let atk_type = $derived(attack.atk_type);
+	let hits = $derived(attack.hits);
+	let separator = $derived(language === 'en' ? '/' : '・');
 </script>
 
 <!-- {@debug normalAttack} -->

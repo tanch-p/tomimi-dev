@@ -11,10 +11,14 @@
 	import eleResIcon from '$lib/images/is/ele_res.webp';
 	import Tooltip from './Tooltip.svelte';
 
-	export let enemy: Enemy,
-		language: Language,
-		formIndex: number,
-		mode = 'mobile';
+	interface Props {
+		enemy: Enemy;
+		language: Language;
+		formIndex: number;
+		mode?: string;
+	}
+
+	let { enemy, language, formIndex, mode = 'mobile' }: Props = $props();
 
 	const statKeyIcons = {
 		hp: hpIcon,
@@ -27,10 +31,11 @@
 		epResistance: eleResIcon
 	};
 
-	const statKeys =
+	let statKeys = $derived(
 		mode === 'mobile'
 			? ['hp', 'ms', 'atk', 'aspd', 'def', 'epResistance', 'res', 'epDamageResistance']
-			: ['hp', 'atk', 'aspd', 'epResistance', 'ms', 'def', 'res', 'epDamageResistance'];
+			: ['hp', 'atk', 'aspd', 'epResistance', 'ms', 'def', 'res', 'epDamageResistance']
+	);
 </script>
 
 <div>
@@ -39,9 +44,7 @@
 	>
 		{#each statKeys as statKey}
 			<div
-				class={`flex flex-col bg-[#161616] bg-opacity-80 px-1 ${
-					language === 'en' ? '' : 'whitespace-nowrap'
-				}`}
+				class={`flex flex-col bg-[#161616]/80 px-1 ${language === 'en' ? '' : 'whitespace-nowrap'}`}
 			>
 				<div class="grid grid-cols-[14px_1fr] items-center gap-x-1">
 					<img src={statKeyIcons[statKey]} width="14px" height="14px" alt="" class="" />

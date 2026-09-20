@@ -3,8 +3,12 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 
-	export let language: Language;
-	let dialog: HTMLDialogElement;
+	interface Props {
+		language: Language;
+	}
+
+	let { language }: Props = $props();
+	let dialog: HTMLDialogElement = $state();
 
 	onMount(() => {
 		dialog.showModal();
@@ -16,9 +20,9 @@
 
 <dialog
 	bind:this={dialog}
-	class="fixed inset-0 z-[100] m-0 h-screen max-h-none w-screen max-w-none border-0 bg-black bg-opacity-80 p-0 text-near-white"
+	class="fixed inset-0 z-[100] m-0 h-screen max-h-none w-screen max-w-none border-0 bg-black/80 p-0 text-near-white"
 	aria-label={getTranslations(language).synchronising}
-	on:cancel={(event) => event.preventDefault()}
+	oncancel={(event) => event.preventDefault()}
 >
 	<div
 		class="flex h-full w-full flex-col items-center justify-center gap-4"

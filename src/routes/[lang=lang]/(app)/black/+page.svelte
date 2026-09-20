@@ -9,8 +9,12 @@
 	import BugList from '$lib/components/BugList.svelte';
 	import Resources from '$lib/components/Resources.svelte';
 
-	export let data: PageData;
-	$: language = data.language;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let language = $derived(data.language);
 	const docLink = 'https://docs.qq.com/sheet/DTGxyYk5QWFBEcmJx?opennew=1&tab=esedb6';
 </script>
 

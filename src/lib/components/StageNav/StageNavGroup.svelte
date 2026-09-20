@@ -1,13 +1,17 @@
 <script lang="ts">
-	import type { SvelteComponent } from 'svelte';
+	import type { Component } from 'svelte';
 	import type { Language } from '$lib/types';
 	import StageNavRow from './StageNavRow.svelte';
 	import type { StageCollection, StageGroup } from './stageNavTypes';
 
-	export let group: StageGroup;
-	export let language: Language;
-	export let button: typeof SvelteComponent;
-	export let stages: StageCollection | undefined = undefined;
+	interface Props {
+		group: StageGroup;
+		language: Language;
+		button: Component<any>;
+		stages?: StageCollection | undefined;
+	}
+
+	let { group, language, button, stages = undefined }: Props = $props();
 </script>
 
 {#each group.rows as items, index}

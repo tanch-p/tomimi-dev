@@ -10,8 +10,12 @@
 	import { difficulty, activeFloorEffects, gold } from './stores';
 	import { createGoldVariationEffect, goldVariation } from './variationHelpers';
 
-	export let language: Language;
-	export let idPrefix = '';
+	interface Props {
+		language: Language;
+		idPrefix?: string;
+	}
+
+	let { language, idPrefix = '' }: Props = $props();
 
 	const imageLookup: Record<string, string> = {
 		rogue_6_weather_1: weather1,
@@ -22,9 +26,9 @@
 		src: imageLookup[option.iconId]
 	}));
 
-	$: level = $difficulty <= 5 ? 1 : $difficulty <= 11 ? 2 : 3;
-	$: options = weatherOptions.filter((option) => option.level === level);
-	$: goldVariationEffect = createGoldVariationEffect($gold);
+	let level = $derived($difficulty <= 5 ? 1 : $difficulty <= 11 ? 2 : 3);
+	let options = $derived(weatherOptions.filter((option) => option.level === level));
+	let goldVariationEffect = $derived(createGoldVariationEffect($gold));
 
 	function updateGold(event: Event) {
 		const value = (event.currentTarget as HTMLInputElement).valueAsNumber;
@@ -61,7 +65,7 @@
 						max="100"
 						step="1"
 						value={$gold}
-						on:input={updateGold}
+						oninput={updateGold}
 						class="w-20 rounded bg-neutral-700 px-2 py-1 text-center"
 					/>
 				</label>
