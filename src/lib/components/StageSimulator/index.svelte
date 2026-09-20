@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Enemy, Language, MapConfig } from '$lib/types';
-	import { onDestroy, onMount, tick } from 'svelte';
+	import { onDestroy, onMount, tick, untrack } from 'svelte';
 	import { Game } from './objects/Game';
 	import { AssetManager } from './objects/AssetManager';
 	import LoadingScreen from './LoadingScreen.svelte';
@@ -32,12 +32,13 @@
 	}: Props = $props();
 
 	let simMode = $state('wave_normal'),
-		branchKey = $state(null),
+		branchKey = $state(''),
 		branchIndex = $state(-1);
 	let assetManager = AssetManager.getInstance(),
-		canvasElement: HTMLCanvasElement = $state(),
-		game: Game = $state(),
+		canvasElement: HTMLCanvasElement | undefined = $state(),
+		game: Game | undefined = $state(),
 		simulatedData = $state(),
+		assetLoadPromise: Promise<void> | null = $state.raw(null),
 		isSimulationRunning = $state(false),
 		assetsReady = false,
 		simulationGeneration = 0,
@@ -120,11 +121,12 @@
 		requestSimulation(snapshot);
 	}
 
-	async function loadGame(mapConfig) {
+	async function loadGame(mapConfig: MapConfig) {
 		const generation = ++assetLoadGeneration;
 		assetsReady = false;
 		simulatedData = undefined;
 		simulationGeneration++;
+		if (!canvasElement) throw new Error('The simulator canvas is unavailable.');
 		if (game) {
 			game.stop();
 		}
@@ -147,11 +149,11 @@
 		requestSimulation(latestObstacleSnapshot, true);
 	}
 
-	const unsubscribeFns = [];
+	const unsubscribeFns: Array<() => void> = [];
 	onMount(() => {
 		unsubscribeFns.push(obstacleEventStore.subscribe(handleObstacleEvents));
 		unsubscribeFns.push(
-			GameConfig.subscribe('mode', (mode) => {
+			GameConfig.subscribe('mode', (mode: string) => {
 				simMode = mode;
 				game && assetsReady && !isDestroyed && game.softReset(false);
 			})
@@ -180,6 +182,10 @@
 		assetManager.cleanup();
 	});
 	$effect(() => {
+		const currentMapConfig = mapConfig;
+		assetLoadPromise = untrack(() => loadGame(currentMapConfig));
+	});
+	$effect(() => {
 		if (timeline) {
 			resetGame();
 		}
@@ -191,36 +197,42 @@
 
 <Settings {game} {mapConfig} />
 <div class="relative mt-4 md:mt-1.5 max-w-full overflow-hidden">
-	{#await loadGame(mapConfig)}
+	{#if assetLoadPromise}
+		{#await assetLoadPromise}
+			<LoadingScreen />
+		{:then}
+			{#if game}
+				{#if simMode === 'wave_summons' && mapConfig?.branches}
+					<BranchSummons bind:branchKey bind:branchIndex {language} {game} {mapConfig} />
+				{/if}
+				<SpawnTimeView
+					{branchKey}
+					{branchIndex}
+					waves={simMode === 'wave_summons'
+						? generateBranchTimeline(mapConfig, branchKey, branchIndex)
+						: timeline.waves}
+					{mapConfig}
+				/>
+				<Interface
+					{simulatedData}
+					{isSimulationRunning}
+					bind:randomSeeds
+					{game}
+					{mapConfig}
+					initialCost={mapConfig?.initialCost}
+					{language}
+					count={timeline?.count}
+					maxCost={mapConfig?.maxCost}
+				/>
+			{/if}
+		{:catch error}
+			<p class="py-8 text-center text-red-300">
+				Failed to load the stage simulator:<br />{error?.message ?? String(error)}
+			</p>
+		{/await}
+	{:else}
 		<LoadingScreen />
-	{:then}
-		{#if simMode === 'wave_summons' && mapConfig?.branches}
-			<BranchSummons bind:branchKey bind:branchIndex {language} {game} {mapConfig} />
-		{/if}
-		<SpawnTimeView
-			{branchKey}
-			{branchIndex}
-			waves={simMode === 'wave_summons'
-				? generateBranchTimeline(mapConfig, branchKey, branchIndex)
-				: timeline.waves}
-			{mapConfig}
-		/>
-		<Interface
-			{simulatedData}
-			{isSimulationRunning}
-			bind:randomSeeds
-			{game}
-			{mapConfig}
-			initialCost={mapConfig?.initialCost}
-			{language}
-			count={timeline?.count}
-			maxCost={mapConfig?.maxCost}
-		/>
-	{:catch error}
-		<p class="py-8 text-center text-red-300">
-			Failed to load the stage simulator:<br />{error?.message ?? String(error)}
-		</p>
-	{/await}
+	{/if}
 	<canvas bind:this={canvasElement}></canvas>
 </div>
 

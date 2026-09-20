@@ -78,14 +78,11 @@
 		}
 	];
 	let relicDisplayMode = $state('grid');
-	let selectedRelics = $state([]);
+	let selectedRelics = $derived($relicFiltersStore.filter((relic) => relic.selected));
 
 	let isSelected = $derived((key, value) => {
 		return $filtersStore.find((ele) => ele.key === key).options.find((ele) => ele.value === value)
 			?.selected;
-	});
-	relicFiltersStore.subscribe((list) => {
-		selectedRelics = list.filter((relic) => relic.selected);
 	});
 	let isRelicSelected = $derived((id) => {
 		return $relicFiltersStore.find((relic) => relic.id === id)?.selected;

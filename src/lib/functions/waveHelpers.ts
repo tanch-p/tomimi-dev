@@ -558,11 +558,9 @@ export const generateWaveTimeline = (
 			}
 		});
 		const myKeys = Object.keys(spawns).map(Number);
-		if (
-			!(
-				['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId) && myKeys.length === 0
-			)
-		) {
+		if (!(
+			['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId) && myKeys.length === 0
+		)) {
 			myKeys.sort((a, b) => a - b);
 			const spawnList = myKeys.map((key) => ({ t: key, actions: spawns[key] }));
 			waveTimelines.push({
@@ -816,7 +814,7 @@ export const compileHiddenGroups = (
 			}
 		}
 	}
-	let groups = structuredClone(hiddenGroups);
+	let groups = [...hiddenGroups];
 	const finalGroups = enabledGroups.filter((group) => !disabledGroups.includes(group));
 	if (rogueTopic !== 'rogue_black') {
 		const modeKey = eliteMode ? mapConfig?.['ELITE'].groupKey : mapConfig?.['NORMAL'].groupKey;
@@ -830,7 +828,7 @@ export const compileHiddenGroups = (
 
 export const initialisePermGroupsChoices = (mapConfig, eliteMode: boolean, hidden_groups) => {
 	const modeKey = eliteMode ? mapConfig?.['ELITE'].groupKey : mapConfig?.['NORMAL'].groupKey;
-	const hiddenGroups = structuredClone(hidden_groups);
+	const hiddenGroups = [...hidden_groups];
 	if (modeKey) {
 		hiddenGroups.push(modeKey);
 	}

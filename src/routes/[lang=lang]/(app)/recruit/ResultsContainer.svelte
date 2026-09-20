@@ -44,7 +44,6 @@
 	}
 
 	onMount(() => {
-		loadMoreItems();
 		window.addEventListener('scroll', handleScroll);
 
 		return () => {
@@ -52,11 +51,8 @@
 		};
 	});
 	$effect(() => {
-		if (characters?.length) {
-			visibleItems = [];
-			currentIndex = 0;
-			loadMoreItems();
-		}
+		visibleItems = characters.slice(0, itemsPerLoad);
+		currentIndex = Math.min(itemsPerLoad, characters.length);
 	});
 </script>
 

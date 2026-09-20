@@ -16,7 +16,14 @@
 
 	let defaultLine = $derived(getTranslations(language).chara_filter_start);
 
-	let line = $derived(defaultLine);
+	let line = $derived(
+		getDesc(
+			$filterDescStore.activeOptions,
+			$filterDescStore.relicActiveOptions,
+			$filterDescStore.filterMode,
+			$filterDescStore.rogueTopic
+		)
+	);
 
 	const generateDescFunc = (
 		activeOptions,
@@ -59,10 +66,6 @@
 				return text.includes('<subProfessionId>');
 		}
 	};
-	filterDescStore.subscribe(({ activeOptions, relicActiveOptions, filterMode, rogueTopic }) => {
-		line = getDesc(activeOptions, relicActiveOptions, filterMode, rogueTopic);
-	});
-
 	function getDesc(activeOptions, relicActiveOptions, filterMode, rogueTopic) {
 		if (activeOptions.length === 0 && relicActiveOptions.length === 0) {
 			return defaultLine;

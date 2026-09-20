@@ -18,12 +18,13 @@ afterEach(() => {
 });
 
 test('a stopped game ignores late render callbacks', () => {
+	const update = vi.fn();
 	const getDelta = vi.fn();
 	const render = vi.fn();
 	const game = Object.create(Game.prototype) as any;
 	Object.assign(game, {
 		cleanedUp: false,
-		clock: { getDelta },
+		timer: { update, getDelta },
 		isDocumentHidden: () => false,
 		renderer: { render },
 		renderLoopRequested: false
@@ -31,6 +32,7 @@ test('a stopped game ignores late render callbacks', () => {
 
 	game.render();
 
+	expect(update).not.toHaveBeenCalled();
 	expect(getDelta).not.toHaveBeenCalled();
 	expect(render).not.toHaveBeenCalled();
 });
@@ -186,11 +188,11 @@ test('token cooldown decreases with scaled game time and stops at zero', () => {
 
 test('game render loop suspends while hidden and resumes without a hidden-tab delta', () => {
 	const setAnimationLoop = vi.fn();
-	const getDelta = vi.fn();
+	const reset = vi.fn();
 	const game = Object.create(Game.prototype) as any;
 	Object.assign(game, {
 		renderer: { setAnimationLoop },
-		clock: { getDelta },
+		timer: { reset },
 		renderLoopRequested: true,
 		isDocumentHidden: () => true
 	});
@@ -200,7 +202,7 @@ test('game render loop suspends while hidden and resumes without a hidden-tab de
 
 	game.isDocumentHidden = () => false;
 	game.onVisibilityChange();
-	expect(getDelta).toHaveBeenCalledOnce();
+	expect(reset).toHaveBeenCalledOnce();
 	expect(setAnimationLoop).toHaveBeenLastCalledWith(expect.any(Function));
 });
 
@@ -209,7 +211,7 @@ test('a stopped game stays stopped when its tab becomes visible', () => {
 	const game = Object.create(Game.prototype) as any;
 	Object.assign(game, {
 		renderer: { setAnimationLoop },
-		clock: { getDelta: vi.fn() },
+		timer: { reset: vi.fn() },
 		renderLoopRequested: false,
 		isDocumentHidden: () => false
 	});

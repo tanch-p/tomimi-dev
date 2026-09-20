@@ -5,22 +5,23 @@ test.use({
 });
 
 test('chara selector is not crashing', async ({ page }) => {
+	const pageErrors: Error[] = [];
+	page.on('pageerror', (error) => pageErrors.push(error));
+
 	await page.goto('http://localhost:4173/en/recruit');
 
 	// Expect a title "to contain" a substring.
 	await expect(page).toHaveTitle(/Operator Recruit Helper/);
-	await page.waitForTimeout(500);
-	const enemyDebuffBtn = await page.$('#enemy_debuff');
-	await enemyDebuffBtn?.click({ clickCount: 1 });
-	await page.waitForTimeout(500);
+	await expect(page.locator('button.select-none')).toHaveCount(50);
 
-	const msDownBtn = await page.$('#ms_down');
-	await msDownBtn?.click({ clickCount: 1 });
-	await page.waitForTimeout(500);
+	await page.locator('#enemy_debuff').click();
+	await expect(page.locator('#ms_down')).toBeVisible();
+	await page.locator('#ms_down').click();
+	await expect(page.locator('#sec-sluggish')).toBeVisible();
+	await page.locator('#sec-sluggish').click();
 
-	const secSluggishBtn = await page.$('#sec-sluggish');
-	await secSluggishBtn?.click({ clickCount: 1 });
-	await page.waitForTimeout(500);
-
-	await expect(page.locator('#sec-sluggish')).toHaveClass("filter-btn active")
+	await expect(page.locator('#sec-sluggish')).toHaveClass(/active/);
+	await page.locator('#clear-filters-button').click();
+	await expect(page.locator('#sec-sluggish')).toHaveCount(0);
+	expect(pageErrors).toEqual([]);
 });

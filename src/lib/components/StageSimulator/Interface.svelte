@@ -49,7 +49,8 @@
 		tokenCooldownRemaining = $state(GameConfig.tokenCooldownRemaining),
 		unsubscribeFns = [],
 		isPaused = $state(false),
-		simMode = $state('wave_normal');
+		simMode = $state('wave_normal'),
+		speedFactor = $state(GameConfig.speedFactor);
 
 	let cooldownProgress = $derived(
 		tokenCooldownDuration > 0
@@ -61,13 +62,13 @@
 	});
 
 	function handleSpeedFactor() {
-		switch (GameConfig.speedFactor) {
+		switch (speedFactor) {
 			case 1:
-				return (GameConfig.speedFactor = 2);
+				return GameConfig.setValue('speedFactor', 2);
 			case 2:
-				return (GameConfig.speedFactor = 4);
+				return GameConfig.setValue('speedFactor', 4);
 			case 4:
-				return (GameConfig.speedFactor = 1);
+				return GameConfig.setValue('speedFactor', 1);
 		}
 	}
 	function handlePause() {
@@ -101,6 +102,11 @@
 	}
 	// Sync class -> store
 	onMount(() => {
+		unsubscribeFns.push(
+			GameConfig.subscribe('speedFactor', (value: number) => {
+				speedFactor = value;
+			})
+		);
 		unsubscribeFns.push(
 			GameConfig.subscribe('scaledElapsedTime', (value) => {
 				totalTime = value;
@@ -166,9 +172,9 @@
 		onclick={handleSpeedFactor}
 	>
 		<div class="">
-			<div class="flex justify-center text-2xl leading-[26px]">{GameConfig.speedFactor}X</div>
+			<div class="flex justify-center text-2xl leading-[26px]">{speedFactor}X</div>
 			<div class="flex justify-center pl-1">
-				{#each Array.from(Array(Math.min(3, GameConfig.speedFactor))) as _, i}
+				{#each Array.from(Array(Math.min(3, speedFactor))) as _, i}
 					<div
 						class="border-l-[11px] border-l-white border-y-[6px] border-y-transparent {i > 0
 							? '-ml-0.5'

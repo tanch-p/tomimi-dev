@@ -33,7 +33,7 @@
 	<button
 		class="absolute bottom-[150px] right-[20px] md:right-[40px] pointer-events-auto"
 		onclick={() => reset()}
-		id="scroll-top-button"
+		id="clear-filters-button"
 		title={getTranslations(language).filter_reset_button}
 	>
 		<div

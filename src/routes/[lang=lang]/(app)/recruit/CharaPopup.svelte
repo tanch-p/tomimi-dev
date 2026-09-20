@@ -20,6 +20,7 @@
 	import RangeParser from '$lib/components/RangeParser.svelte';
 	import CharaTokens from './CharaTokens.svelte';
 	import DraggableContainer from '$lib/components/DraggableContainer.svelte';
+	import { onDestroy } from 'svelte';
 
 	interface Props {
 		language: Language;
@@ -31,13 +32,17 @@
 	let hasModule = $derived(['TIER_4', 'TIER_5', 'TIER_6'].includes($selectedChara?.rarity));
 	let moduleStage = $state(2);
 
-	selectedChara.subscribe((val) => {
+	const unsubscribeSelectedChara = selectedChara.subscribe((val) => {
 		if (!val) {
 			moduleIndex.set(0);
 		}
 	});
-	moduleIndex.subscribe((val) => {
+	const unsubscribeModuleIndex = moduleIndex.subscribe((val) => {
 		if (val) moduleStage = 2;
+	});
+	onDestroy(() => {
+		unsubscribeSelectedChara();
+		unsubscribeModuleIndex();
 	});
 
 	// $: console.log($selectedChara);

@@ -22,7 +22,20 @@
 	let language: Language = $derived(data.language);
 
 	let loading = true;
-	let characters = $state([]);
+	// Filtering annotates each character with the matching skills, talents, tokens and module.
+	// Keep the collection assignment reactive without deep-proxying those mutable records.
+	let characters = $state.raw([]);
+	let filteredCharacters = $derived.by(() => {
+		const characterViews = characters.map((character) => ({
+			...character,
+			activeModuleIndex: 0,
+			activeTalents: [],
+			activeSkills: [],
+			activeTokens: []
+		}));
+
+		return characterViews.filter($globalCheck).filter($filters).sort($sortFunction);
+	});
 
 	const loadData = async (language: Language) => {
 		characters = await getCharaList(language);
@@ -47,10 +60,7 @@
 		{#await loadData(language)}
 			<p class="text-center">{getTranslations(language).data_loading}</p>
 		{:then}
-			<DisplayContainer
-				characters={characters.filter($globalCheck).filter($filters).sort($sortFunction)}
-				{language}
-			/>
+			<DisplayContainer characters={filteredCharacters} {language} />
 		{:catch error}
 			<p class="text-center">An Error occured while loading <br />{error.message}</p>
 		{/await}

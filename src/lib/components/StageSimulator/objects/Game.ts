@@ -20,7 +20,7 @@ export class Game {
 	pointer: THREE.Vector2;
 	objects;
 	raycaster: THREE.Raycaster;
-	clock: THREE.Clock;
+	timer: THREE.Timer;
 	renderer: THREE.WebGLRenderer;
 	map: GameMap;
 	spawnManager: SpawnManager;
@@ -89,7 +89,7 @@ export class Game {
 
 		this.initLights();
 		this.initCamera();
-		this.clock = new THREE.Clock();
+		this.timer = new THREE.Timer();
 		this.renderer = new THREE.WebGLRenderer({
 			canvas: this.canvas,
 			antialias: true
@@ -123,8 +123,8 @@ export class Game {
 	private startRenderLoop() {
 		this.renderLoopRequested = true;
 		if (this.isDocumentHidden()) return;
-		this.clock.getDelta();
-		this.renderer?.setAnimationLoop(() => this.render());
+		this.timer.reset();
+		this.renderer?.setAnimationLoop((timestamp) => this.render(timestamp));
 	}
 	private onVisibilityChange() {
 		if (this.isDocumentHidden()) {
@@ -132,8 +132,8 @@ export class Game {
 			return;
 		}
 		if (!this.renderLoopRequested) return;
-		this.clock.getDelta();
-		this.renderer?.setAnimationLoop(() => this.render());
+		this.timer.reset();
+		this.renderer?.setAnimationLoop((timestamp) => this.render(timestamp));
 	}
 	initLights() {
 		if (!this.scene) return;
@@ -629,9 +629,10 @@ export class Game {
 	onPointerUp() {
 		this.isDragging = false;
 	}
-	render() {
+	render(timestamp?: number) {
 		if (!this.renderLoopRequested || this.cleanedUp || this.isDocumentHidden()) return;
-		const frameDelta = this.clock.getDelta();
+		this.timer.update(timestamp);
+		const frameDelta = this.timer.getDelta();
 		const deltaTime = frameDelta * GameConfig.speedFactor;
 		if (
 			this.config.levelId.includes('_d-') &&
@@ -691,6 +692,7 @@ export class Game {
 			this.renderer.dispose();
 			this.renderer.forceContextLoss();
 		}
+		this.timer.dispose();
 		GameConfig.setValue('scaledElapsedTime', 0);
 		GameConfig.setValue('waveElapsedTime', 0);
 		GameConfig.setValue('tokensDisabled', false);
