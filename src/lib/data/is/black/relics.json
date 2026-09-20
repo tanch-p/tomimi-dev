@@ -167,6 +167,7 @@
 		"effects": [
 			{
 				"targets": ["ALL"],
+				"conditions": ["BATTLE_SAVAGE"],
 				"mods": [
 					{
 						"key": "hp",

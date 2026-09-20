@@ -330,7 +330,9 @@ export class GameManager {
 		const cached = this.roadblockReachabilityCache.get(cacheKey);
 		if (cached !== undefined) return cached;
 
-		const hypotheticalLayout = this.mazeLayout.map((row) => [...row]);
+		const hypotheticalLayout = this.mazeLayout.map((row) =>
+			row.map((value) => (value >= 1000 ? Number.POSITIVE_INFINITY : value))
+		);
 		if (!hypotheticalLayout[pos.row] || hypotheticalLayout[pos.row][pos.col] === undefined) {
 			return false;
 		}
@@ -346,11 +348,6 @@ export class GameManager {
 	private isRouteReachable(route: MovementRoute, pathFinder: SPFA) {
 		if ((route.motionMode ?? 'WALK') !== 'WALK') return true;
 		if (!route.startPosition || !route.endPosition) return true;
-		const pathFinderWithoutHoles = new SPFA(
-			pathFinder.grid.grid.map((row) =>
-				row.map((value) => (value === 1000 ? Number.POSITIVE_INFINITY : value))
-			)
-		);
 
 		let currentPosition = this.gameToWorldPos(route.startPosition);
 		const actions = [...(route.checkpoints ?? []), { type: 'MOVE', position: route.endPosition }];
@@ -364,13 +361,7 @@ export class GameManager {
 			}
 			if (action.type !== 'MOVE') continue;
 
-			if (
-				!pathFinderWithoutHoles.hasPath(
-					currentPosition,
-					position,
-					route.allowDiagonalMove !== false
-				)
-			) {
+			if (!pathFinder.hasPath(currentPosition, position, route.allowDiagonalMove !== false)) {
 				return false;
 			}
 			currentPosition = position;
@@ -441,6 +432,7 @@ export class GameManager {
 		plane.userData.name = 'plane';
 		this.addToScene(plane);
 		this.game.objects.push(plane);
+		this.game.placementPlane = plane;
 	}
 	initRollOverMeshes() {
 		this.rollOverMeshes.clear();

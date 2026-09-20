@@ -502,6 +502,7 @@ export const filterModCondition = (effect, stageType) => {
 		switch (condition) {
 			case 'BATTLE_BOSS':
 			case 'BATTLE_SKY':
+			case 'BATTLE_SAVAGE':
 				return stageType === condition;
 		}
 	});

@@ -278,6 +278,53 @@ test('an invalid obstacle preview remains visible and semi-transparent', () => {
 	expect(previewMaterial.depthWrite).toBe(true);
 });
 
+test('obstacle preview revalidates when placement validity changes on the same tile', () => {
+	const preview = new THREE.Group();
+	const intersection = { point: new THREE.Vector3() };
+	const game = Object.create(Game.prototype) as any;
+	Object.assign(game, {
+		pendingTokenPointer: { clientX: 50, clientY: 50, overCanvas: true },
+		lastHoveredGridKey: null,
+		placementPlane: new THREE.Object3D(),
+		pointer: new THREE.Vector2(),
+		camera: {},
+		renderer: {
+			domElement: {
+				getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 })
+			}
+		},
+		raycaster: {
+			setFromCamera: vi.fn(),
+			intersectObject: () => [intersection]
+		},
+		gameManager: {
+			getGridPosFromVectors: () => '3,2'
+		}
+	});
+	const getObstaclePlacement = vi
+		.spyOn(game, 'getObstaclePlacement')
+		.mockReturnValueOnce({ mesh: preview, canPlace: true })
+		.mockReturnValueOnce({ mesh: preview, canPlace: false })
+		.mockReturnValueOnce({ mesh: preview, canPlace: false });
+	const setValidity = vi.spyOn(game, 'setRollOverPlacementValidity');
+	GameConfig.setValue('tokenCard', {
+		key: 'trap_001_crate',
+		count: 2,
+		selected: true
+	});
+
+	game.processTokenPointerMove();
+	game.pendingTokenPointer = { clientX: 51, clientY: 51, overCanvas: true };
+	game.processTokenPointerMove();
+	game.pendingTokenPointer = { clientX: 52, clientY: 52, overCanvas: true };
+	game.processTokenPointerMove();
+
+	expect(getObstaclePlacement).toHaveBeenCalledTimes(3);
+	expect(setValidity).toHaveBeenCalledTimes(2);
+	expect(setValidity).toHaveBeenNthCalledWith(1, preview, true);
+	expect(setValidity).toHaveBeenNthCalledWith(2, preview, false);
+});
+
 test('selecting a roadblock shows an unskewed selection frame and escape button', () => {
 	vi.spyOn(THREE.TextureLoader.prototype, 'load').mockImplementation(() => new THREE.Texture());
 	const scene = new THREE.Scene();

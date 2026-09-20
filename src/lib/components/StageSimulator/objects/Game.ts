@@ -37,6 +37,10 @@ export class Game {
 	obstacleReplayIndex = 0;
 	renderLoopRequested = false;
 	private cleanedUp = false;
+	placementPlane: THREE.Object3D | null = null;
+	private pendingTokenPointer: { clientX: number; clientY: number; overCanvas: boolean } | null =
+		null;
+	private lastHoveredGridKey: string | null = null;
 
 	constructor(canvasElement: HTMLCanvasElement, config: MapConfig, waveData, enemies: EnemyType[]) {
 		this.canvas = canvasElement;
@@ -199,6 +203,9 @@ export class Game {
 		}
 		this.gameManager.clearSceneObjects();
 		this.objects = [];
+		this.placementPlane = null;
+		this.pendingTokenPointer = null;
+		this.lastHoveredGridKey = null;
 		clearObjects(this.scene);
 		this.gameManager.reset(this.config, this.enemies);
 		this.map = new GameMap(this.gameManager);
@@ -280,6 +287,7 @@ export class Game {
 		this.render();
 	}
 	hideRollOverMesh() {
+		this.lastHoveredGridKey = null;
 		const key = GameConfig.tokenCard?.key;
 		const mesh = key ? this.gameManager.rollOverMeshes.get(key)?.getMesh() : null;
 		if (mesh) mesh.visible = false;
@@ -287,6 +295,8 @@ export class Game {
 
 	setRollOverPlacementValidity(mesh: THREE.Object3D, canPlace: boolean) {
 		mesh.visible = true;
+		if (mesh.userData.rollOverCanPlace === canPlace) return;
+		mesh.userData.rollOverCanPlace = canPlace;
 		mesh.traverse((object) => {
 			const renderable = object as THREE.Mesh;
 			if (!renderable.material) return;
@@ -312,12 +322,11 @@ export class Game {
 					: material.userData.rollOverOriginalOpacity * 0.45;
 				material.transparent = canPlace ? material.userData.rollOverOriginalTransparent : true;
 				material.depthWrite = canPlace ? material.userData.rollOverOriginalDepthWrite : false;
-				material.needsUpdate = true;
 			}
 		});
 	}
 
-	getObstaclePlacement(plane: THREE.Intersection) {
+	getObstaclePlacement(plane: THREE.Intersection, gridKey?: string) {
 		const card = GameConfig.tokenCard;
 		if (
 			GameConfig.tokensDisabled ||
@@ -332,8 +341,8 @@ export class Game {
 		const mesh = trap?.getMesh();
 		if (!trap || !mesh) return null;
 
-		const gridKey = this.gameManager.getGridPosFromVectors(plane.point);
-		const [col, row] = gridKey.split(',').map(Number);
+		const placementGridKey = gridKey ?? this.gameManager.getGridPosFromVectors(plane.point);
+		const [col, row] = placementGridKey.split(',').map(Number);
 		const position: Position = { row, col };
 		const { x, y } = this.gameManager.getVectorCoordinates(position, null);
 		mesh.position.set(x, y, 0.01);
@@ -344,6 +353,48 @@ export class Game {
 			position,
 			trap
 		};
+	}
+
+	private processTokenPointerMove() {
+		const pointer = this.pendingTokenPointer;
+		this.pendingTokenPointer = null;
+		if (!pointer) return;
+
+		if (!pointer.overCanvas || GameConfig.tokensDisabled || !GameConfig.tokenCard?.selected) {
+			this.hideRollOverMesh();
+			return;
+		}
+
+		const rect = this.renderer.domElement.getBoundingClientRect();
+		this.pointer.set(
+			((pointer.clientX - rect.left) / rect.width) * 2 - 1,
+			-((pointer.clientY - rect.top) / rect.height) * 2 + 1
+		);
+		this.raycaster.setFromCamera(this.pointer, this.camera);
+
+		const plane = this.placementPlane;
+		if (!plane) {
+			this.hideRollOverMesh();
+			return;
+		}
+		const intersection = this.raycaster.intersectObject(plane, false)[0];
+		if (!intersection) {
+			this.hideRollOverMesh();
+			return;
+		}
+
+		const gridKey = this.gameManager.getGridPosFromVectors(intersection.point);
+		const placement = this.getObstaclePlacement(intersection, gridKey);
+		if (!placement) {
+			this.hideRollOverMesh();
+			return;
+		}
+		const placementUnchanged =
+			gridKey === this.lastHoveredGridKey &&
+			placement.mesh.userData.rollOverCanPlace === placement.canPlace;
+		this.lastHoveredGridKey = gridKey;
+		if (placementUnchanged) return;
+		this.setRollOverPlacementValidity(placement.mesh, placement.canPlace);
 	}
 
 	onPointerMove(event) {
@@ -374,35 +425,11 @@ export class Game {
 			return;
 		}
 
-		if (!event.target.isSameNode(this.canvas)) {
-			this.hideRollOverMesh();
-			return;
-		}
-		if (GameConfig.tokensDisabled || !GameConfig.tokenCard || !GameConfig.tokenCard.selected) {
-			this.hideRollOverMesh();
-			return;
-		}
-		const rect = this.renderer.domElement.getBoundingClientRect(); // Get canvas size and position
-		this.pointer.set(
-			((event.clientX - rect.left) / rect.width) * 2 - 1,
-			-((event.clientY - rect.top) / rect.height) * 2 + 1
-		);
-		this.raycaster.setFromCamera(this.pointer, this.camera);
-
-		const intersects = this.raycaster.intersectObjects(this.objects, false);
-		const plane = intersects.find((ele) => ele?.object?.userData?.name === 'plane');
-		if (!plane) {
-			this.hideRollOverMesh();
-			return;
-		}
-
-		const placement = this.getObstaclePlacement(plane);
-		if (!placement) {
-			this.hideRollOverMesh();
-			return;
-		}
-		this.setRollOverPlacementValidity(placement.mesh, placement.canPlace);
-		this.render();
+		this.pendingTokenPointer = {
+			clientX: event.clientX,
+			clientY: event.clientY,
+			overCanvas: event.target === this.canvas
+		};
 	}
 	onPointerDown(event) {
 		if (!this.renderLoopRequested || this.cleanedUp) return;
@@ -626,6 +653,7 @@ export class Game {
 		}
 		this.replayObstacleEventsThrough(GameConfig.scaledElapsedTime);
 		this.gameManager.enemiesOnMap.forEach((enemy) => enemy.updatePathVisualisation(frameDelta));
+		this.processTokenPointerMove();
 
 		if (this.spawnManager.isFinished && this.gameManager.noEnemyAlive) {
 			GameConfig.state = 'end';
@@ -651,6 +679,9 @@ export class Game {
 		this.gameManager?.clearSceneObjects();
 		this.gameManager?.countdownManager.releaseAssets();
 		this.objects = [];
+		this.placementPlane = null;
+		this.pendingTokenPointer = null;
+		this.lastHoveredGridKey = null;
 		this.obstacleEvents = [];
 		if (this.scene) {
 			clearObjects(this.scene);

@@ -45,12 +45,21 @@ export const getStageImg = (id: string, eliteMode: boolean) => {
 	return id;
 };
 
-export function getStageType(levelId: string, rogueTopic: RogueTopic) {
+export function getStageType(levelId: string, tags: string[], rogueTopic: RogueTopic) {
 	if (levelId.includes('_b-')) {
 		return 'BATTLE_BOSS';
 	}
-	if (levelId.includes('_sv-')) {
-		return 'BATTLE_SKY';
+	switch (rogueTopic) {
+		case 'rogue_yan':
+			if (levelId.includes('_sv-')) {
+				return 'BATTLE_SKY';
+			}
+			break;
+		case 'rogue_black':
+			if (tags.includes('savage')) {
+				return 'BATTLE_SAVAGE';
+			}
+			break;
 	}
 	return '';
 }
