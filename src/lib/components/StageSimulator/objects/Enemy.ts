@@ -1337,16 +1337,34 @@ export class Enemy {
 		this.clearAnimatedPathVisualisation();
 		this.clearAnimatedPathCountdowns();
 		this.clearAnimatedPathFlags();
+		for (const skill of this.skillManager?.activeSkills ?? []) {
+			this.meshGroup.remove(skill.skillBar);
+			skill.dispose();
+		}
+		if (this.skillManager) {
+			this.skillManager.activeSkills = [];
+			this.skillManager.reset();
+		}
 		if (!this.gameManager.isSimulation) {
-			if (!this.sprite) return;
-			let index = this.gameManager.game.objects.findIndex((ele) => ele.uuid === this.sprite.uuid);
-			if (index !== -1) {
-				this.gameManager.game.objects.splice(index, 1);
+			if (this.sprite) {
+				const objectIndex = this.gameManager.game.objects.findIndex(
+					(ele) => ele.uuid === this.sprite.uuid
+				);
+				if (objectIndex !== -1) {
+					this.gameManager.game.objects.splice(objectIndex, 1);
+				}
 			}
 			this.gameManager.removeCountdown(this.countdownId);
-			index = this.gameManager.enemiesOnMap.findIndex((enemy) => enemy.spawnUID === this.spawnUID);
-			this.gameManager.enemiesOnMap.splice(index, 1);
-			this.onDeselect();
+			const enemyIndex = this.gameManager.enemiesOnMap.findIndex(
+				(enemy) => enemy.spawnUID === this.spawnUID
+			);
+			if (enemyIndex !== -1) this.gameManager.enemiesOnMap.splice(enemyIndex, 1);
+			if (this.sprite) {
+				this.onDeselect();
+			} else {
+				this.selected = false;
+				if (this.pathGroup) this.gameManager.scene.remove(this.pathGroup);
+			}
 			this.gameManager.scene.remove(this.meshGroup);
 			clearObjects(this.meshGroup);
 		}

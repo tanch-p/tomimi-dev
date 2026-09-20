@@ -377,6 +377,7 @@ export class AssetManager {
 	public font;
 	public texturesLoaded = false;
 	public fontAtlas;
+	private loadQueue: Promise<unknown> = Promise.resolve();
 
 	private constructor() {
 		// Private constructor to prevent instantiation
@@ -388,11 +389,21 @@ export class AssetManager {
 		return AssetManager.instance;
 	}
 
-	async loadAssets(mapConfig) {
-		this.texturesLoaded = false;
-		this.models.clear();
-		this.spineMap.clear();
-		this.spineAssetManager.removeAll();
+	loadAssets(mapConfig, shouldContinue: () => boolean = () => true): Promise<boolean> {
+		const load = this.loadQueue
+			.then(() => this.performLoadAssets(mapConfig, shouldContinue))
+			.catch((error) => {
+				this.disposeAssets();
+				throw error;
+			});
+		// Keep later loads moving even if this request fails.
+		this.loadQueue = load.catch(() => undefined);
+		return load;
+	}
+
+	private async performLoadAssets(mapConfig, shouldContinue: () => boolean): Promise<boolean> {
+		if (!shouldContinue()) return false;
+		this.disposeAssets();
 		const promises = [];
 
 		if (mapConfig?.levelId === 'level_rogue4_b-8' && !this.textures.has('skzamj')) {
@@ -421,10 +432,13 @@ export class AssetManager {
 		if (!this.texturesLoaded) {
 			const loader = new FontLoader();
 			promises.push(
-				new Promise((resolve) => {
-					loader.load('/fonts/noto_sans_regular.json', (font) => {
-						resolve(font);
-					});
+				new Promise((resolve, reject) => {
+					loader.load(
+						'/fonts/noto_sans_regular.json',
+						(font) => resolve(font),
+						undefined,
+						(error) => reject(error)
+					);
 				}).then((font) => (this.font = font))
 			);
 			for (const { fileName, options, textures } of texturesToLoad) {
@@ -465,10 +479,10 @@ export class AssetManager {
 			if (ENEMY_KEYS_TO_IGNORE.includes(key) || this.spineMap.has(key)) {
 				continue;
 			}
-			let fileKey = ENEMY_KEYS_TO_REPLACE[key] || key;
+			const fileKey = ENEMY_KEYS_TO_REPLACE[key] || key;
 			const folder = fileKey.replace('enemy_', '');
 			promises.push(
-				new Promise((resolve, reject) => {
+				new Promise<void>((resolve) => {
 					if (SPINE_TEXT_IDS.includes(key)) {
 						this.spineAssetManager.loadText(`${folder}/${fileKey}`);
 					} else {
@@ -486,6 +500,7 @@ export class AssetManager {
 
 					checkLoading();
 				}).then(() => {
+					if (!shouldContinue()) return;
 					const atlas = this.spineAssetManager.get(`${folder}/${fileKey}.atlas`);
 					const atlasLoader = new spine.AtlasAttachmentLoader(atlas);
 					let skeletonData;
@@ -507,7 +522,7 @@ export class AssetManager {
 			);
 		}
 
-		for (const trap of mapConfig?.traps.concat(mapConfig?.token_cards)) {
+		for (const trap of [...(mapConfig?.traps ?? []), ...(mapConfig?.token_cards ?? [])]) {
 			const key = trap.key;
 			const modelType = getTrapModelType(key);
 			switch (modelType) {
@@ -516,7 +531,7 @@ export class AssetManager {
 						continue;
 					}
 					promises.push(
-						new Promise<void>((resolve, reject) => {
+						new Promise<void>((resolve) => {
 							this.spineAssetManager.loadBinary(`${key}/${key}.skel`);
 							this.spineAssetManager.loadTextureAtlas(`${key}/${key}.atlas`);
 
@@ -530,6 +545,7 @@ export class AssetManager {
 
 							checkLoading();
 						}).then(() => {
+							if (!shouldContinue()) return;
 							const atlas = this.spineAssetManager.get(`${key}/${key}.atlas`);
 							const atlasLoader = new spine.AtlasAttachmentLoader(atlas);
 							const skeletonBinary = new spine.SkeletonBinary(atlasLoader);
@@ -590,14 +606,61 @@ export class AssetManager {
 					break;
 			}
 		}
-		return Promise.all(promises);
+		const results = await Promise.allSettled(promises);
+		if (!shouldContinue()) {
+			this.disposeAssets();
+			return false;
+		}
+		const failedLoad = results.find(
+			(result): result is PromiseRejectedResult => result.status === 'rejected'
+		);
+		if (failedLoad) {
+			this.disposeAssets();
+			throw failedLoad.reason;
+		}
+		this.texturesLoaded = true;
+		return true;
 	}
 
 	cleanup() {
+		this.disposeAssets();
+	}
+
+	private disposeAssets() {
+		const disposedTextures = new Set<THREE.Texture>();
+		const disposeTexture = (value: unknown) => {
+			const texture = value as THREE.Texture | null | undefined;
+			if (!texture?.isTexture || disposedTextures.has(texture)) return;
+			disposedTextures.add(texture);
+			texture.dispose();
+		};
+		this.textures.forEach((entry) => {
+			disposeTexture(entry?.texture);
+		});
+
+		this.models.forEach((model) => {
+			model?.traverse?.((object) => {
+				object.geometry?.dispose?.();
+				const materials = Array.isArray(object.material)
+					? object.material
+					: object.material
+					? [object.material]
+					: [];
+				materials.forEach((material) => {
+					Object.values(material).forEach(disposeTexture);
+					material.dispose?.();
+				});
+			});
+		});
+
 		this.textures.clear();
 		this.models.clear();
 		this.spineMap.clear();
 		this.spineAssetManager.removeAll();
+		this.font = null;
+		this.fontAtlas?.dispose?.();
+		this.fontAtlas = null;
+		this.texturesLoaded = false;
 	}
 
 	loadEnemyIcons(promises, mapConfig) {

@@ -552,6 +552,7 @@ export class GameManager {
 			enemiesToRemove.push(enemy);
 		});
 		enemiesToRemove.forEach((enemy) => enemy.remove());
+		this.enemiesOnMap = [];
 	}
 	clearTraps() {
 		const trapsToRemove = [];
@@ -561,10 +562,22 @@ export class GameManager {
 		trapsToRemove.forEach((trap) => trap.remove());
 		this.traps.clear();
 	}
-
-	reset(config, enemies) {
+	clearRollOverMeshes() {
+		const rollOverTraps = [...this.rollOverMeshes.values()];
+		this.rollOverMeshes.clear();
+		rollOverTraps.forEach((trap) => trap.remove());
+	}
+	clearSceneObjects() {
 		this.clearEnemies();
 		this.clearTraps();
+		this.clearRollOverMeshes();
+		this.countdownManager.removeAllCountdowns();
+		this.tiles.clear();
+		this.roadblockReachabilityCache.clear();
+	}
+
+	reset(config, enemies) {
+		this.clearSceneObjects();
 		this.enemies = enemies;
 		this.config = config;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);
@@ -572,6 +585,8 @@ export class GameManager {
 		this.baseMazeLayout = structuredClone(mazeLayout);
 		this.roadblockReachabilityCache.clear();
 		this.noEnemyAlive = false;
+		this.noWaveBlockingSpawns = false;
+		this.killedCount = 0;
 		this.pathFinder = new SPFA(mazeLayout);
 		this.tiles.clear();
 		this.tileManager = new TileManager(config.levelId);

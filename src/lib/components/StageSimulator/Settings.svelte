@@ -100,8 +100,6 @@
 			}
 		}
 	];
-	GameConfig.showTimeline.subscribe((v) => (showTimeline = v));
-
 	function updateCamera(v) {
 		zoomSize = parseFloat(v.target.value);
 		GameConfig.FrustumSize = 900 + 900 * (1.5 - (zoomSize + 0.5));
@@ -112,6 +110,7 @@
 
 	const unsubscribeFns = [];
 	onMount(() => {
+		unsubscribeFns.push(GameConfig.showTimeline.subscribe((v) => (showTimeline = v)));
 		unsubscribeFns.push(
 			GameConfig.subscribe('currentWaveIndex', (value) => {
 				currentWaveIndex = value;

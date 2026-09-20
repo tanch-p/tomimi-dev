@@ -36,6 +36,7 @@ export class Game {
 	obstacleEvents: ObstacleEvent[] = [];
 	obstacleReplayIndex = 0;
 	renderLoopRequested = false;
+	private cleanedUp = false;
 
 	constructor(canvasElement: HTMLCanvasElement, config: MapConfig, waveData, enemies: EnemyType[]) {
 		this.canvas = canvasElement;
@@ -50,6 +51,7 @@ export class Game {
 		GameConfig.setValue('totalDeductedCost', 0);
 		GameConfig.setValue('tokenCooldownDuration', 0);
 		GameConfig.setValue('tokenCooldownRemaining', 0);
+		GameConfig.setValue('isPaused', false);
 		GameConfig.setValue('tokenCard', null);
 		if (config.token_cards?.length > 0) {
 			const card = config.token_cards.find((ele) => ele.key === 'trap_001_crate');
@@ -153,6 +155,7 @@ export class Game {
 		this.softReset();
 	}
 	softReset(resetWaveIndex = true) {
+		if (this.cleanedUp) return;
 		if (this.config.levelId !== GameConfig.levelId) {
 			GameConfig.setValue('levelId', this.config.levelId);
 			GameConfig.setValue('stagePhaseIndex', 0);
@@ -188,11 +191,13 @@ export class Game {
 		GameConfig.setValue('totalDeductedCost', 0);
 		GameConfig.setValue('tokenCooldownDuration', 0);
 		GameConfig.setValue('tokenCooldownRemaining', 0);
+		GameConfig.setValue('isPaused', false);
 		GameConfig.setValue('tokenCard', null);
 		if (this.config.token_cards?.length > 0) {
 			const card = this.config.token_cards.find((ele) => ele.key === 'trap_001_crate');
 			card && GameConfig.setValue('tokenCard', { ...card, selected: true });
 		}
+		this.gameManager.clearSceneObjects();
 		this.objects = [];
 		clearObjects(this.scene);
 		this.gameManager.reset(this.config, this.enemies);
@@ -342,6 +347,7 @@ export class Game {
 	}
 
 	onPointerMove(event) {
+		if (!this.renderLoopRequested || this.cleanedUp) return;
 		if (!GameConfig.cameraLock) {
 			this.hideRollOverMesh();
 			if (!this.isDragging) return;
@@ -399,6 +405,7 @@ export class Game {
 		this.render();
 	}
 	onPointerDown(event) {
+		if (!this.renderLoopRequested || this.cleanedUp) return;
 		if (!GameConfig.cameraLock) {
 			this.isDragging = true;
 			this.previousMousePosition = {
@@ -596,7 +603,7 @@ export class Game {
 		this.isDragging = false;
 	}
 	render() {
-		if (this.isDocumentHidden()) return;
+		if (!this.renderLoopRequested || this.cleanedUp || this.isDocumentHidden()) return;
 		const frameDelta = this.clock.getDelta();
 		const deltaTime = frameDelta * GameConfig.speedFactor;
 		if (
@@ -627,17 +634,31 @@ export class Game {
 	}
 
 	cleanup() {
+		if (this.cleanedUp) return;
+		this.cleanedUp = true;
+		this.stop();
 		this.unsubscribeTokenCard();
 		this.unsubscribeObstacleEvents();
-		this.renderLoopRequested = false;
+		window.removeEventListener('resize', this.onWindowResize);
+		this.canvas.removeEventListener('pointerdown', this.onPointerDown);
+		document.removeEventListener('pointermove', this.onPointerMove);
+		document.removeEventListener('pointerup', this.onPointerUp);
+		document.removeEventListener('visibilitychange', this.onVisibilityChange);
 
-		if (this.renderer) {
-			this.renderer.setAnimationLoop(null);
-		}
-		this.renderer?.dispose();
-
+		this.spawnManager?.dispose();
+		this.map.enemies = [];
+		this.map.objects = [];
+		this.gameManager?.clearSceneObjects();
+		this.gameManager?.countdownManager.releaseAssets();
+		this.objects = [];
+		this.obstacleEvents = [];
 		if (this.scene) {
 			clearObjects(this.scene);
+		}
+		if (this.renderer) {
+			this.renderer.renderLists.dispose();
+			this.renderer.dispose();
+			this.renderer.forceContextLoss();
 		}
 		GameConfig.setValue('scaledElapsedTime', 0);
 		GameConfig.setValue('waveElapsedTime', 0);
@@ -645,15 +666,11 @@ export class Game {
 		GameConfig.setValue('totalDeductedCost', 0);
 		GameConfig.setValue('tokenCooldownDuration', 0);
 		GameConfig.setValue('tokenCooldownRemaining', 0);
+		GameConfig.setValue('tokenCard', null);
+		obstacleEventStore.reset();
 
 		this.scene = null;
 		this.camera = null;
 		this.renderer = null;
-
-		window.removeEventListener('resize', this.onWindowResize);
-		this.canvas.removeEventListener('pointerdown', this.onPointerDown);
-		document.removeEventListener('pointermove', this.onPointerMove);
-		document.removeEventListener('pointerup', this.onPointerUp);
-		document.removeEventListener('visibilitychange', this.onVisibilityChange);
 	}
 }

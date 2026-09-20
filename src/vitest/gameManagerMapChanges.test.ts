@@ -188,3 +188,62 @@ test('removing a roadblock restores the value underneath it', () => {
 	expect(trap.roadblockApplied).toBe(false);
 	expect(rerouteForMapChange).toHaveBeenCalledTimes(2);
 });
+
+test('GameManager clears every retained scene-object collection', () => {
+	const manager = Object.create(GameManager.prototype) as any;
+	const removeEnemy = vi.fn();
+	const removeTrap = vi.fn();
+	const removeRollOver = vi.fn();
+	const removeAllCountdowns = vi.fn();
+	Object.assign(manager, {
+		countdownManager: { removeAllCountdowns },
+		enemiesOnMap: [{ remove: removeEnemy }],
+		roadblockReachabilityCache: new Map([['old', true]]),
+		rollOverMeshes: new Map([['token', { remove: removeRollOver }]]),
+		tiles: new Map([['old', {}]]),
+		traps: new Map([['0,0', { remove: removeTrap }]])
+	});
+
+	manager.clearSceneObjects();
+
+	expect(removeEnemy).toHaveBeenCalledOnce();
+	expect(removeTrap).toHaveBeenCalledOnce();
+	expect(removeRollOver).toHaveBeenCalledOnce();
+	expect(removeAllCountdowns).toHaveBeenCalledOnce();
+	expect(manager.enemiesOnMap).toEqual([]);
+	expect(manager.traps.size).toBe(0);
+	expect(manager.rollOverMeshes.size).toBe(0);
+	expect(manager.tiles.size).toBe(0);
+	expect(manager.roadblockReachabilityCache.size).toBe(0);
+});
+
+test('GameManager reset clears stale wave-completion state', () => {
+	const manager = Object.create(GameManager.prototype) as any;
+	Object.assign(manager, {
+		clearSceneObjects: vi.fn(),
+		initPlane: vi.fn(),
+		initRollOverMeshes: vi.fn(),
+		killedCount: 9,
+		noEnemyAlive: true,
+		noWaveBlockingSpawns: true,
+		roadblockReachabilityCache: new Map([['old', true]]),
+		tiles: new Map([['old', {}]])
+	});
+
+	manager.reset(
+		{
+			levelId: 'level_test',
+			mapData: {
+				map: [[0]],
+				tiles: [['tile_floor']]
+			}
+		},
+		[]
+	);
+
+	expect(manager.killedCount).toBe(0);
+	expect(manager.noEnemyAlive).toBe(false);
+	expect(manager.noWaveBlockingSpawns).toBe(false);
+	expect(manager.roadblockReachabilityCache.size).toBe(0);
+	expect(manager.tiles.size).toBe(0);
+});

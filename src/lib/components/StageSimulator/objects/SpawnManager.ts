@@ -129,8 +129,7 @@ export class SpawnManager {
 		} else if (this.postDelayTimer < currentWave.postDelay) {
 			// Handle wave post-delay
 			this.postDelayTimer += delta;
-		} else if (!this.checkNextWaveFlag(delta)) {
-		} else {
+		} else if (this.checkNextWaveFlag(delta)) {
 			// Move to next wave
 			this.currentWaveIndex++;
 			this.runtime.setValue('currentWaveIndex', this.currentWaveIndex);
@@ -351,5 +350,15 @@ export class SpawnManager {
 		this.runtime.setValue('waveElapsedTime', 0);
 		this.enemiesToHighlight = [];
 		this.spawnIdx = 0;
+	}
+
+	dispose() {
+		this.branches.clear();
+		this.activeActions.clear();
+		this.completedActions.clear();
+		this.fragmentsTimeTracker.clear();
+		this.enemiesToHighlight = [];
+		this.routes = [];
+		this.waves = [];
 	}
 }

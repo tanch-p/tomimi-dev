@@ -26,8 +26,8 @@
 
 	$: moddedEnemies = applyMods(enemies, $statMods, $specialMods);
 	$: moddedTraps = applyTrapMods(traps, $statMods, $specialMods);
-	eliteMode.subscribe((v) => (GameConfig.eliteMode = v));
-	specialMods.subscribe((v) => (GameConfig.specialMods = v));
+	$: GameConfig.eliteMode = $eliteMode;
+	$: GameConfig.specialMods = $specialMods;
 
 	$: if (mapConfig) {
 		eliteMode.set(false);

@@ -33,7 +33,9 @@
 		simulationInputVersion = 0,
 		lastSimulationRequestKey = '',
 		latestObstacleSnapshot: ObstacleEventSnapshot = obstacleEventStore.getSnapshot(),
-		initialSimulationWaveIndex = 0;
+		initialSimulationWaveIndex = 0,
+		assetLoadGeneration = 0,
+		isDestroyed = false;
 
 	$: if (timeline) {
 		resetGame();
@@ -47,7 +49,7 @@
 	}
 
 	function resetGame() {
-		if (game) {
+		if (game && assetsReady && !isDestroyed) {
 			game.reset(mapConfig, waveData, enemies);
 			initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		}
@@ -113,18 +115,26 @@
 	}
 
 	async function loadGame(mapConfig) {
+		const generation = ++assetLoadGeneration;
 		assetsReady = false;
+		simulatedData = undefined;
 		simulationGeneration++;
 		if (game) {
 			game.stop();
 		}
 
-		await assetManager.loadAssets(mapConfig);
-		assetManager.texturesLoaded = true;
-		resetGame();
+		const loaded = await assetManager.loadAssets(
+			mapConfig,
+			() => !isDestroyed && generation === assetLoadGeneration
+		);
+		if (!loaded || isDestroyed || generation !== assetLoadGeneration) return;
+
 		if (!game) {
 			game = new Game(canvasElement, mapConfig, waveData, enemies);
 			GameConfig.state = 'ready';
+		} else {
+			assetsReady = true;
+			resetGame();
 		}
 		initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		assetsReady = true;
@@ -137,7 +147,7 @@
 		unsubscribeFns.push(
 			GameConfig.subscribe('mode', (mode) => {
 				simMode = mode;
-				game && assetManager.texturesLoaded && game.softReset(false);
+				game && assetsReady && !isDestroyed && game.softReset(false);
 			})
 		);
 		unsubscribeFns.push(
@@ -151,14 +161,17 @@
 	});
 
 	onDestroy(() => {
+		isDestroyed = true;
+		assetLoadGeneration++;
 		assetsReady = false;
 		simulationGeneration++;
 		unsubscribeFns.forEach((fn) => fn());
-		assetManager.cleanup();
-		assetManager.texturesLoaded = false;
 		if (game) {
 			game.cleanup();
 		}
+		simulatedData = undefined;
+		latestObstacleSnapshot = obstacleEventStore.getSnapshot();
+		assetManager.cleanup();
 	});
 </script>
 
@@ -189,8 +202,10 @@
 			count={timeline?.count}
 			maxCost={mapConfig?.maxCost}
 		/>
-		<!-- {:catch error} -->
-		<!-- <p class="text-center">An error occured while loading: <br />{error.message}</p> -->
+	{:catch error}
+		<p class="py-8 text-center text-red-300">
+			Failed to load the stage simulator:<br />{error?.message ?? String(error)}
+		</p>
 	{/await}
 	<canvas bind:this={canvasElement} />
 </div>

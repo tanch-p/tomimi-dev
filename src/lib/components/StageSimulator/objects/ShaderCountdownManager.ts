@@ -26,7 +26,7 @@ export class CountdownManager {
 		// Create the shader material for all countdowns
 		this.shaderMaterial = new THREE.ShaderMaterial({
 			uniforms: {
-				fontTexture: { value: this.assetManager.textures.get('0').texture },
+				fontTexture: { value: this.assetManager.textures.get('0')?.texture ?? null },
 				color: { value: new THREE.Color(0xffffff) },
 				time: { value: 0.0 },
 				fadeOpacity: { value: 1.0 }
@@ -62,6 +62,8 @@ export class CountdownManager {
 	}
 
 	createCountdown(initialTime: number, colorKey = 'normal', countsDown = true): CountdownSprite {
+		this.shaderMaterial.uniforms.fontTexture.value =
+			this.assetManager.textures.get('0')?.texture ?? null;
 		if (this.countdowns.has(this.indexCounter)) {
 			console.warn(
 				`Countdown with id ${this.indexCounter} already exists. Returning existing instance.`
@@ -112,6 +114,11 @@ export class CountdownManager {
 		});
 	}
 
+	releaseAssets(): void {
+		this.removeAllCountdowns();
+		this.shaderMaterial.uniforms.fontTexture.value = null;
+	}
+
 	// Update all countdowns
 	update(deltaTime: number): void {
 		this.countdowns.forEach((countdown) => {
@@ -145,7 +152,7 @@ export class CountdownSprite {
 	private assetManager: AssetManager;
 	private material: THREE.ShaderMaterial;
 	private countsDown: boolean;
-	private timeStr: string = '';
+	private timeStr = '';
 
 	// Shared geometry
 	private static readonly circleGeometry = new THREE.CircleGeometry(GameConfig.gridSize / 4, 32);

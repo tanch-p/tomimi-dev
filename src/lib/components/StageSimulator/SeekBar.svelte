@@ -152,6 +152,9 @@
 		// Clean up global event listeners if component is destroyed while dragging
 		window.removeEventListener('mousemove', handleGlobalMouseMove);
 		window.removeEventListener('mouseup', handleGlobalMouseUp);
+		window.removeEventListener('touchmove', handleGlobalTouchMove);
+		window.removeEventListener('touchend', handleGlobalTouchEnd);
+		window.removeEventListener('touchcancel', handleGlobalTouchEnd);
 	});
 </script>
 

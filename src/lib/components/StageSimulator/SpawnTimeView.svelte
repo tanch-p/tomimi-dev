@@ -18,11 +18,11 @@
 	let simMode = 'wave_normal';
 
 	$: language = $page.data.language;
-	$: GameConfig.showTimeline.subscribe((v) => (showTimeline = v));
 
 	// Sync class -> store
 	const unsubscribeFns = [];
 	onMount(() => {
+		unsubscribeFns.push(GameConfig.showTimeline.subscribe((v) => (showTimeline = v)));
 		unsubscribeFns.push(
 			GameConfig.subscribe('mode', (mode) => {
 				simMode = mode;

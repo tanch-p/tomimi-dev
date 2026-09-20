@@ -17,6 +17,24 @@ afterEach(() => {
 	obstacleEventStore.reset();
 });
 
+test('a stopped game ignores late render callbacks', () => {
+	const getDelta = vi.fn();
+	const render = vi.fn();
+	const game = Object.create(Game.prototype) as any;
+	Object.assign(game, {
+		cleanedUp: false,
+		clock: { getDelta },
+		isDocumentHidden: () => false,
+		renderer: { render },
+		renderLoopRequested: false
+	});
+
+	game.render();
+
+	expect(getDelta).not.toHaveBeenCalled();
+	expect(render).not.toHaveBeenCalled();
+});
+
 test('obstacle preview uses numeric grid coordinates and snaps to the tile center', () => {
 	const mesh = new THREE.Group();
 	const canPlaceRoadblock = vi.fn(() => true);
@@ -103,8 +121,10 @@ test('placing a token adds its cost to the total deducted cost', () => {
 	const game = Object.create(Game.prototype) as any;
 	Object.assign(game, {
 		camera: {},
+		cleanedUp: false,
 		pointer: new THREE.Vector2(),
 		objects: [],
+		renderLoopRequested: true,
 		renderer: {
 			domElement: {
 				getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 })
