@@ -111,7 +111,7 @@
 
 <TogglePanel
 	key={'stageSim'}
-	title={getTranslations(language).enemy_routes + ' v0.3'}
+	title={getTranslations(language).enemy_routes + ' v0.5'}
 	size="subheading"
 	isOpen={defaultOpenStageSim}
 >
