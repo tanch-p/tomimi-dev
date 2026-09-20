@@ -4,7 +4,7 @@
 		"label": {
 			"zh": "化镇抚",
 			"ja": "鎮撫と化す",
-			"en": "Suppressive strike"
+			"en": "Suppressive"
 		}
 	},
 	"level_rogue5_b-9-b": {
@@ -20,7 +20,7 @@
 		"label": {
 			"zh": "改对弈",
 			"ja": "対局に改める",
-			"en": "Match"
+			"en": "Alter Board"
 		}
 	},
 	"level_rogue5_b-9-d": {

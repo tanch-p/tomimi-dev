@@ -14,29 +14,44 @@
 </script>
 
 {#if variants.length > 1}
-	<TitleBlock title={getTranslations(language).stage_choice} size="subheading">
-		<div class="flex flex-wrap md:grid grid-flow-col auto-cols-fr mb-8">
+	<TitleBlock
+		title={getTranslations(language).stage_choice}
+		description={getTranslations(language).stage_variant_desc}
+	>
+		<div class="mb-8 mt-1.5 flex flex-wrap gap-2 px-2 md:flex-nowrap">
 			{#each variants as { suffix, levelId }, i}
 				{@const display = stageVariantDisplay[levelId]}
+				{@const isOnShortRow =
+					variants.length === 4 ||
+					(variants.length % 3 !== 0 && i >= variants.length - (variants.length % 3))}
 				<button
-					class="basis-1/3 grow {i !== selectedIndex
-						? 'bg-neutral-600 brightness-50 min-h-[50px] hover:brightness-75'
-						: 'bg-sky-500'}"
+					type="button"
+					aria-pressed={i === selectedIndex}
+					class="min-h-[96px] min-w-0 grow rounded-lg border px-2 py-2 shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 md:basis-0 {variants.length ===
+					4
+						? 'basis-[calc(50%_-_0.25rem)]'
+						: 'basis-[calc(33.333333%_-_0.333333rem)]'} {i !== selectedIndex
+						? 'border-neutral-500 bg-neutral-700 text-neutral-300 hover:border-neutral-300 hover:bg-neutral-600 hover:text-white'
+						: 'border-sky-300 bg-sky-500 text-white shadow-sky-950/40'}"
 					on:click={() => (selectedIndex = i)}
 				>
-					<div class="flex items-center justify-center gap-x-1.5">
+					<div class="flex items-center justify-center gap-x-1 md:gap-x-1.5">
 						{#each display?.icons ?? [] as icon}
 							<img
-								class="select-none pointer-events-none"
+								class="pointer-events-none select-none {display?.icons?.length === 1 || isOnShortRow
+									? 'h-[65px] w-[65px]'
+									: 'h-[50px] w-[50px] sm:h-[65px] sm:w-[65px]'}"
 								src={getIconPath(icon)}
-								height="50"
-								width="50"
+								height="65"
+								width="65"
 								decoding="async"
 								alt={icon.id}
 							/>
 						{/each}
-						<span>{display?.label?.[language] || suffix}</span>
 					</div>
+					<p class="mt-1 font-medium leading-tight text-sm md:text-base">
+						{display?.label?.[language] || suffix}
+					</p>
 				</button>
 			{/each}
 		</div>

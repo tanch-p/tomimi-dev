@@ -122,9 +122,14 @@
 		"zh": "关卡一览"
 	},
 	"stage_choice": {
-		"en": "Variation",
+		"en": "Variants",
 		"ja": "バリエーション",
 		"zh": "变体"
+	},
+		"stage_variant_desc": {
+		"en": "Same Name, Different Stage",
+		"ja": "同名異質のステージ",
+		"zh": "名同实异的关卡"
 	},
 	"characterLimit": {
 		"en": "Deploy Limit",
