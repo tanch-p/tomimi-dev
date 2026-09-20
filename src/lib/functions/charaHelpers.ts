@@ -1033,6 +1033,14 @@ export const createNormalFilterFunction = (list, secFilters, filterMode) => {
 						(val) => char.position === val || char.tags.includes('position_all')
 					)
 				) {
+					let found = false;
+					char.talents.forEach((talent, i) => {
+						if (talent.tags.includes('position_all')) {
+							found = true;
+							char.activeTalents.push(i);
+						}
+					});
+					if (found) return;
 					let equipIndex = char.uniequip
 						.filter((equip) => equip.combatData)
 						.findIndex((equip) => equip.combatData.tags.includes('position_all'));
@@ -1315,6 +1323,14 @@ export const createStrictFilterFunction = (list, secFilters) => {
 						(val) => char.position === val || char.tags.includes('position_all')
 					)
 				) {
+					let found = false;
+					char.talents.forEach((talent, i) => {
+						if (talent.tags.includes('position_all')) {
+							found = true;
+							char.activeTalents.push(i);
+						}
+					});
+					if (found) return;
 					let equipIndex = char.uniequip
 						.filter((equip) => equip.combatData)
 						.findIndex((equip) => equip.combatData.tags.includes('position_all'));
@@ -1381,18 +1397,16 @@ export const createStrictFilterFunction = (list, secFilters) => {
 				if (blockCntSubFilters.includes('skill_active')) {
 					initialRemainder.push(searchItem);
 				} else if (blockCntSubFilters.includes('normal_state')) {
-					if (
-						!(
-							options.includes(char.stats.blockCnt) ||
-							char.tokens?.some(
-								(token) =>
-									options.includes(token.stats.blockCnt) ||
-									token.blackboard.some(
-										(item) => item.key === 'blockCnt' && options.includes(item.value)
-									)
-							)
+					if (!(
+						options.includes(char.stats.blockCnt) ||
+						char.tokens?.some(
+							(token) =>
+								options.includes(token.stats.blockCnt) ||
+								token.blackboard.some(
+									(item) => item.key === 'blockCnt' && options.includes(item.value)
+								)
 						)
-					) {
+					)) {
 						equipIndex = char.uniequip
 							.filter((equip) => equip.combatData)
 							.findIndex((equip) =>
