@@ -381,7 +381,7 @@ class GameSimManager {
 		if (trap.isRoadblock) {
 			trap.roadblockPreviousValue = this.mazeLayout[pos.row][pos.col];
 			trap.roadblockApplied = true;
-			this.updateMazeLayout(pos, Number.POSITIVE_INFINITY);
+			this.updateMazeLayout(pos, 1000);
 		}
 		return trap;
 	}

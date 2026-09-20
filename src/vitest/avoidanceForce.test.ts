@@ -105,6 +105,28 @@ test('roadblock traps are treated as obstacles even before inspecting the maze w
 	expect(force.toArray()).toStrictEqual([-1, 0, 0]);
 });
 
+test('a weighted roadblock remains walkable when a route enters its tile', () => {
+	const manager = createGameManager([
+		[0, 0, 0],
+		[0, 0, 1000],
+		[0, 0, 0]
+	]);
+	manager.traps.set('2,1', { isRoadblock: true });
+
+	const force = manager.calculateAvoidanceForce(
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(40, 0, 0),
+		new THREE.Vector3(0, 1, 0)
+	);
+	const corrected = manager.correctMovementForObstacle(
+		new THREE.Vector3(40, 0, 0),
+		new THREE.Vector3(20, 0, 0)
+	);
+
+	expect(force.lengthSq()).toBe(0);
+	expect(corrected.toArray()).toStrictEqual([20, 0, 0]);
+});
+
 test('a WALK enemy calculates avoidance once every three movement frames', () => {
 	const calculateAvoidanceForce = vi.fn(() => new THREE.Vector3(0, 1, 0));
 	const enemy = Object.create(Enemy.prototype) as any;

@@ -7645,15 +7645,12 @@
 	"parrot_hover": {
 		"tooltip": {
 			"en": [
-				"<ba.float>Low-Altitude Hovering</>",
 				"Becomes stunned and cannot be blocked for 8s after losing Low-Altitude Hovering, then regains Low-Altitude Hovering status"
 			],
 			"ja": [
-				"<ba.float>低空浮揚</>状態で出現",
 				"低空浮揚を失うと8秒間スタンし、その後低空浮揚状態に戻る。このスタン中はブロックされない"
 			],
 			"zh": [
-				"<ba.float>近地悬浮</>",
 				"受到部分控制效果影响1s后失去近地悬浮并晕眩8s，期间无法被阻挡，8s后重新获得近地悬浮"
 			]
 		}

@@ -52369,6 +52369,9 @@
 				"epResistance": 0.0,
 				"traits": [
 					{
+						"key": "hover"
+					},
+					{
 						"key": "parrot_hover"
 					},
 					{
@@ -52415,6 +52418,9 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
+					{
+						"key": "hover"
+					},
 					{
 						"key": "parrot_hover"
 					},

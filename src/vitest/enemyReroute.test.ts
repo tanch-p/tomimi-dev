@@ -69,34 +69,6 @@ test('a WALK enemy rebuilds only its remaining route after a map revision', () =
 	expect(enemy.pathRevision).toBe(pathFinder.revision);
 });
 
-test('an unreachable checkpoint remains as a blocked movement action', () => {
-	const pathFinder = new SPFA([
-		[0, 0, 0],
-		[0, 0, 0],
-		[0, 0, 0]
-	]);
-	const enemy = createEnemy(pathFinder, [
-		{
-			type: 'MOVE',
-			position: { row: 1, col: 2 },
-			pathType: 'end',
-			reachOffset: { x: 0, y: 0 }
-		}
-	]);
-	pathFinder.updateTiles([0, 1, 2].map((row) => ({ position: { row, col: 1 }, value: Infinity })));
-
-	enemy.rerouteForMapChange();
-
-	expect(enemy.actions).toStrictEqual([
-		expect.objectContaining({
-			type: 'MOVE',
-			pathType: 'end',
-			pathBlocked: true,
-			position: { row: 1, col: 2 }
-		})
-	]);
-});
-
 test('non-WALK enemies keep their existing actions on a map revision', () => {
 	const pathFinder = new SPFA([[0, 0]]);
 	const actions = [{ type: 'MOVE', position: { row: 0, col: 1 }, pathType: 'end' }];

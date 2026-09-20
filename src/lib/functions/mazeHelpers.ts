@@ -7,7 +7,7 @@ const getWeights = (tileName, passableMask) => {
 	}
 	switch (tileName) {
 		case 'tile_hole':
-			return 1000;
+			return 1000000;
 
 		default:
 			return 0;

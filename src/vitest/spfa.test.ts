@@ -1,4 +1,7 @@
 import { expect, test } from 'vitest';
+import enemyDatabase from '$lib/data/enemy/enemy_database.json';
+import { getSimulatedData } from '$lib/components/StageSimulator/functions/Simulator';
+import { AssetManager } from '$lib/components/StageSimulator/objects/AssetManager';
 import { SPFA } from '$lib/components/StageSimulator/objects/SPFA';
 import { generateMaze } from '$lib/functions/mazeHelpers';
 
@@ -133,6 +136,148 @@ test.each(cases)('SPFA: %s routeIndex %i', async (levelId, routeIndex, expected)
 		return acc;
 	}, []);
 	expect(movementRoute).toStrictEqual(expected);
+});
+
+test('SPFA: rogue6_3-3 route enters rubble when its checkpoints are on the rubble', async () => {
+	const stageFile = await import('../lib/data/stages/ro_stage_data/level_rogue6_3-3.json');
+	const mapConfig = stageFile.data[0];
+	const mazeLayout = generateMaze(mapConfig.mapData.map, mapConfig.mapData.tiles);
+	const pathFinder = new SPFA(mazeLayout);
+	const height = mazeLayout.length;
+	const rubbleCoordinates = mapConfig.traps
+		.filter((trap) => trap.key === 'trap_027_stone' && !trap.hidden)
+		.map((trap) => [trap.pos.col, height - 1 - trap.pos.row] as [number, number]);
+
+	pathFinder.updateTiles(
+		rubbleCoordinates.map(([col, row]) => ({ position: { row, col }, value: 1000 }))
+	);
+
+	const route = convertMovementConfig(structuredClone(mapConfig.routes[3]), mazeLayout);
+	const actions = [
+		...route.checkpoints,
+		{ type: 'MOVE', position: route.endPosition, reachOffset: { x: 0, y: 0 } }
+	];
+	const checkpointCoordinates = route.checkpoints
+		.filter((checkpoint) => checkpoint.type === 'MOVE')
+		.map((checkpoint) => [checkpoint.position.col, checkpoint.position.row]);
+	const movementRoute: [number, number][] = [];
+	let currentPosition = route.startPosition;
+
+	for (const action of actions) {
+		if (action.type === 'APPEAR_AT_POS') {
+			currentPosition = action.position;
+			continue;
+		}
+		if (action.type !== 'MOVE') continue;
+
+		const path = pathFinder.findPath(currentPosition, action.position);
+		expect(path.at(-1)).toStrictEqual([action.position.col, action.position.row]);
+		movementRoute.push(...path.slice(1));
+		currentPosition = action.position;
+	}
+
+	expect(rubbleCoordinates).toHaveLength(15);
+	expect(rubbleCoordinates.every(([col, row]) => pathFinder.grid.grid[row][col] === 1000)).toBe(
+		true
+	);
+	for (const rubbleCoordinate of rubbleCoordinates) {
+		expect(checkpointCoordinates).toContainEqual(rubbleCoordinate);
+		expect(movementRoute).toContainEqual(rubbleCoordinate);
+	}
+});
+
+test('full simulation builds every action and walks through predefined and user roadblocks', async () => {
+	const stageFile = await import('../lib/data/stages/ro_stage_data/level_rogue6_3-3.json');
+	const mapConfig = structuredClone(stageFile.data[0]);
+	const stageEnemy = mapConfig.enemies.find((enemy) => enemy.id === 'enemy_1076_bsthmr');
+	const enemy = structuredClone(enemyDatabase[stageEnemy.prefabKey]);
+	const stats = structuredClone(enemy.stats[stageEnemy.level]);
+	Object.assign(enemy, {
+		stageId: stageEnemy.id,
+		level: stageEnemy.level,
+		stats,
+		traits: stats.traits
+	});
+	enemy.forms[0].stats = stats;
+	enemy.forms[0].special = stats.special?.[0] ?? [];
+	const waves = [
+		{
+			preDelay: 0,
+			postDelay: 0,
+			maxTimeWaitingForNextWave: -1,
+			fragments: [
+				{
+					preDelay: 0,
+					actions: [
+						{
+							actionType: 'SPAWN',
+							key: stageEnemy.id,
+							count: 1,
+							preDelay: 0,
+							interval: 1,
+							routeIndex: 3,
+							dontBlockWave: false
+						}
+					]
+				}
+			]
+		}
+	];
+	const mazeLayout = generateMaze(mapConfig.mapData.map, mapConfig.mapData.tiles);
+	const route = convertMovementConfig(structuredClone(mapConfig.routes[3]), mazeLayout);
+	const expectedActions = [
+		...route.checkpoints.map((checkpoint) => ({ ...checkpoint, pathType: 'cp' })),
+		{
+			type: 'MOVE',
+			time: 0,
+			position: route.endPosition,
+			reachOffset: { x: 0, y: 0 },
+			reachDistance: 0,
+			pathType: 'end'
+		}
+	];
+	const rubbleCoordinates = mapConfig.traps
+		.filter((trap) => trap.key === 'trap_027_stone' && !trap.hidden)
+		.map((trap) => `${trap.pos.col},${mazeLayout.length - 1 - trap.pos.row}`);
+	const userRoadblockPosition = { row: 5, col: 8 };
+	const assetManager = AssetManager.getInstance();
+	const previousTexturesLoaded = assetManager.texturesLoaded;
+	assetManager.texturesLoaded = true;
+
+	try {
+		const result = await getSimulatedData(mapConfig, waves, [enemy], {
+			obstacleEvents: {
+				levelId: mapConfig.levelId,
+				events: [
+					{
+						action: 'place',
+						time: 0,
+						position: userRoadblockPosition,
+						trapKey: 'trap_001_crate',
+						placementId: 'test-user-roadblock'
+					}
+				]
+			},
+			yieldBudgetMs: Number.POSITIVE_INFINITY
+		});
+		const snapshots = Object.values(result.t) as any[];
+		const enemySnapshots = snapshots
+			.flatMap((snapshot) => snapshot.enemiesOnMap)
+			.filter((snapshotEnemy) => snapshotEnemy.key === enemy.key);
+
+		expect(enemySnapshots[0].actions).toStrictEqual(expectedActions);
+		const visitedGridPositions = new Set(
+			enemySnapshots.map((snapshotEnemy) => snapshotEnemy.gridPos)
+		);
+		for (const rubbleCoordinate of rubbleCoordinates) {
+			expect(visitedGridPositions).toContain(rubbleCoordinate);
+		}
+		expect(visitedGridPositions).toContain(
+			`${userRoadblockPosition.col},${userRoadblockPosition.row}`
+		);
+	} finally {
+		assetManager.texturesLoaded = previousTexturesLoaded;
+	}
 });
 
 test('SPFA prevents diagonal corner cutting', () => {

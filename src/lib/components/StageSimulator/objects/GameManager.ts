@@ -202,7 +202,9 @@ export class GameManager {
 
 	private isAvoidanceObstacle(col: number, row: number) {
 		if (!this.isGridPositionInBounds(col, row)) return false;
-		if (this.mazeLayout[row][col] === Number.POSITIVE_INFINITY) return true;
+		const weight = this.mazeLayout[row][col];
+		if (weight === Number.POSITIVE_INFINITY) return true;
+		if (weight === 1000) return false;
 		return Boolean(this.traps.get(`${col},${row}`)?.isRoadblock);
 	}
 
@@ -525,7 +527,7 @@ export class GameManager {
 		if (trap.isRoadblock) {
 			trap.roadblockPreviousValue = this.mazeLayout[pos.row][pos.col];
 			trap.roadblockApplied = true;
-			this.updateMazeLayout(pos, Number.POSITIVE_INFINITY);
+			this.updateMazeLayout(pos, 1000);
 		}
 
 		trap.getMesh().position.set(x, y, z + 0.03);

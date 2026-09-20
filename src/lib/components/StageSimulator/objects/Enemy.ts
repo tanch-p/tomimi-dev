@@ -844,7 +844,7 @@ export class Enemy {
 	private buildMovementActions(currentPosition, action, allowBlockedStart = false) {
 		const { pathType, position, reachOffset } = action;
 		if (currentPosition.row === position.row && currentPosition.col === position.col) {
-			return [{ ...action, reachDistance: 0.0, pathBlocked: false }];
+			return [{ ...action, reachDistance: 0.0 }];
 		}
 
 		const path = this.pathFinder.findPath(
@@ -853,10 +853,6 @@ export class Enemy {
 			this.route.allowDiagonalMove !== false,
 			allowBlockedStart
 		);
-		if (path.length === 0) {
-			return [{ ...action, reachDistance: 0.0, pathBlocked: true }];
-		}
-
 		return path.slice(1).map(([col, row]) => {
 			const isCheckpoint = pathType === 'cp' && row === position.row && col === position.col;
 			const isEnd = pathType === 'end' && row === position.row && col === position.col;
@@ -866,8 +862,7 @@ export class Enemy {
 				position: { row, col },
 				reachOffset: isCheckpoint || isEnd ? reachOffset : { x: 0.0, y: 0.0 },
 				reachDistance: 0.0,
-				pathType: isCheckpoint ? 'cp' : isEnd ? 'end' : 'intermediate',
-				pathBlocked: false
+				pathType: isCheckpoint ? 'cp' : isEnd ? 'end' : 'intermediate'
 			};
 		});
 	}
@@ -1042,19 +1037,12 @@ export class Enemy {
 		if (this.traits.some((skill) => skill.key === 'statue_enemy')) {
 			return;
 		}
-		const { type, position, pathType, time, reachOffset, pathBlocked } =
-			this.actions[this.currentActionIndex];
+		const { type, position, pathType, time, reachOffset } = this.actions[this.currentActionIndex];
 		if (type !== 'MOVE') this.movementFrameAccumulator = 0;
 
 		switch (type) {
 			case 'MOVE':
 				{
-					if (pathBlocked) {
-						this.isMoving = false;
-						this.animState = 'Idle';
-						this.movementFrameAccumulator = 0;
-						return;
-					}
 					if (
 						this.gameManager.config.levelId.includes('_d-') &&
 						this.runtime.stagePhaseIndex === 0
