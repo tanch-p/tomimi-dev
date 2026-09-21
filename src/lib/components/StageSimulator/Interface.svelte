@@ -79,7 +79,6 @@
 	}
 	function handleReset() {
 		randomSeeds = Array.from({ length: 50 }, () => Math.random());
-		game.softReset();
 	}
 	function toggleTokenCard() {
 		if (!card || card.count <= 0) return;

@@ -1,8 +1,16 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
 
 test.use({
 	viewport: { width: 1280, height: 900 }
 });
+
+async function expectTimelineToAdvance(page: Page, timeline: Locator) {
+	const initialTime = Number(await timeline.getAttribute('aria-valuenow'));
+	await page.locator('canvas').click({ position: { x: 300, y: 180 } });
+	await expect
+		.poll(async () => Number(await timeline.getAttribute('aria-valuenow')), { timeout: 10_000 })
+		.toBeGreaterThan(initialTime + 2);
+}
 
 test('stage simulator loads and its controls remain reactive', async ({ page }) => {
 	const pageErrors: string[] = [];
@@ -86,11 +94,17 @@ test('rogue 6 wave selection survives a simulator reset', async ({ page }) => {
 	await selectedWaveOption.click();
 	await expect(selectedWaveOption).not.toHaveClass(/brightness-50/);
 	await expect(timeline).toHaveAttribute('tabindex', '0', { timeout: 60_000 });
+	await expectTimelineToAdvance(page, timeline);
 
 	// Reset must not discard the selected wave configuration.
+	const timeBeforeReset = Number(await timeline.getAttribute('aria-valuenow'));
 	await page.getByRole('button', { name: '清除', exact: true }).click();
 	await expect(timeline).toHaveAttribute('tabindex', '0', { timeout: 60_000 });
+	await expect
+		.poll(async () => Number(await timeline.getAttribute('aria-valuenow')), { timeout: 10_000 })
+		.toBeLessThan(timeBeforeReset);
 	await expect(selectedWaveOption).not.toHaveClass(/brightness-50/);
+	await expectTimelineToAdvance(page, timeline);
 	await page.getByRole('button', { name: '预定义', exact: true }).click();
 	await expect(bearBonusOption).toHaveClass(/bg-slate-700/);
 	await expect(page.locator('canvas')).toBeVisible();

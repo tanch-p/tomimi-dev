@@ -79,6 +79,33 @@
 			return acc;
 		}, [])
 	);
+	let selectedWaveGroups = $derived(
+		mode === 'predefined'
+			? maxPermutations > 32
+				? 'random'
+				: permutationsToShow[selectedPermutationIdx]?.permutation
+			: selectedPermGroups
+	);
+	let simulatorWaveData = $derived(
+		parseWaves(
+			mapConfig,
+			selectedWaveGroups,
+			compiledHiddenGroups,
+			eliteMode,
+			randomSeeds,
+			bonusKey
+		)
+	);
+	let simulatorTimeline = $derived(
+		generateWaveTimeline(
+			mapConfig,
+			compiledHiddenGroups,
+			selectedWaveGroups,
+			eliteMode,
+			randomSeeds,
+			bonusKey
+		)
+	);
 	$effect(() => {
 		if (mapConfig) {
 			selectedCountIndex = 0;
@@ -269,30 +296,8 @@
 			{enemies}
 			{language}
 			bind:randomSeeds
-			waveData={parseWaves(
-				mapConfig,
-				mode === 'predefined'
-					? maxPermutations > 32
-						? 'random'
-						: permutationsToShow[selectedPermutationIdx]?.permutation
-					: selectedPermGroups,
-				compiledHiddenGroups,
-				eliteMode,
-				randomSeeds,
-				bonusKey
-			)}
-			timeline={generateWaveTimeline(
-				mapConfig,
-				compiledHiddenGroups,
-				mode === 'predefined'
-					? maxPermutations > 32
-						? 'random'
-						: permutationsToShow[selectedPermutationIdx]?.permutation
-					: selectedPermGroups,
-				eliteMode,
-				randomSeeds,
-				bonusKey
-			)}
+			waveData={simulatorWaveData}
+			timeline={simulatorTimeline}
 		/>
 	{/await}
 </TogglePanel>

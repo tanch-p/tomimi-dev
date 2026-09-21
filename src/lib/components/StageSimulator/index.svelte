@@ -155,7 +155,7 @@
 		unsubscribeFns.push(
 			GameConfig.subscribe('mode', (mode: string) => {
 				simMode = mode;
-				game && assetsReady && !isDestroyed && game.softReset(false);
+				if (game && assetsReady && !isDestroyed) game.softReset(false);
 			})
 		);
 		unsubscribeFns.push(
@@ -186,8 +186,9 @@
 		assetLoadPromise = untrack(() => loadGame(currentMapConfig));
 	});
 	$effect(() => {
-		if (timeline) {
-			resetGame();
+		const currentTimeline = timeline;
+		if (currentTimeline) {
+			untrack(resetGame);
 		}
 	});
 	$effect(() => {

@@ -59,7 +59,7 @@ export class Game {
 		GameConfig.setValue('tokenCard', null);
 		if (config.token_cards?.length > 0) {
 			const card = config.token_cards.find((ele) => ele.key === 'trap_001_crate');
-			card && GameConfig.setValue('tokenCard', { ...card, selected: true });
+			if (card) GameConfig.setValue('tokenCard', { ...card, selected: true });
 		}
 		this.onWindowResize = this.onWindowResize.bind(this);
 		this.onPointerMove = this.onPointerMove.bind(this);
@@ -170,15 +170,17 @@ export class Game {
 		}
 		switch (this.config.levelId) {
 			case 'level_rogue4_b-7':
-				resetWaveIndex &&
+				if (resetWaveIndex) {
 					GameConfig.setValue('currentWaveIndex', GameConfig.stagePhaseIndex === 0 ? 0 : 2);
+				}
 				break;
 			case 'level_rogue4_b-8':
-				resetWaveIndex &&
+				if (resetWaveIndex) {
 					GameConfig.setValue(
 						'currentWaveIndex',
 						GameConfig.stagePhaseIndex === 0 ? 1 : GameConfig.stagePhaseIndex === 1 ? 3 : 5
 					);
+				}
 				break;
 			default:
 				if (resetWaveIndex) {
@@ -199,7 +201,7 @@ export class Game {
 		GameConfig.setValue('tokenCard', null);
 		if (this.config.token_cards?.length > 0) {
 			const card = this.config.token_cards.find((ele) => ele.key === 'trap_001_crate');
-			card && GameConfig.setValue('tokenCard', { ...card, selected: true });
+			if (card) GameConfig.setValue('tokenCard', { ...card, selected: true });
 		}
 		this.gameManager.clearSceneObjects();
 		this.objects = [];
@@ -449,7 +451,9 @@ export class Game {
 			return;
 		}
 		if (GameConfig.state === 'ready') {
-			return (GameConfig.state = 'running');
+			GameConfig.state = 'running';
+			GameConfig.setValue('isPaused', false);
+			return;
 		}
 
 		this.raycaster.setFromCamera(this.pointer, this.camera);
@@ -648,7 +652,7 @@ export class Game {
 			) {
 				this.spawnManager.update(deltaTime);
 				this.gameManager.update(deltaTime);
-			} else {
+			} else if (!GameConfig.isPaused) {
 				GameConfig.setValue('isPaused', true);
 			}
 		}
