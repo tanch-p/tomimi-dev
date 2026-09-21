@@ -9,8 +9,10 @@
 		compileSpawnTimeActions
 	} from '$lib/functions/waveHelpers';
 
+	type PermGroupSelections = Record<string, Record<string, number>>;
+
 	interface Props {
-		selectedPermGroups: any;
+		selectedPermGroups: PermGroupSelections;
 		mapConfig: any;
 		eliteMode: any;
 		hiddenGroups: any;
@@ -31,10 +33,14 @@
 		}
 	});
 
-	function updatePermGroup(key, groupKey, choice) {
-		const holder = structuredClone(selectedPermGroups);
-		holder[key][groupKey] = choice;
-		selectedPermGroups = holder;
+	function updatePermGroup(key: string, groupKey: string, choice: number) {
+		selectedPermGroups = {
+			...selectedPermGroups,
+			[key]: {
+				...selectedPermGroups[key],
+				[groupKey]: choice
+			}
+		};
 	}
 </script>
 
@@ -46,11 +52,11 @@
 		{#if fragmentGroups.some((groups) => Object.keys(groups).length > 0)}
 			<p class="title">{getTranslations(language).enemy_wave} #{waveIdx + 1}</p>
 			<div class="pb-2">
-				{#each wave.fragments as _, fragIdx}
-					{#if Object.keys(fragmentGroups[fragIdx]).length > 0}
+				{#each fragmentGroups as groups, fragIdx}
+					{#if Object.keys(groups).length > 0}
 						<div class="relative border-b border-neutral-700 last:border-none">
 							<span class="text-xs ml-1.5 opacity-80">f{fragIdx}</span>
-							{#each Object.entries(fragmentGroups[fragIdx]) as [groupKey, choice]}
+							{#each Object.entries(groups) as [groupKey, choice]}
 								<div class="flex gap-x-2 px-1.5 pb-1">
 									<span class="mt-[13px] text-base min-w-[30px] text-center">{groupKey}:</span>
 									<div class="flex flex-wrap gap-x-3">
@@ -60,6 +66,7 @@
 												{@const weight = getRandomChance(pack, choice)}
 												{@const compiledActions = compileSpawnTimeActions(pack)}
 												<button
+													id={`wave-option-${key}-${groupKey}-${i}`}
 													class={selectedPermGroups?.[key]?.[groupKey] === i
 														? ''
 														: 'brightness-50 hover:brightness-90'}
@@ -103,6 +110,7 @@
 												{@const action = pack}
 												{@const weight = getRandomChance(action.weight, choice)}
 												<button
+													id={`wave-option-${key}-${groupKey}-${i}`}
 													class={selectedPermGroups?.[key]?.[groupKey] === i
 														? ''
 														: 'brightness-50 hover:brightness-90'}

@@ -34,6 +34,8 @@
 		initialCost,
 		language,
 		count,
+		// This bindable is written here and read by the parent simulator.
+		// eslint-disable-next-line no-useless-assignment
 		randomSeeds = $bindable(),
 		simulatedData,
 		isSimulationRunning = false,
@@ -76,7 +78,7 @@
 		GameConfig.state = 'running';
 	}
 	function handleReset() {
-		randomSeeds = Array.from(Array(50)).map((_) => Math.random());
+		randomSeeds = Array.from({ length: 50 }, () => Math.random());
 		game.softReset();
 	}
 	function toggleTokenCard() {
@@ -164,6 +166,7 @@
 	<button
 		class="interface w-[45px] h-[45px] md:w-[60px] md:h-[60px] shadow-lg"
 		onclick={handleReset}
+		aria-label={getTranslations(language).reset}
 	>
 		<Icon name="refresh-icon" className="rotate-[185deg]" size={28} />
 	</button>
@@ -174,7 +177,7 @@
 		<div class="">
 			<div class="flex justify-center text-2xl leading-[26px]">{speedFactor}X</div>
 			<div class="flex justify-center pl-1">
-				{#each Array.from(Array(Math.min(3, speedFactor))) as _, i}
+				{#each Array(Math.min(3, speedFactor)).keys() as i}
 					<div
 						class="border-l-[11px] border-l-white border-y-[6px] border-y-transparent {i > 0
 							? '-ml-0.5'

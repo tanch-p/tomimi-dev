@@ -24,7 +24,7 @@
 		enemies: any;
 		rogueTopic: RogueTopic;
 		language: Language;
-		eliteMode: Boolean;
+		eliteMode: boolean;
 		otherStores: any;
 		specialMods: any;
 		difficulty: number;
@@ -44,11 +44,10 @@
 	}: Props = $props();
 
 	let hiddenGroups = $state([]),
-		relics = [],
 		selectedPermGroups = $state({}),
 		selectedCountIndex = $state(0),
 		selectedPermutationIdx = $state(0),
-		randomSeeds = $state(Array.from(Array(50)).map((_) => Math.random())),
+		randomSeeds = $state(Array.from({ length: 50 }, () => Math.random())),
 		mode = $state('predefined'),
 		simMode = $state('wave_normal'),
 		bonusKey = $state('');
@@ -193,6 +192,7 @@
 						<div class="grid grid-flow-col auto-cols-fr">
 							{#each getBonusEnemies(rogueTopic) as key}
 								<button
+									id={`bonus-enemy-${key || 'none'}`}
 									class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {bonusKey ===
 									key
 										? 'bg-slate-700'
@@ -230,7 +230,7 @@
 								.spacing}{getTranslations(language).permutation}
 						</p>
 						<DraggableContainer className="grid grid-flow-col auto-cols-[minmax(120px,1fr)]">
-							{#each permutationsToShow as _, i}
+							{#each permutationsToShow.keys() as i}
 								<button
 									class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {selectedPermutationIdx ===
 									i
