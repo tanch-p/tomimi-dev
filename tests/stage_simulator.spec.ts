@@ -159,3 +159,36 @@ test('multi-phase stage selection survives simulator resets', async ({ page }) =
 	expect(pageErrors).toEqual([]);
 	expect(consoleErrors).toEqual([]);
 });
+
+test('duel-stage reset restarts the selected phase without selecting the first phase', async ({
+	page
+}) => {
+	const pageErrors: string[] = [];
+	const consoleErrors: string[] = [];
+
+	page.on('pageerror', (error) => pageErrors.push(error.message));
+	page.on('console', (message) => {
+		if (message.type() === 'error') consoleErrors.push(message.text());
+	});
+
+	await page.goto('http://localhost:4173/zh/stages/ISW-NO_善恶同道');
+	await expect(page).toHaveTitle(/善恶同道/);
+	await page.getByRole('button', { name: /敌人路线演算 v0.5/ }).click();
+
+	const phases = page.locator('button[data-stage-phase]');
+	await expect(phases).toHaveCount(2, { timeout: 60_000 });
+	await expect(phases.nth(1)).toBeEnabled({ timeout: 60_000 });
+	await phases.nth(1).click();
+	await expect(phases.nth(1)).toHaveClass(/bg-gray-500/);
+	await expect(phases.nth(0)).toHaveClass(/bg-gray-700/);
+
+	await page.getByRole('button', { name: '清除', exact: true }).click();
+	await expect(phases.nth(1)).toHaveClass(/bg-gray-500/);
+	await expect(phases.nth(0)).toHaveClass(/bg-gray-700/);
+	await expect(page.getByText('Failed to load the stage simulator:', { exact: false })).toHaveCount(
+		0
+	);
+
+	expect(pageErrors).toEqual([]);
+	expect(consoleErrors).toEqual([]);
+});

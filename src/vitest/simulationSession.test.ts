@@ -81,7 +81,7 @@ test('multi-phase restarts preserve the selected phase while replacing the spawn
 	runtime.stagePhaseIndex = 1;
 	runtime.currentWaveIndex = 3;
 
-	session.restart(true);
+	session.restart();
 
 	expect(runtime.stagePhaseIndex).toBe(1);
 	expect(runtime.currentWaveIndex).toBe(3);
@@ -91,12 +91,23 @@ test('multi-phase restarts preserve the selected phase while replacing the spawn
 	expect(obstacleController.reset).toHaveBeenLastCalledWith('level_rogue4_b-8');
 });
 
+test('current-phase reset preserves a duel phase and returns to its starting wave', () => {
+	const { session, runtime } = createSession('level_rogue4_d-2');
+	runtime.stagePhaseIndex = 1;
+	runtime.currentWaveIndex = 9;
+
+	session.restart({ resetStagePhase: false });
+
+	expect(runtime.stagePhaseIndex).toBe(1);
+	expect(runtime.currentWaveIndex).toBe(4);
+});
+
 test('ordinary stage restarts reset phase and wave state', () => {
 	const { session, runtime } = createSession('level_test');
 	runtime.stagePhaseIndex = 4;
 	runtime.currentWaveIndex = 9;
 
-	session.restart(true);
+	session.restart();
 
 	expect(runtime.stagePhaseIndex).toBe(0);
 	expect(runtime.currentWaveIndex).toBe(0);

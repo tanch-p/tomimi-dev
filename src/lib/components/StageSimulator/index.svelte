@@ -42,7 +42,8 @@
 		latestObstacleSnapshot: ObstacleEventSnapshot = obstacleEventStore.getSnapshot(),
 		initialSimulationWaveIndex = 0,
 		assetLoadGeneration = 0,
-		isDestroyed = false;
+		isDestroyed = false,
+		preserveStagePhaseOnNextScenario = false;
 
 	function simulationInputsChanged(...inputs: unknown[]) {
 		if (inputs.some((input) => !input)) return;
@@ -52,9 +53,19 @@
 
 	function resetGame(nextScenario: GameScenario) {
 		if (game && assetsReady && !isDestroyed) {
-			game.replaceScenario(nextScenario);
+			const preserveStagePhase = preserveStagePhaseOnNextScenario;
+			preserveStagePhaseOnNextScenario = false;
+			game.replaceScenario(
+				nextScenario,
+				preserveStagePhase ? { resetStagePhase: false } : undefined
+			);
 			initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		}
+	}
+
+	function resetCurrentPhase() {
+		preserveStagePhaseOnNextScenario = true;
+		requestReset();
 	}
 
 	function simulationRequestKey(snapshot: ObstacleEventSnapshot) {
@@ -231,7 +242,7 @@
 				<Interface
 					{simulatedData}
 					{isSimulationRunning}
-					{requestReset}
+					requestReset={resetCurrentPhase}
 					{game}
 					{mapConfig}
 					initialCost={mapConfig?.initialCost}

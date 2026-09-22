@@ -26,6 +26,11 @@ export type SimulationSessionOptions = {
 	) => ObstacleController;
 };
 
+export type SimulationRestartOptions = {
+	resetWaveIndex?: boolean;
+	resetStagePhase?: boolean;
+};
+
 /** Owns mutable simulation state independently of the rendered world lifecycle. */
 export class SimulationSession {
 	config: MapConfig;
@@ -85,7 +90,7 @@ export class SimulationSession {
 			.advanceWhileReady;
 	}
 
-	restart(resetWaveIndex = true) {
+	restart({ resetWaveIndex = true, resetStagePhase }: SimulationRestartOptions = {}) {
 		if (this.disposed) return;
 		const stageBehavior = getStageBehavior(this.config.levelId);
 		if (this.config.levelId !== this.runtime.levelId) {
@@ -93,7 +98,8 @@ export class SimulationSession {
 			this.runtime.stagePhaseIndex = 0;
 		}
 		if (resetWaveIndex) {
-			if (stageBehavior.resetToFirstPhase !== false) {
+			const shouldResetStagePhase = resetStagePhase ?? stageBehavior.resetToFirstPhase !== false;
+			if (shouldResetStagePhase) {
 				this.runtime.stagePhaseIndex = 0;
 			}
 			this.runtime.currentWaveIndex = getStagePhaseBehavior(

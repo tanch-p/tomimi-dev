@@ -1,12 +1,10 @@
-import type { SimulationScenario } from './SimulationSession';
+import type { SimulationRestartOptions, SimulationScenario } from './SimulationSession';
 import { GameInputController } from '../controllers/GameInputController';
 import { GameWorld } from './GameWorld';
 import { SimulationSession } from './SimulationSession';
 import { liveStageRuntime, type StageRuntime } from './StageRuntime';
 
-type RestartOptions = {
-	resetWaveIndex?: boolean;
-};
+export type RestartOptions = SimulationRestartOptions;
 
 export type GameScenario = SimulationScenario;
 
@@ -105,17 +103,17 @@ export class Game {
 		this.world.stop();
 	}
 
-	replaceScenario(scenario: GameScenario) {
+	replaceScenario(scenario: GameScenario, restartOptions?: RestartOptions) {
 		if (!this.session.replaceScenario(scenario)) return false;
-		this.restart();
+		this.restart(restartOptions);
 		return true;
 	}
 
-	restart({ resetWaveIndex = true }: RestartOptions = {}) {
+	restart({ resetWaveIndex = true, resetStagePhase }: RestartOptions = {}) {
 		if (this.cleanedUp) return;
 		if (this.session.shouldStopBeforeRestart()) this.stop();
 		this.inputController.reset();
-		this.session.restart(resetWaveIndex);
+		this.session.restart({ resetWaveIndex, resetStagePhase });
 		this.session.setReady();
 		this.startRenderLoop();
 	}
