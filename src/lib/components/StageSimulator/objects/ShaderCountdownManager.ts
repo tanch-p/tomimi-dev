@@ -170,7 +170,7 @@ export class CountdownSprite {
 		countsDown = true
 	) {
 		this.id = id;
-		this.time = initialTime;
+		this.time = Math.max(0, initialTime);
 		this.color = color;
 		this.countsDown = countsDown;
 		this.assetManager = AssetManager.getInstance();
@@ -240,7 +240,7 @@ export class CountdownSprite {
 
 	// Update the countdown time
 	setTime(time: number): void {
-		this.time = time;
+		this.time = Math.max(0, time);
 		this.updateDisplay();
 	}
 

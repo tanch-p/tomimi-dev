@@ -6,6 +6,8 @@ import { GameManager } from '$lib/components/StageSimulator/objects/GameManager'
 import { SPFA } from '$lib/components/StageSimulator/objects/SPFA';
 import { generateMaze } from '$lib/functions/mazeHelpers';
 import stageData from '../lib/data/stages/ro_stage_data/ro6/level_rogue6_5-1.json' with { type: 'json' };
+import futureSightStageData from '../lib/data/stages/ro_stage_data/ro6/level_rogue6_4-1.json' with { type: 'json' };
+import waterSageStageData from '../lib/data/stages/ro_stage_data/ro6/level_rogue6_1-4.json' with { type: 'json' };
 
 const route = {
 	motionMode: 'WALK',
@@ -93,6 +95,34 @@ const noFutureCheckpointMaze = [
 	[Number.POSITIVE_INFINITY, 0, 0]
 ];
 
+const futureSightFlyingRoute = {
+	motionMode: 'FLY',
+	startPosition: { row: 3, col: 0 },
+	endPosition: { row: 3, col: 10 },
+	spawnRandomRange: { x: 0, y: 0 },
+	spawnOffset: { x: 0, y: 0 },
+	checkpoints: [
+		{
+			type: 'MOVE',
+			time: 0,
+			position: { row: 3, col: 1 },
+			reachOffset: { x: 0, y: 0 },
+			reachDistance: 0
+		},
+		{
+			type: 'WAIT_CURRENT_FRAGMENT_TIME',
+			time: 10,
+			position: { row: 6, col: 0 },
+			reachOffset: { x: 0, y: 0 },
+			reachDistance: 0
+		}
+	],
+	allowDiagonalMove: true,
+	visitEveryTileCenter: false,
+	visitEveryNodeCenter: false,
+	visitEveryCheckPoint: true
+};
+
 const disappearingWindingRoute = {
 	motionMode: 'WALK',
 	startPosition: { row: 6, col: 9 },
@@ -125,6 +155,28 @@ const disappearingWindingRoute = {
 };
 
 const windingMaze = generateMaze(stageData.data[0].mapData.map, stageData.data[0].mapData.tiles);
+const futureSightMaze = generateMaze(
+	futureSightStageData.data[0].mapData.map,
+	futureSightStageData.data[0].mapData.tiles
+);
+const waterSageMaze = generateMaze(
+	waterSageStageData.data[0].mapData.map,
+	waterSageStageData.data[0].mapData.tiles
+);
+const waterSageRoute = (() => {
+	const route = structuredClone(waterSageStageData.data[0].routes[1]);
+	const mapHeight = waterSageMaze.length;
+	const flipRow = (position) => ({ ...position, row: mapHeight - 1 - position.row });
+	return {
+		...route,
+		startPosition: flipRow(route.startPosition),
+		endPosition: flipRow(route.endPosition),
+		checkpoints: route.checkpoints.map((checkpoint) => ({
+			...checkpoint,
+			position: flipRow(checkpoint.position)
+		}))
+	};
+})();
 
 function createGameManager(mazeLayout = Array.from({ length: 8 }, () => Array(11).fill(0))) {
 	const manager = Object.create(GameManager.prototype) as any;
@@ -142,6 +194,9 @@ function createGameManager(mazeLayout = Array.from({ length: 8 }, () => Array(11
 			stagePhaseIndex: 0,
 			steeringEnabled: true,
 			waveElapsedTime: 0
+		},
+		spawnManager: {
+			fragmentsTimeTracker: new Map([['movement_direction_test', 10]])
 		},
 		getVectorCoordinates: (position, reachOffset) => {
 			const offsetX = reachOffset?.x ?? 0;
@@ -194,13 +249,14 @@ function createEnemyForActualMovement(movementRoute, mazeLayout?) {
 		key: 'movement_direction_test',
 		meshGroup: new THREE.Group(),
 		moddedSpeed: 1,
-		motionMode: 'WALK',
+		motionMode: movementRoute.motionMode,
 		movementDirectionScratch: new THREE.Vector3(),
 		movementFrameAccumulator: 0,
 		pathFinder: gameManager.pathFinder,
 		pathRevision: gameManager.pathFinder.revision,
 		raycastPos: startPosition.clone(),
 		route: movementRoute,
+		fragmentKey: 'movement_direction_test',
 		skel: { scale: { x: 1 } },
 		skillManager: {
 			isHoldingForSummons: false,
@@ -252,6 +308,12 @@ function expectFacingThroughoutMovement(samples, expectedDirection) {
 }
 
 describe('enemy movement direction', () => {
+	test('a flying enemy crosses high-ground tiles on ISW-NO_未来见闻', () => {
+		expect(futureSightMaze[3][3]).toBe(Number.POSITIVE_INFINITY);
+
+		runActualMovement(futureSightFlyingRoute, 2, futureSightMaze);
+	});
+
 	test('uses direct direction throughout horizontal movement', () => {
 		const samples = runActualMovement(route, 2);
 
@@ -305,5 +367,14 @@ describe('enemy movement direction', () => {
 
 		expectFacingThroughoutMovement(samples.get(6), -1);
 		expectFacingThroughoutMovement(samples.get(8), -1);
+	});
+
+	test('faces left from route index 3 to 4 on ISW-NO_灌水贤者', () => {
+		expect(waterSageRoute.checkpoints[3].reachOffset.x).toBeGreaterThan(0);
+		expect(waterSageRoute.checkpoints[4].reachOffset.x).toBeLessThan(0);
+
+		const samples = runActualMovement(waterSageRoute, 4, waterSageMaze);
+
+		expectFacingThroughoutMovement(samples.get(4), -1);
 	});
 });

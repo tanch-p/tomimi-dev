@@ -30,6 +30,7 @@ const movementFrameInterval = 1 / 30;
 const movementSpeedBuffIconWidth = 24;
 const movementSpeedBuffIconHeight = movementSpeedBuffIconWidth * (42 / 34);
 const movementSpeedBuffIconGap = 4;
+const facingPositionEpsilon = 1e-6;
 export class Enemy {
 	raycastPos: THREE.Vector3; //光标坐标在移动逻辑中被大量使用，造成了一些反直觉的现象
 	targetPos: THREE.Vector3;
@@ -964,15 +965,26 @@ export class Enemy {
 		const currentAction = this.actions[this.currentActionIndex];
 		if (currentAction?.type !== 'MOVE') return;
 
-		let previousPosition = this.route?.startPosition;
+		const routeStart = this.route?.startPosition;
+		if (!routeStart) return;
+		let previousTarget = this.gameManager.getVectorCoordinates(routeStart, null);
 		for (let i = this.currentActionIndex - 1; i >= 0; i--) {
 			const action = this.actions[i];
 			if (action.type === 'MOVE' || action.type === 'APPEAR_AT_POS') {
-				previousPosition = action.position;
+				previousTarget = this.gameManager.getVectorCoordinates(
+					action.position,
+					action.reachOffset ?? null
+				);
 				break;
 			}
 		}
-		if (!previousPosition || Number(currentAction.position.col) !== Number(previousPosition.col)) {
+		// Facing follows the planned waypoint positions. Obstacle correction affects the
+		// physical displacement only and must not change this direction calculation.
+		const currentTarget = this.gameManager.getVectorCoordinates(
+			currentAction.position,
+			currentAction.reachOffset ?? null
+		);
+		if (Math.abs(currentTarget.x - previousTarget.x) > facingPositionEpsilon) {
 			return;
 		}
 
@@ -984,12 +996,15 @@ export class Enemy {
 			return;
 		}
 
-		const currentColumn = Number(currentAction.position.col);
 		for (let i = this.currentActionIndex + 1; i < this.actions.length; i++) {
 			const action = this.actions[i];
-			if (action.type !== 'MOVE' || Number(action.position.col) === currentColumn) continue;
+			if (action.type !== 'MOVE') continue;
 
-			const { x, y } = this.gameManager.getVectorCoordinates(action.position, null);
+			const { x, y } = this.gameManager.getVectorCoordinates(
+				action.position,
+				action.reachOffset ?? null
+			);
+			if (Math.abs(x - currentTarget.x) <= facingPositionEpsilon) continue;
 			this.cachedFacingTarget = new THREE.Vector3(x, y, GameConfig.baseZIndex);
 			return;
 		}
@@ -1419,10 +1434,12 @@ export class Enemy {
 						);
 						if (displacement.length() > distance) displacement.setLength(distance);
 						const correctedDisplacement =
-							this.gameManager.correctMovementForObstacle?.(
-								this.meshGroup.position,
-								displacement
-							) ?? displacement;
+							this.motionMode === 'WALK'
+								? (this.gameManager.correctMovementForObstacle?.(
+										this.meshGroup.position,
+										displacement
+									) ?? displacement)
+								: displacement;
 						this.meshGroup.position.add(correctedDisplacement);
 						this.raycastPos.add(correctedDisplacement);
 					}
