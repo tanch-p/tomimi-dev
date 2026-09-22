@@ -34,7 +34,7 @@
 	let assetManager = AssetManager.getInstance(),
 		canvasElement: HTMLCanvasElement | undefined = $state(),
 		game: Game | undefined = $state(),
-		simulatedData = $state(),
+		simulatedData = $state.raw(),
 		assetLoadPromise: Promise<void> | null = $state.raw(null),
 		isSimulationRunning = $state(false),
 		assetsReady = false,

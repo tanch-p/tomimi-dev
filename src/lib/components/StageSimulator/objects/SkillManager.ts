@@ -11,6 +11,8 @@ const skillBarColors: THREE.ColorRepresentation[] = [
 	0x74b72e, 0xb9d175, 0xf59e0b, 0xa855f7, 0xef4444, 0x14b8a6
 ];
 
+export const ACCELERATION_MODIFIER_SOURCE = 'skill:accelerate';
+
 export class SkillManager {
 	gameManager: GameManager;
 	assetManager: AssetManager;
@@ -268,7 +270,7 @@ export class SkillManager {
 			return;
 		}
 		this.accelerationModifierHandle = this.enemy.stats.addModifier({
-			source: 'skill:accelerate',
+			source: ACCELERATION_MODIFIER_SOURCE,
 			mods: [{ key: 'ms', value: 1 + multiplier, mode: 'mul', order: 'final' }],
 			stacks: this.accelerationStacks,
 			maxStacks: this.accelerateParams?.limit ?? this.accelerationStacks,
@@ -368,5 +370,12 @@ export class SkillManager {
 
 	reset() {
 		this.summonDelayRemaining = null;
+	}
+
+	resetRuntimeStatModifiers() {
+		this.accelerationModifierHandle = null;
+		this.accelerationIntervalTimer = 0;
+		this.accelerationPreDelayTimer = 0;
+		this.accelerationStacks = 0;
 	}
 }

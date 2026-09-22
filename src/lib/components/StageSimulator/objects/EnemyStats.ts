@@ -1,7 +1,13 @@
 import type { Enemy, EnemyDBEntry, Mod, ModGroup, SpecialMods, StatMods } from '$lib/types';
 import { EMPTY_STAT_MODS, parseStats } from '$lib/functions/statHelpers';
 
-type EnemyFormStats = Enemy['forms'][number]['stats'];
+export type EnemyFormStats = Enemy['forms'][number]['stats'];
+type StatsChangedHandler = (previous: EnemyFormStats, current: EnemyFormStats) => void;
+
+export function preserveHpPercentage(currentHp: number, previousMaxHp: number, nextMaxHp: number) {
+	if (!Number.isFinite(currentHp) || previousMaxHp <= 0) return currentHp;
+	return Math.max(0, Math.min(nextMaxHp, (currentHp / previousMaxHp) * nextMaxHp));
+}
 
 export type RuntimeStatModifierInput = {
 	source: string;
@@ -39,7 +45,8 @@ export class EnemyStats {
 		private readonly definition: Enemy,
 		private readonly persistentModifiers: StatMods = EMPTY_STAT_MODS,
 		private readonly specialMods: SpecialMods = {},
-		formIndex = 0
+		formIndex = 0,
+		private readonly onStatsChanged?: StatsChangedHandler
 	) {
 		this.formIndex = formIndex;
 		this.currentStats = this.calculate(formIndex);
@@ -63,6 +70,33 @@ export class EnemyStats {
 
 	hasModifier(handle: string) {
 		return this.runtimeModifiers.has(handle);
+	}
+
+	getModifierHandlesBySourcePrefix(prefix: string) {
+		return [...this.runtimeModifiers.values()]
+			.filter((modifier) => modifier.source.startsWith(prefix))
+			.map(({ handle, source }) => ({ handle, source }));
+	}
+
+	getRuntimeModifierStacks(source: string) {
+		let stacks = 0;
+		for (const modifier of this.runtimeModifiers.values()) {
+			if (modifier.source === source) stacks += modifier.stacks;
+		}
+		return stacks;
+	}
+
+	hasRuntimeStatIncrease(key: keyof EnemyFormStats) {
+		const currentValue = this.currentStats[key];
+		if (typeof currentValue !== 'number') return false;
+		for (const modifier of this.runtimeModifiers.values()) {
+			if (!modifier.mods.some((mod) => mod.key === key)) continue;
+			const valueWithoutModifier = this.calculate(this.formIndex, modifier.handle)[key];
+			if (typeof valueWithoutModifier === 'number' && currentValue > valueWithoutModifier) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	addModifier(input: RuntimeStatModifierInput) {
@@ -160,9 +194,15 @@ export class EnemyStats {
 		if (!data) return;
 		this.nextModifierId = data.nextModifierId;
 		this.runtimeModifiers = new Map(
-			data.modifiers.map((modifier) => [modifier.handle, structuredClone(modifier)])
+			data.modifiers.map((modifier) => [
+				modifier.handle,
+				{
+					...modifier,
+					mods: modifier.mods.map((mod) => ({ ...mod }))
+				}
+			])
 		);
-		this.recalculate();
+		this.recalculate(false);
 	}
 
 	setFormIndex(formIndex: number) {
@@ -171,10 +211,10 @@ export class EnemyStats {
 		this.recalculate();
 	}
 
-	private calculate(formIndex: number) {
-		const runtimeGroups = [...this.runtimeModifiers.values()].map((modifier) =>
-			this.toModGroup(modifier)
-		);
+	private calculate(formIndex: number, excludedHandle?: string) {
+		const runtimeGroups = [...this.runtimeModifiers.values()]
+			.filter((modifier) => modifier.handle !== excludedHandle)
+			.map((modifier) => this.toModGroup(modifier));
 		const modifiers: StatMods = runtimeGroups.length
 			? {
 					...this.persistentModifiers,
@@ -190,8 +230,10 @@ export class EnemyStats {
 		) as EnemyFormStats;
 	}
 
-	private recalculate() {
+	private recalculate(notify = true) {
+		const previousStats = this.currentStats;
 		this.currentStats = this.calculate(this.formIndex);
+		if (notify) this.onStatsChanged?.(previousStats, this.currentStats);
 	}
 
 	private toModGroup(modifier: RuntimeStatModifier): ModGroup {

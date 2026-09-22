@@ -441,6 +441,21 @@ export class AssetManager {
 					);
 				}).then((font) => (this.font = font))
 			);
+			promises.push(
+				new Promise<THREE.Texture>((resolve, reject) => {
+					this.textureLoader.load(
+						'/images/recalrune/r_enemy_movespeed_2.webp',
+						(texture) => resolve(texture),
+						undefined,
+						(error) => reject(error)
+					);
+				}).then((texture: THREE.Texture) => {
+					texture.colorSpace = THREE.SRGBColorSpace;
+					texture.magFilter = THREE.NearestFilter;
+					texture.minFilter = THREE.NearestFilter;
+					this.textures.set('enemy_movespeed_buff', { texture, config: null });
+				})
+			);
 			for (const { fileName, options, textures } of texturesToLoad) {
 				promises.push(
 					new Promise((resolve, reject) => {
@@ -644,8 +659,8 @@ export class AssetManager {
 				const materials = Array.isArray(object.material)
 					? object.material
 					: object.material
-					? [object.material]
-					: [];
+						? [object.material]
+						: [];
 				materials.forEach((material) => {
 					Object.values(material).forEach(disposeTexture);
 					material.dispose?.();

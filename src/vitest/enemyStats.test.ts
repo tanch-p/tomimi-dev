@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import type { Enemy, StatMods } from '$lib/types';
-import { EnemyStats } from '$lib/components/StageSimulator/objects/EnemyStats';
-import { SkillManager } from '$lib/components/StageSimulator/objects/SkillManager';
+import {
+	EnemyStats,
+	preserveHpPercentage
+} from '$lib/components/StageSimulator/objects/EnemyStats';
+import {
+	ACCELERATION_MODIFIER_SOURCE,
+	SkillManager
+} from '$lib/components/StageSimulator/objects/SkillManager';
+import { AIRFLOW_MODIFIERS } from '$lib/components/StageSimulator/functions/airflowHelpers';
 
 const enemy = {
 	id: 'TEST',
@@ -149,6 +156,39 @@ describe('EnemyStats', () => {
 		expect(restored.get('ms')).toBe(2);
 	});
 
+	it('restores modifier snapshots received through reactive proxies', () => {
+		const source = new EnemyStats(enemy, persistentModifiers);
+		source.addModifier({
+			source: 'seek-speed',
+			mods: [{ key: 'ms', value: 1.5, mode: 'mul', order: 'final' }],
+			duration: 5
+		});
+		source.update(2);
+		const serialized = source.getData();
+		const proxiedModifiers = serialized.modifiers.map(
+			(modifier) =>
+				new Proxy(
+					{
+						...modifier,
+						mods: modifier.mods.map((mod) => new Proxy(mod, {}))
+					},
+					{}
+				)
+		);
+		const proxiedSnapshot = new Proxy(
+			{
+				nextModifierId: serialized.nextModifierId,
+				modifiers: new Proxy(proxiedModifiers, {})
+			},
+			{}
+		);
+
+		const restored = new EnemyStats(enemy, persistentModifiers);
+		expect(() => restored.setData(proxiedSnapshot)).not.toThrow();
+		expect(restored.get('ms')).toBe(3);
+		expect(restored.activeModifiers[0].remainingDuration).toBe(3);
+	});
+
 	it('uses the runtime stack lifecycle for acceleration skills', () => {
 		const stats = new EnemyStats(enemy, persistentModifiers);
 		const simulatedEnemy = {
@@ -172,5 +212,57 @@ describe('EnemyStats', () => {
 		manager.update(1.1);
 		expect(stats.get('ms')).toBe(3);
 		expect(stats.activeModifiers).toHaveLength(1);
+		expect(stats.getRuntimeModifierStacks(ACCELERATION_MODIFIER_SOURCE)).toBe(2);
+	});
+
+	it('preserves current HP percentage when max HP changes', () => {
+		expect(preserveHpPercentage(250, 1000, 1500)).toBe(375);
+		expect(preserveHpPercentage(1200, 1000, 500)).toBe(500);
+	});
+
+	it('combines multiple airflow modifiers using the normal stat formula', () => {
+		const stats = new EnemyStats(enemy, persistentModifiers);
+		stats.addModifier({ source: 'blower-1', mods: [AIRFLOW_MODIFIERS.downstream] });
+		stats.addModifier({ source: 'blower-2', mods: [AIRFLOW_MODIFIERS.downstream] });
+
+		// Base 1 * (1 + 0.8 + 0.8) * persistent 2.
+		expect(stats.get('ms')).toBe(5.2);
+
+		stats.addModifier({ source: 'blower-3', mods: [AIRFLOW_MODIFIERS.upstream] });
+		expect(stats.get('ms')).toBe(2.6);
+	});
+
+	it('identifies active runtime movement-speed buffs independently of debuffs', () => {
+		const stats = new EnemyStats(enemy, persistentModifiers);
+		expect(stats.hasRuntimeStatIncrease('ms')).toBe(false);
+
+		const buffHandle = stats.addModifier({
+			source: 'blower-buff',
+			mods: [AIRFLOW_MODIFIERS.downstream]
+		});
+		expect(stats.hasRuntimeStatIncrease('ms')).toBe(true);
+
+		stats.addModifier({ source: 'blower-debuff', mods: [AIRFLOW_MODIFIERS.upstream] });
+		expect(stats.get('ms')).toBe(1.8);
+		expect(stats.hasRuntimeStatIncrease('ms')).toBe(true);
+
+		stats.removeModifier(buffHandle);
+		expect(stats.hasRuntimeStatIncrease('ms')).toBe(false);
+	});
+
+	it('updates current HP through the percentage-preserving change callback', () => {
+		let currentHp = 250;
+		const stats = new EnemyStats(enemy, persistentModifiers, {}, 0, (previous, current) => {
+			currentHp = preserveHpPercentage(currentHp, previous.hp, current.hp);
+		});
+		const handle = stats.addModifier({
+			source: 'hp-buff',
+			mods: [{ key: 'hp', value: 0.5, mode: 'mul', order: 'initial' }]
+		});
+
+		expect(stats.get('hp')).toBe(1500);
+		expect(currentHp).toBe(375);
+		stats.removeModifier(handle);
+		expect(currentHp).toBe(250);
 	});
 });

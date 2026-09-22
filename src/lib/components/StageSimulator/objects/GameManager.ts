@@ -13,6 +13,7 @@ import { TileManager } from './TileManager';
 import { CountdownManager } from './ShaderCountdownManager';
 import type { GameWorld } from './GameWorld';
 import { liveStageRuntime, type StageRuntime } from './StageRuntime';
+import { addBlowerTileEffects, removeBlowerTileEffects } from '../functions/airflowHelpers';
 
 type MovementRoute = {
 	motionMode?: string;
@@ -394,6 +395,7 @@ export class GameManager {
 	removeTrap(trap: Trap) {
 		const key = `${trap.position.col},${trap.position.row}`;
 		if (this.traps.get(key) === trap) this.traps.delete(key);
+		removeBlowerTileEffects(this.tiles, trap);
 		if (trap.isRoadblock && trap.roadblockApplied) {
 			trap.roadblockApplied = false;
 			const value = trap.roadblockPreviousValue;
@@ -526,6 +528,7 @@ export class GameManager {
 			z = 40;
 		}
 		this.traps.set(`${pos.col},${pos.row}`, trap);
+		addBlowerTileEffects(this.tiles, trap);
 		if (trap.isRoadblock) {
 			trap.roadblockPreviousValue = this.mazeLayout[pos.row][pos.col];
 			trap.roadblockApplied = true;

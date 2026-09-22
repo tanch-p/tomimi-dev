@@ -18,6 +18,7 @@ import {
 	type StageRuntime
 } from '../objects/StageRuntime';
 import { shouldSkipOfflineSimulation } from '../config/stageBehaviors';
+import { addBlowerTileEffects, removeBlowerTileEffects } from './airflowHelpers';
 
 type SimulationOptions = Partial<OfflineStageRuntimeOptions> & {
 	persistentStatMods?: StatMods;
@@ -241,7 +242,7 @@ function cleanup(gameSimManager: GameSimManager) {
 	});
 }
 
-class GameSimManager {
+export class GameSimManager {
 	objects = [];
 	config;
 	mazeLayout: number[][];
@@ -375,7 +376,7 @@ class GameSimManager {
 		}
 	}
 
-	addTrap(data, actionKey = null, posType = 'game') {
+	addTrap(data: any, actionKey: string | null = null, posType = 'game') {
 		if (!data) {
 			data = this.config.traps.find((ele) => ele.alias === actionKey || ele.key === actionKey);
 		}
@@ -389,6 +390,7 @@ class GameSimManager {
 		if (existing) existing.remove();
 		const trap = new Trap(data, pos, this.isSimulation, null, this as any);
 		this.traps.set(positionKey, trap);
+		addBlowerTileEffects(this.tiles, trap);
 		if (trap.isRoadblock) {
 			trap.roadblockPreviousValue = this.mazeLayout[pos.row][pos.col];
 			trap.roadblockApplied = true;
@@ -400,6 +402,7 @@ class GameSimManager {
 	removeTrap(trap: Trap) {
 		const positionKey = `${trap.position.col},${trap.position.row}`;
 		if (this.traps.get(positionKey) === trap) this.traps.delete(positionKey);
+		removeBlowerTileEffects(this.tiles, trap);
 		if (!trap.isRoadblock || !trap.roadblockApplied) return;
 		trap.roadblockApplied = false;
 		this.updateMazeLayout(

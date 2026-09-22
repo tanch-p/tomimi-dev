@@ -7,7 +7,7 @@ import type { Enemy as EnemyType, Skill } from '$lib/types';
 import { SPFA } from './SPFA';
 import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/functions/spineHelpers';
-import { SkillManager } from './SkillManager';
+import { ACCELERATION_MODIFIER_SOURCE, SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import {
 	createAnimatedPathVisualisation,
@@ -16,11 +16,20 @@ import {
 } from '$lib/functions/pathVisualisationHelpers';
 import { getStageRuntime } from './StageRuntime';
 import { getStagePhaseBehavior } from '../config/stageBehaviors';
-import { EnemyStats } from './EnemyStats';
+import { EnemyStats, preserveHpPercentage, type EnemyFormStats } from './EnemyStats';
+import {
+	AIRFLOW_MODIFIER_SOURCE_PREFIX,
+	AIRFLOW_MODIFIERS,
+	getAirflowEffect,
+	type AirflowTileEffect
+} from '../functions/airflowHelpers';
 
 const moveMultiplier = 0.5;
 const animatedPathCountdownFadeDuration = 4;
 const movementFrameInterval = 1 / 30;
+const movementSpeedBuffIconWidth = 24;
+const movementSpeedBuffIconHeight = movementSpeedBuffIconWidth * (42 / 34);
+const movementSpeedBuffIconGap = 4;
 export class Enemy {
 	raycastPos: THREE.Vector3; //光标坐标在移动逻辑中被大量使用，造成了一些反直觉的现象
 	targetPos: THREE.Vector3;
@@ -86,6 +95,12 @@ export class Enemy {
 	animState = 'Idle'; //used as a key
 	darkness = 1;
 	sprite: THREE.Sprite;
+	movementSpeedBuffIcon: THREE.Sprite | null = null;
+	airflowMovementSpeedBuffIcon: THREE.Sprite | null = null;
+	movementSpeedBuffStackIcon: THREE.Sprite | null = null;
+	movementSpeedBuffStackTexture: THREE.CanvasTexture | null = null;
+	movementSpeedBuffStackCanvas: HTMLCanvasElement | null = null;
+	displayedAccelerationStacks = -1;
 	height: number;
 	width: number;
 	startElapsedTime = 0;
@@ -155,7 +170,8 @@ export class Enemy {
 			enemyData,
 			gameManager.persistentStatMods,
 			getStageRuntime(gameManager).specialMods,
-			(setData as any)?.formIndex ?? formIndex
+			(setData as any)?.formIndex ?? formIndex,
+			(previous, current) => this.handleEffectiveStatsChanged(previous, current)
 		);
 		if ((setData as any)?.statData) this.stats.setData((setData as any).statData);
 		this.assetManager = AssetManager.getInstance();
@@ -607,6 +623,101 @@ export class Enemy {
 				this.meshGroup.add(group);
 			}
 		}
+		this.initMovementSpeedBuffIcon();
+	}
+
+	private initMovementSpeedBuffIcon() {
+		if (!this.sprite) return;
+		const texture = this.assetManager.textures.get('enemy_movespeed_buff')?.texture;
+		if (!texture) return;
+
+		const material = new THREE.SpriteMaterial({
+			map: texture,
+			transparent: true,
+			depthTest: false,
+			depthWrite: false
+		});
+		const icon = new THREE.Sprite(material);
+		icon.scale.set(movementSpeedBuffIconWidth, movementSpeedBuffIconHeight, 1);
+		icon.position.set(
+			0,
+			this.sprite.position.y + this.sprite.scale.y / 2 + movementSpeedBuffIconHeight / 2,
+			this.sprite.position.z + 1
+		);
+		icon.renderOrder = 50;
+		this.movementSpeedBuffIcon = icon;
+		this.meshGroup.add(icon);
+
+		const airflowIcon = new THREE.Sprite(material.clone());
+		airflowIcon.scale.copy(icon.scale);
+		airflowIcon.position.copy(icon.position);
+		airflowIcon.renderOrder = icon.renderOrder;
+		airflowIcon.visible = false;
+		this.airflowMovementSpeedBuffIcon = airflowIcon;
+		this.meshGroup.add(airflowIcon);
+
+		this.initMovementSpeedBuffStackIcon(
+			icon,
+			movementSpeedBuffIconWidth,
+			movementSpeedBuffIconHeight
+		);
+		this.syncMovementSpeedBuffIcon();
+	}
+
+	private initMovementSpeedBuffStackIcon(
+		icon: THREE.Sprite,
+		iconWidth: number,
+		iconHeight: number
+	) {
+		const canvas = document.createElement('canvas');
+		canvas.width = 64;
+		canvas.height = 64;
+		const texture = new THREE.CanvasTexture(canvas);
+		texture.colorSpace = THREE.SRGBColorSpace;
+		texture.minFilter = THREE.LinearFilter;
+		texture.magFilter = THREE.LinearFilter;
+		const material = new THREE.SpriteMaterial({
+			map: texture,
+			transparent: true,
+			depthTest: false,
+			depthWrite: false
+		});
+		const stackIcon = new THREE.Sprite(material);
+		stackIcon.scale.set(16, 16, 1);
+		stackIcon.position.set(
+			icon.position.x + iconWidth * 0.3,
+			icon.position.y - iconHeight * 0.28,
+			icon.position.z + 1
+		);
+		stackIcon.renderOrder = icon.renderOrder + 1;
+		stackIcon.visible = false;
+		this.movementSpeedBuffStackCanvas = canvas;
+		this.movementSpeedBuffStackTexture = texture;
+		this.movementSpeedBuffStackIcon = stackIcon;
+		this.meshGroup.add(stackIcon);
+	}
+
+	private drawAccelerationStacks(stacks: number) {
+		if (
+			stacks === this.displayedAccelerationStacks ||
+			!this.movementSpeedBuffStackCanvas ||
+			!this.movementSpeedBuffStackTexture
+		)
+			return;
+		const context = this.movementSpeedBuffStackCanvas.getContext('2d');
+		if (!context) return;
+		context.clearRect(0, 0, 64, 64);
+		context.font = '700 44px Arial';
+		context.textAlign = 'center';
+		context.textBaseline = 'middle';
+		context.lineWidth = 9;
+		context.lineJoin = 'round';
+		context.strokeStyle = '#000000';
+		context.strokeText(String(stacks), 32, 34);
+		context.fillStyle = '#ffffff';
+		context.fillText(String(stacks), 32, 34);
+		this.movementSpeedBuffStackTexture.needsUpdate = true;
+		this.displayedAccelerationStacks = stacks;
 	}
 
 	setBlinkAnimationDurations() {
@@ -655,6 +766,100 @@ export class Enemy {
 		return this.skillManager?.getMovementSpeed
 			? this.skillManager.getMovementSpeed(persistentSpeed)
 			: this.moddedSpeed;
+	}
+
+	private handleEffectiveStatsChanged(previous: EnemyFormStats, current: EnemyFormStats) {
+		if (this.hp !== undefined && previous.hp !== current.hp) {
+			this.hp = preserveHpPercentage(this.hp, previous.hp, current.hp);
+		}
+		this.baseSpeed = current.ms;
+		this.moddedSpeed = current.ms;
+		this.syncMovementSpeedBuffIcon();
+	}
+
+	private syncMovementSpeedBuffIcon() {
+		if (!this.movementSpeedBuffIcon) return;
+		const hasMovementSpeedBuff = this.stats.hasRuntimeStatIncrease('ms');
+		const accelerationStacks = this.stats.getRuntimeModifierStacks(ACCELERATION_MODIFIER_SOURCE);
+		const hasAirflowBuff = this.stats
+			.getModifierHandlesBySourcePrefix(AIRFLOW_MODIFIER_SOURCE_PREFIX)
+			.some((modifier) => modifier.source.endsWith(':downstream'));
+		const showSeparateAirflowIcon = hasAirflowBuff && accelerationStacks > 0;
+		this.movementSpeedBuffIcon.visible = hasMovementSpeedBuff;
+		if (this.airflowMovementSpeedBuffIcon) {
+			this.airflowMovementSpeedBuffIcon.visible = showSeparateAirflowIcon;
+			const iconOffset = (movementSpeedBuffIconWidth + movementSpeedBuffIconGap) * 0.5;
+			this.movementSpeedBuffIcon.position.x = showSeparateAirflowIcon ? -iconOffset : 0;
+			this.airflowMovementSpeedBuffIcon.position.x = showSeparateAirflowIcon ? iconOffset : 0;
+		}
+		if (this.movementSpeedBuffStackIcon) {
+			this.movementSpeedBuffStackIcon.visible = hasMovementSpeedBuff && accelerationStacks > 0;
+			this.movementSpeedBuffStackIcon.position.x =
+				this.movementSpeedBuffIcon.position.x + movementSpeedBuffIconWidth * 0.3;
+			if (accelerationStacks > 0) this.drawAccelerationStacks(accelerationStacks);
+		}
+	}
+
+	private clearTemporaryStatModifiers() {
+		this.stats.clearRuntimeModifiers();
+		this.skillManager?.resetRuntimeStatModifiers();
+	}
+
+	private syncAirflowModifiers() {
+		if (!this.stats) return;
+		const currentModifiers = this.stats.getModifierHandlesBySourcePrefix(
+			AIRFLOW_MODIFIER_SOURCE_PREFIX
+		);
+		const action = this.actions?.[this.currentActionIndex];
+		const isInvisible = this.skills?.some((skill) => skill.key.includes('stealth'));
+		const canBeMovedByAirflow =
+			action?.type === 'MOVE' &&
+			!isInvisible &&
+			this.startDuration <= this.startElapsedTime &&
+			this.standbyTime <= 0 &&
+			this.state !== 'fall' &&
+			this.state !== 'revive' &&
+			!this.skillManager?.isHoldingForSummons &&
+			!this.skillManager?.isUsingSkill &&
+			['WALK', 'FLY'].includes(this.motionMode);
+		const desiredModifiers = new Map<
+			string,
+			(typeof AIRFLOW_MODIFIERS)[keyof typeof AIRFLOW_MODIFIERS]
+		>();
+
+		if (canBeMovedByAirflow) {
+			const [col, row] = this.gameManager.getGridPosition(this.raycastPos);
+			let previousPosition = this.route?.startPosition ?? { row, col };
+			for (let i = this.currentActionIndex - 1; i >= 0; i--) {
+				const previousAction = this.actions[i];
+				if (!['MOVE', 'APPEAR_AT_POS'].includes(previousAction.type)) continue;
+				previousPosition = previousAction.position;
+				break;
+			}
+			this.movementDirectionScratch.set(
+				Number(action.position.col) - Number(previousPosition.col),
+				Number(previousPosition.row) - Number(action.position.row),
+				0
+			);
+			if (this.movementDirectionScratch.lengthSq() > 0) {
+				this.movementDirectionScratch.normalize();
+				const tile = this.gameManager.tiles?.get(`${col},${row}`) as
+					{ effects?: { airflow?: AirflowTileEffect[] } } | undefined;
+				for (const airflow of tile?.effects?.airflow ?? []) {
+					const effect = getAirflowEffect(airflow.direction, this.movementDirectionScratch);
+					if (!effect) continue;
+					desiredModifiers.set(`${airflow.source}:${effect}`, AIRFLOW_MODIFIERS[effect]);
+				}
+			}
+		}
+
+		for (const modifier of currentModifiers) {
+			if (!desiredModifiers.has(modifier.source)) this.stats.removeModifier(modifier.handle);
+		}
+		for (const [source, modifier] of desiredModifiers) {
+			if (currentModifiers.some((current) => current.source === source)) continue;
+			this.stats.addModifier({ source, mods: [modifier] });
+		}
 	}
 	handlePosChange() {
 		const gridPos = this.gameManager.getGridPosFromVectors(this.meshGroup.position);
@@ -718,6 +923,7 @@ export class Enemy {
 				? 100
 				: 10
 			: 100;
+		const maximumSpeed = Math.max(theoreticalSpeed, this.inertia.length());
 		const speedRatio = theoreticalSpeed > 0 ? this.inertia.length() / theoreticalSpeed : 0;
 		const actualAvoidance = this.getAvoidanceForce(direction).multiplyScalar(
 			Math.max(speedRatio, 0.5)
@@ -731,7 +937,9 @@ export class Enemy {
 		this.clampMagnitude(acceleration, maxSteeringForce);
 
 		const velocity = acceleration.multiplyScalar(movementFrameInterval).add(this.inertia);
-		this.clampMagnitude(velocity, theoreticalSpeed);
+		// A removed speed buff changes the target speed, but existing momentum must
+		// decay through steering instead of being discarded in a single frame.
+		this.clampMagnitude(velocity, maximumSpeed);
 		this.inertia.copy(velocity);
 		return velocity;
 	}
@@ -1013,6 +1221,7 @@ export class Enemy {
 		)
 			return;
 		if (this.exit) return;
+		this.syncAirflowModifiers();
 		this.stats?.update(delta);
 		if (this.timeoutDuration !== null) {
 			this.timeoutElapsedTime += delta;
@@ -1334,6 +1543,7 @@ export class Enemy {
 	}
 
 	onDeath(): void {
+		this.clearTemporaryStatModifiers();
 		this.skel.state.setAnimation(0, 'Die', false);
 		this.exit = true;
 	}
@@ -1351,6 +1561,8 @@ export class Enemy {
 			this.skillManager.reset();
 		}
 		if (!this.gameManager.isSimulation) {
+			this.movementSpeedBuffStackTexture?.dispose();
+			this.movementSpeedBuffStackTexture = null;
 			if (this.sprite) {
 				const objectIndex = this.gameManager.world.objects.findIndex(
 					(ele) => ele.uuid === this.sprite.uuid
@@ -1549,6 +1761,7 @@ export class Enemy {
 	}
 
 	handleFormIndexChange() {
+		this.clearTemporaryStatModifiers();
 		this.animState = 'Revive';
 		if (!this.reviveDuration) {
 			this.reviveDuration = getAnimDuration(
