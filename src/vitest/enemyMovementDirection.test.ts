@@ -5,7 +5,7 @@ import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.sv
 import { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 import { SPFA } from '$lib/components/StageSimulator/objects/SPFA';
 import { generateMaze } from '$lib/functions/mazeHelpers';
-import stageData from '../lib/data/stages/ro_stage_data/level_rogue6_5-1.json' with { type: 'json' };
+import stageData from '../lib/data/stages/ro_stage_data/ro6/level_rogue6_5-1.json' with { type: 'json' };
 
 const route = {
 	motionMode: 'WALK',

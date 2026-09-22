@@ -20,17 +20,19 @@ type MultiStageData = Record<string, unknown> & {
 	data: MapConfig[];
 };
 
+type RogueStageFolder = 'ro1' | 'ro2' | 'ro3' | 'ro4' | 'ro5' | 'ro6';
+
 const stageIndex = ISStages as unknown as Record<string, { key: string }>;
 const enemyTemplates = enemyDatabase as unknown as Record<string, Enemy>;
 
-export const getStageData = async (stageName: string) => {
+export const getStageData = async (stageName: string, folder: RogueStageFolder) => {
 	const levelId = stageIndex[stageName]?.key;
 	if (!levelId) {
 		throw new Error(`Unknown stage: ${stageName}`);
 	}
 
 	const data = await import(
-		`../data/stages/ro_stage_data/level_${levelId.replace('level_', '')}.json`
+		`../data/stages/ro_stage_data/${folder}/level_${levelId.replace('level_', '')}.json`
 	);
 	return data.default;
 };
@@ -82,13 +84,21 @@ export const prepareStage = (mapConfig: MapConfig, language: Language) => {
 	return { mapConfig, enemies, traps };
 };
 
-export const loadStage = async (stageName: string, language: Language) => {
-	const mapConfig = (await getStageData(stageName)) as MapConfig;
+export const loadStage = async (
+	stageName: string,
+	language: Language,
+	folder: RogueStageFolder
+) => {
+	const mapConfig = (await getStageData(stageName, folder)) as MapConfig;
 	return prepareStage(mapConfig, language);
 };
 
-export const loadStageVariants = async (stageName: string, language: Language) => {
-	const stageData = (await getStageData(stageName)) as MultiStageData;
+export const loadStageVariants = async (
+	stageName: string,
+	language: Language,
+	folder: RogueStageFolder
+) => {
+	const stageData = (await getStageData(stageName, folder)) as MultiStageData;
 	return {
 		stageData,
 		stages: stageData.data.map((mapConfig: MapConfig) => prepareStage(mapConfig, language))

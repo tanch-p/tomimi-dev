@@ -89,7 +89,10 @@ const cases = [
 ];
 
 test.each(cases)('SPFA: %s routeIndex %i', async (levelId, routeIndex, expected) => {
-	const mapConfig = await import(`../lib/data/stages/ro_stage_data/level_${levelId}.json`);
+	const folder = levelId.replace('rogue', 'ro').split('_')[0];
+	const mapConfig = await import(
+		`../lib/data/stages/ro_stage_data/${folder}/level_${levelId}.json`
+	);
 	const mazeLayout = generateMaze(mapConfig?.mapData.map, mapConfig?.mapData.tiles);
 	const pathFinder = new SPFA(mazeLayout);
 	const route = convertMovementConfig(mapConfig?.routes[routeIndex], mazeLayout);
@@ -139,7 +142,7 @@ test.each(cases)('SPFA: %s routeIndex %i', async (levelId, routeIndex, expected)
 });
 
 test('SPFA: rogue6_3-3 route enters rubble when its checkpoints are on the rubble', async () => {
-	const stageFile = await import('../lib/data/stages/ro_stage_data/level_rogue6_3-3.json');
+	const stageFile = await import('../lib/data/stages/ro_stage_data/ro6/level_rogue6_3-3.json');
 	const mapConfig = stageFile.data[0];
 	const mazeLayout = generateMaze(mapConfig.mapData.map, mapConfig.mapData.tiles);
 	const pathFinder = new SPFA(mazeLayout);
@@ -187,7 +190,7 @@ test('SPFA: rogue6_3-3 route enters rubble when its checkpoints are on the rubbl
 });
 
 test('full simulation builds every action and walks through predefined and user roadblocks', async () => {
-	const stageFile = await import('../lib/data/stages/ro_stage_data/level_rogue6_3-3.json');
+	const stageFile = await import('../lib/data/stages/ro_stage_data/ro6/level_rogue6_3-3.json');
 	const mapConfig = structuredClone(stageFile.data[0]);
 	const stageEnemy = mapConfig.enemies.find((enemy) => enemy.id === 'enemy_1076_bsthmr');
 	const enemy = structuredClone(enemyDatabase[stageEnemy.prefabKey]);

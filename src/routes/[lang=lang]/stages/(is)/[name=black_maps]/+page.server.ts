@@ -4,7 +4,7 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	const language = params.lang as Language;
-	const { stageData, stages } = await loadStageVariants(params.name, language);
+	const { stageData, stages } = await loadStageVariants(params.name, language, 'ro6');
 	const rogueTopic: RogueTopic = 'rogue_black';
 	return {
 		mapConfig: stages[0].mapConfig,

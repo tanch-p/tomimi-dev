@@ -4,7 +4,7 @@ import {
 	getBaseCount,
 	getEnemyCountPermutations
 } from '$lib/functions/waveHelpers';
-import stageData from '../lib/data/stages/ro_stage_data/level_rogue6_1-1.json' with { type: 'json' };
+import stageData from '../lib/data/stages/ro_stage_data/ro6/level_rogue6_1-1.json' with { type: 'json' };
 import type { MapConfig, WaveAction } from '$lib/types';
 
 describe('enemy wave counts', () => {
