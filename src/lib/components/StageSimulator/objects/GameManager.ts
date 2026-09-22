@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import type { Enemy as EnemyType, MapConfig, Position } from '$lib/types';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { AssetManager } from './AssetManager';
 import { generateMaze } from '$lib/functions/mazeHelpers';
@@ -542,7 +542,7 @@ export class GameManager {
 		this.spawnManager.reset();
 		this.clearEnemies();
 		this.clearTraps();
-		this.runtime.setValue('waveElapsedTime', 0);
+		this.runtime.waveElapsedTime = 0;
 		this.spawnManager.addBranch(key, structuredClone(this.config.branches[key]), index);
 	}
 
@@ -729,16 +729,16 @@ export class GameManager {
 	update(delta: number) {
 		this.countdownManager.update(delta);
 		if (this.runtime.tokenCooldownRemaining > 0) {
-			this.runtime.setValue(
-				'tokenCooldownRemaining',
-				Math.max(0, this.runtime.tokenCooldownRemaining - delta)
+			this.runtime.tokenCooldownRemaining = Math.max(
+				0,
+				this.runtime.tokenCooldownRemaining - delta
 			);
 		}
 		this.traps.forEach((trap) => {
 			trap.update(delta);
 		});
 
-		this.runtime.setValue('scaledElapsedTime', this.runtime.scaledElapsedTime + delta);
+		this.runtime.scaledElapsedTime += delta;
 		this.noWaveBlockingSpawns =
 			this.enemiesOnMap.filter((enemy) => !enemy.dontBlockWave).length === 0;
 		this.noEnemyAlive = this.enemiesOnMap.filter((enemy) => !enemy.notCountInTotal).length === 0;

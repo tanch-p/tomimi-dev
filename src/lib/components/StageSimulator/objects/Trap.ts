@@ -4,7 +4,7 @@ import trapLookup from '$lib/data/trap/traps.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
 import branchInfo from '$lib/data/stages/branch_info.json';
 import { AssetManager } from './AssetManager';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 import { getAnimDuration, getIdleAnimName, getSpineMetaData } from '$lib/functions/spineHelpers';
 import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { clearObjects } from '$lib/functions/threejsHelpers';
@@ -371,7 +371,7 @@ export class Trap {
 		const traps = this.gameManager?.traps;
 		const tokensDisabled =
 			this.selected || Boolean(traps && Array.from(traps.values()).some((trap) => trap.selected));
-		getStageRuntime(this.gameManager).setValue('tokensDisabled', tokensDisabled);
+		getStageRuntime(this.gameManager).tokensDisabled = tokensDisabled;
 		if (tokensDisabled) this.gameManager?.world.hideRollOverMesh?.();
 	}
 

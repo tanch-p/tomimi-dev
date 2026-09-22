@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte.js';
 import type { AssetManager } from '$lib/components/StageSimulator/objects/AssetManager';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 
@@ -397,8 +397,8 @@ export function createPathVisualisation(
 					i === 0
 						? startPos
 						: paths[i - 1].type === 'DISAPPEAR'
-						? paths[i - 2].position
-						: paths[i - 1].position;
+							? paths[i - 2].position
+							: paths[i - 1].position;
 				const { x, y } = gameManager.getVectorCoordinates(
 					waitPosition,
 					i === 0 ? spawnOffset : reachOffset

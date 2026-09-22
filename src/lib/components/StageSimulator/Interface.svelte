@@ -1,20 +1,12 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
-	import { onDestroy, onMount } from 'svelte';
-	import { GameConfig } from './objects/GameConfig';
+	import { GameConfig } from './objects/GameConfig.svelte.js';
 	import enemyCount from '$lib/images/is/enemy_count.webp';
 	import Icon from '../Icon.svelte';
 	import spriteCost from '$lib/images/is/sprite_cost.webp';
 	import SeekBar from './SeekBar.svelte';
 	import iconToken from '$lib/images/is/icon_profession_token.webp';
-
-	type TokenCard = {
-		count: number;
-		cost?: number;
-		key: string;
-		selected: boolean;
-	} & Record<string, unknown>;
 
 	interface Props {
 		game: any;
@@ -40,48 +32,45 @@
 		maxCost = 99
 	}: Props = $props();
 
-	let card: TokenCard | null = $state(GameConfig.tokenCard),
-		totalTime = $state(0),
-		min = $state(0),
-		sec = $state(0),
-		totalDeductedCost = $state(GameConfig.totalDeductedCost),
-		tokenCooldownDuration = $state(GameConfig.tokenCooldownDuration),
-		tokenCooldownRemaining = $state(GameConfig.tokenCooldownRemaining),
-		unsubscribeFns = [],
-		isPaused = $state(false),
-		simMode = $state('wave_normal'),
-		speedFactor = $state(GameConfig.speedFactor);
+	let card = $derived(GameConfig.tokenCard),
+		totalTime = $derived(GameConfig.scaledElapsedTime),
+		min = $derived(Math.floor(GameConfig.waveElapsedTime / 60)),
+		sec = $derived(Math.floor(GameConfig.waveElapsedTime % 60)),
+		totalDeductedCost = $derived(GameConfig.totalDeductedCost),
+		tokenCooldownDuration = $derived(GameConfig.tokenCooldownDuration),
+		tokenCooldownRemaining = $derived(GameConfig.tokenCooldownRemaining),
+		isPaused = $derived(GameConfig.isPaused),
+		simMode = $derived(GameConfig.mode),
+		speedFactor = $derived(GameConfig.speedFactor);
 
 	let cooldownProgress = $derived(
 		tokenCooldownDuration > 0
 			? Math.min(1, Math.max(0, 1 - tokenCooldownRemaining / tokenCooldownDuration))
 			: 1
 	);
-	$effect(() => {
-		if (mapConfig?.levelId === 'level_rogue6_c-2' && card) card.cost = 10;
-	});
-
 	function handleSpeedFactor() {
 		switch (speedFactor) {
 			case 1:
-				return GameConfig.setValue('speedFactor', 2);
+				return (GameConfig.speedFactor = 2);
 			case 2:
-				return GameConfig.setValue('speedFactor', 4);
+				return (GameConfig.speedFactor = 4);
 			case 4:
-				return GameConfig.setValue('speedFactor', 1);
+				return (GameConfig.speedFactor = 1);
 		}
 	}
 	function handlePause() {
-		GameConfig.setValue('isPaused', !GameConfig.isPaused);
-		GameConfig.setValue('state', 'running');
+		GameConfig.isPaused = !GameConfig.isPaused;
+		GameConfig.state = 'running';
 	}
 	function handleReset() {
 		requestReset();
 	}
 	function toggleTokenCard() {
-		if (!card || card.count <= 0) return;
+		if (!card || (card.count ?? 0) <= 0) return;
 
-		GameConfig.setValue('tokenCard', { ...card, selected: !card.selected });
+		const selected = !card.selected;
+		GameConfig.tokenCard = { ...card, selected };
+		if (!selected) game?.hideRollOverMesh();
 	}
 	function handleKeydown(event: KeyboardEvent) {
 		const target = event.target;
@@ -99,59 +88,6 @@
 
 		toggleTokenCard();
 	}
-	// Sync class -> store
-	onMount(() => {
-		unsubscribeFns.push(
-			GameConfig.subscribe('speedFactor', (value: number) => {
-				speedFactor = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('scaledElapsedTime', (value) => {
-				totalTime = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('waveElapsedTime', (value) => {
-				min = Math.floor(value / 60);
-				sec = Math.floor(value % 60);
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('tokenCard', (value: TokenCard | null) => {
-				card = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('totalDeductedCost', (value: number) => {
-				totalDeductedCost = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('tokenCooldownDuration', (value: number) => {
-				tokenCooldownDuration = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('tokenCooldownRemaining', (value: number) => {
-				tokenCooldownRemaining = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('isPaused', (value) => {
-				isPaused = value;
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('mode', (value) => {
-				simMode = value;
-			})
-		);
-	});
-
-	onDestroy(() => {
-		unsubscribeFns.forEach((fn) => fn());
-	});
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -222,7 +158,7 @@
 </div>
 
 <div class="absolute bottom-0 right-0">
-	{#if card?.count > 0}
+	{#if card && (card.count ?? 0) > 0}
 		<button
 			class="relative border border-[#ffffff80] {card.selected ? '' : 'opacity-50'}"
 			onclick={toggleTokenCard}

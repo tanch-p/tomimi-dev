@@ -15,8 +15,8 @@
 	import DLDGPN from '$lib/images/is/DLDGPN.webp';
 	import RandomGroupList from './RandomGroupList.svelte';
 	import { defaultOpenStageSim } from '../../routes/stores';
-	import { GameConfig, type SimulationMode } from './StageSimulator/objects/GameConfig';
-	import { onDestroy, onMount } from 'svelte';
+	import { GameConfig, type SimulationMode } from './StageSimulator/objects/GameConfig.svelte.js';
+	import { onDestroy } from 'svelte';
 
 	interface Props {
 		mapConfig: any;
@@ -55,8 +55,8 @@
 		randomSeeds = $state(Array.from({ length: 50 }, () => Math.random())),
 		resetGeneration = $state(0),
 		mode = $state('predefined'),
-		simMode = $state('wave_normal'),
 		bonusKey = $state('');
+	let simMode = $derived(GameConfig.mode);
 
 	const permutationSignature = (permutation: unknown) => JSON.stringify(permutation);
 	const simulationModes: SimulationMode[] = ['wave_normal', 'wave_summons'];
@@ -146,22 +146,12 @@
 			selectedEnemyCount = undefined;
 			selectedPermutationSignature = undefined;
 			bonusKey = '';
-			GameConfig.setValue('mode', 'wave_normal');
+			GameConfig.mode = 'wave_normal';
 		}
 	});
 
-	const unsubscribeFns: Array<() => void> = [];
-	onMount(() => {
-		unsubscribeFns.push(
-			GameConfig.subscribe('mode', (value: string) => {
-				simMode = value;
-			})
-		);
-	});
-
 	onDestroy(() => {
-		GameConfig.setValue('mode', 'wave_normal');
-		unsubscribeFns.forEach((fn) => fn());
+		GameConfig.mode = 'wave_normal';
 	});
 </script>
 
@@ -183,7 +173,7 @@
 						key
 							? 'bg-gray-600'
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-						onclick={() => GameConfig.setValue('mode', key)}
+						onclick={() => (GameConfig.mode = key)}
 					>
 						{getTranslations(language)[key]}
 					</button>

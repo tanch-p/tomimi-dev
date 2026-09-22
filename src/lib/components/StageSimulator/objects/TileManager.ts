@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 import { TextSprite } from './TextSprite';
 import { AssetManager } from './AssetManager';
 
@@ -48,7 +48,7 @@ export class TileManager {
 			case 'tile_telout':
 				boxGroup.add(
 					this.createTeleport(
-						blackboard?.direction || "left",
+						blackboard?.direction || 'left',
 						tileName,
 						blackboard?.colorIndex,
 						blackboard?.type
@@ -475,8 +475,8 @@ export class TileManager {
 				i === 1
 					? 0
 					: i === 0
-					? (GameConfig.gridSize - 14) / 3.5
-					: -(GameConfig.gridSize - 14) / 3.5;
+						? (GameConfig.gridSize - 14) / 3.5
+						: -(GameConfig.gridSize - 14) / 3.5;
 			line.position.z = 1.02;
 			group.add(line);
 		}
@@ -491,8 +491,8 @@ export class TileManager {
 				i === 1
 					? 0
 					: i === 0
-					? (GameConfig.gridSize - 14) / 3.5
-					: -(GameConfig.gridSize - 14) / 3.5;
+						? (GameConfig.gridSize - 14) / 3.5
+						: -(GameConfig.gridSize - 14) / 3.5;
 			line.position.z = 1.02;
 			group.add(line);
 		}
@@ -573,8 +573,8 @@ export class TileManager {
 					(i === 0
 						? GameConfig.gridSize / 2 - stepWidth / 2
 						: i === 1
-						? 0
-						: -GameConfig.gridSize / 2 + stepWidth / 2) - 2.5;
+							? 0
+							: -GameConfig.gridSize / 2 + stepWidth / 2) - 2.5;
 				group.add(stepGroup);
 			});
 		}
@@ -582,8 +582,8 @@ export class TileManager {
 			type === 'arrow'
 				? `tel_arrow_${index}`
 				: tileName === 'tile_telin'
-				? 'tel_block_in'
-				: 'tel_block_out'
+					? 'tel_block_in'
+					: 'tel_block_out'
 		);
 		const arrowGroup = new THREE.Group();
 		const arrowWidth = (GameConfig.gridSize * 2) / 10;
@@ -622,19 +622,19 @@ export class TileManager {
 			direction === 'right'
 				? Math.PI
 				: direction === 'up'
-				? -Math.PI / 2
-				: direction === 'down'
-				? Math.PI / 2
-				: 0;
+					? -Math.PI / 2
+					: direction === 'down'
+						? Math.PI / 2
+						: 0;
 		if (type === 'block') {
 			rotation =
 				direction === 'right'
 					? Math.PI / 2
 					: direction === 'up'
-					? Math.PI
-					: direction === 'down'
-					? 0
-					: -Math.PI / 2;
+						? Math.PI
+						: direction === 'down'
+							? 0
+							: -Math.PI / 2;
 			if (tileName === 'tile_telout') {
 				if (direction === 'up') {
 					rotation = 0;

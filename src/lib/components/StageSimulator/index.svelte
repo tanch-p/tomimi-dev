@@ -8,7 +8,7 @@
 	import Interface from './Interface.svelte';
 	import SpawnTimeView from './SpawnTimeView.svelte';
 	import Settings from './Settings.svelte';
-	import { GameConfig } from './objects/GameConfig';
+	import { GameConfig } from './objects/GameConfig.svelte.js';
 	import { getSimulatedData } from './functions/Simulator';
 	import BranchSummons from './BranchSummons.svelte';
 	import { generateBranchTimeline } from '$lib/functions/waveHelpers';
@@ -26,8 +26,8 @@
 	let waveData = $derived(scenario.waveData);
 	let timeline = $derived(scenario.timeline);
 
-	let simMode = $state('wave_normal'),
-		branchKey = $state(''),
+	let simMode = $derived(GameConfig.mode);
+	let branchKey = $state(''),
 		branchIndex = $state(-1);
 	let assetManager = AssetManager.getInstance(),
 		canvasElement: HTMLCanvasElement | undefined = $state(),
@@ -139,7 +139,7 @@
 				enemies,
 				revision: scenario.revision
 			});
-			GameConfig.setValue('state', 'ready');
+			GameConfig.state = 'ready';
 		} else {
 			assetsReady = true;
 			resetGame({ config: mapConfig, waveData, enemies, revision: scenario.revision });
@@ -152,20 +152,6 @@
 	const unsubscribeFns: Array<() => void> = [];
 	onMount(() => {
 		unsubscribeFns.push(obstacleEventStore.subscribe(handleObstacleEvents));
-		unsubscribeFns.push(
-			GameConfig.subscribe('mode', (mode: string) => {
-				simMode = mode;
-				if (game && assetsReady && !isDestroyed) game.restart({ resetWaveIndex: false });
-			})
-		);
-		unsubscribeFns.push(
-			GameConfig.subscribe('stagePhaseIndex', () => {
-				queueMicrotask(() => {
-					initialSimulationWaveIndex = GameConfig.currentWaveIndex;
-					requestSimulation(latestObstacleSnapshot);
-				});
-			})
-		);
 	});
 
 	onDestroy(() => {
@@ -202,6 +188,25 @@
 	});
 	$effect(() => {
 		simulationInputsChanged(mapConfig, scenario.revision, enemies);
+	});
+	let previousMode = GameConfig.mode;
+	$effect(() => {
+		const mode = GameConfig.mode;
+		if (mode === previousMode) return;
+		previousMode = mode;
+		untrack(() => {
+			if (game && assetsReady && !isDestroyed) game.restart({ resetWaveIndex: false });
+		});
+	});
+	let previousStagePhaseIndex = GameConfig.stagePhaseIndex;
+	$effect(() => {
+		const stagePhaseIndex = GameConfig.stagePhaseIndex;
+		if (stagePhaseIndex === previousStagePhaseIndex) return;
+		previousStagePhaseIndex = stagePhaseIndex;
+		queueMicrotask(() => {
+			initialSimulationWaveIndex = GameConfig.currentWaveIndex;
+			requestSimulation(latestObstacleSnapshot);
+		});
 	});
 </script>
 

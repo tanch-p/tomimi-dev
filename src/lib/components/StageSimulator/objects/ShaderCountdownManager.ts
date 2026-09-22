@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { AssetManager } from './AssetManager';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 
 // Countdown Manager Class
 export class CountdownManager {

@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { getAnimDuration, getSkillAnimName } from '$lib/functions/spineHelpers';
 import { Enemy } from './Enemy';
 import { AssetManager } from './AssetManager';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 import { shuffleArray } from '$lib/functions/waveHelpers';
 import { getStageRuntime } from './StageRuntime';
 
@@ -63,7 +63,7 @@ export class ActiveSkill {
 			this.createSkillBar();
 			this.skillBar.renderOrder = 1;
 		}
-		this.maxUsageCount = this.isSummonSkill ? skill.count ?? 0 : skill.max_count || 0;
+		this.maxUsageCount = this.isSummonSkill ? (skill.count ?? 0) : skill.max_count || 0;
 
 		if (skill.branch_id) {
 			this.branchKey = skill.branch_id;

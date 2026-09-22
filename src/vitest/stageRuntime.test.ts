@@ -1,6 +1,9 @@
 import { afterEach, expect, test } from 'vitest';
-import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
-import { OfflineStageRuntime } from '$lib/components/StageSimulator/objects/StageRuntime';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte.js';
+import {
+	liveStageRuntime,
+	OfflineStageRuntime
+} from '$lib/components/StageSimulator/objects/StageRuntime';
 import { SpawnManager } from '$lib/components/StageSimulator/objects/SpawnManager';
 
 function createRuntime(seed = 123) {
@@ -16,18 +19,22 @@ function createRuntime(seed = 123) {
 }
 
 afterEach(() => {
-	GameConfig.setValue('scaledElapsedTime', 0);
-	GameConfig.setValue('waveElapsedTime', 0);
+	GameConfig.scaledElapsedTime = 0;
+	GameConfig.waveElapsedTime = 0;
+	GameConfig.tokenCooldownRemaining = 0;
+	GameConfig.totalDeductedCost = 0;
+	GameConfig.speedFactor = 4;
+	GameConfig.specialMods = {};
 });
 
-test('offline runtime clock updates do not mutate live GameConfig state', () => {
-	GameConfig.setValue('scaledElapsedTime', 42);
-	GameConfig.setValue('waveElapsedTime', 12);
+test('offline runtime updates do not mutate live GameConfig state', () => {
+	GameConfig.scaledElapsedTime = 42;
+	GameConfig.waveElapsedTime = 12;
 	const runtime = createRuntime();
 
-	runtime.setValue('scaledElapsedTime', 90);
-	runtime.setValue('waveElapsedTime', 50);
-	runtime.setValue('currentWaveIndex', 3);
+	runtime.scaledElapsedTime = 90;
+	runtime.waveElapsedTime = 50;
+	runtime.currentWaveIndex = 3;
 
 	expect(runtime.scaledElapsedTime).toBe(90);
 	expect(runtime.waveElapsedTime).toBe(50);
@@ -36,55 +43,47 @@ test('offline runtime clock updates do not mutate live GameConfig state', () => 
 	expect(GameConfig.waveElapsedTime).toBe(12);
 });
 
-test('offline runtime batches correlated state without touching the live store', () => {
-	GameConfig.setValue('tokenCooldownRemaining', 9);
+test('offline runtime correlated state remains independent from live state', () => {
+	GameConfig.tokenCooldownRemaining = 9;
 	const runtime = createRuntime();
-	const snapshots: Array<{ remaining: number; deducted: number }> = [];
-	const unsubscribe = runtime.subscribe('tokenCooldownRemaining', (remaining) => {
-		snapshots.push({ remaining, deducted: runtime.totalDeductedCost });
-	});
 
-	runtime.batch(() => {
-		runtime.setValue('tokenCooldownRemaining', 4);
-		runtime.setValue('tokenCooldownRemaining', 3);
-		runtime.setValue('totalDeductedCost', 10);
-	});
-	unsubscribe();
+	runtime.tokenCooldownRemaining = 3;
+	runtime.totalDeductedCost = 10;
 
-	expect(snapshots).toStrictEqual([{ remaining: 3, deducted: 10 }]);
+	expect(runtime.tokenCooldownRemaining).toBe(3);
+	expect(runtime.totalDeductedCost).toBe(10);
 	expect(GameConfig.tokenCooldownRemaining).toBe(9);
+	expect(GameConfig.totalDeductedCost).toBe(0);
 });
 
-test('live config does not publish unchanged values', () => {
-	GameConfig.setValue('speedFactor', 4);
-	const published: number[] = [];
-	const unsubscribe = GameConfig.subscribe('speedFactor', (value) => published.push(value));
+test('live runtime reads and writes the rune-backed GameConfig', () => {
+	GameConfig.speedFactor = 4;
+	liveStageRuntime.speedFactor = 2;
+	liveStageRuntime.scaledElapsedTime = 6;
 
-	GameConfig.setValue('speedFactor', 4);
-	GameConfig.setValue('speedFactor', 2);
-	GameConfig.setValue('speedFactor', 2);
-	unsubscribe();
-	GameConfig.setValue('speedFactor', 4);
+	expect(GameConfig.speedFactor).toBe(2);
+	expect(GameConfig.scaledElapsedTime).toBe(6);
 
-	expect(published).toStrictEqual([2]);
+	GameConfig.waveElapsedTime = 12;
+	expect(liveStageRuntime.waveElapsedTime).toBe(12);
 });
 
-test('live config batches reset notifications after all values are coherent', () => {
-	GameConfig.setValue('scaledElapsedTime', 0);
-	GameConfig.setValue('waveElapsedTime', 0);
-	const snapshots: Array<{ scaled: number; wave: number }> = [];
-	const unsubscribe = GameConfig.subscribe('scaledElapsedTime', (scaled) => {
-		snapshots.push({ scaled, wave: GameConfig.waveElapsedTime });
+test('offline runtime copies nested live rune state into plain simulation state', () => {
+	GameConfig.specialMods = { enemy_test: { skill: { value: 2 } } } as any;
+	const runtime = new OfflineStageRuntime({
+		mode: 'wave_normal',
+		currentWaveIndex: 0,
+		stagePhaseIndex: 0,
+		eliteMode: false,
+		specialMods: GameConfig.specialMods,
+		steeringEnabled: true
 	});
 
-	GameConfig.batch(() => {
-		GameConfig.setValue('scaledElapsedTime', 5);
-		GameConfig.setValue('scaledElapsedTime', 6);
-		GameConfig.setValue('waveElapsedTime', 12);
-	});
-	unsubscribe();
-
-	expect(snapshots).toStrictEqual([{ scaled: 6, wave: 12 }]);
+	expect(runtime.specialMods).toEqual(GameConfig.specialMods);
+	expect(runtime.specialMods).not.toBe(GameConfig.specialMods);
+	expect((runtime.specialMods as any).enemy_test).not.toBe(
+		(GameConfig.specialMods as any).enemy_test
+	);
 });
 
 test('offline runtimes replay random decisions deterministically', () => {
@@ -100,8 +99,8 @@ test('offline runtimes replay random decisions deterministically', () => {
 
 test('spawn manager reset clears local and runtime timing state', () => {
 	const runtime = createRuntime();
-	runtime.setValue('currentWaveIndex', 3);
-	runtime.setValue('waveElapsedTime', 12);
+	runtime.currentWaveIndex = 3;
+	runtime.waveElapsedTime = 12;
 	const manager = Object.create(SpawnManager.prototype) as any;
 	Object.assign(manager, {
 		gameManager: { runtime },

@@ -1,5 +1,5 @@
 import type { MapConfig, Enemy as EnemyType, Position, Wave } from '$lib/types';
-import { GameConfig } from '../objects/GameConfig';
+import { GameConfig } from '../objects/GameConfig.svelte.js';
 import { GameMap } from '../objects/GameMap';
 import { SpawnManager } from '../objects/SpawnManager';
 import * as THREE from 'three';
@@ -414,7 +414,7 @@ class GameSimManager {
 	}
 
 	update(delta: number) {
-		this.runtime.setValue('scaledElapsedTime', this.runtime.scaledElapsedTime + delta);
+		this.runtime.scaledElapsedTime += delta;
 		this.noWaveBlockingSpawns =
 			this.enemiesOnMap.filter((enemy) => !enemy.dontBlockWave).length === 0;
 		this.noEnemyAlive = this.enemiesOnMap.filter((enemy) => !enemy.notCountInTotal).length === 0;

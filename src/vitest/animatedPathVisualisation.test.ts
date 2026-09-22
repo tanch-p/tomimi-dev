@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import * as THREE from 'three';
 import { Enemy } from '$lib/components/StageSimulator/objects/Enemy';
-import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte.js';
 import type { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 import { createAnimatedPathVisualisation } from '$lib/functions/pathVisualisationHelpers';
 

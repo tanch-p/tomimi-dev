@@ -7,7 +7,7 @@
 	import EnemyCount from './EnemyCount.svelte';
 	import EnemyStatDisplay from './EnemyStatDisplay.svelte';
 	import ModsCheck from './ModsCheck.svelte';
-	import { GameConfig } from './StageSimulator/objects/GameConfig';
+	import { GameConfig } from './StageSimulator/objects/GameConfig.svelte.js';
 	import TrapContainer from './TrapContainer.svelte';
 
 	let {

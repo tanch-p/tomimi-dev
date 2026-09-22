@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
-	import { GameConfig } from './objects/GameConfig';
+	import { onDestroy } from 'svelte';
+	import { GameConfig } from './objects/GameConfig.svelte.js';
 
 	interface Props {
 		game: any;
@@ -12,29 +12,29 @@
 
 	let totalTime = $derived((Object?.keys(simulatedData?.t)?.length ?? 1) - 1);
 
-	let seekbarElement = $state(),
-		progressElement = $state();
-	let progress = $state(0);
+	let seekbarElement = $state<HTMLDivElement>(),
+		progressElement = $state<HTMLDivElement>();
+	let progress = $derived(totalTime > 0 ? (GameConfig.scaledElapsedTime / totalTime) * 100 : 0);
 	let tooltipPosition = $state(0);
 	let tooltipTime = $state('00:00');
 	let isHover = $state(false);
 	let isDragging = false;
 
 	// Format time from seconds to MM:SS
-	function formatTime(seconds) {
+	function formatTime(seconds: number) {
 		const minutes = Math.floor(seconds / 60);
 		const remainingSeconds = seconds % 60;
 		return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 	}
-	function calculateLeftPosFromTime(time, seekbarElement) {
-		if (!seekbarElement) return 0;
-		const rect = seekbarElement.getBoundingClientRect();
+	function calculateLeftPosFromTime(time: number, element: HTMLDivElement | undefined) {
+		if (!element) return 0;
+		const rect = element.getBoundingClientRect();
 		const percentage = time / totalTime;
 		return percentage * rect.width;
 	}
 
 	// Calculate time from position
-	function calculateTimeFromPosition(clientX) {
+	function calculateTimeFromPosition(clientX: number) {
 		if (!seekbarElement) return 0;
 
 		const rect = seekbarElement.getBoundingClientRect();
@@ -47,7 +47,7 @@
 	}
 
 	// Handle mouse move for tooltip
-	function handleMouseMove(event) {
+	function handleMouseMove(event: MouseEvent | TouchEvent) {
 		if (!seekbarElement || isSimulationRunning) return;
 		const rect = seekbarElement.getBoundingClientRect();
 		const clientX = getClientX(event);
@@ -60,13 +60,13 @@
 			updateValue(time);
 		}
 	}
-	function getClientX(event) {
+	function getClientX(event: MouseEvent | TouchEvent) {
 		// Touch event
-		if (event.touches && event.touches.length) {
+		if ('touches' in event && event.touches.length) {
 			return event.touches[0].clientX;
 		}
 		// Mouse event
-		return event.clientX;
+		return (event as MouseEvent).clientX;
 	}
 
 	function handleMouseEnter() {
@@ -77,10 +77,10 @@
 	}
 
 	// Start dragging
-	function handleMouseDown(event) {
+	function handleMouseDown(event: MouseEvent | TouchEvent) {
 		if (isSimulationRunning) return;
 		isDragging = true;
-		GameConfig.setValue('isPaused', true);
+		GameConfig.isPaused = true;
 
 		// Update position immediately
 		handleMouseMove(event);
@@ -112,7 +112,7 @@
 	}
 
 	// Track mouse movement globally when dragging
-	function handleGlobalMouseMove(event) {
+	function handleGlobalMouseMove(event: MouseEvent) {
 		if (isDragging) {
 			handleMouseMove(event);
 		}
@@ -121,7 +121,7 @@
 	function handleGlobalMouseUp() {
 		finishDragging();
 	}
-	function handleGlobalTouchMove(event) {
+	function handleGlobalTouchMove(event: TouchEvent) {
 		if (isDragging) {
 			handleMouseMove(event);
 			event.preventDefault(); // Prevent page scrolling while dragging
@@ -134,7 +134,7 @@
 	function finishDragging() {
 		if (isDragging) {
 			isDragging = false;
-			GameConfig.setValue('isPaused', false);
+			GameConfig.isPaused = false;
 			// Remove global event listeners (mouse)
 			window.removeEventListener('mousemove', handleGlobalMouseMove);
 			window.removeEventListener('mouseup', handleGlobalMouseUp);
@@ -146,27 +146,17 @@
 		}
 	}
 
-	function updateValue(time) {
+	function updateValue(time: number) {
 		if (isSimulationRunning) return;
 		if (time === GameConfig.scaledElapsedTime) return;
-		GameConfig.setValue('scaledElapsedTime', time);
+		GameConfig.scaledElapsedTime = time;
 		if (game) {
 			game.spawnManager.set(simulatedData.t[time]);
 			game.gameManager.set(simulatedData.t[time]);
 			game.setObstacleReplayTime(time);
 		}
 	}
-	const unsubscribeFns = [];
-	onMount(() => {
-		unsubscribeFns.push(
-			GameConfig.subscribe('scaledElapsedTime', (value) => {
-				progress = (value / totalTime) * 100;
-			})
-		);
-	});
-
 	onDestroy(() => {
-		unsubscribeFns.forEach((fn) => fn());
 		// Clean up global event listeners if component is destroyed while dragging
 		window.removeEventListener('mousemove', handleGlobalMouseMove);
 		window.removeEventListener('mouseup', handleGlobalMouseUp);

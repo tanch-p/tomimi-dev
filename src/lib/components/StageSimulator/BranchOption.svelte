@@ -58,7 +58,7 @@
 	function handleBranchSummon(key: string, index = -1) {
 		branchKey = key;
 		branchIndex = index;
-		game.runtime.setValue('waveElapsedTime', 0);
+		game.runtime.waveElapsedTime = 0;
 		game.gameManager.clearAndAddBranch(branchKey, branchIndex);
 	}
 </script>

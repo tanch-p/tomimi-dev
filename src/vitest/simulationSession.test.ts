@@ -78,8 +78,8 @@ test('session initialization establishes stage state before constructing the wor
 test('multi-phase restarts preserve the selected phase while replacing the spawn session', () => {
 	const { session, runtime, world, spawnManagers, createSpawnManager, obstacleController } =
 		createSession('level_rogue4_b-8');
-	runtime.setValue('stagePhaseIndex', 1);
-	runtime.setValue('currentWaveIndex', 3);
+	runtime.stagePhaseIndex = 1;
+	runtime.currentWaveIndex = 3;
 
 	session.restart(true);
 
@@ -93,8 +93,8 @@ test('multi-phase restarts preserve the selected phase while replacing the spawn
 
 test('ordinary stage restarts reset phase and wave state', () => {
 	const { session, runtime } = createSession('level_test');
-	runtime.setValue('stagePhaseIndex', 4);
-	runtime.setValue('currentWaveIndex', 9);
+	runtime.stagePhaseIndex = 4;
+	runtime.currentWaveIndex = 9;
 
 	session.restart(true);
 
@@ -107,8 +107,8 @@ test('session updates simulation and visual state without drawing the world', ()
 		createSession('level_test');
 	const updatePathVisualisation = vi.fn();
 	gameManager.enemiesOnMap.push({ updatePathVisualisation } as never);
-	runtime.setValue('state', 'running');
-	runtime.setValue('isPaused', false);
+	runtime.state = 'running';
+	runtime.isPaused = false;
 
 	session.update(0.5, 0.125);
 

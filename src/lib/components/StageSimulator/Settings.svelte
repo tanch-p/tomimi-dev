@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, MapConfig } from '$lib/types';
-	import { GameConfig } from './objects/GameConfig';
+	import { GameConfig } from './objects/GameConfig.svelte.js';
 	import { page } from '$app/state';
 	import { Game } from './objects/Game';
 	import { setLocalStorage } from '$lib/functions/storageHelpers';
-	import { onDestroy, onMount } from 'svelte';
 	import { getSelectableStagePhases } from './config/stageBehaviors';
 
 	interface Props {
@@ -17,16 +16,11 @@
 	let { game, mapConfig }: Props = $props();
 	let language: Language = $derived(page.data.language);
 
-	let showTimeline = $state(true);
-	let configValues = $state({
-		showAllRange: GameConfig.showAllRange,
-		showAllTimers: GameConfig.showAllTimers,
-		cameraLock: GameConfig.cameraLock
-	});
+	let showTimeline = $derived(GameConfig.showTimeline);
 	const maxFrustumSize = 1500;
 	const minFrustumSize = 500;
 	let zoomSize = $state((GameConfig.FrustumSize + minFrustumSize) / maxFrustumSize);
-	let stagePhaseIndex = $state(0);
+	let stagePhaseIndex = $derived(GameConfig.stagePhaseIndex);
 	let stagePhases = $derived(getSelectableStagePhases(mapConfig.levelId));
 
 	const options = [
@@ -42,9 +36,8 @@
 			fn: (key: string) => {
 				if (!game) return;
 				const configKey = key as ConfigKey;
-				configValues[configKey] = !configValues[configKey];
-				GameConfig.setValue(configKey, configValues[configKey]);
-				setLocalStorage('showAllRange', configValues[configKey] ? 1 : 0);
+				GameConfig[configKey] = !GameConfig[configKey];
+				setLocalStorage('showAllRange', GameConfig[configKey] ? 1 : 0);
 				game.gameManager.enemiesOnMap
 					.filter((enemy) => enemy.alive)
 					.forEach((enemy) => {
@@ -63,10 +56,9 @@
 			fn: (key: string) => {
 				if (!game) return;
 				const configKey = key as ConfigKey;
-				configValues[configKey] = !configValues[configKey];
-				GameConfig.setValue(configKey, configValues[configKey]);
-				setLocalStorage('showAllTimers', configValues[configKey] ? 1 : 0);
-				game.gameManager.countdownManager.toggleAllCountdowns(configValues[configKey]);
+				GameConfig[configKey] = !GameConfig[configKey];
+				setLocalStorage('showAllTimers', GameConfig[configKey] ? 1 : 0);
+				game.gameManager.countdownManager.toggleAllCountdowns(GameConfig[configKey]);
 			}
 		},
 		{
@@ -75,10 +67,8 @@
 			icon: '',
 			texts: { zh: '显示出怪顺序', ja: '敵出現表表示', en: 'Show Enemy Spawn Timeline' },
 			fn: () => {
-				GameConfig.showTimeline.update((v) => {
-					setLocalStorage('showTimeline', !v ? 1 : 0);
-					return !v;
-				});
+				GameConfig.showTimeline = !GameConfig.showTimeline;
+				setLocalStorage('showTimeline', GameConfig.showTimeline ? 1 : 0);
 			}
 		},
 		{
@@ -92,8 +82,7 @@
 			},
 			fn: (key: string) => {
 				const configKey = key as ConfigKey;
-				configValues[configKey] = !configValues[configKey];
-				GameConfig.setValue(configKey, configValues[configKey]);
+				GameConfig[configKey] = !GameConfig[configKey];
 			}
 		}
 	];
@@ -105,21 +94,8 @@
 	}
 
 	function getOptionValue(key: string) {
-		return key === 'showTimeline' ? showTimeline : configValues[key as ConfigKey];
+		return key === 'showTimeline' ? showTimeline : GameConfig[key as ConfigKey];
 	}
-
-	const unsubscribeFns: Array<() => void> = [];
-	onMount(() => {
-		unsubscribeFns.push(GameConfig.showTimeline.subscribe((v) => (showTimeline = v)));
-		unsubscribeFns.push(
-			GameConfig.subscribe('stagePhaseIndex', (value: number) => {
-				stagePhaseIndex = value;
-			})
-		);
-	});
-	onDestroy(() => {
-		unsubscribeFns.forEach((fn) => fn());
-	});
 </script>
 
 <p class="text-xs">
@@ -181,8 +157,8 @@
 				disabled={!game}
 				onclick={() => {
 					if (!game) return;
-					GameConfig.setValue('stagePhaseIndex', idx);
-					GameConfig.setValue('currentWaveIndex', phase.waveIndex);
+					GameConfig.stagePhaseIndex = idx;
+					GameConfig.currentWaveIndex = phase.waveIndex;
 					game.restart({ resetWaveIndex: false });
 				}}
 			>

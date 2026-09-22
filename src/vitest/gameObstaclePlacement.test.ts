@@ -3,7 +3,7 @@ import { afterEach, expect, test, vi } from 'vitest';
 import { Game } from '$lib/components/StageSimulator/objects/Game';
 import { GameWorld } from '$lib/components/StageSimulator/objects/GameWorld';
 import { SimulationSession } from '$lib/components/StageSimulator/objects/SimulationSession';
-import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte.js';
 import { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 import { Trap } from '$lib/components/StageSimulator/objects/Trap';
 import { obstacleEventStore } from '$lib/components/StageSimulator/stores/obstacleEvents';
@@ -89,8 +89,8 @@ function createInputController({
 		getPlacementPlane: () => placementPlane,
 		isActive: () => true,
 		startSimulation: () => {
-			runtime.setValue('state', 'running');
-			runtime.setValue('isPaused', false);
+			runtime.state = 'running';
+			runtime.isPaused = false;
 		},
 		documentTarget: new EventTarget() as Document,
 		raycaster
@@ -101,11 +101,11 @@ function createInputController({
 afterEach(() => {
 	vi.restoreAllMocks();
 	vi.unstubAllGlobals();
-	GameConfig.setValue('tokenCard', null);
-	GameConfig.setValue('tokensDisabled', false);
-	GameConfig.setValue('totalDeductedCost', 0);
-	GameConfig.setValue('tokenCooldownDuration', 0);
-	GameConfig.setValue('tokenCooldownRemaining', 0);
+	GameConfig.tokenCard = null;
+	GameConfig.tokensDisabled = false;
+	GameConfig.totalDeductedCost = 0;
+	GameConfig.tokenCooldownDuration = 0;
+	GameConfig.tokenCooldownRemaining = 0;
 	GameConfig.state = 'loading';
 	obstacleEventStore.reset();
 });
@@ -165,19 +165,18 @@ test('resizing redraws the scene without advancing simulation time', () => {
 	expect(renderer.render).toHaveBeenCalledOnce();
 });
 
-test('lifecycle state changes are only published when the value changes', () => {
-	const states: string[] = [];
+test('session lifecycle methods update runtime state directly', () => {
 	const runtime = createRuntime();
-	const unsubscribe = runtime.subscribe('state', (state) => states.push(state));
 	const session = Object.create(SimulationSession.prototype) as SimulationSession;
 	Object.defineProperty(session, 'runtime', { value: runtime });
 
 	session.setReady();
+	expect(runtime.state).toBe('ready');
 	session.setReady();
 	session.start();
-	unsubscribe();
 
-	expect(states).toStrictEqual(['ready', 'running']);
+	expect(runtime.state).toBe('running');
+	expect(runtime.isPaused).toBe(false);
 });
 
 test('equivalent scenarios do not restart the game', () => {
@@ -223,11 +222,11 @@ test('obstacle preview uses numeric grid coordinates and snaps to the tile cente
 		rollOverMeshes: new Map([['trap_001_crate', { key: 'trap_001_crate', getMesh: () => mesh }]])
 	};
 	const { controller, runtime } = createInputController({ gameManager });
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
-	});
+	};
 
 	const placement = controller.getObstaclePlacement({
 		point: new THREE.Vector3(149, -49, 0)
@@ -243,29 +242,29 @@ test('obstacle preview is unavailable when the card is deselected or depleted', 
 	const { controller, runtime } = createInputController();
 	const plane = { point: new THREE.Vector3() } as THREE.Intersection;
 
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: false
-	});
+	};
 	expect(controller.getObstaclePlacement(plane)).toBeNull();
 
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 0,
 		selected: true
-	});
+	};
 	expect(controller.getObstaclePlacement(plane)).toBeNull();
 });
 
 test('obstacle preview is unavailable while trap selection disables tokens', () => {
 	const { controller, runtime } = createInputController();
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
-	});
-	runtime.setValue('tokensDisabled', true);
+	};
+	runtime.tokensDisabled = true;
 
 	expect(
 		controller.getObstaclePlacement({ point: new THREE.Vector3() } as THREE.Intersection)
@@ -274,12 +273,12 @@ test('obstacle preview is unavailable while trap selection disables tokens', () 
 
 test('obstacle preview is unavailable while the token is cooling down', () => {
 	const { controller, runtime } = createInputController();
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
-	});
-	runtime.setValue('tokenCooldownRemaining', 4.5);
+	};
+	runtime.tokenCooldownRemaining = 4.5;
 
 	expect(
 		controller.getObstaclePlacement({ point: new THREE.Vector3() } as THREE.Intersection)
@@ -308,12 +307,12 @@ test('placing a token adds its cost to the total deducted cost', () => {
 			intersectObjects: () => [plane]
 		}
 	});
-	runtime.setValue('state', 'running');
-	runtime.setValue('tokenCard', {
+	runtime.state = 'running';
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
-	});
+	};
 	vi.spyOn(controller, 'getObstaclePlacement').mockReturnValue({
 		canPlace: true,
 		mesh: preview,
@@ -343,8 +342,8 @@ test('token cooldown decreases with scaled game time and stops at zero', () => {
 		enemiesOnMap: [],
 		runtime: createRuntime()
 	});
-	gameManager.runtime.setValue('tokenCooldownDuration', 5);
-	gameManager.runtime.setValue('tokenCooldownRemaining', 5);
+	gameManager.runtime.tokenCooldownDuration = 5;
+	gameManager.runtime.tokenCooldownRemaining = 5;
 
 	gameManager.update(1.25);
 	expect(gameManager.runtime.tokenCooldownRemaining).toBe(3.75);
@@ -389,12 +388,12 @@ test('future obstacle events replay after seeking behind them', () => {
 		{ token_cards: [{ key: 'trap_001_crate', count: 2 }] } as any,
 		runtime
 	);
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
-	});
-	runtime.setValue('scaledElapsedTime', 300);
+	};
+	runtime.scaledElapsedTime = 300;
 	controller.recordPlacement({ row: 4, col: 11 }, 'trap_001_crate');
 
 	controller.setReplayTime(200);
@@ -418,9 +417,9 @@ test('seeking backward reconstructs user roadblocks without removing stage traps
 		{ token_cards: [{ key: 'trap_001_crate', count: 2 }] } as any,
 		runtime
 	);
-	runtime.setValue('scaledElapsedTime', 100);
+	runtime.scaledElapsedTime = 100;
 	const placementId = controller.recordPlacement({ row: 2, col: 3 }, 'trap_001_crate');
-	runtime.setValue('scaledElapsedTime', 200);
+	runtime.scaledElapsedTime = 200;
 	controller.recordRemoval({ row: 2, col: 3 }, 'trap_001_crate', placementId);
 
 	controller.setReplayTime(150);
@@ -485,11 +484,11 @@ test('obstacle preview revalidates when placement validity changes on the same t
 		.mockReturnValueOnce({ mesh: preview, canPlace: false } as any)
 		.mockReturnValueOnce({ mesh: preview, canPlace: false } as any);
 	const setValidity = vi.spyOn(controller, 'setRollOverPlacementValidity');
-	runtime.setValue('tokenCard', {
+	runtime.tokenCard = {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
-	});
+	};
 
 	(controller as any).pendingTokenPointer = { clientX: 50, clientY: 50, overCanvas: true };
 	controller.processPendingPointerMove();
@@ -601,7 +600,7 @@ test('a selectable non-roadblock trap shows the frame without an escape button',
 test('the roadblock escape button removes its trap before obstacle placement is handled', () => {
 	const remove = vi.fn();
 	const runtime = createRuntime();
-	runtime.setValue('scaledElapsedTime', 3.5);
+	runtime.scaledElapsedTime = 3.5;
 	const obstacleController = {
 		recordRemoval: (position: Position, trapKey: string, placementId: string | null) =>
 			obstacleEventStore.recordRemoval(runtime.scaledElapsedTime, position, trapKey, placementId)

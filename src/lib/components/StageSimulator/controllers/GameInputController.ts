@@ -296,12 +296,10 @@ export class GameInputController {
 		const tokenCost = Number(card.cost ?? tokenStats?.cost ?? 5);
 		const cooldownDuration = Math.max(0, Number(tokenStats?.respawnTime ?? 0));
 		const remainingCount = Math.max(0, card.count - 1);
-		runtime.batch(() => {
-			runtime.setValue('totalDeductedCost', runtime.totalDeductedCost + tokenCost);
-			runtime.setValue('tokenCooldownDuration', cooldownDuration);
-			runtime.setValue('tokenCooldownRemaining', cooldownDuration);
-			runtime.setValue('tokenCard', remainingCount > 0 ? { ...card, count: remainingCount } : null);
-		});
+		runtime.totalDeductedCost += tokenCost;
+		runtime.tokenCooldownDuration = cooldownDuration;
+		runtime.tokenCooldownRemaining = cooldownDuration;
+		runtime.tokenCard = remainingCount > 0 ? { ...card, count: remainingCount } : null;
 		return true;
 	}
 

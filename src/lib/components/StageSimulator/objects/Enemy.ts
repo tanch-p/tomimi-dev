@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as spine from '$lib/spine';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 import { GameManager } from './GameManager';
 import { AssetManager } from './AssetManager';
 import type { Enemy as EnemyType, Skill } from '$lib/types';

@@ -1,7 +1,7 @@
 import type { Enemy as EnemyType, MapConfig, Wave } from '$lib/types';
 import { getStageBehavior, getStagePhaseBehavior } from '../config/stageBehaviors';
 import { ObstacleController } from '../controllers/ObstacleController';
-import type { GameLifecycleState } from './GameConfig';
+import type { GameLifecycleState } from './GameConfig.svelte.js';
 import type { GameWorld } from './GameWorld';
 import type { GameManager } from './GameManager';
 import type { GameMap } from './GameMap';
@@ -88,21 +88,19 @@ export class SimulationSession {
 	restart(resetWaveIndex = true) {
 		if (this.disposed) return;
 		const stageBehavior = getStageBehavior(this.config.levelId);
-		this.runtime.batch(() => {
-			if (this.config.levelId !== this.runtime.levelId) {
-				this.runtime.setValue('levelId', this.config.levelId);
-				this.runtime.setValue('stagePhaseIndex', 0);
+		if (this.config.levelId !== this.runtime.levelId) {
+			this.runtime.levelId = this.config.levelId;
+			this.runtime.stagePhaseIndex = 0;
+		}
+		if (resetWaveIndex) {
+			if (stageBehavior.resetToFirstPhase !== false) {
+				this.runtime.stagePhaseIndex = 0;
 			}
-			if (resetWaveIndex) {
-				if (stageBehavior.resetToFirstPhase !== false) {
-					this.runtime.setValue('stagePhaseIndex', 0);
-				}
-				this.runtime.setValue(
-					'currentWaveIndex',
-					getStagePhaseBehavior(this.config.levelId, this.runtime.stagePhaseIndex).waveIndex
-				);
-			}
-		});
+			this.runtime.currentWaveIndex = getStagePhaseBehavior(
+				this.config.levelId,
+				this.runtime.stagePhaseIndex
+			).waveIndex;
+		}
 
 		this.resetRuntimeState();
 		this.obstacleController.reset(this.config.levelId);
@@ -148,46 +146,43 @@ export class SimulationSession {
 		this.disposed = true;
 		this.obstacleController.dispose();
 		this.spawnManager.dispose();
-		this.runtime.batch(() => {
-			this.runtime.setValue('scaledElapsedTime', 0);
-			this.runtime.setValue('waveElapsedTime', 0);
-			this.runtime.setValue('tokensDisabled', false);
-			this.runtime.setValue('totalDeductedCost', 0);
-			this.runtime.setValue('tokenCooldownDuration', 0);
-			this.runtime.setValue('tokenCooldownRemaining', 0);
-			this.runtime.setValue('tokenCard', null);
-		});
+		this.runtime.scaledElapsedTime = 0;
+		this.runtime.waveElapsedTime = 0;
+		this.runtime.tokensDisabled = false;
+		this.runtime.totalDeductedCost = 0;
+		this.runtime.tokenCooldownDuration = 0;
+		this.runtime.tokenCooldownRemaining = 0;
+		this.runtime.tokenCard = null;
 		this.obstacleController.reset();
 	}
 
 	private initializeStageState() {
 		const levelChanged = this.runtime.levelId !== this.config.levelId;
-		this.runtime.batch(() => {
-			this.runtime.setValue('levelId', this.config.levelId);
-			if (levelChanged) {
-				this.runtime.setValue('stagePhaseIndex', 0);
-				this.runtime.setValue(
-					'currentWaveIndex',
-					getStagePhaseBehavior(this.config.levelId, 0).waveIndex
-				);
-			}
-		});
+		this.runtime.levelId = this.config.levelId;
+		if (levelChanged) {
+			this.runtime.stagePhaseIndex = 0;
+			this.runtime.currentWaveIndex = getStagePhaseBehavior(this.config.levelId, 0).waveIndex;
+		}
 	}
 
 	private resetRuntimeState() {
-		this.runtime.batch(() => {
-			this.runtime.setValue('scaledElapsedTime', 0);
-			this.runtime.setValue('waveElapsedTime', 0);
-			this.runtime.setValue('steeringEnabled', this.config.steeringEnabled ?? true);
-			this.runtime.setValue('tokensDisabled', false);
-			this.runtime.setValue('totalDeductedCost', 0);
-			this.runtime.setValue('tokenCooldownDuration', 0);
-			this.runtime.setValue('tokenCooldownRemaining', 0);
-			this.setPaused(false);
-			this.runtime.setValue('tokenCard', null);
-			const card = this.config.token_cards?.find((item) => item.key === 'trap_001_crate');
-			if (card) this.runtime.setValue('tokenCard', { ...card, selected: true });
-		});
+		this.runtime.scaledElapsedTime = 0;
+		this.runtime.waveElapsedTime = 0;
+		this.runtime.steeringEnabled = this.config.steeringEnabled ?? true;
+		this.runtime.tokensDisabled = false;
+		this.runtime.totalDeductedCost = 0;
+		this.runtime.tokenCooldownDuration = 0;
+		this.runtime.tokenCooldownRemaining = 0;
+		this.setPaused(false);
+		this.runtime.tokenCard = null;
+		const card = this.config.token_cards?.find((item) => item.key === 'trap_001_crate');
+		if (card) {
+			this.runtime.tokenCard = {
+				...card,
+				cost: this.config.levelId === 'level_rogue6_c-2' ? 10 : card.cost,
+				selected: true
+			};
+		}
 	}
 
 	private shouldAdvanceSimulation() {
@@ -204,10 +199,10 @@ export class SimulationSession {
 	}
 
 	private setLifecycleState(state: GameLifecycleState) {
-		this.runtime.setValue('state', state);
+		this.runtime.state = state;
 	}
 
 	private setPaused(isPaused: boolean) {
-		this.runtime.setValue('isPaused', isPaused);
+		this.runtime.isPaused = isPaused;
 	}
 }

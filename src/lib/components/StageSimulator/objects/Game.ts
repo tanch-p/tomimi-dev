@@ -15,7 +15,6 @@ export class Game {
 	readonly world: GameWorld;
 	readonly session: SimulationSession;
 	readonly inputController: GameInputController;
-	private unsubscribeTokenCard: () => void = () => undefined;
 	private cleanedUp = false;
 
 	constructor(
@@ -38,9 +37,6 @@ export class Game {
 		});
 		this.world.setHideRollOverMeshHandler(() => this.inputController.hideRollOverMesh());
 		this.inputController.attach();
-		this.unsubscribeTokenCard = runtime.subscribe('tokenCard', (card) => {
-			if (!card?.selected) this.hideRollOverMesh();
-		});
 		this.startRenderLoop();
 	}
 
@@ -148,7 +144,6 @@ export class Game {
 		if (this.cleanedUp) return;
 		this.cleanedUp = true;
 		this.stop();
-		this.unsubscribeTokenCard();
 		this.inputController.detach();
 		this.session.dispose();
 		this.world.dispose();

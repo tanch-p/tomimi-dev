@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { describe, expect, test } from 'vitest';
 import { Enemy } from '$lib/components/StageSimulator/objects/Enemy';
-import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte.js';
 import { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 import { SPFA } from '$lib/components/StageSimulator/objects/SPFA';
 import { generateMaze } from '$lib/functions/mazeHelpers';

@@ -126,10 +126,10 @@ export class SpawnManager {
 		} else if (this.checkNextWaveFlag(delta)) {
 			// Move to next wave
 			this.currentWaveIndex++;
-			this.runtime.setValue('currentWaveIndex', this.currentWaveIndex);
+			this.runtime.currentWaveIndex = this.currentWaveIndex;
 			this.currentFragmentIndex = 0;
 			this.waveElapsedTime = 0;
-			this.runtime.setValue('waveElapsedTime', 0);
+			this.runtime.waveElapsedTime = 0;
 			this.preDelayTimer = 0;
 			this.postDelayTimer = 0;
 			this.nextWaveTimer = 0;
@@ -140,7 +140,7 @@ export class SpawnManager {
 
 	private addWaveElapsedTime(delta: number) {
 		this.waveElapsedTime += delta;
-		this.runtime.setValue('waveElapsedTime', this.waveElapsedTime);
+		this.runtime.waveElapsedTime = this.waveElapsedTime;
 	}
 
 	checkNextWaveFlag(delta: number) {
@@ -305,9 +305,9 @@ export class SpawnManager {
 
 	set(data: SpawnManagerSnapshot) {
 		this.waveElapsedTime = data.waveElapsedTime;
-		this.runtime.setValue('waveElapsedTime', this.waveElapsedTime);
+		this.runtime.waveElapsedTime = this.waveElapsedTime;
 		this.currentWaveIndex = data.currentWaveIndex;
-		this.runtime.setValue('currentWaveIndex', data.currentWaveIndex);
+		this.runtime.currentWaveIndex = data.currentWaveIndex;
 		this.currentFragmentIndex = data.currentFragmentIndex;
 		this.activeActions = structuredClone(data.activeActions);
 		this.completedActions = structuredClone(data.completedActions);
@@ -327,7 +327,7 @@ export class SpawnManager {
 		this.branches.clear();
 		this.branchIndex = 0;
 		this.currentWaveIndex = 0;
-		this.runtime.setValue('currentWaveIndex', 0);
+		this.runtime.currentWaveIndex = 0;
 		this.currentFragmentIndex = 0;
 		this.activeActions.clear();
 		this.completedActions.clear();
@@ -341,7 +341,7 @@ export class SpawnManager {
 		this.fragmentPreDelayTimer = 0;
 		this.postDelayTimer = 0;
 		this.waveElapsedTime = 0;
-		this.runtime.setValue('waveElapsedTime', 0);
+		this.runtime.waveElapsedTime = 0;
 		this.enemiesToHighlight = [];
 		this.spawnIdx = 0;
 	}

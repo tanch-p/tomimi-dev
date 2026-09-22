@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import type { MapConfig } from '$lib/types';
 import { Enemy } from './Enemy';
-import { GameConfig } from './GameConfig';
+import { GameConfig } from './GameConfig.svelte.js';
 import { StickBox } from './StickBox';
 import { AssetManager } from './AssetManager';
 import { GameManager } from './GameManager';

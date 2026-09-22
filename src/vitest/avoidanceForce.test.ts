@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { expect, test, vi } from 'vitest';
 import { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
-import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte.js';
 import { Enemy } from '$lib/components/StageSimulator/objects/Enemy';
 
 function createGameManager(mazeLayout: number[][]) {

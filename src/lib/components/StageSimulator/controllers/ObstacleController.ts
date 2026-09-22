@@ -119,7 +119,8 @@ export class ObstacleController {
 		);
 		const trapData = (trapLookup as Record<string, any>)[initialCard.key];
 		const stats = trapData?.stats?.[0];
-		const cost = Number(initialCard.cost ?? stats?.cost ?? 5);
+		const configuredCost = this.config.levelId === 'level_rogue6_c-2' ? 10 : initialCard.cost;
+		const cost = Number(configuredCost ?? stats?.cost ?? 5);
 		const cooldownDuration = Math.max(0, Number(stats?.respawnTime ?? 0));
 		const latestPlacement = placements[placements.length - 1];
 		const cooldownRemaining = latestPlacement
@@ -127,16 +128,17 @@ export class ObstacleController {
 			: 0;
 		const count = Math.max(0, initialCard.count - placements.length);
 
-		this.runtime.batch(() => {
-			this.runtime.setValue('totalDeductedCost', placements.length * cost);
-			this.runtime.setValue('tokenCooldownDuration', cooldownDuration);
-			this.runtime.setValue('tokenCooldownRemaining', cooldownRemaining);
-			this.runtime.setValue(
-				'tokenCard',
-				count > 0
-					? { ...initialCard, count, selected: this.runtime.tokenCard?.selected ?? true }
-					: null
-			);
-		});
+		this.runtime.totalDeductedCost = placements.length * cost;
+		this.runtime.tokenCooldownDuration = cooldownDuration;
+		this.runtime.tokenCooldownRemaining = cooldownRemaining;
+		this.runtime.tokenCard =
+			count > 0
+				? {
+						...initialCard,
+						cost: configuredCost,
+						count,
+						selected: this.runtime.tokenCard?.selected ?? true
+					}
+				: null;
 	}
 }
