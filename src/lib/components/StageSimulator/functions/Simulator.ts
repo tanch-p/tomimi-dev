@@ -19,6 +19,12 @@ import {
 } from '../objects/StageRuntime';
 import { shouldSkipOfflineSimulation } from '../config/stageBehaviors';
 import { addBlowerTileEffects, removeBlowerTileEffects } from './airflowHelpers';
+import {
+	calculateAvoidanceForce,
+	correctMovementForObstacle,
+	getBoundedGridPositionKey,
+	getGridPosition
+} from './gridMovementHelpers';
 
 type SimulationOptions = Partial<OfflineStageRuntimeOptions> & {
 	persistentStatMods?: StatMods;
@@ -296,37 +302,25 @@ export class GameSimManager {
 	};
 
 	getGridPosFromVectors(pos: THREE.Vector3) {
-		const gridCols = this.mazeLayout[0].length;
-		const gridRows = this.mazeLayout.length;
-		const gridWorldWidth = gridCols * GameConfig.gridSize;
-		const gridWorldHeight = gridRows * GameConfig.gridSize;
-
-		const originX = -gridWorldWidth / 2;
-		const originY = gridWorldHeight / 2;
-
-		const col = Math.floor((pos.x - originX) / GameConfig.gridSize);
-		const row = Math.floor((originY - pos.y) / GameConfig.gridSize);
-
-		const boundedCol = Math.max(0, Math.min(col, gridCols - 1));
-		const boundedRow = Math.max(0, Math.min(row, gridRows - 1));
-
-		return `${boundedCol},${boundedRow}`;
+		return getBoundedGridPositionKey(pos, this.mazeLayout);
 	}
 
-	getGridPosition = (vector: THREE.Vector3) => {
-		// Get the column (x coordinate)
-		const col = Math.floor(
-			(vector.x - GameConfig.gridSize / 2) / GameConfig.gridSize + this.mazeLayout[0].length / 2
-		);
+	getGridPosition(vector: THREE.Vector3) {
+		return getGridPosition(vector, this.mazeLayout);
+	}
 
-		// Get the row (y coordinate)
-		// Note the negative sign because y is inverted in your original function
-		const row = Math.floor(
-			(-vector.y - GameConfig.gridSize / 2) / GameConfig.gridSize + this.mazeLayout.length / 2
-		);
+	calculateAvoidanceForce(
+		raycastPos: THREE.Vector3,
+		footpoint: THREE.Vector3,
+		direction: THREE.Vector3,
+		halfBodyWidth = 0.2
+	) {
+		return calculateAvoidanceForce(this, raycastPos, footpoint, direction, halfBodyWidth);
+	}
 
-		return [col, row];
-	};
+	correctMovementForObstacle(entityPosition: THREE.Vector3, displacement: THREE.Vector3) {
+		return correctMovementForObstacle(this, entityPosition, displacement);
+	}
 
 	gameToWorldPos(pos: Position) {
 		const height = this.mazeLayout.length;

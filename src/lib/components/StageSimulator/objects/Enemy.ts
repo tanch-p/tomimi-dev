@@ -930,7 +930,7 @@ export class Enemy {
 		);
 		const acceleration = direction
 			.clone()
-			.multiplyScalar(theoreticalSpeed)
+			.multiplyScalar(maximumSpeed)
 			.sub(this.inertia)
 			.multiplyScalar(steeringFactor)
 			.add(actualAvoidance);

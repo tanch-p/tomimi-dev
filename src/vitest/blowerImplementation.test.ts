@@ -264,8 +264,13 @@ test('ISW-NO_排风口 applies right-facing airflow throughout the row 5 col 4-t
 		]);
 	}
 
-	const { x, y } = manager.getVectorCoordinates({ row: 5, col: 7 }, null);
-	enemy.raycastPos.set(x, y, 0);
+	const col6Center = manager.getVectorCoordinates({ row: 5, col: 6 }, null);
+	enemy.raycastPos.set(col6Center.x + GameConfig.gridSize / 2 - 0.001, col6Center.y, 0);
+	enemy.syncAirflowModifiers();
+	expect(stats.get('ms')).toBeCloseTo(baseMovementSpeed * 1.8, 2);
+
+	// Airflow ends at the actual tile edge; retained movement after this point is inertia.
+	enemy.raycastPos.set(col6Center.x + GameConfig.gridSize / 2, col6Center.y, 0);
 	enemy.syncAirflowModifiers();
 	expect(stats.get('ms')).toBe(baseMovementSpeed);
 	expect(stats.activeModifiers).toEqual([]);
@@ -290,6 +295,7 @@ test('ISW-NO_排风口 airflow carries enemy_1072_dlancer into the row 5 col 8 h
 	let enteredAirflow = false;
 	let leftAirflowWithInertia = false;
 	let retainedAirflowMomentum = false;
+	let airflowRemovedBeforeFall = false;
 	let accumulatedPartialMovementFrame = false;
 	for (let frame = 0; frame < 20_000 && enemy.state !== 'fall' && !enemy.exit; frame++) {
 		const positionBeforeUpdate = enemy.meshGroup.position.clone();
@@ -308,12 +314,16 @@ test('ISW-NO_排风口 airflow carries enemy_1072_dlancer into the row 5 col 8 h
 		if (enemy.gridPos === '7,5' && enemy.inertia.x > 0) {
 			leftAirflowWithInertia = true;
 			retainedAirflowMomentum ||= enemy.inertia.length() > enemy.stats.get('ms') * 0.5;
+			airflowRemovedBeforeFall ||= !enemy.stats.activeModifiers.some((modifier) =>
+				modifier.source.startsWith('trap:airflow:')
+			);
 		}
 	}
 
 	expect(enteredAirflow).toBe(true);
 	expect(leftAirflowWithInertia).toBe(true);
 	expect(retainedAirflowMomentum).toBe(true);
+	expect(airflowRemovedBeforeFall).toBe(true);
 	expect(accumulatedPartialMovementFrame).toBe(true);
 	expect(enemy.skillManager.accelerationStacks).toBeGreaterThan(0);
 	expect(enemy.state).toBe('fall');

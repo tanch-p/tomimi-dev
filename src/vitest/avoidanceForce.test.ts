@@ -192,6 +192,21 @@ test('ground movement applies steering acceleration and stores the result as ine
 	expect(enemy.inertia.toArray()).toEqual(velocity.toArray());
 });
 
+test('steering retains momentum when a temporary speed buff expires', () => {
+	const enemy = Object.create(Enemy.prototype) as any;
+	Object.assign(enemy, {
+		inertia: new THREE.Vector3(3, 0, 0),
+		motionMode: 'WALK',
+		getAvoidanceForce: () => new THREE.Vector3()
+	});
+	GameConfig.steeringEnabled = true;
+
+	const velocity = enemy.calculateMovementVelocity(new THREE.Vector3(1, 0, 0), 1);
+
+	expect(velocity.toArray()).toEqual([3, 0, 0]);
+	expect(enemy.inertia.toArray()).toEqual(velocity.toArray());
+});
+
 test('avoidance is scaled to at least half strength before steering acceleration', () => {
 	const enemy = Object.create(Enemy.prototype) as any;
 	Object.assign(enemy, {

@@ -14,6 +14,12 @@ import { CountdownManager } from './ShaderCountdownManager';
 import type { GameWorld } from './GameWorld';
 import { liveStageRuntime, type StageRuntime } from './StageRuntime';
 import { addBlowerTileEffects, removeBlowerTileEffects } from '../functions/airflowHelpers';
+import {
+	calculateAvoidanceForce,
+	correctMovementForObstacle,
+	getBoundedGridPositionKey,
+	getGridPosition
+} from '../functions/gridMovementHelpers';
 
 type MovementRoute = {
 	motionMode?: string;
@@ -103,31 +109,12 @@ export class GameManager {
 	};
 
 	getGridPosFromVectors(pos: THREE.Vector3) {
-		const gridCols = this.mazeLayout[0].length;
-		const gridRows = this.mazeLayout.length;
-		const gridWorldWidth = gridCols * GameConfig.gridSize;
-		const gridWorldHeight = gridRows * GameConfig.gridSize;
-
-		const originX = -gridWorldWidth / 2;
-		const originY = gridWorldHeight / 2;
-
-		const col = Math.floor((pos.x - originX) / GameConfig.gridSize);
-		const row = Math.floor((originY - pos.y) / GameConfig.gridSize);
-
-		const boundedCol = Math.max(0, Math.min(col, gridCols - 1));
-		const boundedRow = Math.max(0, Math.min(row, gridRows - 1));
-
-		return `${boundedCol},${boundedRow}`;
+		return getBoundedGridPositionKey(pos, this.mazeLayout);
 	}
 
-	getGridPosition = (vector: THREE.Vector3) => {
-		const gridWorldWidth = this.mazeLayout[0].length * GameConfig.gridSize;
-		const gridWorldHeight = this.mazeLayout.length * GameConfig.gridSize;
-		const col = Math.floor((vector.x + gridWorldWidth / 2) / GameConfig.gridSize);
-		const row = Math.floor((gridWorldHeight / 2 - vector.y) / GameConfig.gridSize);
-
-		return [col, row];
-	};
+	getGridPosition(vector: THREE.Vector3) {
+		return getGridPosition(vector, this.mazeLayout);
+	}
 
 	calculateAvoidanceForce(
 		raycastPos: THREE.Vector3,
@@ -135,113 +122,11 @@ export class GameManager {
 		direction: THREE.Vector3,
 		halfBodyWidth = 0.2
 	) {
-		const [centerCol, centerRow] = this.getGridPosition(raycastPos);
-		if (!this.isGridPositionInBounds(centerCol, centerRow)) return new THREE.Vector3();
-
-		const center = this.getGridCenter(centerCol, centerRow);
-		let avoidanceIntermediate: THREE.Vector3;
-		if (this.isAvoidanceObstacle(centerCol, centerRow)) {
-			avoidanceIntermediate = this.findNearestPassableTileVector(centerCol, centerRow);
-		} else {
-			avoidanceIntermediate = new THREE.Vector3();
-			for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
-				for (let colOffset = -1; colOffset <= 1; colOffset++) {
-					if (colOffset === 0 && rowOffset === 0) continue;
-					const col = centerCol + colOffset;
-					const row = centerRow + rowOffset;
-					if (!this.isGridPositionInBounds(col, row)) continue;
-					if (!this.isAvoidanceObstacle(col, row)) continue;
-
-					// Grid rows increase downward while world-space Y increases upward.
-					const relativeX = colOffset;
-					const relativeY = -rowOffset;
-					const nearestPointX = footpoint.x + relativeX * halfBodyWidth * GameConfig.gridSize;
-					const nearestPointY = footpoint.y;
-					const positiveOffsetX = Math.max(
-						((nearestPointX - center.x) / GameConfig.gridSize) * relativeX,
-						0
-					);
-					const positiveOffsetY = Math.max(
-						((nearestPointY - center.y) / GameConfig.gridSize) * relativeY,
-						0
-					);
-					const effectiveOffsetX = (positiveOffsetX - 0.25) * Math.abs(relativeX);
-					const effectiveOffsetY = (positiveOffsetY - 0.25) * Math.abs(relativeY);
-
-					const isEdgeNeighbor = relativeX === 0 || relativeY === 0;
-					if (isEdgeNeighbor && (effectiveOffsetX > 0 || effectiveOffsetY > 0)) {
-						avoidanceIntermediate.x -= effectiveOffsetX * relativeX;
-						avoidanceIntermediate.y -= effectiveOffsetY * relativeY;
-					} else if (!isEdgeNeighbor && effectiveOffsetX > 0 && effectiveOffsetY > 0) {
-						const averageOffset = (effectiveOffsetX + effectiveOffsetY) / 2;
-						avoidanceIntermediate.x -= averageOffset * relativeX;
-						avoidanceIntermediate.y -= averageOffset * relativeY;
-					}
-				}
-			}
-			if (avoidanceIntermediate.lengthSq() > 0) avoidanceIntermediate.normalize();
-		}
-
-		const normalizedDirection = direction.clone().setZ(0);
-		if (normalizedDirection.lengthSq() === 0) return avoidanceIntermediate;
-		normalizedDirection.normalize();
-		const projection = normalizedDirection.multiplyScalar(
-			avoidanceIntermediate.dot(normalizedDirection)
-		);
-		return avoidanceIntermediate.sub(projection).setZ(0);
+		return calculateAvoidanceForce(this, raycastPos, footpoint, direction, halfBodyWidth);
 	}
 
 	correctMovementForObstacle(entityPosition: THREE.Vector3, displacement: THREE.Vector3) {
-		const [currentCol, currentRow] = this.getGridPosition(entityPosition);
-		const nextPosition = entityPosition.clone().add(displacement);
-		const [nextCol, nextRow] = this.getGridPosition(nextPosition);
-		if (currentCol === nextCol && currentRow === nextRow) return displacement.clone();
-		if (!this.isAvoidanceObstacle(nextCol, nextRow)) return displacement.clone();
-
-		const obstacleDirection = this.getGridCenter(nextCol, nextRow).sub(entityPosition).setZ(0);
-		if (obstacleDirection.lengthSq() === 0) return displacement.clone();
-		obstacleDirection.normalize();
-		const projection = obstacleDirection.multiplyScalar(displacement.dot(obstacleDirection));
-		return displacement.clone().sub(projection.multiplyScalar(2)).setZ(0);
-	}
-
-	private isGridPositionInBounds(col: number, row: number) {
-		return row >= 0 && col >= 0 && row < this.mazeLayout.length && col < this.mazeLayout[0].length;
-	}
-
-	private isAvoidanceObstacle(col: number, row: number) {
-		if (!this.isGridPositionInBounds(col, row)) return false;
-		const weight = this.mazeLayout[row][col];
-		if (weight === Number.POSITIVE_INFINITY) return true;
-		if (weight === 1000) return false;
-		return Boolean(this.traps.get(`${col},${row}`)?.isRoadblock);
-	}
-
-	private getGridCenter(col: number, row: number) {
-		const { x, y } = this.getVectorCoordinates({ col, row }, null);
-		return new THREE.Vector3(x, y, GameConfig.baseZIndex);
-	}
-
-	private findNearestPassableTileVector(centerCol: number, centerRow: number) {
-		const directions = [
-			[0, -1],
-			[1, -1],
-			[1, 0],
-			[1, 1],
-			[0, 1],
-			[-1, 1],
-			[-1, 0],
-			[-1, -1]
-		].sort((a, b) => Math.hypot(a[0], a[1]) - Math.hypot(b[0], b[1]));
-
-		for (const [colOffset, rowOffset] of directions) {
-			const col = centerCol + colOffset;
-			const row = centerRow + rowOffset;
-			if (!this.isGridPositionInBounds(col, row)) continue;
-			if (this.isAvoidanceObstacle(col, row)) continue;
-			return new THREE.Vector3(colOffset, -rowOffset, 0);
-		}
-		return new THREE.Vector3();
+		return correctMovementForObstacle(this, entityPosition, displacement);
 	}
 
 	convertMovementConfig = (route) => {
