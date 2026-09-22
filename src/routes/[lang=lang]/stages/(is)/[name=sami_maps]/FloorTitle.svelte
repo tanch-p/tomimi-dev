@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import type { Language } from '$lib/types';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import FloorOptions from './FloorOptions.svelte';
@@ -18,7 +19,8 @@
 
 	function updateFloor(floors: number[] | null) {
 		if (!floors) return;
-		if (!floors?.includes($selectedFloor)) {
+		// Normalize after a stage change without rejecting a floor the user selects manually.
+		if (!floors.includes(untrack(() => $selectedFloor))) {
 			selectedFloor.set(Math.min(...floors));
 		}
 	}

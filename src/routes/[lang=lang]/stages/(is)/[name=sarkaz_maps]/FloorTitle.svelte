@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import { page } from '$app/state';
@@ -73,7 +74,8 @@
 				return;
 			}
 		}
-		if (!floors.includes($selectedFloor)) {
+		// Normalize after a stage change without rejecting a floor the user selects manually.
+		if (!floors.includes(untrack(() => $selectedFloor))) {
 			selectedFloor.set(Math.min(...floors));
 		}
 	}

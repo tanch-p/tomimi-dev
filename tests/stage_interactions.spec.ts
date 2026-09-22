@@ -57,7 +57,7 @@ test('black stage settings coordinate difficulty, floors, variations and run sta
 
 	const floorFive = settingsDialog.getByRole('button', { name: '5', exact: true });
 	await floorFive.click();
-	await expect(settingsDialog.getByRole('button', { name: '1', exact: true })).toHaveClass(
+	await expect(settingsDialog.getByRole('button', { name: '5', exact: true })).toHaveClass(
 		/bg-gray-500/
 	);
 
@@ -89,7 +89,7 @@ test('black stage settings coordinate difficulty, floors, variations and run sta
 	await loadDialog.getByRole('button', { name: '载入', exact: true }).click();
 	await expect(loadDialog).toBeHidden();
 	await expect(settingsDialog.locator('#diff-count')).toHaveText('15');
-	await expect(settingsDialog.getByRole('button', { name: '1', exact: true })).toHaveClass(
+	await expect(settingsDialog.getByRole('button', { name: '5', exact: true })).toHaveClass(
 		/bg-gray-500/
 	);
 	await expect(settingsDialog.locator('#combined-settings-rogue_6_weather_1_c')).toHaveClass(
@@ -98,7 +98,7 @@ test('black stage settings coordinate difficulty, floors, variations and run sta
 
 	await settingsDialog.getByRole('button', { name: '收起', exact: true }).click();
 	await expect(settingsDialog).toBeHidden();
-	await expect(page.locator('#floor-options img[alt="玻利瓦尔肤层"]')).toBeVisible();
+	await expect(page.locator('#floor-options img[alt="卡德霍之颅"]')).toBeVisible();
 
 	await page.locator('#floor-options').click();
 	const floorOptions = page.locator('#floor-options').locator('..');
@@ -165,6 +165,32 @@ test('black stage shared panels and enemy display controls remain interactive', 
 	await page.getByRole('link', { name: '强买强卖', exact: true }).click();
 	await expect(page).toHaveTitle(/强买强卖/);
 	expectNoRuntimeFailures();
+});
+
+test('other IS stage pages allow selecting floors outside the stage floor list', async ({
+	page
+}) => {
+	const stages = [
+		{ path: 'ISW-DF_Mind_the_Doors', stageFloor: '3' },
+		{ path: 'ISW-DF_Destiny_of_We_Many', stageFloor: '6' },
+		{ path: 'ISW-NO_Instinct_Contamination', stageFloor: '5' },
+		{ path: 'ISW-NO_Heavenly_Paradise', stageFloor: '6' },
+		{ path: 'ISW-NO_Cold_Moonlight', stageFloor: '3' }
+	];
+
+	for (const { path, stageFloor } of stages) {
+		await page.goto(`http://localhost:4173/en/stages/${path}`);
+		await page.locator('#floor-options').click();
+
+		const floorOptions = page.locator('#floor-options').locator('..');
+		await expect(floorOptions.getByRole('button', { name: stageFloor, exact: true })).toHaveClass(
+			/bg-gray-500/
+		);
+
+		const floorOne = floorOptions.getByRole('button', { name: '1', exact: true });
+		await floorOne.click();
+		await expect(floorOne).toHaveClass(/bg-gray-500/);
+	}
 });
 
 test('level_rogue6_t-8 stage variants update the selected stage data', async ({ page }) => {
