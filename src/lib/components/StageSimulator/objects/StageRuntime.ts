@@ -1,37 +1,96 @@
-import { GameConfig } from './GameConfig';
+import {
+	GameConfig,
+	type GameConfigKey,
+	type GameConfigState,
+	type GameLifecycleState,
+	type GameTokenCard,
+	type SimulationMode
+} from './GameConfig';
 import type { SpecialMods } from '$lib/types';
 
-export type StageRuntimeValue = string | number | boolean | Record<string, unknown>;
-
-export interface StageRuntime {
-	mode: string;
+export interface StageRuntimeState {
+	mode: SimulationMode;
+	levelId: string;
+	speedFactor: number;
+	isPaused: boolean;
+	frustumSize: number;
 	scaledElapsedTime: number;
 	waveElapsedTime: number;
-	currentWaveIndex: number;
-	stagePhaseIndex: number;
+	state: GameLifecycleState;
+	tokenCard: GameTokenCard | null;
+	tokensDisabled: boolean;
+	totalDeductedCost: number;
+	tokenCooldownDuration: number;
+	tokenCooldownRemaining: number;
 	eliteMode: boolean;
+	cameraLock: boolean;
+	currentWaveIndex: number;
 	specialMods: SpecialMods;
+	stagePhaseIndex: number;
 	steeringEnabled: boolean;
-	setValue(key: keyof StageRuntime, value: StageRuntimeValue): void;
+}
+
+export type StageRuntimeKey = keyof StageRuntimeState;
+
+export interface StageRuntime extends StageRuntimeState {
+	setValue<Key extends StageRuntimeKey>(key: Key, value: StageRuntimeState[Key]): void;
+	subscribe<Key extends StageRuntimeKey>(
+		key: Key,
+		callback: (value: StageRuntimeState[Key]) => void
+	): () => void;
+	batch(callback: () => void): void;
 	random(): number;
 }
 
-export type OfflineStageRuntimeOptions = Pick<
-	StageRuntime,
+type RequiredOfflineState = Pick<
+	StageRuntimeState,
 	'mode' | 'currentWaveIndex' | 'stagePhaseIndex' | 'eliteMode' | 'specialMods' | 'steeringEnabled'
-> & {
-	seed?: number;
-};
+>;
+
+export type OfflineStageRuntimeOptions = RequiredOfflineState &
+	Partial<Omit<StageRuntimeState, keyof RequiredOfflineState>> & {
+		seed?: number;
+	};
 
 class LiveStageRuntime implements StageRuntime {
 	get mode() {
 		return GameConfig.mode;
+	}
+	get levelId() {
+		return GameConfig.levelId;
+	}
+	get speedFactor() {
+		return GameConfig.speedFactor;
+	}
+	get isPaused() {
+		return GameConfig.isPaused;
+	}
+	get frustumSize() {
+		return GameConfig.FrustumSize;
 	}
 	get scaledElapsedTime() {
 		return GameConfig.scaledElapsedTime;
 	}
 	get waveElapsedTime() {
 		return GameConfig.waveElapsedTime;
+	}
+	get state() {
+		return GameConfig.state;
+	}
+	get tokenCard() {
+		return GameConfig.tokenCard;
+	}
+	get tokensDisabled() {
+		return GameConfig.tokensDisabled;
+	}
+	get totalDeductedCost() {
+		return GameConfig.totalDeductedCost;
+	}
+	get tokenCooldownDuration() {
+		return GameConfig.tokenCooldownDuration;
+	}
+	get tokenCooldownRemaining() {
+		return GameConfig.tokenCooldownRemaining;
 	}
 	get currentWaveIndex() {
 		return GameConfig.currentWaveIndex;
@@ -48,9 +107,27 @@ class LiveStageRuntime implements StageRuntime {
 	get steeringEnabled() {
 		return GameConfig.steeringEnabled;
 	}
+	get cameraLock() {
+		return GameConfig.cameraLock;
+	}
 
-	setValue(key: keyof StageRuntime, value: StageRuntimeValue) {
-		GameConfig.setValue(key as string, value);
+	setValue<Key extends StageRuntimeKey>(key: Key, value: StageRuntimeState[Key]) {
+		const configKey = key === 'frustumSize' ? 'FrustumSize' : key;
+		GameConfig.setValue(configKey as GameConfigKey, value as GameConfigState[GameConfigKey]);
+	}
+
+	subscribe<Key extends StageRuntimeKey>(
+		key: Key,
+		callback: (value: StageRuntimeState[Key]) => void
+	) {
+		const configKey = key === 'frustumSize' ? 'FrustumSize' : key;
+		return GameConfig.subscribe(configKey as GameConfigKey, (value) => {
+			callback(value as StageRuntimeState[Key]);
+		});
+	}
+
+	batch(callback: () => void) {
+		GameConfig.batch(callback);
 	}
 
 	random() {
@@ -58,30 +135,98 @@ class LiveStageRuntime implements StageRuntime {
 	}
 }
 
+type RuntimeSubscriber = {
+	key: StageRuntimeKey;
+	callback: (value: never) => void;
+};
+
 export class OfflineStageRuntime implements StageRuntime {
-	mode: string;
-	scaledElapsedTime = 0;
-	waveElapsedTime = 0;
+	mode: SimulationMode;
+	levelId: string;
+	speedFactor: number;
+	isPaused: boolean;
+	frustumSize: number;
+	scaledElapsedTime: number;
+	waveElapsedTime: number;
+	state: GameLifecycleState;
+	tokenCard: GameTokenCard | null;
+	tokensDisabled: boolean;
+	totalDeductedCost: number;
+	tokenCooldownDuration: number;
+	tokenCooldownRemaining: number;
 	currentWaveIndex: number;
 	stagePhaseIndex: number;
 	eliteMode: boolean;
 	specialMods: SpecialMods;
 	steeringEnabled: boolean;
+	cameraLock: boolean;
 	private randomState: number;
+	private readonly subscribers = new Set<RuntimeSubscriber>();
+	private batchDepth = 0;
+	private readonly pendingNotifications = new Map<StageRuntimeKey, unknown>();
 
 	constructor(options: OfflineStageRuntimeOptions) {
 		this.mode = options.mode;
+		this.levelId = options.levelId ?? '';
+		this.speedFactor = options.speedFactor ?? 4;
+		this.isPaused = options.isPaused ?? false;
+		this.frustumSize = options.frustumSize ?? 900;
+		this.scaledElapsedTime = options.scaledElapsedTime ?? 0;
+		this.waveElapsedTime = options.waveElapsedTime ?? 0;
+		this.state = options.state ?? 'loading';
+		this.tokenCard = options.tokenCard ? structuredClone(options.tokenCard) : null;
+		this.tokensDisabled = options.tokensDisabled ?? false;
+		this.totalDeductedCost = options.totalDeductedCost ?? 0;
+		this.tokenCooldownDuration = options.tokenCooldownDuration ?? 0;
+		this.tokenCooldownRemaining = options.tokenCooldownRemaining ?? 0;
 		this.currentWaveIndex = options.currentWaveIndex;
 		this.stagePhaseIndex = options.stagePhaseIndex;
 		this.eliteMode = options.eliteMode;
 		this.specialMods = structuredClone(options.specialMods);
 		this.steeringEnabled = options.steeringEnabled;
+		this.cameraLock = options.cameraLock ?? true;
 		this.randomState = options.seed ?? 0x6d2b79f5;
 	}
 
-	setValue(key: keyof StageRuntime, value: StageRuntimeValue) {
-		if (key === 'setValue' || key === 'random') return;
-		(this as unknown as Record<string, StageRuntimeValue>)[key] = value;
+	setValue<Key extends StageRuntimeKey>(key: Key, value: StageRuntimeState[Key]) {
+		if (Object.is(this[key], value)) return;
+		(this as StageRuntimeState)[key] = value;
+		if (this.batchDepth > 0) {
+			this.pendingNotifications.set(key, value);
+			return;
+		}
+		this.notify(key, value);
+	}
+
+	subscribe<Key extends StageRuntimeKey>(
+		key: Key,
+		callback: (value: StageRuntimeState[Key]) => void
+	) {
+		const subscriber = { key, callback: callback as (value: never) => void };
+		this.subscribers.add(subscriber);
+		return () => this.subscribers.delete(subscriber);
+	}
+
+	batch(callback: () => void) {
+		this.batchDepth++;
+		try {
+			callback();
+		} finally {
+			this.batchDepth--;
+			if (this.batchDepth === 0) {
+				const notifications = [...this.pendingNotifications];
+				this.pendingNotifications.clear();
+				for (const [key, value] of notifications) {
+					this.notify(key, value as StageRuntimeState[typeof key]);
+				}
+			}
+		}
+	}
+
+	private notify<Key extends StageRuntimeKey>(key: Key, value: StageRuntimeState[Key]) {
+		for (const subscriber of this.subscribers) {
+			if (subscriber.key === key) subscriber.callback(value as never);
+		}
 	}
 
 	// Mulberry32 keeps repeated offline runs deterministic without touching global randomness.

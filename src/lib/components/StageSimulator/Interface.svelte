@@ -22,7 +22,7 @@
 		initialCost: any;
 		language: Language;
 		count: number;
-		randomSeeds: any;
+		requestReset: () => void;
 		simulatedData: any;
 		isSimulationRunning?: boolean;
 		maxCost?: number;
@@ -34,9 +34,7 @@
 		initialCost,
 		language,
 		count,
-		// This bindable is written here and read by the parent simulator.
-		// eslint-disable-next-line no-useless-assignment
-		randomSeeds = $bindable(),
+		requestReset,
 		simulatedData,
 		isSimulationRunning = false,
 		maxCost = 99
@@ -75,10 +73,10 @@
 	}
 	function handlePause() {
 		GameConfig.setValue('isPaused', !GameConfig.isPaused);
-		GameConfig.state = 'running';
+		GameConfig.setValue('state', 'running');
 	}
 	function handleReset() {
-		randomSeeds = Array.from({ length: 50 }, () => Math.random());
+		requestReset();
 	}
 	function toggleTokenCard() {
 		if (!card || card.count <= 0) return;

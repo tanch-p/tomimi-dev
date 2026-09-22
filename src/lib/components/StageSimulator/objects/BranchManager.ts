@@ -4,14 +4,28 @@ import { GameManager } from './GameManager';
 import { SpawnManager } from './SpawnManager';
 import branchInfo from '$lib/data/stages/branch_info.json';
 import { getStageRuntime } from './StageRuntime';
+import type { Branch, BranchPhase, WaveAction } from '$lib/types';
+
+const branchMetadata = branchInfo as unknown as Record<
+	string,
+	Record<string, { formIndex?: number }>
+>;
+
+type BranchActionState = {
+	action: WaveAction;
+	spawnCount: number;
+	lastSpawnTime: number;
+	isComplete: boolean;
+};
 
 export class BranchManager {
-	routes;
-	phases;
-	branch;
+	branchKey: string;
+	routes: unknown[];
+	phases: BranchPhase[];
+	branch: Branch;
 	currentPhaseIndex = 0;
-	activeActions = new Map(); // Tracks currently running actions
-	completedActions = new Set(); // Tracks completed actions in current fragment
+	activeActions = new Map<number, BranchActionState>();
+	completedActions = new Set<number>();
 	isProcessingPhase = false;
 	gameManager: GameManager;
 	spawnManager: SpawnManager;
@@ -21,12 +35,17 @@ export class BranchManager {
 	get runtime() {
 		return getStageRuntime(this.gameManager);
 	}
-	constructor(branchKey, branch, gameManager: GameManager, spawnManager: SpawnManager) {
+	constructor(
+		branchKey: string,
+		branch: Branch,
+		gameManager: GameManager,
+		spawnManager: SpawnManager
+	) {
 		this.branchKey = branchKey;
 		this.branch = branch;
 		this.spawnManager = spawnManager;
 		this.gameManager = gameManager;
-		this.routes = gameManager.config.extra_routes;
+		this.routes = gameManager.config.extra_routes ?? [];
 		const indexes = Array.from({ length: branch.phases.length }, (_, i) => i);
 		const shuffledIndexes = shuffleArray(indexes, () => this.runtime.random());
 		this.phases = branch.phases.map((phase, i) => {
@@ -34,7 +53,7 @@ export class BranchManager {
 		});
 	}
 
-	update(delta) {
+	update(delta: number) {
 		if (this.isFinished) {
 			return;
 		}
@@ -45,7 +64,7 @@ export class BranchManager {
 		this.processPhase(this.phases[this.currentPhaseIndex], delta);
 	}
 
-	processPhase(phase, delta) {
+	processPhase(phase: BranchPhase, delta: number) {
 		// Start phase if not already processing
 		if (!this.isProcessingPhase) {
 			this.startPhase(phase);
@@ -59,7 +78,7 @@ export class BranchManager {
 		}
 		this.phaseTimer += delta;
 		// Update all active actions
-		this.updateActiveActions(delta);
+		this.updateActiveActions();
 
 		// Check if phase is complete
 		if (this.isPhaseComplete()) {
@@ -67,7 +86,7 @@ export class BranchManager {
 		}
 	}
 
-	startPhase(phase) {
+	startPhase(phase: BranchPhase) {
 		this.isProcessingPhase = true;
 		this.activeActions.clear();
 		this.completedActions.clear();
@@ -95,7 +114,7 @@ export class BranchManager {
 			// Handle spawning
 			const timeSinceLastSpawn = this.runtime.scaledElapsedTime - state.lastSpawnTime;
 			if (state.spawnCount === 0 || timeSinceLastSpawn >= state.action.interval) {
-				this.spawnEntity(state.action, index);
+				this.spawnEntity(state.action);
 				state.spawnCount++;
 				state.lastSpawnTime = this.runtime.scaledElapsedTime;
 
@@ -118,13 +137,13 @@ export class BranchManager {
 		this.phaseTimer = 0;
 	}
 
-	spawnEntity(action, index) {
+	spawnEntity(action: WaveAction) {
 		if (action.key === '') {
 			return;
 		}
 		switch (action.actionType) {
 			case 'SPAWN':
-				this.spawnEnemy(action, index);
+				this.spawnEnemy(action);
 				break;
 			case 'ACTIVATE_PREDEFINED':
 				this.activatePredefined(action);
@@ -134,7 +153,7 @@ export class BranchManager {
 		}
 	}
 
-	spawnEnemy(action, index) {
+	spawnEnemy(action: WaveAction) {
 		const originalRoute = this.routes[action['routeIndex']];
 		const route = this.gameManager.convertMovementConfig(structuredClone(originalRoute));
 		const enemyData = this.gameManager.enemies.find((ele) => ele.stageId === action.key);
@@ -145,11 +164,11 @@ export class BranchManager {
 		const spawnUID = `b-${action.key}-b${this.spawnManager.spawnIdx}`;
 		this.spawnManager.spawnIdx++;
 		const formIndex =
-			branchInfo?.[this.gameManager.config.levelId]?.[this.branchKey]?.formIndex || 0;
-		const enemy = new Enemy(enemyData, action, route, this.gameManager, null, spawnUID, formIndex);
+			branchMetadata[this.gameManager.config.levelId]?.[this.branchKey]?.formIndex ?? 0;
+		new Enemy(enemyData, action, route, this.gameManager, null, spawnUID, formIndex);
 	}
 
-	activatePredefined(action) {
+	activatePredefined(action: WaveAction) {
 		this.gameManager.addTrap(null, action.key);
 	}
 }

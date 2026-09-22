@@ -10,8 +10,7 @@ import { Trap } from './Trap';
 import { SpawnManager } from './SpawnManager';
 import { TileManager } from './TileManager';
 import { CountdownManager } from './ShaderCountdownManager';
-import { clearObjects } from '$lib/functions/threejsHelpers';
-import { Game } from './Game';
+import type { GameWorld } from './GameWorld';
 import { liveStageRuntime, type StageRuntime } from './StageRuntime';
 
 type MovementRoute = {
@@ -26,7 +25,7 @@ export class GameManager {
 	assetManager: AssetManager;
 	scene: THREE.Scene;
 	camera: THREE.OrthographicCamera | null;
-	game: Game;
+	world: GameWorld;
 	config;
 	mazeLayout: number[][];
 	baseMazeLayout: number[][];
@@ -46,14 +45,19 @@ export class GameManager {
 	isSimulation = false;
 	runtime: StageRuntime;
 
-	constructor(config: MapConfig, game: Game, enemies: Enemy[]) {
-		this.runtime = liveStageRuntime;
+	constructor(
+		config: MapConfig,
+		world: GameWorld,
+		enemies: EnemyType[],
+		runtime: StageRuntime = liveStageRuntime
+	) {
+		this.runtime = runtime;
 		this.enemies = enemies;
 		this.config = config;
-		this.game = game;
+		this.world = world;
 		this.assetManager = AssetManager.getInstance();
-		this.scene = game.scene;
-		this.camera = game.camera;
+		this.scene = world.scene;
+		this.camera = world.camera;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);
 		this.mazeLayout = mazeLayout;
 		this.baseMazeLayout = structuredClone(mazeLayout);
@@ -374,12 +378,12 @@ export class GameManager {
 		const tile = this.tiles.get(key);
 		return Boolean(
 			tile &&
-				tile.buildableType != 0 &&
-				tile.heightType !== 1 &&
-				!this.traps.has(key) &&
-				!this.isRouteEndPosition(pos) &&
-				!this.isEnemyOnTile(pos) &&
-				this.areRoutesReachableWithRoadblock(pos)
+			tile.buildableType != 0 &&
+			tile.heightType !== 1 &&
+			!this.traps.has(key) &&
+			!this.isRouteEndPosition(pos) &&
+			!this.isEnemyOnTile(pos) &&
+			this.areRoutesReachableWithRoadblock(pos)
 		);
 	}
 
@@ -431,13 +435,13 @@ export class GameManager {
 		const plane = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ visible: false }));
 		plane.userData.name = 'plane';
 		this.addToScene(plane);
-		this.game.objects.push(plane);
-		this.game.placementPlane = plane;
+		this.world.objects.push(plane);
+		this.world.placementPlane = plane;
 	}
 	initRollOverMeshes() {
 		this.rollOverMeshes.clear();
-		if (GameConfig.tokenCard) {
-			const key = GameConfig.tokenCard.key;
+		if (this.runtime.tokenCard) {
+			const key = this.runtime.tokenCard.key;
 			const position = { row: 0, col: 0 };
 			const trap = new Trap({ key, direction: 'UP', position }, position, false, null, this);
 			this.rollOverMeshes.set(key, trap);
@@ -449,7 +453,7 @@ export class GameManager {
 	}
 
 	initTraps(traps) {
-		const predefineChanges = GameConfig.eliteMode && this.config.elite_runes?.predefine_changes;
+		const predefineChanges = this.runtime.eliteMode && this.config.elite_runes?.predefine_changes;
 		const trapList = structuredClone(traps);
 		if (predefineChanges) {
 			for (const [key, value] of predefineChanges) {
@@ -465,7 +469,7 @@ export class GameManager {
 		}
 	}
 
-	addTrap(data, actionKey = null, posType = 'game') {
+	addTrap(data: any, actionKey: string | null = null, posType = 'game') {
 		if (!data) {
 			data = this.config.traps.find((ele) => ele.alias === actionKey || ele.key === actionKey);
 		}
@@ -480,14 +484,16 @@ export class GameManager {
 			const trapRandomTiles = predefineRandomSpawn[actionKey] || predefineRandomSpawn[data.key];
 			if (trapRandomTiles) {
 				// list of tile keys ["tile_dygmny_2"]
-				const selectedTile = trapRandomTiles[Math.floor(Math.random() * trapRandomTiles.length)];
+				const selectedTile =
+					trapRandomTiles[Math.floor(this.runtime.random() * trapRandomTiles.length)];
 				const tileData = predefineRandomSpawn?.tiles?.[selectedTile];
 				if (tileData) {
 					const availableTiles = tileData.filter((tile) => {
 						const worldPos = this.gameToWorldPos(tile.pos);
 						return !this.traps.get(`${worldPos.col},${worldPos.row}`);
 					});
-					const selectedPos = availableTiles[Math.floor(Math.random() * availableTiles.length)];
+					const selectedPos =
+						availableTiles[Math.floor(this.runtime.random() * availableTiles.length)];
 					if (selectedPos) {
 						dataPos = selectedPos.pos;
 						blackboard = selectedPos.blackboard;
@@ -536,7 +542,7 @@ export class GameManager {
 		this.spawnManager.reset();
 		this.clearEnemies();
 		this.clearTraps();
-		GameConfig.setValue('waveElapsedTime', 0);
+		this.runtime.setValue('waveElapsedTime', 0);
 		this.spawnManager.addBranch(key, structuredClone(this.config.branches[key]), index);
 	}
 
@@ -656,6 +662,42 @@ export class GameManager {
 		}
 	}
 
+	syncUserRoadblocks(
+		roadblocks: Array<{
+			key: string;
+			position: Position;
+			placementId: string | null;
+		}>
+	) {
+		const desiredByPlacement = new Map(
+			roadblocks.map((roadblock) => [roadblock.placementId, roadblock])
+		);
+
+		for (const trap of [...this.traps.values()]) {
+			if (!trap.isRoadblock || !trap.userPlacementId) continue;
+			const desired = desiredByPlacement.get(trap.userPlacementId);
+			if (
+				desired &&
+				desired.key === trap.key &&
+				desired.position.row === trap.position.row &&
+				desired.position.col === trap.position.col
+			) {
+				desiredByPlacement.delete(trap.userPlacementId);
+				continue;
+			}
+			trap.remove();
+		}
+
+		for (const roadblock of desiredByPlacement.values()) {
+			const trap = this.addTrap(
+				{ key: roadblock.key, direction: 'UP', pos: roadblock.position },
+				null,
+				'snapshot'
+			);
+			if (trap) trap.userPlacementId = roadblock.placementId;
+		}
+	}
+
 	applyObstacleEvent(event: {
 		action: 'place' | 'remove';
 		position: Position;
@@ -679,24 +721,24 @@ export class GameManager {
 		const trap = event.placementId
 			? [...this.traps.values()].find(
 					(candidate) => candidate.userPlacementId === event.placementId
-			  )
+				)
 			: this.traps.get(positionKey);
 		if (trap?.isRoadblock && trap.key === event.trapKey) trap.remove();
 	}
 
 	update(delta: number) {
 		this.countdownManager.update(delta);
-		if (GameConfig.tokenCooldownRemaining > 0) {
-			GameConfig.setValue(
+		if (this.runtime.tokenCooldownRemaining > 0) {
+			this.runtime.setValue(
 				'tokenCooldownRemaining',
-				Math.max(0, GameConfig.tokenCooldownRemaining - delta)
+				Math.max(0, this.runtime.tokenCooldownRemaining - delta)
 			);
 		}
-		this.traps.forEach((trap, pos) => {
+		this.traps.forEach((trap) => {
 			trap.update(delta);
 		});
 
-		GameConfig.setValue('scaledElapsedTime', GameConfig.scaledElapsedTime + delta);
+		this.runtime.setValue('scaledElapsedTime', this.runtime.scaledElapsedTime + delta);
 		this.noWaveBlockingSpawns =
 			this.enemiesOnMap.filter((enemy) => !enemy.dontBlockWave).length === 0;
 		this.noEnemyAlive = this.enemiesOnMap.filter((enemy) => !enemy.notCountInTotal).length === 0;

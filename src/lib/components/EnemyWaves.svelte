@@ -3,20 +3,19 @@
 	import type { Language, RogueTopic } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
 	import {
+		buildWaveScenario,
 		compileHiddenGroups,
-		generateWaveTimeline,
 		getBaseCount,
 		getBonusEnemies,
 		getEnemyCountPermutations,
 		getOptions,
-		handleOptionsUpdate,
-		parseWaves
+		handleOptionsUpdate
 	} from '$lib/functions/waveHelpers';
 	import DraggableContainer from './DraggableContainer.svelte';
 	import DLDGPN from '$lib/images/is/DLDGPN.webp';
 	import RandomGroupList from './RandomGroupList.svelte';
 	import { defaultOpenStageSim } from '../../routes/stores';
-	import { GameConfig } from './StageSimulator/objects/GameConfig';
+	import { GameConfig, type SimulationMode } from './StageSimulator/objects/GameConfig';
 	import { onDestroy, onMount } from 'svelte';
 
 	interface Props {
@@ -31,6 +30,12 @@
 		eliteMods?: import('svelte').Snippet;
 	}
 
+	type PermutationSelection = Record<string, Record<string, number>>;
+	type CountedPermutation = {
+		count: number;
+		permutation: PermutationSelection;
+	};
+
 	let {
 		mapConfig,
 		enemies,
@@ -43,16 +48,23 @@
 		eliteMods
 	}: Props = $props();
 
-	let hiddenGroups = $state([]),
-		selectedPermGroups = $state({}),
-		selectedCountIndex = $state(0),
-		selectedPermutationIdx = $state(0),
+	let hiddenGroups: string[] = $state([]),
+		selectedPermGroups: PermutationSelection = $state({}),
+		selectedEnemyCount: number | undefined = $state(),
+		selectedPermutationSignature: string | undefined = $state(),
 		randomSeeds = $state(Array.from({ length: 50 }, () => Math.random())),
+		resetGeneration = $state(0),
 		mode = $state('predefined'),
 		simMode = $state('wave_normal'),
 		bonusKey = $state('');
 
-	let compiledHiddenGroups = $derived(
+	const permutationSignature = (permutation: unknown) => JSON.stringify(permutation);
+	const simulationModes: SimulationMode[] = ['wave_normal', 'wave_summons'];
+	const stageSimulatorPromise = import('./StageSimulator/index.svelte').then(
+		({ default: component }) => component
+	);
+
+	let compiledHiddenGroups: string[] = $derived(
 		compileHiddenGroups(hiddenGroups, eliteMode, mapConfig, rogueTopic, $specialMods)
 	);
 	let baseCount = $derived(getBaseCount(mapConfig, eliteMode));
@@ -60,70 +72,88 @@
 	let maxPermutations = $derived(
 		eliteMode ? mapConfig?.ELITE.max_permutations : mapConfig?.NORMAL.max_permutations
 	);
-	let permutations = $derived(
+	let permutations: CountedPermutation[] = $derived(
 		getEnemyCountPermutations(mapConfig, compiledHiddenGroups, eliteMode, bonusKey, baseCount)
 	);
-	let enemyCounts = $derived(
-		permutations.reduce((acc, { count }) => {
-			if (!acc.includes(count)) {
-				acc.push(count);
-			}
-			return acc;
-		}, [])
+	let enemyCounts = $derived([...new Set(permutations.map(({ count }) => count))]);
+	let activeEnemyCount = $derived(
+		selectedEnemyCount !== undefined && enemyCounts.includes(selectedEnemyCount)
+			? selectedEnemyCount
+			: enemyCounts[0]
 	);
-	let permutationsToShow = $derived(
-		permutations.reduce((acc, { count, permutation }) => {
-			if (count === enemyCounts[selectedCountIndex]) {
-				acc.push({ count, permutation });
-			}
-			return acc;
-		}, [])
+	let permutationsToShow = $derived(permutations.filter(({ count }) => count === activeEnemyCount));
+	let activePermutationSignature = $derived(
+		selectedPermutationSignature !== undefined &&
+			permutationsToShow.some(
+				({ permutation }) => permutationSignature(permutation) === selectedPermutationSignature
+			)
+			? selectedPermutationSignature
+			: permutationsToShow[0]
+				? permutationSignature(permutationsToShow[0].permutation)
+				: undefined
 	);
 	let selectedWaveGroups = $derived(
 		mode === 'predefined'
 			? maxPermutations > 32
 				? 'random'
-				: permutationsToShow[selectedPermutationIdx]?.permutation
+				: permutationsToShow.find(
+						({ permutation }) => permutationSignature(permutation) === activePermutationSignature
+					)?.permutation
 			: selectedPermGroups
 	);
-	let simulatorWaveData = $derived(
-		parseWaves(
+	let simulatorScenario = $derived(
+		buildWaveScenario(
 			mapConfig,
 			selectedWaveGroups,
 			compiledHiddenGroups,
 			eliteMode,
 			randomSeeds,
-			bonusKey
+			bonusKey,
+			resetGeneration
 		)
 	);
-	let simulatorTimeline = $derived(
-		generateWaveTimeline(
-			mapConfig,
-			compiledHiddenGroups,
-			selectedWaveGroups,
-			eliteMode,
-			randomSeeds,
-			bonusKey
-		)
-	);
+
+	function selectEnemyCount(count: number) {
+		selectedEnemyCount = count;
+		selectedPermutationSignature = undefined;
+	}
+
+	function selectPermutation(permutation: unknown) {
+		selectedPermutationSignature = permutationSignature(permutation);
+	}
+
+	function selectBonusEnemy(key: string) {
+		bonusKey = key;
+		selectedPermutationSignature = undefined;
+	}
+
+	function nameForBonusEnemy(key: string) {
+		return key || 'No bonus enemy';
+	}
+
+	function toggleHiddenGroup(key: string) {
+		hiddenGroups = handleOptionsUpdate(hiddenGroups, key, rogueTopic, difficulty, otherStores);
+		selectedPermutationSignature = undefined;
+	}
+
+	function resetSimulator() {
+		randomSeeds = Array.from({ length: 50 }, () => Math.random());
+		resetGeneration++;
+	}
+
 	$effect(() => {
 		if (mapConfig) {
-			selectedCountIndex = 0;
-			selectedPermutationIdx = 0;
+			selectedEnemyCount = undefined;
+			selectedPermutationSignature = undefined;
 			bonusKey = '';
 			GameConfig.setValue('mode', 'wave_normal');
 		}
 	});
-	$effect(() => {
-		if (selectedCountIndex) {
-			selectedPermutationIdx = 0;
-		}
-	});
 
-	const unsubscribeFns = [];
+	const unsubscribeFns: Array<() => void> = [];
 	onMount(() => {
 		unsubscribeFns.push(
-			GameConfig.subscribe('mode', (value) => {
+			GameConfig.subscribe('mode', (value: string) => {
 				simMode = value;
 			})
 		);
@@ -147,7 +177,7 @@
 		{#if mapConfig?.branches}
 			<p class="title {language}">{getTranslations(language).sim_mode}</p>
 			<div class="grid grid-cols-2">
-				{#each ['wave_normal', 'wave_summons'] as key}
+				{#each simulationModes as key}
 					<button
 						class="flex justify-center items-center border-r border-neutral-700 font-semibold text-lg {simMode ===
 						key
@@ -174,14 +204,8 @@
 							class="flex flex-col items-center justify-center border border-neutral-700 p-1 {selected
 								? 'bg-gray-600'
 								: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-							onclick={() =>
-								(hiddenGroups = handleOptionsUpdate(
-									hiddenGroups,
-									key,
-									rogueTopic,
-									difficulty,
-									otherStores
-								))}
+							onclick={() => toggleHiddenGroup(key)}
+							aria-pressed={selected}
 						>
 							{#if src}
 								<div class="flex items-center justify-center h-[56px]">
@@ -224,7 +248,9 @@
 									key
 										? 'bg-slate-700'
 										: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-									onclick={() => (bonusKey = key)}
+									onclick={() => selectBonusEnemy(key)}
+									aria-pressed={bonusKey === key}
+									aria-label={nameForBonusEnemy(key)}
 								>
 									{#if key === ''}
 										<div class="flex items-center justify-center w-[50px] h-[50px]">
@@ -239,13 +265,14 @@
 					{/if}
 					<p class="title {language}">{getTranslations(language).enemy_count}</p>
 					<DraggableContainer className="grid grid-flow-col auto-cols-[minmax(100px,1fr)]">
-						{#each enemyCounts as count, i}
+						{#each enemyCounts as count}
 							<button
-								class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {selectedCountIndex ===
-								i
+								class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {activeEnemyCount ===
+								count
 									? 'bg-gray-600'
 									: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-								onclick={() => (selectedCountIndex = i)}
+								onclick={() => selectEnemyCount(count)}
+								aria-pressed={activeEnemyCount === count}
 							>
 								{count}
 							</button>
@@ -257,13 +284,15 @@
 								.spacing}{getTranslations(language).permutation}
 						</p>
 						<DraggableContainer className="grid grid-flow-col auto-cols-[minmax(120px,1fr)]">
-							{#each permutationsToShow.keys() as i}
+							{#each permutationsToShow as { permutation }, i}
+								{@const signature = permutationSignature(permutation)}
 								<button
-									class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {selectedPermutationIdx ===
-									i
+									class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {activePermutationSignature ===
+									signature
 										? 'bg-neutral-600'
 										: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
-									onclick={() => (selectedPermutationIdx = i)}
+									onclick={() => selectPermutation(permutation)}
+									aria-pressed={activePermutationSignature === signature}
 								>
 									{i + 1}
 								</button>
@@ -290,14 +319,13 @@
 			{/if}
 		{/if}
 	</div>
-	{#await import('./StageSimulator/index.svelte').then(({ default: C }) => C) then StageSimulator}
+	{#await stageSimulatorPromise then StageSimulator}
 		<StageSimulator
 			{mapConfig}
 			{enemies}
 			{language}
-			bind:randomSeeds
-			waveData={simulatorWaveData}
-			timeline={simulatorTimeline}
+			requestReset={resetSimulator}
+			scenario={simulatorScenario}
 		/>
 	{/await}
 </TogglePanel>

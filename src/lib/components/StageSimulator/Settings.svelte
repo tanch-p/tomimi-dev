@@ -6,6 +6,7 @@
 	import { Game } from './objects/Game';
 	import { setLocalStorage } from '$lib/functions/storageHelpers';
 	import { onDestroy, onMount } from 'svelte';
+	import { getSelectableStagePhases } from './config/stageBehaviors';
 
 	interface Props {
 		game?: Game;
@@ -25,30 +26,8 @@
 	const maxFrustumSize = 1500;
 	const minFrustumSize = 500;
 	let zoomSize = $state((GameConfig.FrustumSize + minFrustumSize) / maxFrustumSize);
-	let currentWaveIndex = 0;
 	let stagePhaseIndex = $state(0);
-
-	const DEFAULT_STAGE_WAVES = [0, 4];
-
-	const stageOptions: Record<string, number[]> = {
-		...Object.fromEntries(
-			[
-				'level_rogue4_d-1',
-				'level_rogue4_d-2',
-				'level_rogue4_d-3',
-				'level_rogue4_d-b',
-				'level_rogue5_d-1',
-				'level_rogue5_d-2',
-				'level_rogue5_d-3',
-				'level_rogue5_d-4',
-				'level_rogue6_d-1',
-				'level_rogue6_d-2'
-			].map((levelId) => [levelId, DEFAULT_STAGE_WAVES])
-		),
-
-		'level_rogue4_b-7': [0, 2],
-		'level_rogue4_b-8': [1, 3, 5]
-	};
+	let stagePhases = $derived(getSelectableStagePhases(mapConfig.levelId));
 
 	const options = [
 		{
@@ -133,11 +112,6 @@
 	onMount(() => {
 		unsubscribeFns.push(GameConfig.showTimeline.subscribe((v) => (showTimeline = v)));
 		unsubscribeFns.push(
-			GameConfig.subscribe('currentWaveIndex', (value: number) => {
-				currentWaveIndex = value;
-			})
-		);
-		unsubscribeFns.push(
 			GameConfig.subscribe('stagePhaseIndex', (value: number) => {
 				stagePhaseIndex = value;
 			})
@@ -156,7 +130,7 @@
 	}[language]}
 </p>
 <div class="flex flex-col md:flex-row md:flex-wrap md:justify-end gap-4 py-4 px-3">
-	{#each options as { key, texts, icon, type, fn }}
+	{#each options as { key, texts, icon, fn }}
 		{@const value = getOptionValue(key)}
 		{@const requiresGame = ['showAllRange', 'showAllTimers'].includes(key)}
 		<button
@@ -195,10 +169,12 @@
 	/>
 	<span class="w-[50px]">{zoomSize.toFixed(2)}x</span>
 </div>
-{#if stageOptions[mapConfig?.levelId]}
+{#if stagePhases.length > 0}
 	<div class="flex justify-center gap-x-3 mb-2">
-		{#each stageOptions[mapConfig.levelId] as wave, idx}
+		{#each stagePhases as phase, idx}
 			<button
+				id="stage-phase-{idx}"
+				data-stage-phase={idx}
 				class="rounded-xs px-2 py-1.5 {stagePhaseIndex === idx
 					? 'bg-gray-500'
 					: 'bg-gray-700 hover:bg-gray-600'} disabled:opacity-50"
@@ -206,8 +182,8 @@
 				onclick={() => {
 					if (!game) return;
 					GameConfig.setValue('stagePhaseIndex', idx);
-					GameConfig.setValue('currentWaveIndex', wave);
-					game.softReset(false);
+					GameConfig.setValue('currentWaveIndex', phase.waveIndex);
+					game.restart({ resetWaveIndex: false });
 				}}
 			>
 				{getTranslations(language).mapstate_prefix}{idx + 1}{getTranslations(language)

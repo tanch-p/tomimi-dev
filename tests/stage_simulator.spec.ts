@@ -98,7 +98,13 @@ test('rogue 6 wave selection survives a simulator reset', async ({ page }) => {
 
 	// Reset must not discard the selected wave configuration.
 	const timeBeforeReset = Number(await timeline.getAttribute('aria-valuenow'));
-	await page.getByRole('button', { name: '清除', exact: true }).click();
+	const canvas = page.locator('canvas');
+	const revisionBeforeReset = await canvas.getAttribute('data-scenario-revision');
+	const resetButton = page.getByRole('button', { name: '清除', exact: true });
+	await resetButton.click();
+	expect(pageErrors).toEqual([]);
+	expect(consoleErrors).toEqual([]);
+	await expect(canvas).not.toHaveAttribute('data-scenario-revision', revisionBeforeReset ?? '');
 	await expect(timeline).toHaveAttribute('tabindex', '0', { timeout: 60_000 });
 	await expect
 		.poll(async () => Number(await timeline.getAttribute('aria-valuenow')), { timeout: 10_000 })
@@ -115,4 +121,41 @@ test('rogue 6 wave selection survives a simulator reset', async ({ page }) => {
 	expect(pageErrors).toEqual([]);
 	expect(consoleErrors).toEqual([]);
 	expect(failedResponses).toEqual([]);
+});
+
+test('multi-phase stage selection survives simulator resets', async ({ page }) => {
+	const pageErrors: string[] = [];
+	const consoleErrors: string[] = [];
+
+	page.on('pageerror', (error) => pageErrors.push(error.message));
+	page.on('console', (message) => {
+		if (message.type() === 'error') consoleErrors.push(message.text());
+	});
+
+	await page.goto("http://localhost:4173/en/stages/ISW-DF_Fate's_Finale");
+	await expect(page).toHaveTitle(/Fate's Finale/);
+	await page.getByRole('button', { name: /Enemy Routes Simulator v0.5/ }).click();
+
+	const phases = page.locator('button[data-stage-phase]');
+	await expect(phases).toHaveCount(3, { timeout: 60_000 });
+	await expect(phases.nth(0)).toBeEnabled({ timeout: 60_000 });
+	await expect(phases.nth(0)).toHaveClass(/bg-gray-500/);
+
+	await phases.nth(1).click();
+	await expect(phases.nth(1)).toHaveClass(/bg-gray-500/);
+	await expect(phases.nth(0)).toHaveClass(/bg-gray-700/);
+	await expect(page.locator('canvas')).toBeVisible();
+
+	await page.getByRole('button', { name: 'Reset', exact: true }).click();
+	await expect(phases.nth(1)).toHaveClass(/bg-gray-500/);
+
+	await phases.nth(2).click();
+	await expect(phases.nth(2)).toHaveClass(/bg-gray-500/);
+	await expect(phases.nth(1)).toHaveClass(/bg-gray-700/);
+	await expect(page.getByText('Failed to load the stage simulator:', { exact: false })).toHaveCount(
+		0
+	);
+
+	expect(pageErrors).toEqual([]);
+	expect(consoleErrors).toEqual([]);
 });

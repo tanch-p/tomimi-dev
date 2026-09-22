@@ -36,6 +36,57 @@ test('offline runtime clock updates do not mutate live GameConfig state', () => 
 	expect(GameConfig.waveElapsedTime).toBe(12);
 });
 
+test('offline runtime batches correlated state without touching the live store', () => {
+	GameConfig.setValue('tokenCooldownRemaining', 9);
+	const runtime = createRuntime();
+	const snapshots: Array<{ remaining: number; deducted: number }> = [];
+	const unsubscribe = runtime.subscribe('tokenCooldownRemaining', (remaining) => {
+		snapshots.push({ remaining, deducted: runtime.totalDeductedCost });
+	});
+
+	runtime.batch(() => {
+		runtime.setValue('tokenCooldownRemaining', 4);
+		runtime.setValue('tokenCooldownRemaining', 3);
+		runtime.setValue('totalDeductedCost', 10);
+	});
+	unsubscribe();
+
+	expect(snapshots).toStrictEqual([{ remaining: 3, deducted: 10 }]);
+	expect(GameConfig.tokenCooldownRemaining).toBe(9);
+});
+
+test('live config does not publish unchanged values', () => {
+	GameConfig.setValue('speedFactor', 4);
+	const published: number[] = [];
+	const unsubscribe = GameConfig.subscribe('speedFactor', (value) => published.push(value));
+
+	GameConfig.setValue('speedFactor', 4);
+	GameConfig.setValue('speedFactor', 2);
+	GameConfig.setValue('speedFactor', 2);
+	unsubscribe();
+	GameConfig.setValue('speedFactor', 4);
+
+	expect(published).toStrictEqual([2]);
+});
+
+test('live config batches reset notifications after all values are coherent', () => {
+	GameConfig.setValue('scaledElapsedTime', 0);
+	GameConfig.setValue('waveElapsedTime', 0);
+	const snapshots: Array<{ scaled: number; wave: number }> = [];
+	const unsubscribe = GameConfig.subscribe('scaledElapsedTime', (scaled) => {
+		snapshots.push({ scaled, wave: GameConfig.waveElapsedTime });
+	});
+
+	GameConfig.batch(() => {
+		GameConfig.setValue('scaledElapsedTime', 5);
+		GameConfig.setValue('scaledElapsedTime', 6);
+		GameConfig.setValue('waveElapsedTime', 12);
+	});
+	unsubscribe();
+
+	expect(snapshots).toStrictEqual([{ scaled: 6, wave: 12 }]);
+});
+
 test('offline runtimes replay random decisions deterministically', () => {
 	const first = createRuntime(9876);
 	const second = createRuntime(9876);

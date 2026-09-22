@@ -1,9 +1,10 @@
 import { BranchManager } from './BranchManager';
 import { Enemy } from './Enemy';
-import { GameConfig } from './GameConfig';
+import type { Branch, Wave, WaveAction, WaveFragment } from '$lib/types';
 import { GameManager } from './GameManager';
 import { GameMap } from './GameMap';
 import { getStageRuntime } from './StageRuntime';
+import { getStagePhaseBehavior } from '../config/stageBehaviors';
 
 const ENEMIES_TO_HIGHLIGHT = [
 	'enemy_2001_duckmi',
@@ -15,17 +16,40 @@ const ENEMIES_TO_HIGHLIGHT = [
 	'enemy_2091_skzgds',
 	'enemy_2067_skzcy'
 ];
-export class SpawnManager {
-	map: GameMap;
-	routes;
-	waves;
+
+type SpawnManagerSnapshot = {
+	waveElapsedTime: number;
 	currentWaveIndex: number;
 	currentFragmentIndex: number;
-	activeActions = new Map(); // Tracks currently running actions
-	completedActions = new Set(); // Tracks completed actions in current fragment
-	fragmentsTimeTracker = new Map();
+	activeActions: Map<number, SpawnActionState>;
+	completedActions: Set<number>;
+	fragmentsTimeTracker: Map<string, number>;
+	isProcessingFragment: boolean;
+	nextWaveTimer: number;
+	nextWaveType: 'TIME' | 'NO_ENEMIES';
+	enterNextWaveFlag: boolean;
+	preDelayTimer: number;
+	fragmentPreDelayTimer: number;
+	postDelayTimer: number;
+};
+
+type SpawnActionState = {
+	action: WaveAction;
+	spawnCount: number;
+	lastSpawnTime: number;
+	isComplete: boolean;
+};
+export class SpawnManager {
+	map: GameMap;
+	routes: unknown[];
+	waves: Wave[];
+	currentWaveIndex: number;
+	currentFragmentIndex: number;
+	activeActions = new Map<number, SpawnActionState>();
+	completedActions = new Set<number>();
+	fragmentsTimeTracker = new Map<string, number>();
 	branchIndex = 0;
-	branches = new Map();
+	branches = new Map<number, BranchManager>();
 	isProcessingFragment = false;
 	nextWaveTimer = 0;
 	nextWaveType: 'TIME' | 'NO_ENEMIES';
@@ -36,64 +60,34 @@ export class SpawnManager {
 	fragmentPreDelayTimer = 0;
 	postDelayTimer = 0;
 	waveElapsedTime = 0; //for use in simulation only
-	enemiesToHighlight = []; //for use in simulation only
+	enemiesToHighlight: Array<{ t: number; key: string }> = []; //for use in simulation only
 	spawnIdx = 0;
 
 	get runtime() {
 		return getStageRuntime(this.gameManager);
 	}
 
-	constructor(waves, map, gameManager: GameManager) {
+	constructor(waves: Wave[], map: GameMap, gameManager: GameManager) {
 		this.map = map;
 		this.waves = waves;
 		this.gameManager = gameManager;
 		gameManager.spawnManager = this;
-		this.routes = gameManager.config.routes;
+		this.routes = gameManager.config.routes ?? [];
 		this.currentWaveIndex = this.runtime.currentWaveIndex;
 		this.waveElapsedTime = this.runtime.waveElapsedTime;
 		this.currentFragmentIndex = 0;
 		this.nextWaveType = waves[0].maxTimeWaitingForNextWave < 0 ? 'NO_ENEMIES' : 'TIME';
-		switch (this.gameManager.config.levelId) {
-			case 'level_rogue4_d-1':
-			case 'level_rogue5_d-1':
-			case 'level_rogue5_d-3':
-			case 'level_rogue6_d-1':
-				if (this.runtime.stagePhaseIndex === 1) {
-					this.addBranch('Walk');
-				}
-				break;
-			case 'level_rogue4_d-2':
-			case 'level_rogue4_d-3':
-			case 'level_rogue4_d-b':
-			case 'level_rogue5_d-2':
-			case 'level_rogue5_d-4':
-			case 'level_rogue6_d-2':
-				if (this.runtime.stagePhaseIndex === 1) {
-					this.addBranch('Walk_1');
-					this.addBranch('Walk_2');
-				}
-				break;
-			case 'level_rogue4_b-7':
-				if (this.runtime.stagePhaseIndex === 1) {
-					this.addBranch('skzjkl_stage_2');
-				}
-				break;
-			case 'level_rogue4_b-8':
-				switch (this.runtime.stagePhaseIndex) {
-					case 1:
-						this.addBranch('amiy_blink_1');
-						break;
-					case 2:
-						this.addBranch('amiy_blink_2');
-						break;
-				}
-				break;
+		for (const branchKey of getStagePhaseBehavior(
+			this.gameManager.config.levelId,
+			this.runtime.stagePhaseIndex
+		).autoBranches ?? []) {
+			this.addBranch(branchKey);
 		}
 	}
 
 	// Main update function to be called in animation loop
-	update(delta) {
-		if (GameConfig.isPaused && !this.gameManager.isSimulation) return;
+	update(delta: number) {
+		if (this.runtime.isPaused && !this.gameManager.isSimulation) return;
 
 		// handle branches
 		this.branches.forEach((branch) => {
@@ -149,7 +143,7 @@ export class SpawnManager {
 		this.runtime.setValue('waveElapsedTime', this.waveElapsedTime);
 	}
 
-	checkNextWaveFlag(delta) {
+	checkNextWaveFlag(delta: number) {
 		if (this.enterNextWaveFlag) {
 			return true;
 		}
@@ -165,7 +159,7 @@ export class SpawnManager {
 		);
 	}
 
-	processFragment(fragment, delta) {
+	processFragment(fragment: WaveFragment, delta: number) {
 		// Start fragment if not already processing
 		if (!this.isProcessingFragment) {
 			this.startFragment(fragment);
@@ -182,7 +176,7 @@ export class SpawnManager {
 			this.fragmentsTimeTracker.set(key, 0);
 		}
 		// Update all active actions
-		this.updateActiveActions(delta);
+		this.updateActiveActions();
 
 		// Check if fragment is complete
 		if (this.isFragmentComplete()) {
@@ -190,7 +184,7 @@ export class SpawnManager {
 		}
 	}
 
-	startFragment(fragment) {
+	startFragment(fragment: WaveFragment) {
 		this.isProcessingFragment = true;
 		this.activeActions.clear();
 		this.completedActions.clear();
@@ -213,14 +207,14 @@ export class SpawnManager {
 			if (state.isComplete) return;
 
 			// Handle pre-delay
-			if (state.action.preDelay > this.fragmentsTimeTracker.get(key)) {
+			if (state.action.preDelay > (this.fragmentsTimeTracker.get(key) ?? 0)) {
 				return;
 			}
 
 			// Handle spawning
 			const timeSinceLastSpawn = this.runtime.scaledElapsedTime - state.lastSpawnTime;
 			if (state.spawnCount === 0 || timeSinceLastSpawn >= state.action.interval) {
-				this.spawnEntity(state.action, index);
+				this.spawnEntity(state.action);
 				state.spawnCount++;
 				state.lastSpawnTime = this.runtime.scaledElapsedTime;
 
@@ -250,13 +244,13 @@ export class SpawnManager {
 		this.currentFragmentIndex++;
 	}
 
-	spawnEntity(action, index) {
+	spawnEntity(action: WaveAction) {
 		if (action.key === '') {
 			return;
 		}
 		switch (action.actionType) {
 			case 'SPAWN':
-				this.spawnEnemy(action, index);
+				this.spawnEnemy(action);
 				break;
 			case 'ACTIVATE_PREDEFINED':
 				this.activatePredefined(action);
@@ -266,7 +260,7 @@ export class SpawnManager {
 		}
 	}
 
-	spawnEnemy(action, index) {
+	spawnEnemy(action: WaveAction) {
 		const originalRoute = this.routes[action['routeIndex']];
 		const route = this.gameManager.convertMovementConfig(structuredClone(originalRoute));
 		let enemyKey = action.key;
@@ -283,7 +277,7 @@ export class SpawnManager {
 		const key = `w${this.currentWaveIndex}f${this.currentFragmentIndex}`;
 		const spawnUID = `s-${action.key}-s${this.spawnIdx}`;
 		this.spawnIdx++;
-		const enemy = new Enemy(enemyData, action, route, this.gameManager, key, spawnUID);
+		new Enemy(enemyData, action, route, this.gameManager, key, spawnUID);
 		if (ENEMIES_TO_HIGHLIGHT.includes(enemyData.key) || enemyData.type.includes('BOSS')) {
 			if (['enemy_2093_skzams'].includes(enemyData.key)) return;
 			if (this.runtime.scaledElapsedTime < 1) return;
@@ -291,11 +285,11 @@ export class SpawnManager {
 		}
 	}
 
-	activatePredefined(action) {
+	activatePredefined(action: WaveAction) {
 		this.gameManager.addTrap(null, action.key);
 	}
 
-	addBranch(branchKey: string, branch, index = -1) {
+	addBranch(branchKey: string, branch?: Branch, index = -1) {
 		if (!branch) {
 			branch = structuredClone(this.gameManager.config.branches[branchKey]);
 		}
@@ -309,7 +303,7 @@ export class SpawnManager {
 		this.branchIndex++;
 	}
 
-	set(data) {
+	set(data: SpawnManagerSnapshot) {
 		this.waveElapsedTime = data.waveElapsedTime;
 		this.runtime.setValue('waveElapsedTime', this.waveElapsedTime);
 		this.currentWaveIndex = data.currentWaveIndex;

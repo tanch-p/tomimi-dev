@@ -5,7 +5,6 @@
 	import { Game } from './objects/Game';
 	import Icon from '../Icon.svelte';
 	import { slide } from 'svelte/transition';
-	import { GameConfig } from './objects/GameConfig';
 	import { isChestBranch } from '$lib/functions/waveHelpers';
 	import TextParser from '../TextParser.svelte';
 
@@ -17,6 +16,16 @@
 		branchKey: string;
 		branchIndex: number;
 	}
+	type BranchExtraInfo = {
+		type?: string;
+		isRandom?: boolean;
+		formIndex?: number;
+		tooltip?: Record<Language, string[]>;
+		name_zh?: string;
+		name_ja?: string;
+		name_en?: string;
+	};
+	const branchMetadata = branchInfo as unknown as Record<string, Record<string, BranchExtraInfo>>;
 
 	let {
 		mapConfig,
@@ -28,9 +37,8 @@
 	}: Props = $props();
 
 	let isOpen = $state(false);
-	let branchExtraInfo = $derived(branchInfo?.[mapConfig?.levelId]?.[key]);
+	let branchExtraInfo = $derived(branchMetadata[mapConfig.levelId]?.[key]);
 	let branchType = $derived(branchExtraInfo?.type);
-	let branchRandom = $derived(branchExtraInfo?.isRandom || false);
 	let tooltip = $derived(branchExtraInfo?.tooltip?.[language] || []);
 	let hasMultipleOptions = $derived(
 		mapConfig?.branches?.[key]?.phases?.length > 1 && branchType === 'single'
@@ -40,7 +48,7 @@
 			? getTranslations(language).mimic
 			: branchExtraInfo?.[`name_${language}`] || key
 	);
-	function handleTitleClick(key) {
+	function handleTitleClick(key: string) {
 		if (hasMultipleOptions) {
 			isOpen = !isOpen;
 			return;
@@ -50,8 +58,8 @@
 	function handleBranchSummon(key: string, index = -1) {
 		branchKey = key;
 		branchIndex = index;
-		GameConfig.setValue('waveElapsedTime', 0);
-		game?.gameManager?.clearAndAddBranch(key, index);
+		game.runtime.setValue('waveElapsedTime', 0);
+		game.gameManager.clearAndAddBranch(branchKey, branchIndex);
 	}
 </script>
 
@@ -74,8 +82,9 @@
 	{#if isOpen}
 		<div transition:slide={{ duration: 300 }}>
 			<div class="mt-1.5 flex flex-wrap gap-2 w-full">
-				{#each mapConfig?.branches?.[key]?.phases as _, index}
+				{#each mapConfig?.branches?.[key]?.phases as phase, index}
 					<button
+						data-phase-delay={phase.preDelay}
 						class="flex items-center justify-center bg-neutral-600 w-[14px] h-[20px] px-2 py-0.5 text-xs text-near-white hover:bg-near-white hover:text-gray-900 transition-all"
 						onclick={() => handleBranchSummon(key, index)}
 					>

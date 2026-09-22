@@ -2,7 +2,8 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { MapConfig, Language, RogueTopic } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
-	import { BONUS_ENEMY_KEYS, DUEL_STAGES } from '$lib/functions/enemyHelpers';
+	import { BONUS_ENEMY_KEYS } from '$lib/functions/enemyHelpers';
+	import { isDuelStage } from './StageSimulator/config/stageBehaviors';
 
 	interface Props {
 		mapConfig: MapConfig;
@@ -51,7 +52,7 @@
 				break;
 		}
 		if (['enemy_2065_skzjs', 'enemy_1106_byokai'].includes(key)) return false;
-		if (levelId.includes('_d-')) return true;
+		if (isDuelStage(levelId)) return true;
 		switch (levelId) {
 			case 'level_rogue4_t-6':
 			case 'level_rogue4_b-6':
@@ -104,7 +105,7 @@
 						alt={enemy.id}
 						title={enemy[`name_${language}`] || enemy[`name_zh`]}
 					/>
-					{#if !DUEL_STAGES.includes(mapConfig?.levelId)}
+					{#if !isDuelStage(mapConfig.levelId)}
 						<p
 							class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm"
 						>

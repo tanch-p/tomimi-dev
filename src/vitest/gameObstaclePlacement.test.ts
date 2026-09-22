@@ -1,13 +1,106 @@
 import * as THREE from 'three';
 import { afterEach, expect, test, vi } from 'vitest';
 import { Game } from '$lib/components/StageSimulator/objects/Game';
+import { GameWorld } from '$lib/components/StageSimulator/objects/GameWorld';
+import { SimulationSession } from '$lib/components/StageSimulator/objects/SimulationSession';
 import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig';
 import { GameManager } from '$lib/components/StageSimulator/objects/GameManager';
 import { Trap } from '$lib/components/StageSimulator/objects/Trap';
 import { obstacleEventStore } from '$lib/components/StageSimulator/stores/obstacleEvents';
+import { OfflineStageRuntime } from '$lib/components/StageSimulator/objects/StageRuntime';
+import { ObstacleController } from '$lib/components/StageSimulator/controllers/ObstacleController';
+import { GameInputController } from '$lib/components/StageSimulator/controllers/GameInputController';
+import type { Position } from '$lib/types';
+
+function createRuntime() {
+	return new OfflineStageRuntime({
+		mode: 'wave_normal',
+		currentWaveIndex: 0,
+		stagePhaseIndex: 0,
+		eliteMode: false,
+		specialMods: {},
+		steeringEnabled: true
+	});
+}
+
+function createRenderingWorld(hidden = false) {
+	const canvas = new EventTarget() as HTMLCanvasElement;
+	Object.assign(canvas, {
+		getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 })
+	});
+	const windowTarget = Object.assign(new EventTarget(), {
+		devicePixelRatio: 1,
+		innerWidth: 1280,
+		innerHeight: 900,
+		matchMedia: () => ({ matches: false })
+	}) as unknown as Window;
+	const documentTarget = Object.assign(new EventTarget(), { hidden }) as unknown as Document;
+	const renderer = {
+		setClearColor: vi.fn(),
+		setPixelRatio: vi.fn(),
+		setSize: vi.fn(),
+		setAnimationLoop: vi.fn(),
+		render: vi.fn(),
+		renderLists: { dispose: vi.fn() },
+		dispose: vi.fn(),
+		forceContextLoss: vi.fn()
+	};
+	const timer = {
+		reset: vi.fn(),
+		update: vi.fn(),
+		getDelta: vi.fn(() => 0.25),
+		dispose: vi.fn()
+	};
+	const world = new GameWorld(canvas, createRuntime(), {
+		renderer: renderer as any,
+		timer: timer as any,
+		windowTarget,
+		documentTarget
+	});
+	return { world, renderer, timer, documentTarget };
+}
+
+function createInputController({
+	runtime = createRuntime(),
+	gameManager = { rollOverMeshes: new Map() },
+	obstacleController = {},
+	objects = [],
+	placementPlane = null,
+	raycaster
+}: {
+	runtime?: OfflineStageRuntime;
+	gameManager?: any;
+	obstacleController?: any;
+	objects?: THREE.Object3D[];
+	placementPlane?: THREE.Object3D | null;
+	raycaster?: any;
+} = {}) {
+	const canvas = new EventTarget() as HTMLCanvasElement;
+	Object.assign(canvas, {
+		getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 })
+	});
+	const controller = new GameInputController({
+		canvas,
+		camera: new THREE.OrthographicCamera(),
+		gameManager,
+		runtime,
+		obstacleController,
+		getObjects: () => objects,
+		getPlacementPlane: () => placementPlane,
+		isActive: () => true,
+		startSimulation: () => {
+			runtime.setValue('state', 'running');
+			runtime.setValue('isPaused', false);
+		},
+		documentTarget: new EventTarget() as Document,
+		raycaster
+	});
+	return { controller, runtime, canvas };
+}
 
 afterEach(() => {
 	vi.restoreAllMocks();
+	vi.unstubAllGlobals();
 	GameConfig.setValue('tokenCard', null);
 	GameConfig.setValue('tokensDisabled', false);
 	GameConfig.setValue('totalDeductedCost', 0);
@@ -18,93 +111,179 @@ afterEach(() => {
 });
 
 test('a stopped game ignores late render callbacks', () => {
+	const nextFrame = vi.fn();
 	const update = vi.fn();
-	const getDelta = vi.fn();
-	const render = vi.fn();
+	const draw = vi.fn();
 	const game = Object.create(Game.prototype) as any;
 	Object.assign(game, {
 		cleanedUp: false,
-		timer: { update, getDelta },
-		isDocumentHidden: () => false,
-		renderer: { render },
-		renderLoopRequested: false
+		world: { isRenderActive: false, nextFrame, draw },
+		session: { update, runtime: createRuntime() },
+		inputController: { processPendingPointerMove: vi.fn() }
 	});
 
 	game.render();
 
+	expect(nextFrame).not.toHaveBeenCalled();
 	expect(update).not.toHaveBeenCalled();
-	expect(getDelta).not.toHaveBeenCalled();
-	expect(render).not.toHaveBeenCalled();
+	expect(draw).not.toHaveBeenCalled();
+});
+
+test('the game facade advances the session before input processing and drawing', () => {
+	const callOrder: string[] = [];
+	const game = Object.create(Game.prototype) as any;
+	Object.assign(game, {
+		cleanedUp: false,
+		world: {
+			isRenderActive: true,
+			nextFrame: vi.fn(() => 0.25),
+			draw: vi.fn(() => callOrder.push('draw'))
+		},
+		session: {
+			runtime: { speedFactor: 4 },
+			update: vi.fn(() => callOrder.push('update'))
+		},
+		inputController: {
+			processPendingPointerMove: vi.fn(() => callOrder.push('input'))
+		}
+	});
+
+	game.render(100);
+
+	expect(game.world.nextFrame).toHaveBeenCalledWith(100);
+	expect(game.session.update).toHaveBeenCalledWith(1, 0.25);
+	expect(callOrder).toEqual(['update', 'input', 'draw']);
+});
+
+test('resizing redraws the scene without advancing simulation time', () => {
+	const { world, renderer, timer } = createRenderingWorld();
+	vi.clearAllMocks();
+
+	world.onWindowResize();
+
+	expect(timer.update).not.toHaveBeenCalled();
+	expect(renderer.render).toHaveBeenCalledOnce();
+});
+
+test('lifecycle state changes are only published when the value changes', () => {
+	const states: string[] = [];
+	const runtime = createRuntime();
+	const unsubscribe = runtime.subscribe('state', (state) => states.push(state));
+	const session = Object.create(SimulationSession.prototype) as SimulationSession;
+	Object.defineProperty(session, 'runtime', { value: runtime });
+
+	session.setReady();
+	session.setReady();
+	session.start();
+	unsubscribe();
+
+	expect(states).toStrictEqual(['ready', 'running']);
+});
+
+test('equivalent scenarios do not restart the game', () => {
+	const config = { levelId: 'level_test' };
+	const enemies: unknown[] = [];
+	const session = Object.create(SimulationSession.prototype) as any;
+	Object.assign(session, {
+		config,
+		enemies,
+		waveData: [],
+		scenarioRevision: 'level_test:one',
+		obstacleController: { setConfig: vi.fn() }
+	});
+
+	expect(
+		session.replaceScenario({
+			config,
+			enemies,
+			waveData: [{ differentAllocation: true }],
+			revision: 'level_test:one'
+		})
+	).toBe(false);
+	expect(session.obstacleController.setConfig).not.toHaveBeenCalled();
+
+	expect(
+		session.replaceScenario({
+			config,
+			enemies,
+			waveData: [],
+			revision: 'level_test:two'
+		})
+	).toBe(true);
+	expect(session.obstacleController.setConfig).toHaveBeenCalledOnce();
 });
 
 test('obstacle preview uses numeric grid coordinates and snaps to the tile center', () => {
 	const mesh = new THREE.Group();
 	const canPlaceRoadblock = vi.fn(() => true);
-	const game = Object.create(Game.prototype) as any;
-	game.gameManager = {
+	const gameManager = {
 		canPlaceRoadblock,
 		getGridPosFromVectors: () => '3,2',
 		getVectorCoordinates: () => ({ x: 150, y: -50 }),
 		rollOverMeshes: new Map([['trap_001_crate', { key: 'trap_001_crate', getMesh: () => mesh }]])
 	};
-	GameConfig.setValue('tokenCard', {
+	const { controller, runtime } = createInputController({ gameManager });
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
 	});
 
-	const placement = game.getObstaclePlacement({ point: new THREE.Vector3(149, -49, 0) });
+	const placement = controller.getObstaclePlacement({
+		point: new THREE.Vector3(149, -49, 0)
+	} as THREE.Intersection);
 
-	expect(placement.position).toStrictEqual({ row: 2, col: 3 });
+	expect(placement?.position).toStrictEqual({ row: 2, col: 3 });
 	expect(canPlaceRoadblock).toHaveBeenCalledWith({ row: 2, col: 3 });
 	expect(mesh.position.toArray()).toStrictEqual([150, -50, 0.01]);
-	expect(placement.canPlace).toBe(true);
+	expect(placement?.canPlace).toBe(true);
 });
 
 test('obstacle preview is unavailable when the card is deselected or depleted', () => {
-	const game = Object.create(Game.prototype) as any;
-	game.gameManager = { rollOverMeshes: new Map() };
-	const plane = { point: new THREE.Vector3() };
+	const { controller, runtime } = createInputController();
+	const plane = { point: new THREE.Vector3() } as THREE.Intersection;
 
-	GameConfig.setValue('tokenCard', {
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: false
 	});
-	expect(game.getObstaclePlacement(plane)).toBeNull();
+	expect(controller.getObstaclePlacement(plane)).toBeNull();
 
-	GameConfig.setValue('tokenCard', {
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 0,
 		selected: true
 	});
-	expect(game.getObstaclePlacement(plane)).toBeNull();
+	expect(controller.getObstaclePlacement(plane)).toBeNull();
 });
 
 test('obstacle preview is unavailable while trap selection disables tokens', () => {
-	const game = Object.create(Game.prototype) as any;
-	game.gameManager = { rollOverMeshes: new Map() };
-	GameConfig.setValue('tokenCard', {
+	const { controller, runtime } = createInputController();
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
 	});
-	GameConfig.setValue('tokensDisabled', true);
+	runtime.setValue('tokensDisabled', true);
 
-	expect(game.getObstaclePlacement({ point: new THREE.Vector3() })).toBeNull();
+	expect(
+		controller.getObstaclePlacement({ point: new THREE.Vector3() } as THREE.Intersection)
+	).toBeNull();
 });
 
 test('obstacle preview is unavailable while the token is cooling down', () => {
-	const game = Object.create(Game.prototype) as any;
-	game.gameManager = { rollOverMeshes: new Map() };
-	GameConfig.setValue('tokenCard', {
+	const { controller, runtime } = createInputController();
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
 	});
-	GameConfig.setValue('tokenCooldownRemaining', 4.5);
+	runtime.setValue('tokenCooldownRemaining', 4.5);
 
-	expect(game.getObstaclePlacement({ point: new THREE.Vector3() })).toBeNull();
+	expect(
+		controller.getObstaclePlacement({ point: new THREE.Vector3() } as THREE.Intersection)
+	).toBeNull();
 });
 
 test('placing a token adds its cost to the total deducted cost', () => {
@@ -120,53 +299,40 @@ test('placing a token adds its cost to the total deducted cost', () => {
 		object: { userData: { name: 'plane' } },
 		point: new THREE.Vector3()
 	};
-	const game = Object.create(Game.prototype) as any;
-	Object.assign(game, {
-		camera: {},
-		cleanedUp: false,
-		pointer: new THREE.Vector2(),
-		objects: [],
-		renderLoopRequested: true,
-		renderer: {
-			domElement: {
-				getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 })
-			}
-		},
+	const gameManager = { addTrap: vi.fn(() => placedTrap), rollOverMeshes: new Map() };
+	const { controller, runtime } = createInputController({
+		gameManager,
+		obstacleController: { recordPlacement: vi.fn(() => 'obstacle-1') },
 		raycaster: {
 			setFromCamera: vi.fn(),
 			intersectObjects: () => [plane]
-		},
-		gameManager: {
-			addTrap: vi.fn(() => placedTrap)
-		},
-		handleRoadblockInteraction: () => false,
-		getObstaclePlacement: () => ({
-			canPlace: true,
-			mesh: preview,
-			position: placedTrap.position,
-			trap: { key: placedTrap.key }
-		})
+		}
 	});
-	GameConfig.cameraLock = true;
-	GameConfig.state = 'running';
-	GameConfig.setValue('tokenCard', {
+	runtime.setValue('state', 'running');
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
 	});
+	vi.spyOn(controller, 'getObstaclePlacement').mockReturnValue({
+		canPlace: true,
+		mesh: preview,
+		position: placedTrap.position,
+		trap: { key: placedTrap.key }
+	} as any);
 
-	game.onPointerDown({ clientX: 50, clientY: 50 });
+	(controller as any).onPointerDown({ clientX: 50, clientY: 50 });
 
-	expect(GameConfig.totalDeductedCost).toBe(5);
-	expect(GameConfig.tokenCooldownDuration).toBe(5);
-	expect(GameConfig.tokenCooldownRemaining).toBe(5);
-	expect(GameConfig.tokenCard.count).toBe(1);
+	expect(runtime.totalDeductedCost).toBe(5);
+	expect(runtime.tokenCooldownDuration).toBe(5);
+	expect(runtime.tokenCooldownRemaining).toBe(5);
+	expect(runtime.tokenCard?.count).toBe(1);
 	expect(preview.visible).toBe(false);
 
-	game.onPointerDown({ clientX: 50, clientY: 50 });
-	expect(game.gameManager.addTrap).toHaveBeenCalledOnce();
-	expect(GameConfig.totalDeductedCost).toBe(5);
-	expect(GameConfig.tokenCard.count).toBe(1);
+	(controller as any).onPointerDown({ clientX: 50, clientY: 50 });
+	expect(gameManager.addTrap).toHaveBeenCalledOnce();
+	expect(runtime.totalDeductedCost).toBe(5);
+	expect(runtime.tokenCard?.count).toBe(1);
 });
 
 test('token cooldown decreases with scaled game time and stops at zero', () => {
@@ -174,96 +340,114 @@ test('token cooldown decreases with scaled game time and stops at zero', () => {
 	Object.assign(gameManager, {
 		countdownManager: { update: vi.fn() },
 		traps: new Map(),
-		enemiesOnMap: []
+		enemiesOnMap: [],
+		runtime: createRuntime()
 	});
-	GameConfig.setValue('tokenCooldownDuration', 5);
-	GameConfig.setValue('tokenCooldownRemaining', 5);
+	gameManager.runtime.setValue('tokenCooldownDuration', 5);
+	gameManager.runtime.setValue('tokenCooldownRemaining', 5);
 
 	gameManager.update(1.25);
-	expect(GameConfig.tokenCooldownRemaining).toBe(3.75);
+	expect(gameManager.runtime.tokenCooldownRemaining).toBe(3.75);
 
 	gameManager.update(10);
-	expect(GameConfig.tokenCooldownRemaining).toBe(0);
+	expect(gameManager.runtime.tokenCooldownRemaining).toBe(0);
 });
 
 test('game render loop suspends while hidden and resumes without a hidden-tab delta', () => {
-	const setAnimationLoop = vi.fn();
-	const reset = vi.fn();
-	const game = Object.create(Game.prototype) as any;
-	Object.assign(game, {
-		renderer: { setAnimationLoop },
-		timer: { reset },
-		renderLoopRequested: true,
-		isDocumentHidden: () => true
-	});
+	const { world, renderer, timer, documentTarget } = createRenderingWorld();
+	const renderFrame = vi.fn();
+	world.start(renderFrame);
+	vi.clearAllMocks();
 
-	game.onVisibilityChange();
-	expect(setAnimationLoop).toHaveBeenLastCalledWith(null);
+	Object.defineProperty(documentTarget, 'hidden', { value: true, configurable: true });
+	world.onVisibilityChange();
+	expect(renderer.setAnimationLoop).toHaveBeenLastCalledWith(null);
 
-	game.isDocumentHidden = () => false;
-	game.onVisibilityChange();
-	expect(reset).toHaveBeenCalledOnce();
-	expect(setAnimationLoop).toHaveBeenLastCalledWith(expect.any(Function));
+	Object.defineProperty(documentTarget, 'hidden', { value: false, configurable: true });
+	world.onVisibilityChange();
+	expect(timer.reset).toHaveBeenCalledOnce();
+	expect(renderer.setAnimationLoop).toHaveBeenLastCalledWith(renderFrame);
 });
 
 test('a stopped game stays stopped when its tab becomes visible', () => {
-	const setAnimationLoop = vi.fn();
-	const game = Object.create(Game.prototype) as any;
-	Object.assign(game, {
-		renderer: { setAnimationLoop },
-		timer: { reset: vi.fn() },
-		renderLoopRequested: false,
-		isDocumentHidden: () => false
-	});
+	const { world, renderer, timer } = createRenderingWorld();
+	world.start(vi.fn());
+	world.stop();
+	vi.clearAllMocks();
 
-	game.onVisibilityChange();
-	expect(setAnimationLoop).not.toHaveBeenCalled();
+	world.onVisibilityChange();
+	expect(renderer.setAnimationLoop).not.toHaveBeenCalled();
+	expect(timer.reset).not.toHaveBeenCalled();
 });
 
 test('future obstacle events replay after seeking behind them', () => {
-	const game = Object.create(Game.prototype) as any;
 	const applyObstacleEvent = vi.fn();
-	Object.assign(game, {
-		config: { token_cards: [{ key: 'trap_001_crate', count: 2 }] },
-		gameManager: { applyObstacleEvent },
-		obstacleEvents: [
-			{
-				action: 'place',
-				time: 300,
-				position: { row: 4, col: 11 },
-				trapKey: 'trap_001_crate',
-				placementId: 'obstacle-1'
-			}
-		],
-		obstacleReplayIndex: 0
-	});
-	GameConfig.setValue('tokenCard', {
+	const syncUserRoadblocks = vi.fn();
+	const runtime = createRuntime();
+	const controller = new ObstacleController(
+		{ applyObstacleEvent, syncUserRoadblocks } as any,
+		{ token_cards: [{ key: 'trap_001_crate', count: 2 }] } as any,
+		runtime
+	);
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
 	});
+	runtime.setValue('scaledElapsedTime', 300);
+	controller.recordPlacement({ row: 4, col: 11 }, 'trap_001_crate');
 
-	game.setObstacleReplayTime(200);
-	game.replayObstacleEventsThrough(299.9);
+	controller.setReplayTime(200);
+	controller.replayThrough(299.9);
 	expect(applyObstacleEvent).not.toHaveBeenCalled();
 
-	game.replayObstacleEventsThrough(300);
+	controller.replayThrough(300);
 	expect(applyObstacleEvent).toHaveBeenCalledOnce();
-	expect(applyObstacleEvent).toHaveBeenCalledWith(game.obstacleEvents[0]);
-	expect(GameConfig.totalDeductedCost).toBe(5);
-	expect(GameConfig.tokenCard.count).toBe(1);
-	expect(GameConfig.tokenCooldownRemaining).toBe(5);
+	expect(applyObstacleEvent).toHaveBeenCalledWith(obstacleEventStore.getSnapshot().events[0]);
+	expect(runtime.totalDeductedCost).toBe(5);
+	expect(runtime.tokenCard?.count).toBe(1);
+	expect(runtime.tokenCooldownRemaining).toBe(5);
+	controller.dispose();
+});
+
+test('seeking backward reconstructs user roadblocks without removing stage traps', () => {
+	const syncUserRoadblocks = vi.fn();
+	const runtime = createRuntime();
+	const controller = new ObstacleController(
+		{ applyObstacleEvent: vi.fn(), syncUserRoadblocks } as any,
+		{ token_cards: [{ key: 'trap_001_crate', count: 2 }] } as any,
+		runtime
+	);
+	runtime.setValue('scaledElapsedTime', 100);
+	const placementId = controller.recordPlacement({ row: 2, col: 3 }, 'trap_001_crate');
+	runtime.setValue('scaledElapsedTime', 200);
+	controller.recordRemoval({ row: 2, col: 3 }, 'trap_001_crate', placementId);
+
+	controller.setReplayTime(150);
+	expect(syncUserRoadblocks).toHaveBeenLastCalledWith([
+		{
+			key: 'trap_001_crate',
+			position: { row: 2, col: 3 },
+			placementId
+		}
+	]);
+
+	controller.setReplayTime(50);
+	expect(syncUserRoadblocks).toHaveBeenLastCalledWith([]);
+	controller.setReplayTime(250);
+	expect(syncUserRoadblocks).toHaveBeenLastCalledWith([]);
+	controller.dispose();
 });
 
 test('an invalid obstacle preview remains visible and semi-transparent', () => {
-	const game = Object.create(Game.prototype) as any;
+	const { controller } = createInputController();
 	const sharedMaterial = new THREE.MeshBasicMaterial({ opacity: 0.8 });
 	const previewMaterialOwner = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), sharedMaterial);
 	const preview = new THREE.Group();
 	preview.visible = false;
 	preview.add(previewMaterialOwner);
 
-	game.setRollOverPlacementValidity(preview, false);
+	controller.setRollOverPlacementValidity(preview, false);
 
 	const previewMaterial = previewMaterialOwner.material as THREE.MeshBasicMaterial;
 	expect(preview.visible).toBe(true);
@@ -274,7 +458,7 @@ test('an invalid obstacle preview remains visible and semi-transparent', () => {
 	expect(sharedMaterial.opacity).toBe(0.8);
 	expect(sharedMaterial.transparent).toBe(false);
 
-	game.setRollOverPlacementValidity(preview, true);
+	controller.setRollOverPlacementValidity(preview, true);
 	expect(previewMaterial.opacity).toBe(0.8);
 	expect(previewMaterial.transparent).toBe(false);
 	expect(previewMaterial.depthWrite).toBe(true);
@@ -283,43 +467,36 @@ test('an invalid obstacle preview remains visible and semi-transparent', () => {
 test('obstacle preview revalidates when placement validity changes on the same tile', () => {
 	const preview = new THREE.Group();
 	const intersection = { point: new THREE.Vector3() };
-	const game = Object.create(Game.prototype) as any;
-	Object.assign(game, {
-		pendingTokenPointer: { clientX: 50, clientY: 50, overCanvas: true },
-		lastHoveredGridKey: null,
-		placementPlane: new THREE.Object3D(),
-		pointer: new THREE.Vector2(),
-		camera: {},
-		renderer: {
-			domElement: {
-				getBoundingClientRect: () => ({ left: 0, top: 0, width: 100, height: 100 })
-			}
+	const placementPlane = new THREE.Object3D();
+	const { controller, runtime } = createInputController({
+		placementPlane,
+		gameManager: {
+			rollOverMeshes: new Map(),
+			getGridPosFromVectors: () => '3,2'
 		},
 		raycaster: {
 			setFromCamera: vi.fn(),
 			intersectObject: () => [intersection]
-		},
-		gameManager: {
-			getGridPosFromVectors: () => '3,2'
 		}
 	});
 	const getObstaclePlacement = vi
-		.spyOn(game, 'getObstaclePlacement')
-		.mockReturnValueOnce({ mesh: preview, canPlace: true })
-		.mockReturnValueOnce({ mesh: preview, canPlace: false })
-		.mockReturnValueOnce({ mesh: preview, canPlace: false });
-	const setValidity = vi.spyOn(game, 'setRollOverPlacementValidity');
-	GameConfig.setValue('tokenCard', {
+		.spyOn(controller, 'getObstaclePlacement')
+		.mockReturnValueOnce({ mesh: preview, canPlace: true } as any)
+		.mockReturnValueOnce({ mesh: preview, canPlace: false } as any)
+		.mockReturnValueOnce({ mesh: preview, canPlace: false } as any);
+	const setValidity = vi.spyOn(controller, 'setRollOverPlacementValidity');
+	runtime.setValue('tokenCard', {
 		key: 'trap_001_crate',
 		count: 2,
 		selected: true
 	});
 
-	game.processTokenPointerMove();
-	game.pendingTokenPointer = { clientX: 51, clientY: 51, overCanvas: true };
-	game.processTokenPointerMove();
-	game.pendingTokenPointer = { clientX: 52, clientY: 52, overCanvas: true };
-	game.processTokenPointerMove();
+	(controller as any).pendingTokenPointer = { clientX: 50, clientY: 50, overCanvas: true };
+	controller.processPendingPointerMove();
+	(controller as any).pendingTokenPointer = { clientX: 51, clientY: 51, overCanvas: true };
+	controller.processPendingPointerMove();
+	(controller as any).pendingTokenPointer = { clientX: 52, clientY: 52, overCanvas: true };
+	controller.processPendingPointerMove();
 
 	expect(getObstaclePlacement).toHaveBeenCalledTimes(3);
 	expect(setValidity).toHaveBeenCalledTimes(2);
@@ -334,7 +511,7 @@ test('selecting a roadblock shows an unskewed selection frame and escape button'
 	const trap = Object.create(Trap.prototype) as any;
 	Object.assign(trap, {
 		gameManager: {
-			game: { objects, hideRollOverMesh: vi.fn() },
+			world: { objects, hideRollOverMesh: vi.fn() },
 			traps: new Map(),
 			scene,
 			removeTrap: vi.fn()
@@ -375,7 +552,7 @@ test('selecting a roadblock shows an unskewed selection frame and escape button'
 	expect(trap.showUI.visible).toBe(true);
 	expect(objects).toContain(escapeButton);
 	expect(GameConfig.tokensDisabled).toBe(true);
-	expect(trap.gameManager.game.hideRollOverMesh).toHaveBeenCalledOnce();
+	expect(trap.gameManager.world.hideRollOverMesh).toHaveBeenCalledOnce();
 
 	trap.onDeselect();
 	expect(trap.selected).toBe(false);
@@ -394,7 +571,7 @@ test('a selectable non-roadblock trap shows the frame without an escape button',
 	const trap = Object.create(Trap.prototype) as any;
 	Object.assign(trap, {
 		gameManager: {
-			game: { objects, hideRollOverMesh: vi.fn() },
+			world: { objects, hideRollOverMesh: vi.fn() },
 			traps: new Map(),
 			scene,
 			removeTrap: vi.fn()
@@ -423,11 +600,15 @@ test('a selectable non-roadblock trap shows the frame without an escape button',
 
 test('the roadblock escape button removes its trap before obstacle placement is handled', () => {
 	const remove = vi.fn();
-	GameConfig.scaledElapsedTime = 3.5;
-	const game = Object.create(Game.prototype) as any;
-	game.objects = [];
+	const runtime = createRuntime();
+	runtime.setValue('scaledElapsedTime', 3.5);
+	const obstacleController = {
+		recordRemoval: (position: Position, trapKey: string, placementId: string | null) =>
+			obstacleEventStore.recordRemoval(runtime.scaledElapsedTime, position, trapKey, placementId)
+	};
+	const { controller } = createInputController({ runtime, obstacleController });
 
-	const handled = game.handleRoadblockInteraction([
+	const handled = controller.handleRoadblockInteraction([
 		{
 			object: {
 				userData: {
@@ -440,7 +621,7 @@ test('the roadblock escape button removes its trap before obstacle placement is 
 				}
 			}
 		}
-	]);
+	] as unknown as THREE.Intersection[]);
 
 	expect(handled).toBe(true);
 	expect(remove).toHaveBeenCalledOnce();
@@ -458,13 +639,43 @@ test('the roadblock escape button removes its trap before obstacle placement is 
 test('clicking a roadblock selects it and deselects other objects', () => {
 	const roadblock = { isRoadblock: 1, onSelect: vi.fn(), onDeselect: vi.fn() };
 	const otherEnemy = { onDeselect: vi.fn() };
-	const game = Object.create(Game.prototype) as any;
-	game.objects = [{ userData: { trap: roadblock } }, { userData: { enemy: otherEnemy } }];
+	const objects = [
+		{ userData: { trap: roadblock } },
+		{ userData: { enemy: otherEnemy } }
+	] as unknown as THREE.Object3D[];
+	const { controller } = createInputController({ objects });
 
-	const handled = game.handleRoadblockInteraction([{ object: { userData: { trap: roadblock } } }]);
+	const handled = controller.handleRoadblockInteraction([
+		{ object: { userData: { trap: roadblock } } }
+	] as unknown as THREE.Intersection[]);
 
 	expect(handled).toBe(true);
 	expect(roadblock.onSelect).toHaveBeenCalledOnce();
 	expect(roadblock.onDeselect).not.toHaveBeenCalled();
 	expect(otherEnemy.onDeselect).toHaveBeenCalledOnce();
+});
+
+test('reconstructing user roadblocks preserves stage-owned roadblocks', () => {
+	const removeStageTrap = vi.fn();
+	const removeUserTrap = vi.fn();
+	const manager = Object.create(GameManager.prototype) as any;
+	manager.traps = new Map([
+		['1,1', { isRoadblock: 1, userPlacementId: null, remove: removeStageTrap }],
+		[
+			'2,2',
+			{
+				isRoadblock: 1,
+				userPlacementId: 'obstacle-1',
+				key: 'trap_001_crate',
+				position: { row: 2, col: 2 },
+				remove: removeUserTrap
+			}
+		]
+	]);
+	manager.addTrap = vi.fn();
+
+	manager.syncUserRoadblocks([]);
+
+	expect(removeUserTrap).toHaveBeenCalledOnce();
+	expect(removeStageTrap).not.toHaveBeenCalled();
 });

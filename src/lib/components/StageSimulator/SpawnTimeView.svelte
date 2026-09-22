@@ -5,6 +5,7 @@
 	import { wavePrefixSuffix, getTranslations } from '$lib/functions/languageHelpers';
 	import { onDestroy, onMount } from 'svelte';
 	import { compileSpawnTimeActions, getImageForWaves } from '$lib/functions/waveHelpers';
+	import { getStageBehavior, getTimelineScrollActionIndex } from './config/stageBehaviors';
 
 	interface Props {
 		waves: any;
@@ -15,16 +16,17 @@
 
 	let { waves, mapConfig, branchKey, branchIndex }: Props = $props();
 
-	let timelineContainer: HTMLDivElement = $state(),
-		actionsContainer: HTMLDivElement = $state();
+	let timelineContainer = $state<HTMLDivElement>();
+	let actionsContainer = $state<HTMLDivElement>();
 	let currWaveIndex = $state(0);
 	let waveElapsedTime = $state(0);
 	let language: Language = $derived(page.data.language);
 	let showTimeline = $state(true);
 	let simMode = $state('wave_normal');
+	let timelineBehavior = $derived(getStageBehavior(mapConfig.levelId).timeline);
 
 	// Sync class -> store
-	const unsubscribeFns = [];
+	const unsubscribeFns: Array<() => void> = [];
 	onMount(() => {
 		unsubscribeFns.push(GameConfig.showTimeline.subscribe((v) => (showTimeline = v)));
 		unsubscribeFns.push(
@@ -39,9 +41,9 @@
 		);
 		unsubscribeFns.push(
 			GameConfig.subscribe('scaledElapsedTime', (value) => {
-				if (value === 0 && !['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId)) {
+				if (value === 0 && !timelineBehavior?.isolatedWaves) {
 					currWaveIndex = 0;
-					timelineContainer && timelineContainer.scrollTo(0, 0);
+					timelineContainer?.scrollTo(0, 0);
 				}
 			})
 		);
@@ -49,21 +51,14 @@
 			GameConfig.subscribe('currentWaveIndex', (value) => {
 				if (currWaveIndex !== value) {
 					currWaveIndex = value;
-					let indexesToScrollBy = 0;
-					switch (mapConfig?.levelId) {
-						case 'level_rogue4_b-7':
-							indexesToScrollBy = [0, 1].includes(value) ? 0 : 23;
-							break;
-						case 'level_rogue4_b-8':
-							indexesToScrollBy = [0, 1].includes(value) ? 0 : [2, 3].includes(value) ? 3 : 7;
-							break;
-					}
-					timelineContainer &&
+					const indexesToScrollBy = getTimelineScrollActionIndex(mapConfig.levelId, value);
+					const targetAction = actionsContainer?.children[indexesToScrollBy] as
+						HTMLElement | undefined;
+					if (timelineContainer && targetAction) {
 						timelineContainer.scrollTo({
-							top:
-								actionsContainer.children?.[indexesToScrollBy]?.offsetTop +
-								actionsContainer.children?.[indexesToScrollBy]?.scrollHeight
+							top: targetAction.offsetTop + targetAction.scrollHeight
 						});
+					}
 					return;
 				}
 			})
@@ -80,17 +75,16 @@
 
 	function trackAndScrollContainer(index: number) {
 		if (simMode === 'wave_summons') return;
-		if (timelineContainer && actionsContainer.children[index]) {
+		const targetAction = actionsContainer?.children[index] as HTMLElement | undefined;
+		if (timelineContainer && targetAction) {
 			timelineContainer.scrollTo({
-				top:
-					actionsContainer.children[index].offsetTop +
-					actionsContainer.children[index].scrollHeight,
+				top: targetAction.offsetTop + targetAction.scrollHeight,
 				behavior: 'smooth'
 			});
 		}
 	}
 	function getPrevActionsSize(currWaveIndex: number) {
-		if (['level_rogue4_b-7', 'level_rogue4_b-8'].includes(mapConfig?.levelId)) return 0;
+		if (timelineBehavior?.isolatedWaves) return 0;
 		let size = 0;
 		for (let i = 0; i < currWaveIndex; i++) {
 			const length = waves?.[i]?.timeline?.length || 0;

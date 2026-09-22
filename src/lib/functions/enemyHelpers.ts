@@ -19,19 +19,6 @@ export const BONUS_ENEMY_KEYS = [
 	'enemy_2152_shezlc'
 ];
 
-export const DUEL_STAGES = [
-	'level_rogue4_d-1',
-	'level_rogue4_d-2',
-	'level_rogue4_d-3',
-	'level_rogue4_d-b',
-	'level_rogue5_d-1',
-	'level_rogue5_d-2',
-	'level_rogue5_d-3',
-	'level_rogue5_d-4',
-	'level_rogue6_d-1',
-	'level_rogue6_d-2'
-];
-
 const getEnemyWeight = (key, type) => {
 	if (BONUS_ENEMY_KEYS.includes(key)) {
 		return 99;

@@ -1,4 +1,4 @@
-import type { Language, MapConfig, RogueTopic } from '$lib/types';
+import type { Language, MapConfig, RogueTopic, Wave, WaveAction, WaveFragment } from '$lib/types';
 import fragments from '$lib/data/is/sarkaz/fragments.json';
 import f27 from '$lib/images/is/sarkaz/rogue_4_fragment_F_27.webp';
 import f28 from '$lib/images/is/sarkaz/rogue_4_fragment_F_28.webp';
@@ -6,7 +6,6 @@ import calamity from '$lib/images/is/sarkaz/rogue_4_disaster_1_toast.webp';
 import disasters from '$lib/data/is/sarkaz/disasters.json';
 import relicsSui from '$lib/data/is/sui/relics_sui.json';
 import enemyDatabase from '$lib/data/enemy/enemy_database.json';
-import { getTranslations } from '$lib/functions/languageHelpers';
 
 const ALWAYS_KILLED_KEYS = [
 	'enemy_2073_skzrck',
@@ -39,6 +38,8 @@ const ENEMY_CHEST_KEYS = [
 	'enemy_2152_shezlc'
 ];
 
+type WaveMapConfig = Pick<MapConfig, 'levelId' | 'waves' | 'enemies' | 'bonus' | 'elite_runes'>;
+
 const getFragmentName = (id, language: Language) => {
 	const fragment = fragments.find((ele) => ele.id === id);
 	return fragment[`name_${language}`] || fragment['name_zh'];
@@ -60,7 +61,7 @@ export const getOptions = (
 ) => {
 	const options = [];
 	const list = [];
-	for (const wave of mapConfig?.waves) {
+	for (const wave of mapConfig?.waves ?? []) {
 		for (const fragment of wave.fragments) {
 			for (const action of fragment.actions) {
 				if (action.actionType === 'ACTIVATE_PREDEFINED') {
@@ -90,7 +91,6 @@ export const getOptions = (
 					name: 'N12以上结局关卡'
 				});
 			}
-			[];
 			break;
 		case 'rogue_mizuki':
 			for (const key of predefines) {
@@ -268,8 +268,8 @@ const packHasGroupInFragment = (actions, packKey) => {
 
 export const getBaseCount = (mapConfig, eliteMode) => {
 	let totalCount = 0;
-	mapConfig?.waves.forEach((wave, waveIdx) => {
-		wave['fragments'].forEach((fragment, fragIndex) => {
+	mapConfig?.waves.forEach((wave) => {
+		wave['fragments'].forEach((fragment) => {
 			for (const action of fragment['actions']) {
 				if (action['actionType'] !== 'SPAWN') {
 					continue;
@@ -304,7 +304,7 @@ export const getBaseCount = (mapConfig, eliteMode) => {
 	return totalCount;
 };
 
-const isCountableEnemy = (key: string, mapConfig: MapConfig) => {
+const isCountableEnemy = (key: string, mapConfig: Pick<MapConfig, 'enemies'>) => {
 	let enemyKey = key;
 	const enemyRef = mapConfig?.enemies.find((ele) => ele.id === key || ele.prefabKey === key);
 	if (enemyRef) {
@@ -320,7 +320,7 @@ const isCountableEnemy = (key: string, mapConfig: MapConfig) => {
 	return isCountable;
 };
 
-const isCountableAction = (action, mapConfig: MapConfig) => {
+const isCountableAction = (action, mapConfig: Pick<MapConfig, 'enemies'>) => {
 	const key = action.key;
 	if (!ACTION_TYPES_TO_PARSE.includes(action['actionType'])) {
 		return false;
@@ -488,8 +488,8 @@ export const generateWaveTimeline = (
 	const { waves } = mapConfig;
 	waves.forEach((wave, waveIdx) => {
 		let prevPhaseTime = 0;
-		let spawns = {};
-		let waveBlockingSpawns = {};
+		const spawns = {};
+		const waveBlockingSpawns = {};
 		wave['fragments'].forEach((fragment, fragIndex) => {
 			prevPhaseTime += fragment['preDelay'];
 
@@ -650,27 +650,31 @@ const handleAction = (action, spawns, waveBlockingSpawns, prevPhaseTime, enemyRe
 };
 
 export const parseWaves = (
-	mapConfig,
-	permutation,
-	hiddenGroups,
-	eliteMode,
-	randomSeeds,
-	bonusKey
-) => {
+	mapConfig: WaveMapConfig,
+	permutation: ResolvedWavePermutation | undefined,
+	hiddenGroups: string[],
+	eliteMode: boolean,
+	randomSeeds: number[],
+	bonusKey: string
+): Wave[] => {
 	let randomSeedIndex = 0;
-	const waves = structuredClone(mapConfig?.waves);
+	const waves = structuredClone(mapConfig.waves);
 	waves.forEach((wave, waveIdx) => {
-		const fragments = [];
+		const fragments: WaveFragment[] = [];
 		wave['fragments'].forEach((fragment, fragIndex) => {
 			const copy = structuredClone(fragment);
 			const key = `w${waveIdx}f${fragIndex}`;
-			const actions = [];
+			const actions: WaveAction[] = [];
 
-			let groupActions = [];
-			const packedGroups = getRandomGroups(fragment, hiddenGroups);
+			let groupActions: WaveAction[] = [];
+			const packedGroups = getRandomGroups(fragment, hiddenGroups) as Record<
+				string,
+				Array<WaveAction | WaveAction[]>
+			>;
 			for (const [groupKey, list] of Object.entries(packedGroups)) {
 				if (list.length === 1) {
-					groupActions.push(list[0]);
+					const onlyChoice = list[0];
+					groupActions.push(...(Array.isArray(onlyChoice) ? onlyChoice : [onlyChoice]));
 					continue;
 				}
 				let choice = permutation?.[key]?.[groupKey];
@@ -722,6 +726,124 @@ export const parseWaves = (
 	});
 
 	return waves;
+};
+
+export type ResolvedWavePermutation = Record<string, Record<string, number>>;
+
+export type WaveScenario = {
+	waveData: Wave[];
+	timeline: ReturnType<typeof generateWaveTimeline>;
+	permutation: ResolvedWavePermutation | undefined;
+	revision: string;
+};
+
+export const resolveWavePermutation = (
+	mapConfig: WaveMapConfig,
+	hiddenGroups: string[],
+	permutation: unknown,
+	randomSeeds: number[],
+	bonusKey: string
+): ResolvedWavePermutation | undefined => {
+	if (!permutation) return undefined;
+	const resolved: ResolvedWavePermutation =
+		typeof permutation === 'object'
+			? Object.fromEntries(
+					Object.entries(permutation as ResolvedWavePermutation).map(([fragmentKey, groups]) => [
+						fragmentKey,
+						{ ...groups }
+					])
+				)
+			: {};
+	let randomSeedIndex = 0;
+
+	mapConfig?.waves?.forEach((wave, waveIndex) => {
+		wave.fragments.forEach((fragment, fragmentIndex) => {
+			const fragmentKey = `w${waveIndex}f${fragmentIndex}`;
+			const packedGroups = getRandomGroups(fragment, hiddenGroups);
+			for (const [groupKey, list] of Object.entries(packedGroups)) {
+				if (list.length <= 1 || resolved[fragmentKey]?.[groupKey] !== undefined) continue;
+				const isBonusGroup = mapConfig?.bonus
+					? fragmentKey ===
+						`w${mapConfig.bonus.wave_index}f${Math.max(0, mapConfig.bonus.frag_index)}`
+					: false;
+				let choice = getPredefinedChoiceIndex(
+					list,
+					bonusKey,
+					isBonusGroup ? mapConfig.bonus : null
+				);
+				if (choice === undefined) {
+					choice = Math.floor((randomSeeds[randomSeedIndex] ?? 0) * list.length);
+					randomSeedIndex++;
+				}
+				resolved[fragmentKey] ??= {};
+				resolved[fragmentKey][groupKey] = choice;
+			}
+		});
+	});
+
+	return resolved;
+};
+
+const scenarioRevision = (value: unknown) => {
+	const serialized = JSON.stringify(value);
+	let hash = 2166136261;
+	for (let index = 0; index < serialized.length; index++) {
+		hash ^= serialized.charCodeAt(index);
+		hash = Math.imul(hash, 16777619);
+	}
+	return (hash >>> 0).toString(36);
+};
+
+/**
+ * Resolves random choices once, then builds both simulator representations
+ * from that immutable choice snapshot.
+ */
+export const buildWaveScenario = (
+	mapConfig: WaveMapConfig,
+	permutation: unknown,
+	hiddenGroups: string[],
+	eliteMode: boolean,
+	randomSeeds: number[],
+	bonusKey: string,
+	revisionSalt = 0
+): WaveScenario => {
+	const resolvedPermutation = resolveWavePermutation(
+		mapConfig,
+		hiddenGroups,
+		permutation,
+		randomSeeds,
+		bonusKey
+	);
+	const waveData = parseWaves(
+		mapConfig,
+		resolvedPermutation,
+		hiddenGroups,
+		eliteMode,
+		[],
+		bonusKey
+	);
+	const timeline = generateWaveTimeline(
+		mapConfig,
+		hiddenGroups,
+		resolvedPermutation,
+		eliteMode,
+		[],
+		bonusKey
+	);
+	return {
+		waveData,
+		timeline,
+		permutation: resolvedPermutation,
+		revision: `${mapConfig?.levelId ?? 'unknown'}:${scenarioRevision([
+			waveData,
+			eliteMode,
+			hiddenGroups,
+			bonusKey,
+			randomSeeds,
+			revisionSalt,
+			resolvedPermutation
+		])}`
+	};
 };
 
 export const getPredefinedChoiceIndex = (list, bonusKey, bonus) => {

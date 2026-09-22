@@ -1,4 +1,4 @@
-import type { MapConfig, Enemy as EnemyType, Position } from '$lib/types';
+import type { MapConfig, Enemy as EnemyType, Position, Wave } from '$lib/types';
 import { GameConfig } from '../objects/GameConfig';
 import { GameMap } from '../objects/GameMap';
 import { SpawnManager } from '../objects/SpawnManager';
@@ -9,7 +9,6 @@ import { generateMaze } from '$lib/functions/mazeHelpers';
 import { Enemy } from '../objects/Enemy';
 import { AssetManager } from '../objects/AssetManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
-import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
 import { getEnemySkills } from '$lib/functions/skillHelpers';
 import type { ObstacleEvent, ObstacleEventSnapshot } from '../stores/obstacleEvents';
 import {
@@ -17,6 +16,7 @@ import {
 	type OfflineStageRuntimeOptions,
 	type StageRuntime
 } from '../objects/StageRuntime';
+import { shouldSkipOfflineSimulation } from '../config/stageBehaviors';
 
 type SimulationOptions = Partial<OfflineStageRuntimeOptions> & {
 	obstacleEvents?: ObstacleEventSnapshot;
@@ -38,13 +38,10 @@ function yieldToMainThread() {
 
 export async function getSimulatedData(
 	config: MapConfig,
-	waveData,
+	waveData: Wave[],
 	enemies: EnemyType[],
 	options: SimulationOptions = {}
 ) {
-	if (DUEL_STAGES.concat(['level_rogue2_b-7', 'level_rogue1_b-7']).includes(config.levelId)) {
-		return;
-	}
 	const runtime = new OfflineStageRuntime({
 		mode: options.mode ?? GameConfig.mode,
 		currentWaveIndex: options.currentWaveIndex ?? 0,
@@ -54,7 +51,7 @@ export async function getSimulatedData(
 		steeringEnabled: options.steeringEnabled ?? GameConfig.steeringEnabled,
 		seed: options.seed
 	});
-	if (['level_rogue4_b-7'].includes(config.levelId) && runtime.stagePhaseIndex == 1) {
+	if (shouldSkipOfflineSimulation(config.levelId, runtime.stagePhaseIndex)) {
 		return;
 	}
 	const assetManager = AssetManager.getInstance();
@@ -68,7 +65,6 @@ export async function getSimulatedData(
 	let i = 1;
 	let count = 0;
 	const data = {};
-	let enemiesToHighlight = [];
 	const events =
 		options.obstacleEvents?.levelId === config.levelId
 			? structuredClone(options.obstacleEvents.events).sort((a, b) => a.time - b.time)
@@ -79,7 +75,7 @@ export async function getSimulatedData(
 		eventIndex++;
 	}
 	setData(count, data, spawnManager, gameSimManager, runtime);
-	enemiesToHighlight = spawnManager.enemiesToHighlight;
+	const enemiesToHighlight = spawnManager.enemiesToHighlight;
 	let lastYieldTime = now();
 	const yieldBudgetMs = options.yieldBudgetMs ?? 8;
 
@@ -169,7 +165,7 @@ function setData(
 							formIndex,
 							runtime.specialMods,
 							'special'
-					  )
+						)
 					: enemy.specials;
 			return {
 				meshPos: structuredClone(enemy.meshGroup.position),
@@ -412,7 +408,7 @@ class GameSimManager {
 		const trap = event.placementId
 			? [...this.traps.values()].find(
 					(candidate) => candidate.userPlacementId === event.placementId
-			  )
+				)
 			: this.traps.get(positionKey);
 		if (trap?.isRoadblock && trap.key === event.trapKey) trap.remove();
 	}

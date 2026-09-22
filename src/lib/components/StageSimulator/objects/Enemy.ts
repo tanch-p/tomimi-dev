@@ -9,13 +9,13 @@ import { getEnemySkills } from '$lib/functions/skillHelpers';
 import { getAnimDuration, getSpineAnimations, getSpineMetaData } from '$lib/functions/spineHelpers';
 import { SkillManager } from './SkillManager';
 import { clearObjects } from '$lib/functions/threejsHelpers';
-import { DUEL_STAGES } from '$lib/functions/enemyHelpers';
 import {
 	createAnimatedPathVisualisation,
 	createPathVisualisation,
 	type AnimatedPathVisualisation
 } from '$lib/functions/pathVisualisationHelpers';
 import { getStageRuntime } from './StageRuntime';
+import { getStagePhaseBehavior } from '../config/stageBehaviors';
 
 const moveMultiplier = 0.5;
 const animatedPathCountdownFadeDuration = 4;
@@ -435,7 +435,7 @@ export class Enemy {
 			this.meshGroup.add(sprite);
 			this.sprite = sprite;
 			sprite.userData.enemy = this;
-			this.gameManager.game.objects.push(sprite);
+			this.gameManager.world.objects.push(sprite);
 			this.gameManager.scene.add(this.meshGroup);
 			this.meshGroup.renderOrder = 5;
 		} else if (modelType === 'spine') {
@@ -494,7 +494,7 @@ export class Enemy {
 				this.skel.position.y += GameConfig.gridSize * 0.7;
 			}
 			sprite.userData.enemy = this;
-			this.gameManager.game.objects.push(sprite);
+			this.gameManager.world.objects.push(sprite);
 			this.gameManager.scene.add(this.meshGroup);
 
 			if (this.entry) {
@@ -620,7 +620,7 @@ export class Enemy {
 						(skillBlinkSkill?.duration ?? 0) -
 							this.skillBlinkBeginDuration -
 							this.skillBlinkEndDuration
-				  )
+					)
 				: 0;
 		}
 	}
@@ -953,8 +953,8 @@ export class Enemy {
 
 	handleAnimUpdate(delta: number) {
 		this.handleAnimationChange();
-		this.skel && this.skel.update(delta);
-		this.disguiseSkel && this.disguiseSkel.update(delta);
+		this.skel?.update(delta);
+		this.disguiseSkel?.update(delta);
 
 		if (this.state === 'fall') {
 			if (this.exitElapsedTime > 0.5) {
@@ -992,8 +992,8 @@ export class Enemy {
 		this.handleAnimUpdate(delta);
 		if (
 			this?.gameManager?.config &&
-			DUEL_STAGES.includes(this.gameManager.config.levelId) &&
-			this.runtime.stagePhaseIndex === 0
+			getStagePhaseBehavior(this.gameManager.config.levelId, this.runtime.stagePhaseIndex)
+				.freezeEnemies
 		)
 			return;
 		if (this.exit) return;
@@ -1044,8 +1044,8 @@ export class Enemy {
 			case 'MOVE':
 				{
 					if (
-						this.gameManager.config.levelId.includes('_d-') &&
-						this.runtime.stagePhaseIndex === 0
+						getStagePhaseBehavior(this.gameManager.config.levelId, this.runtime.stagePhaseIndex)
+							.freezeEnemies
 					) {
 						// workaround for duel stages to prevent enemy from moving
 						this.animState = 'Idle';
@@ -1335,11 +1335,11 @@ export class Enemy {
 		}
 		if (!this.gameManager.isSimulation) {
 			if (this.sprite) {
-				const objectIndex = this.gameManager.game.objects.findIndex(
+				const objectIndex = this.gameManager.world.objects.findIndex(
 					(ele) => ele.uuid === this.sprite.uuid
 				);
 				if (objectIndex !== -1) {
-					this.gameManager.game.objects.splice(objectIndex, 1);
+					this.gameManager.world.objects.splice(objectIndex, 1);
 				}
 			}
 			this.gameManager.removeCountdown(this.countdownId);
@@ -1396,8 +1396,9 @@ export class Enemy {
 			}
 			this.shadow.uniforms.isSelected.value = false;
 			this.selected = false;
-			!GameConfig.showAllTimers &&
+			if (!GameConfig.showAllTimers) {
 				this.gameManager.countdownManager.toggleCountdown(this.countdownId, false);
+			}
 			if (this.atkRangeMesh) {
 				this.atkRangeMesh.visible = GameConfig.showAllRange;
 			}

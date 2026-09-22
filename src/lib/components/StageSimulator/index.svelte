@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { Enemy, Language, MapConfig } from '$lib/types';
+	import type { WaveScenario } from '$lib/functions/waveHelpers';
 	import { onDestroy, onMount, tick, untrack } from 'svelte';
-	import { Game } from './objects/Game';
+	import { Game, type GameScenario } from './objects/Game';
 	import { AssetManager } from './objects/AssetManager';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Interface from './Interface.svelte';
@@ -14,22 +15,16 @@
 	import { obstacleEventStore, type ObstacleEventSnapshot } from './stores/obstacleEvents';
 
 	interface Props {
-		timeline: any;
+		scenario: WaveScenario;
 		mapConfig: MapConfig;
-		waveData: any;
 		language: Language;
 		enemies: Enemy[];
-		randomSeeds: any;
+		requestReset: () => void;
 	}
 
-	let {
-		timeline,
-		mapConfig,
-		waveData,
-		language,
-		enemies,
-		randomSeeds = $bindable()
-	}: Props = $props();
+	let { scenario, mapConfig, language, enemies, requestReset }: Props = $props();
+	let waveData = $derived(scenario.waveData);
+	let timeline = $derived(scenario.timeline);
 
 	let simMode = $state('wave_normal'),
 		branchKey = $state(''),
@@ -55,9 +50,9 @@
 		requestSimulation(latestObstacleSnapshot);
 	}
 
-	function resetGame() {
+	function resetGame(nextScenario: GameScenario) {
 		if (game && assetsReady && !isDestroyed) {
-			game.reset(mapConfig, waveData, enemies);
+			game.replaceScenario(nextScenario);
 			initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		}
 	}
@@ -138,11 +133,16 @@
 		if (!loaded || isDestroyed || generation !== assetLoadGeneration) return;
 
 		if (!game) {
-			game = new Game(canvasElement, mapConfig, waveData, enemies);
-			GameConfig.state = 'ready';
+			game = new Game(canvasElement, {
+				config: mapConfig,
+				waveData,
+				enemies,
+				revision: scenario.revision
+			});
+			GameConfig.setValue('state', 'ready');
 		} else {
 			assetsReady = true;
-			resetGame();
+			resetGame({ config: mapConfig, waveData, enemies, revision: scenario.revision });
 		}
 		initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		assetsReady = true;
@@ -155,7 +155,7 @@
 		unsubscribeFns.push(
 			GameConfig.subscribe('mode', (mode: string) => {
 				simMode = mode;
-				if (game && assetsReady && !isDestroyed) game.softReset(false);
+				if (game && assetsReady && !isDestroyed) game.restart({ resetWaveIndex: false });
 			})
 		);
 		unsubscribeFns.push(
@@ -186,13 +186,22 @@
 		assetLoadPromise = untrack(() => loadGame(currentMapConfig));
 	});
 	$effect(() => {
-		const currentTimeline = timeline;
-		if (currentTimeline) {
-			untrack(resetGame);
+		const currentScenario = scenario;
+		const currentMapConfig = mapConfig;
+		const currentEnemies = enemies;
+		if (currentScenario.timeline) {
+			untrack(() =>
+				resetGame({
+					config: currentMapConfig,
+					waveData: currentScenario.waveData,
+					enemies: currentEnemies,
+					revision: currentScenario.revision
+				})
+			);
 		}
 	});
 	$effect(() => {
-		simulationInputsChanged(mapConfig, waveData, enemies, timeline, randomSeeds);
+		simulationInputsChanged(mapConfig, scenario.revision, enemies);
 	});
 </script>
 
@@ -202,7 +211,7 @@
 		{#await assetLoadPromise}
 			<LoadingScreen />
 		{:then}
-			{#if game}
+			{#if game && timeline}
 				{#if simMode === 'wave_summons' && mapConfig?.branches}
 					<BranchSummons bind:branchKey bind:branchIndex {language} {game} {mapConfig} />
 				{/if}
@@ -217,7 +226,7 @@
 				<Interface
 					{simulatedData}
 					{isSimulationRunning}
-					bind:randomSeeds
+					{requestReset}
 					{game}
 					{mapConfig}
 					initialCost={mapConfig?.initialCost}
@@ -234,7 +243,7 @@
 	{:else}
 		<LoadingScreen />
 	{/if}
-	<canvas bind:this={canvasElement}></canvas>
+	<canvas bind:this={canvasElement} data-scenario-revision={scenario.revision}></canvas>
 </div>
 
 <style>

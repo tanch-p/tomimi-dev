@@ -99,7 +99,7 @@ export class Trap {
 			this.summonInterval = Number(intervalOverride ?? summonSkill.interval);
 			this.summonAnimation = summonSkill.beginAnimation ?? null;
 		}
-		!isSimulation && this.initModel(trap.modelType);
+		if (!isSimulation) this.initModel(trap.modelType);
 		this.isRoadblock =
 			trap.special.some((skillRef) => ['roadblock'].includes(skillRef)) ||
 			trap.skills.some((skillRef) => ['sktok_crate', 'sktok_stone'].includes(skillRef));
@@ -178,7 +178,7 @@ export class Trap {
 		selectionSprite.userData.trap = this;
 		this.sprite = selectionSprite;
 		this.meshGroup.add(selectionSprite);
-		this.gameManager.game.objects.push(selectionSprite);
+		this.gameManager.world.objects.push(selectionSprite);
 	}
 
 	initModel(type) {
@@ -195,7 +195,6 @@ export class Trap {
 					});
 					this.skel = skeletonMesh;
 					skeletonMesh.position.set(0, -GameConfig.gridSize * 0.2, 0);
-					skeletonMesh.state;
 					const animName = getIdleAnimName(this.key, skeletonData);
 					this.skel.state.setAnimation(0, animName, true);
 					this.summonAnimationDuration = getAnimDuration(skeletonData, this.summonAnimation);
@@ -220,7 +219,7 @@ export class Trap {
 						sprite.userData.trap = this;
 						this.sprite = sprite;
 						this.meshGroup.add(sprite);
-						this.gameManager.game.objects.push(sprite);
+						this.gameManager.world.objects.push(sprite);
 						this.pathGroup = this.visualiseBranchPaths();
 					}
 				}
@@ -321,10 +320,10 @@ export class Trap {
 		if (gameManager) {
 			for (const interactiveObject of [this.sprite, ...(this.uiInteractiveObjects ?? [])]) {
 				if (!interactiveObject) continue;
-				const index = gameManager.game.objects.findIndex(
+				const index = gameManager.world.objects.findIndex(
 					(object) => object.uuid === interactiveObject.uuid
 				);
-				if (index !== -1) gameManager.game.objects.splice(index, 1);
+				if (index !== -1) gameManager.world.objects.splice(index, 1);
 			}
 		}
 		if (this.showUI) {
@@ -347,8 +346,8 @@ export class Trap {
 		if (this.pathGroup) this.gameManager.scene.add(this.pathGroup);
 		if (this.showUI) this.showUI.visible = true;
 		for (const interactiveObject of this.uiInteractiveObjects) {
-			if (!this.gameManager.game.objects.includes(interactiveObject)) {
-				this.gameManager.game.objects.push(interactiveObject);
+			if (!this.gameManager.world.objects.includes(interactiveObject)) {
+				this.gameManager.world.objects.push(interactiveObject);
 			}
 		}
 		this.selected = true;
@@ -360,8 +359,8 @@ export class Trap {
 		if (this.pathGroup) this.gameManager.scene.remove(this.pathGroup);
 		if (this.showUI) this.showUI.visible = false;
 		for (const interactiveObject of this.uiInteractiveObjects) {
-			const index = this.gameManager.game.objects.indexOf(interactiveObject);
-			if (index !== -1) this.gameManager.game.objects.splice(index, 1);
+			const index = this.gameManager.world.objects.indexOf(interactiveObject);
+			if (index !== -1) this.gameManager.world.objects.splice(index, 1);
 		}
 		this.selected = false;
 		this.syncTokensDisabled();
@@ -372,10 +371,8 @@ export class Trap {
 		const traps = this.gameManager?.traps;
 		const tokensDisabled =
 			this.selected || Boolean(traps && Array.from(traps.values()).some((trap) => trap.selected));
-		if (GameConfig.tokensDisabled !== tokensDisabled) {
-			GameConfig.setValue('tokensDisabled', tokensDisabled);
-		}
-		if (tokensDisabled) this.gameManager?.game.hideRollOverMesh?.();
+		getStageRuntime(this.gameManager).setValue('tokensDisabled', tokensDisabled);
+		if (tokensDisabled) this.gameManager?.world.hideRollOverMesh?.();
 	}
 
 	activateBranch() {

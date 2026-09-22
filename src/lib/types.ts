@@ -54,14 +54,7 @@ type EnemyDBStats = {
 	form_mods?: Mod[];
 };
 export type StatusImmune =
-	| 'stun'
-	| 'silence'
-	| 'freeze'
-	| 'sleep'
-	| 'levitate'
-	| 'disarmCombat'
-	| 'fear'
-	| 'palsy';
+	'stun' | 'silence' | 'freeze' | 'sleep' | 'levitate' | 'disarmCombat' | 'fear' | 'palsy';
 type AttackType = 'no_attack' | 'melee' | 'ranged';
 type AttackAttribute = 'phys' | 'arts' | 'true' | 'heal';
 type EnemyType =
@@ -181,6 +174,65 @@ type MapConfigEnemy = {
 	overwrittenData: overwrittenData;
 };
 
+export type StageKey = string;
+
+export type WaveActionType =
+	| 'SPAWN'
+	| 'ACTIVATE_PREDEFINED'
+	| 'WITHDRAW_PREDEFINED'
+	| 'DISPLAY_ENEMY_INFO'
+	| 'PREVIEW_CURSOR'
+	| 'PLAY_OPERA'
+	| 'STORY'
+	| 'EMPTY';
+
+export type WaveRandomType = 'ALWAYS';
+export type WaveRefreshType = 'ALWAYS';
+
+export type WaveAction = {
+	actionType: WaveActionType;
+	managedByScheduler: boolean;
+	key: StageKey;
+	count: number;
+	preDelay: number;
+	interval: number;
+	routeIndex: number;
+	blockFragment: boolean;
+	autoPreviewRoute: boolean;
+	autoDisplayEnemyInfo: boolean;
+	isUnharmfulAndAlwaysCountAsKilled: boolean;
+	hiddenGroup: string | null;
+	randomSpawnGroupKey: string | null;
+	randomSpawnGroupPackKey: string | null;
+	randomType: WaveRandomType;
+	refreshType: WaveRefreshType;
+	weight: number;
+	dontBlockWave: boolean;
+	forceBlockWaveInBranch: boolean;
+};
+
+export type WaveFragment = {
+	preDelay: number;
+	actions: WaveAction[];
+};
+
+export type Wave = {
+	preDelay: number;
+	postDelay: number;
+	maxTimeWaitingForNextWave: number;
+	fragments: WaveFragment[];
+	advancedWaveTag: string | null;
+};
+
+export type BranchPhase = {
+	preDelay: number;
+	actions: WaveAction[];
+};
+
+export type Branch = {
+	phases: BranchPhase[];
+};
+
 export interface MapConfig {
 	id: string;
 	levelId: string;
@@ -190,7 +242,8 @@ export interface MapConfig {
 	costIncreaseTime: number;
 	steeringEnabled?: boolean;
 	floors: number[] | null;
-	routes: [] | null;
+	routes: unknown[] | null;
+	extra_routes?: unknown[];
 	code: string;
 	[key: `name_${string}`]: string;
 	[key: `description_${string}`]: string;
@@ -199,13 +252,32 @@ export interface MapConfig {
 	n_mods: Effects | null;
 	elite_mods: Effects | null;
 	traps: MapConfigTrap[];
-	token_cards: [];
+	token_cards: MapConfigTokenCard[];
 	systems: {
 		level_predefine_tokens_random_spawn_on_tile?: NonNullable<unknown>;
 	};
 	enemies: MapConfigEnemy[];
+	waves: Wave[];
+	branches: Record<string, Branch>;
+	elite_runes?: {
+		enemy_replace?: Record<string, string>;
+		predefine_changes?: Array<[string, unknown]>;
+		forbid_locations?: Position[];
+	};
+	bonus?: {
+		type: 'wave' | 'fragment';
+		wave_index: number;
+		frag_index: number;
+	} | null;
 	sp_terrain: [];
 }
+
+export type MapConfigTokenCard = {
+	key: string;
+	count: number;
+	cost?: number;
+	[key: string]: unknown;
+};
 
 export type MapConfigTrap = {
 	key: string;
