@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { pruneExtraEnemies } from '$lib/functions/enemyHelpers';
-	import { applyMods } from '$lib/functions/statHelpers';
+	import {
+		createPersistentStatModsSelector,
+		materializeEnemyDisplayStats,
+		normalizeEnemyDefinitions
+	} from '$lib/functions/statHelpers';
 	import { applyTrapMods, filterTraps } from '$lib/functions/trapHelpers';
 	import { onDestroy } from 'svelte';
 	import EliteToggle from './EliteToggle.svelte';
@@ -27,7 +31,13 @@
 		nav
 	} = $props();
 
-	let moddedEnemies = $derived(applyMods(enemies, $statMods, $specialMods));
+	const selectPersistentStatMods = createPersistentStatModsSelector();
+
+	let normalizedEnemies = $derived(normalizeEnemyDefinitions(enemies, $specialMods));
+	let displayEnemies = $derived(
+		materializeEnemyDisplayStats(normalizedEnemies, $statMods, $specialMods)
+	);
+	let persistentStatMods = $derived(selectPersistentStatMods($statMods));
 	let moddedTraps = $derived(applyTrapMods(traps, $statMods, $specialMods));
 	$effect(() => {
 		GameConfig.eliteMode = $eliteMode;
@@ -53,7 +63,8 @@
 {#await promise then EnemyWaves}
 	<EnemyWaves
 		{mapConfig}
-		enemies={moddedEnemies}
+		{normalizedEnemies}
+		{persistentStatMods}
 		{language}
 		eliteMode={$eliteMode}
 		{rogueTopic}
@@ -82,10 +93,10 @@
 	specialMods={$specialMods}
 	{mapConfig}
 />
-<ModsCheck {language} enemies={moddedEnemies} {mapConfig} />
+<ModsCheck {language} enemies={displayEnemies} {mapConfig} />
 <EnemyCount
 	{mapConfig}
-	enemies={pruneExtraEnemies(moddedEnemies, mapConfig?.levelId)}
+	enemies={pruneExtraEnemies(displayEnemies, mapConfig?.levelId)}
 	eliteMode={$eliteMode}
 	{language}
 	{rogueTopic}
@@ -101,7 +112,7 @@
 		stageId={mapConfig?.levelId}
 	/>
 	<EnemyStatDisplay
-		enemies={pruneExtraEnemies(moddedEnemies, mapConfig?.levelId)}
+		enemies={pruneExtraEnemies(displayEnemies, mapConfig?.levelId)}
 		{language}
 		{statMods}
 		{specialMods}

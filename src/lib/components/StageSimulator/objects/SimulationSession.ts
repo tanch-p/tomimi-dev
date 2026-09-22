@@ -1,4 +1,5 @@
-import type { Enemy as EnemyType, MapConfig, Wave } from '$lib/types';
+import type { Enemy as EnemyType, MapConfig, StatMods, Wave } from '$lib/types';
+import { EMPTY_STAT_MODS } from '$lib/functions/statHelpers';
 import { getStageBehavior, getStagePhaseBehavior } from '../config/stageBehaviors';
 import { ObstacleController } from '../controllers/ObstacleController';
 import type { GameLifecycleState } from './GameConfig.svelte.js';
@@ -14,6 +15,7 @@ export type SimulationScenario = {
 	config: MapConfig;
 	waveData: Wave[];
 	enemies: EnemyType[];
+	persistentStatMods?: StatMods;
 	revision: string;
 };
 
@@ -36,6 +38,7 @@ export class SimulationSession {
 	config: MapConfig;
 	waveData: Wave[];
 	enemies: EnemyType[];
+	persistentStatMods: StatMods;
 	spawnManager: SpawnManager;
 	readonly obstacleController: ObstacleController;
 	private scenarioRevision: string;
@@ -43,7 +46,13 @@ export class SimulationSession {
 	private readonly createSpawnManager: NonNullable<SimulationSessionOptions['createSpawnManager']>;
 
 	constructor(
-		{ config, waveData, enemies, revision }: SimulationScenario,
+		{
+			config,
+			waveData,
+			enemies,
+			persistentStatMods = EMPTY_STAT_MODS,
+			revision
+		}: SimulationScenario,
 		readonly runtime: StageRuntime,
 		readonly world: GameWorld,
 		options: SimulationSessionOptions = {}
@@ -51,13 +60,14 @@ export class SimulationSession {
 		this.config = config;
 		this.waveData = waveData;
 		this.enemies = enemies;
+		this.persistentStatMods = persistentStatMods;
 		this.scenarioRevision = revision;
 		this.createSpawnManager =
 			options.createSpawnManager ??
 			((nextWaveData, map, gameManager) => new SpawnManager(nextWaveData, map, gameManager));
 		this.initializeStageState();
 		this.resetRuntimeState();
-		const { gameManager, map } = world.build(config, enemies);
+		const { gameManager, map } = world.build(config, enemies, persistentStatMods);
 		this.spawnManager = this.createSpawnManager(waveData, map, gameManager);
 		this.obstacleController = options.createObstacleController
 			? options.createObstacleController(gameManager, config, runtime)
@@ -73,13 +83,25 @@ export class SimulationSession {
 		return this.world.map;
 	}
 
-	replaceScenario({ config, waveData, enemies, revision }: SimulationScenario) {
-		if (this.scenarioRevision === revision && this.config === config && this.enemies === enemies) {
+	replaceScenario({
+		config,
+		waveData,
+		enemies,
+		persistentStatMods = EMPTY_STAT_MODS,
+		revision
+	}: SimulationScenario) {
+		if (
+			this.scenarioRevision === revision &&
+			this.config === config &&
+			this.enemies === enemies &&
+			(this.persistentStatMods ?? EMPTY_STAT_MODS) === persistentStatMods
+		) {
 			return false;
 		}
 		this.config = config;
 		this.waveData = waveData;
 		this.enemies = enemies;
+		this.persistentStatMods = persistentStatMods;
 		this.scenarioRevision = revision;
 		this.obstacleController.setConfig(config);
 		return true;
@@ -111,7 +133,11 @@ export class SimulationSession {
 		this.resetRuntimeState();
 		this.obstacleController.reset(this.config.levelId);
 		this.spawnManager.dispose();
-		const { gameManager, map } = this.world.build(this.config, this.enemies);
+		const { gameManager, map } = this.world.build(
+			this.config,
+			this.enemies,
+			this.persistentStatMods
+		);
 		this.spawnManager = this.createSpawnManager(this.waveData, map, gameManager);
 	}
 

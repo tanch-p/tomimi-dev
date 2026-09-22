@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import type { Enemy as EnemyType, MapConfig, Position } from '$lib/types';
+import type { Enemy as EnemyType, MapConfig, Position, StatMods } from '$lib/types';
+import { EMPTY_STAT_MODS } from '$lib/functions/statHelpers';
 import { GameConfig } from './GameConfig.svelte.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { AssetManager } from './AssetManager';
@@ -30,6 +31,7 @@ export class GameManager {
 	mazeLayout: number[][];
 	baseMazeLayout: number[][];
 	enemies: EnemyType[];
+	persistentStatMods: StatMods;
 	enemiesOnMap: Enemy[] = [];
 	traps = new Map();
 	pathFinder: SPFA;
@@ -49,10 +51,12 @@ export class GameManager {
 		config: MapConfig,
 		world: GameWorld,
 		enemies: EnemyType[],
-		runtime: StageRuntime = liveStageRuntime
+		runtime: StageRuntime = liveStageRuntime,
+		persistentStatMods: StatMods = EMPTY_STAT_MODS
 	) {
 		this.runtime = runtime;
 		this.enemies = enemies;
+		this.persistentStatMods = persistentStatMods;
 		this.config = config;
 		this.world = world;
 		this.assetManager = AssetManager.getInstance();
@@ -576,9 +580,10 @@ export class GameManager {
 		this.roadblockReachabilityCache.clear();
 	}
 
-	reset(config, enemies) {
+	reset(config, enemies, persistentStatMods: StatMods = EMPTY_STAT_MODS) {
 		this.clearSceneObjects();
 		this.enemies = enemies;
+		this.persistentStatMods = persistentStatMods;
 		this.config = config;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);
 		this.mazeLayout = mazeLayout;

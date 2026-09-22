@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import type { Enemy as EnemyType, MapConfig } from '$lib/types';
+import type { Enemy as EnemyType, MapConfig, StatMods } from '$lib/types';
+import { EMPTY_STAT_MODS } from '$lib/functions/statHelpers';
 import { clearObjects } from '$lib/functions/threejsHelpers';
 import { getStagePhaseBehavior } from '../config/stageBehaviors';
 import { GameManager } from './GameManager';
@@ -73,15 +74,16 @@ export class GameWorld {
 		this.documentTarget.addEventListener('visibilitychange', this.onVisibilityChange);
 	}
 
-	build(config: MapConfig, enemies: EnemyType[]) {
+	build(config: MapConfig, enemies: EnemyType[], persistentStatMods: StatMods = EMPTY_STAT_MODS) {
 		if (this.gameManager) {
 			this.gameManager.clearSceneObjects();
 			this.map.enemies = [];
 			this.map.objects = [];
 		}
 		this.resetScene(config.levelId);
-		if (this.gameManager) this.gameManager.reset(config, enemies);
-		else this.gameManager = new GameManager(config, this, enemies, this.runtime);
+		if (this.gameManager) this.gameManager.reset(config, enemies, persistentStatMods);
+		else
+			this.gameManager = new GameManager(config, this, enemies, this.runtime, persistentStatMods);
 		this.map = new GameMap(this.gameManager);
 		return { gameManager: this.gameManager, map: this.map };
 	}

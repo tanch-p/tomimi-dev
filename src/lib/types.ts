@@ -305,6 +305,7 @@ export type ModGroup = {
 	key: string;
 	mods: [Effects];
 	stackType?: 'mul' | 'add';
+	scope?: 'preview';
 };
 
 export type SpecialMods = {
@@ -344,6 +345,12 @@ export type Skill = {
 	spCost?: number;
 	duration?: number;
 	timeout?: number;
+	accelerate?: {
+		i: number;
+		m: number;
+		preDelay: number;
+		limit: number;
+	};
 	motionMode?: 'skill_blink';
 	beginAnimation?: string;
 	loopAnimation?: string;

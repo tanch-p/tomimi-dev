@@ -22,11 +22,11 @@ export class SkillManager {
 	isUsingSkill = false;
 	accelerationIntervalTimer = 0;
 	accelerationPreDelayTimer = 0;
-	accelerateParams = null;
+	accelerateParams: NonNullable<Skill['accelerate']> | null = null;
 	accelerationStacks = 0;
+	accelerationModifierHandle: string | null = null;
 	summonDelayRemaining: number | null = null;
 	startedEnemyAfterSummons = false;
-	//TODO to rework acceleration into a timer based buff generic skill
 
 	constructor(enemy: Enemy, skills: Skill[], gameManager: GameManager, skillData = null) {
 		this.assetManager = AssetManager.getInstance();
@@ -38,13 +38,11 @@ export class SkillManager {
 				const key = skill.value;
 				this.addTransformModel(key);
 			}
-			if (skill.accelerate) {
-				this.accelerateParams = skill.accelerate;
-			}
 			if (skill.key === 'parasitic') {
 				this.addParasiticSprite();
 			}
 		}
+		this.configureAcceleration(skills);
 		if (['enemy_2148_shorbb'].includes(this.enemy.key)) {
 			this.activeSkills = skills
 				.filter((ele) => ele.branches)
@@ -164,6 +162,7 @@ export class SkillManager {
 	setSkills(skills: Skill[]) {
 		this.reset();
 		this.skills = skills;
+		this.configureAcceleration(skills);
 		this.skillBarColorIndexes.clear();
 		for (const skill of this.activeSkills) {
 			this.enemy.meshGroup.remove(skill.skillBar);
@@ -214,8 +213,12 @@ export class SkillManager {
 			this.accelerationPreDelayTimer += delta;
 			if (this.accelerationPreDelayTimer > preDelay) {
 				this.accelerationIntervalTimer += delta;
-				this.accelerationStacks = Math.min(limit, Math.floor(this.accelerationIntervalTimer / i));
-				this.enemy.moddedSpeed = this.enemy.baseSpeed * (1 + this.accelerationStacks * m);
+				const nextStacks = Math.min(limit, Math.floor(this.accelerationIntervalTimer / i));
+				if (nextStacks !== this.accelerationStacks) {
+					this.accelerationStacks = nextStacks;
+					this.syncAccelerationModifier(m);
+				}
+				this.enemy.moddedSpeed = this.enemy.stats.get('ms');
 			}
 		}
 		if (this.transformModel) {
@@ -225,6 +228,52 @@ export class SkillManager {
 			skill.update(delta);
 		}
 		this.removeFinishedSummonSkills();
+	}
+
+	getMovementSpeed(baseSpeed: number) {
+		return this.enemy.stats?.get('ms') ?? baseSpeed;
+	}
+
+	private configureAcceleration(skills: Skill[]) {
+		const nextParams = skills.find((skill) => skill.accelerate)?.accelerate ?? null;
+		const unchanged =
+			this.accelerateParams?.i === nextParams?.i &&
+			this.accelerateParams?.m === nextParams?.m &&
+			this.accelerateParams?.preDelay === nextParams?.preDelay &&
+			this.accelerateParams?.limit === nextParams?.limit;
+		if (unchanged) return;
+		if (this.accelerationModifierHandle) {
+			this.enemy.stats.removeModifier(this.accelerationModifierHandle);
+			this.accelerationModifierHandle = null;
+		}
+		this.accelerateParams = nextParams;
+		this.accelerationIntervalTimer = 0;
+		this.accelerationPreDelayTimer = 0;
+		this.accelerationStacks = 0;
+	}
+
+	private syncAccelerationModifier(multiplier: number) {
+		if (this.accelerationStacks <= 0) {
+			if (this.accelerationModifierHandle) {
+				this.enemy.stats.removeModifier(this.accelerationModifierHandle);
+				this.accelerationModifierHandle = null;
+			}
+			return;
+		}
+		if (
+			this.accelerationModifierHandle &&
+			this.enemy.stats.hasModifier(this.accelerationModifierHandle)
+		) {
+			this.enemy.stats.setModifierStacks(this.accelerationModifierHandle, this.accelerationStacks);
+			return;
+		}
+		this.accelerationModifierHandle = this.enemy.stats.addModifier({
+			source: 'skill:accelerate',
+			mods: [{ key: 'ms', value: 1 + multiplier, mode: 'mul', order: 'final' }],
+			stacks: this.accelerationStacks,
+			maxStacks: this.accelerateParams?.limit ?? this.accelerationStacks,
+			stackType: 'add'
+		});
 	}
 
 	removeFinishedSummonSkills() {
@@ -265,6 +314,7 @@ export class SkillManager {
 			accelerationPreDelayTimer: this.accelerationPreDelayTimer,
 			accelerateParams: this.accelerateParams,
 			accelerationStacks: this.accelerationStacks,
+			accelerationModifierHandle: this.accelerationModifierHandle,
 			manualSkills,
 			summonSkills,
 			summonDelayRemaining: this.summonDelayRemaining
@@ -277,6 +327,8 @@ export class SkillManager {
 		this.accelerationPreDelayTimer = data.accelerationPreDelayTimer;
 		this.accelerateParams = data.accelerateParams;
 		this.accelerationStacks = data.accelerationStacks;
+		this.accelerationModifierHandle = data.accelerationModifierHandle ?? null;
+		if (this.accelerateParams) this.syncAccelerationModifier(this.accelerateParams.m);
 		for (const skillData of data.manualSkills ?? []) {
 			this.activeSkills
 				.find((skill) => skill.skill.key === skillData.key)

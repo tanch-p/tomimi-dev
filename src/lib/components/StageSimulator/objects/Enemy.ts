@@ -16,6 +16,7 @@ import {
 } from '$lib/functions/pathVisualisationHelpers';
 import { getStageRuntime } from './StageRuntime';
 import { getStagePhaseBehavior } from '../config/stageBehaviors';
+import { EnemyStats } from './EnemyStats';
 
 const moveMultiplier = 0.5;
 const animatedPathCountdownFadeDuration = 4;
@@ -33,6 +34,7 @@ export class Enemy {
 	spawnUID: string;
 	actions;
 	hp: number;
+	stats: EnemyStats;
 	baseSpeed: number;
 	moddedSpeed: number;
 	route;
@@ -149,6 +151,13 @@ export class Enemy {
 			enemyData = summonedEnemy;
 		}
 
+		this.stats = new EnemyStats(
+			enemyData,
+			gameManager.persistentStatMods,
+			getStageRuntime(gameManager).specialMods,
+			(setData as any)?.formIndex ?? formIndex
+		);
+		if ((setData as any)?.statData) this.stats.setData((setData as any).statData);
 		this.assetManager = AssetManager.getInstance();
 		this.gameManager = gameManager;
 		gameManager.enemiesOnMap.push(this);
@@ -168,7 +177,7 @@ export class Enemy {
 			this.spawnUID = setData.spawnUID;
 			this.actions = setData.actions;
 			this.hp = setData.hp;
-			this.baseSpeed = setData.baseSpeed;
+			this.baseSpeed = this.stats.get('ms');
 			this.moddedSpeed = setData.moddedSpeed;
 			this.route = setData.route;
 			this.dontBlockWave = setData.dontBlockWave;
@@ -233,8 +242,8 @@ export class Enemy {
 			}
 			this.motionMode = route.motionMode;
 			this.state = 'idle';
-			this.hp = enemyData.forms[0].stats.hp;
-			this.baseSpeed = enemyData.forms[0].stats.ms;
+			this.hp = this.stats.get('hp');
+			this.baseSpeed = this.stats.get('ms');
 			this.moddedSpeed = this.baseSpeed;
 			this.traits = getEnemySkills(
 				this.data,
@@ -524,7 +533,7 @@ export class Enemy {
 				}
 			}
 
-			const range = this.data.forms[this.formIndex].stats.range;
+			const range = this.stats.get('range');
 			const normalAtkIsRanged =
 				this.data.forms[this.formIndex].normal_attack.atk_type.includes('ranged');
 			if (
@@ -639,6 +648,13 @@ export class Enemy {
 	configureTimeout() {
 		const timeoutSkill = this.skills.find((skill) => skill.timeout !== undefined);
 		this.timeoutDuration = timeoutSkill?.timeout ?? null;
+	}
+
+	getMovementSpeed() {
+		const persistentSpeed = this.stats?.get('ms') ?? this.baseSpeed;
+		return this.skillManager?.getMovementSpeed
+			? this.skillManager.getMovementSpeed(persistentSpeed)
+			: this.moddedSpeed;
 	}
 	handlePosChange() {
 		const gridPos = this.gameManager.getGridPosFromVectors(this.meshGroup.position);
@@ -997,6 +1013,7 @@ export class Enemy {
 		)
 			return;
 		if (this.exit) return;
+		this.stats?.update(delta);
 		if (this.timeoutDuration !== null) {
 			this.timeoutElapsedTime += delta;
 			if (this.timeoutElapsedTime >= this.timeoutDuration) {
@@ -1170,7 +1187,7 @@ export class Enemy {
 					while (this.movementFrameAccumulator >= movementFrameInterval) {
 						this.movementFrameAccumulator -= movementFrameInterval;
 						const movementDirection = this.getMovementDirection();
-						const theoreticalSpeed = this.moddedSpeed * moveMultiplier;
+						const theoreticalSpeed = this.getMovementSpeed() * moveMultiplier;
 						const velocity = this.calculateMovementVelocity(movementDirection, theoreticalSpeed);
 						this.direction = this.getFacingDirection(movementDirection);
 						this.updateSpriteOrientation();
@@ -1578,6 +1595,9 @@ export class Enemy {
 			this.reviveDuration = 0;
 			this.reviveTimer = 0;
 			this.formIndex++;
+			this.stats.setFormIndex(this.formIndex);
+			this.baseSpeed = this.stats.get('ms');
+			this.moddedSpeed = this.getMovementSpeed();
 			this.spineAnimIndex++;
 			this.specials = getEnemySkills(
 				this.data,
@@ -1682,11 +1702,14 @@ export class Enemy {
 		this.animState = setData.animState;
 		if (this.formIndex !== setData.formIndex) {
 			this.formIndex = setData.formIndex;
+			this.stats.setFormIndex(this.formIndex);
+			this.baseSpeed = this.stats.get('ms');
 			this.traits = setData.traits;
 			this.specials = setData.specials;
 			this.skills = this.traits.concat(this.specials);
 			this.skillManager.setSkills(this.skills);
 		}
+		this.stats.setData(setData.statData);
 		this.skillManager.set(setData.skillData);
 		this.spineAnimIndex = setData.spineAnimIndex;
 		this.timeToWait = setData.timeToWait;

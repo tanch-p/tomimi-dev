@@ -1,4 +1,5 @@
-import type { MapConfig, Enemy as EnemyType, Position, Wave } from '$lib/types';
+import type { MapConfig, Enemy as EnemyType, Position, StatMods, Wave } from '$lib/types';
+import { EMPTY_STAT_MODS } from '$lib/functions/statHelpers';
 import { GameConfig } from '../objects/GameConfig.svelte.js';
 import { GameMap } from '../objects/GameMap';
 import { SpawnManager } from '../objects/SpawnManager';
@@ -19,6 +20,7 @@ import {
 import { shouldSkipOfflineSimulation } from '../config/stageBehaviors';
 
 type SimulationOptions = Partial<OfflineStageRuntimeOptions> & {
+	persistentStatMods?: StatMods;
 	obstacleEvents?: ObstacleEventSnapshot;
 	shouldCancel?: () => boolean;
 	yieldBudgetMs?: number;
@@ -58,7 +60,12 @@ export async function getSimulatedData(
 	if (!assetManager.texturesLoaded) {
 		return;
 	}
-	const gameSimManager = new GameSimManager(config, enemies, runtime);
+	const gameSimManager = new GameSimManager(
+		config,
+		enemies,
+		runtime,
+		options.persistentStatMods ?? EMPTY_STAT_MODS
+	);
 	const map = new GameMap(gameSimManager as any);
 	const spawnManager = new SpawnManager(waveData, map, gameSimManager as any);
 	let isEnded = false;
@@ -178,8 +185,9 @@ function setData(
 				spawnUID: enemy.spawnUID,
 				actions: enemy.actions,
 				hp: enemy.hp,
-				baseSpeed: enemy.baseSpeed,
-				moddedSpeed: enemy.moddedSpeed,
+				baseSpeed: enemy.stats.get('ms'),
+				moddedSpeed: enemy.getMovementSpeed(),
+				statData: enemy.stats.getData(),
 				route: structuredClone(enemy.route),
 				currentActionIndex: enemy.currentActionIndex,
 				state: enemy.state,
@@ -239,6 +247,7 @@ class GameSimManager {
 	mazeLayout: number[][];
 	baseMazeLayout: number[][];
 	enemies: EnemyType[];
+	persistentStatMods: StatMods;
 	enemiesOnMap: Enemy[] = [];
 	spawnManager: SpawnManager;
 	traps = new Map();
@@ -251,8 +260,14 @@ class GameSimManager {
 	runtime: StageRuntime;
 	game = { objects: [], hideRollOverMesh: () => undefined };
 
-	constructor(config: MapConfig, enemies: EnemyType[], runtime: StageRuntime) {
+	constructor(
+		config: MapConfig,
+		enemies: EnemyType[],
+		runtime: StageRuntime,
+		persistentStatMods: StatMods = EMPTY_STAT_MODS
+	) {
 		this.enemies = enemies;
+		this.persistentStatMods = persistentStatMods;
 		this.config = config;
 		this.runtime = runtime;
 		const mazeLayout = generateMaze(config.mapData.map, config.mapData.tiles);

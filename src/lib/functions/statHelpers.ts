@@ -102,20 +102,95 @@ const NEUTRAL_ENEMIES = ['enemy_3001_upeopl', 'enemy_10061_cjglon'];
 const NOT_AFFECTED_BY_FLOOR_DIFF_KEYS = ['enemy_10062_cjblon'];
 const DMG_1_ATK_VARIANTS = ['enemy_2121_dyspl2'];
 
-export function applyMods(
+export const EMPTY_STAT_MODS: StatMods = {
+	runes: { key: 'base', mods: [] as unknown as ModGroup['mods'] },
+	diff: null,
+	others: []
+};
+
+/** Removes table-only modifier previews from the configuration used by a simulation run. */
+export function getPersistentStatMods(statMods: StatMods): StatMods {
+	return {
+		...statMods,
+		others: statMods.others.filter((group) => group.scope !== 'preview')
+	};
+}
+
+/** Keeps simulator input identity stable when only table-preview modifiers change. */
+export function createPersistentStatModsSelector() {
+	let previousSignature = '';
+	let previousValue = EMPTY_STAT_MODS;
+	return (statMods: StatMods) => {
+		const nextValue = getPersistentStatMods(statMods);
+		const nextSignature = JSON.stringify(nextValue);
+		if (nextSignature !== previousSignature) {
+			previousSignature = nextSignature;
+			previousValue = nextValue;
+		}
+		return previousValue;
+	};
+}
+
+/**
+ * Converts stage-loaded enemy data into the per-form shape used by consumers.
+ *
+ * Only intrinsic form modifiers are resolved here. Run-wide and preview modifiers
+ * are deliberately left for the display materialization step so the normalized
+ * definitions can also be used as clean simulator input.
+ */
+export function normalizeEnemyDefinitions(
 	enemies: EnemyDBEntry[],
+	specialMods: SpecialMods = {}
+): Enemy[] {
+	return enemies.map((enemy) => {
+		const holder = structuredClone(enemy) as unknown as Enemy;
+		holder.modsList = [] as unknown as Enemy['modsList'];
+		for (let i = 0; i < holder.forms.length; i++) {
+			const baseStats = holder.stats as unknown as { special?: Skill[][] };
+			holder.forms[i].special = baseStats.special?.[i] || [];
+			holder.forms[i].stats = parseStats(
+				holder as unknown as EnemyDBEntry,
+				EMPTY_STAT_MODS,
+				i,
+				specialMods,
+				{ recordMods: false }
+			) as Enemy['forms'][number]['stats'];
+		}
+		return holder;
+	});
+}
+
+/** Applies run and preview modifiers to normalized enemies for stat-table display. */
+export function materializeEnemyDisplayStats(
+	enemies: Enemy[],
 	statMods: StatMods,
 	specialMods: SpecialMods
 ): Enemy[] {
 	return enemies.map((enemy) => {
 		const holder = structuredClone(enemy);
-		holder.modsList = [];
+		holder.modsList = [] as unknown as Enemy['modsList'];
 		for (let i = 0; i < holder.forms.length; i++) {
-			holder.forms[i].special = holder.stats.special?.[i] || [];
-			holder.forms[i].stats = parseStats(holder, statMods, i, specialMods);
+			holder.forms[i].stats = parseStats(
+				holder as unknown as EnemyDBEntry,
+				statMods,
+				i,
+				specialMods
+			) as Enemy['forms'][number]['stats'];
 		}
 		return holder;
 	});
+}
+
+export function applyMods(
+	enemies: EnemyDBEntry[],
+	statMods: StatMods,
+	specialMods: SpecialMods
+): Enemy[] {
+	return materializeEnemyDisplayStats(
+		normalizeEnemyDefinitions(enemies, specialMods),
+		statMods,
+		specialMods
+	);
 }
 
 //returns enemy 'stats' object with modded stats
@@ -123,7 +198,8 @@ export function parseStats(
 	enemy: EnemyDBEntry,
 	statMods: StatMods,
 	row: number,
-	specialMods: SpecialMods
+	specialMods: SpecialMods,
+	options: { recordMods?: boolean } = {}
 ) {
 	const isDamage1Enemy = enemy.traits.some(
 		(skill) =>
@@ -133,10 +209,10 @@ export function parseStats(
 	const type = NEUTRAL_ENEMIES.includes(enemy.key)
 		? 'neutral'
 		: DMG_1_ATK_VARIANTS.includes(enemy.key)
-		? 'damage_1_atk_variant'
-		: isDamage1Enemy
-		? 'damage_1_enemy'
-		: 'enemy';
+			? 'damage_1_atk_variant'
+			: isDamage1Enemy
+				? 'damage_1_enemy'
+				: 'enemy';
 	let diffMods;
 	if (statMods.diff) {
 		diffMods = compileMods(enemy, statMods.diff, type);
@@ -186,13 +262,15 @@ export function parseStats(
 			: round(
 					getModdedStat(initialValue, statKey, runeMods),
 					['ms', 'range'].includes(statKey) ? 2 : 0
-			  );
+				);
 		statsHolder[statKey] = getModdedStat(baseValue, statKey, ...secondaryMods);
 	}
 	statsHolder['dmgRes'] = getDmgReductionVal(runeMods, ...secondaryMods);
-	enemy?.modsList?.push(
-		[runeMods, ...secondaryMods].filter(Boolean).filter((ele) => ele.mods?.length > 0)
-	);
+	if (options.recordMods !== false) {
+		enemy?.modsList?.push(
+			[runeMods, ...secondaryMods].filter(Boolean).filter((ele) => ele.mods?.length > 0)
+		);
+	}
 	return statsHolder;
 }
 

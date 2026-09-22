@@ -197,6 +197,7 @@ export const consolidateOtherMods = (otherBuffsList) => {
 			if (ele.count > 0) {
 				modsList.push({
 					key: buff.key,
+					scope: 'preview',
 					mods: [
 						[
 							{

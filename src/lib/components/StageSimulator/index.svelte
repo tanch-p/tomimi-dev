@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Enemy, Language, MapConfig } from '$lib/types';
+	import type { Enemy, Language, MapConfig, StatMods } from '$lib/types';
 	import type { WaveScenario } from '$lib/functions/waveHelpers';
 	import { onDestroy, onMount, tick, untrack } from 'svelte';
 	import { Game, type GameScenario } from './objects/Game';
@@ -19,10 +19,12 @@
 		mapConfig: MapConfig;
 		language: Language;
 		enemies: Enemy[];
+		persistentStatMods: StatMods;
 		requestReset: () => void;
 	}
 
-	let { scenario, mapConfig, language, enemies, requestReset }: Props = $props();
+	let { scenario, mapConfig, language, enemies, persistentStatMods, requestReset }: Props =
+		$props();
 	let waveData = $derived(scenario.waveData);
 	let timeline = $derived(scenario.timeline);
 
@@ -103,6 +105,7 @@
 
 		try {
 			const result = await getSimulatedData(mapConfig, waveData, enemies, {
+				persistentStatMods,
 				obstacleEvents: snapshot,
 				mode: 'wave_normal',
 				currentWaveIndex: initialSimulationWaveIndex,
@@ -148,12 +151,19 @@
 				config: mapConfig,
 				waveData,
 				enemies,
+				persistentStatMods,
 				revision: scenario.revision
 			});
 			GameConfig.state = 'ready';
 		} else {
 			assetsReady = true;
-			resetGame({ config: mapConfig, waveData, enemies, revision: scenario.revision });
+			resetGame({
+				config: mapConfig,
+				waveData,
+				enemies,
+				persistentStatMods,
+				revision: scenario.revision
+			});
 		}
 		initialSimulationWaveIndex = GameConfig.currentWaveIndex;
 		assetsReady = true;
@@ -186,19 +196,21 @@
 		const currentScenario = scenario;
 		const currentMapConfig = mapConfig;
 		const currentEnemies = enemies;
+		const currentPersistentStatMods = persistentStatMods;
 		if (currentScenario.timeline) {
 			untrack(() =>
 				resetGame({
 					config: currentMapConfig,
 					waveData: currentScenario.waveData,
 					enemies: currentEnemies,
+					persistentStatMods: currentPersistentStatMods,
 					revision: currentScenario.revision
 				})
 			);
 		}
 	});
 	$effect(() => {
-		simulationInputsChanged(mapConfig, scenario.revision, enemies);
+		simulationInputsChanged(mapConfig, scenario.revision, enemies, persistentStatMods);
 	});
 	let previousMode = GameConfig.mode;
 	$effect(() => {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
-	import type { Language, RogueTopic } from '$lib/types';
+	import type { Enemy, Language, RogueTopic, StatMods } from '$lib/types';
 	import TogglePanel from './TogglePanel.svelte';
 	import {
 		buildWaveScenario,
@@ -20,7 +20,8 @@
 
 	interface Props {
 		mapConfig: any;
-		enemies: any;
+		normalizedEnemies: Enemy[];
+		persistentStatMods: StatMods;
 		rogueTopic: RogueTopic;
 		language: Language;
 		eliteMode: boolean;
@@ -38,7 +39,8 @@
 
 	let {
 		mapConfig,
-		enemies,
+		normalizedEnemies,
+		persistentStatMods,
 		rogueTopic,
 		language,
 		eliteMode,
@@ -312,7 +314,8 @@
 	{#await stageSimulatorPromise then StageSimulator}
 		<StageSimulator
 			{mapConfig}
-			{enemies}
+			enemies={normalizedEnemies}
+			{persistentStatMods}
 			{language}
 			requestReset={resetSimulator}
 			scenario={simulatorScenario}
