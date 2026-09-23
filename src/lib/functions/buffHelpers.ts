@@ -117,6 +117,7 @@ export const setOtherBuffsList = (
 					activeTargets: skill.effects.activeTargets,
 					mods: skill.effects.mods,
 					stackType: skill.effects.stackType,
+					exclusiveGroup: skill.effects.exclusiveGroup,
 					maxCount: skill.effects?.maxCount
 				});
 			}
@@ -151,6 +152,7 @@ export const setOtherBuffsList = (
 					activeTargets: replacedSkill.effects.activeTargets,
 					mods: replacedSkill.effects.mods,
 					stackType: replacedSkill.effects.stackType,
+					exclusiveGroup: replacedSkill.effects.exclusiveGroup,
 					maxCount
 				};
 				if (skillRef.key === 'dycyue_evasion') {
@@ -176,14 +178,31 @@ export const updateOtherBuffsList = (store, buffKey, key) => {
 	store.update((list) => {
 		const buff = list.find((item) => item.key === buffKey);
 		const targetIndex = buff.activeTargets.findIndex((ele) => ele.key === key);
+		let enabled = false;
 		if (targetIndex === -1) {
 			buff.activeTargets.push({ key, count: 1 });
+			enabled = true;
 		} else {
 			const currentCount = buff.activeTargets[targetIndex].count;
 			if (currentCount < buff.maxCount) {
 				buff.activeTargets[targetIndex].count += 1;
+				enabled = true;
 			} else if (currentCount === buff.maxCount) {
 				buff.activeTargets[targetIndex].count = 0;
+			}
+		}
+
+		if (enabled && buff.exclusiveGroup) {
+			for (const otherBuff of list) {
+				if (otherBuff === buff || otherBuff.exclusiveGroup !== buff.exclusiveGroup) {
+					continue;
+				}
+				const otherTarget = otherBuff.activeTargets.find(
+					(target: { key: string }) => target.key === key
+				);
+				if (otherTarget) {
+					otherTarget.count = 0;
+				}
 			}
 		}
 		return list;

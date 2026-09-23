@@ -11461,6 +11461,7 @@
 	"smephi_possessed_buff": {
 		"type": "buff",
 		"effects": {
+			"exclusiveGroup": "smephi_possessed",
 			"targets": ["mutant"],
 			"activeTargets": [],
 			"mods": [
@@ -11480,6 +11481,7 @@
 		"type": "buff",
 		"effects": {
 			"key": "smephi_possessed_buff_berserk",
+			"exclusiveGroup": "smephi_possessed",
 			"targets": ["mutant"],
 			"activeTargets": [],
 			"mods": [
