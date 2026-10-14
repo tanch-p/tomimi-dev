@@ -1,0 +1,1 @@
+import{I as e,S as t,Z as n,a as r,g as i,it as a,x as o,y as s,z as c}from"./bBLrYx7z.js";import"./xihTtKlq.js";var l=c(`<svg><use></use></svg>`);function u(c,u){let d=r(u,`className`,3,``),f=r(u,`size`,3,24);var p=l(),m=a(p);n(()=>{i(p,`width`,f()),i(p,`height`,f()),o(p,0,t(d())),s(m,`xlink:href`,`#${u.name??``}`)}),e(c,p)}export{u as t};

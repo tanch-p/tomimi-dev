@@ -1,0 +1,1 @@
+var e=new URL(`../assets/boss_icon.CuBA4Wxu.webp`,import.meta.url).href;export{e as t};
