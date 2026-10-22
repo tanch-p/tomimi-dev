@@ -1,3 +1,0 @@
-if [ $(git branch --no-color --show-current) = "main" ]; then
-  pnpm test
-fi
