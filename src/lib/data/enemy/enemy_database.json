@@ -47076,7 +47076,7 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"xbbtl_shield"},{"key":"xbbtl_powerup"},{"key":"xbbtl_disarm"}] ,
 				"special": []
 			}
 		],
@@ -47112,16 +47112,33 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
-				"special": []
+				"traits": [{"key":"def_down_hit_sp","value":100},{"key":"xbscp_eat"},{"key":"xbscp_target"}],
+				"special": [[{"key":"multi_hit","value":2},{"key":"xbscp_normal"}],[{"key":"multi_hit","value":4}],[{"key":"multi_hit","value":4},{"key":"xbscp_linglong"}]],
+				"form_mods":[]
 			}
 		],
 		"forms": [
 			{
-				"title": null,
+				"title": "initial_state",
 				"normal_attack": {
 					"atk_type": ["melee", "phys"],
-					"hits": 1
+					"hits": 2
+				},
+				"status_immune": []
+			},
+			{
+				"title": "buffed_state",
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 4
+				},
+				"status_immune": []
+			},
+			{
+				"title": "linglong_state",
+				"normal_attack": {
+					"atk_type": ["melee", "phys"],
+					"hits": 4
 				},
 				"status_immune": []
 			}
@@ -58381,7 +58398,7 @@
 			{
 				"title": "initial_state",
 				"normal_attack": {
-					"atk_type": ["ranged", "arts"],
+					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
 				"status_immune": ["silence"]
@@ -58389,7 +58406,7 @@
 			{
 				"title": "buffed_state",
 				"normal_attack": {
-					"atk_type": ["ranged", "arts"],
+					"atk_type": ["ranged", "phys"],
 					"hits": 1
 				},
 				"status_immune": ["silence"]

@@ -12557,8 +12557,8 @@
 	"shadvr_inti_skill": {
 		"type": "skill",
 		"atk": { "multiplier": 0.35 },
-		"initCooldown": [6.0,8.0],
-		"cooldown": [12.0,10.0],
+		"initCooldown": [6.0, 8.0],
+		"cooldown": [12.0, 10.0],
 		"hits": 1,
 		"dmg_element": "arts",
 		"suffix": { "en": "Skill", "ja": "スキル", "zh": "耀日的恩宠" },
@@ -12573,8 +12573,8 @@
 	"shadvr_tes_skill": {
 		"type": "skill",
 		"atk": { "multiplier": 3.5 },
-		"initCooldown": [3.0,5.0],
-		"cooldown": [10.0,10.0],
+		"initCooldown": [3.0, 5.0],
+		"cooldown": [10.0, 10.0],
 		"hits": 1,
 		"dmg_element": "arts",
 		"suffix": { "en": "Skill", "ja": "剣気", "zh": "熄日的祭坛" },
@@ -12668,6 +12668,94 @@
 			"en": [""],
 			"ja": [""],
 			"zh": ["立刻以预设路径召唤一批敌人，随后每28s召唤一批敌人"]
+		}
+	},
+	"xbbtl_shield": {
+		"tooltip": {
+			"en": [
+				"On spawn and every 120s thereafter, gains 60 Shield stacks (max 80 stacks, lasts indefinitely)"
+			],
+			"ja": ["出現時および以降120秒ごとに、シールドを60層獲得する（最大80層、永続）"],
+			"zh": ["出场时及此后每120秒获得60层持续时间无限的护盾（最多叠加80层）"]
+		}
+	},
+	"xbbtl_powerup": {
+		"tooltip": {
+			"en": [
+				"Enters Buffed state when HP is at or below 50%",
+				"【Buffed State】Normal attack hits all friendly units within range"
+			],
+			"ja": [
+				"HPが50%以下になると強化状態に入る",
+				"【強化状態】通常攻撃が攻撃範囲内の味方全体にダメージを与える"
+			],
+			"zh": [
+				"生命值不高于50%时进入强化模式",
+				"【强化模式】普通攻击可同时攻击攻击范围内的所有我方单位"
+			]
+		}
+	},
+	"xbbtl_disarm": {
+		"tooltip": {
+			"en": [
+				"When damaged without its innate Shield or already fleeing, enters a 2-second Fleeing state: becomes unable to attack and temporarily targets a random ground tile within a 2.5-tile radius",
+				"Does not attack normally, but is able to attack when blocked and for 20 seconds after being unblocked or taking damage"
+			],
+			"ja": [
+				"自身の素質によるシールドを持たず、逃走状態でもない時にダメージを受けると、2秒間逃走状態になる。逃走中は攻撃できない、半径2.5マス以内のランダムな地上マスを一時的に追跡対象にする",
+				"通常は攻撃しないが、ブロック中は攻撃できる。また、ブロック解除時または被ダメージ時に20秒間の攻撃できる"
+			],
+			"zh": [
+				"未持有自身天赋给予的护盾、且未处于逃窜状态下时，受到伤害后进入持续2秒的逃窜状态：获得强制缴械，追踪目标暂时变为2.5半径范围内随机地面地块",
+				"缴械；被阻挡期间获得缴械免疫，解除阻挡时/受到伤害时获得20秒缴械免疫（优先级-3000）"
+			]
+		}
+	},
+	"xbscp_eat": {
+		"skillRange": 0.5,
+		"tooltip": {
+			"en": [
+				"Whenever a Crystalline Oberobeast comes within 0.5 tile radius, forcibly activates the skill 【Hunt】",
+				"【Hunt】Enters Linglong Mode and instantly kills the target"
+			],
+			"ja": [
+				"晶瓏獣が半径0.5マス以内に入るたびに、その晶玲獣を対象にスキル「捕殺」を強制発動する",
+				"「捕殺」玲瓏モードに移行し、対象を強制的に撃破する"
+			],
+			"zh": [
+				"每当晶玲兽进入半径0.5范围内时，以该晶玲兽为目标强制触发技能【捕杀】",
+				"【捕杀】进入玲珑模式并强制击杀目标"
+			]
+		}
+	},
+	"xbscp_target": {
+		"tooltip": {
+			"en": [
+				"When damaged without a tracking target and not already fleeing, enters a 4-second Fleeing state: Movespeed gradually increases to 300%, and temporarily targets a random ground tile within 5.0 tile radius. This check occurs after attempting to track the damage source"
+			],
+			"ja": [
+				"追跡対象がなく、逃走状態でもない時にダメージを受けると、4秒間逃走状態になる。逃走中は移動速度が最終的に300%まで上昇し、半径5.0マス以内のランダムな地上マスを一時的に追跡対象にする。この判定は攻撃元の追跡処理後に行われる"
+			],
+			"zh": [
+				"每当晶玲兽进入半径0.5范围内时，以该晶玲兽为目标强制触发技能【捕杀】",
+				"【捕杀】进入玲珑模式并强制击杀目标"
+			]
+		}
+	},
+	"xbscp_normal": {
+		"tooltip": {
+			"en": ["Enters Buffed state at 50% HP or below"],
+			"ja": ["HPが50%以下になると強化状態に入る"],
+			"zh": ["生命值不高于50%时进入强化模式"]
+		}
+	},
+	"xbscp_linglong": {
+		"tooltip": {
+		"en": [
+				"On entering this state and every 120s thereafter, gains 80 Shield stacks (max 80 stacks, lasts indefinitely)"
+			],
+			"ja": ["この状態に入る時および以降120秒ごとに、シールドを80層獲得する（最大80層、永続）"],
+			"zh": ["进入此模式时及此后每120秒获得80层持续时间无限的护盾（最多叠加80层）"]
 		}
 	}
 }
