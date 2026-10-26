@@ -11,18 +11,29 @@
 	import floor4 from '$lib/images/is/black/zone_4.webp';
 	import floor5 from '$lib/images/is/black/zone_5.webp';
 	import floor6 from '$lib/images/is/black/zone_6.webp';
+	import floor7 from '$lib/images/is/black/zone_7.webp';
 	import Icon from '$lib/components/Icon.svelte';
 
 	interface Props {
 		stageFloors: number[];
+		levelId?: string;
 		language: Language;
 	}
 
-	let { stageFloors, language }: Props = $props();
+	let { stageFloors, levelId, language }: Props = $props();
 
 	let optionsOpen = $state(false);
 
-	const floorIcons = [floor1, floor2, floor3, floor4, floor5, floor6];
+	const floorIcons = [floor1, floor2, floor3, floor4, floor5, floor6, floor7];
+	const floor7LevelIds = [
+		'level_rogue6_7-1',
+		'level_rogue6_7-2',
+		'level_rogue6_b-7',
+		'level_rogue6_b-7-b'
+	];
+	let displayedFloor = $derived(
+		$selectedFloor === 6 && floor7LevelIds.includes(levelId ?? '') ? 7 : $selectedFloor
+	);
 
 	function updateFloor(floors: number[]) {
 		// Normalize after a stage change without rejecting a floor the user selects manually.
@@ -54,8 +65,8 @@
 			{/if}
 			<div class="relative overflow-visible">
 				<img
-					src={floorIcons[$selectedFloor - 1]}
-					alt={getTranslations(language)['black_levels'][$selectedFloor - 1]}
+					src={floorIcons[displayedFloor - 1]}
+					alt={getTranslations(language)['black_levels'][displayedFloor - 1]}
 					class={'h-12'}
 				/>
 			</div>

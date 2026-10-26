@@ -173,7 +173,7 @@
 
 <StageHeader {language}>
 	{#snippet floorTitle()}
-		<FloorTitle stageFloors={mapConfig?.floors || []} {language} />
+		<FloorTitle stageFloors={mapConfig?.floors || []} levelId={mapConfig?.levelId} {language} />
 	{/snippet}
 </StageHeader>
 
