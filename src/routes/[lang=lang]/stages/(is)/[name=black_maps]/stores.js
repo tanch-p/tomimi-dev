@@ -47,6 +47,26 @@ const floorDifficultyMods = derived(
 		];
 	}
 );
+const shmbmbDiffMods = derived([difficulty], ([$difficulty]) => {
+	const floorBuff = difficultyModsList[$difficulty].floorBuff;
+	return [
+		{
+			targets: ['trap_324_shmbmb'],
+			mods: [
+				{
+					key: 'hp',
+					value: Math.round(floorBuff.hp ** 5 * 100) / 100,
+					mode: 'mul'
+				},
+				{
+					key: 'atk',
+					value: Math.round(floorBuff.atk ** 5 * 100) / 100,
+					mode: 'mul'
+				}
+			]
+		}
+	];
+});
 export const eliteMode = writable(false);
 export const runes = writable(null);
 export const allMods = writable(null);
@@ -145,6 +165,7 @@ export const statMods = derived(
 	[
 		selectedRelics,
 		floorDifficultyMods,
+		shmbmbDiffMods,
 		eliteMode,
 		runes,
 		activeFloorEffects,
@@ -157,6 +178,7 @@ export const statMods = derived(
 	([
 		$selectedRelics,
 		$floorDifficultyMods,
+		$shmbmbDiffMods,
 		$eliteMode,
 		$runes,
 		$activeFloorEffects,
@@ -179,6 +201,7 @@ export const statMods = derived(
 			diff: { key: 'difficulty', mods: $difficultyMods, stackType: 'mul' },
 			others: [
 				{ key: 'floor_diff', mods: [$floorDifficultyMods] },
+				{ key: 'floor_diff', mods: [$shmbmbDiffMods] },
 				{ key: 'low_diff', mods: [noobMods] },
 				{
 					key: 'black_weather',
