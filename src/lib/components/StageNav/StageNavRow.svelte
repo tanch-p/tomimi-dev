@@ -11,6 +11,7 @@
 		label?: string | number | undefined;
 		labelRowspan?: number;
 		backgroundClass?: string | undefined;
+		enemyIcons?: Readonly<Record<string, string>> | undefined;
 	}
 
 	let {
@@ -20,7 +21,8 @@
 		stages = undefined,
 		label = undefined,
 		labelRowspan = 1,
-		backgroundClass = undefined
+		backgroundClass = undefined,
+		enemyIcons = undefined
 	}: Props = $props();
 
 	const COLUMN_SPANS: Record<number, number> = {
@@ -47,7 +49,7 @@
 	{#each items as levelId (levelId)}
 		{@const SvelteComponent_1 = button}
 		<td colspan={columnSpan}>
-			<SvelteComponent_1 {levelId} {language} {stages} />
+			<SvelteComponent_1 {levelId} {language} {stages} enemyIcon={enemyIcons?.[levelId]} />
 		</td>
 	{/each}
 </tr>

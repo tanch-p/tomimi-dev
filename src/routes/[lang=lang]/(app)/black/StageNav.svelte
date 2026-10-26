@@ -2,7 +2,7 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import duelIcon from '$lib/images/is/black/icon_duel.webp';
 	import combatOpsIcon from '$lib/images/is/black/icon_battle_normal.webp';
-	import bossIcon from '$lib/images/is/boss_icon.webp';
+	import bossIcon from '$lib/images/is/black/boss_icon.webp';
 	import encounterIcon from '$lib/images/is/black/icon_incident.webp';
 	import shopIcon from '$lib/images/is/black/icon_shop.webp';
 	import iconSavage from '$lib/images/is/black/icon_savage.webp';

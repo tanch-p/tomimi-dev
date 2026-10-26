@@ -65,16 +65,32 @@ export const bossStageGroups: readonly StageGroup[] = [
 		rows: [
 			['level_rogue6_b-1', 'level_rogue6_b-2', 'level_rogue6_b-3'],
 			['level_rogue6_b-1-b', 'level_rogue6_b-2-b', 'level_rogue6_b-3-b']
-		]
+		],
+		enemyIcons: {
+			'level_rogue6_b-1': 'enemy_2138_shdbjg',
+			'level_rogue6_b-2': 'enemy_2140_shsgzd',
+			'level_rogue6_b-3': 'enemy_2143_shwksc'
+		}
 	},
 	{
 		label: 5,
 		rows: [
 			['level_rogue6_b-4', 'level_rogue6_b-5'],
 			['level_rogue6_b-4-b', 'level_rogue6_b-5-b']
-		]
+		],
+		enemyIcons: {
+			'level_rogue6_b-4': 'enemy_2145_cadejo',
+			'level_rogue6_b-5': 'enemy_2147_shophm'
+		}
 	},
-	{ label: 6, rows: [['level_rogue6_b-6', 'level_rogue6_b-7']] }
+	{
+		label: 6,
+		rows: [['level_rogue6_b-6', 'level_rogue6_b-7']],
+		enemyIcons: {
+			'level_rogue6_b-6': 'enemy_2150_shchmr',
+			'level_rogue6_b-7': 'enemy_2157_shadvr'
+		}
+	}
 ];
 
 export const encounterRows = [

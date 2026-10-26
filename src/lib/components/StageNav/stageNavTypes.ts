@@ -2,6 +2,7 @@ export type StageGroup = {
 	label?: string | number;
 	rows: readonly (readonly string[])[];
 	backgroundClass?: string;
+	enemyIcons?: Readonly<Record<string, string>>;
 };
 
 export type StageInfo = {

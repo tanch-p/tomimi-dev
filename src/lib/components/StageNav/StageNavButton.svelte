@@ -8,9 +8,10 @@
 		levelId: string;
 		language: Language;
 		stages?: StageCollection;
+		enemyIcon?: string;
 	}
 
-	let { levelId, language, stages = ro6 as StageCollection }: Props = $props();
+	let { levelId, language, stages = ro6 as StageCollection, enemyIcon }: Props = $props();
 
 	let currentLevelId = $derived(page.data?.mapConfig?.levelId);
 	let stageInfo = $derived.by(() => {
@@ -32,6 +33,9 @@
 		class:active={levelId === currentLevelId}
 		aria-current={levelId === currentLevelId ? 'page' : undefined}
 	>
+		{#if enemyIcon}
+			<img src={`/images/enemy_icons/${enemyIcon}.webp`} alt="" class="mx-auto mb-2 h-12 w-12" />
+		{/if}
 		{name.replaceAll('_', ' ')}
 	</a>
 {/if}
