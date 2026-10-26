@@ -1,0 +1,1 @@
+var e=new URL(`../assets/banner_sarkaz.CvrTjtD4.webp`,import.meta.url).href;export{e as t};
