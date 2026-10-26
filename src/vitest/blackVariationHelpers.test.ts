@@ -10,8 +10,8 @@ describe('black variation helpers', () => {
 
 		expect(effect.id).toBe(goldVariation.id);
 		expect(effect.effects[0].mods).toEqual([
-			{ key: 'hp', value: 2, mode: 'mul', order: 'initial' },
-			{ key: 'atk', value: 1.4, mode: 'mul', order: 'initial' }
+			{ key: 'hp', value: 1, mode: 'mul', order: 'initial' },
+			{ key: 'atk', value: 0.4, mode: 'mul', order: 'initial' }
 		]);
 	});
 });
