@@ -144,7 +144,10 @@ export const parseTraps = (traps: MapConfigTrap[], language: Language) => {
 				duration: skill.levels[mainSkillLvl - 1].duration,
 				spData: skill.levels[mainSkillLvl - 1].spData,
 				overwrittenKeys: [],
-				...otherKeys
+				...otherKeys,
+				hp_ratio: skill.levels[mainSkillLvl - 1].blackboard?.find(
+					(entry) => entry.key === 'hp_ratio'
+				)?.value
 			});
 		}
 		const stats = getTrapStats(trap, level);

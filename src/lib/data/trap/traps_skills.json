@@ -3099,7 +3099,7 @@
 		"name_zh": "全域信息失真",
 		"name_ja": "",
 		"name_en": "",
-		"desc_zh": "对全场我方单位造成少量法术伤害，并使源阶方损失8%生命",
+		"desc_zh": "对全场我方单位造成少量法术伤害，并使源阶方损失<v.hp_ratio%>%生命",
 		"desc_ja": "",
 		"desc_en": "",
 		"skillType": "AUTO",
@@ -3125,6 +3125,28 @@
 					{
 						"key": "hp_ratio",
 						"value": 0.08
+					}
+				]
+			},
+			{
+				"rangeId": null,
+				"spData": {
+					"spType": "INCREASE_WITH_TIME",
+					"levelUpCost": null,
+					"maxChargeTime": 1,
+					"spCost": 38,
+					"initSp": 0,
+					"increment": 1.0
+				},
+				"duration": -1.0,
+				"blackboard": [
+					{
+						"key": "scale",
+						"value": 0.2
+					},
+					{
+						"key": "hp_ratio",
+						"value": 0.20
 					}
 				]
 			}
