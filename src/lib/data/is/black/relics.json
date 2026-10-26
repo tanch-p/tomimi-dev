@@ -77,52 +77,6 @@
         "tooltip_en": ""
     },
 	{
-        "id": "rogue_6_relic_final_9",
-        "name_zh": "破碎噩兆",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "system"
-                ],
-                "mods": [
-                    {
-                        "key": "level_hidden_group_enable",
-                        "value": 0.0,
-                        "valueStr": "shadvr2"
-                    }
-                ]
-            }
-        ],
-        "tooltip_zh": "探险者重新出现在熄日余径的战斗中",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
-	{
-        "id": "rogue_6_relic_final_7",
-        "name_zh": "谒日之祈",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "system"
-                ],
-                "mods": [
-                    {
-                        "key": "level_hidden_group_enable",
-                        "value": 0.0,
-                        "valueStr": "shadvr"
-                    }
-                ]
-            }
-        ],
-        "tooltip_zh": "区域III血色空脉及后续区域中出现熄日余径，探险者会出现在熄日余径的战斗中，血色空脉中的险路恶敌变得更加艰难",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
-	{
 		"id": "rogue_6_relic_final_3",
 		"name_zh": "怦然信标",
 		"name_ja": "",
@@ -429,6 +383,52 @@
 		"tooltip_ja": "全ての敵の重量ランク-2",
 		"tooltip_en": "All enemies have -2 Weight"
 	},
+	{
+        "id": "rogue_6_relic_final_9",
+        "name_zh": "破碎噩兆",
+        "name_ja": "",
+        "name_en": "",
+        "effects": [
+            {
+                "targets": [
+                    "system"
+                ],
+                "mods": [
+                    {
+                        "key": "level_hidden_group_enable",
+                        "value": 0.0,
+                        "valueStr": "shadvr2"
+                    }
+                ]
+            }
+        ],
+        "tooltip_zh": "探险者重新出现在熄日余径的战斗中",
+        "tooltip_ja": "",
+        "tooltip_en": ""
+    },
+	{
+        "id": "rogue_6_relic_final_7",
+        "name_zh": "谒日之祈",
+        "name_ja": "",
+        "name_en": "",
+        "effects": [
+            {
+                "targets": [
+                    "system"
+                ],
+                "mods": [
+                    {
+                        "key": "level_hidden_group_enable",
+                        "value": 0.0,
+                        "valueStr": "shadvr"
+                    }
+                ]
+            }
+        ],
+        "tooltip_zh": "区域III血色空脉及后续区域中出现熄日余径，探险者会出现在熄日余径的战斗中，血色空脉中的险路恶敌变得更加艰难",
+        "tooltip_ja": "",
+        "tooltip_en": ""
+    },
 	{
 		"id": "rogue_6_start_3",
 		"name_zh": "襁褓巨龙",
