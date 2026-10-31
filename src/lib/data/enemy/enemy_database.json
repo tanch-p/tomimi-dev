@@ -26126,17 +26126,20 @@
 				"epResistance": 0.0,
 				"traits": [
 					{
-						"key": "pompeii_aspd_inc"
+						"key": "pompeii_aspd_inc",
+						"value":50
 					},
 					{
 						"key": "multi_target",
 						"value": 4
 					},
 					{
-						"key": "pompeii_burn"
+						"key": "pompeii_burn",
+						"value":25
 					},
 					{
-						"key": "pompeii_explosion"
+						"key": "pompeii_explosion",
+						"atk": { "value": 1800 }
 					}
 				],
 				"special": []

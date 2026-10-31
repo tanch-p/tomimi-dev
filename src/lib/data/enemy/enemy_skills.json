@@ -3073,17 +3073,19 @@
 		}
 	},
 	"pompeii_aspd_inc": {
+		"value":40,
 		"tooltip": {
-			"en": ["HP↓50% - ASPD +40"],
-			"ja": ["HP↓50% - 攻撃速度+40"],
-			"zh": ["HP↓50% - 攻击速度+40"]
+			"en": ["HP↓50% - ASPD +<v.value>"],
+			"ja": ["HP↓50% - 攻撃速度+<v.value>"],
+			"zh": ["HP↓50% - 攻击速度+<v.value>"]
 		}
 	},
 	"pompeii_burn": {
+		"value":20,
 		"tooltip": {
-			"en": ["Attacks inflict Burn (20 Arts dmg every 0.33s) for 10s"],
-			"ja": ["攻撃で10秒火傷・術(20/0.33秒)付与される"],
-			"zh": ["攻击造成灼烧伤害(20法伤/0.33秒)，持续10秒"]
+			"en": ["Attacks inflict Burn (20 {arts} dmg every 0.33s) for 10s"],
+			"ja": ["攻撃で10秒火傷・{arts}(20/0.33秒)付与される"],
+			"zh": ["普通攻击额外对目标施加10秒灼烧效果，每0.33秒受到<v.value>无来源无途径{arts}持续伤害（重复施加时仅刷新持续时间，不触发受击回复）"]
 		}
 	},
 	"pompeii_explosion": {
