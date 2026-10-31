@@ -12380,7 +12380,7 @@
 		"type": "buff",
 		"skillRange": 2.5,
 		"effects": {
-			"targets": ["ALL"],
+			"targets": ["not_flying"],
 			"activeTargets": ["enemy_10229_agactr_2"],
 			"mods": [
 				{ "key": "res", "value": 25, "order": "initial", "mode": "add" },

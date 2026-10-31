@@ -80001,7 +80001,7 @@
 				"ms": 0.6,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [{ "key": "splash", "value": 4 }, { "key": "move_dmg_res" }],
+				"traits": [{ "key": "splash", "tiles": 4 }, { "key": "move_dmg_res" }],
 				"special": []
 			}
 		],
