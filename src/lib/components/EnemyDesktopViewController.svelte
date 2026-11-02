@@ -20,10 +20,9 @@
 
 <div class="grid grid-cols-2 place-items-center h-[58px] mt-3">
 	<button
-		class="flex items-center justify-center gap-x-1.5 w-full h-full bg-gray-500 {displayMode ===
-		'table'
-			? ''
-			: 'dark:brightness-50 bg-neutral-300'}"
+		class="flex items-center justify-center gap-x-1.5 w-full h-full {displayMode === 'table'
+			? 'bg-gray-500'
+			: 'dark:bg-gray-500 dark:brightness-50 bg-neutral-300'}"
 		onclick={() => (displayMode = 'table')}
 	>
 		<Icon name="icon-list" size={22} />
@@ -31,10 +30,9 @@
 		<span class="text-lg">{getTranslations(language).table_view}</span>
 	</button>
 	<button
-		class="flex items-center justify-center gap-x-1.5 w-full h-full bg-gray-500 {displayMode ===
-		'handbook'
-			? ''
-			: 'dark:brightness-50 bg-neutral-300'}"
+		class="flex items-center justify-center gap-x-1.5 w-full h-full {displayMode === 'handbook'
+			? 'bg-gray-500'
+			: 'dark:bg-gray-500 dark:brightness-50 bg-neutral-300'}"
 		onclick={() => (displayMode = 'handbook')}
 	>
 		<Icon name="layout-view" size={28} />

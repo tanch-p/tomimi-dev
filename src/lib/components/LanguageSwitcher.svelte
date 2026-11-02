@@ -41,10 +41,13 @@
 	const languageCodes = { en: 'EN', ja: '日本語', zh: '中文' };
 </script>
 
-<div class="relative" {@attach clickOutside(() => (showOptions = false))}>
-	<button onclick={() => (showOptions = !showOptions)} class="sm:py-1 px-2 hover:underline h-full">
+<div class="relative min-w-22.5" {@attach clickOutside(() => (showOptions = false))}>
+	<button
+		onclick={() => (showOptions = !showOptions)}
+		class="block ml-auto m:py-1 px-2 hover:underline h-full"
+	>
 		<span class="flex gap-x-1.5">
-			<Icon name="icon-language" size="20" className="mb-0.5" />
+			<Icon name="icon-language" size="20" className="mb-0.5 text-neutral-800 dark:text-white" />
 			{languageCodes[language]}</span
 		>
 	</button>
@@ -52,7 +55,7 @@
 		<div
 			role="presentation"
 			onclick={() => (showOptions = false)}
-			class="absolute w-max mt-1 py-0.5 bg-white dark:bg-neutral-900 select-none"
+			class="absolute right-0 w-max mt-1 py-0.5 bg-white dark:bg-neutral-900 select-none"
 		>
 			<a href={paths.en}
 				><div class="px-2 my-0.5 hover:bg-neutral-300 dark:hover:bg-gray-600">English</div></a
