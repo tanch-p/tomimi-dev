@@ -1,4 +1,23 @@
 import type { Enemy } from '$lib/types';
+import { enemyCountGroups } from '$lib/data/stages/enemyCountGroups';
+
+export function sortEnemiesByStageGroups(enemies: Enemy[], levelId?: string): Enemy[] {
+	const groups = levelId ? enemyCountGroups[levelId] : undefined;
+	if (!groups) return enemies;
+
+	const order = new Map<string, number>();
+	for (const id of groups.flatMap((group) => group.enemyIds)) {
+		if (!order.has(id)) order.set(id, order.size);
+	}
+
+	return [...enemies].sort((a, b) => {
+		const aIsBoss = a.type.includes('BOSS');
+		const bIsBoss = b.type.includes('BOSS');
+		if (aIsBoss !== bIsBoss) return aIsBoss ? -1 : 1;
+		if (aIsBoss) return 0;
+		return (order.get(a.stageId) ?? order.size) - (order.get(b.stageId) ?? order.size);
+	});
+}
 
 export const BONUS_ENEMY_KEYS = [
 	'enemy_2001_duckmi',

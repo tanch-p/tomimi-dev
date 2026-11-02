@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Enemy, Language } from '$lib/types';
+	import { sortEnemiesByStageGroups } from '$lib/functions/enemyHelpers';
 	import EnemyHandbookDetails from './EnemyHandbookDetails.svelte';
 	import bossIcon from '$lib/images/is/boss_icon.webp';
 
@@ -22,13 +23,14 @@
 		mode = 'mobile',
 		mapConfig
 	}: Props = $props();
+	let sortedEnemies = $derived(sortEnemiesByStageGroups(enemies, mapConfig?.levelId));
 </script>
 
 <div class="grid grid-cols-[75px_auto] md:grid-cols-[85px_auto] md:justify-center md:mt-4">
 	<div
 		class="grid grid-flow-row auto-rows-max gap-2.5 px-2.5 h-[calc(100vh-172px)] overflow-scroll no-scrollbar sticky top-20"
 	>
-		{#each enemies as enemy}
+		{#each sortedEnemies as enemy}
 			<a href={`#${enemy.stageId}`}>
 				<div class="relative">
 					<p class="absolute bg-white dark:bg-almost-black px-1 text-xs">{enemy.id}</p>
@@ -55,7 +57,7 @@
 		{/each}
 	</div>
 	<div class="flex flex-col md:max-w-[550px]">
-		{#each enemies as enemy, index (enemy.stageId)}
+		{#each sortedEnemies as enemy, index (enemy.stageId)}
 			{#if index !== 0}
 				<div class="bg-neutral-200 dark:bg-neutral-700 mx-1 h-0.5"></div>
 			{/if}

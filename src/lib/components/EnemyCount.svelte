@@ -1,19 +1,40 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
-	import type { MapConfig, Language, RogueTopic } from '$lib/types';
+	import type { Enemy, MapConfig, Language, RogueTopic } from '$lib/types';
+	import { enemyCountGroups } from '$lib/data/stages/enemyCountGroups';
 	import TogglePanel from './TogglePanel.svelte';
 	import { BONUS_ENEMY_KEYS } from '$lib/functions/enemyHelpers';
 	import { isDuelStage } from './StageSimulator/config/stageBehaviors';
 
 	interface Props {
 		mapConfig: MapConfig;
-		enemies: any;
+		enemies: Enemy[];
 		eliteMode: boolean;
 		language: Language;
 		rogueTopic: RogueTopic;
 	}
 
 	let { mapConfig, enemies, eliteMode, language, rogueTopic }: Props = $props();
+
+	let enemyRows = $derived.by(() => {
+		const visibleEnemies = enemies.filter((enemy) => isEnemyToShow(enemy.key, mapConfig?.levelId));
+		const groups = enemyCountGroups[mapConfig?.levelId];
+		if (!groups) return [{ label: '', enemies: visibleEnemies }];
+
+		const enemiesById = new Map(visibleEnemies.map((enemy) => [enemy.stageId, enemy]));
+		const groupedIds = new Set(groups.flatMap((group) => group.enemyIds));
+		const rows = groups.map((group) => ({
+			label: group.label[language] || group.label.zh,
+			enemies: group.enemyIds
+				.map((id) => enemiesById.get(id))
+				.filter((enemy): enemy is Enemy => enemy !== undefined)
+		}));
+		rows.push({
+			label: '',
+			enemies: visibleEnemies.filter((enemy) => !groupedIds.has(enemy.stageId))
+		});
+		return rows.filter((row) => row.enemies.length > 0);
+	});
 
 	function getMinMaxCount(id, eliteMode) {
 		const data = mapConfig?.enemies.find((enemy) => id === enemy.id);
@@ -54,6 +75,8 @@
 		if (['enemy_2065_skzjs', 'enemy_1106_byokai'].includes(key)) return false;
 		if (isDuelStage(levelId)) return true;
 		switch (levelId) {
+			case 'level_rogue6_5-8':
+				return true;
 			case 'level_rogue4_t-6':
 			case 'level_rogue4_b-6':
 				return key === 'enemy_2067_skzcy' || !BONUS_ENEMY_KEYS.includes(key);
@@ -91,39 +114,46 @@
 	size="subheading"
 	className="my-4"
 >
-	<div class="flex flex-wrap gap-x-4 gap-y-2 px-2.5 md:px-0">
-		{#each enemies as enemy}
-			{#if isEnemyToShow(enemy.key, mapConfig?.levelId)}
-				{@const { min, max } = getMinMaxCount(enemy.stageId, eliteMode)}
-				<a
-					href="#{enemy.stageId}"
-					class="relative flex items-center hover:bg-neutral-300 dark:hover:bg-neutral-700"
-				>
-					<img
-						class="select-none w-[55px] md:w-[65px]"
-						src={`/images/enemy_icons/${enemy.key}.webp`}
-						height="65"
-						width="65"
-						decoding="async"
-						alt={enemy.id}
-						title={enemy[`name_${language}`] || enemy[`name_zh`]}
-					/>
-					{#if !isDuelStage(mapConfig.levelId)}
-						<p
-							class="flex absolute right-[-3px] bottom-[-3px] bg-white dark:bg-almost-black px-1 text-xs md:text-sm"
+	<div class="flex flex-col gap-3 px-2.5 md:px-0">
+		{#each enemyRows as row}
+			<div>
+				{#if row.label}
+					<h3 class="mb-2 text-sm font-semibold">{row.label}</h3>
+				{/if}
+				<div class="flex flex-wrap gap-x-4 gap-y-2">
+					{#each row.enemies as enemy}
+						{@const { min, max } = getMinMaxCount(enemy.stageId, eliteMode)}
+						<a
+							href="#{enemy.stageId}"
+							class="relative flex items-center hover:bg-neutral-300 dark:hover:bg-neutral-700"
 						>
-							x&nbsp;
-							{#if min === max}
-								<span>{min ?? 0}</span>
-							{:else}
-								<span>{min}</span>
-								<span>~</span>
-								<span>{max}</span>
+							<img
+								class="select-none w-[55px] md:w-[65px]"
+								src={`/images/enemy_icons/${enemy.key}.webp`}
+								height="65"
+								width="65"
+								decoding="async"
+								alt={enemy.id}
+								title={enemy[`name_${language}`] || enemy[`name_zh`]}
+							/>
+							{#if !isDuelStage(mapConfig.levelId)}
+								<p
+									class="flex absolute right-[-3px] bottom-[-3px] bg-white dark:bg-almost-black px-1 text-xs md:text-sm"
+								>
+									x&nbsp;
+									{#if min === max}
+										<span>{min ?? 0}</span>
+									{:else}
+										<span>{min}</span>
+										<span>~</span>
+										<span>{max}</span>
+									{/if}
+								</p>
 							{/if}
-						</p>
-					{/if}
-				</a>
-			{/if}
+						</a>
+					{/each}
+				</div>
+			</div>
 		{/each}
 	</div>
 </TogglePanel>

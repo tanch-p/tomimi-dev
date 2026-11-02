@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
+	import { sortEnemiesByStageGroups } from '$lib/functions/enemyHelpers';
 	import type { Enemy, Language, StatMods } from '$lib/types';
 	import { tableHeaders } from '../../routes/stores';
 	import EnemySimpleRow from './EnemySimpleRow.svelte';
@@ -15,7 +16,8 @@
 	}
 
 	let { enemies, language, statMods, specialMods, otherBuffsList, mapConfig }: Props = $props();
-	let filteredTableHeaders = $derived($tableHeaders.filter(({ key, show }) => show));
+	let sortedEnemies = $derived(sortEnemiesByStageGroups(enemies, mapConfig?.levelId));
+	let filteredTableHeaders = $derived($tableHeaders.filter(({ show }) => show));
 
 	const tooltips = { e_hp: 'tooltip_ehp' };
 </script>
@@ -45,7 +47,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each enemies as enemy, index}
+			{#each sortedEnemies as enemy, index}
 				<EnemySimpleRow
 					{enemy}
 					{filteredTableHeaders}
