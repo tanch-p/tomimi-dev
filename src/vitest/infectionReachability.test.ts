@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { get, writable } from 'svelte/store';
 import type { Enemy, MapConfig } from '$lib/types';
 import { getInfectionReachableEnemyIds } from '$lib/functions/infectionReachability';
+import * as mazeHelpers from '$lib/functions/mazeHelpers';
 import {
 	getApplicableBuffsList,
 	setOtherBuffsList,
@@ -34,7 +35,7 @@ function stage(map: number[][], spawns: SpawnSpec[]) {
 				['tile_wall', 1, 1],
 				['tile_hole', 0, 0],
 				['tile_infection', 0, 0],
-				['tile_infection', 1, 1]
+				['tile_infection', 1, 0]
 			]
 		},
 		sp_terrain: [
@@ -214,6 +215,19 @@ describe('infection tile reachability', () => {
 			getInfectionReachableEnemyIds(asConfig(config), [enemy('second'), enemy('highland')])
 		).toEqual(new Set(['second']));
 		expect(getInfectionReachableEnemyIds(asConfig({}), [enemy('second')]).size).toBe(0);
+	});
+
+	it('skips maze calculation for high-ground-only infection, including repeated calls', () => {
+		const config = stage([[4, 0]], [{ id: 'hover', row: 0, col: 1 }]);
+		const mazeSpy = vi.spyOn(mazeHelpers, 'generateMaze');
+		try {
+			const enemies = [enemy('hover', ['hover'])];
+			expect(getInfectionReachableEnemyIds(asConfig(config), enemies).size).toBe(0);
+			expect(getInfectionReachableEnemyIds(asConfig(config), enemies, true).size).toBe(0);
+			expect(mazeSpy).not.toHaveBeenCalled();
+		} finally {
+			mazeSpy.mockRestore();
+		}
 	});
 
 	it('matches the middle lane and extra enemy in level_rogue6_5-8', () => {

@@ -26,7 +26,7 @@ type ReachabilityIndex = {
 };
 
 // Stage configurations are immutable; variants get their own cache entries.
-const indexCache = new WeakMap<MapConfig, ReachabilityIndex>();
+const indexCache = new WeakMap<MapConfig, ReachabilityIndex | null>();
 const directions = [
 	[0, 1],
 	[1, 0],
@@ -36,22 +36,27 @@ const directions = [
 
 function buildIndex(config: MapConfig): ReachabilityIndex | undefined {
 	const cached = indexCache.get(config);
-	if (cached) return cached;
+	if (cached !== undefined) return cached ?? undefined;
 	const mapData = (config as MapConfig & { mapData?: MapData }).mapData;
 	if (!mapData?.map.length || !mapData.map[0]?.length) return;
 
 	const { map, tiles } = mapData;
 	const width = map[0].length;
-	const maze = generateMaze(map, tiles) as number[][];
 	const infection = new Set<number>();
 	for (let row = 0; row < map.length; row++) {
 		for (let col = 0; col < width; col++) {
-			const tile = tiles[map[row][col]];
-			if (tile[0] === 'tile_infection' && tile[1] === 0 && Number.isFinite(maze[row][col])) {
-				infection.add(row * width + col);
-			}
+			const [tileName, heightType, passableMask] = tiles[map[row][col]];
+			if (tileName !== 'tile_infection' || heightType !== 0 || passableMask === 1) continue;
+			infection.add(row * width + col);
 		}
 	}
+	// High-ground infection tiles do not affect enemies. Skip path and spawn indexing
+	// entirely when there are no usable ground infection tiles, including on cache hits.
+	if (infection.size === 0) {
+		indexCache.set(config, null);
+		return;
+	}
+	const maze = generateMaze(map, tiles) as number[][];
 
 	function floodFill(canCrossHoles: boolean): Set<number> {
 		const reached = new Set(infection);
