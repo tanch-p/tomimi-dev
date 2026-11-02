@@ -42,7 +42,9 @@
 				data.traps,
 				data.mapConfig,
 				language,
-				$difficulty
+				$difficulty,
+				$eliteMode,
+				$specialMods
 			);
 		}
 	});

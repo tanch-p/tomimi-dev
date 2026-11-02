@@ -1,10 +1,11 @@
-import type { Enemy, Language, MapConfig, RogueTopic, Trap } from '$lib/types';
+import type { Enemy, Language, MapConfig, RogueTopic, Skill, SpecialMods, Trap } from '$lib/types';
 import rogue_4_fragment_F_25 from '$lib/images/is/sarkaz/rogue_4_fragment_F_25.webp';
 import tileImg from '$lib/images/tiles/tile_infection.webp';
 import enemySkills from '$lib/data/enemy/enemy_skills.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
 import { getTranslations } from './languageHelpers';
 import { checkIsTarget } from './statHelpers';
+import { getInfectionReachableEnemyIds } from './infectionReachability';
 
 export const setOtherBuffsList = (
 	store,
@@ -13,7 +14,9 @@ export const setOtherBuffsList = (
 	traps: Trap[],
 	mapConfig: MapConfig,
 	language: Language,
-	difficulty = 0
+	difficulty = 0,
+	eliteMode = false,
+	specialMods: SpecialMods = {}
 ) => {
 	const buffsList = [];
 	switch (rogueTopic) {
@@ -88,6 +91,7 @@ export const setOtherBuffsList = (
 			img: tileImg,
 			name: getTranslations(language).tile_infection,
 			targets: ['not_flying&not_trap'],
+			reachableEnemyIds: getInfectionReachableEnemyIds(mapConfig, enemies, eliteMode),
 			activeTargets: [],
 			mods: [
 				{ key: 'atk', value: tileInfection.blackboard['atk'], order: 'initial', mode: 'mul' },
@@ -138,8 +142,9 @@ export const setOtherBuffsList = (
 				// case for new skills added from specialMods
 				continue;
 			}
-			const replacedSkill = { ...skill, ...skillRef };
-			if (skill.type === 'buff') {
+			const overrides = specialMods[enemy.key] as Record<string, Partial<Skill>> | undefined;
+			const replacedSkill = { ...skill, ...skillRef, ...overrides?.[skillRef.key] };
+			if (replacedSkill.type === 'buff') {
 				const enemyCount = mapConfig?.enemies.find((ele) => ele.id === enemy.stageId);
 				const maxCount =
 					replacedSkill.effects?.maxCount ||
@@ -149,7 +154,9 @@ export const setOtherBuffsList = (
 					imgKey: enemy.key,
 					name: enemy[`name_${language}`],
 					targets: replacedSkill.effects.targets,
-					activeTargets: replacedSkill.effects.activeTargets,
+					activeTargets: replacedSkill.effects.activeTargets.map(
+						(target: { key: string; count: number }) => ({ ...target })
+					),
 					mods: replacedSkill.effects.mods,
 					stackType: replacedSkill.effects.stackType,
 					exclusiveGroup: replacedSkill.effects.exclusiveGroup,
@@ -250,7 +257,9 @@ export function getApplicableBuffsList(otherBuffsList, entity) {
 	if (!otherBuffsList) {
 		return [];
 	}
-	return otherBuffsList.filter((buff) =>
-		buff.targets.some((target) => checkIsTarget(entity, target))
+	return otherBuffsList.filter(
+		(buff) =>
+			(!buff.reachableEnemyIds || buff.reachableEnemyIds.has(entity.stageId)) &&
+			buff.targets.some((target) => checkIsTarget(entity, target))
 	);
 }

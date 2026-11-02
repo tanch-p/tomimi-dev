@@ -43,30 +43,37 @@
 			!selectedRelicsValue.find((item) => item.id === 'rogue_4_relic_explore_7')
 		) {
 			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_explore_7');
-			selectedRelicsStore.update((list) => (list = [...list, relic]));
+			selectedRelicsStore.update((list) => [...list, relic]);
 		}
 		if (
 			['level_rogue4_b-7'].includes(levelId) &&
 			!selectedRelicsValue.find((item) => item.id === 'rogue_4_relic_final_6')
 		) {
 			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_final_6');
-			selectedRelicsStore.update((list) => (list = [...list, relic]));
+			selectedRelicsStore.update((list) => [...list, relic]);
 		}
 	}
 	let language = $derived(data.language);
 	$effect(() => {
 		if (data.mapConfig) {
 			updateReqRelic(data.mapConfig?.levelId, $selectedRelics, selectedRelics);
+			runes.set(data.mapConfig?.n_mods);
+			allMods.set(data.mapConfig?.all_mods);
+		}
+	});
+	$effect(() => {
+		if (data.mapConfig) {
 			setOtherBuffsList(
 				otherBuffsList,
 				rogueTopic,
 				data.enemies,
 				data.traps,
 				data.mapConfig,
-				language
+				language,
+				0,
+				$eliteMode,
+				$specialMods
 			);
-			runes.set(data.mapConfig?.n_mods);
-			allMods.set(data.mapConfig?.all_mods);
 		}
 	});
 	let stageName = $derived(data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh);

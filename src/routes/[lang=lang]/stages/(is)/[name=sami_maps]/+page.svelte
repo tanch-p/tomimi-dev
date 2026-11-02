@@ -32,17 +32,24 @@
 	let language = $derived(data.language);
 	$effect(() => {
 		if (data.mapConfig) {
+			eliteMode.set(false);
+			runes.set(data.mapConfig?.n_mods);
+			allMods.set(data.mapConfig?.all_mods);
+		}
+	});
+	$effect(() => {
+		if (data.mapConfig) {
 			setOtherBuffsList(
 				otherBuffsList,
 				rogueTopic,
 				data.enemies,
 				data.traps,
 				data.mapConfig,
-				language
+				language,
+				0,
+				$eliteMode,
+				$specialMods
 			);
-			eliteMode.set(false);
-			runes.set(data.mapConfig?.n_mods);
-			allMods.set(data.mapConfig?.all_mods);
 		}
 	});
 	let stageName = $derived(data.mapConfig?.[`name_${language}`] || data.mapConfig?.name_zh);
