@@ -27,7 +27,7 @@
 
 <button
 	id="mission"
-	class={`max-w-screen sm:w-max sm:px-6 mt-4 mb-6 select-none hover:cursor-pointer hover:bg-neutral-700 text-start`}
+	class={`max-w-screen sm:w-max sm:px-6 mt-4 mb-6 select-none hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700 text-start`}
 	onclick={() => {
 		selected = !selected;
 	}}

@@ -33,7 +33,9 @@
 		}
 		return acc;
 	}, true)}
-	<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
+	<p
+		class="bg-white dark:bg-[#383838] px-3.5 py-0.5 text-neutral-600 dark:text-[#a2a5a5] font-bold"
+	>
 		{getTranslations(language).handbook_ability}
 	</p>
 	<div class="py-1">

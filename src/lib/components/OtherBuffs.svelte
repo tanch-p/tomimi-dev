@@ -20,7 +20,12 @@
 </script>
 
 {#if applicableBuffsList?.length > 0}
-	<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold {mode === 'table' ? 'hidden' : ''}">
+	<p
+		class="bg-white dark:bg-[#383838] px-3.5 py-0.5 text-neutral-600 dark:text-[#a2a5a5] font-bold {mode ===
+		'table'
+			? 'hidden'
+			: ''}"
+	>
 		{getTranslations(language).other_buffs}
 	</p>
 	<div
@@ -38,7 +43,9 @@
 			>
 				<div class="relative">
 					{#if buff.maxCount > 1 && currentCount > 0}
-						<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">x{currentCount}</p>
+						<p class="absolute right-0 bottom-0 bg-white dark:bg-almost-black px-1 text-xs">
+							x{currentCount}
+						</p>
 					{/if}
 					{#if ['n18_mzk', 'n14_phcs'].includes(buff.key)}
 						<div class="relative flex justify-center items-center w-[54px] h-[54px]">

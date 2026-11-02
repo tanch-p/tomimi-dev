@@ -33,7 +33,7 @@
 	tabindex="0"
 	class={`grid ${
 		language === 'en' ? 'grid-cols-[110px_auto]' : 'grid-cols-[100px_auto]'
-	} hover:cursor-pointer items-center py-1 ${selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'}`}
+	} hover:cursor-pointer items-center py-1 ${selected ? 'bg-neutral-200 dark:bg-neutral-700' : 'hover:bg-neutral-300 dark:hover:bg-neutral-700'}`}
 	onclick={handleClick}
 	onkeydown={(event) => {
 		if (event.key === 'Enter' || event.key === ' ') handleClick();

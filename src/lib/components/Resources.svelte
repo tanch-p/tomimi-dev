@@ -17,7 +17,7 @@
 			<li>
 				<a
 					href={'https://is-central.github.io/introduction/'}
-					class="text-blue-400 hover:text-blue-300"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -28,7 +28,7 @@
 		<li>
 			<a
 				href={'https://docs.qq.com/sheet/DQkhoWVpEcUF2T3FV?tab=BB08J2'}
-				class="text-blue-400 hover:text-blue-300"
+				class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -36,7 +36,7 @@
 			</a>
 			【{getTranslations(language).author}：<a
 				href="https://space.bilibili.com/111063246"
-				class="text-blue-400 hover:text-blue-300"
+				class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 				target="_blank"
 				rel="noopener noreferrer">哲三</a
 			>】
@@ -45,7 +45,7 @@
 			<li>
 				<a
 					href={'https://www.lubiao.wiki/tools/blackstream-route'}
-					class="text-blue-400 hover:text-blue-300 pr-2"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300 pr-2"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -55,7 +55,7 @@
 			<li>
 				<a
 					href={'https://arkrog.com/tool/blackflowmap'}
-					class="text-blue-400 hover:text-blue-300 pr-2"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300 pr-2"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -67,14 +67,14 @@
 			<li>
 				<a
 					href={'https://docs.qq.com/sheet/DSnJQZ3V2akZWRHpz?tab=BB08J2'}
-					class="text-blue-400 hover:text-blue-300 pr-2"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300 pr-2"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					藏品档案
 				</a>
 				※施工中，若想参与此项目或反馈问题，可以点击<a
-					class="text-blue-400 hover:text-blue-300"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 					target="_blank"
 					rel="noopener noreferrer"
 					href="https://docs.qq.com/sheet/DQmR5VEVxdmdaRFNJ?tab=BB08J2">这里</a
@@ -85,14 +85,14 @@
 			<li>
 				<a
 					href={'https://docs.qq.com/sheet/DSmlZSFBTZlJaTHZB?tab=ss0p98'}
-					class="text-blue-400 hover:text-blue-300 pr-2"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300 pr-2"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					藏品档案
 				</a>
 				※施工中，若想参与此项目或反馈问题，可以点击<a
-					class="text-blue-400 hover:text-blue-300"
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 					target="_blank"
 					rel="noopener noreferrer"
 					href="https://docs.qq.com/sheet/DQmR5VEVxdmdaRFNJ?tab=BB08J2">这里</a

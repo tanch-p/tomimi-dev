@@ -131,7 +131,7 @@
 					<div class="flex min-[500px]:gap-x-3 pb-1 min-[500px]:pb-1.5">
 						<div class="flex">
 							<div
-								class="flex shrink-0 items-center justify-center mt-3 w-[40px] h-[40px] bg-[#313131]"
+								class="flex shrink-0 items-center justify-center mt-3 w-[40px] h-[40px] bg-white dark:bg-[#313131]"
 							>
 								<img
 									src="/images/chara_assets/sub_{chara.subProfessionId}_icon.webp"
@@ -168,7 +168,9 @@
 										size="small"
 									/>
 								</div>
-								<p class="text-near-white text-xs">{getTranslations(language).attack_range}</p>
+								<p class="text-neutral-800 dark:text-near-white text-xs">
+									{getTranslations(language).attack_range}
+								</p>
 							</div>
 						</div>
 						<div class="hidden min-[500px]:grid grid-cols-2 gap-x-2 gap-y-1 ml-2.5">
@@ -180,7 +182,9 @@
 										?.attributeBlackboard
 								)}
 								<div class={`grid grid-cols-[16px_1fr] items-center gap-x-1 bg-[#e5e5e5] w-[72px]`}>
-									<div class="flex justify-center items-center bg-[#313131] w-[16px] h-[16px]">
+									<div
+										class="flex justify-center items-center bg-white dark:bg-[#313131] w-[16px] h-[16px]"
+									>
 										<img src={charaAssets[statKey]} width="12px" height="12px" alt="" />
 									</div>
 									<p class="text-sm leading-[16px] font-medium">

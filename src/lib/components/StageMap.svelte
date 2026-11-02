@@ -47,11 +47,12 @@
 	<div class="max-w-[600px] w-full mx-auto px-3 sm:px-0 mt-3">
 		{#if stagesWithMultipleImgs.includes(mapConfig?.levelId)}
 			<div
-				class="grid grid-flow-col auto-cols-fr font-bold text-lg text-near-white text-center select-none divide-x divide-gray-500 py-1"
+				class="grid grid-flow-col auto-cols-fr font-bold text-lg text-neutral-800 dark:text-near-white text-center select-none divide-x divide-gray-500 py-1"
 			>
 				{#each multipleImgLookup[mapConfig?.levelId] as { key }, i}
-					<button class={index === i ? '' : 'text-gray-400'} onclick={() => (index = i)}
-						>{key}</button
+					<button
+						class={index === i ? '' : 'text-neutral-600 dark:text-gray-400'}
+						onclick={() => (index = i)}>{key}</button
 					>
 				{/each}
 			</div>

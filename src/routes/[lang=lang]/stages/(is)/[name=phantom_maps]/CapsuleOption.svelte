@@ -21,7 +21,9 @@
 
 <button
 	class={`grid grid-cols-[75px_auto] gap-x-2 text-start ${
-		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
+		selected
+			? 'bg-neutral-200 dark:bg-neutral-700'
+			: 'hover:bg-neutral-300 dark:hover:bg-neutral-700'
 	}`}
 	onclick={handleClick}
 >

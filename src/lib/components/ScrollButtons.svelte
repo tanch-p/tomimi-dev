@@ -25,7 +25,7 @@
 	}
 </script>
 
-<div class="fixed max-w-[1280px] mx-auto inset-0 z-10 pointer-events-none">
+<div class="text-near-white fixed max-w-[1280px] mx-auto inset-0 z-10 pointer-events-none">
 	<button
 		hidden={!showTop}
 		class="absolute {hasBtm

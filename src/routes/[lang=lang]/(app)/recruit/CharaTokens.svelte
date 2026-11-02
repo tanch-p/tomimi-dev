@@ -76,11 +76,15 @@
 						`position_${getTokenPosition(token, chara.uniequip[moduleIndex])}`
 					]}
 				</div>
-				<p class="text-[#999] mt-1.5">*{getTranslations(language).token_stat_remark}</p>
+				<p class="text-neutral-600 dark:text-[#999] mt-1.5">
+					*{getTranslations(language).token_stat_remark}
+				</p>
 			</div>
 		</div>
 		<div class="grid grid-cols-[130px_1fr] sm:grid-cols-[1fr_2fr] gap-2 mt-4">
-			<div class="flex flex-col items-center w-full p-2 pb-1 bg-[#161616]/80 rounded">
+			<div
+				class="flex flex-col items-center w-full p-2 pb-1 bg-white/80 dark:bg-[#161616]/80 rounded"
+			>
 				<div class="flex items-center h-full">
 					<RangeParser rangeId={token.stats.rangeId} />
 				</div>
@@ -95,11 +99,13 @@
 							?.tokenAttributeBlackboard?.[token.id]
 					)}
 
-					<div class="grid grid-cols-[20px_1fr] items-center gap-x-2 bg-[#161616]/80 h-[25px]">
+					<div
+						class="grid grid-cols-[20px_1fr] items-center gap-x-2 bg-white/80 dark:bg-[#161616]/80 h-[25px]"
+					>
 						<div class="flex items-center bg-[#444] h-full px-[1px]">
 							<img src={charaAssets[statKey]} width="18px" height="18px" alt="" />
 						</div>
-						<p class="text-near-white whitespace-nowrap">
+						<p class="text-neutral-800 dark:text-near-white whitespace-nowrap">
 							{getFullCharStat(statKey, token, moduleStat, 0)}{statKey === 'respawnTime' ? 's' : ''}
 							{#if moduleStat}
 								<span class="text-red-400 text-sm">({moduleStat > 0 ? '+' : ''}{moduleStat})</span>
@@ -110,13 +116,15 @@
 			</div>
 		</div>
 		<div class="px-1.5 mt-3">
-			<p class="text-[#999] text-lg">{getTranslations(language).trait}</p>
+			<p class="text-neutral-600 dark:text-[#999] text-lg">{getTranslations(language).trait}</p>
 			<TextParser
 				line={getTokenModuleTrait(token.desc, chara.uniequip[moduleIndex], moduleStage)}
 				className="mt-1.5"
 			/>
 			{#if token.talents && token.talents.length > 0}
-				<p class="mt-6 text-[#999] text-lg">{getTranslations(language).talent}</p>
+				<p class="mt-6 text-neutral-600 dark:text-[#999] text-lg">
+					{getTranslations(language).talent}
+				</p>
 				{#each token.talents as talent, idx}
 					{@const moduleTalentDesc = getTokenModuleTalent(
 						idx,
@@ -130,7 +138,7 @@
 				{/each}
 			{/if}
 			{#if token.skills && token.skills.length > 0}
-				<p class="mt-6 text-[#999] text-lg">
+				<p class="mt-6 text-neutral-600 dark:text-[#999] text-lg">
 					{getTranslations(language).skill}
 				</p>
 				{#each token.skills as skill, skillIdx}
@@ -149,13 +157,15 @@
 								<div class="absolute flex -bottom-0.5 -right-0.5">
 									{#if skill?.spData?.spCost}
 										<div
-											class="grid grid-cols-[11px_1fr] items-center bg-[#434343] pl-[4px] pr-[1px]"
+											class="grid grid-cols-[11px_1fr] items-center bg-neutral-200 dark:bg-[#434343] pl-[4px] pr-[1px]"
 										>
 											<img src={charaAssets.sp_start} alt="" />
 											<p class="text-[20px] leading-tight">{skill?.spData?.initSp}</p>
 										</div>
 
-										<div class="ml-1 grid grid-cols-[16px_1fr] items-center bg-[#434343] pr-[1px]">
+										<div
+											class="ml-1 grid grid-cols-[16px_1fr] items-center bg-neutral-200 dark:bg-[#434343] pr-[1px]"
+										>
 											<img src={charaAssets.sp_cost} alt="" />
 											<p class="text-[20px] leading-tight">{skill?.spData?.spCost}</p>
 										</div>

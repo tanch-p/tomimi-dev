@@ -73,7 +73,7 @@
 					{enemy[`name_${language}`] || enemy[`name_zh`]}
 				</p>
 				{#if enemy.form}
-					<p class="text-gray-400">
+					<p class="text-neutral-600 dark:text-gray-400">
 						{getFormTitle(enemy.form, enemy.formIndex, language)}
 					</p>
 				{/if}
@@ -86,7 +86,7 @@
 					{#each enemy.forms as form, index}
 						<button
 							data-id="form-{index + 1}"
-							class={`text-sm py-1 px-2 ${formIndex === index ? 'bg-almost-black' : 'opacity-60'}`}
+							class={`text-sm py-1 px-2 ${formIndex === index ? 'bg-white dark:bg-almost-black' : 'opacity-60'}`}
 							onclick={() => (formIndex = index)}
 						>
 							{getFormTitle(form.title, index, language)}

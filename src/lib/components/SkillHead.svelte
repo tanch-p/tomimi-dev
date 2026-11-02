@@ -31,7 +31,7 @@
 			>{getTranslations(language).seconds_abbr}{#if mode === 'table'}){/if}
 		</div>
 	{:else}
-		<div class="flex items-center gap-x-1 rounded-[5px] text-sm bg-[#434343]">
+		<div class="flex items-center gap-x-1 rounded-[5px] text-sm bg-neutral-200 dark:bg-[#434343]">
 			<div class="grid grid-cols-[9px_1fr] gap-x-[1px] items-center pl-[4px] p-0.5">
 				<img src={charaAssets.sp_start} alt="start" />
 				<p
@@ -62,7 +62,7 @@
 	{/if}
 </div>
 {#if entity.forms.length > 1 && skill.formIndexes}
-	<p class="text-xs text-gray-400">
+	<p class="text-xs text-neutral-600 dark:text-gray-400">
 		&lt;{#each skill.formIndexes as idx, i}
 			{#if i > 0}{getTranslations(language).comma}{/if}<span
 				>{getFormTitle(entity?.forms?.[idx]?.title, idx, language)}</span

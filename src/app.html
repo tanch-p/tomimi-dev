@@ -1,7 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script>
+			try {
+				document.documentElement.dataset.theme =
+					localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+			} catch {
+				document.documentElement.dataset.theme = 'dark';
+			}
+		</script>
 		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
 		<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />

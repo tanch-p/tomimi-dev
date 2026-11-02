@@ -29,9 +29,9 @@
 			<div class="absolute bottom-0 w-full gradient-dark pl-3 pt-3 truncate text-left">
 				{#each values as value, i}
 					{#if i > 0}
-						&nbsp;<span class="text-[#c9c9c9] text-sm">/</span>
+						&nbsp;<span class="text-neutral-600 dark:text-[#c9c9c9] text-sm">/</span>
 					{/if}
-					<span class={i > 0 ? 'text-[#c9c9c9] text-sm' : ''}>{value}</span>
+					<span class={i > 0 ? 'text-neutral-600 dark:text-[#c9c9c9] text-sm' : ''}>{value}</span>
 				{/each}
 			</div>
 		{:else}

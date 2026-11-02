@@ -24,7 +24,7 @@
 			<span>{moreBugs[language]}</span>
 			<a
 				href={docLink}
-				class="text-blue-400 hover:text-blue-300"
+				class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -40,7 +40,7 @@
 						{item.desc[language]}
 						{#if item.video}
 							<a
-								class="text-blue-400 hover:text-blue-300"
+								class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 								href="https://www.bilibili.com/video/{item.video}/"
 								target="_blank"
 								rel="noopener noreferrer"

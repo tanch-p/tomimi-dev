@@ -336,7 +336,7 @@
 						<p class="text-lg font-bold">{index + 1}</p>
 						<div
 							class={`h-[24px] border-r border-black ${
-								index % 2 === 0 ? 'bg-neutral-900' : 'bg-gray-600'
+								index % 2 === 0 ? 'bg-white dark:bg-neutral-900' : 'bg-neutral-200 dark:bg-gray-600'
 							}`}
 							style={`width:${90 * resolution}px`}
 						></div>
@@ -363,8 +363,8 @@
 				<span> {getTranslations(language).laoli_freeze_duration} </span>
 			</div>
 			<div class="flex items-center gap-x-2">
-				<div class="h-4 w-4 bg-neutral-900"></div>
-				<div class="h-4 w-4 bg-gray-600"></div>
+				<div class="h-4 w-4 bg-white dark:bg-neutral-900"></div>
+				<div class="h-4 w-4 bg-neutral-200 dark:bg-gray-600"></div>
 				<span>{getTranslations(language).laoli_talent}</span>
 			</div>
 			<div class="flex items-center gap-x-2">

@@ -17,7 +17,9 @@
 </script>
 
 {#if skills.length > 0}
-	<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
+	<p
+		class="bg-white dark:bg-[#383838] px-3.5 py-0.5 text-neutral-600 dark:text-[#a2a5a5] font-bold"
+	>
 		{getTranslations(language).skill}
 	</p>
 	<ul class="list-disc pl-4">

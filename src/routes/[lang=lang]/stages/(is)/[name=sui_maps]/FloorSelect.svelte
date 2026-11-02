@@ -17,7 +17,7 @@
 		{#each floors as _, i}
 			<button
 				onclick={() => selectedFloor.set(i + 1)}
-				class={`py-2 px-2 ${$selectedFloor === i + 1 ? 'bg-gray-500' : ''}`}
+				class={`py-2 px-2 ${$selectedFloor === i + 1 ? 'bg-neutral-200 dark:bg-gray-500' : ''}`}
 				type="button"
 			>
 				{i + 1}

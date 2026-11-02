@@ -167,13 +167,15 @@
 		class="grid grid-cols-[75px_1fr] md:grid-cols-[120px_1fr] divide-y divide-neutral-700 border-y border-neutral-700 text-sm md:text-base"
 	>
 		{#if mapConfig?.branches}
-			<p class="title {language}">{getTranslations(language).sim_mode}</p>
+			<p class="bg-white dark:bg-[#171717] title {language}">
+				{getTranslations(language).sim_mode}
+			</p>
 			<div class="grid grid-cols-2">
 				{#each simulationModes as key}
 					<button
 						class="flex justify-center items-center border-r border-neutral-700 font-semibold text-lg {simMode ===
 						key
-							? 'bg-gray-600'
+							? 'bg-gray-400 dark:bg-gray-600'
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 						onclick={() => (GameConfig.mode = key)}
 					>
@@ -184,11 +186,15 @@
 		{/if}
 		{#if simMode === 'wave_normal'}
 			{#if mapConfig?.elite_mods}
-				<p class="title {language}">{getTranslations(language).operation_type}</p>
+				<p class="bg-white dark:bg-[#171717] title {language}">
+					{getTranslations(language).operation_type}
+				</p>
 				{@render eliteMods?.()}
 			{/if}
 			{#if options?.length > 0}
-				<p class="title {language}">{getTranslations(language).hidden_options}</p>
+				<p class="bg-white dark:bg-[#171717] title {language}">
+					{getTranslations(language).hidden_options}
+				</p>
 				<div class="grid grid-cols-3 md:grid-cols-5">
 					{#each options as { key, src, name }}
 						{@const selected = (
@@ -196,7 +202,7 @@
 						).includes(key)}
 						<button
 							class="flex flex-col items-center justify-center border border-neutral-700 p-1 {selected
-								? 'bg-gray-600'
+								? 'bg-gray-400 dark:bg-gray-600'
 								: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 							onclick={() => toggleHiddenGroup(key)}
 							aria-pressed={selected}
@@ -211,13 +217,15 @@
 					{/each}
 				</div>
 			{/if}
-			<p class="title {language}">{getTranslations(language).permutation_mode}</p>
+			<p class="bg-white dark:bg-[#171717] title {language}">
+				{getTranslations(language).permutation_mode}
+			</p>
 			<div class="grid grid-cols-2">
 				{#each ['predefined', 'user-select'] as key}
 					<button
 						class="flex justify-center items-center border-r border-neutral-700 font-semibold text-lg {mode ===
 						key
-							? 'bg-gray-600'
+							? 'bg-gray-400 dark:bg-gray-600'
 							: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 						onclick={() => (mode = key)}
 					>
@@ -227,20 +235,22 @@
 			</div>
 			{#if mode === 'predefined'}
 				{#if maxPermutations > 32 || permutations.length <= 0}
-					<p class="title {language}"></p>
+					<p class="bg-white dark:bg-[#171717] title {language}"></p>
 					<div class="flex justify-center items-center">
 						{getTranslations(language).max_perm_msg.replace('{perm}', `(${maxPermutations})`)}
 					</div>
 				{:else}
 					{#if mapConfig?.bonus?.type}
-						<p class="title {language}"><img src={DLDGPN} width="60" alt="BONUS" /></p>
+						<p class="bg-white dark:bg-[#171717] title {language}">
+							<img src={DLDGPN} width="60" alt="BONUS" />
+						</p>
 						<div class="grid grid-flow-col auto-cols-fr">
 							{#each getBonusEnemies(rogueTopic) as key}
 								<button
 									id={`bonus-enemy-${key || 'none'}`}
 									class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {bonusKey ===
 									key
-										? 'bg-slate-700'
+										? 'bg-gray-400 dark:bg-slate-700'
 										: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 									onclick={() => selectBonusEnemy(key)}
 									aria-pressed={bonusKey === key}
@@ -257,13 +267,15 @@
 							{/each}
 						</div>
 					{/if}
-					<p class="title {language}">{getTranslations(language).enemy_count}</p>
+					<p class="bg-white dark:bg-[#171717] title {language}">
+						{getTranslations(language).enemy_count}
+					</p>
 					<DraggableContainer className="grid grid-flow-col auto-cols-[minmax(100px,1fr)]">
 						{#each enemyCounts as count}
 							<button
 								class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {activeEnemyCount ===
 								count
-									? 'bg-gray-600'
+									? 'bg-gray-400 dark:bg-gray-600'
 									: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 								onclick={() => selectEnemyCount(count)}
 								aria-pressed={activeEnemyCount === count}
@@ -273,7 +285,7 @@
 						{/each}
 					</DraggableContainer>
 					{#if permutationsToShow.length > 0}
-						<p class="title {language}">
+						<p class="bg-white dark:bg-[#171717] title {language}">
 							{getTranslations(language).table_headers.enemy}{getTranslations(language)
 								.spacing}{getTranslations(language).permutation}
 						</p>
@@ -283,7 +295,7 @@
 								<button
 									class="flex justify-center items-center border-r border-neutral-700 font-semibold text-xl {activePermutationSignature ===
 									signature
-										? 'bg-neutral-600'
+										? 'bg-gray-400 dark:bg-neutral-600'
 										: 'brightness-50 sm:hover:brightness-75 sm:hover:bg-gray-500'} "
 									onclick={() => selectPermutation(permutation)}
 									aria-pressed={activePermutationSignature === signature}
@@ -292,7 +304,7 @@
 								</button>
 							{/each}
 						</DraggableContainer>
-						<p class="title {language}">
+						<p class="bg-white dark:bg-[#171717] title {language}">
 							{getTranslations(language).trap}{getTranslations(language).spacing}{getTranslations(
 								language
 							).permutation}
@@ -333,7 +345,6 @@
 		text-align: center;
 		min-height: 58px;
 		padding: 0 6px;
-		background-color: rgb(23, 23, 23);
 	}
 	.title.en {
 		font-size: 0.875rem;

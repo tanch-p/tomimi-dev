@@ -108,7 +108,8 @@
 									href="https://www.bilibili.com/video/BV1PHS4Y7ExF/"
 									target="_blank"
 									rel="noopener noreferrer"
-									class="text-blue-400 hover:text-blue-300">万物汇集#15</a
+									class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
+									>万物汇集#15</a
 								>
 							</td>
 						</tr>

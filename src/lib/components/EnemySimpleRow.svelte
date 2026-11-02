@@ -76,7 +76,7 @@
 {#each enemy.forms as form, row (enemy.key.concat('-', row.toString()))}
 	<tr
 		id={enemy.stageId}
-		class={`scroll-mt-24 ${index % 2 === 1 ? ' bg-[#333333]' : 'bg-neutral-800'}`}
+		class={`scroll-mt-24 ${index % 2 === 1 ? ' bg-white dark:bg-[#333333]' : 'bg-neutral-100 dark:bg-neutral-800'}`}
 	>
 		{#each filteredTableHeaders as { key }}
 			{#if key === 'enemy' && row === 0}

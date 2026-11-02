@@ -10,10 +10,14 @@
 	let language = $derived(page.params.lang);
 </script>
 
-<div>
+<div
+	class="bg-neutral-100 text-neutral-800 scheme-light dark:bg-neutral-800 dark:text-near-white dark:scheme-dark"
+>
 	<Header {language} />
 
-	<main class={`bg-neutral-800 min-h-screen text-near-white ${language === 'zh' ? 'font-ch' : ''}`}>
+	<main
+		class={`bg-neutral-100 dark:bg-neutral-800 min-h-screen text-neutral-800 dark:text-near-white ${language === 'zh' ? 'font-ch' : ''}`}
+	>
 		{@render children?.()}
 	</main>
 

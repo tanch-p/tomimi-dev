@@ -25,7 +25,7 @@
 <a href={`/${language}/stages/${stageUrl}`}>
 	<div
 		class:active={stageName === currentStageName}
-		class={`hover:text-sky-400 hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer ${
+		class={`hover:text-sky-800 dark:hover:text-sky-400 hover:bg-neutral-300 dark:hover:bg-[#343434] py-1.5 px-1 md:h-full hover:cursor-pointer ${
 			language !== 'zh' && stagesToHide.includes(stageName) ? 'text-neutral-800' : ''
 		}`}
 	>

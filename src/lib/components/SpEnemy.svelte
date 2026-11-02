@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
 	import DLDGPN from '$lib/images/is/DLDGPN.webp';
 	import enemyCount from '$lib/images/is/enemy_count.webp';
@@ -30,7 +29,7 @@
 			alt="enemy count"
 			decoding="async"
 			loading="lazy"
-			class="h-[35px] md:h-[45px]"
+			class="rounded bg-[#313131] dark:bg-transparent dark:rounded-none h-[35px] md:h-[45px]"
 		/>
 		<div class="flex flex-col gap-y-2">
 			<div class="flex gap-x-2">
@@ -41,7 +40,7 @@
 						decoding="async"
 						loading="lazy"
 						alt="combat ops"
-						class=""
+						class="rounded bg-[#313131] dark:bg-transparent dark:rounded-none"
 					/>
 				{/if}
 				<span class="">{spEnemyInfo.normal}</span>
@@ -54,14 +53,14 @@
 						decoding="async"
 						loading="lazy"
 						alt="combat ops"
-						class=""
+						class="rounded bg-[#313131] dark:bg-transparent dark:rounded-none"
 					/>
 					<span class="">{spEnemyInfo.elite}</span>
 				</div>
 			{/if}
 		</div>
 	</div>
-	<p class="text-[0.625rem] text-neutral-300">
+	<p class="text-[0.625rem] text-neutral-600 dark:text-neutral-300">
 		※{{
 			zh: '只显示出货率100%的敌数',
 			ja: '出現率100%のみ表示している',

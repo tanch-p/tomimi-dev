@@ -50,7 +50,9 @@
 			getRandomGroups(fragment, hiddenGroups)
 		)}
 		{#if fragmentGroups.some((groups) => Object.keys(groups).length > 0)}
-			<p class="title">{getTranslations(language).enemy_wave} #{waveIdx + 1}</p>
+			<p class="bg-white dark:bg-[#171717] title">
+				{getTranslations(language).enemy_wave} #{waveIdx + 1}
+			</p>
 			<div class="pb-2">
 				{#each fragmentGroups as groups, fragIdx}
 					{#if Object.keys(groups).length > 0}
@@ -95,7 +97,7 @@
 																	/>
 																	{#if action.count > 1}
 																		<p
-																			class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs"
+																			class="absolute right-0 bottom-0 bg-white dark:bg-almost-black px-1 text-xs"
 																		>
 																			x{action.count}
 																		</p>
@@ -137,7 +139,9 @@
 																	alt={action.key}
 																/>
 																{#if action.count > 1}
-																	<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
+																	<p
+																		class="absolute right-0 bottom-0 bg-white dark:bg-almost-black px-1 text-xs"
+																	>
 																		x{action.count}
 																	</p>
 																{/if}
@@ -167,6 +171,5 @@
 		text-align: center;
 		min-height: 58px;
 		padding: 0 6px;
-		background-color: rgb(23, 23, 23);
 	}
 </style>

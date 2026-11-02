@@ -2,6 +2,7 @@
 	import type { Language } from '$lib/types';
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import favicon from '$lib/images/favicon.webp';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	interface Props {
 		language: Language;
 	}
@@ -9,8 +10,8 @@
 	let { language }: Props = $props();
 </script>
 
-<header class="bg-[#161417] text-near-white">
-	<div class="grid grid-cols-3 items-center max-w-6xl mx-auto">
+<header class="bg-white dark:bg-[#161417] text-neutral-800 dark:text-near-white">
+	<div class="grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center max-w-6xl mx-auto">
 		<div>
 			<a href={`/${language}`} class="text w-min">
 				<div class="shrink-0 mx-1">
@@ -42,7 +43,8 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="flex justify-end pr-2">
+		<div class="flex items-center justify-end gap-1 sm:gap-2 pr-2">
+			<ThemeSwitcher {language} />
 			<LanguageSwitcher />
 		</div>
 	</div>

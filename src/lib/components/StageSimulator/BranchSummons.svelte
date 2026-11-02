@@ -39,7 +39,9 @@
 	);
 </script>
 
-<div class="absolute right-4 top-24 z-[2] w-[120px] overflow-y-auto max-h-[80%] bg-neutral-800/80">
+<div
+	class="absolute right-4 top-24 z-[2] w-[120px] overflow-y-auto max-h-[80%] dark:bg-neutral-800/80 bg-neutral-200/50"
+>
 	<div>
 		<div class="flex items-center gap-x-1.5 pl-1 pr-0.5 border-b border-slate-600 text-end">
 			<h6 class="font-semibold text-sky-500 w-full">

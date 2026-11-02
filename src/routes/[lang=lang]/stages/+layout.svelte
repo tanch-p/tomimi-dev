@@ -9,7 +9,9 @@
 	let language = $derived(page.params.lang);
 </script>
 
-<div class={`layout ${language === 'zh' ? 'font-ch' : ''}`}>
+<div
+	class={`layout bg-neutral-100 text-neutral-800 scheme-light dark:bg-neutral-800 dark:text-near-white dark:scheme-dark ${language === 'zh' ? 'font-ch' : ''}`}
+>
 	{@render children?.()}
 </div>
 

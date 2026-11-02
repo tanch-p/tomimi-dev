@@ -46,7 +46,7 @@
 			</div> -->
 			{#if trap.stats.rangeId}
 				<div
-					class="flex flex-col items-center max-w-[90px] w-full mx-auto p-2 pb-1 bg-[#161616]/80 rounded h-max"
+					class="flex flex-col items-center max-w-[90px] w-full mx-auto p-2 pb-1 bg-white/80 dark:bg-[#161616]/80 rounded h-max"
 				>
 					<div class="flex items-center">
 						<RangeParser rangeId={trap.stats.rangeId} size="small" />

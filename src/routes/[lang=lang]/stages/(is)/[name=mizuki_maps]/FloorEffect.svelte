@@ -35,7 +35,9 @@
 	tabindex="0"
 	id={effect[`outerName_en`].replaceAll(' ', '_')}
 	class={`grid grid-cols-[75px_auto] gap-x-2 hover:cursor-pointer ${
-		selected ? 'bg-neutral-700' : 'hover:bg-neutral-700'
+		selected
+			? 'bg-neutral-200 dark:bg-neutral-700'
+			: 'hover:bg-neutral-300 dark:hover:bg-neutral-700'
 	}`}
 	onclick={handleClick}
 	onkeydown={(event) => {

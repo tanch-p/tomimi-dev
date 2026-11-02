@@ -26,7 +26,7 @@
 	<meta property="og:url" content={`https://tomimi.dev/${language}/phantom`} />
 </svelte:head>
 
-<div class="bg-neutral-800 min-h-screen">
+<div class="bg-neutral-100 dark:bg-neutral-800 min-h-screen">
 	<div class="pb-24 max-w-6xl mx-auto">
 		<div class="py-4">
 			<img

@@ -44,12 +44,16 @@
 				{#if skill.skillType !== 'PASSIVE'}
 					<div class="absolute flex -bottom-0.5 -right-0.5">
 						{#if skill.levels?.[mastery]?.spData?.initSp}
-							<div class="grid grid-cols-[11px_1fr] items-center bg-[#434343] pl-[4px] pr-[1px]">
+							<div
+								class="grid grid-cols-[11px_1fr] items-center bg-neutral-200 dark:bg-[#434343] pl-[4px] pr-[1px]"
+							>
 								<img src={charaAssets.sp_start} alt="" />
 								<p class="text-[20px] leading-tight">{skill.levels?.[mastery]?.spData?.initSp}</p>
 							</div>
 						{/if}
-						<div class="ml-1 grid grid-cols-[16px_1fr] items-center bg-[#434343] pr-[1px]">
+						<div
+							class="ml-1 grid grid-cols-[16px_1fr] items-center bg-neutral-200 dark:bg-[#434343] pr-[1px]"
+						>
 							<img src={charaAssets.sp_cost} alt="" />
 							<p class="text-[20px] leading-tight">{skill.levels?.[mastery]?.spData?.spCost}</p>
 						</div>
@@ -68,7 +72,9 @@
 				class="grid grid-cols-[1fr_30px] w-max mt-1.5"
 				onclick={() => (mastery = getMasteryLvl(mastery))}
 			>
-				<div class="flex items-center border border-[#3e3e3e] bg-[#272727] pl-2 pr-1 h-[24px]">
+				<div
+					class="flex items-center border border-[#3e3e3e] bg-white dark:bg-[#272727] pl-2 pr-1 h-[24px]"
+				>
 					<p class="leading-tight">RANK</p>
 					<img src={charaAssets.solid_7} width="12" alt="7" class="ml-1.5 mt-0.5" />
 				</div>
@@ -134,10 +140,12 @@
 					</div>
 				{/if}
 				{#if skill.skillType !== 'PASSIVE'}
-					<div class="absolute flex -bottom-0.5 -right-0.5 shadow-md text-near-white">
+					<div
+						class="absolute flex -bottom-0.5 -right-0.5 shadow-md text-neutral-800 dark:text-near-white"
+					>
 						{#if skill.levels?.[mastery]?.spData?.initSp}
 							<div
-								class="grid grid-cols-[9px_1fr] items-center border-r border-black bg-[#434343] pl-[4px] pr-[1px]"
+								class="grid grid-cols-[9px_1fr] items-center border-r border-black bg-neutral-200 dark:bg-[#434343] pl-[4px] pr-[1px]"
 							>
 								<img src={charaAssets.sp_start} alt="" />
 								<p class="text-sm leading-tight">
@@ -145,7 +153,9 @@
 								</p>
 							</div>
 						{/if}
-						<div class="grid grid-cols-[12px_1fr] items-center bg-[#434343] pr-[1px]">
+						<div
+							class="grid grid-cols-[12px_1fr] items-center bg-neutral-200 dark:bg-[#434343] pr-[1px]"
+						>
 							<img src={charaAssets.sp_cost} alt="" />
 							<p class="text-sm leading-tight">
 								{skill.levels?.[mastery]?.spData?.spCost}
@@ -157,7 +167,7 @@
 			<p class:whitespace-nowrap={language === 'zh'} class="text-sm mt-0.5">{skill.name}</p>
 		</div>
 		<div class="max-[500px]:pr-3">
-			<div class="flex text-near-white">
+			<div class="flex text-neutral-800 dark:text-near-white">
 				{#if skill.skillType !== 'PASSIVE'}
 					<p
 						class="pill {layout} px-1.5 {skill?.spType} truncate max-w-[90px] min-[500px]:max-w-[120px] {language ===
@@ -202,7 +212,9 @@
 						/>
 					{/if}
 				</div>
-				<p class="text-near-white text-xs">{getTranslations(language).attack_range}</p>
+				<p class="text-neutral-800 dark:text-near-white text-xs">
+					{getTranslations(language).attack_range}
+				</p>
 			</div>
 		{/if}
 	</div>

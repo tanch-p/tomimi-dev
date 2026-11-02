@@ -37,7 +37,7 @@
 		title={getTranslations(language).filter_reset_button}
 	>
 		<div
-			class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-slate-700 hover:bg-[rgb(40,51,69)]"
+			class="flex items-center justify-center h-[45px] w-[45px] rounded-full bg-neutral-200 dark:bg-slate-700 hover:bg-[rgb(40,51,69)]"
 		>
 			<Icon name="trash" className="stroke-white" />
 		</div>

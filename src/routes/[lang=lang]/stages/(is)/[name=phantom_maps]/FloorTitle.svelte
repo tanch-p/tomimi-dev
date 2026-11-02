@@ -32,7 +32,7 @@
 	<button id="floor-options" class="group" onclick={() => (optionsOpen = !optionsOpen)}>
 		<div class="flex justify-center items-center gap-x-6 md:gap-x-8">
 			<div class="border-y border-neutral-600 w-[80px] md:w-[104px]"></div>
-			<p class="text-center text-neutral-300">
+			<p class="text-center text-neutral-600 dark:text-neutral-300">
 				{romanNumerals[$selectedFloor - 1]}
 			</p>
 			<div class="border-y border-neutral-600 w-[80px] md:w-[104px]"></div>
@@ -46,7 +46,9 @@
 				{/each}
 			</div>
 		{/if}
-		<div class="flex justify-center items-center gap-x-2.5 group-hover:md:bg-neutral-500">
+		<div
+			class="flex justify-center items-center gap-x-2.5 group-hover:md:bg-neutral-300 dark:group-hover:md:bg-neutral-500"
+		>
 			<Icon name="left-chevron" className="w-5 h-5" />
 			<p class="text-center">{getTranslations(language).phcs_levels[$selectedFloor - 1]}</p>
 			<Icon name="left-chevron" className="w-5 h-5 rotate-180" />

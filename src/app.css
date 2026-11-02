@@ -1,5 +1,7 @@
 @import 'tailwindcss/index.css';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @theme {
 	--color-hallu-red: #4b0505;
 	--color-ph-bg: #131313;
@@ -105,6 +107,12 @@ li.list-cross {
 	line-height: 1.25rem;
 	padding: 0 4px;
 	margin-left: 4px;
+}
+
+/* Game badges keep light text on their colored backgrounds in both themes. */
+.skilltag,
+.pill {
+	color: var(--color-near-white);
 }
 .PASSIVE,
 .skilltag.can_silence {

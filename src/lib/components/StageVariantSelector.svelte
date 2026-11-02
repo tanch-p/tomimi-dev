@@ -57,8 +57,8 @@
 					4
 						? 'basis-[calc(50%_-_0.25rem)]'
 						: 'basis-[calc(33.333333%_-_0.333333rem)]'} {i !== selectedIndex
-						? 'border-neutral-500 bg-neutral-700 text-neutral-300 hover:border-neutral-300 hover:bg-neutral-600 hover:text-white'
-						: 'border-sky-300 bg-sky-500 text-white shadow-sky-950/40'}"
+						? 'border-neutral-500 bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 hover:border-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600 hover:text-white'
+						: 'border-sky-300 bg-sky-500 text-white text-white shadow-sky-950/40'}"
 					onclick={() => selectVariant(i)}
 				>
 					<div class="flex items-center justify-center gap-x-1 md:gap-x-1.5">

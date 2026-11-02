@@ -88,12 +88,18 @@
 				id="diff-minus"
 			>
 				<svg aria-hidden="true" viewBox="0 0 1 1">
-					<path d="M0,0.5 L1,0.5" class="group-disabled:stroke-[#444]" />
+					<path
+						d="M0,0.5 L1,0.5"
+						class="stroke-neutral-600 dark:stroke-[#d6d6d6] group-disabled:stroke-[#444]"
+					/>
 				</svg>
 			</button>
 
 			<div class="counter-viewport select-none">
-				<div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
+				<div
+					class="counter-digits text-neutral-800 dark:text-near-white"
+					style="transform: translate(0, {100 * offset}%)"
+				>
 					<strong class="hidden" aria-hidden="true">{Math.floor($displayed_count + 1)}</strong>
 					<strong id="diff-count">{Math.floor($displayed_count)}</strong>
 				</div>
@@ -110,7 +116,10 @@
 				id="diff-plus"
 			>
 				<svg aria-hidden="true" viewBox="0 0 1 1">
-					<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" class="group-disabled:stroke-[#444]" />
+					<path
+						d="M0,0.5 L1,0.5 M0.5,0 L0.5,1"
+						class="stroke-neutral-600 dark:stroke-[#d6d6d6] group-disabled:stroke-[#444]"
+					/>
 				</svg>
 			</button>
 		</div>
@@ -149,7 +158,6 @@
 	path {
 		vector-effect: non-scaling-stroke;
 		stroke-width: 2px;
-		stroke: #d6d6d6;
 	}
 
 	.counter-viewport {
@@ -176,7 +184,6 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		color: #f2f2f2;
 	}
 
 	.hidden {

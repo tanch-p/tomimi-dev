@@ -23,7 +23,7 @@
 			<button
 				id={idPrefix ? `${idPrefix}-floor-${i + 1}` : `floor-${i + 1}`}
 				onclick={() => selectedFloor.set(i + 1)}
-				class={`py-2 px-2 ${$selectedFloor === i + 1 ? 'bg-gray-500' : ''}`}
+				class={`py-2 px-2 ${$selectedFloor === i + 1 ? 'bg-neutral-200 dark:bg-gray-500' : ''}`}
 				type="button"
 			>
 				{i + 1}
@@ -41,7 +41,7 @@
 					decoding="async"
 				/>
 				<div
-					class="absolute bottom-0 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-neutral-700/80 text-green-600"
+					class="absolute bottom-0 right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-neutral-200/80 dark:bg-neutral-700/80 text-green-600"
 					aria-hidden="true"
 				>
 					<svg

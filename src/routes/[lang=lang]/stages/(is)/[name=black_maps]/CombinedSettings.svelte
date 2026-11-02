@@ -160,7 +160,7 @@
 	aria-labelledby="combined-settings-title"
 	onclick={closeOnBackdropClick}
 	onclose={() => settingsTrigger?.focus()}
-	class="m-auto w-[calc(100vw-1rem)] max-w-[720px] min-h-[min(28rem,80dvh)] max-h-[80dvh] overflow-hidden rounded-md bg-neutral-800 p-0 text-near-white shadow-2xl"
+	class="m-auto w-[calc(100vw-1rem)] max-w-[720px] min-h-[min(28rem,80dvh)] max-h-[80dvh] overflow-hidden rounded-md bg-neutral-100 dark:bg-neutral-800 p-0 text-neutral-800 dark:text-near-white shadow-2xl"
 >
 	<div class="flex shrink-0 items-center justify-between border-b border-neutral-700 px-4 py-3">
 		<h2 id="combined-settings-title" class="text-xl font-semibold">
@@ -171,13 +171,14 @@
 			aria-label={translations.relic_overlay_close}
 			id="combined-settings-close"
 			onclick={closeSettings}
-			class="rounded px-2 text-2xl leading-none hover:bg-neutral-700">×</button
+			class="rounded px-2 text-2xl leading-none hover:bg-neutral-300 dark:hover:bg-neutral-700"
+			>×</button
 		>
 	</div>
 	<div class="shrink-0 border-b border-neutral-700 px-4 py-3 text-center">
 		<p class="mb-2 font-semibold">{translations.run_state_code}</p>
 		<div class="flex min-w-0 justify-center gap-2 mt-1">
-			<div class="flex min-w-0 items-center gap-2 rounded bg-neutral-900 px-2">
+			<div class="flex min-w-0 items-center gap-2 rounded bg-white dark:bg-neutral-900 px-2">
 				<code class="min-w-0 flex-1 truncate font-mono text-sm" title={runStateCode}>
 					{runStateCode}
 				</code>
@@ -260,7 +261,7 @@
 				type="button"
 				onclick={shareRunState}
 				id="combined-settings-share"
-				class="flex shrink-0 items-center justify-center gap-2 rounded bg-neutral-700 pl-3 pr-4 py-2 hover:bg-neutral-600"
+				class="flex shrink-0 items-center justify-center gap-2 rounded bg-neutral-200 dark:bg-neutral-700 pl-3 pr-4 py-2 hover:bg-neutral-300 dark:hover:bg-neutral-600"
 			>
 				<svg
 					class="h-5 w-5 shrink-0"
@@ -300,7 +301,7 @@
 				aria-pressed={selectedSetting === setting.id}
 				aria-controls="combined-settings-panel"
 				onclick={() => (selectedSetting = setting.id)}
-				class={`min-w-0 grow ${settingButtons.length === 4 ? 'basis-[calc((100%_-_0.5rem)/2)]' : 'basis-[calc((100%_-_1rem)/3)] sm:basis-auto'} rounded px-3 py-2 font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${selectedSetting === setting.id ? 'bg-sky-600' : 'bg-neutral-700 hover:bg-neutral-600'}`}
+				class={`min-w-0 grow ${settingButtons.length === 4 ? 'basis-[calc((100%_-_0.5rem)/2)]' : 'basis-[calc((100%_-_1rem)/3)] sm:basis-auto'} rounded px-3 py-2 font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${selectedSetting === setting.id ? 'bg-sky-600 text-white' : 'bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600'}`}
 			>
 				{setting.label}
 			</button>
@@ -346,7 +347,7 @@
 	aria-labelledby="load-settings-title"
 	onclick={closeOnBackdropClick}
 	onclose={() => loadTrigger?.focus()}
-	class="m-auto w-[calc(100vw-1rem)] max-w-[560px] rounded-md bg-neutral-900 p-5 text-near-white shadow-2xl"
+	class="m-auto w-[calc(100vw-1rem)] max-w-[560px] rounded-md bg-white dark:bg-neutral-900 p-5 text-neutral-800 dark:text-near-white shadow-2xl"
 >
 	<form
 		onsubmit={(event) => {
@@ -364,7 +365,7 @@
 			autocapitalize="off"
 			autocorrect="off"
 			spellcheck="false"
-			class="mt-2 w-full rounded bg-neutral-800 p-2 font-mono text-sm"
+			class="mt-2 w-full rounded bg-neutral-100 dark:bg-neutral-800 p-2 font-mono text-sm"
 		/>
 		{#if loadError}
 			<p role="alert" class="mt-2 text-red-400">{translations.invalid_run_state_code}</p>
@@ -373,9 +374,10 @@
 			<button
 				type="button"
 				onclick={() => loadDialog.close()}
-				class="rounded px-4 py-2 hover:bg-neutral-700">{translations.cancel}</button
+				class="rounded px-4 py-2 hover:bg-neutral-300 dark:hover:bg-neutral-700"
+				>{translations.cancel}</button
 			>
-			<button type="submit" class="rounded bg-sky-600 px-4 py-2 hover:bg-sky-500"
+			<button type="submit" class="rounded bg-sky-600 text-white px-4 py-2 hover:bg-sky-500"
 				>{translations.load}</button
 			>
 		</div>

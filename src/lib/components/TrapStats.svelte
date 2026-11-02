@@ -17,18 +17,20 @@
 <div>
 	<div class="grid grid-cols-2 2 gap-x-2 gap-y-1.5 w-full h-min text-sm">
 		{#each statKeys as statKey}
-			<div class="grid grid-cols-[14px_1fr] gap-x-1 pl-1 pr-1.5 py-0.5 bg-[#161616]/80">
+			<div
+				class="grid grid-cols-[14px_1fr] gap-x-1 pl-1 pr-1.5 py-0.5 bg-white/80 dark:bg-[#161616]/80"
+			>
 				<img src={charaAssets[statKey]} width="14px" height="14px" alt="" class="mt-[3px]" />
 				<div>
 					<span
-						class="text-[#858585] font-semibold whitespace-nowrap {language === 'en' &&
-						['aspd', 'eleDmgRes'].includes(statKey)
+						class="text-neutral-600 dark:text-[#858585] font-semibold whitespace-nowrap {language ===
+							'en' && ['aspd', 'eleDmgRes'].includes(statKey)
 							? 'text-xs'
 							: ''}"
 					>
 						{getTranslations(language).table_headers[statKey]}
 					</span>
-					<p data-id="{statKey}-value" class="text-near-white">
+					<p data-id="{statKey}-value" class="text-neutral-800 dark:text-near-white">
 						{trap.stats[statKey] ?? '0'}
 					</p>
 				</div>
@@ -36,9 +38,9 @@
 		{/each}
 	</div>
 	{#if trap.tauntLevel !== 0}
-		<p class="text-[#858585] font-semibold mt-1.5 text-sm">
+		<p class="text-neutral-600 dark:text-[#858585] font-semibold mt-1.5 text-sm">
 			{getTranslations(language).table_headers.tauntLevel}:
-			<span class="text-near-white">{trap.tauntLevel}</span>
+			<span class="text-neutral-800 dark:text-near-white">{trap.tauntLevel}</span>
 		</p>
 	{/if}
 </div>

@@ -92,7 +92,7 @@
 
 {#if waves}
 	<div
-		class="absolute w-[110px] md:w-[163px] h-full p-3 bg-neutral-800/80 text-sm {showTimeline
+		class="absolute w-[110px] md:w-[163px] h-full p-3 dark:bg-neutral-800/80 bg-neutral-200 text-sm {showTimeline
 			? ''
 			: 'opacity-0 pointer-events-none'}"
 	>
@@ -125,7 +125,9 @@
 											{#if ['trap', 'char', 'token'].some((ele) => key.includes(ele))}
 												<div class="relative">
 													{#if count > 1}
-														<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
+														<p
+															class="absolute right-0 bottom-0 bg-white dark:bg-almost-black px-1 text-xs"
+														>
 															x{count}
 														</p>
 													{/if}
@@ -141,7 +143,9 @@
 												{@const prefabKey = getImageForWaves(key, mapConfig)}
 												<div class="relative">
 													{#if count > 1}
-														<p class="absolute right-0 bottom-0 bg-almost-black px-1 text-xs">
+														<p
+															class="absolute right-0 bottom-0 bg-white dark:bg-almost-black px-1 text-xs"
+														>
 															x{count}
 														</p>
 													{/if}

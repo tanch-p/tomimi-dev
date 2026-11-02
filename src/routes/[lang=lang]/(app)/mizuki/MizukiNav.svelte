@@ -243,7 +243,6 @@
 
 <style>
 	table {
-		color: #f2f2f2;
 		text-align: center;
 		table-layout: fixed;
 		width: 100%;
@@ -251,6 +250,17 @@
 
 	td.corner {
 		vertical-align: top;
+	}
+
+	.floor1,
+	.floor2,
+	.floor3,
+	.floor4,
+	.floor5,
+	.floor6,
+	.floorEX,
+	.floorSP {
+		color: #f2f2f2;
 	}
 
 	.floor1 {

@@ -33,7 +33,9 @@
 <div class="border border-gray-500 text-center">
 	<div class="border-b border-gray-500 py-2">{getTranslations(language).index.perma_stage}</div>
 	<a href="/{language}/stages/无名庇护所">
-		<div class={`py-2 hover:cursor-pointer hover:bg-gray-600 text-indigo-300 `}>
+		<div
+			class={`py-2 hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-gray-600 text-sky-700 dark:text-indigo-300 `}
+		>
 			{getTranslations(language).无名庇护所}
 		</div>
 	</a>
@@ -45,11 +47,15 @@
 			<a href="/{language}/stages/{stage.href}">
 				<div
 					class={`grid grid-rows-[auto_60px] md:grid-rows-[auto_48px] items-center ${
-						isPickup(stage.d) ? 'bg-gray-600' : 'hover:bg-gray-600'
+						isPickup(stage.d)
+							? 'bg-neutral-200 dark:bg-gray-600'
+							: 'hover:bg-neutral-300 dark:hover:bg-gray-600'
 					}`}
 				>
 					<p>{stage.m}/{stage.d}</p>
-					<p class={`flex justify-center items-center py-1 h-full text-indigo-300`}>
+					<p
+						class={`flex justify-center items-center py-1 h-full text-sky-700 dark:text-indigo-300`}
+					>
 						{getTranslations(language)[stage.name] ?? stage.name}
 					</p>
 				</div>

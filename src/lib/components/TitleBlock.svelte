@@ -27,7 +27,7 @@
 			{/if}
 		</div>
 		{#if description}
-			<p class="text-xs md:text-sm text-gray-400">{description}</p>
+			<p class="text-xs md:text-sm text-neutral-600 dark:text-gray-400">{description}</p>
 		{/if}
 	</div>
 	<hr class="border-gray-500 my-1" />

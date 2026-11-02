@@ -95,7 +95,10 @@
 		{#each enemies as enemy}
 			{#if isEnemyToShow(enemy.key, mapConfig?.levelId)}
 				{@const { min, max } = getMinMaxCount(enemy.stageId, eliteMode)}
-				<a href="#{enemy.stageId}" class="relative flex items-center hover:bg-neutral-700">
+				<a
+					href="#{enemy.stageId}"
+					class="relative flex items-center hover:bg-neutral-300 dark:hover:bg-neutral-700"
+				>
 					<img
 						class="select-none w-[55px] md:w-[65px]"
 						src={`/images/enemy_icons/${enemy.key}.webp`}
@@ -107,7 +110,7 @@
 					/>
 					{#if !isDuelStage(mapConfig.levelId)}
 						<p
-							class="flex absolute right-[-3px] bottom-[-3px] bg-almost-black px-1 text-xs md:text-sm"
+							class="flex absolute right-[-3px] bottom-[-3px] bg-white dark:bg-almost-black px-1 text-xs md:text-sm"
 						>
 							x&nbsp;
 							{#if min === max}

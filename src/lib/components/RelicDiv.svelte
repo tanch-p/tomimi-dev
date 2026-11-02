@@ -60,7 +60,9 @@
 	tabindex="0"
 	id={relic.id}
 	class={`relic grid grid-cols-[75px_auto] sm:grid-cols-[95px_auto] gap-x-2 ${
-		selected ? 'bg-neutral-800' : 'hover:bg-neutral-700'
+		selected
+			? 'bg-neutral-100 dark:bg-neutral-800'
+			: 'hover:bg-neutral-300 dark:hover:bg-neutral-700'
 	}`}
 	onclick={handleClick}
 	onkeydown={(event) => {
@@ -77,7 +79,7 @@
 	<div class="relic px-2">
 		<p
 			class={`relic text-lg sm:text-xl ${
-				selected ? getSelectedTextColor(rogueTopic) : 'text-gray-400'
+				selected ? getSelectedTextColor(rogueTopic) : 'text-neutral-600 dark:text-gray-400'
 			}`}
 		>
 			{name}
@@ -85,6 +87,6 @@
 				({relic.stages[relic.count - 1].suffix})
 			{/if}
 		</p>
-		<p class="relic text-[#c4c4c4]">{tooltip}</p>
+		<p class="relic text-neutral-600 dark:text-[#c4c4c4]">{tooltip}</p>
 	</div>
 </div>

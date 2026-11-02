@@ -151,7 +151,7 @@
 		{#each statsToShow as key, i}
 			<button
 				class="flex items-center gap-x-1.5 px-2 py-1 text-start {statIndex === i
-					? 'bg-neutral-500'
+					? 'bg-neutral-200 dark:bg-neutral-500'
 					: ''}"
 				onclick={() => (statIndex = i)}
 			>

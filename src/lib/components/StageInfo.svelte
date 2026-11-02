@@ -97,7 +97,7 @@
 				href="https://search.bilibili.com/all?keyword={mapConfig?.name_zh}"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-blue-400 hover:text-blue-300"
+				class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 			>
 				bilibili
 			</a>
@@ -106,14 +106,15 @@
 					href="https://www.youtube.com/results?search_query={mapConfig?.[`name_${language}`]}"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-blue-400 hover:text-blue-300">YouTube</a
+					class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
+					>YouTube</a
 				>
 			{/if}
 			<a
 				href="https://map.ark-nights.com/map/{getStageImg(mapConfig?.id, eliteMode)}"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-blue-400 hover:text-blue-300"
+				class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
 			>
 				PRTS.Map
 			</a>

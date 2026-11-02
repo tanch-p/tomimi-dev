@@ -80,7 +80,9 @@
 	{/snippet}
 </StageHeader>
 
-<main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">
+<main
+	class="bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-near-white pb-72 pt-8 sm:pt-16 md:pb-28"
+>
 	<div class="w-screen sm:w-full max-w-7xl mx-auto">
 		<StageInfo
 			mapConfig={data.mapConfig}
@@ -97,7 +99,7 @@
 		<DifficultySelect {language} {difficulty} {rogueTopic} maxDiff={18} mode={$difficultyMode}>
 			<div class="flex gap-1.5 mt-1.5 mb-2.5">
 				<button
-					class="flex items-center justify-center min-w-[70px] px-[10px] rounded-md bg-gray-500 {$difficultyMode ===
+					class="flex items-center justify-center min-w-[70px] px-[10px] rounded-md bg-neutral-200 dark:bg-gray-500 {$difficultyMode ===
 					'normal'
 						? ''
 						: 'brightness-[.6] hover:brightness-100'}"
@@ -106,7 +108,7 @@
 					{getTranslations(language).normal_state}
 				</button>
 				<button
-					class="flex items-center justify-center min-w-[70px] px-[10px] rounded-md bg-emerald-700 {$difficultyMode ===
+					class="flex items-center justify-center min-w-[70px] px-[10px] rounded-md bg-emerald-700 text-white {$difficultyMode ===
 					'normal'
 						? 'brightness-[.6] hover:brightness-100'
 						: ''}"

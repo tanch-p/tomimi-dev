@@ -19,8 +19,10 @@
 </script>
 
 <div
-	class={`absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh_-_160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 ${
-		optionsOpen ? 'opacity-90 translate-y-0' : 'invisible opacity-0 -translate-y-10'
+	class={`absolute left-[50%] -translate-x-[50%] mt-2 w-screen md:w-[700px] max-h-[calc(100vh_-_160px)] overflow-y-auto pb-8 rounded-md shadow-lg select-none bg-white dark:bg-[#1c1c1c] transition-[opacity_transform] ease-in duration-150 ${
+		optionsOpen
+			? 'opacity-100 dark:opacity-90 translate-y-0'
+			: 'invisible opacity-0 -translate-y-10'
 	}`}
 >
 	<FloorSelect />
@@ -30,7 +32,7 @@
 			<p class="mt-4 font-medium text-lg text-red-400 text-center">
 				{getTranslations(language).phantom_variation_title}
 			</p>
-			<p class="font-normal text-sm text-near-white text-center">
+			<p class="font-normal text-sm text-neutral-800 dark:text-near-white text-center">
 				({getTranslations(language).variation_max_2})
 			</p>
 			<div class="flex flex-col gap-y-4 mt-3">

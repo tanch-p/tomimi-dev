@@ -34,7 +34,9 @@
 </script>
 
 <div class="mx-auto w-full min-w-0 max-w-6xl overflow-x-auto">
-	<table class="text-xs sm:text-base">
+	<table
+		class="text-neutral-800 dark:text-near-white text-xs sm:text-base [&_th]:border [&_td]:border [&_th]:border-neutral-600 [&_td]:border-neutral-600 dark:[&_th]:border-[gray] dark:[&_td]:border-[gray] dark:[&_tr[class*='bg-']_td]:border-white/12 [&_tr[data-has-label=true]]:border-t-2 [&_tr[data-has-label=true]]:border-t-neutral-600 dark:[&_tr[data-has-label=true]]:border-t-white/25"
+	>
 		<tbody>
 			<StageSectionHeader
 				type="square"
@@ -124,20 +126,7 @@
 	table {
 		width: 100%;
 		table-layout: fixed;
-		color: #f2f2f2;
 		text-align: center;
-	}
-
-	table :global(th),
-	table :global(td) {
-		border: 1px solid gray;
-	}
-	table :global(tr[class*='bg-'] td) {
-		border-color: rgba(255, 255, 255, 0.12);
-	}
-
-	table :global(tr[data-has-label='true']) {
-		border-top: 2px solid rgba(255, 255, 255, 0.25);
 	}
 
 	table :global(th) {

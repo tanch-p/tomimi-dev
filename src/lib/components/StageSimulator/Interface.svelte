@@ -136,7 +136,7 @@
 </div>
 
 <div
-	class="absolute -top-8 md:top-0 left-1/2 -translate-x-1/2 mt-6 pb-0.5 bg-neutral-800/80 pointer-events-none"
+	class="absolute -top-8 md:top-0 left-1/2 -translate-x-1/2 mt-6 pb-0.5 dark:bg-neutral-800/80 bg-neutral-200/50 pointer-events-none"
 >
 	<div class="flex items-center gap-x-1.5 px-4">
 		<img src={enemyCount} width="40" alt={getTranslations(language).enemy_count} class="shrink-0" />
@@ -149,7 +149,7 @@
 </div>
 
 <div
-	class="absolute right-4 bottom-[24%] grid grid-cols-[20px_33px] items-center gap-x-2 px-1.5 bg-neutral-800/80 pointer-events-none font-light"
+	class="absolute right-4 bottom-[24%] grid grid-cols-[20px_33px] items-center gap-x-2 px-1.5 dark:bg-neutral-800/80 bg-neutral-200/50 pointer-events-none font-light"
 >
 	<img src={spriteCost} width="20" alt="Cost:" />
 	<span class="text-3xl">
@@ -160,7 +160,9 @@
 <div class="absolute bottom-0 right-0">
 	{#if card && (card.count ?? 0) > 0}
 		<button
-			class="relative border border-[#ffffff80] {card.selected ? '' : 'opacity-50'}"
+			class="relative border border-neutral-600 dark:border-white/50 bg-neutral-200 dark:bg-neutral-800/80 text-neutral-900 dark:text-white {card.selected
+				? ''
+				: 'opacity-50'}"
 			onclick={toggleTokenCard}
 			aria-keyshortcuts="R"
 		>
@@ -212,23 +214,25 @@
 			{/if}
 			<div class="absolute z-40 top-0 left-1/2 -translate-x-1/2 flex items-center opacity-80">
 				<img src={iconToken} width="16" height="12" alt="" />
-				<span class="bg-black/80 px-1 text-sm">{card.cost ?? 5}</span>
+				<span class="bg-neutral-200 dark:bg-black/80 px-1 text-sm">{card.cost ?? 5}</span>
 			</div>
 			<span class="absolute top-0 left-0 inline-flex items-center gap-1 text-[10px] uppercase">
 				<kbd
-					class="grid place-items-center min-w-[18px] border border-[#aaa] bg-[#292929] font-mono text-sm font-bold shadow-[inset_0_-2px_0_rgba(255,255,255,0.15)]"
+					class="grid place-items-center min-w-[18px] border border-neutral-400 dark:border-[#aaa] bg-neutral-200 dark:bg-[#292929] font-mono text-sm font-bold shadow-[inset_0_-2px_0_rgba(255,255,255,0.15)]"
 				>
 					R
 				</kbd>
 			</span>
-			<span class="absolute z-40 right-1 bottom-0 text-xs">x{card.count}</span>
+			<span class="absolute z-40 right-1 bottom-0 bg-neutral-200 dark:bg-black/80 px-1 text-xs"
+				>x{card.count}</span
+			>
 		</button>
 	{/if}
 </div>
 
 {#if isPaused}
 	<div
-		class="absolute z-[0] inset-0 flex flex-col items-center justify-center bg-black/50 pointer-events-none"
+		class="absolute z-[0] inset-0 flex flex-col items-center justify-center bg-black/50 pointer-events-none text-near-white"
 	>
 		<p class="text-2xl">{GameConfig.state === 'end' ? 'ENDED' : 'PAUSE'}</p>
 		{#if language === 'zh'}<p class="text-sm">----暂停中----</p>{/if}

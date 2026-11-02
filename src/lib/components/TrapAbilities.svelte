@@ -22,7 +22,9 @@
 
 {#if trap.desc}
 	{#if mode === 'handbook'}
-		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
+		<p
+			class="bg-white dark:bg-[#383838] px-3.5 py-0.5 text-neutral-600 dark:text-[#a2a5a5] font-bold"
+		>
 			{getTranslations(language).trait}<span class="font-normal"></span>
 		</p>
 	{/if}
@@ -34,7 +36,9 @@
 {/if}
 {#if trap.special.length > 0}
 	{#if mode === 'handbook'}
-		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
+		<p
+			class="bg-white dark:bg-[#383838] px-3.5 py-0.5 text-neutral-600 dark:text-[#a2a5a5] font-bold"
+		>
 			{getTranslations(language).handbook_mechanics}<span class="font-normal"></span>
 		</p>
 	{/if}
@@ -75,7 +79,9 @@
 
 {#if trap.talents?.length > 0}
 	{#if mode === 'handbook'}
-		<p class="px-3.5 py-0.5 font-bold bg-[#383838] text-[#a2a5a5]">
+		<p
+			class="px-3.5 py-0.5 font-bold bg-white dark:bg-[#383838] text-neutral-600 dark:text-[#a2a5a5]"
+		>
 			{getTranslations(language).talent}
 		</p>
 	{/if}
@@ -90,7 +96,9 @@
 				<div class="py-1.5 {talent.rangeId ? 'grid grid-cols-[1fr_72px] gap-x-2' : ''}">
 					<TextParser line={talent.desc} />
 					{#if talent.rangeId}
-						<div class="flex flex-col items-center w-[72px] p-2 pb-1 bg-[#161616]/80 rounded h-max">
+						<div
+							class="flex flex-col items-center w-[72px] p-2 pb-1 bg-white/80 dark:bg-[#161616]/80 rounded h-max"
+						>
 							<div class="flex items-center h-full">
 								<RangeParser rangeId={talent.rangeId} size="small" />
 							</div>
@@ -106,7 +114,7 @@
 	<p
 		class="px-3.5 py-0.5 font-bold {mode === 'table'
 			? 'bg-[#4f4f4f]'
-			: 'bg-[#383838] text-[#a2a5a5]'}"
+			: 'bg-white dark:bg-[#383838] text-neutral-600 dark:text-[#a2a5a5]'}"
 	>
 		{getTranslations(language).skill}
 	</p>

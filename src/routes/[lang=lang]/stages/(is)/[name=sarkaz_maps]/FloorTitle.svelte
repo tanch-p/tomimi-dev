@@ -84,7 +84,7 @@
 <div {@attach clickOutside(() => (optionsOpen = false))} class="self-center mx-auto select-none">
 	<button
 		id="floor-options"
-		class="px-3 py-0.5 md:hover:bg-neutral-500"
+		class="px-3 py-0.5 md:hover:bg-neutral-300 dark:md:hover:bg-neutral-500"
 		onclick={() => (optionsOpen = !optionsOpen)}
 	>
 		<p class="flex items-center justify-center relative text-center">

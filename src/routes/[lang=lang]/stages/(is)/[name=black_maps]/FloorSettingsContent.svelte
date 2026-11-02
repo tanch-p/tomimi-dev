@@ -78,7 +78,7 @@
 								step="1"
 								value={$gold}
 								oninput={updateGold}
-								class="w-20 rounded bg-neutral-700 px-2 py-1 text-center"
+								class="w-20 rounded bg-neutral-200 dark:bg-neutral-700 px-2 py-1 text-center"
 							/>
 						</label>
 					{/if}

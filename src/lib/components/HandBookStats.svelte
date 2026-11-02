@@ -44,12 +44,12 @@
 	>
 		{#each statKeys as statKey}
 			<div
-				class={`flex flex-col bg-[#161616]/80 px-1 ${language === 'en' ? '' : 'whitespace-nowrap'}`}
+				class={`flex flex-col bg-white/80 dark:bg-[#161616]/80 px-1 ${language === 'en' ? '' : 'whitespace-nowrap'}`}
 			>
 				<div class="grid grid-cols-[14px_1fr] items-center gap-x-1">
 					<img src={statKeyIcons[statKey]} width="14px" height="14px" alt="" class="" />
 					<span
-						class="text-[#858585] font-semibold {language === 'en' &&
+						class="text-neutral-600 dark:text-[#858585] font-semibold {language === 'en' &&
 						['aspd', 'epDamageResistance'].includes(statKey)
 							? 'text-xs leading-[20px]'
 							: ''}"
@@ -57,23 +57,23 @@
 						{getTranslations(language).table_headers[statKey]}
 					</span>
 				</div>
-				<p data-id="{statKey}-value" class="text-near-white px-[18px]">
+				<p data-id="{statKey}-value" class="text-neutral-800 dark:text-near-white px-[18px]">
 					{enemy.forms[formIndex].stats[statKey] ?? '0'}
 				</p>
 			</div>
 		{/each}
 	</div>
-	<p class="text-[#858585] font-semibold mt-1.5 text-sm">
+	<p class="text-neutral-600 dark:text-[#858585] font-semibold mt-1.5 text-sm">
 		{getTranslations(language).table_headers.range}:
-		<span data-id="range-value" class="text-near-white">
+		<span data-id="range-value" class="text-neutral-800 dark:text-near-white">
 			{enemy.forms[formIndex].stats.range <= 0 ? '0' : enemy.forms[formIndex].stats.range}
 		</span>
 	</p>
 	{#if enemy.forms[formIndex].stats.dmgRes}
-		<div class="group relative text-[#858585] font-semibold mt-1.5 text-sm">
+		<div class="group relative text-neutral-600 dark:text-[#858585] font-semibold mt-1.5 text-sm">
 			{getTranslations(language).table_headers.e_hp}: &#9432;
 			<Tooltip text={getTranslations(language).tooltip_ehp} position="top" />
-			<span data-id="range-value" class="text-near-white">
+			<span data-id="range-value" class="text-neutral-800 dark:text-near-white">
 				{Math.round(enemy.forms[formIndex].stats.hp / (1 - enemy.forms[formIndex].stats.dmgRes))}
 			</span>
 		</div>

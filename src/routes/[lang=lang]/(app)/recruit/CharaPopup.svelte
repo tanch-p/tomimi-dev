@@ -51,7 +51,7 @@
 <div class="overlay" class:visible={$selectedChara}>
 	<div
 		class:visible={$selectedChara}
-		class="popup text-near-white bg-neutral-800/95 pb-12 no-scrollbar"
+		class="popup text-neutral-800 dark:text-near-white bg-neutral-100/95 dark:bg-neutral-800/95 pb-12 no-scrollbar"
 		{@attach clickOutside(() => selectedChara.set(null))}
 	>
 		{#if $selectedChara}
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			<div class="relative">
-				<p class="absolute -translate-y-full right-2 text-xs text-[#b3b3b3]">
+				<p class="absolute -translate-y-full right-2 text-xs text-neutral-600 dark:text-[#b3b3b3]">
 					※{getTranslations(language).chara_stat_disclaimer}
 				</p>
 				<div class="grid grid-cols-[70px_1fr] gap-x-2 items-center px-1 mt-3">
@@ -95,7 +95,7 @@
 							<div class="relative group">
 								<img src={charaAssets.potential[5]} width="60" alt="p5" />
 								<div
-									class="absolute hidden group-hover:block top-[-50%] left-[100%] bg-neutral-700 text-near-white w-max py-1.5 px-2 z-[1] rounded-md text-sm shadow-md"
+									class="absolute hidden group-hover:block top-[-50%] left-[100%] bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-near-white w-max py-1.5 px-2 z-[1] rounded-md text-sm shadow-md"
 								>
 									{#each $selectedChara.potential as pot}
 										<p>{pot.desc}</p>
@@ -115,15 +115,15 @@
 									?.attributeBlackboard
 							)}
 							<div
-								class={`flex flex-col bg-[#161616]/80 px-1 ${language === 'en' ? 'text-sm' : ''}`}
+								class={`flex flex-col bg-white/80 dark:bg-[#161616]/80 px-1 ${language === 'en' ? 'text-sm' : ''}`}
 							>
 								<div class="grid grid-cols-[16px_1fr] items-center gap-x-1">
 									<img src={charaAssets[statKey]} width="16px" height="16px" alt="" />
-									<span class="text-[#b3b3b3] font-semibold">
+									<span class="text-neutral-600 dark:text-[#b3b3b3] font-semibold">
 										{getTranslations(language).table_headers[statKey]}
 									</span>
 								</div>
-								<p class="text-near-white pl-[20px] whitespace-nowrap">
+								<p class="text-neutral-800 dark:text-near-white pl-[20px] whitespace-nowrap">
 									{getFullCharStat(statKey, $selectedChara, moduleStat, potStat)}{statKey ===
 									'respawnTime'
 										? 's'
@@ -144,7 +144,7 @@
 			</div>
 			<div class="px-3 mt-3">
 				<div
-					class="flex flex-col items-center min-w-28 p-3 pb-1 bg-[#161616]/80 rounded float-right"
+					class="flex flex-col items-center min-w-28 p-3 pb-1 bg-white/80 dark:bg-[#161616]/80 rounded float-right"
 				>
 					<div class="flex items-center min-h-[50px] max-w-[90px]">
 						<RangeParser rangeId={getAttackRangeId($selectedChara, $moduleIndex, moduleStage)} />
@@ -167,7 +167,9 @@
 						</p>
 					{/if}
 					<div class="grid grid-cols-[70px_1fr] items-center">
-						<div class="flex items-center justify-center w-[65px] h-[65px] bg-neutral-900">
+						<div
+							class="flex items-center justify-center w-[65px] h-[65px] bg-white dark:bg-neutral-900"
+						>
 							<img
 								src="/images/chara_assets/sub_{$selectedChara.subProfessionId}_icon.webp"
 								width="50"
@@ -190,7 +192,7 @@
 						<p class="mt-4">
 							{getTranslations(language).module}
 							{#if hasModule && $selectedChara.uniequip.length > 0}
-								<span class="text-[#999]"
+								<span class="text-neutral-600 dark:text-[#999]"
 									>※{getTranslations(language).chara_module_stage_click}</span
 								>
 							{/if}
@@ -239,7 +241,7 @@
 												{#if idx !== 0}
 													{#if $moduleIndex === idx}
 														<button
-															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-[1px] px-4"
+															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-white dark:bg-[#272727] mt-1.5 py-[1px] px-4"
 															onclick={() => {
 																if (moduleStage === 2) return (moduleStage = 0);
 																return (moduleStage += 1);
@@ -256,7 +258,7 @@
 														</button>
 													{:else}
 														<div
-															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-[#272727] mt-1.5 py-[1px] px-4"
+															class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 flex items-center justify-center border border-[#3d3d3d] bg-white dark:bg-[#272727] mt-1.5 py-[1px] px-4"
 														>
 															<p class="text-[#7d7d7d] font-bold text-sm">STAGE</p>
 															<div class="w-[11px] ml-1.5 mt-0.5">
@@ -315,7 +317,9 @@
 					<p class="mt-8">
 						{getTranslations(language).skill}
 						{#if $selectedChara.rarity !== 'TIER_3'}
-							<span class="text-[#999]">※{getTranslations(language).chara_skill_rank_click}</span>
+							<span class="text-neutral-600 dark:text-[#999]"
+								>※{getTranslations(language).chara_skill_rank_click}</span
+							>
 						{/if}
 					</p>
 					{#each $selectedChara.skills as skill}

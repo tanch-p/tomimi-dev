@@ -219,7 +219,7 @@
 				<img src="/images/enemy_icons/{key}.webp" width="50px" height="50px" alt={key} />
 			</div>
 			<div
-				class="absolute z-[1] -translate-x-1/2 top-1/2 -translate-y-1/2 h-[6px] w-[2px] bg-gray-800 transition-[width] group-hover:w-[4px]"
+				class="absolute z-[1] -translate-x-1/2 top-1/2 -translate-y-1/2 h-[6px] w-[2px] bg-neutral-200 dark:bg-gray-800 transition-[width] group-hover:w-[4px]"
 				style="left: {left}px;"
 			></div>
 		{/each}

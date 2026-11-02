@@ -25,7 +25,7 @@
 	<div class="flex flex-wrap gap-x-4 gap-y-3 p-4">
 		{#each $tableHeaders as { key, show }}
 			<button
-				class={`rounded-full px-4 py-1 ${show ? 'bg-sky-600' : 'bg-gray-400'}`}
+				class={`rounded-full px-4 py-1 ${show ? 'bg-sky-600 text-white' : 'bg-gray-400'}`}
 				onclick={() => updateHeaders(key)}
 			>
 				{getTranslations(language).table_headers[key] || getTranslations(language)[key]}

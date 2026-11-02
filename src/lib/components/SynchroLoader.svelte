@@ -31,7 +31,7 @@
 		aria-busy="true"
 	>
 		<svg
-			class="h-14 w-14 animate-spin text-sky-400"
+			class="h-14 w-14 animate-spin text-sky-700 dark:text-sky-400"
 			viewBox="0 0 24 24"
 			fill="none"
 			aria-hidden="true"

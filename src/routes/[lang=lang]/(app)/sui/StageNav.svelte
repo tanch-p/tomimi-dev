@@ -35,7 +35,7 @@
 </script>
 
 <div class="mx-auto w-full min-w-0 max-w-6xl overflow-x-auto">
-	<table class="text-xs sm:text-base">
+	<table class="text-neutral-800 dark:text-near-white text-xs sm:text-base">
 		<tbody>
 			<StageSectionHeader src={combatOpsIcon} alt={translations.combat_ops} />
 			{#each normalStageGroups as group}
@@ -104,7 +104,6 @@
 	table {
 		width: 100%;
 		table-layout: fixed;
-		color: #f2f2f2;
 		text-align: center;
 	}
 

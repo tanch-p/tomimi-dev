@@ -177,7 +177,9 @@
 	{/snippet}
 </StageHeader>
 
-<main class="bg-neutral-800 text-near-white pb-72 pt-8 sm:pt-16 md:pb-28">
+<main
+	class="bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-near-white pb-72 pt-8 sm:pt-16 md:pb-28"
+>
 	<div class="w-screen sm:w-full max-w-7xl mx-auto">
 		<StageVariantSelector
 			variants={data.stageData.data}

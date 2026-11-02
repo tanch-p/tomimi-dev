@@ -44,7 +44,7 @@
 		<div class="flex flex-col items-center mx-auto gap-x-4 gap-y-8 px-2 sm:px-8 justify-center">
 			<FriendLinks {language} />
 			<div
-				class="w-full md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6"
+				class="w-full md:w-[600px] bg-white dark:bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6"
 			>
 				<div class="flex items-center justify-center">
 					<span>
@@ -92,7 +92,9 @@
 					</a>
 				</div>
 			</div>
-			<div class="md:w-[600px] bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6">
+			<div
+				class="md:w-[600px] bg-white dark:bg-[#363636] shadow-lg md:shadow-xl pt-2 sm:py-3 px-2 sm:px-6"
+			>
 				<div class="flex items-center justify-center">
 					<span>
 						<img src={ISLogo} alt={getTranslations(language).isw} width="36" height="36" />

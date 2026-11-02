@@ -49,16 +49,20 @@
 <div {@attach clickOutside(() => (optionsOpen = false))} class="mx-auto select-none">
 	<button
 		id="floor-options"
-		class="px-3 py-0.5 md:hover:bg-neutral-500"
+		class="px-3 py-0.5 md:hover:bg-neutral-300 dark:md:hover:bg-neutral-500"
 		onclick={() => (optionsOpen = !optionsOpen)}
 	>
 		<div class="flex justify-center items-center gap-x-1">
 			<Icon name="left-chevron" className="w-5 h-5 mr-1.5" />
 			{#if $activeFloorEffects.length > 0}
-				<div class="flex justify-center rounded-full bg-almost-black p-0.5">
+				<div class="flex justify-center rounded-full bg-white dark:bg-almost-black p-0.5">
 					{#each $activeFloorEffects as effect}
 						<div class="h-10 w-10">
-							<img src={effect.src} class="" alt={effect['name_zh']} />
+							<img
+								src={effect.src}
+								class="rounded bg-[#313131] dark:bg-transparent dark:rounded-none"
+								alt={effect['name_zh']}
+							/>
 						</div>
 					{/each}
 				</div>
@@ -67,7 +71,7 @@
 				<img
 					src={floorIcons[displayedFloor - 1]}
 					alt={getTranslations(language)['black_levels'][displayedFloor - 1]}
-					class={'h-12'}
+					class="rounded bg-[#313131] dark:bg-transparent dark:rounded-none h-12"
 				/>
 			</div>
 			<Icon name="left-chevron" className="w-5 h-5 ml-2.5 rotate-180" />

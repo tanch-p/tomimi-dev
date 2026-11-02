@@ -14,12 +14,14 @@
 
 {#if statusImmuneList.length > 0}
 	{#if mode === 'handbook'}
-		<p class="bg-[#383838] px-3.5 py-0.5 text-[#a2a5a5] font-bold">
+		<p
+			class="bg-white dark:bg-[#383838] px-3.5 py-0.5 text-neutral-600 dark:text-[#a2a5a5] font-bold"
+		>
 			{getTranslations(language).handbook_immune}
 		</p>
 		<div class="flex flex-wrap gap-1.5 my-1">
 			{#each statusImmuneList as status}
-				<p class="rounded-md bg-neutral-700 px-1.5 text-sm">
+				<p class="rounded-md bg-neutral-200 dark:bg-neutral-700 px-1.5 text-sm">
 					{language === 'en' ? '' : statusImmuneTexts.pre}{getTranslations(language)[
 						status
 					]}{statusImmuneTexts.post}

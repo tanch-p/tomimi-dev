@@ -44,7 +44,9 @@
 	role="button"
 	tabindex="0"
 	class={`relic grid grid-cols-[75px_auto] sm:grid-cols-[95px_auto] gap-x-2 ${
-		selected ? 'bg-neutral-800' : 'hover:bg-neutral-700'
+		selected
+			? 'bg-neutral-100 dark:bg-neutral-800'
+			: 'hover:bg-neutral-300 dark:hover:bg-neutral-700'
 	}`}
 	onclick={handleClick}
 	onkeydown={(event) => {
@@ -59,12 +61,14 @@
 		class="relic"
 	/>
 	<div class="relic px-2">
-		<p class={`relic text-lg sm:text-xl ${selected ? 'text-[#cea658]' : 'text-gray-400'}`}>
+		<p
+			class={`relic text-lg sm:text-xl ${selected ? 'text-[#cea658]' : 'text-neutral-600 dark:text-gray-400'}`}
+		>
 			{name}
 			{#if selected && relic.stages && relic?.stages?.[relic?.count]?.suffix}
 				({relic?.stages?.[relic?.count]?.suffix})
 			{/if}
 		</p>
-		<TextParser line={tooltip} className="relic text-[#c4c4c4]" />
+		<TextParser line={tooltip} className="relic text-neutral-600 dark:text-[#c4c4c4]" />
 	</div>
 </div>

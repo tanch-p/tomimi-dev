@@ -65,7 +65,7 @@
 
 <div class="">
 	<button
-		class="flex items-center gap-x-1.5 justify-between bg-neutral-600 w-full px-2 py-0.5 text-xs text-end text-near-white hover:bg-near-white hover:text-gray-900 transition-all whitespace-nowrap"
+		class="flex items-center gap-x-1.5 justify-between bg-neutral-200 dark:bg-neutral-600 w-full px-2 py-0.5 text-xs text-end text-neutral-800 dark:text-near-white hover:bg-near-white hover:text-gray-900 transition-all whitespace-nowrap"
 		onclick={() => handleTitleClick(key)}
 	>
 		{#if hasMultipleOptions}
@@ -85,7 +85,7 @@
 				{#each mapConfig?.branches?.[key]?.phases as phase, index}
 					<button
 						data-phase-delay={phase.preDelay}
-						class="flex items-center justify-center bg-neutral-600 w-[14px] h-[20px] px-2 py-0.5 text-xs text-near-white hover:bg-near-white hover:text-gray-900 transition-all"
+						class="flex items-center justify-center bg-neutral-200 dark:bg-neutral-600 w-[14px] h-[20px] px-2 py-0.5 text-xs text-neutral-800 dark:text-near-white hover:bg-near-white hover:text-gray-900 transition-all"
 						onclick={() => handleBranchSummon(key, index)}
 					>
 						{index + 1}

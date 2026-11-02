@@ -29,7 +29,10 @@
 					<td>Github</td>
 					<td>
 						<a href="https://github.com/tanch-p" target="_blank" rel="noopener noreferrer">
-							<span class="text-blue-400 hover:text-blue-300">tanch-p</span>
+							<span
+								class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
+								>tanch-p</span
+							>
 						</a>
 					</td>
 				</tr>
@@ -43,7 +46,10 @@
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<span class="text-blue-400 hover:text-blue-300">塔塔酱AT4</span>
+								<span
+									class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
+									>塔塔酱AT4</span
+								>
 							</a>
 						</td>
 					</tr>
@@ -76,7 +82,10 @@
 					<td>IS banners / Character, Enemy data/descriptions</td>
 					<td>
 						<a href="https://prts.wiki/" target="_blank" rel="noopener noreferrer">
-							<span class="text-blue-400 hover:text-blue-300">PRTS wiki</span>
+							<span
+								class="text-sky-700 dark:text-blue-400 hover:text-sky-800 dark:hover:text-blue-300"
+								>PRTS wiki</span
+							>
 						</a>
 					</td>
 				</tr>

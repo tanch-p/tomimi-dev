@@ -23,7 +23,7 @@
 		class="flex items-center justify-center gap-x-1.5 w-full h-full bg-gray-500 {displayMode ===
 		'table'
 			? ''
-			: 'brightness-50'}"
+			: 'dark:brightness-50 bg-neutral-300'}"
 		onclick={() => (displayMode = 'table')}
 	>
 		<Icon name="icon-list" size={22} />
@@ -34,7 +34,7 @@
 		class="flex items-center justify-center gap-x-1.5 w-full h-full bg-gray-500 {displayMode ===
 		'handbook'
 			? ''
-			: 'brightness-50'}"
+			: 'dark:brightness-50 bg-neutral-300'}"
 		onclick={() => (displayMode = 'handbook')}
 	>
 		<Icon name="layout-view" size={28} />

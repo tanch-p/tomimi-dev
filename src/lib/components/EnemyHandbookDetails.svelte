@@ -63,7 +63,7 @@
 			{/each}
 		</div>
 		<div class="flex items-center mt-0.5">
-			<p class="text-xs text-center bg-almost-black py-0.5 w-12">{enemy.id}</p>
+			<p class="text-xs text-center bg-white dark:bg-almost-black py-0.5 w-12">{enemy.id}</p>
 			{#if enemy.overwritten}
 				<p class="text-xs text-center bg-[#981313] py-0.5 w-[1.75rem]">Sp.</p>
 			{/if}
@@ -99,16 +99,18 @@
 				loading="lazy"
 				alt={enemy.id}
 			/>
-			<div class="flex flex-wrap items-center bg-almost-black px-1.5">
+			<div class="flex flex-wrap items-center bg-white dark:bg-almost-black px-1.5">
 				<div class="flex items-center gap-x-1 py-1 max-[390px]:text-sm">
 					<div class="max-[390px]:w-[12px]">
 						<img src={weightIcon} width="18px" height="18px" alt="" />
 					</div>
-					<span class={`text-[#858585] font-bold ${language === 'en' ? 'text-sm' : ''}`}>
+					<span
+						class={`text-neutral-600 dark:text-[#858585] font-bold ${language === 'en' ? 'text-sm' : ''}`}
+					>
 						{getTranslations(language).table_headers.weight}
 					</span>
 				</div>
-				<span class="text-[#a2a5a5] text-lg font-bold ml-auto"
+				<span class="text-neutral-600 dark:text-[#a2a5a5] text-lg font-bold ml-auto"
 					>{enemy.forms[formIndex].stats.weight}</span
 				>
 			</div>
@@ -121,7 +123,7 @@
 							<button
 								data-id="form-{index + 1}"
 								class={`text-sm py-1 px-2 ${
-									formIndex === index ? 'bg-almost-black' : 'opacity-60'
+									formIndex === index ? 'bg-white dark:bg-almost-black' : 'opacity-60'
 								}`}
 								onclick={() => (formIndex = index)}
 							>

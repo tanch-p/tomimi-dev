@@ -24,7 +24,7 @@
 	let name = $derived(stageInfo[`name_${language}`] || stageInfo['name_zh']);
 </script>
 
-<a href={`/${language}/stages/${stageUrl}`} class="hover:text-sky-400">
+<a href={`/${language}/stages/${stageUrl}`} class="hover:text-sky-800 dark:hover:text-sky-400">
 	<div
 		class:backdrop-brightness-50={stageName === currentStageName}
 		class={`py-2 my-0.5 sm:my-1 text-center hover:backdrop-brightness-50`}

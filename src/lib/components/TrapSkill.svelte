@@ -36,13 +36,15 @@
 					<div class="absolute flex -bottom-0.5 -right-0.5">
 						{#if skill.spData?.initSp}
 							<div
-								class="grid grid-cols-[10px_1fr] items-center gap-x-[1px] bg-[#434343] pl-[4px] pr-[1px]"
+								class="grid grid-cols-[10px_1fr] items-center gap-x-[1px] bg-neutral-200 dark:bg-[#434343] pl-[4px] pr-[1px]"
 							>
 								<img src={charaAssets.sp_start} alt="start" />
 								<p class="leading-tight">{skill.spData?.initSp}</p>
 							</div>
 						{/if}
-						<div class="ml-1 grid grid-cols-[14px_1fr] items-center bg-[#434343] pr-[1px]">
+						<div
+							class="ml-1 grid grid-cols-[14px_1fr] items-center bg-neutral-200 dark:bg-[#434343] pr-[1px]"
+						>
 							<img src={charaAssets.sp_cost} alt="cost" />
 							<p class="leading-tight">{skill.spData?.spCost}</p>
 						</div>
@@ -55,7 +57,7 @@
 		</div>
 		{#if skill.rangeId}
 			<div
-				class="self-center flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616]/80 rounded"
+				class="self-center flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-white/80 dark:bg-[#161616]/80 rounded"
 			>
 				<div class="flex items-center h-full">
 					<RangeParser rangeId={skill.rangeId} size="small" />
@@ -90,13 +92,15 @@
 				<div class="flex h-max self-center">
 					{#if skill.spData?.initSp}
 						<div
-							class="grid grid-cols-[10px_1fr] gap-x-[1px] items-center bg-[#434343] pl-[4px] p-0.5"
+							class="grid grid-cols-[10px_1fr] gap-x-[1px] items-center bg-neutral-200 dark:bg-[#434343] pl-[4px] p-0.5"
 						>
 							<img src={charaAssets.sp_start} alt="start" />
 							<p class="leading-tight">{skill.spData?.initSp}</p>
 						</div>
 					{/if}
-					<div class="ml-1 grid grid-cols-[14px_1fr] items-center bg-[#434343] py-0.5 pr-0.5">
+					<div
+						class="ml-1 grid grid-cols-[14px_1fr] items-center bg-neutral-200 dark:bg-[#434343] py-0.5 pr-0.5"
+					>
 						<img src={charaAssets.sp_cost} alt="cost" />
 						<p class="leading-tight">{skill.spData?.spCost}</p>
 					</div>
@@ -124,7 +128,7 @@
 			/>
 			{#if skill.rangeId}
 				<div
-					class="flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-[#161616]/80 rounded"
+					class="flex flex-col items-center justify-center min-w-[72px] h-max min-h-[60px] p-2 pb-1 bg-white/80 dark:bg-[#161616]/80 rounded"
 				>
 					<div class="flex items-center h-full">
 						<RangeParser rangeId={skill.rangeId} size="small" />

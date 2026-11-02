@@ -111,8 +111,8 @@
 		{@const requiresGame = ['showAllRange', 'showAllTimers'].includes(key)}
 		<button
 			class="grid grid-cols-[1fr_30px] gap-x-1 rounded-xs px-2 py-1.5 w-max {value
-				? 'bg-gray-500'
-				: 'bg-gray-700 hover:bg-gray-600'} disabled:opacity-50"
+				? 'bg-neutral-200 dark:bg-gray-500'
+				: 'bg-neutral-200 dark:bg-gray-700 hover:bg-neutral-300 dark:hover:bg-gray-600'} disabled:opacity-50"
 			disabled={requiresGame && !game}
 			onclick={() => fn(key)}
 		>
@@ -121,7 +121,7 @@
 		</button>
 	{/each}
 	<button
-		class="bg-gray-500 rounded-xs px-2 py-1.5 w-max active:bg-gray-600 disabled:opacity-50"
+		class="bg-neutral-200 dark:bg-gray-500 rounded-xs px-2 py-1.5 w-max active:bg-gray-600 disabled:opacity-50"
 		disabled={!game}
 		onclick={() => game && game.onWindowResize()}
 	>
@@ -152,8 +152,8 @@
 				id="stage-phase-{idx}"
 				data-stage-phase={idx}
 				class="rounded-xs px-2 py-1.5 {stagePhaseIndex === idx
-					? 'bg-gray-500'
-					: 'bg-gray-700 hover:bg-gray-600'} disabled:opacity-50"
+					? 'bg-neutral-200 dark:bg-gray-500'
+					: 'bg-neutral-200 dark:bg-gray-700 hover:bg-neutral-300 dark:hover:bg-gray-600'} disabled:opacity-50"
 				disabled={!game}
 				onclick={() => {
 					if (!game) return;

@@ -44,7 +44,7 @@
 </script>
 
 <div class="max-w-6xl mx-auto">
-	<table class="text-xs sm:text-base">
+	<table class="text-neutral-800 dark:text-near-white text-xs sm:text-base">
 		<tbody>
 			<tr>
 				<th colspan="2" class="empty"></th>
@@ -211,7 +211,6 @@
 
 <style>
 	table {
-		color: #f2f2f2;
 		text-align: center;
 		table-layout: fixed;
 		width: 100%;

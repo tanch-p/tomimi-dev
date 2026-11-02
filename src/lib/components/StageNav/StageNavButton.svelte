@@ -29,7 +29,7 @@
 {#if levelId}
 	<a
 		{href}
-		class="block break-words px-1 py-2 hover:cursor-pointer hover:bg-[#343434] hover:text-sky-400 md:h-full"
+		class="block break-words px-1 py-2 hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-[#343434] hover:text-sky-800 dark:hover:text-sky-400 md:h-full"
 		class:active={levelId === currentLevelId}
 		aria-current={levelId === currentLevelId ? 'page' : undefined}
 	>

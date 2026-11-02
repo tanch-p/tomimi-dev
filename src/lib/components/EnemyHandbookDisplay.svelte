@@ -31,7 +31,7 @@
 		{#each enemies as enemy}
 			<a href={`#${enemy.stageId}`}>
 				<div class="relative">
-					<p class="absolute bg-almost-black px-1 text-xs">{enemy.id}</p>
+					<p class="absolute bg-white dark:bg-almost-black px-1 text-xs">{enemy.id}</p>
 					{#if enemy.type.includes('BOSS')}
 						<img
 							class="absolute bottom-0 opacity-70"
@@ -57,7 +57,7 @@
 	<div class="flex flex-col md:max-w-[550px]">
 		{#each enemies as enemy, index (enemy.stageId)}
 			{#if index !== 0}
-				<div class="bg-neutral-700 mx-1 h-0.5"></div>
+				<div class="bg-neutral-200 dark:bg-neutral-700 mx-1 h-0.5"></div>
 			{/if}
 			<EnemyHandbookDetails
 				{enemy}

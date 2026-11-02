@@ -49,7 +49,7 @@
 					<div class="flex flex-col">
 						{#each traps as trap, index}
 							{#if index !== 0}
-								<div class="bg-neutral-700 mx-1 h-0.5"></div>
+								<div class="bg-neutral-200 dark:bg-neutral-700 mx-1 h-0.5"></div>
 							{/if}
 							<TrapHandbookDetails {trap} {otherBuffsList} {specialMods} {mapConfig} />
 						{/each}

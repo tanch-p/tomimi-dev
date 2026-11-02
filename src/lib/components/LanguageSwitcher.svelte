@@ -52,11 +52,17 @@
 		<div
 			role="presentation"
 			onclick={() => (showOptions = false)}
-			class="absolute w-max mt-1 py-0.5 bg-neutral-900 select-none"
+			class="absolute w-max mt-1 py-0.5 bg-white dark:bg-neutral-900 select-none"
 		>
-			<a href={paths.en}><div class="px-2 my-0.5 hover:bg-gray-600">English</div></a>
-			<a href={paths.ja}><div class="px-2 my-0.5 hover:bg-gray-600">日本語</div></a>
-			<a href={paths.zh}><div class="px-2 my-0.5 hover:bg-gray-600">中文</div></a>
+			<a href={paths.en}
+				><div class="px-2 my-0.5 hover:bg-neutral-300 dark:hover:bg-gray-600">English</div></a
+			>
+			<a href={paths.ja}
+				><div class="px-2 my-0.5 hover:bg-neutral-300 dark:hover:bg-gray-600">日本語</div></a
+			>
+			<a href={paths.zh}
+				><div class="px-2 my-0.5 hover:bg-neutral-300 dark:hover:bg-gray-600">中文</div></a
+			>
 		</div>
 	{/if}
 </div>
