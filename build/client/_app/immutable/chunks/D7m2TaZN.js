@@ -1,0 +1,1 @@
+var e=new URL(`../assets/banner_sami.CpgaEb1c.webp`,import.meta.url).href;export{e as t};
