@@ -1,419 +1,696 @@
 [
 	{
 		"id": "rogue_1_relic_c01",
-		"img":"relic_ursus_chachek",
-		"name_zh": "乌萨斯弯刀",
-		"name_ja": "ウルサスの曲刀",
-		"name_en": "Ursus Chachek",
+		"name": {
+			"zh": "乌萨斯弯刀",
+			"ja": "ウルサスの曲刀",
+			"en": "Ursus Chachek"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.4, "mode": "mul" },
-					{ "key": "atk", "value": 1.4, "mode": "mul" },
-					{ "key": "def", "value": 1.4, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.4,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.4,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.4,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+40%",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+40%",
-		"tooltip_en": "All enemy units have +40% ATK, DEF, and Max HP"
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+40%",
+			"ja": "敵全員の攻撃力、防御力、最大HP+40%",
+			"en": "All enemy units have +40% ATK, DEF, and Max HP"
+		}
 	},
 	{
 		"id": "rogue_1_relic_c02",
-		"img":"relic_victoria_crown",
-		"name_zh": "维多利亚王冠",
-		"name_ja": "ヴィクトリアのクラウン",
-		"name_en": "Victoria Crown",
+		"name": {
+			"zh": "维多利亚王冠",
+			"ja": "ヴィクトリアのクラウン",
+			"en": "Victoria Crown"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.3, "mode": "mul" },
-					{ "key": "atk", "value": 1.3, "mode": "mul" },
-					{ "key": "def", "value": 1.3, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.3,
+						"mode": "mul"
+					}
 				]
 			},
 			{
 				"targets": ["PHCS_BOSS"],
 				"mods": [
-					{ "key": "hp", "value": 1.3, "mode": "mul" },
-					{ "key": "atk", "value": 1.15, "mode": "mul" },
-					{ "key": "def", "value": 1.15, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.15,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.15,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+30%，且所有领袖单位还会攻击力、防御力+15%，生命+30%",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+30%。BOSS敵の攻撃力、防御力がさらに15%上昇、最大HPがさらに30%上昇",
-		"tooltip_en": "All enemy units have +30% ATK, DEF, and Max HP; Boss units gain an additional +15% ATK, +15% DEF, and +30% Max HP"
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+30%，且所有领袖单位还会攻击力、防御力+15%，生命+30%",
+			"ja": "敵全員の攻撃力、防御力、最大HP+30%。BOSS敵の攻撃力、防御力がさらに15%上昇、最大HPがさらに30%上昇",
+			"en": "All enemy units have +30% ATK, DEF, and Max HP; Boss units gain an additional +15% ATK, +15% DEF, and +30% Max HP"
+		}
 	},
 	{
 		"id": "rogue_1_relic_c03",
-		"img":"relic_lei_sceptre",
-		"name_zh": "莱塔尼亚权杖",
-		"name_ja": "リターニアの王笏",
-		"name_en": "Leithanien Sceptre",
+		"name": {
+			"zh": "莱塔尼亚权杖",
+			"ja": "リターニアの王笏",
+			"en": "Leithanien Sceptre"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.3, "mode": "mul" },
-					{ "key": "atk", "value": 1.3, "mode": "mul" },
-					{ "key": "def", "value": 1.3, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.3,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+30%，且每进入一个新节点后，失去1目标生命（最多降至1）",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+30%。新たなスポットに入る度に、耐久値-1（最大残り1まで減少）",
-		"tooltip_en": "All enemy units have +30% ATK, DEF, and Max HP; Entering a new node decreases Life Point by 1 (cannot be reduced beneath 1 this way)"
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+30%，且每进入一个新节点后，失去1目标生命（最多降至1）",
+			"ja": "敵全員の攻撃力、防御力、最大HP+30%。新たなスポットに入る度に、耐久値-1（最大残り1まで減少）",
+			"en": "All enemy units have +30% ATK, DEF, and Max HP; Entering a new node decreases Life Point by 1 (cannot be reduced beneath 1 this way)"
+		}
 	},
 	{
 		"id": "rogue_1_relic_c04",
-		"img":"relic_gaul_mantle",
-		"name_zh": "高卢长袍",
-		"name_ja": "ガリアのローブ",
-		"name_en": "Gaul Mantle",
+		"name": {
+			"zh": "高卢长袍",
+			"ja": "ガリアのローブ",
+			"en": "Gaul Mantle"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.25, "mode": "mul" },
-					{ "key": "atk", "value": 1.25, "mode": "mul" },
-					{ "key": "def", "value": 1.25, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.25,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.25,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.25,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+25%，且招募4星及以上干员时希望消耗+1",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+25%。★4以上のオペレーターを招集する際に消費する希望+1",
-		"tooltip_en": "All enemy units have +25% ATK, DEF, and Max HP; 4-star and above Operators cost +1 Hope when recruited"
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+25%，且招募4星及以上干员时希望消耗+1",
+			"ja": "敵全員の攻撃力、防御力、最大HP+25%。★4以上のオペレーターを招集する際に消費する希望+1",
+			"en": "All enemy units have +25% ATK, DEF, and Max HP; 4-star and above Operators cost +1 Hope when recruited"
+		}
 	},
 	{
 		"id": "rogue_1_relic_c05",
-		"img":"relic_half_diamond",
-		"name_zh": "半洗孤钻",
-		"name_ja": "緋滲む貴石",
-		"name_en": "Half-Refined Diamond",
+		"name": {
+			"zh": "半洗孤钻",
+			"ja": "緋滲む貴石",
+			"en": "Half-Refined Diamond"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.25, "mode": "mul" },
-					{ "key": "atk", "value": 1.25, "mode": "mul" },
-					{ "key": "def", "value": 1.25, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.25,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.25,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.25,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+25%，且战斗获得的指挥经验-50%",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+25%。指揮経験値の獲得量-50%",
-		"tooltip_en": "All enemy units have +25% ATK, DEF, and Max HP; Gain -50% Command EXP from battles"
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+25%，且战斗获得的指挥经验-50%",
+			"ja": "敵全員の攻撃力、防御力、最大HP+25%。指揮経験値の獲得量-50%",
+			"en": "All enemy units have +25% ATK, DEF, and Max HP; Gain -50% Command EXP from battles"
+		}
 	},
 	{
 		"id": "rogue_1_relic_c06",
-		"img":"relic_tragodia",
-		"name_zh": "酒神的印记",
-		"name_ja": "酒神のシンボル",
-		"name_en": "Sigil of Tragodia",
+		"name": {
+			"zh": "酒神的印记",
+			"ja": "酒神のシンボル",
+			"en": "Sigil of Tragodia"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.3, "mode": "mul" },
-					{ "key": "atk", "value": 1.3, "mode": "mul" },
-					{ "key": "def", "value": 1.3, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.3,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+30%，且可同时部署人数-2",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+30%。同時配置可能人数-2",
-		"tooltip_en": "All enemy units have +30% ATK, DEF, and Max HP; Deployment Limit -2"
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+30%，且可同时部署人数-2",
+			"ja": "敵全員の攻撃力、防御力、最大HP+30%。同時配置可能人数-2",
+			"en": "All enemy units have +30% ATK, DEF, and Max HP; Deployment Limit -2"
+		}
 	},
 	{
 		"id": "rogue_1_relic_c13",
-		"img": "rogue_1_relic_c13",
-		"name_zh": "剧作家手稿：维多利亚",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "剧作家手稿：维多利亚",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.1, "mode": "mul" },
-					{ "key": "atk", "value": 1.1, "mode": "mul" },
-					{ "key": "def", "value": 1.1, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.1,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力和生命+10%，下次招募干员时希望消耗+1（招募后效果消失）",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+10%。",
-		"tooltip_en": "All enemy units have +10% ATK, DEF, and Max HP."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力和生命+10%，下次招募干员时希望消耗+1（招募后效果消失）",
+			"ja": "敵全員の攻撃力、防御力、最大HP+10%。",
+			"en": "All enemy units have +10% ATK, DEF, and Max HP."
+		}
 	},
-		{
+	{
 		"id": "rogue_1_relic_c14",
-		"img": "rogue_1_relic_c14",
-		"name_zh": "剧作家手稿：乌萨斯",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "剧作家手稿：乌萨斯",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.1, "mode": "mul" },
-					{ "key": "atk", "value": 1.1, "mode": "mul" },
-					{ "key": "def", "value": 1.1, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.1,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力和生命+10%，每次进入非战斗节点时失去1源石锭",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+10%。",
-		"tooltip_en": "All enemy units have +10% ATK, DEF, and Max HP."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力和生命+10%，每次进入非战斗节点时失去1源石锭",
+			"ja": "敵全員の攻撃力、防御力、最大HP+10%。",
+			"en": "All enemy units have +10% ATK, DEF, and Max HP."
+		}
 	},
-		{
+	{
 		"id": "rogue_1_relic_c15",
-		"img": "rogue_1_relic_c15",
-		"name_zh": "剧作家手稿：莱塔尼亚",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "剧作家手稿：莱塔尼亚",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.1, "mode": "mul" },
-					{ "key": "atk", "value": 1.1, "mode": "mul" },
-					{ "key": "def", "value": 1.1, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.1,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力和生命+10%，部署费用低于99时我方攻击力-10%",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+10%。",
-		"tooltip_en": "All enemy units have +10% ATK, DEF, and Max HP."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力和生命+10%，部署费用低于99时我方攻击力-10%",
+			"ja": "敵全員の攻撃力、防御力、最大HP+10%。",
+			"en": "All enemy units have +10% ATK, DEF, and Max HP."
+		}
 	},
-		{
+	{
 		"id": "rogue_1_relic_c16",
-		"img": "rogue_1_relic_c16",
-		"name_zh": "剧作家手稿：高卢",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "剧作家手稿：高卢",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.1, "mode": "mul" },
-					{ "key": "atk", "value": 1.1, "mode": "mul" },
-					{ "key": "def", "value": 1.1, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.1,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.1,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力和生命+10%，每场战斗首次损失关卡生命时变为2倍",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+10%。",
-		"tooltip_en": "All enemy units have +10% ATK, DEF, and Max HP."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力和生命+10%，每场战斗首次损失关卡生命时变为2倍",
+			"ja": "敵全員の攻撃力、防御力、最大HP+10%。",
+			"en": "All enemy units have +10% ATK, DEF, and Max HP."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a02",
-		"img": "relic_restraints",
-		"name_zh": "开裂的束缚带",
-		"name_ja": "裂けた拘束ベルト",
-		"name_en": "Fissured Restraints",
+		"name": {
+			"zh": "开裂的束缚带",
+			"ja": "裂けた拘束ベルト",
+			"en": "Fissured Restraints"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.93, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.93,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-7%",
-		"tooltip_ja": "敵全員の攻撃力-7%",
-		"tooltip_en": "All enemy units have -7% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-7%",
+			"ja": "敵全員の攻撃力-7%",
+			"en": "All enemy units have -7% ATK."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a03",
-		"img": "relic_wyrdmask",
-		"name_zh": "奇渊面具",
-		"name_ja": "奇妙なぐるぐるお面",
-		"name_en": "Abyssal Wyrdmask",
+		"name": {
+			"zh": "奇渊面具",
+			"ja": "奇妙なぐるぐるお面",
+			"en": "Abyssal Wyrdmask"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.88, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.88,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-12%",
-		"tooltip_ja": "敵全員の攻撃力-12%",
-		"tooltip_en": "All enemy units have -12% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-12%",
+			"ja": "敵全員の攻撃力-12%",
+			"en": "All enemy units have -12% ATK."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a04",
-		"img": "relic_godmother",
-		"name_zh": "教母的信物",
-		"name_ja": "教母の印",
-		"name_en": "Godmother's Token",
+		"name": {
+			"zh": "教母的信物",
+			"ja": "教母の印",
+			"en": "Godmother's Token"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.83, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.83,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-17%",
-		"tooltip_ja": "敵全員の攻撃力-17%",
-		"tooltip_en": "All enemy units have -17% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-17%",
+			"ja": "敵全員の攻撃力-17%",
+			"en": "All enemy units have -17% ATK."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a05",
-		"img": "relic_group_photo",
-		"name_zh": "残破合影",
-		"name_ja": "古びた写真",
-		"name_en": "Worn-out Group Photo",
+		"name": {
+			"zh": "残破合影",
+			"ja": "古びた写真",
+			"en": "Worn-out Group Photo"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "def", "value": 0.88, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.88,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的防御力-12%",
-		"tooltip_ja": "敵全員の防御力-12%",
-		"tooltip_en": "All enemy units have -12% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的防御力-12%",
+			"ja": "敵全員の防御力-12%",
+			"en": "All enemy units have -12% DEF."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a06",
-		"img": "relic_writer_tongue",
-		"name_zh": "作者的喉舌",
-		"name_ja": "劇作家の喉舌",
-		"name_en": "Writer's Tongue",
+		"name": {
+			"zh": "作者的喉舌",
+			"ja": "劇作家の喉舌",
+			"en": "Writer's Tongue"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "def", "value": 0.79, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.79,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的防御力-21%",
-		"tooltip_ja": "敵全員の防御力-21%",
-		"tooltip_en": "All enemy units have -21% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的防御力-21%",
+			"ja": "敵全員の防御力-21%",
+			"en": "All enemy units have -21% DEF."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a07",
-		"img": "relic_rosmontis_embrace",
-		"name_zh": "迷迭香之拥",
-		"name_ja": "ロスモンティスの抱擁",
-		"name_en": "Rosmontis's Embrace",
+		"name": {
+			"zh": "迷迭香之拥",
+			"ja": "ロスモンティスの抱擁",
+			"en": "Rosmontis's Embrace"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "def", "value": 0.7, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.7,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的防御力-30%",
-		"tooltip_ja": "敵全員の防御力-30%",
-		"tooltip_en": "All enemy units have -30% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的防御力-30%",
+			"ja": "敵全員の防御力-30%",
+			"en": "All enemy units have -30% DEF."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a08",
-		"img": "relic_gold_plated_dice",
-		"name_zh": "镶金骨骰",
-		"name_ja": "金張りのサイコロ",
-		"name_en": "Gold-Plated Dice",
+		"name": {
+			"zh": "镶金骨骰",
+			"ja": "金張りのサイコロ",
+			"en": "Gold-Plated Dice"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.85, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-15%",
-		"tooltip_ja": "敵全員の最大HP-15%",
-		"tooltip_en": "All enemy units have -15% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-15%",
+			"ja": "敵全員の最大HP-15%",
+			"en": "All enemy units have -15% HP."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a09",
-		"img": "relic_whisperer",
-		"name_zh": "“黑夜呢喃”",
-		"name_ja": "「闇に囁くもの」",
-		"name_en": "'The Whisperer in Darknight'",
+		"name": {
+			"zh": "“黑夜呢喃”",
+			"ja": "「闇に囁くもの」",
+			"en": "'The Whisperer in Darknight'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.9, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.9,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-10%",
-		"tooltip_ja": "敵全員の最大HP-10%",
-		"tooltip_en": "All enemy units have -10% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-10%",
+			"ja": "敵全員の最大HP-10%",
+			"en": "All enemy units have -10% HP."
+		}
 	},
 	{
 		"id": "rogue_1_relic_a10",
-		"img": "relic_profound_silence",
-		"name_zh": "《大静谧》",
-		"name_ja": "『大いなる静謐』",
-		"name_en": "‘Profound Silence'",
+		"name": {
+			"zh": "《大静谧》",
+			"ja": "『大いなる静謐』",
+			"en": "‘Profound Silence'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.8, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.8,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-20%",
-		"tooltip_ja": "敵全員の最大HP-20%",
-		"tooltip_en": "All enemy units have -20% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-20%",
+			"ja": "敵全員の最大HP-20%",
+			"en": "All enemy units have -20% HP."
+		}
 	},
 	{
 		"id": "rogue_1_relic_m06",
-		"img": "relic_familiar_sculpture",
-		"name_zh": "眼熟的雕像",
-		"name_ja": "見覚えのある彫像",
-		"name_en": "Familiar Sculpture",
+		"name": {
+			"zh": "眼熟的雕像",
+			"ja": "見覚えのある彫像",
+			"en": "Familiar Sculpture"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "aspd", "value": -15, "mode": "add" }]
+				"mods": [
+					{
+						"key": "aspd",
+						"value": -15,
+						"mode": "add"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击速度-15",
-		"tooltip_ja": "敵全員の攻撃速度-15",
-		"tooltip_en": "All enemy units have -15 ASPD."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击速度-15",
+			"ja": "敵全員の攻撃速度-15",
+			"en": "All enemy units have -15 ASPD."
+		}
 	},
 	{
 		"id": "rogue_1_relic_q32",
-		"img": "relic_civilight_eterna",
-		"name_zh": "“文明的存续”",
-		"name_ja": "「文明の存続」",
-		"name_en": "'Civilight Eterna'",
+		"name": {
+			"zh": "“文明的存续”",
+			"ja": "「文明の存続」",
+			"en": "'Civilight Eterna'"
+		},
 		"effects": [],
-		"tooltip_zh": "所有敌方单位受到的真实伤害+150%",
-		"tooltip_ja": "敵が受ける確定ダメージ+150%",
-		"tooltip_en": "All enemies take +150% True damage."
+		"tooltip": {
+			"zh": "所有敌方单位受到的真实伤害+150%",
+			"ja": "敵が受ける確定ダメージ+150%",
+			"en": "All enemies take +150% True damage."
+		}
 	},
 	{
 		"id": "rogue_1_relic_sp03",
-		"img": "relic_painful_happiness",
-		"name_zh": "“苦痛的快乐”",
-		"name_ja": "「苦痛の喜び」",
-		"name_en": "'Painful Happiness'",
+		"name": {
+			"zh": "“苦痛的快乐”",
+			"ja": "「苦痛の喜び」",
+			"en": "'Painful Happiness'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 0.85, "mode": "mul" },
-					{ "key": "ms", "value": 0.85, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 0.85,
+						"mode": "mul"
+					},
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-15%，移动速度-15%",
-		"tooltip_ja": "敵全員の最大HP-15%、移動速度-15%",
-		"tooltip_en": "All enemy units have -15% HP and Movement Speed"
+		"tooltip": {
+			"zh": "所有敌方单位的生命-15%，移动速度-15%",
+			"ja": "敵全員の最大HP-15%、移動速度-15%",
+			"en": "All enemy units have -15% HP and Movement Speed"
+		}
 	},
 	{
 		"id": "rogue_1_relic_n13",
-		"img": "relic_angelina",
-		"name_zh": "安洁莉娜的创想",
-		"name_ja": "アンジェリーナのアイデア",
-		"name_en": "Angelina's Inspiration",
+		"name": {
+			"zh": "安洁莉娜的创想",
+			"ja": "アンジェリーナのアイデア",
+			"en": "Angelina's Inspiration"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "weight", "value": -1, "mode": "add" },
-					{ "key": "ms", "value": 0.85, "mode": "mul" }
+					{
+						"key": "weight",
+						"value": -1,
+						"mode": "add"
+					},
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位移动速度-15%，且重量下降一个等级",
-		"tooltip_ja": "敵全員の移動速度-15%、さらに重量が1ランクダウン",
-		"tooltip_en": "All enemy units have Movement Speed -15%, and their weight is reduced by one rank"
+		"tooltip": {
+			"zh": "所有敌方单位移动速度-15%，且重量下降一个等级",
+			"ja": "敵全員の移動速度-15%、さらに重量が1ランクダウン",
+			"en": "All enemy units have Movement Speed -15%, and their weight is reduced by one rank"
+		}
 	}
 ]

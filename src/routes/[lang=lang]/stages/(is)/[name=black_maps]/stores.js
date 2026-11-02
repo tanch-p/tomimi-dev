@@ -1,3 +1,5 @@
+import { createRelicSelectionStore } from '$lib/functions/relicSelection';
+import { relicCatalogs } from '$lib/data/is/relicCatalog';
 import { writable, derived } from 'svelte/store';
 import difficultyModsList from '$lib/data/is/black/difficulty_mods.json';
 import { browser } from '$app/environment';
@@ -10,7 +12,8 @@ if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('black_difficulty') ?? '0');
 }
 
-export const selectedRelics = writable(/** @type {any[]} */ ([]));
+export const selectedRelics = createRelicSelectionStore(relicCatalogs.rogue_black);
+const resolvedRelics = selectedRelics.resolved;
 export const difficulty = writable(storedDifficulty);
 export const stageType = writable('');
 export const gold = writable(10);
@@ -163,7 +166,7 @@ const noobHelp = derived([difficulty], ([$difficulty]) => {
 
 export const statMods = derived(
 	[
-		selectedRelics,
+		resolvedRelics,
 		floorDifficultyMods,
 		shmbmbDiffMods,
 		eliteMode,
@@ -176,7 +179,7 @@ export const statMods = derived(
 		allMods
 	],
 	([
-		$selectedRelics,
+		$resolvedRelics,
 		$floorDifficultyMods,
 		$shmbmbDiffMods,
 		$eliteMode,
@@ -188,8 +191,8 @@ export const statMods = derived(
 		$noobHelp,
 		$allMods
 	]) => {
-		const relicMods = $selectedRelics.map((relic) => {
-			const effects = relic.stages ? relic.stages[relic.count - 1]?.effects : relic.effects;
+		const relicMods = $resolvedRelics.map((relic) => {
+			const effects = relic.effects;
 			return {
 				key: relic.id,
 				mods: [effects.filter((effect) => filterModCondition(effect, $stageType))]
@@ -216,14 +219,12 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[runes, allMods, difficultyMods, activeFloorEffects, selectedRelics],
-	([$runes, $allMods, $difficultyMods, $activeFloorEffects, $selectedRelics]) =>
+	[runes, allMods, difficultyMods, activeFloorEffects, resolvedRelics],
+	([$runes, $allMods, $difficultyMods, $activeFloorEffects, $resolvedRelics]) =>
 		compileSpecialMods(
 			[$runes, $allMods],
 			$difficultyMods,
 			$activeFloorEffects.map((ele) => ele.effects),
-			$selectedRelics.map((relic) =>
-				relic.stages ? relic.stages[relic.count - 1]?.effects : relic.effects
-			)
+			$resolvedRelics.map((relic) => relic.effects)
 		)
 );

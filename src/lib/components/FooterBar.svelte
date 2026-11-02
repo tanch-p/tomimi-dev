@@ -6,12 +6,15 @@
 	import RelicsOverlay from './RelicsOverlay.svelte';
 	import DiffHexagon from './DiffHexagon.svelte';
 	import Icon from './Icon.svelte';
-	import { relicLookup } from '$lib/data/is/relic_lookup';
+	import { readable } from 'svelte/store';
+	import type { RelicSelectionStore } from '$lib/functions/relicSelection';
+	import { getRelicText, type ResolvedRelic } from '$lib/data/is/relicTypes';
+	import { getRelicImagePath } from '$lib/data/is/relicImages';
 	interface Props {
 		language: Language;
 		rogueTopic: RogueTopic;
-		selectedRelics: any;
-		selectedUniqueRelic?: any;
+		selectedRelics: RelicSelectionStore;
+		selectedUniqueRelic?: RelicSelectionStore | null;
 		uniqueRelics?: import('svelte').Snippet;
 		banner?: import('svelte').Snippet;
 		onSettingsClick?: (trigger: HTMLButtonElement) => void;
@@ -29,6 +32,9 @@
 		difficulty
 	}: Props = $props();
 	let openOverlay = $state(false);
+	const emptyRelics = readable<readonly ResolvedRelic[]>([]);
+	let resolvedRelics = $derived(selectedRelics.resolved);
+	let resolvedUniqueRelics = $derived(selectedUniqueRelic?.resolved ?? emptyRelics);
 
 	const uniqueRelics_render = $derived(uniqueRelics);
 </script>
@@ -104,32 +110,16 @@
 						class="bg-white dark:bg-neutral-900 min-w-[280px] w-[80vw] md:w-auto overflow-hidden h-14 gap-x-2 pl-1"
 					>
 						<div class="flex gap-x-2 items-center">
-							{#if Boolean(selectedUniqueRelic) && Boolean($selectedUniqueRelic)}
-								<div class="relative flex items-center">
-									<div
-										class="absolute rounded-full border-[3px] border-neutral-600/80 left-[50%] w-[44px] h-[44px] -translate-x-[50%]"
-									></div>
-									<div class="flex items-center text-center w-14 z-[1]">
-										<img
-											src="/images/relics/{$selectedUniqueRelic.id}.webp"
-											width="54px"
-											alt={$selectedUniqueRelic[`name_${language}`] || $selectedUniqueRelic.name_zh}
-											loading="lazy"
-											decoding="async"
-										/>
-									</div>
-								</div>
-							{/if}
-							{#each $selectedRelics as relic}
+							{#each [...$resolvedUniqueRelics, ...$resolvedRelics] as relic (relic.id)}
 								<div class="relative flex items-center">
 									<div
 										class="absolute rounded-full border-[3px] border-neutral-600/80 left-[50%] w-[44px] h-[44px] -translate-x-[50%]"
 									></div>
 									<div class="flex items-center text-center w-14 z-[1] h-14">
 										<img
-											src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
+											src={getRelicImagePath(relic.id)}
 											width="54px"
-											alt={relic[`name_${language}`] || relic.name_zh}
+											alt={getRelicText(relic.name, language)}
 											loading="lazy"
 											decoding="async"
 										/>

@@ -1,3 +1,5 @@
+import { createRelicSelectionStore } from '$lib/functions/relicSelection';
+import { relicCatalogs } from '$lib/data/is/relicCatalog';
 import { writable, derived } from 'svelte/store';
 import difficultyModsList from '$lib/data/is/sarkaz/difficulty_mods_sarkaz.json';
 import { browser } from '$app/environment';
@@ -9,7 +11,8 @@ let storedDifficulty = 0;
 if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('skz_difficulty') ?? '0');
 }
-export const selectedRelics = writable([]);
+export const selectedRelics = createRelicSelectionStore(relicCatalogs.rogue_skz);
+const resolvedRelics = selectedRelics.resolved;
 export const difficulty = writable(storedDifficulty);
 export const difficultyMode = writable('normal'); //normal | deepseek
 export const actualDifficulty = derived(
@@ -38,7 +41,7 @@ const floorDifficultyMods = derived(
 							}
 						]
 					}
-			  ]
+				]
 			: null
 );
 export const eliteMode = writable(false);
@@ -107,7 +110,7 @@ export const noobHelp = derived([difficulty], ([$difficulty]) => {
 
 export const statMods = derived(
 	[
-		selectedRelics,
+		resolvedRelics,
 		floorDifficultyMods,
 		eliteMode,
 		runes,
@@ -118,7 +121,7 @@ export const statMods = derived(
 		allMods
 	],
 	([
-		$selectedRelics,
+		$resolvedRelics,
 		$floorDifficultyMods,
 		$eliteMode,
 		$runes,
@@ -128,7 +131,7 @@ export const statMods = derived(
 		$noobHelp,
 		$allMods
 	]) => {
-		const relicMods = $selectedRelics.map((relic) => {
+		const relicMods = $resolvedRelics.map((relic) => {
 			return {
 				key: relic.id,
 				mods: [relic.effects]
@@ -153,10 +156,10 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[selectedRelics, runes, allMods, difficultyMods, disasterEffects],
-	([$selectedRelics, $runes, $allMods, $difficultyMods, $disasterEffects]) =>
+	[resolvedRelics, runes, allMods, difficultyMods, disasterEffects],
+	([$resolvedRelics, $runes, $allMods, $difficultyMods, $disasterEffects]) =>
 		compileSpecialMods(
-			$selectedRelics.map((relic) => relic.effects),
+			$resolvedRelics.map((relic) => relic.effects),
 			[$runes, $allMods],
 			$difficultyMods,
 			$disasterEffects.map((ele) => ele.effects)

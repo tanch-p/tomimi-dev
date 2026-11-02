@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
-	import { relicLookup } from '$lib/data/is/relic_lookup';
+	import { getRelicText } from '$lib/data/is/relicTypes';
+	import { getRelicImagePath } from '$lib/data/is/relicImages';
 	import type { Language } from '$lib/types';
 	import { selectedFloor, selectedRelics } from './stores.js';
 
@@ -12,8 +13,9 @@
 	let { language, idPrefix = '' }: Props = $props();
 
 	const floors = new Array(6);
+	const resolvedRelics = selectedRelics.resolved;
 	let floorRelic = $derived(
-		$selectedRelics.find((relic) => relic.id === 'rogue_6_relic_artifact_5')
+		$resolvedRelics.find((relic) => relic.id === 'rogue_6_relic_artifact_5')
 	);
 </script>
 
@@ -34,8 +36,8 @@
 		{#if floorRelic}
 			<div class="relative w-12 shrink-0">
 				<img
-					src="/images/relics/{relicLookup[floorRelic.id] ?? floorRelic.id}.webp"
-					alt={floorRelic[`name_${language}`] || floorRelic.name_zh}
+					src={getRelicImagePath(floorRelic.id)}
+					alt={getRelicText(floorRelic.name, language)}
 					class="w-full"
 					loading="lazy"
 					decoding="async"

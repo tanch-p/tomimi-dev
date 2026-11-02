@@ -1,17 +1,30 @@
 [
 	{
 		"id": "rogue_1_relic_c07",
-		"img": "rogue_1_relic_c07",
-		"name_zh": "乌萨斯弯刀（重铸）",
-		"name_ja": "ウルサスの曲刀",
-		"name_en": "Ursus Chachek",
+		"name": {
+			"zh": "乌萨斯弯刀（重铸）",
+			"ja": "ウルサスの曲刀",
+			"en": "Ursus Chachek"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.35, "mode": "mul" },
-					{ "key": "atk", "value": 1.35, "mode": "mul" },
-					{ "key": "def", "value": 1.35, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.35,
+						"mode": "mul"
+					}
 				]
 			}
 		],
@@ -22,9 +35,21 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.35, "mode": "mul" },
-							{ "key": "atk", "value": 1.35, "mode": "mul" },
-							{ "key": "def", "value": 1.35, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.35,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.35,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.35,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -35,9 +60,21 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.4, "mode": "mul" },
-							{ "key": "atk", "value": 1.4, "mode": "mul" },
-							{ "key": "def", "value": 1.4, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.4,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.4,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.4,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -48,9 +85,21 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.45, "mode": "mul" },
-							{ "key": "atk", "value": 1.45, "mode": "mul" },
-							{ "key": "def", "value": 1.45, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.45,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.45,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.45,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -61,9 +110,21 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.5, "mode": "mul" },
-							{ "key": "atk", "value": 1.5, "mode": "mul" },
-							{ "key": "def", "value": 1.5, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.5,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.5,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.5,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -74,9 +135,21 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.55, "mode": "mul" },
-							{ "key": "atk", "value": 1.55, "mode": "mul" },
-							{ "key": "def", "value": 1.55, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.55,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.55,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.55,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -87,9 +160,21 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.6, "mode": "mul" },
-							{ "key": "atk", "value": 1.6, "mode": "mul" },
-							{ "key": "def", "value": 1.6, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.6,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.6,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.6,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -100,39 +185,78 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.65, "mode": "mul" },
-							{ "key": "atk", "value": 1.65, "mode": "mul" },
-							{ "key": "def", "value": 1.65, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.65,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.65,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.65,
+								"mode": "mul"
+							}
 						]
 					}
 				]
 			}
 		],
-		"tooltip_zh": "※点击多次可改变加成。\n所有敌方单位的攻击力、防御力、生命+35%，每进入新的一层额外+10%，完成紧急作战时-5%（最低35%）",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+35%、…",
-		"tooltip_en": "All enemy units have +35% ATK, DEF, and Max HP, ..."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+35%，每进入新的一层额外+10%，完成紧急作战时-5%（最低35%）",
+			"ja": "敵全員の攻撃力、防御力、最大HP+35%、…",
+			"en": "All enemy units have +35% ATK, DEF, and Max HP, ..."
+		}
 	},
 	{
 		"id": "rogue_1_relic_c08",
-		"img": "rogue_1_relic_c08",
-		"name_zh": "维多利亚王冠（重铸）",
-		"name_ja": "ヴィクトリアのクラウン",
-		"name_en": "Victoria Crown",
+		"name": {
+			"zh": "维多利亚王冠（重铸）",
+			"ja": "ヴィクトリアのクラウン",
+			"en": "Victoria Crown"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.35, "mode": "mul" },
-					{ "key": "atk", "value": 1.35, "mode": "mul" },
-					{ "key": "def", "value": 1.35, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.35,
+						"mode": "mul"
+					}
 				]
 			},
 			{
 				"targets": ["PHCS_BOSS"],
 				"mods": [
-					{ "key": "hp", "value": 1.5, "mode": "mul" },
-					{ "key": "atk", "value": 1.2, "mode": "mul" },
-					{ "key": "def", "value": 1.2, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.5,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.2,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.2,
+						"mode": "mul"
+					}
 				]
 			}
 		],
@@ -143,17 +267,41 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.35, "mode": "mul" },
-							{ "key": "atk", "value": 1.35, "mode": "mul" },
-							{ "key": "def", "value": 1.35, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.35,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.35,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.35,
+								"mode": "mul"
+							}
 						]
 					},
 					{
 						"targets": ["PHCS_BOSS"],
 						"mods": [
-							{ "key": "hp", "value": 1.5, "mode": "mul" },
-							{ "key": "atk", "value": 1.2, "mode": "mul" },
-							{ "key": "def", "value": 1.2, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.5,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.2,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.2,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -164,104 +312,190 @@
 					{
 						"targets": ["ALL"],
 						"mods": [
-							{ "key": "hp", "value": 1.35, "mode": "mul" },
-							{ "key": "atk", "value": 1.35, "mode": "mul" },
-							{ "key": "def", "value": 1.35, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.35,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.35,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.35,
+								"mode": "mul"
+							}
 						]
 					},
 					{
 						"targets": ["PHCS_BOSS"],
 						"mods": [
-							{ "key": "hp", "value": 1.25, "mode": "mul" },
-							{ "key": "atk", "value": 1.1, "mode": "mul" },
-							{ "key": "def", "value": 1.1, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.25,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.1,
+								"mode": "mul"
+							},
+							{
+								"key": "def",
+								"value": 1.1,
+								"mode": "mul"
+							}
 						]
 					}
 				]
 			}
 		],
-		"tooltip_zh": "※点击多次可改变加成。\n所有敌方单位的攻击力、防御力、生命+35%，所有领袖单位还会攻击力、防御力+20%，生命+50%，编入所有职业的干员时领袖加成减半",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+35%。BOSS敵の攻撃力、防御力がさらに20%上昇、最大HPがさらに50%上昇、…",
-		"tooltip_en": "All enemy units have +35% ATK, DEF, and Max HP; Boss units gain an additional +20% ATK, +20% DEF, and +50% Max HP, when..."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+35%，所有领袖单位还会攻击力、防御力+20%，生命+50%，编入所有职业的干员时领袖加成减半",
+			"ja": "敵全員の攻撃力、防御力、最大HP+35%。BOSS敵の攻撃力、防御力がさらに20%上昇、最大HPがさらに50%上昇、…",
+			"en": "All enemy units have +35% ATK, DEF, and Max HP; Boss units gain an additional +20% ATK, +20% DEF, and +50% Max HP, when..."
+		}
 	},
 	{
 		"id": "rogue_1_relic_c09",
-		"img": "rogue_1_relic_c09",
-		"name_zh": "莱塔尼亚权杖（重铸）",
-		"name_ja": "リターニアの王笏",
-		"name_en": "Leithanien Sceptre",
+		"name": {
+			"zh": "莱塔尼亚权杖（重铸）",
+			"ja": "リターニアの王笏",
+			"en": "Leithanien Sceptre"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.35, "mode": "mul" },
-					{ "key": "atk", "value": 1.35, "mode": "mul" },
-					{ "key": "def", "value": 1.35, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.35,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+35%，进入节点时目标生命-1（最低降至1），关卡生命低于3时我方部署费用+2，技力回复速度-20%",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+35%。新たなスポットに入る度に、耐久値-1（最大残り1まで減少）、…",
-		"tooltip_en": "All enemy units have +35% ATK, DEF, and Max HP; Entering a new node decreases Life Point by 1 (cannot be reduced beneath 1 this way), when ..."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+35%，进入节点时目标生命-1（最低降至1），关卡生命低于3时我方部署费用+2，技力回复速度-20%",
+			"ja": "敵全員の攻撃力、防御力、最大HP+35%。新たなスポットに入る度に、耐久値-1（最大残り1まで減少）、…",
+			"en": "All enemy units have +35% ATK, DEF, and Max HP; Entering a new node decreases Life Point by 1 (cannot be reduced beneath 1 this way), when ..."
+		}
 	},
 	{
 		"id": "rogue_1_relic_c10",
-		"img": "rogue_1_relic_c10",
-		"name_zh": "高卢长袍（重铸）",
-		"name_ja": "ガリアのローブ",
-		"name_en": "Gaul Mantle",
+		"name": {
+			"zh": "高卢长袍（重铸）",
+			"ja": "ガリアのローブ",
+			"en": "Gaul Mantle"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.3, "mode": "mul" },
-					{ "key": "atk", "value": 1.3, "mode": "mul" },
-					{ "key": "def", "value": 1.3, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.3,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+30%，在奇数层招募4星以上干员时希望消耗+2，偶数层晋升干员希望消耗+2",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+30%。★4以上のオペレーターを招集する際に…",
-		"tooltip_en": "All enemy units have +30% ATK, DEF, and Max HP; 4-star and above Operators cost +2 Hope when recruited on odd numbered floors, ..."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+30%，在奇数层招募4星以上干员时希望消耗+2，偶数层晋升干员希望消耗+2",
+			"ja": "敵全員の攻撃力、防御力、最大HP+30%。★4以上のオペレーターを招集する際に…",
+			"en": "All enemy units have +30% ATK, DEF, and Max HP; 4-star and above Operators cost +2 Hope when recruited on odd numbered floors, ..."
+		}
 	},
 	{
 		"id": "rogue_1_relic_c11",
-		"img": "rogue_1_relic_c11",
-		"name_zh": "半洗孤钻（重铸）",
-		"name_ja": "緋滲む貴石",
-		"name_en": "Half-Refined Diamond",
+		"name": {
+			"zh": "半洗孤钻（重铸）",
+			"ja": "緋滲む貴石",
+			"en": "Half-Refined Diamond"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.3, "mode": "mul" },
-					{ "key": "atk", "value": 1.3, "mode": "mul" },
-					{ "key": "def", "value": 1.3, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.3,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+30%，战斗获得的指挥经验-70%；险路恶敌中获得的指挥经验变为15倍",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+30%。指揮経験値の獲得量-70%; ...",
-		"tooltip_en": "All enemy units have +30% ATK, DEF, and Max HP; Gain -70% Command EXP from battles; ..."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+30%，战斗获得的指挥经验-70%；险路恶敌中获得的指挥经验变为15倍",
+			"ja": "敵全員の攻撃力、防御力、最大HP+30%。指揮経験値の獲得量-70%; ...",
+			"en": "All enemy units have +30% ATK, DEF, and Max HP; Gain -70% Command EXP from battles; ..."
+		}
 	},
 	{
 		"id": "rogue_1_relic_c12",
-		"img": "rogue_1_relic_c12",
-		"name_zh": "酒神的印记（重铸）",
-		"name_ja": "酒神のシンボル",
-		"name_en": "Sigil of Tragodia",
+		"name": {
+			"zh": "酒神的印记（重铸）",
+			"ja": "酒神のシンボル",
+			"en": "Sigil of Tragodia"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 1.35, "mode": "mul" },
-					{ "key": "atk", "value": 1.35, "mode": "mul" },
-					{ "key": "def", "value": 1.35, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.35,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.35,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力、防御力、生命+35%，可同时部署人数-3，每次进入幕间余兴时可同时部署人数+2",
-		"tooltip_ja": "敵全員の攻撃力、防御力、最大HP+35%。同時配置可能人数-3、…",
-		"tooltip_en": "All enemy units have +35% ATK, DEF, and Max HP; Deployment Limit -3, and ..."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力、防御力、生命+35%，可同时部署人数-3，每次进入幕间余兴时可同时部署人数+2",
+			"ja": "敵全員の攻撃力、防御力、最大HP+35%。同時配置可能人数-3、…",
+			"en": "All enemy units have +35% ATK, DEF, and Max HP; Deployment Limit -3, and ..."
+		}
 	}
 ]

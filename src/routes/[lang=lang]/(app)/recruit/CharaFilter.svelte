@@ -5,7 +5,7 @@
 	import filterOptions from '$lib/data/chara/filter_options.json';
 	import CharaFilterToggle from './CharaFilterToggle.svelte';
 	import relics from '$lib/data/chara/relics_chara.json';
-	import { relicLookup } from '$lib/data/is/relic_lookup';
+	import { getRelicImagePath } from '$lib/data/is/relicImages';
 	import Icon from '$lib/components/Icon.svelte';
 	import {
 		getCategory,
@@ -379,7 +379,7 @@
 							onclick={() => updateRelicFilters(relic.id)}
 						>
 							<img
-								src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
+								src={getRelicImagePath(relic.id)}
 								alt={relic[`name_${language}`] || relic['name_zh']}
 								width="100"
 								height="100"
@@ -411,7 +411,7 @@
 									onclick={() => updateRelicFilters(relic.id)}
 								>
 									<img
-										src="/images/relics/{relicLookup?.[relic.id] ?? relic.id}.webp"
+										src={getRelicImagePath(relic.id)}
 										alt={relic[`name_${language}`] || relic['name_zh']}
 										width="75"
 										height="75"

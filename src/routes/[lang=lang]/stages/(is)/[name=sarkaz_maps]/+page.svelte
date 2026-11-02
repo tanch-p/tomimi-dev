@@ -21,7 +21,6 @@
 	import FooterBar from '$lib/components/FooterBar.svelte';
 	import FloorTitle from './FloorTitle.svelte';
 	import StageHeader from '$lib/components/StageHeader.svelte';
-	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
 	import StageDrops from './StageDrops.svelte';
 	import { setOtherBuffsList } from '$lib/functions/buffHelpers';
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
@@ -37,26 +36,24 @@
 
 	let rogueTopic: RogueTopic = $derived(data.rogueTopic);
 
-	function updateReqRelic(levelId, selectedRelicsValue, selectedRelicsStore) {
+	function updateReqRelic(levelId) {
 		if (
 			ro4_ALTER_BOSS_STAGES.includes(levelId) &&
-			!selectedRelicsValue.find((item) => item.id === 'rogue_4_relic_explore_7')
+			!$selectedRelics.find((item) => item.id === 'rogue_4_relic_explore_7')
 		) {
-			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_explore_7');
-			selectedRelicsStore.update((list) => [...list, relic]);
+			selectedRelics.ensureSelected('rogue_4_relic_explore_7');
 		}
 		if (
 			['level_rogue4_b-7'].includes(levelId) &&
-			!selectedRelicsValue.find((item) => item.id === 'rogue_4_relic_final_6')
+			!$selectedRelics.find((item) => item.id === 'rogue_4_relic_final_6')
 		) {
-			const relic = skzRelics.find((item) => item.id === 'rogue_4_relic_final_6');
-			selectedRelicsStore.update((list) => [...list, relic]);
+			selectedRelics.ensureSelected('rogue_4_relic_final_6');
 		}
 	}
 	let language = $derived(data.language);
 	$effect(() => {
 		if (data.mapConfig) {
-			updateReqRelic(data.mapConfig?.levelId, $selectedRelics, selectedRelics);
+			updateReqRelic(data.mapConfig?.levelId);
 			runes.set(data.mapConfig?.n_mods);
 			allMods.set(data.mapConfig?.all_mods);
 		}

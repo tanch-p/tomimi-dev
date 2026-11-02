@@ -14,6 +14,7 @@
 	import DifficultySelect from '$lib/components/DifficultySelect.svelte';
 	import EliteToggleBar from '$lib/components/EliteToggleBar.svelte';
 	import FloorSettingsContent from './FloorSettingsContent.svelte';
+	import { serializeRelics } from '$lib/functions/relicSelection';
 	import { selectedRelics, selectedFloor, activeFloorEffects, gold } from './stores';
 
 	interface Props {
@@ -59,12 +60,10 @@
 		}
 	});
 	let [combatOpsColor, eliteOpsColor] = $derived(getEliteColors(rogueTopic ?? 'rogue_black'));
+	const resolvedRelics = selectedRelics.resolved;
 	let currentState = $derived({
 		topic: 'ro6' as const,
-		relics: $selectedRelics.map((relic) => ({
-			id: relic.id,
-			...(relic.stages && Number.isSafeInteger(relic.count) ? { count: relic.count } : {})
-		})),
+		relics: serializeRelics($resolvedRelics),
 		diff: $difficulty,
 		eliteMode: $eliteMode,
 		...($activeFloorEffects[0]?.iconId ? { variation: $activeFloorEffects[0].iconId } : {}),

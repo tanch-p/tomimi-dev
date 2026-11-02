@@ -1,3 +1,4 @@
+import { getRelicImagePath } from '$lib/data/is/relicImages';
 import type { RogueTopic } from '$lib/types';
 
 export const getEliteColors = (rogueTopic: string) => {
@@ -71,8 +72,7 @@ export function getIconPath(icon: { type: 'enemy' | 'chara' | 'relic'; id: strin
 			folder = 'enemy_icons';
 			break;
 		case 'relic':
-			folder = 'relics';
-			break;
+			return getRelicImagePath(icon.id);
 	}
 	return `/images/${folder}/${icon.id}.webp`;
 }

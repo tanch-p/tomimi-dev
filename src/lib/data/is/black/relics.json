@@ -1,19 +1,25 @@
 [
 	{
 		"id": "rogue_6_relic_artifact_5",
-		"name_zh": "追忆",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "追忆",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [],
-		"tooltip_zh": "进入下一区域时，变为重新进入本区域，之后该收藏品失效(※使用后会使层数+1)",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "进入下一区域时，变为重新进入本区域，之后该收藏品失效(※使用后会使层数+1)",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_6_relic_fight_25",
-		"name_zh": "猎犬咖啡",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "猎犬咖啡",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -27,60 +33,66 @@
 				]
 			}
 		],
-		"tooltip_zh": "我方单位的生命和攻击力+30%，敌人出现时有3%概率生命+100%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "我方单位的生命和攻击力+30%，敌人出现时有3%概率生命+100%",
+			"ja": "",
+			"en": ""
+		}
 	},
-	 {
-        "id": "rogue_6_relic_final_10",
-        "name_zh": "生命蓝图",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "ALL"
-                ],
-                "mods": [
-                    {
-                        "key": "atk",
-                        "value": 1.3,
-                        "mode": "mul"
-                    },
+	{
+		"id": "rogue_6_relic_final_10",
+		"name": {
+			"zh": "生命蓝图",
+			"ja": "",
+			"en": ""
+		},
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
 					{
-                        "key": "ms",
-                        "value": 1.3,
-                        "mode": "mul"
-                    },
-					  {
-                        "key": "hp",
-                        "value": 1.5,
-                        "mode": "mul"
-                    }
-                ]
-            },
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "ms",
+						"value": 1.3,
+						"mode": "mul"
+					},
+					{
+						"key": "hp",
+						"value": 1.5,
+						"mode": "mul"
+					}
+				]
+			},
 			{
 				"targets": ["ELITE", "BOSS"],
-				"special":{
-					"aura_new":{
-						"tooltip":{
-							"zh":["登场30秒内受到的物理和法术伤害-50%"],
-							"ja":["登場後30秒間、受ける物理・術ダメージが50%減少する"],
-							"en":["Gains 50% Phys/Arts Damage Resistance for 30 seconds upon appearing"]
+				"special": {
+					"aura_new": {
+						"tooltip": {
+							"zh": ["登场30秒内受到的物理和法术伤害-50%"],
+							"ja": ["登場後30秒間、受ける物理・術ダメージが50%減少する"],
+							"en": ["Gains 50% Phys/Arts Damage Resistance for 30 seconds upon appearing"]
 						}
 					}
 				}
 			}
-        ],
-        "tooltip_zh": "敌方单位攻击、移速+30%，最大生命值+50%，精英和领袖敌人登场30秒内受到的物理和法术伤害-50%，盲目者所见中的险路恶敌出现额外敌人",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
+		],
+		"tooltip": {
+			"zh": "敌方单位攻击、移速+30%，最大生命值+50%，精英和领袖敌人登场30秒内受到的物理和法术伤害-50%，盲目者所见中的险路恶敌出现额外敌人",
+			"ja": "",
+			"en": ""
+		}
+	},
 	{
 		"id": "rogue_6_relic_final_3",
-		"name_zh": "怦然信标",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "怦然信标",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -93,21 +105,33 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌人的生命+20%，我方单位的生命-40%，让探索开启不同的方向",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "所有敌人的生命+20%，我方单位的生命-40%，让探索开启不同的方向",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_6_relic_fight_30",
-		"name_zh": "探测先锋",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "探测先锋",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["enemy_2137_shsdgo"],
 				"mods": [
-					{ "key": "hp", "value": 1.2, "mode": "mul" },
-					{ "key": "atk", "value": 1.2, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 1.2,
+						"mode": "mul"
+					},
+					{
+						"key": "atk",
+						"value": 1.2,
+						"mode": "mul"
+					}
 				]
 			}
 		],
@@ -118,8 +142,16 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 1.2, "mode": "mul" },
-							{ "key": "atk", "value": 1.2, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.2,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.2,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -130,8 +162,16 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 1.4, "mode": "mul" },
-							{ "key": "atk", "value": 1.4, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.4,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.4,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -142,8 +182,16 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 1.6, "mode": "mul" },
-							{ "key": "atk", "value": 1.6, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.6,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.6,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -154,8 +202,16 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 1.8, "mode": "mul" },
-							{ "key": "atk", "value": 1.8, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 1.8,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 1.8,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -166,8 +222,16 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 2.0, "mode": "mul" },
-							{ "key": "atk", "value": 2.0, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 2.0,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 2.0,
+								"mode": "mul"
+							}
 						]
 					}
 				]
@@ -178,37 +242,60 @@
 					{
 						"targets": ["enemy_2137_shsdgo"],
 						"mods": [
-							{ "key": "hp", "value": 2.2, "mode": "mul" },
-							{ "key": "atk", "value": 2.2, "mode": "mul" }
+							{
+								"key": "hp",
+								"value": 2.2,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 2.2,
+								"mode": "mul"
+							}
 						]
 					}
 				]
 			}
 		],
-		"tooltip_zh": "完成“追猎”作战后叠加1层并使下个区域初始行动力-1，每层使“猎犬proto”的生命和攻击力+20%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "完成“追猎”作战后叠加1层并使下个区域初始行动力-1，每层使“猎犬proto”的生命和攻击力+20%",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_6_relic_cargo_12",
-		"name_zh": "猎印",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "猎印",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["enemy_2137_shsdgo"],
-				"mods": [{ "key": "atk", "value": -0.5, "mode": "mul", "order": "initial" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": -0.5,
+						"mode": "mul",
+						"order": "initial"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "猎犬proto的攻击力-50%；每拥有1层【探测先锋】，我方法术抗性+10",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "猎犬proto的攻击力-50%；每拥有1层【探测先锋】，我方法术抗性+10",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_6_relic_cargo_11",
-		"name_zh": "厄运火杆",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "厄运火杆",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -222,15 +309,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "与“居民”作战时，敌人生命-40%，且作战胜利后所有干员的攻击速度永久+10",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "与“居民”作战时，敌人生命-40%，且作战胜利后所有干员的攻击速度永久+10",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_6_relic_fight_26",
-		"name_zh": "竞技场贵宾券",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "竞技场贵宾券",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ELITE"],
@@ -243,16 +334,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "精英敌人的生命+10%，战斗获得的源石锭和指挥经验+40%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "精英敌人的生命+10%，战斗获得的源石锭和指挥经验+40%",
+			"ja": "",
+			"en": ""
+		}
 	},
-
 	{
 		"id": "rogue_6_relic_legacy_84",
-		"name_zh": "残破合影",
-		"name_ja": "古びた写真",
-		"name_en": "Worn-out Group Photo",
+		"name": {
+			"zh": "残破合影",
+			"ja": "古びた写真",
+			"en": "Worn-out Group Photo"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -270,15 +364,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-5%，防御力-10%",
-		"tooltip_ja": "敵全員の最大HP-5%、防御力-10%",
-		"tooltip_en": "All enemy units have -5% HP and -10% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-5%，防御力-10%",
+			"ja": "敵全員の最大HP-5%、防御力-10%",
+			"en": "All enemy units have -5% HP and -10% DEF."
+		}
 	},
 	{
 		"id": "rogue_6_relic_legacy_85",
-		"name_zh": "恐鱼干",
-		"name_ja": "恐魚の干物",
-		"name_en": "Sea Terror Jerky",
+		"name": {
+			"zh": "恐鱼干",
+			"ja": "恐魚の干物",
+			"en": "Sea Terror Jerky"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -296,15 +394,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-10%，防御力-20%",
-		"tooltip_ja": "敵全員の最大HP-10%、防御力-20%",
-		"tooltip_en": "All enemy units have -10% HP and -20% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-10%，防御力-20%",
+			"ja": "敵全員の最大HP-10%、防御力-20%",
+			"en": "All enemy units have -10% HP and -20% DEF."
+		}
 	},
 	{
 		"id": "rogue_6_relic_legacy_86",
-		"name_zh": "迷迭香之拥",
-		"name_ja": "ロスモンティスの抱擁",
-		"name_en": "Rosmontis's Embrace",
+		"name": {
+			"zh": "迷迭香之拥",
+			"ja": "ロスモンティスの抱擁",
+			"en": "Rosmontis's Embrace"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -322,15 +424,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-15%，防御力-30%",
-		"tooltip_ja": "敵全員の最大HP-15%、防御力-30%",
-		"tooltip_en": "All enemy units have -15% HP and -30% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-15%，防御力-30%",
+			"ja": "敵全員の最大HP-15%、防御力-30%",
+			"en": "All enemy units have -15% HP and -30% DEF."
+		}
 	},
 	{
 		"id": "rogue_6_relic_legacy_87",
-		"name_zh": "“黑夜呢喃”",
-		"name_ja": "「闇に囁くもの」",
-		"name_en": "'The Whisperer in Darknight'",
+		"name": {
+			"zh": "“黑夜呢喃”",
+			"ja": "「闇に囁くもの」",
+			"en": "'The Whisperer in Darknight'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -343,15 +449,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-15%",
-		"tooltip_ja": "敵全員の最大HP-15%",
-		"tooltip_en": "All enemy units have -15% HP"
+		"tooltip": {
+			"zh": "所有敌方单位的生命-15%",
+			"ja": "敵全員の最大HP-15%",
+			"en": "All enemy units have -15% HP"
+		}
 	},
 	{
 		"id": "rogue_6_relic_legacy_88",
-		"name_zh": "《大静谧》",
-		"name_ja": "『大いなる静謐』",
-		"name_en": "‘Profound Silence'",
+		"name": {
+			"zh": "《大静谧》",
+			"ja": "『大いなる静謐』",
+			"en": "‘Profound Silence'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -364,76 +474,94 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-30%",
-		"tooltip_ja": "敵全員の最大HP-30%",
-		"tooltip_en": "All enemy units have -30% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-30%",
+			"ja": "敵全員の最大HP-30%",
+			"en": "All enemy units have -30% HP."
+		}
 	},
 	{
 		"id": "rogue_6_relic_legacy_56",
-		"name_zh": "重力蔑视机关",
-		"name_ja": "重力蔑視装置",
-		"name_en": "Gravity Defying Machine",
+		"name": {
+			"zh": "重力蔑视机关",
+			"ja": "重力蔑視装置",
+			"en": "Gravity Defying Machine"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "weight", "value": -2, "mode": "add" }]
+				"mods": [
+					{
+						"key": "weight",
+						"value": -2,
+						"mode": "add"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌人重量-2",
-		"tooltip_ja": "全ての敵の重量ランク-2",
-		"tooltip_en": "All enemies have -2 Weight"
+		"tooltip": {
+			"zh": "所有敌人重量-2",
+			"ja": "全ての敵の重量ランク-2",
+			"en": "All enemies have -2 Weight"
+		}
 	},
 	{
-        "id": "rogue_6_relic_final_9",
-        "name_zh": "破碎噩兆",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "system"
-                ],
-                "mods": [
-                    {
-                        "key": "level_hidden_group_enable",
-                        "value": 0.0,
-                        "valueStr": "shadvr2"
-                    }
-                ]
-            }
-        ],
-        "tooltip_zh": "探险者重新出现在熄日余径的战斗中",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
+		"id": "rogue_6_relic_final_9",
+		"name": {
+			"zh": "破碎噩兆",
+			"ja": "",
+			"en": ""
+		},
+		"effects": [
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shadvr2"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "探险者重新出现在熄日余径的战斗中",
+			"ja": "",
+			"en": ""
+		}
+	},
 	{
-        "id": "rogue_6_relic_final_7",
-        "name_zh": "谒日之祈",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "system"
-                ],
-                "mods": [
-                    {
-                        "key": "level_hidden_group_enable",
-                        "value": 0.0,
-                        "valueStr": "shadvr"
-                    }
-                ]
-            }
-        ],
-        "tooltip_zh": "区域III血色空脉及后续区域中出现熄日余径，探险者会出现在熄日余径的战斗中，血色空脉中的险路恶敌变得更加艰难",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
+		"id": "rogue_6_relic_final_7",
+		"name": {
+			"zh": "谒日之祈",
+			"ja": "",
+			"en": ""
+		},
+		"effects": [
+			{
+				"targets": ["system"],
+				"mods": [
+					{
+						"key": "level_hidden_group_enable",
+						"value": 0.0,
+						"valueStr": "shadvr"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "区域III血色空脉及后续区域中出现熄日余径，探险者会出现在熄日余径的战斗中，血色空脉中的险路恶敌变得更加艰难",
+			"ja": "",
+			"en": ""
+		}
+	},
 	{
 		"id": "rogue_6_start_3",
-		"name_zh": "襁褓巨龙",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "襁褓巨龙",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -446,15 +574,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "前两个探索区域的战斗中，所有敌人的最大生命-50%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "前两个探索区域的战斗中，所有敌人的最大生命-50%",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_6_start_4",
-		"name_zh": "襁褓九头蛇",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "襁褓九头蛇",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -472,8 +604,10 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌人的攻击和生命+30%，每进入新区域时我方攻击力和生命+10%",
-		"tooltip_ja": "",
-		"tooltip_en": ""
+		"tooltip": {
+			"zh": "所有敌人的攻击和生命+30%，每进入新区域时我方攻击力和生命+10%",
+			"ja": "",
+			"en": ""
+		}
 	}
 ]

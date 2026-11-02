@@ -1,3 +1,5 @@
+import { createRelicSelectionStore } from '$lib/functions/relicSelection';
+import { relicCatalogs } from '$lib/data/is/relicCatalog';
 import { writable, derived } from 'svelte/store';
 import difficultyModsList from '$lib/data/is/sami/difficulty_mods_sami.json';
 import { browser } from '$app/environment';
@@ -9,7 +11,8 @@ let storedDifficulty = 0;
 if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('sami_difficulty') ?? '0');
 }
-export const selectedRelics = writable([]);
+export const selectedRelics = createRelicSelectionStore(relicCatalogs.rogue_sami);
+const resolvedRelics = selectedRelics.resolved;
 export const difficulty = writable(storedDifficulty);
 
 export const selectedFloor = writable(1);
@@ -58,7 +61,7 @@ export const statMods = derived(
 	[
 		eliteMode,
 		runes,
-		selectedRelics,
+		resolvedRelics,
 		floorDifficultyMods,
 		activeChaosEffects,
 		portalMods,
@@ -69,7 +72,7 @@ export const statMods = derived(
 	([
 		$eliteMode,
 		$runes,
-		$selectedRelics,
+		$resolvedRelics,
 		$floorDifficultyMods,
 		$activeChaosEffects,
 		$portalMods,
@@ -77,7 +80,7 @@ export const statMods = derived(
 		$otherMods,
 		$allMods
 	]) => {
-		const relicMods = $selectedRelics.map((relic) => {
+		const relicMods = $resolvedRelics.map((relic) => {
 			return {
 				key: relic.id,
 				mods: [relic.effects]
@@ -103,10 +106,10 @@ export const statMods = derived(
 // SAMI Diff Mods are added internally before being added to final calculation
 
 export const specialMods = derived(
-	[runes, allMods, selectedRelics],
-	([$runes, $allMods, $selectedRelics]) =>
+	[runes, allMods, resolvedRelics],
+	([$runes, $allMods, $resolvedRelics]) =>
 		compileSpecialMods(
 			[$runes, $allMods],
-			$selectedRelics.map((relic) => relic.effects)
+			$resolvedRelics.map((relic) => relic.effects)
 		)
 );

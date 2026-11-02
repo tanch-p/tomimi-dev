@@ -16,8 +16,7 @@
 	} from './stores';
 	import StageInfo from '$lib/components/StageInfo.svelte';
 	import FooterBar from '$lib/components/FooterBar.svelte';
-	import hardRelics from '$lib/data/is/phantom/relics_phantom_hard.json';
-	import RelicDivUnique from '$lib/components/RelicDivUnique.svelte';
+	import RelicDiv from '$lib/components/RelicDiv.svelte';
 	import StageHeader from '$lib/components/StageHeader.svelte';
 	import FloorTitle from './FloorTitle.svelte';
 	import StageNav from '../../../(app)/phantom/PhantomNav.svelte';
@@ -109,8 +108,15 @@
 		<div
 			class="grid lg:grid-cols-3 gap-x-10 gap-y-8 w-full overflow-x-auto md:overflow-visible my-auto mx-auto px-4 sm:px-24 mb-4"
 		>
-			{#each hardRelics as relic}
-				<RelicDivUnique {relic} {language} {rogueTopic} {selectedUniqueRelic} />
+			{#each selectedUniqueRelic.catalog as relic}
+				<RelicDiv
+					{relic}
+					{language}
+					{rogueTopic}
+					selection={$selectedUniqueRelic.find((entry) => entry.id === relic.id)}
+					ontoggle={() => selectedUniqueRelic.toggle(relic.id)}
+					onstagechange={(index) => selectedUniqueRelic.setStage(relic.id, index)}
+				/>
 			{/each}
 		</div>
 	{/snippet}

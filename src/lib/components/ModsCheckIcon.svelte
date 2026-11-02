@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language } from '$lib/types';
-	import { relicLookup } from '$lib/data/is/relic_lookup';
+	import { getRelicImagePath } from '$lib/data/is/relicImages';
 	import { getFormTitle } from '$lib/functions/formHelpers';
 
 	interface Props {
@@ -37,7 +37,7 @@
 		/>
 	{:else if key.includes('relic') || key.includes('copper')}
 		<img
-			src="/images/relics/{relicLookup?.[key] ?? key}.webp"
+			src={getRelicImagePath(key)}
 			alt={key}
 			loading="lazy"
 			height="30px"

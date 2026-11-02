@@ -1,228 +1,376 @@
 [
 	{
 		"id": "rogue_2_relic_fight_105",
-		"name_zh": "安洁莉娜的创想",
-		"name_ja": "アンジェリーナのアイデア",
-		"name_en": "Angelina's Inspiration",
+		"name": {
+			"zh": "安洁莉娜的创想",
+			"ja": "アンジェリーナのアイデア",
+			"en": "Angelina's Inspiration"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "weight", "value": -1, "mode": "add" },
-					{ "key": "ms", "value": 0.85, "mode": "mul" }
+					{
+						"key": "weight",
+						"value": -1,
+						"mode": "add"
+					},
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位移动速度-15%，且重量下降一个等级",
-		"tooltip_ja": "敵全員の移動速度-15%、さらに重量が1ランクダウン",
-		"tooltip_en": "All enemy units have Movement Speed -15%, and their weight is reduced by one rank"
+		"tooltip": {
+			"zh": "所有敌方单位移动速度-15%，且重量下降一个等级",
+			"ja": "敵全員の移動速度-15%、さらに重量が1ランクダウン",
+			"en": "All enemy units have Movement Speed -15%, and their weight is reduced by one rank"
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_117",
-		"name_zh": "“文明的存续”",
-		"name_ja": "「文明の存続」",
-		"name_en": "'Civilight Eterna'",
+		"name": {
+			"zh": "“文明的存续”",
+			"ja": "「文明の存続」",
+			"en": "'Civilight Eterna'"
+		},
 		"effects": [],
-		"tooltip_zh": "所有敌方单位受到的真实伤害+150%",
-		"tooltip_ja": "敵が受ける確定ダメージ+150%",
-		"tooltip_en": "All enemies take +150% True damage."
+		"tooltip": {
+			"zh": "所有敌方单位受到的真实伤害+150%",
+			"ja": "敵が受ける確定ダメージ+150%",
+			"en": "All enemies take +150% True damage."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_123",
-		"name_zh": "“苦痛的快乐”",
-		"name_ja": "「苦痛の喜び」",
-		"name_en": "'Painful Happiness'",
+		"name": {
+			"zh": "“苦痛的快乐”",
+			"ja": "「苦痛の喜び」",
+			"en": "'Painful Happiness'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
 				"mods": [
-					{ "key": "hp", "value": 0.85, "mode": "mul" },
-					{ "key": "ms", "value": 0.85, "mode": "mul" }
+					{
+						"key": "hp",
+						"value": 0.85,
+						"mode": "mul"
+					},
+					{
+						"key": "ms",
+						"value": 0.85,
+						"mode": "mul"
+					}
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-15%，移动速度-15%",
-		"tooltip_ja": "敵全員の最大HP-15%、移動速度-15%",
-		"tooltip_en": "All enemy units have -15% HP and Movement Speed"
+		"tooltip": {
+			"zh": "所有敌方单位的生命-15%，移动速度-15%",
+			"ja": "敵全員の最大HP-15%、移動速度-15%",
+			"en": "All enemy units have -15% HP and Movement Speed"
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_1",
-		"name_zh": "开裂的束缚带",
-		"name_ja": "裂けた拘束ベルト",
-		"name_en": "Fissured Restraints",
+		"name": {
+			"zh": "开裂的束缚带",
+			"ja": "裂けた拘束ベルト",
+			"en": "Fissured Restraints"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.93, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.93,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-7%",
-		"tooltip_ja": "敵全員の攻撃力-7%",
-		"tooltip_en": "All enemy units have -7% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-7%",
+			"ja": "敵全員の攻撃力-7%",
+			"en": "All enemy units have -7% ATK."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_2",
-		"name_zh": "奇渊面具",
-		"name_ja": "奇妙なぐるぐるお面",
-		"name_en": "Abyssal Wyrdmask",
+		"name": {
+			"zh": "奇渊面具",
+			"ja": "奇妙なぐるぐるお面",
+			"en": "Abyssal Wyrdmask"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.88, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.88,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-12%",
-		"tooltip_ja": "敵全員の攻撃力-12%",
-		"tooltip_en": "All enemy units have -12% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-12%",
+			"ja": "敵全員の攻撃力-12%",
+			"en": "All enemy units have -12% ATK."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_3",
-		"name_zh": "教母的信物",
-		"name_ja": "教母の印",
-		"name_en": "Godmother's Token",
+		"name": {
+			"zh": "教母的信物",
+			"ja": "教母の印",
+			"en": "Godmother's Token"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.83, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.83,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-17%",
-		"tooltip_ja": "敵全員の攻撃力-17%",
-		"tooltip_en": "All enemy units have -17% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-17%",
+			"ja": "敵全員の攻撃力-17%",
+			"en": "All enemy units have -17% ATK."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_4",
-		"name_zh": "残破合影",
-		"name_ja": "古びた写真",
-		"name_en": "Worn-out Group Photo",
+		"name": {
+			"zh": "残破合影",
+			"ja": "古びた写真",
+			"en": "Worn-out Group Photo"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "def", "value": 0.88, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.88,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的防御力-12%",
-		"tooltip_ja": "敵全員の防御力-12%",
-		"tooltip_en": "All enemy units have -12% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的防御力-12%",
+			"ja": "敵全員の防御力-12%",
+			"en": "All enemy units have -12% DEF."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_5",
-		"name_zh": "恐鱼干",
-		"name_ja": "恐魚の干物",
-		"name_en": "Sea Terror Jerky",
+		"name": {
+			"zh": "恐鱼干",
+			"ja": "恐魚の干物",
+			"en": "Sea Terror Jerky"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "def", "value": 0.79, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.79,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的防御力-21%",
-		"tooltip_ja": "敵全員の防御力-21%",
-		"tooltip_en": "All enemy units have -21% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的防御力-21%",
+			"ja": "敵全員の防御力-21%",
+			"en": "All enemy units have -21% DEF."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_6",
-		"name_zh": "迷迭香之拥",
-		"name_ja": "ロスモンティスの抱擁",
-		"name_en": "Rosmontis's Embrace",
+		"name": {
+			"zh": "迷迭香之拥",
+			"ja": "ロスモンティスの抱擁",
+			"en": "Rosmontis's Embrace"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "def", "value": 0.7, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "def",
+						"value": 0.7,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的防御力-30%",
-		"tooltip_ja": "敵全員の防御力-30%",
-		"tooltip_en": "All enemy units have -30% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的防御力-30%",
+			"ja": "敵全員の防御力-30%",
+			"en": "All enemy units have -30% DEF."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_7",
-		"name_zh": "镶金骨骰",
-		"name_ja": "金張りのサイコロ",
-		"name_en": "Gold-Plated Dice",
+		"name": {
+			"zh": "镶金骨骰",
+			"ja": "金張りのサイコロ",
+			"en": "Gold-Plated Dice"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.85, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.85,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-15%",
-		"tooltip_ja": "敵全員の最大HP-15%",
-		"tooltip_en": "All enemy units have -15% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-15%",
+			"ja": "敵全員の最大HP-15%",
+			"en": "All enemy units have -15% HP."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_8",
-		"name_zh": "“黑夜呢喃”",
-		"name_ja": "「闇に囁くもの」",
-		"name_en": "'The Whisperer in Darknight'",
+		"name": {
+			"zh": "“黑夜呢喃”",
+			"ja": "「闇に囁くもの」",
+			"en": "'The Whisperer in Darknight'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.9, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.9,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-10%",
-		"tooltip_ja": "敵全員の最大HP-10%",
-		"tooltip_en": "All enemy units have -10% HP"
+		"tooltip": {
+			"zh": "所有敌方单位的生命-10%",
+			"ja": "敵全員の最大HP-10%",
+			"en": "All enemy units have -10% HP"
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_9",
-		"name_zh": "《大静谧》",
-		"name_ja": "『大いなる静謐』",
-		"name_en": "‘Profound Silence'",
+		"name": {
+			"zh": "《大静谧》",
+			"ja": "『大いなる静謐』",
+			"en": "‘Profound Silence'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.8, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.8,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-20%",
-		"tooltip_ja": "敵全員の最大HP-20%",
-		"tooltip_en": "All enemy units have -20% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-20%",
+			"ja": "敵全員の最大HP-20%",
+			"en": "All enemy units have -20% HP."
+		}
 	},
 	{
 		"id": "rogue_2_relic_fight_42",
-		"name_zh": "“海洋的脉搏”",
-		"name_ja": "「海の脈動」",
-		"name_en": "'Pulse of the Ocean'",
+		"name": {
+			"zh": "“海洋的脉搏”",
+			"ja": "「海の脈動」",
+			"en": "'Pulse of the Ocean'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "aspd", "value": -10, "mode": "add" }]
+				"mods": [
+					{
+						"key": "aspd",
+						"value": -10,
+						"mode": "add"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有我方单位的攻击速度+10，所有敌方单位的攻击速度-10",
-		"tooltip_ja": "味方全員の攻撃速度+10、敵全員の攻撃速度-10",
-		"tooltip_en": "All friendly units have +10 ASPD, all enemy units have -10 ASPD"
+		"tooltip": {
+			"zh": "所有我方单位的攻击速度+10，所有敌方单位的攻击速度-10",
+			"ja": "味方全員の攻撃速度+10、敵全員の攻撃速度-10",
+			"en": "All friendly units have +10 ASPD, all enemy units have -10 ASPD"
+		}
 	},
 	{
 		"id": "rogue_2_relic_curse_2",
-		"name_zh": "海神的代谢",
-		"name_ja": "海神の代謝物",
-		"name_en": "Leviathan's Anabolism",
+		"name": {
+			"zh": "海神的代谢",
+			"ja": "海神の代謝物",
+			"en": "Leviathan's Anabolism"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 1.25, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.25,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌人生命值+25%",
-		"tooltip_ja": "敵全員の最大HP+25%",
-		"tooltip_en": "All enemies gain +25% HP"
+		"tooltip": {
+			"zh": "所有敌人生命值+25%",
+			"ja": "敵全員の最大HP+25%",
+			"en": "All enemies gain +25% HP"
+		}
 	},
 	{
 		"id": "rogue_2_relic_curse_10",
-		"name_zh": "深蓝之树",
-		"name_ja": "紺碧の樹",
-		"name_en": "Caerula Arbor",
+		"name": {
+			"zh": "深蓝之树",
+			"ja": "紺碧の樹",
+			"en": "Caerula Arbor"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "aspd", "value": 15, "mode": "add" }]
+				"mods": [
+					{
+						"key": "aspd",
+						"value": 15,
+						"mode": "add"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌人攻击速度+15；每次作战若未损失目标生命，战斗结束后灯火+15",
-		"tooltip_ja": "全ての敵ユニットの攻撃速度+15。作戦中に耐久値が減少していない場合、戦闘終了後に灯火+15",
-		"tooltip_en": "Enemy ASPD +15; at the end of operation, if no Life Point is lost, gain +15 Light"
+		"tooltip": {
+			"zh": "所有敌人攻击速度+15；每次作战若未损失目标生命，战斗结束后灯火+15",
+			"ja": "全ての敵ユニットの攻撃速度+15。作戦中に耐久値が減少していない場合、戦闘終了後に灯火+15",
+			"en": "Enemy ASPD +15; at the end of operation, if no Life Point is lost, gain +15 Light"
+		}
 	}
 ]

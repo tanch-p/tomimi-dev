@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { get, writable } from 'svelte/store';
+import { get } from 'svelte/store';
 import {
 	buildWaveScenario,
 	compileHiddenGroups,
@@ -10,6 +10,7 @@ import {
 import stageData from '../lib/data/stages/ro_stage_data/ro6/level_rogue6_1-1.json' with { type: 'json' };
 import type { MapConfig, WaveAction } from '$lib/types';
 import relicsBlack from '$lib/data/is/black/relics.json';
+import { createRelicSelectionStore } from '$lib/functions/relicSelection';
 
 describe('black relic options', () => {
 	it.each([
@@ -17,16 +18,14 @@ describe('black relic options', () => {
 		['shadvr', 'rogue_6_relic_final_7']
 	])('keeps %s and its relic selected together', (key, relicId) => {
 		const unrelatedRelic = relicsBlack.find((relic) => relic.id !== relicId)!;
-		const relics = writable([unrelatedRelic]);
+		const relics = createRelicSelectionStore(relicsBlack);
+		relics.ensureSelected(unrelatedRelic.id);
 		const groups = handleOptionsUpdate([], key, 'rogue_black', 0, { relics });
 		expect(groups).toContain(key);
-		expect(get(relics)).toEqual([
-			unrelatedRelic,
-			relicsBlack.find((relic) => relic.id === relicId)
-		]);
+		expect(get(relics).map((entry) => entry.id)).toEqual([unrelatedRelic.id, relicId]);
 
 		expect(handleOptionsUpdate(groups, key, 'rogue_black', 0, { relics })).not.toContain(key);
-		expect(get(relics)).toEqual([unrelatedRelic]);
+		expect(get(relics)).toEqual([{ id: unrelatedRelic.id, stageIndex: 0 }]);
 	});
 
 	it.each([
@@ -34,8 +33,13 @@ describe('black relic options', () => {
 		['shadvr', 'rogue_6_relic_final_7']
 	])('selects %s from relic effects and lets the option deselect it', (key, relicId) => {
 		const relic = relicsBlack.find((item) => item.id === relicId)!;
-		const relics = writable([relic]);
-		const specialMods = { system: relic.effects.flatMap((effect) => effect.mods) };
+		const relics = createRelicSelectionStore(relicsBlack);
+		relics.ensureSelected(relic.id);
+		const specialMods = {
+			system: get(relics.resolved).flatMap((entry) =>
+				entry.effects.flatMap((effect) => effect.mods ?? [])
+			)
+		};
 		expect(compileHiddenGroups([], false, {}, 'rogue_black', specialMods)).toContain(key);
 		expect(handleOptionsUpdate([], key, 'rogue_black', 0, { relics })).not.toContain(key);
 		expect(get(relics)).toEqual([]);

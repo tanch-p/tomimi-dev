@@ -23,7 +23,6 @@
 	import StageSharedContainer from '$lib/components/StageSharedContainer.svelte';
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 	import StageVariantSelector from '$lib/components/StageVariantSelector.svelte';
-	import suiRelics from '$lib/data/is/sui/relics_sui.json';
 
 	interface Props {
 		data: PageData;
@@ -83,7 +82,6 @@
 			variants={data.stageData.data}
 			bind:selectedIndex={configIndex}
 			{selectedRelics}
-			relicsList={suiRelics}
 		/>
 		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}
 		></StageInfo>

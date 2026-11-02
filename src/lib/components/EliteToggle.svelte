@@ -3,8 +3,8 @@
 	import emergency_icon from '$lib/images/is/emergency_icon.webp';
 	import blackCombatIcon from '$lib/images/is/black/icon_battle_normal.webp';
 	import blackEliteIcon from '$lib/images/is/black/icon_battle_elite.webp';
-	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
-	import { relicLookup } from '$lib/data/is/relic_lookup';
+	import type { RelicSelectionStore } from '$lib/functions/relicSelection';
+	import { getRelicImagePath } from '$lib/data/is/relicImages';
 	import { getEliteColors } from '$lib/functions/stageHelpers';
 	import MediaQuery from './MediaQuery.svelte';
 	import EliteToggleBar from './EliteToggleBar.svelte';
@@ -15,7 +15,7 @@
 		mapNormalMods: any;
 		rogueTopic: string;
 		runes: any;
-		selectedRelics: any;
+		selectedRelics: RelicSelectionStore;
 		stageId: string;
 		eliteMode: any;
 		inWaveOptions?: boolean;
@@ -52,12 +52,7 @@
 						if (stageId === 'level_rogue4_b-8') {
 							relicId = 'rogue_4_relic_final_10';
 						}
-						if (relicId) {
-							if (!$selectedRelics.find((item) => item.id === relicId)) {
-								const relic = skzRelics.find((item) => item.id === relicId);
-								selectedRelics.set([...$selectedRelics, relic]);
-							}
-						}
+						if (relicId) selectedRelics.ensureSelected(relicId);
 					}
 					break;
 			}
@@ -75,10 +70,10 @@
 
 	function getEliteIcon(stageId: string) {
 		if (ro4_SP7_BOSS_STAGES.includes(stageId)) {
-			return `/images/relics/${relicLookup['rogue_4_relic_final_6']}.webp`;
+			return getRelicImagePath('rogue_4_relic_final_6');
 		}
 		if (stageId === 'level_rogue4_b-8') {
-			return `/images/relics/${relicLookup['rogue_4_relic_final_10']}.webp`;
+			return getRelicImagePath('rogue_4_relic_final_10');
 		}
 		if (rogueTopic === 'rogue_black') {
 			return blackEliteIcon;

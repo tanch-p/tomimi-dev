@@ -1,3 +1,5 @@
+import { createRelicSelectionStore } from '$lib/functions/relicSelection';
+import { relicCatalogs } from '$lib/data/is/relicCatalog';
 import { writable, derived } from 'svelte/store';
 import difficultyModsList from '$lib/data/is/mizuki/difficulty_mods_mizuki.json';
 import { browser } from '$app/environment';
@@ -9,7 +11,8 @@ let storedDifficulty = 0;
 if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('difficulty') ?? '0');
 }
-export const selectedRelics = writable([]);
+export const selectedRelics = createRelicSelectionStore(relicCatalogs.rogue_mizuki);
+const resolvedRelics = selectedRelics.resolved;
 export const difficulty = writable(storedDifficulty);
 const difficultyMods = derived([difficulty], ([$difficulty]) =>
 	difficultyModsList
@@ -56,7 +59,7 @@ const otherMods = derived([otherBuffsList], ([$otherBuffsList]) =>
 
 export const statMods = derived(
 	[
-		selectedRelics,
+		resolvedRelics,
 		floorDifficultyMods,
 		eliteMode,
 		runes,
@@ -67,7 +70,7 @@ export const statMods = derived(
 		allMods
 	],
 	([
-		$selectedRelics,
+		$resolvedRelics,
 		$floorDifficultyMods,
 		$eliteMode,
 		$runes,
@@ -77,7 +80,7 @@ export const statMods = derived(
 		$otherMods,
 		$allMods
 	]) => {
-		const relicMods = $selectedRelics.map((relic) => {
+		const relicMods = $resolvedRelics.map((relic) => {
 			return {
 				key: relic.id,
 				mods: [relic.effects]
@@ -102,10 +105,10 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[selectedRelics, runes, allMods],
-	([$selectedRelics, $runes, $allMods]) =>
+	[resolvedRelics, runes, allMods],
+	([$resolvedRelics, $runes, $allMods]) =>
 		compileSpecialMods(
-			$selectedRelics.map((relic) => relic.effects),
+			$resolvedRelics.map((relic) => relic.effects),
 			[$runes, $allMods]
 		)
 );

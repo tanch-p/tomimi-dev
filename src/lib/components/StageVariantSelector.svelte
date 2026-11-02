@@ -5,9 +5,8 @@
 	import type { Language } from '$lib/types';
 	import { page } from '$app/state';
 	import { getIconPath } from '$lib/functions/stageHelpers';
-	import type { Writable } from 'svelte/store';
+	import type { RelicSelectionStore } from '$lib/functions/relicSelection';
 
-	type Relic = { id: string; stages?: unknown[]; count?: number };
 	const variantDisplay = stageVariantDisplay as Record<
 		string,
 		{ icons?: Parameters<typeof getIconPath>[0][]; label?: Partial<Record<Language, string>> }
@@ -16,25 +15,18 @@
 	interface Props {
 		variants: any;
 		selectedIndex?: number;
-		selectedRelics: Writable<any[]>;
-		relicsList: Relic[];
+		selectedRelics: RelicSelectionStore;
 	}
 
-	let { variants, selectedIndex = $bindable(0), selectedRelics, relicsList }: Props = $props();
+	let { variants, selectedIndex = $bindable(0), selectedRelics }: Props = $props();
 
 	let language: Language = $derived(page.data.language);
 
 	function selectVariant(index: number) {
 		const icons = variantDisplay[variants[index].levelId]?.icons ?? [];
-		selectedRelics.update((selected) => {
-			const next = [...selected];
-			for (const icon of icons) {
-				if (icon.type !== 'relic' || next.some((relic) => relic.id === icon.id)) continue;
-				const relic = relicsList.find((relic) => relic.id === icon.id);
-				if (relic) next.push(relic.stages ? { ...relic, count: 1 } : relic);
-			}
-			return next.length === selected.length ? selected : next;
-		});
+		selectedRelics.ensureSelected(
+			icons.filter((icon) => icon.type === 'relic').map((icon) => icon.id)
+		);
 		selectedIndex = index;
 	}
 </script>

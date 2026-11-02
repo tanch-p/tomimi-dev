@@ -1,11 +1,13 @@
+import { getRelicImagePath } from '$lib/data/is/relicImages';
 import type { Language, MapConfig, RogueTopic, Wave, WaveAction, WaveFragment } from '$lib/types';
 import fragments from '$lib/data/is/sarkaz/fragments.json';
 import f27 from '$lib/images/is/sarkaz/rogue_4_fragment_F_27.webp';
 import f28 from '$lib/images/is/sarkaz/rogue_4_fragment_F_28.webp';
 import calamity from '$lib/images/is/sarkaz/rogue_4_disaster_1_toast.webp';
 import disasters from '$lib/data/is/sarkaz/disasters.json';
-import relicsSui from '$lib/data/is/sui/relics_sui.json';
-import relicsBlack from '$lib/data/is/black/relics.json';
+import { get } from 'svelte/store';
+import type { Writable } from 'svelte/store';
+import type { RelicSelectionStore } from './relicSelection';
 import enemyDatabase from '$lib/data/enemy/enemy_database.json';
 
 const ALWAYS_KILLED_KEYS = [
@@ -122,7 +124,7 @@ export const getOptions = (
 					},
 					{
 						key: 'bossrelic',
-						src: '/images/relics/relic_routeweave_net.webp',
+						src: getRelicImagePath('rogue_3_relic_boss_2b'),
 						name: { zh: '路网', ja: '導きの網織', en: 'Routeweave Net' }[language]
 					}
 				]
@@ -179,12 +181,12 @@ export const getOptions = (
 				...[
 					{
 						key: 'copper_b',
-						src: '/images/relics/rogue_5_relic_final_3.webp',
+						src: getRelicImagePath('rogue_5_relic_final_3'),
 						name: { zh: '隐蝶墨', ja: '隠蝶墨', en: 'Ink of the Hidden Butterfly' }[language]
 					},
 					{
 						key: 'copper_r',
-						src: '/images/relics/rogue_5_copper_S_1.webp',
+						src: getRelicImagePath('rogue_5_copper_S_1'),
 						name: { zh: '花-鸭爵金币', ja: '鴨爵の金幣', en: 'Duck Coin' }[language]
 					}
 				]
@@ -194,12 +196,12 @@ export const getOptions = (
 			options.push(
 				{
 					key: 'shadvr2',
-					src: '/images/relics/rogue_6_relic_final_9.webp',
+					src: getRelicImagePath('rogue_6_relic_final_9'),
 					name: '破碎噩兆'
 				},
 				{
 					key: 'shadvr',
-					src: '/images/relics/rogue_6_relic_final_7.webp',
+					src: getRelicImagePath('rogue_6_relic_final_7'),
 					name: '谒日之祈'
 				}
 			);
@@ -208,25 +210,27 @@ export const getOptions = (
 	return options;
 };
 
+type WaveOptionStores = {
+	relics?: RelicSelectionStore;
+	disaster?: Writable<any[]>;
+	eliteMode?: Writable<boolean>;
+};
+
 export const handleOptionsUpdate = (
-	hiddenGroups,
-	key,
+	hiddenGroups: string[],
+	key: string,
 	rogueTopic: RogueTopic,
 	difficulty: number,
-	otherStores
+	otherStores: WaveOptionStores
 ) => {
 	const fragmentKeys = ['hidden_door', 'hidden_window', 'box_1', 'box_3'];
 	if (rogueTopic === 'rogue_black' && ['shadvr2', 'shadvr'].includes(key)) {
 		const relicId = key === 'shadvr2' ? 'rogue_6_relic_final_9' : 'rogue_6_relic_final_7';
-		const relic = relicsBlack.find((item) => item.id === relicId);
-		otherStores.relics.update((list) => {
-			if (list.some((item) => item.id === relicId)) {
-				hiddenGroups = hiddenGroups.filter((group) => group !== key);
-				return list.filter((item) => item.id !== relicId);
-			}
-			hiddenGroups = [...hiddenGroups.filter((group) => group !== key), key];
-			return [...list, relic];
-		});
+		const relics = otherStores.relics!;
+		relics.toggle(relicId);
+		const selected = get(relics).some((item) => item.id === relicId);
+		hiddenGroups = hiddenGroups.filter((group) => group !== key);
+		if (selected) hiddenGroups = [...hiddenGroups, key];
 		return hiddenGroups;
 	}
 	if (rogueTopic === 'rogue_skz' && key === 'calamity') {
@@ -234,7 +238,7 @@ export const handleOptionsUpdate = (
 		const effect = disasters.find(
 			(ele) => ele.iconId === 'rogue_4_disaster_1' && ele.level === level
 		);
-		otherStores.disaster.update((list) => {
+		otherStores.disaster!.update((list) => {
 			if (list.find((ele) => ele.id === effect.id)) {
 				list = [];
 			} else {
@@ -244,19 +248,11 @@ export const handleOptionsUpdate = (
 		});
 	}
 	if (rogueTopic === 'rogue_yan' && key === 'copper_r') {
-		const effect = relicsSui.find((item) => item.id === 'rogue_5_copper_S_1');
-		otherStores.relics.update((list) => {
-			if (list.find((ele) => ele.id === effect.id)) {
-				list = list.filter((item) => item.id !== effect.id);
-			} else {
-				list = [...list, effect];
-			}
-			return list;
-		});
+		otherStores.relics!.toggle('rogue_5_copper_S_1');
 	}
 	if (rogueTopic === 'rogue_phantom' && key === 'extra') {
 		if (!hiddenGroups.includes(key)) {
-			otherStores.eliteMode.set(true);
+			otherStores.eliteMode!.set(true);
 		}
 	}
 	switch (rogueTopic) {
@@ -968,6 +964,9 @@ export const compileHiddenGroups = (
 	if (rogueTopic === 'rogue_black') {
 		// These options follow relic effects, including when relics are removed outside the wave panel.
 		groups = groups.filter((group) => !['shadvr2', 'shadvr'].includes(group));
+	}
+	if (rogueTopic === 'rogue_yan') {
+		groups = groups.filter((group) => group !== 'copper_r');
 	}
 	const finalGroups = enabledGroups.filter((group) => !disabledGroups.includes(group));
 	if (rogueTopic !== 'rogue_black') {

@@ -1,3 +1,5 @@
+import { createRelicSelectionStore } from '$lib/functions/relicSelection';
+import { relicCatalogs, phantomHardRelics } from '$lib/data/is/relicCatalog';
 import difficultyModsList from '$lib/data/is/phantom/difficulty_mods_phantom.json';
 import { consolidateOtherMods } from '$lib/functions/buffHelpers';
 import { compileSpecialMods } from '$lib/functions/statHelpers';
@@ -9,7 +11,8 @@ let storedDifficulty = 0;
 if (browser && cookiesEnabled) {
 	storedDifficulty = parseInt(localStorage.getItem('phantom_difficulty') ?? '0');
 }
-export const selectedRelics = writable([]);
+export const selectedRelics = createRelicSelectionStore(relicCatalogs.rogue_phantom);
+const resolvedRelics = selectedRelics.resolved;
 export const difficulty = writable(storedDifficulty);
 const difficultyMods = derived([difficulty], ([$difficulty]) =>
 	difficultyModsList
@@ -29,7 +32,10 @@ const diff10Mods = [
 export const eliteMode = writable(false);
 export const runes = writable(null);
 export const allMods = writable(null);
-export const selectedUniqueRelic = writable(null);
+export const selectedUniqueRelic = createRelicSelectionStore(phantomHardRelics, {
+	exclusive: true
+});
+const resolvedUniqueRelics = selectedUniqueRelic.resolved;
 export const selectedFloor = writable(1);
 export const activeFloorEffects = writable([]);
 export const otherBuffsList = writable([]);
@@ -46,9 +52,9 @@ export const diff10ModifierStore = derived(
 
 export const statMods = derived(
 	[
-		selectedRelics,
+		resolvedRelics,
 		difficultyMods,
-		selectedUniqueRelic,
+		resolvedUniqueRelics,
 		diff10ModifierStore,
 		eliteMode,
 		runes,
@@ -58,9 +64,9 @@ export const statMods = derived(
 		allMods
 	],
 	([
-		$selectedRelics,
+		$resolvedRelics,
 		$difficultyMods,
-		$selectedUniqueRelic,
+		$resolvedUniqueRelics,
 		$diff10Modifier,
 		$eliteMode,
 		$runes,
@@ -70,23 +76,16 @@ export const statMods = derived(
 		$allMods
 	]) => {
 		const relicMods = [
-			...$selectedRelics.map((relic) => {
+			...$resolvedRelics.map((relic) => {
 				return {
 					key: relic.id,
 					mods: [relic.effects]
 				};
 			})
 		];
-		if ($selectedUniqueRelic) {
-			relicMods.push({
-				key: $selectedUniqueRelic.id,
-				mods: [
-					$selectedUniqueRelic.stages
-						? $selectedUniqueRelic?.stages?.[$selectedUniqueRelic.count]?.effects
-						: $selectedUniqueRelic.effects
-				]
-			});
-		}
+		relicMods.push(
+			...$resolvedUniqueRelics.map((relic) => ({ key: relic.id, mods: [relic.effects] }))
+		);
 		return {
 			runes: { key: $eliteMode ? 'elite_ops' : 'combat_ops', mods: [$runes, $allMods] },
 			diff: { key: 'difficulty', mods: $difficultyMods, stackType: 'mul' },
@@ -113,10 +112,10 @@ export const statMods = derived(
 );
 
 export const specialMods = derived(
-	[selectedRelics, runes, allMods, activeFloorEffects],
-	([$selectedRelics, $runes, $allMods, $activeFloorEffects]) =>
+	[resolvedRelics, resolvedUniqueRelics, runes, allMods, activeFloorEffects],
+	([$resolvedRelics, $resolvedUniqueRelics, $runes, $allMods, $activeFloorEffects]) =>
 		compileSpecialMods(
-			$selectedRelics.map((relic) => relic.effects),
+			[...$resolvedRelics, ...$resolvedUniqueRelics].map((relic) => relic.effects),
 			[$runes, $allMods],
 			$activeFloorEffects.map((ele) => ele.effects)
 		)

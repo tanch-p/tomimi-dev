@@ -1,60 +1,68 @@
 [
 	{
-        "id": "rogue_5_relic_final_9",
-        "name_zh": "不赦",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "exclude:enemy_1196_msfyin|enemy_1196_msfyin_2|enemy_1198_msfshu|enemy_1198_msfshu_2|enemy_1200_msfjin|enemy_1200_msfjin_2|enemy_1202_msfzhi|enemy_1202_msfzhi_2|enemy_1204_msfhu|enemy_1204_msfhu_2|enemy_1206_msfpin|enemy_1206_msfpin_2|enemy_1208_msfji|enemy_1208_msfji_2|enemy_1210_msfden|enemy_1210_msfden_2|enemy_10059_cjgfod|enemy_10060_cjbfod|enemy_2121_dyspl2|enemy_2101_dyspll"
-                ],
-                "mods": [
-                    {
-                        "key": "hp",
-                        "value": 1.5,
-                        "mode": "mul"
-                    },
-                   {
-                        "key": "def",
-                        "value": 1.5,
-                        "mode": "mul"
-                    }
-                ]
-            }
-        ],
-        "tooltip_zh": "所有敌方单位的生命值、防御力+50％，使“宿傲”和部分“身形”获得持续召唤敌人的能力",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
-    {
-        "id": "rogue_5_relic_final_10",
-        "name_zh": "不息",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [
-            {
-                "targets": [
-                    "ALL"
-                ],
-                "mods": [
-                    {
-                        "key": "atk",
-                        "value": 1.3,
-                        "mode": "mul"
-                    }
-                ]
-            }
-        ],
-        "tooltip_zh": "所有敌方单位的攻击力+30％；【伺烛客】及其召唤物在非岁兽残识作战时攻击力、生命值-10％，每进入新的一层，额外-10％。进入“来去处”时，额外-50％",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    },
+		"id": "rogue_5_relic_final_9",
+		"name": {
+			"zh": "不赦",
+			"ja": "",
+			"en": ""
+		},
+		"effects": [
+			{
+				"targets": [
+					"exclude:enemy_1196_msfyin|enemy_1196_msfyin_2|enemy_1198_msfshu|enemy_1198_msfshu_2|enemy_1200_msfjin|enemy_1200_msfjin_2|enemy_1202_msfzhi|enemy_1202_msfzhi_2|enemy_1204_msfhu|enemy_1204_msfhu_2|enemy_1206_msfpin|enemy_1206_msfpin_2|enemy_1208_msfji|enemy_1208_msfji_2|enemy_1210_msfden|enemy_1210_msfden_2|enemy_10059_cjgfod|enemy_10060_cjbfod|enemy_2121_dyspl2|enemy_2101_dyspll"
+				],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 1.5,
+						"mode": "mul"
+					},
+					{
+						"key": "def",
+						"value": 1.5,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "所有敌方单位的生命值、防御力+50％，使“宿傲”和部分“身形”获得持续召唤敌人的能力",
+			"ja": "",
+			"en": ""
+		}
+	},
+	{
+		"id": "rogue_5_relic_final_10",
+		"name": {
+			"zh": "不息",
+			"ja": "",
+			"en": ""
+		},
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "atk",
+						"value": 1.3,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力+30％；【伺烛客】及其召唤物在非岁兽残识作战时攻击力、生命值-10％，每进入新的一层，额外-10％。进入“来去处”时，额外-50％",
+			"ja": "",
+			"en": ""
+		}
+	},
 	{
 		"id": "rogue_5_relic_final_5",
-		"name_zh": "无封长盒",
-		"name_ja": "",
-		"name_en": "",
+		"name": {
+			"zh": "无封长盒",
+			"ja": "",
+			"en": ""
+		},
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -72,30 +80,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "领袖与精英敌人防御力+30%，攻击速度+20，关卡结束时每有一个仍在场的雕伥，失去1目标生命值（不会低于1），在先行一步中有奇妙的作用",
-		"tooltip_ja": "",
-		"tooltip_en": ""
-	},
-	{
-		"id": "rogue_5_relic_legacy_37",
-		"name_zh": "重力蔑视机关",
-		"name_ja": "重力蔑視装置",
-		"name_en": "Gravity Defying Machine",
-		"effects": [
-			{
-				"targets": ["ALL"],
-				"mods": [{ "key": "weight", "value": -2, "mode": "add" }]
-			}
-		],
-		"tooltip_zh": "所有敌人重量-2",
-		"tooltip_ja": "全ての敵の重量ランク-2",
-		"tooltip_en": "All enemies have -2 Weight"
+		"tooltip": {
+			"zh": "领袖与精英敌人防御力+30%，攻击速度+20，关卡结束时每有一个仍在场的雕伥，失去1目标生命值（不会低于1），在先行一步中有奇妙的作用",
+			"ja": "",
+			"en": ""
+		}
 	},
 	{
 		"id": "rogue_5_relic_legacy_88",
-		"name_zh": "残破合影",
-		"name_ja": "古びた写真",
-		"name_en": "Worn-out Group Photo",
+		"name": {
+			"zh": "残破合影",
+			"ja": "古びた写真",
+			"en": "Worn-out Group Photo"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -113,15 +110,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-4%，防御力-8%",
-		"tooltip_ja": "敵全員の最大HP-4%、防御力-8%",
-		"tooltip_en": "All enemy units have -4% HP and -8% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-4%，防御力-8%",
+			"ja": "敵全員の最大HP-4%、防御力-8%",
+			"en": "All enemy units have -4% HP and -8% DEF."
+		}
 	},
 	{
 		"id": "rogue_5_relic_legacy_89",
-		"name_zh": "迷迭香之拥",
-		"name_ja": "ロスモンティスの抱擁",
-		"name_en": "Rosmontis's Embrace",
+		"name": {
+			"zh": "迷迭香之拥",
+			"ja": "ロスモンティスの抱擁",
+			"en": "Rosmontis's Embrace"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -139,15 +140,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-10%，防御力-20%",
-		"tooltip_ja": "敵全員の最大HP-10%、防御力-20%",
-		"tooltip_en": "All enemy units have -10% HP and -20% DEF."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-10%，防御力-20%",
+			"ja": "敵全員の最大HP-10%、防御力-20%",
+			"en": "All enemy units have -10% HP and -20% DEF."
+		}
 	},
 	{
 		"id": "rogue_5_relic_legacy_90",
-		"name_zh": "“黑夜呢喃”",
-		"name_ja": "「闇に囁くもの」",
-		"name_en": "'The Whisperer in Darknight'",
+		"name": {
+			"zh": "“黑夜呢喃”",
+			"ja": "「闇に囁くもの」",
+			"en": "'The Whisperer in Darknight'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -160,30 +165,44 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-10%",
-		"tooltip_ja": "敵全員の最大HP-10%",
-		"tooltip_en": "All enemy units have -10% HP"
+		"tooltip": {
+			"zh": "所有敌方单位的生命-10%",
+			"ja": "敵全員の最大HP-10%",
+			"en": "All enemy units have -10% HP"
+		}
 	},
 	{
 		"id": "rogue_5_relic_legacy_91",
-		"name_zh": "《大静谧》",
-		"name_ja": "『大いなる静謐』",
-		"name_en": "‘Profound Silence'",
+		"name": {
+			"zh": "《大静谧》",
+			"ja": "『大いなる静謐』",
+			"en": "‘Profound Silence'"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "hp", "value": 0.8, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "hp",
+						"value": 0.8,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的生命-20%",
-		"tooltip_ja": "敵全員の最大HP-20%",
-		"tooltip_en": "All enemy units have -20% HP."
+		"tooltip": {
+			"zh": "所有敌方单位的生命-20%",
+			"ja": "敵全員の最大HP-20%",
+			"en": "All enemy units have -20% HP."
+		}
 	},
 	{
 		"id": "rogue_5_relic_return_12",
-		"name_zh": "教母的信物",
-		"name_ja": "教母の印",
-		"name_en": "Godmother's Token",
+		"name": {
+			"zh": "教母的信物",
+			"ja": "教母の印",
+			"en": "Godmother's Token"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -196,30 +215,44 @@
 				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-17%",
-		"tooltip_ja": "敵全員の攻撃力-17%",
-		"tooltip_en": "All enemy units have -17% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-17%",
+			"ja": "敵全員の攻撃力-17%",
+			"en": "All enemy units have -17% ATK."
+		}
 	},
 	{
 		"id": "rogue_5_relic_return_13",
-		"name_zh": "开裂的束缚带",
-		"name_ja": "裂けた拘束ベルト",
-		"name_en": "Fissured Restraints",
+		"name": {
+			"zh": "开裂的束缚带",
+			"ja": "裂けた拘束ベルト",
+			"en": "Fissured Restraints"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 0.93, "mode": "mul" }]
+				"mods": [
+					{
+						"key": "atk",
+						"value": 0.93,
+						"mode": "mul"
+					}
+				]
 			}
 		],
-		"tooltip_zh": "所有敌方单位的攻击力-7%",
-		"tooltip_ja": "敵全員の攻撃力-7%",
-		"tooltip_en": "All enemy units have -7% ATK."
+		"tooltip": {
+			"zh": "所有敌方单位的攻击力-7%",
+			"ja": "敵全員の攻撃力-7%",
+			"en": "All enemy units have -7% ATK."
+		}
 	},
 	{
 		"id": "rogue_5_copper_B_02",
-		"name_zh": "厉-西廉贞",
-		"name_ja": "西の廉貞",
-		"name_en": "Risk: West Lianzhen Mt.",
+		"name": {
+			"zh": "厉-西廉贞",
+			"ja": "西の廉貞",
+			"en": "Risk: West Lianzhen Mt."
+		},
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -358,15 +391,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，精英及领袖敌人的生命值、攻击力+10%，在险路恶敌及岁兽残识中攻击力、生命值额外+20％",
-		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の最大HP・攻撃力+10%。【悪路凶敵】及び【歳獣の残識】では追加で+20%",
-		"tooltip_en": "Elite and boss enemies have +20% HP and ATK, and an additional 20% in Sui's Remnant Consciousness and Dreadful Foes"
+		"tooltip": {
+			"zh": "投出时，精英及领袖敌人的生命值、攻击力+10%，在险路恶敌及岁兽残识中攻击力、生命值额外+20％",
+			"ja": "振り出されると、敵【エリート】・【ボス】の最大HP・攻撃力+10%。【悪路凶敵】及び【歳獣の残識】では追加で+20%",
+			"en": "Elite and boss enemies have +20% HP and ATK, and an additional 20% in Sui's Remnant Consciousness and Dreadful Foes"
+		}
 	},
 	{
 		"id": "rogue_5_copper_B_03",
-		"name_zh": "厉-北刺面",
-		"name_ja": "北の刺面",
-		"name_en": "Risk: Northern Sting",
+		"name": {
+			"zh": "厉-北刺面",
+			"ja": "北の刺面",
+			"en": "Risk: Northern Sting"
+		},
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -465,15 +502,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，精英及领袖敌人的移动速度+10%，在险路恶敌及岁兽残识中移动速度额外+20％",
-		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の移動速度+10%、【悪路凶敵】及び【歳獣の残識】では追加で+20%",
-		"tooltip_en": "Elite and boss enemies have +10% MSPD and an additional 20% in Sui's Remnant Consciousness and Dreadful Foes"
+		"tooltip": {
+			"zh": "投出时，精英及领袖敌人的移动速度+10%，在险路恶敌及岁兽残识中移动速度额外+20％",
+			"ja": "振り出されると、敵【エリート】・【ボス】の移動速度+10%、【悪路凶敵】及び【歳獣の残識】では追加で+20%",
+			"en": "Elite and boss enemies have +10% MSPD and an additional 20% in Sui's Remnant Consciousness and Dreadful Foes"
+		}
 	},
 	{
 		"id": "rogue_5_copper_B_04",
-		"name_zh": "厉-南见山",
-		"name_ja": "南に山を見る",
-		"name_en": "Risk: Southern Mounts",
+		"name": {
+			"zh": "厉-南见山",
+			"ja": "南に山を見る",
+			"en": "Risk: Southern Mounts"
+		},
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -572,15 +613,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，精英及领袖敌人的防御力+15%，在险路恶敌及岁兽残识中防御力额外+35％",
-		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の防御力+15%。【悪路凶敵】及び【歳獣の残識】では追加で+35%",
-		"tooltip_en": "Elite and Boss enemies have +15% DEF and an additional +35% in Sui's Remnant Consciousness and Dreadful Foes"
+		"tooltip": {
+			"zh": "投出时，精英及领袖敌人的防御力+15%，在险路恶敌及岁兽残识中防御力额外+35％",
+			"ja": "振り出されると、敵【エリート】・【ボス】の防御力+15%。【悪路凶敵】及び【歳獣の残識】では追加で+35%",
+			"en": "Elite and Boss enemies have +15% DEF and an additional +35% in Sui's Remnant Consciousness and Dreadful Foes"
+		}
 	},
 	{
 		"id": "rogue_5_copper_B_05",
-		"name_zh": "厉-东缺角",
-		"name_ja": "東の欠角",
-		"name_en": "Risk: Eastern Gap",
+		"name": {
+			"zh": "厉-东缺角",
+			"ja": "東の欠角",
+			"en": "Risk: Eastern Gap"
+		},
 		"effects": [
 			{
 				"targets": ["ELITE", "BOSS"],
@@ -679,15 +724,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，精英及领袖敌人的法术抗性+10，在险路恶敌及岁兽残识中法术抗性额外+20",
-		"tooltip_ja": "振り出されると、敵【エリート】・【ボス】の術耐性+10。【悪路凶敵】及び【歳獣の残識】では追加で+20",
-		"tooltip_en": "Elite and boss enemies have +10 RES and an additional +20 in Sui's Remnant Consciousness and Dreadful Foes"
+		"tooltip": {
+			"zh": "投出时，精英及领袖敌人的法术抗性+10，在险路恶敌及岁兽残识中法术抗性额外+20",
+			"ja": "振り出されると、敵【エリート】・【ボス】の術耐性+10。【悪路凶敵】及び【歳獣の残識】では追加で+20",
+			"en": "Elite and boss enemies have +10 RES and an additional +20 in Sui's Remnant Consciousness and Dreadful Foes"
+		}
 	},
 	{
 		"id": "rogue_5_copper_B_10",
-		"name_zh": "衡-投木炎延",
-		"name_ja": "投木炎延",
-		"name_en": "Bal: Wood Feeds Flame",
+		"name": {
+			"zh": "衡-投木炎延",
+			"ja": "投木炎延",
+			"en": "Bal: Wood Feeds Flame"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -742,15 +791,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有敌人最大生命值-30%。（下次投钱前变化为-大炎通宝）",
-		"tooltip_ja": "振り出されると、全ての敵の最大HP-30%（次の振り銭時に「大炎通宝」に変化する）",
-		"tooltip_en": "Enemies have -30% HP but turns into a Dayan Tongbao before the next coin toss"
+		"tooltip": {
+			"zh": "投出时，所有敌人最大生命值-30%。（下次投钱前变化为-大炎通宝）",
+			"ja": "振り出されると、全ての敵の最大HP-30%（次の振り銭時に「大炎通宝」に変化する）",
+			"en": "Enemies have -30% HP but turns into a Dayan Tongbao before the next coin toss"
+		}
 	},
 	{
 		"id": "rogue_5_copper_F_15",
-		"name_zh": "厉-战血流",
-		"name_ja": "戦にて血流る",
-		"name_en": "Risk: Bloodshed Spill",
+		"name": {
+			"zh": "厉-战血流",
+			"ja": "戦にて血流る",
+			"en": "Risk: Bloodshed Spill"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -763,15 +816,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有敌方单位的最大生命值-45%，我方单位的最大生命值-25%",
-		"tooltip_ja": "振り出されると、全ての敵の最大HP-45%、味方の最大HP-25%",
-		"tooltip_en": "Friendly units have -25% HP but enemies have -45% HP"
+		"tooltip": {
+			"zh": "投出时，所有敌方单位的最大生命值-45%，我方单位的最大生命值-25%",
+			"ja": "振り出されると、全ての敵の最大HP-45%、味方の最大HP-25%",
+			"en": "Friendly units have -25% HP but enemies have -45% HP"
+		}
 	},
 	{
 		"id": "rogue_5_copper_F_16",
-		"name_zh": "厉-遇良弈",
-		"name_ja": "良弈に遇う",
-		"name_en": "Risk: Weiqi Chance",
+		"name": {
+			"zh": "厉-遇良弈",
+			"ja": "良弈に遇う",
+			"en": "Risk: Weiqi Chance"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -784,15 +841,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有敌方单位的攻击力+25%，我方单位的攻击力+60%",
-		"tooltip_ja": "振り出されると、全ての敵の攻撃力+25%、味方の攻撃力+60%",
-		"tooltip_en": "Friendly units have +60% ATK but enemies have +25% ATK"
+		"tooltip": {
+			"zh": "投出时，所有敌方单位的攻击力+25%，我方单位的攻击力+60%",
+			"ja": "振り出されると、全ての敵の攻撃力+25%、味方の攻撃力+60%",
+			"en": "Friendly units have +60% ATK but enemies have +25% ATK"
+		}
 	},
 	{
 		"id": "rogue_5_copper_F_17",
-		"name_zh": "厉-隐市忧",
-		"name_ja": "隠市の憂",
-		"name_en": "Risk: City Concern",
+		"name": {
+			"zh": "厉-隐市忧",
+			"ja": "隠市の憂",
+			"en": "Risk: City Concern"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -805,15 +866,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有我方单位获得55%的物理法术闪避，所有敌人攻击速度+25",
-		"tooltip_ja": "振り出されると、全ての味方の物理・術回避+55%、全ての敵の攻撃速度+25",
-		"tooltip_en": "Friendly units gain 50% Physical/Arts Dodge but enemies have +25 ASPD"
+		"tooltip": {
+			"zh": "投出时，所有我方单位获得55%的物理法术闪避，所有敌人攻击速度+25",
+			"ja": "振り出されると、全ての味方の物理・術回避+55%、全ての敵の攻撃速度+25",
+			"en": "Friendly units gain 50% Physical/Arts Dodge but enemies have +25 ASPD"
+		}
 	},
 	{
 		"id": "rogue_5_copper_F_19",
-		"name_zh": "厉-两江春",
-		"name_ja": "両江の春",
-		"name_en": "Risk: Two-Rivers Spring",
+		"name": {
+			"zh": "厉-两江春",
+			"ja": "両江の春",
+			"en": "Risk: Two-Rivers Spring"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -826,15 +891,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有敌人的最大生命值+50%，但受到阻挡时每秒受到5%当前生命值的法术伤害",
-		"tooltip_ja": "振り出されると、全ての敵の最大HP+50%、代わりにブロックされている間、1秒ごとに残りHPの5%の術ダメージを受ける",
-		"tooltip_en": "Enemies have +50% HP but takes 5% of their maximum HP as Arts damage every second while blocked"
+		"tooltip": {
+			"zh": "投出时，所有敌人的最大生命值+50%，但受到阻挡时每秒受到5%当前生命值的法术伤害",
+			"ja": "振り出されると、全ての敵の最大HP+50%、代わりにブロックされている間、1秒ごとに残りHPの5%の術ダメージを受ける",
+			"en": "Enemies have +50% HP but takes 5% of their maximum HP as Arts damage every second while blocked"
+		}
 	},
 	{
 		"id": "rogue_5_copper_R_09",
-		"name_zh": "厉-黑子伏",
-		"name_ja": "黒石伏す",
-		"name_en": "Risk: Sinister Stealth",
+		"name": {
+			"zh": "厉-黑子伏",
+			"ja": "黒石伏す",
+			"en": "Risk: Sinister Stealth"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -852,15 +921,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "位于钱盒内时，战斗后获得的指挥经验+30%；投出时，所有敌人的移动速度+30%，攻击力+30%。（下次投钱前变化为-大炎通宝）",
-		"tooltip_ja": "銭匣内にある場合、戦闘勝利時の指揮経験値の獲得量+30%。振り出されると、全ての敵の移動速度・攻撃力+30%（次の振り銭時に「大炎通宝」に変化する）",
-		"tooltip_en": "+30% Command EXP accrual while in the Coffer. Enemies have +30% ATK and DEF after being tossed"
+		"tooltip": {
+			"zh": "位于钱盒内时，战斗后获得的指挥经验+30%；投出时，所有敌人的移动速度+30%，攻击力+30%。（下次投钱前变化为-大炎通宝）",
+			"ja": "銭匣内にある場合、戦闘勝利時の指揮経験値の獲得量+30%。振り出されると、全ての敵の移動速度・攻撃力+30%（次の振り銭時に「大炎通宝」に変化する）",
+			"en": "+30% Command EXP accrual while in the Coffer. Enemies have +30% ATK and DEF after being tossed"
+		}
 	},
 	{
 		"id": "rogue_5_copper_U_1",
-		"name_zh": "厉-移山难",
-		"name_ja": "山を移すこと難し",
-		"name_en": "Risk: Moving Mounts Hard",
+		"name": {
+			"zh": "厉-移山难",
+			"ja": "山を移すこと難し",
+			"en": "Risk: Moving Mounts Hard"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -908,15 +981,19 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-100（最多叠加25次），可在筹谋中升级",
-		"tooltip_ja": "振り出されると、全ての敵の防御力+2000、代わりにダメージを受けるたびに防御力-100（最大25回まで重複可能）。【画策】でアップグレード可能",
-		"tooltip_en": "Enemies have +2000 DEF and -100 DEF whenever they take damage (stacks up to 25 times)"
+		"tooltip": {
+			"zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-100（最多叠加25次），可在筹谋中升级",
+			"ja": "振り出されると、全ての敵の防御力+2000、代わりにダメージを受けるたびに防御力-100（最大25回まで重複可能）。【画策】でアップグレード可能",
+			"en": "Enemies have +2000 DEF and -100 DEF whenever they take damage (stacks up to 25 times)"
+		}
 	},
 	{
 		"id": "rogue_5_copper_U_2",
-		"name_zh": "衡-移山繁",
-		"name_ja": "山を移すこと繁わし",
-		"name_en": "Bal: Moving Mounts",
+		"name": {
+			"zh": "衡-移山繁",
+			"ja": "山を移すこと繁わし",
+			"en": "Bal: Moving Mounts"
+		},
 		"effects": [
 			{
 				"targets": ["ALL"],
@@ -996,15 +1073,45 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-150（最多叠加25次）",
-		"tooltip_ja": "振り出されると、全ての敵の防御力+2000、代わりにダメージを受けるたびに防御力-150（最大25回まで重複可能）",
-		"tooltip_en": "Enemies have +2000 DEF and -150 DEF whenever they take damage (stacks up to 25 times)"
+		"tooltip": {
+			"zh": "投出时，所有敌方单位防御力+2000，但每次受到伤害时防御力-150（最多叠加25次）",
+			"ja": "振り出されると、全ての敵の防御力+2000、代わりにダメージを受けるたびに防御力-150（最大25回まで重複可能）",
+			"en": "Enemies have +2000 DEF and -150 DEF whenever they take damage (stacks up to 25 times)"
+		}
+	},
+	{
+		"id": "rogue_5_copper_R_05",
+		"name": {
+			"zh": "厉-安硕鼷",
+			"ja": "碩鼷を安める",
+			"en": "Risk: Content Megamus"
+		},
+		"effects": [
+			{
+				"targets": ["trap_222_rgdysm"],
+				"mods": [
+					{
+						"key": "hp",
+						"value": 2,
+						"mode": "mul",
+						"order": "initial"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "投出时，击败雕伥后，额外获得票券。但雕伥最大生命值+200%",
+			"ja": "＜彫鬼＞の最大HP+200%、撃破すると遊覧券+1",
+			"en": "Statuegeists have +200% HP and drops +1 Coupon when destroyed."
+		}
 	},
 	{
 		"id": "rogue_5_copper_S_1",
-		"name_zh": "花-鸭爵金币",
-		"name_ja": "鴨爵の金幣",
-		"name_en": "Flower: Duck Coin",
+		"name": {
+			"zh": "花-鸭爵金币",
+			"ja": "鴨爵の金幣",
+			"en": "Flower: Duck Coin"
+		},
 		"effects": [
 			{
 				"targets": ["system"],
@@ -1067,43 +1174,192 @@
 				]
 			}
 		],
-		"tooltip_zh": "投出时，使非险路恶敌战斗中必定出现一名属性大幅度提升的鸭爵（生命+150%，移动速+150%）、高普尼克（生命+200%，攻击力+150%）、流泪小子（生命+150%，移动速度+150%）或圆仔（生命+200%，移动速度+150%）。",
-		"tooltip_ja": "振り出されると、通常作戦及び緊急作戦に必ずステータスが大幅に上昇した＜ダック卿＞(最大HP+150%、移動速度+150%)/＜ゴプニク＞(最大HP+200%、攻撃力+150%)/＜涙目の坊や＞(最大HP+150%、移動速度+150%)/＜マルッコ＞(最大HP+200%、移動速度+150%)のいずれかが出現",
-		"tooltip_en": "Spawns the Crying Thief (Max HP +150%, Movespeed +150%)/Duck Lord (Max HP +150%, Movespeed +150%)/Fatty (Max HP +200%, Movespeed +150%)/Gopnik (Max HP +200%, ATK +150%) with greatly increased stats in (Emergency) Operations, but turns into a Dayan Tongbao before the next coin toss."
-	},
-	{
-		"id": "rogue_5_copper_R_05",
-		"name_zh": "厉-安硕鼷",
-		"name_ja": "碩鼷を安める",
-		"name_en": "Risk: Content Megamus",
-		"effects": [
+		"stages": [
 			{
-				"targets": ["trap_222_rgdysm"],
-				"mods": [
+				"suffix": "x1",
+				"effects": [
 					{
-						"key": "hp",
-						"value": 2,
-						"mode": "mul",
-						"order": "initial"
+						"targets": ["system"],
+						"mods": [
+							{
+								"key": "level_hidden_group_enable",
+								"value": 0.0,
+								"valueStr": "copper_r"
+							},
+							{
+								"key": "level_hidden_group_disable",
+								"value": 0.0,
+								"valueStr": "copper_d"
+							}
+						]
+					},
+					{
+						"targets": ["enemy_2085_skzjxd"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 3.0,
+								"mode": "mul"
+							},
+							{
+								"key": "ms",
+								"value": 2.5,
+								"mode": "mul"
+							}
+						]
+					},
+					{
+						"targets": ["enemy_2034_sythef", "enemy_2001_duckmi"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 2.5,
+								"mode": "mul"
+							},
+							{
+								"key": "ms",
+								"value": 2.5,
+								"mode": "mul"
+							}
+						]
+					},
+					{
+						"targets": ["enemy_2002_bearmi"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 3.0,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 2.5,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["system"],
+						"mods": [
+							{
+								"key": "level_hidden_group_enable",
+								"value": 0.0,
+								"valueStr": "copper_r"
+							},
+							{
+								"key": "level_hidden_group_disable",
+								"value": 0.0,
+								"valueStr": "copper_d"
+							}
+						]
+					},
+					{
+						"targets": ["enemy_2085_skzjxd"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 6.0,
+								"mode": "mul"
+							},
+							{
+								"key": "ms",
+								"value": 5.0,
+								"mode": "mul"
+							}
+						]
+					},
+					{
+						"targets": ["enemy_2034_sythef", "enemy_2001_duckmi"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 5.0,
+								"mode": "mul"
+							},
+							{
+								"key": "ms",
+								"value": 5.0,
+								"mode": "mul"
+							}
+						]
+					},
+					{
+						"targets": ["enemy_2002_bearmi"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 6.0,
+								"mode": "mul"
+							},
+							{
+								"key": "atk",
+								"value": 5.0,
+								"mode": "mul"
+							}
+						]
 					}
 				]
 			}
 		],
-		"tooltip_zh": "投出时，击败雕伥后，额外获得票券。但雕伥最大生命值+200%",
-		"tooltip_ja": "＜彫鬼＞の最大HP+200%、撃破すると遊覧券+1",
-		"tooltip_en": "Statuegeists have +200% HP and drops +1 Coupon when destroyed."
+		"tooltip": {
+			"zh": "投出时，使非险路恶敌战斗中必定出现一名属性大幅度提升的鸭爵（生命+150%，移动速+150%）、高普尼克（生命+200%，攻击力+150%）、流泪小子（生命+150%，移动速度+150%）或圆仔（生命+200%，移动速度+150%）。",
+			"ja": "振り出されると、通常作戦及び緊急作戦に必ずステータスが大幅に上昇した＜ダック卿＞(最大HP+150%、移動速度+150%)/＜ゴプニク＞(最大HP+200%、攻撃力+150%)/＜涙目の坊や＞(最大HP+150%、移動速度+150%)/＜マルッコ＞(最大HP+200%、移動速度+150%)のいずれかが出現",
+			"en": "Spawns the Crying Thief (Max HP +150%, Movespeed +150%)/Duck Lord (Max HP +150%, Movespeed +150%)/Fatty (Max HP +200%, Movespeed +150%)/Gopnik (Max HP +200%, ATK +150%) with greatly increased stats in (Emergency) Operations, but turns into a Dayan Tongbao before the next coin toss."
+		}
 	},
 	{
-        "id": "rogue_5_copper_E_07",
-        "name_zh": "厉-南武盛景",
-        "name_ja": "",
-        "name_en": "",
-        "effects": [{
+		"id": "rogue_5_copper_E_07",
+		"name": {
+			"zh": "厉-南武盛景",
+			"ja": "",
+			"en": ""
+		},
+		"effects": [
+			{
 				"targets": ["ALL"],
-				"mods": [{ "key": "atk", "value": 1.2, "mode": "mul" }]
-			}],
-        "tooltip_zh": "投出时，敌方单位攻击力+20％。携带期间每经过一个战斗节点，失去时可获得一个收藏品（最多获得5个）",
-        "tooltip_ja": "",
-        "tooltip_en": ""
-    }
+				"mods": [
+					{
+						"key": "atk",
+						"value": 1.2,
+						"mode": "mul"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "投出时，敌方单位攻击力+20％。携带期间每经过一个战斗节点，失去时可获得一个收藏品（最多获得5个）",
+			"ja": "",
+			"en": ""
+		}
+	},
+	{
+		"id": "rogue_5_relic_legacy_37",
+		"name": {
+			"zh": "重力蔑视机关",
+			"ja": "重力蔑視装置",
+			"en": "Gravity Defying Machine"
+		},
+		"effects": [
+			{
+				"targets": ["ALL"],
+				"mods": [
+					{
+						"key": "weight",
+						"value": -2,
+						"mode": "add"
+					}
+				]
+			}
+		],
+		"tooltip": {
+			"zh": "所有敌人重量-2",
+			"ja": "全ての敵の重量ランク-2",
+			"en": "All enemies have -2 Weight"
+		}
+	}
 ]

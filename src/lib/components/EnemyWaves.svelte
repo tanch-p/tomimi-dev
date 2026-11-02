@@ -198,7 +198,7 @@
 				<div class="grid grid-cols-3 md:grid-cols-5">
 					{#each options as { key, src, name }}
 						{@const selected = (
-							rogueTopic === 'rogue_black' ? compiledHiddenGroups : hiddenGroups
+							['shadvr2', 'shadvr', 'copper_r'].includes(key) ? compiledHiddenGroups : hiddenGroups
 						).includes(key)}
 						<button
 							class="flex flex-col items-center justify-center border border-neutral-700 p-1 {selected

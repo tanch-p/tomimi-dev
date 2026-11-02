@@ -2,19 +2,14 @@
 	import { getTranslations } from '$lib/functions/languageHelpers';
 	import type { Language, RogueTopic } from '$lib/types';
 	import RelicDiv from './RelicDiv.svelte';
-	import mizukiRelics from '$lib/data/is/mizuki/relics_mizuki.json';
-	import phantomRelics from '$lib/data/is/phantom/relics_phantom.json';
-	import samiRelics from '$lib/data/is/sami/relics_sami.json';
-	import skzRelics from '$lib/data/is/sarkaz/relics_sarkaz.json';
-	import suiRelics from '$lib/data/is/sui/relics_sui.json';
-	import blackRelics from '$lib/data/is/black/relics.json';
+	import type { RelicSelectionStore } from '$lib/functions/relicSelection';
 
 	interface Props {
 		openOverlay: boolean;
 		language: Language;
 		rogueTopic: RogueTopic;
-		selectedRelics: any;
-		selectedUniqueRelic: any;
+		selectedRelics: RelicSelectionStore;
+		selectedUniqueRelic: RelicSelectionStore | null;
 		onclose: () => void;
 		uniqueRelics?: import('svelte').Snippet;
 	}
@@ -29,31 +24,21 @@
 		uniqueRelics
 	}: Props = $props();
 
-	function handleOverlayClick(e) {
-		if (!e.target.className.includes('relic') && !e.target.id.includes('reset')) {
+	function handleOverlayClick(event: MouseEvent) {
+		if (
+			event.target instanceof Element &&
+			!event.target.closest('[data-relic-card], [data-relic-control]')
+		)
 			onclose();
-		}
 	}
-	const getRelicsList = (rogueTopic: RogueTopic) => {
-		switch (rogueTopic) {
-			case 'rogue_mizuki':
-				return mizukiRelics;
-			case 'rogue_phantom':
-				return phantomRelics;
-			case 'rogue_sami':
-				return samiRelics;
-			case 'rogue_skz':
-				return skzRelics;
-			case 'rogue_yan':
-				return suiRelics;
-			case 'rogue_black':
-				return blackRelics;
-			default:
-				return [];
-		}
-	};
-	let relicsList = $derived(getRelicsList(rogueTopic));
+	let relicsList = $derived(selectedRelics.catalog);
 </script>
+
+<svelte:window
+	onkeydown={(event) => {
+		if (openOverlay && event.key === 'Escape') onclose();
+	}}
+/>
 
 <div
 	class={`relative transition-opacity duration-[50ms] ease-in-out select-none ${
@@ -63,17 +48,24 @@
 	{#if openOverlay}
 		<div
 			role="presentation"
-			class="fixed inset-0 bg-neutral-100/95 dark:bg-ph-bg/90 overflow-y-scroll no-scrollbar"
+			class="fixed inset-0 bg-neutral-100/95 dark:bg-ph-bg/90 overflow-y-scroll no-scrollbar py-36"
 			onclick={handleOverlayClick}
 		>
-			<div class="w-full max-w-7xl mx-auto py-36">
+			<div class="w-full max-w-7xl mx-auto">
 				{@render uniqueRelics?.()}
 				{#if relicsList.length > 0}
 					<div
 						class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 w-full overflow-x-auto md:overflow-visible my-auto mx-auto px-4 sm:px-24"
 					>
 						{#each relicsList as relic}
-							<RelicDiv {relic} {language} {rogueTopic} {selectedRelics} />
+							<RelicDiv
+								{relic}
+								{language}
+								{rogueTopic}
+								selection={$selectedRelics.find((entry) => entry.id === relic.id)}
+								ontoggle={() => selectedRelics.toggle(relic.id)}
+								onstagechange={(index) => selectedRelics.setStage(relic.id, index)}
+							/>
 						{/each}
 					</div>
 				{:else}
@@ -83,11 +75,12 @@
 				{/if}
 				<button
 					id="reset"
+					data-relic-control
 					class="block rounded-xl bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-near-white px-16 py-2 mt-12 mx-auto w-min hover:cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-600 whitespace-nowrap"
 					onclick={() => {
-						selectedRelics.set([]);
+						selectedRelics.clear();
 						if (selectedUniqueRelic !== null) {
-							selectedUniqueRelic.set(null);
+							selectedUniqueRelic.clear();
 						}
 					}}
 				>

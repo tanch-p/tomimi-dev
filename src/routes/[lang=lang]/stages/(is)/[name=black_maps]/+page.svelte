@@ -28,7 +28,6 @@
 	import StageHeadMeta from '$lib/components/StageHeadMeta.svelte';
 	import StageVariantSelector from '$lib/components/StageVariantSelector.svelte';
 	import SynchroLoader from '$lib/components/SynchroLoader.svelte';
-	import blackRelics from '$lib/data/is/black/relics.json';
 	import weatherOptions from '$lib/data/is/black/weather.json';
 	import weather1 from '$lib/images/is/black/rogue_6_weather_1.webp';
 	import weather2 from '$lib/images/is/black/rogue_6_weather_2.webp';
@@ -40,8 +39,6 @@
 	}
 
 	let { data }: Props = $props();
-
-	type BlackRelic = (typeof blackRelics)[number] & { count?: number };
 
 	const variationImageLookup: Record<string, string> = {
 		rogue_6_weather_1: weather1,
@@ -63,23 +60,7 @@
 			difficulty.set(initialState.diff);
 		}
 
-		const initialRelics = initialState.relics.flatMap(({ id, count }) => {
-			const relic = blackRelics.find((item) => item.id === id) as BlackRelic | undefined;
-
-			if (!relic) return [];
-
-			if (relic.stages) {
-				const initialCount = count ?? 1;
-
-				if (initialCount < 1 || initialCount > relic.stages.length) return [];
-
-				relic.count = initialCount;
-			}
-
-			return [relic];
-		});
-
-		selectedRelics.set(initialRelics);
+		selectedRelics.restore(initialState.relics);
 		activeFloorEffects.set([]);
 
 		if (initialState.gold !== undefined) {
@@ -143,15 +124,13 @@
 				(relic) => relic.id === 'rogue_6_relic_final_9' || relic.id === 'rogue_6_relic_final_7'
 			)
 		) {
-			const defaultRelic = blackRelics.find((relic) => relic.id === 'rogue_6_relic_final_7');
-			if (defaultRelic) selectedRelics.set([...$selectedRelics, defaultRelic]);
+			selectedRelics.ensureSelected('rogue_6_relic_final_7');
 		}
 		if (
 			mapConfig?.levelId === 'level_rogue6_b-6' &&
 			!$selectedRelics.some((relic) => relic.id === 'rogue_6_relic_final_3')
 		) {
-			const defaultRelic = blackRelics.find((relic) => relic.id === 'rogue_6_relic_final_3');
-			if (defaultRelic) selectedRelics.set([...$selectedRelics, defaultRelic]);
+			selectedRelics.ensureSelected('rogue_6_relic_final_3');
 		}
 	});
 	$effect(() => {
@@ -199,7 +178,6 @@
 			variants={data.stageData.data}
 			bind:selectedIndex={configIndex}
 			{selectedRelics}
-			relicsList={blackRelics}
 		/>
 		<StageInfo {mapConfig} {language} {stageName} {eliteMode} {rogueTopic} difficulty={$difficulty}
 		></StageInfo>
