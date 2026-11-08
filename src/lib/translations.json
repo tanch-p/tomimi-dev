@@ -251,6 +251,21 @@
 		"ja": "ステ補正確認（デバグ用）",
 		"zh": "属性加成确认"
 	},
+	"base_stat": {
+		"en": "Base stat",
+		"ja": "基礎ステータス",
+		"zh": "基础属性"
+	},
+	"pre_combat_mods": {
+		"en": "Pre-combat Mods",
+		"ja": "作戦外補正",
+		"zh": "局外加成"
+	},
+	"in_combat_mods": {
+		"en": "In-combat Mods",
+		"ja": "作戦内補正",
+		"zh": "局内加成"
+	},
 	"mods_check_disclaimer": {
 		"en": "values shown here have been rounded",
 		"ja": "ここに表示されている値は四捨五入されています",

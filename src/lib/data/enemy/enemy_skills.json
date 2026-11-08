@@ -3095,13 +3095,13 @@
 		"hits": 1,
 		"tooltip": {
 			"en": [
-				"When blocked, creates an 1000 {arts} damage explosion around self every 10s{ignore_camou}"
+				"When blocked, creates an <v.atk.value> {arts} damage explosion around self every 10s{ignore_camou}"
 			],
 			"ja": [
-				"ブロックされると10秒毎に自分中心に1000{arts}ダメージを与える爆発を起こす{ignore_camou}"
+				"ブロックされると10秒毎に自分中心に<v.atk.value>{arts}ダメージを与える爆発を起こす{ignore_camou}"
 			],
 			"zh": [
-				"被阻挡后，每10秒(被眩晕时暂停计时)对自身1.4半径范围内友方单位造成1000{arts}溅射伤害{ignore_camou}"
+				"被阻挡后，每10秒(被眩晕时暂停计时)对自身1.4半径范围内友方单位造成<v.atk.value>{arts}溅射伤害{ignore_camou}"
 			]
 		}
 	},

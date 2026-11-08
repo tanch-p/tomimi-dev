@@ -6,6 +6,7 @@
 	import aspdIcon from '$lib/images/is/aspd.webp';
 	import msIcon from '$lib/images/is/movespeed.webp';
 	import { round } from '$lib/functions/numberHelpers';
+	import { getModdedStat } from '$lib/functions/statHelpers';
 	import ModsCheckIcon from './ModsCheckIcon.svelte';
 
 	const STATS_KEY_TABLE = {
@@ -141,12 +142,23 @@
 		}
 	});
 	let statKey = $derived(statsToShow[statIndex]);
+	let runeGroup = $derived(
+		enemy.modsList[formIndex].find((mod) => ['combat_ops', 'elite_ops'].includes(mod.key))
+	);
+	let baseStat = $derived((enemy.stats as unknown as Record<string, number>)[statKey]);
+	let runeStat = $derived.by(() => {
+		if (!runeGroup || !statKey) return baseStat;
+		const value = getModdedStat(baseStat, statKey, runeGroup);
+		return statKey === 'aspd' ? value : round(value, ['ms', 'range'].includes(statKey) ? 2 : 0);
+	});
 	let runeMods = $derived(getRunes(enemy.modsList[formIndex], statKey));
+	let runeAtkIntervalMods = $derived(getAtkIntervalMods(runeGroup ? [runeGroup] : []));
 	let otherMods = $derived(getOtherMods(enemy.modsList[formIndex], statKey));
+	let hasOtherMods = $derived(Object.values(otherMods).some((mods) => mods.length > 0));
 	let atkIntervalMods = $derived(getAtkIntervalMods(enemy.modsList[formIndex]));
 </script>
 
-<div class="grid grid-cols-[auto,1fr] mt-2.5">
+<div class="grid grid-cols-[auto_1fr] mt-2.5">
 	<div class="border-r border-gray-500 pr-3 whitespace-nowrap">
 		{#each statsToShow as key, i}
 			<button
@@ -179,206 +191,229 @@
 			{getTranslations(language).table_headers[STATS_KEY_TABLE[[statKey]]]}
 			{enemy.forms[formIndex].stats[statKey]}
 		</div>
-		<DraggableContainer className="h-full ">
-			<div class="flex items-center justify-center w-max mx-auto py-10 whitespace-nowrap text-xl">
-				<span>=</span>&nbsp;
-				{#if statsToShow[statIndex] === 'aspd'}
-					{#if atkIntervalMods?.mul?.length > 0}
-						<span>(</span>
-					{/if}
-					{#if atkIntervalMods?.add?.length > 0}
-						<span>(</span>
-					{/if}
-					{enemy.stats[statKey]}
-					{#if atkIntervalMods?.add?.length > 0}
-						{#each atkIntervalMods?.add as { key, value }}
-							<div class="relative">
-								<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-								&nbsp;{#if value >= 0}+{/if}
-								{value}
-							</div>
+		{#if statKey !== 'aspd' && runeMods?.length > 0}
+			<DraggableContainer className="h-full py-3 pl-3">
+				<span class="text-xs md:text-base">{getTranslations(language).pre_combat_mods}</span>
+				<div class="flex items-center justify-center w-max mx-auto py-4 whitespace-nowrap text-xl">
+					{#if statKey === 'aspd'}
+						{baseStat}
+						{#each runeAtkIntervalMods.add as { value }}
+							<span>&nbsp;{value >= 0 ? '+' : ''}{value}</span>
 						{/each}
-						)
-					{/if}
-					{#if atkIntervalMods?.mul?.length > 0}
-						{#each atkIntervalMods?.mul as { key, value }}
-							<div class="relative">
-								<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-								&nbsp;× {value}
-							</div>
+						{#each runeAtkIntervalMods.mul as { value }}
+							<span>&nbsp;× {round(value)}</span>
 						{/each}
-						)
+						<span>&nbsp;/ (</span>
 					{/if}
-					<span>&nbsp;/ (</span>
-					{#if otherMods?.finalMul?.length > 0}
-						<span>(</span>
-					{/if}
-					{#if otherMods?.finalAdd?.length > 0}
-						<span>(</span>
-					{/if}
-					{#if otherMods.initialAdd.length > 0}
-						<span>(</span>
-					{/if}
-					{#if runeMods?.length > 0}
-						<span>(</span>
-					{/if}
-					100
-					{#if runeMods?.length > 0}
-						<div class="flex relative">
-							<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
-								{getTranslations(language).runes}
-							</div>
-							{#each runeMods as { key, value, mode }}
-								{#if mode === 'add'}
-									<span
-										>&nbsp;{#if value >= 0}+{/if}
-										{value}</span
-									>
-								{:else}
-									<span>&nbsp;× {1 + value}</span>
-								{/if}
-							{/each}
-							<span>)</span>
-						</div>
-					{/if}
-					{#if otherMods?.initialAdd?.length > 0}
-						{#each otherMods?.initialAdd as { key, value }}
-							<div class="relative">
-								<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-								&nbsp;{#if value >= 0}+{/if}
-								{value}
-							</div>
-						{/each}
-						)
-					{/if}
-					<!-- NOTE - FOR ASPD INITIAL MODS ARE ALL UNDER RUNES -->
-					{#if otherMods?.initialMul?.length > 0}
-						&nbsp;× (1
-						{#each otherMods?.initialMul as { key, value }}
-							<div class="relative">
-								<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-								&nbsp;+ {value}
-							</div>
-						{/each}
-						)
-					{/if}
-					{#if otherMods?.finalAdd?.length > 0}
-						{#each otherMods?.finalAdd as { key, value }}
-							<div class="relative">
-								<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-								&nbsp;{#if value >= 0}+{/if}
-								{value}
-							</div>
-						{/each}
-						)
-					{/if}
-					{#if otherMods?.finalMul?.length > 0}
-						{#each otherMods?.finalMul as { key, value }}
-							<div class="relative">
-								<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-								&nbsp;× {value}
-							</div>
-						{/each}
-						)
-					{/if}
-
-					<span>&nbsp;/ 100)</span>
-				{:else}
-					{#if otherMods?.finalMul?.length > 0}
-						<span>(</span>
-					{/if}
-					{#if otherMods?.finalAdd?.length > 0}
-						<span>(</span>
-					{/if}
-					{#if otherMods.initialAdd.length > 0}
-						<span>(</span>
-					{/if}{#if runeMods?.length > 0}
-						<div class="flex relative">
-							({enemy.stats[statKey]}
+					<div class="flex relative">
+						<div class="relative inline-flex">
 							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{getTranslations(language).runes}
+								{getTranslations(language).base_stat}
 							</div>
-							{#each runeMods as { key, value, mode, groupKey }}
+							<span>{statKey === 'aspd' ? 100 : baseStat}</span>
+						</div>
+						{#each runeMods as { value, mode, order, groupKey }}
+							<div class="relative inline-flex">
+								{#if mode === 'add'}
+									<span>&nbsp;{value >= 0 ? '+' : ''}{value}</span>
+								{:else if mode === 'mul'}
+									<span>&nbsp;× {round(order === 'initial' ? 1 + value : value)}</span>
+								{/if}
 								<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
 									{getTranslations(language)[groupKey]}
 								</div>
-								{#if mode === 'add'}
-									<span
-										>&nbsp;{#if value >= 0}+{/if}
-										{value}</span
-									>
-								{:else}
-									<span>&nbsp;× {round(value)}</span>
-								{/if}
-							{/each}
-							<span>)</span>
-						</div>
-					{:else}
-						<span>
-							{enemy.stats[statKey]}
-						</span>
-					{/if}
-					{#if otherMods?.initialAdd?.length > 0}
-						<div class="relative inline-flex">
-							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{getTranslations(language).initial_add}
 							</div>
+						{/each}
+					</div>
+					{#if statKey === 'aspd'}
+						<span>&nbsp;/ 100)</span>
+					{/if}
+					<span>&nbsp;= {runeStat}</span>
+				</div>
+			</DraggableContainer>
+		{/if}
+		{#if statKey === 'aspd' || hasOtherMods}
+			<DraggableContainer
+				className={statKey === 'aspd' ? 'h-full' : 'h-full bg-neutral-900 py-3 pl-3'}
+			>
+				{#if statKey !== 'aspd'}
+					<span class="text-xs md:text-base">{getTranslations(language).in_combat_mods}</span>
+				{/if}
+				<div class="flex items-center justify-center w-max mx-auto py-8 whitespace-nowrap text-xl">
+					{#if statsToShow[statIndex] === 'aspd'}
+						{#if atkIntervalMods?.mul?.length > 0}
+							<span>(</span>
+						{/if}
+						{#if atkIntervalMods?.add?.length > 0}
+							<span>(</span>
+						{/if}
+						{baseStat}
+						{#if atkIntervalMods?.add?.length > 0}
+							{#each atkIntervalMods?.add as { key, value }}
+								<div class="relative">
+									<ModsCheckIcon {formIndex} {enemy} {key} {language} />
+									&nbsp;{#if value >= 0}+{/if}
+									{value}
+								</div>
+							{/each}
+							)
+						{/if}
+						{#if atkIntervalMods?.mul?.length > 0}
+							{#each atkIntervalMods?.mul as { key, value }}
+								<div class="relative">
+									<ModsCheckIcon {formIndex} {enemy} {key} {language} />
+									&nbsp;× {value}
+								</div>
+							{/each}
+							)
+						{/if}
+						<span>&nbsp;/ (</span>
+						{#if otherMods?.finalMul?.length > 0}
+							<span>(</span>
+						{/if}
+						{#if otherMods?.finalAdd?.length > 0}
+							<span>(</span>
+						{/if}
+						{#if otherMods.initialAdd.length > 0}
+							<span>(</span>
+						{/if}
+						{#if runeMods?.length > 0}
+							<span>(</span>
+						{/if}
+						100
+						{#if runeMods?.length > 0}
+							<div class="flex relative">
+								<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
+									{getTranslations(language).runes}
+								</div>
+								{#each runeMods as { value, mode }}
+									{#if mode === 'add'}
+										<span>&nbsp;{value >= 0 ? '+' : ''}{value}</span>
+									{:else}
+										<span>&nbsp;× {1 + value}</span>
+									{/if}
+								{/each}
+								<span>)</span>
+							</div>
+						{/if}
+						{#if otherMods?.initialAdd?.length > 0}
 							{#each otherMods?.initialAdd as { key, value }}
 								<div class="relative">
 									<ModsCheckIcon {formIndex} {enemy} {key} {language} />
 									&nbsp;{#if value >= 0}+{/if}
-									{round(value, 3)}
+									{value}
 								</div>
 							{/each}
 							)
-						</div>
-					{/if}
-					{#if otherMods?.initialMul?.length > 0}
-						<div class="relative inline-flex">
-							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{getTranslations(language).initial_mul}
-							</div>
+						{/if}
+						<!-- NOTE - FOR ASPD INITIAL MODS ARE ALL UNDER RUNES -->
+						{#if otherMods?.initialMul?.length > 0}
 							&nbsp;× (1
 							{#each otherMods?.initialMul as { key, value }}
 								<div class="relative">
 									<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-									&nbsp;+ {round(value, 3)}
+									&nbsp;+ {value}
 								</div>
 							{/each}
 							)
-						</div>
-					{/if}
-					{#if otherMods?.finalAdd?.length > 0}
-						<div class="relative inline-flex">
-							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{getTranslations(language).final_add}
-							</div>
+						{/if}
+						{#if otherMods?.finalAdd?.length > 0}
 							{#each otherMods?.finalAdd as { key, value }}
 								<div class="relative">
 									<ModsCheckIcon {formIndex} {enemy} {key} {language} />
 									&nbsp;{#if value >= 0}+{/if}
-									{round(value, 3)}
+									{value}
 								</div>
 							{/each}
 							)
-						</div>
-					{/if}
-					{#if otherMods?.finalMul?.length > 0}
-						<div class="relative inline-flex">
-							<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
-								{getTranslations(language).final_mul}
-							</div>
+						{/if}
+						{#if otherMods?.finalMul?.length > 0}
 							{#each otherMods?.finalMul as { key, value }}
 								<div class="relative">
 									<ModsCheckIcon {formIndex} {enemy} {key} {language} />
-									&nbsp;× {round(value, 3)}
+									&nbsp;× {value}
 								</div>
 							{/each}
 							)
-						</div>
+						{/if}
+
+						<span>&nbsp;/ 100)</span>
+					{:else}
+						{#if otherMods?.finalMul?.length > 0}
+							<span>(</span>
+						{/if}
+						{#if otherMods?.finalAdd?.length > 0}
+							<span>(</span>
+						{/if}
+						{#if otherMods.initialAdd.length > 0}
+							<span>(</span>
+						{/if}
+						<span>
+							{runeStat}
+						</span>
+						{#if otherMods?.initialAdd?.length > 0}
+							<div class="relative inline-flex">
+								<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
+									{getTranslations(language).initial_add}
+								</div>
+								{#each otherMods?.initialAdd as { key, value }}
+									<div class="relative">
+										<ModsCheckIcon {formIndex} {enemy} {key} {language} />
+										&nbsp;{#if value >= 0}+{/if}
+										{round(value, 3)}
+									</div>
+								{/each}
+								)
+							</div>
+						{/if}
+						{#if otherMods?.initialMul?.length > 0}
+							<div class="relative inline-flex">
+								<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
+									{getTranslations(language).initial_mul}
+								</div>
+								&nbsp;× (1
+								{#each otherMods?.initialMul as { key, value }}
+									<div class="relative">
+										<ModsCheckIcon {formIndex} {enemy} {key} {language} />
+										&nbsp;+ {round(value, 3)}
+									</div>
+								{/each}
+								)
+							</div>
+						{/if}
+						{#if otherMods?.finalAdd?.length > 0}
+							<div class="relative inline-flex">
+								<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
+									{getTranslations(language).final_add}
+								</div>
+								{#each otherMods?.finalAdd as { key, value }}
+									<div class="relative">
+										<ModsCheckIcon {formIndex} {enemy} {key} {language} />
+										&nbsp;{#if value >= 0}+{/if}
+										{round(value, 3)}
+									</div>
+								{/each}
+								)
+							</div>
+						{/if}
+						{#if otherMods?.finalMul?.length > 0}
+							<div class="relative inline-flex">
+								<div class="absolute -top-[90%] left-1/2 -translate-x-1/2 text-xs">
+									{getTranslations(language).final_mul}
+								</div>
+								{#each otherMods?.finalMul as { key, value }}
+									<div class="relative">
+										<ModsCheckIcon {formIndex} {enemy} {key} {language} />
+										&nbsp;× {round(value, 3)}
+									</div>
+								{/each}
+								)
+							</div>
+						{/if}
 					{/if}
-				{/if}
-			</div>
-		</DraggableContainer>
+					<span>&nbsp;= {enemy.forms[formIndex].stats[statKey]}</span>
+				</div>
+			</DraggableContainer>
+		{/if}
 	</div>
 </div>
