@@ -320,6 +320,12 @@ type SpecialMod =
 
 export type Mod = {
 	key: string;
+	/** Applies this modifier with stage runes, before secondary stat modifiers. */
+	type?: 'rune';
+	/** Source groups shown for a compiled modifier; does not affect its value. */
+	sourceKeys?: string[];
+	/** Original values retained for displaying each contributing rune modifier. */
+	contributions?: { value: number; sourceKeys: string[] }[];
 	order: 'initial' | 'final';
 	mode: 'mul' | 'add' | 'set';
 	name?: string;

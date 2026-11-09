@@ -7,6 +7,8 @@ export interface RelicEffect {
 	conditions?: string[];
 	mods?: {
 		key: string;
+		/** `rune` joins the stage-rune calculation; omitted values use the ordinary phase. */
+		type?: string;
 		value: number;
 		mode?: string;
 		order?: string;

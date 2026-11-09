@@ -9,12 +9,17 @@
 		formIndex: any;
 		key: any;
 		language: Language;
+		inline?: boolean;
 	}
 
-	let { enemy, formIndex, key, language }: Props = $props();
+	let { enemy, formIndex, key, language, inline = false }: Props = $props();
 </script>
 
-<div class="absolute top-[125%] left-1/2 -translate-x-[calc(50%_-_10px)] w-max text-xs">
+<div
+	class="{inline
+		? ''
+		: 'absolute top-[125%] left-1/2 -translate-x-[calc(50%_-_10px)]'} w-max text-xs"
+>
 	{#if getTranslations(language)[key]}
 		{getTranslations(language)[key]}
 	{:else if key.includes('enemy')}

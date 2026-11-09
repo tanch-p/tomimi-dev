@@ -1338,12 +1338,14 @@
 					{
 						"key": "hp",
 						"value": 3.0,
-						"mode": "mul"
+						"mode": "mul",
+						"type": "rune"
 					},
 					{
 						"key": "ms",
 						"value": 2.5,
-						"mode": "mul"
+						"mode": "mul",
+						"type": "rune"
 					}
 				]
 			},
@@ -1353,12 +1355,14 @@
 					{
 						"key": "hp",
 						"value": 2.5,
-						"mode": "mul"
+						"mode": "mul",
+						"type": "rune"
 					},
 					{
 						"key": "ms",
 						"value": 2.5,
-						"mode": "mul"
+						"mode": "mul",
+						"type": "rune"
 					}
 				]
 			},
@@ -1368,12 +1372,14 @@
 					{
 						"key": "hp",
 						"value": 3.0,
-						"mode": "mul"
+						"mode": "mul",
+						"type": "rune"
 					},
 					{
 						"key": "atk",
 						"value": 2.5,
-						"mode": "mul"
+						"mode": "mul",
+						"type": "rune"
 					}
 				]
 			}
@@ -1403,12 +1409,14 @@
 							{
 								"key": "hp",
 								"value": 3.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							},
 							{
 								"key": "ms",
 								"value": 2.5,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							}
 						]
 					},
@@ -1418,12 +1426,14 @@
 							{
 								"key": "hp",
 								"value": 2.5,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							},
 							{
 								"key": "ms",
 								"value": 2.5,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							}
 						]
 					},
@@ -1433,12 +1443,14 @@
 							{
 								"key": "hp",
 								"value": 3.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							},
 							{
 								"key": "atk",
 								"value": 2.5,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							}
 						]
 					}
@@ -1468,12 +1480,14 @@
 							{
 								"key": "hp",
 								"value": 6.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							},
 							{
 								"key": "ms",
 								"value": 5.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							}
 						]
 					},
@@ -1483,12 +1497,14 @@
 							{
 								"key": "hp",
 								"value": 5.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							},
 							{
 								"key": "ms",
 								"value": 5.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							}
 						]
 					},
@@ -1498,12 +1514,14 @@
 							{
 								"key": "hp",
 								"value": 6.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							},
 							{
 								"key": "atk",
 								"value": 5.0,
-								"mode": "mul"
+								"mode": "mul",
+								"type": "rune"
 							}
 						]
 					}

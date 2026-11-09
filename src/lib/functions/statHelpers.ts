@@ -108,6 +108,34 @@ export const EMPTY_STAT_MODS: StatMods = {
 	others: []
 };
 
+/** Routes tagged modifiers into the stage-rune group without changing their definitions. */
+export function routeRuneMods(statMods: StatMods): StatMods {
+	const runeEffects: Effects[] = [];
+	const others = statMods.others.map((group) => ({
+		...group,
+		mods: group.mods.map(
+			(effects) =>
+				effects?.map((effect) => {
+					const runeMods = effect.mods?.filter((mod) => mod.type === 'rune');
+					if (!runeMods?.length) return effect;
+					runeEffects.push([
+						{ ...effect, mods: runeMods.map((mod) => ({ ...mod, sourceKeys: [group.key] })) }
+					]);
+					return { ...effect, mods: effect.mods.filter((mod) => mod.type !== 'rune') };
+				}) as Effects
+		) as ModGroup['mods']
+	}));
+	if (!runeEffects.length) return statMods;
+	return {
+		...statMods,
+		runes: {
+			...statMods.runes,
+			mods: [...statMods.runes.mods, ...runeEffects] as ModGroup['mods']
+		},
+		others
+	};
+}
+
 /** Removes table-only modifier previews from the configuration used by a simulation run. */
 export function getPersistentStatMods(statMods: StatMods): StatMods {
 	return {
@@ -201,6 +229,7 @@ export function parseStats(
 	specialMods: SpecialMods,
 	options: { recordMods?: boolean } = {}
 ) {
+	statMods = routeRuneMods(statMods);
 	const isDamage1Enemy = enemy.traits.some(
 		(skill) =>
 			['damage_1', 'damage_1_arts'].includes(skill.key) &&
@@ -415,7 +444,7 @@ export function compileMods(entity: EnemyDBEntry | Trap, mod: ModGroup, type = '
 			}
 			if (effect.targets.some((target) => checkIsTarget(entity, target))) {
 				for (const mod of effect.mods) {
-					const { key, value, mode, order = 'final', name = '' } = mod;
+					const { key, value, mode, order = 'final', name = '', sourceKeys = [modKey] } = mod;
 					if (['damage_1_atk_variant'].includes(type) && key === 'hp') {
 						if (modKey === 'floor_diff') {
 							continue;
@@ -429,9 +458,19 @@ export function compileMods(entity: EnemyDBEntry | Trap, mod: ModGroup, type = '
 						(ele) => ele.key === key && ele.order === order && ele.mode === mode
 					);
 					if (!item) {
-						modsHolder.push({ key: key, order: order, mode: mode, value: value, name });
+						modsHolder.push({
+							key,
+							order,
+							mode,
+							value,
+							name,
+							sourceKeys: [...sourceKeys],
+							contributions: [{ value, sourceKeys: [...sourceKeys] }]
+						});
 						continue;
 					}
+					item.sourceKeys = [...new Set([...item.sourceKeys, ...sourceKeys])];
+					item.contributions.push({ value, sourceKeys: [...sourceKeys] });
 					if (key === 'dmg_res') {
 						if (item.name) {
 							if (value > item.value) {

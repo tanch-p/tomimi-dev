@@ -1,9 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import type { EnemyDBEntry, SpecialMods, StatMods } from '$lib/types';
+import type { EnemyDBEntry, Skill, SpecialMods, StatMods, Stats } from '$lib/types';
+import { relicCatalogs } from '$lib/data/is/relicCatalog';
+import { getRelicStages, type RelicEffect } from '$lib/data/is/relicTypes';
+import { loadStageVariants } from '$lib/server/stageLoad';
 import {
 	applyMods,
+	compileSpecialMods,
 	createPersistentStatModsSelector,
 	getPersistentStatMods,
+	getStatSkillValue,
 	materializeEnemyDisplayStats,
 	normalizeEnemyDefinitions
 } from '$lib/functions/statHelpers';
@@ -133,4 +138,174 @@ describe('enemy stat preparation', () => {
 
 		expect(second).toBe(first);
 	});
+});
+
+const runeStatMods = (effects: RelicEffect[]): StatMods =>
+	({
+		runes: {
+			key: 'combat_ops',
+			mods: [[{ targets: ['ALL'], mods: [{ key: 'hp', value: 1.25, mode: 'mul' }] }]]
+		},
+		diff: null,
+		others: [{ key: 'test_relic', mods: [effects] }]
+	}) as unknown as StatMods;
+
+describe('rune-type stat modifiers', () => {
+	const baseEnemy = structuredClone(enemy);
+	Object.assign(baseEnemy.stats, { hp: 101, atk: 101, ms: 1.23 });
+	const mixedEffects: RelicEffect[] = [
+		{
+			targets: ['ALL'],
+			mods: [
+				{ key: 'hp', value: 2.5, mode: 'mul', type: 'rune' },
+				{ key: 'hp', value: 2, mode: 'mul' },
+				{ key: 'hp', value: 10, mode: 'add', order: 'initial' }
+			]
+		}
+	];
+
+	it('applies tagged mods before rune rounding and ordinary mods once, without mutating input', () => {
+		const modifiers = runeStatMods(mixedEffects);
+		const original = structuredClone(modifiers);
+		const [display] = applyMods([baseEnemy], modifiers, {});
+
+		// round(101 * 1.25 * 2.5) = 316; (316 + 10) * 2 = 652.
+		expect(display.forms[0].stats.hp).toBe(652);
+		expect(display.modsList[0]).toMatchObject([
+			{ key: 'combat_ops', mods: [{ key: 'hp', value: 3.125 }] },
+			{
+				key: 'test_relic',
+				mods: [
+					{ key: 'hp', value: 2, mode: 'mul' },
+					{ key: 'hp', value: 10, mode: 'add' }
+				]
+			}
+		]);
+		expect(modifiers).toEqual(original);
+		// Buff loss drops ordinary modifiers while retaining the augmented rune base.
+		expect(
+			getStatSkillValue(
+				display,
+				0,
+				{ key: 'test_skill', hp: { multiplier: 2 }, buffloss: true } as Skill,
+				'hp'
+			)
+		).toBe(632);
+	});
+
+	it('preserves the existing calculation for untagged mods', () => {
+		const effects = structuredClone(mixedEffects);
+		delete effects[0].mods![0].type;
+		const [display] = applyMods([baseEnemy], runeStatMods(effects), {});
+		// round(101 * 1.25) = 126; (126 + 10) * 2.5 * 2 = 680.
+		expect(display.forms[0].stats.hp).toBe(680);
+	});
+
+	it('preserves additive modifiers and their order within the rune phase', () => {
+		const modifiers = runeStatMods([
+			{
+				targets: ['ALL'],
+				mods: [
+					{ key: 'hp', value: 3, mode: 'add', order: 'initial', type: 'rune' },
+					{ key: 'hp', value: 7, mode: 'add', order: 'final', type: 'rune' },
+					{ key: 'hp', value: 2, mode: 'mul' }
+				]
+			}
+		]);
+		const [display] = applyMods([baseEnemy], modifiers, {});
+		// round((101 + 3 + 7) * 1.25) * 2 = 278.
+		expect(display.forms[0].stats.hp).toBe(278);
+	});
+
+	it('keeps Duck Coin as a displayed rune source on Whack-A-Mus, including merged elite mods', async () => {
+		const { stages } = await loadStageVariants('ISW-NO_Whack-A-Mus', 'en', 'ro5');
+		const { enemies, mapConfig } = stages[0];
+		expect(mapConfig.levelId).toBe('level_rogue5_1-1');
+		for (const stage of getRelicStages(duckCoin)) {
+			for (const elite of [false, true]) {
+				const modifiers = runeStatMods(stage.effects);
+				modifiers.others[0].key = duckCoin.id;
+				modifiers.runes = {
+					key: elite ? 'elite_ops' : 'combat_ops',
+					mods: [elite ? mapConfig.elite_mods : mapConfig.n_mods, mapConfig.all_mods]
+				} as unknown as StatMods['runes'];
+				const display = applyMods(enemies as unknown as EnemyDBEntry[], modifiers, {});
+				const duck = display.find((enemy) => enemy.key === 'enemy_2001_duckmi')!;
+				const runeMods = duck.modsList[0].find((group) => group.key === modifiers.runes.key)!;
+				expect(runeMods.mods).toEqual(
+					expect.arrayContaining([
+						expect.objectContaining({
+							key: 'hp',
+							sourceKeys: elite ? ['elite_ops', duckCoin.id] : [duckCoin.id],
+							contributions: [
+								...(elite ? [{ value: 1.2, sourceKeys: ['elite_ops'] }] : []),
+								{ value: stage.suffix === 'x1' ? 2.5 : 5, sourceKeys: [duckCoin.id] }
+							]
+						}),
+						expect.objectContaining({ key: 'ms', sourceKeys: [duckCoin.id] })
+					])
+				);
+			}
+		}
+	});
+
+	it('keeps tagged preview modifiers out of persistent simulation stats', () => {
+		const modifiers = runeStatMods(mixedEffects);
+		modifiers.others[0].scope = 'preview';
+		const [display] = applyMods([baseEnemy], getPersistentStatMods(modifiers), {});
+		expect(display.forms[0].stats.hp).toBe(126);
+	});
+
+	const duckCoin = relicCatalogs.rogue_yan.find((relic) => relic.id === 'rogue_5_copper_S_1')!;
+	it.each([{ suffix: 'base', effects: duckCoin.effects }, ...getRelicStages(duckCoin)])(
+		'calculates Duck Coin $suffix stats in the rune phase and preserves its system effects',
+		({ effects }) => {
+			const modifiers = runeStatMods(effects);
+			modifiers.runes.mods[0][0].mods = ['hp', 'atk', 'ms'].map((key) => ({
+				key,
+				value: 1.1,
+				mode: 'mul',
+				order: 'final'
+			}));
+			modifiers.others.push({
+				key: 'other_buff',
+				mods: [
+					[
+						{
+							targets: ['ALL'],
+							mods: [{ key: 'hp', value: 10, mode: 'add', order: 'initial' }],
+							special: {}
+						}
+					]
+				]
+			});
+			const special = compileSpecialMods([effects] as unknown as Parameters<
+				typeof compileSpecialMods
+			>[0]);
+			expect(special).toEqual({
+				system: [
+					{ key: 'level_hidden_group_enable', value: 0, valueStr: 'copper_r' },
+					{ key: 'level_hidden_group_disable', value: 0, valueStr: 'copper_d' }
+				]
+			});
+			for (const effect of effects.filter((effect) => !effect.targets.includes('system'))) {
+				for (const key of effect.targets) {
+					const [display] = applyMods([{ ...baseEnemy, key }], modifiers, special);
+					for (const mod of effect.mods!) {
+						expect(mod.type).toBe('rune');
+						const base = mod.key === 'ms' ? 1.23 : 101;
+						const precision = mod.key === 'ms' ? 100 : 1;
+						const expected = Math.round(base * 1.1 * mod.value * precision) / precision;
+						expect(display.forms[0].stats[mod.key as keyof Stats]).toBeCloseTo(
+							expected + (mod.key === 'hp' ? 10 : 0)
+						);
+					}
+					expect(display.modsList[0].some((group) => group.key === 'test_relic')).toBe(false);
+				}
+			}
+			const [unrelated] = applyMods([baseEnemy], modifiers, special);
+			expect(unrelated.forms[0].stats.hp).toBe(121);
+			expect(unrelated.forms[0].stats.ms).toBe(1.35);
+		}
+	);
 });

@@ -159,6 +159,51 @@ test('Sui stages and wave options use the same selection after reset', async ({ 
 	await expect(duck).toHaveAttribute('aria-pressed', 'false');
 });
 
+test('Duck Coin shows its icon with rune modifiers on Whack-A-Mus', async ({ page }, testInfo) => {
+	const id = 'rogue_5_copper_S_1';
+	await page.goto('http://localhost:4173/en/stages/ISW-NO_Whack-A-Mus');
+	await expect(async () => {
+		await openRelics(page);
+	}).toPass({ timeout: 30000 });
+	await card(page, id).locator('[data-relic-toggle]').click();
+	await closeRelics(page);
+	const heading = page.getByRole('button', { name: 'Mods Check (for Debugging)', exact: true });
+	await heading.click();
+	const panel = heading.locator('..');
+	await panel
+		.locator('button')
+		.filter({ has: page.getByRole('img', { name: 'enemy_2001_duckmi', exact: true }) })
+		.click();
+	await expect(panel.getByText('Pre-combat Mods', { exact: true })).toBeVisible();
+	const icon = panel.getByRole('img', { name: id, exact: true });
+	await expect(icon).toBeVisible();
+	await expect(icon).toHaveAttribute('src', `/images/relics/${id}.webp`);
+	await expect
+		.poll(() => icon.evaluate((image) => (image as HTMLImageElement).naturalWidth))
+		.toBeGreaterThan(0);
+	await panel.getByRole('button', { name: 'ms', exact: true }).click();
+	await expect(icon).toBeVisible();
+	await openRelics(page);
+	await card(page, id).locator('[data-stage-index="1"]').click();
+	await closeRelics(page);
+	await expect(icon).toBeVisible();
+	await expect(panel.getByText('× 5', { exact: true })).toBeVisible();
+	await page.getByRole('button', { name: 'elite ops', exact: true }).click();
+	await panel.getByRole('button', { name: 'hp', exact: true }).click();
+	await expect(icon).toBeVisible();
+	await expect(panel.getByText('× 1.2', { exact: true })).toBeVisible();
+	await expect(panel.getByText('× 5', { exact: true })).toBeVisible();
+	await expect(panel.getByText('× 6', { exact: true })).toHaveCount(0);
+	await openRelics(page);
+	await card(page, id).locator('[data-stage-index="0"]').click();
+	await closeRelics(page);
+	await expect(panel.getByText('× 1.2', { exact: true })).toBeVisible();
+	await expect(panel.getByText('× 2.5', { exact: true })).toBeVisible();
+	await expect(panel.getByText('× 3', { exact: true })).toHaveCount(0);
+	await panel.evaluate((element) => element.scrollIntoView({ block: 'center' }));
+	await panel.screenshot({ path: testInfo.outputPath('duck-coin-rune-modifiers.png') });
+});
+
 test('Phantom hard relics share stage controls and remain mutually exclusive', async ({ page }) => {
 	await page.goto('http://localhost:4173/en/stages/ISW-DF_Mind_the_Doors');
 	await openRelics(page);

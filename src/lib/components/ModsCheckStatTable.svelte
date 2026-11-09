@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getTranslations } from '$lib/functions/languageHelpers';
-	import type { Enemy, Language } from '$lib/types';
+	import type { Enemy, Language, Mod } from '$lib/types';
 	import DraggableContainer from './DraggableContainer.svelte';
 	import { charaAssets } from '$lib/data/chara/chara_assets';
 	import aspdIcon from '$lib/images/is/aspd.webp';
@@ -43,8 +43,16 @@
 		if (runes) {
 			for (const mod of runes.mods) {
 				if (mod.key === statKey) {
-					mod.groupKey = runes.key;
-					list.push(mod);
+					if (mod.contributions?.length && (mod.mode === 'add' || mod.order !== 'initial')) {
+						list.push(
+							...mod.contributions.map((part: NonNullable<Mod['contributions']>[number]) => ({
+								...mod,
+								...part
+							}))
+						);
+					} else {
+						list.push({ ...mod, sourceKeys: mod.sourceKeys ?? [runes.key] });
+					}
 				}
 			}
 		}
@@ -60,7 +68,7 @@
 			.filter((mod) => !['combat_ops', 'elite_ops'].includes(mod.key))
 			.forEach((ele) => {
 				const mods = ele.mods.filter((mod) => mod.key === statKey);
-				for (const { key, value, order = 'final', mode } of mods) {
+				for (const { value, order = 'final', mode } of mods) {
 					switch (mode) {
 						case 'add':
 							switch (order) {
@@ -93,7 +101,7 @@
 		const mul = [];
 		modsList.forEach((ele) => {
 			const mods = ele.mods.filter((mod) => mod.key === 'atk_interval');
-			for (const { key, value, mode } of mods) {
+			for (const { value, mode } of mods) {
 				switch (mode) {
 					case 'add':
 						add.push({ key: ele.key, value });
@@ -158,6 +166,35 @@
 	let atkIntervalMods = $derived(getAtkIntervalMods(enemy.modsList[formIndex]));
 </script>
 
+{#snippet runeTerm(value: number, mode: string, sourceKeys: string[])}
+	<div class="inline-grid grid-rows-[auto_0px] justify-items-center mx-1">
+		<span
+			>&nbsp;{mode === 'mul' ? '× ' : mode === 'add' && value >= 0 ? '+' : ''}{round(value)}</span
+		>
+		<div class="flex gap-x-2 pt-1.5 text-xs">
+			{#each sourceKeys as key}
+				<ModsCheckIcon {formIndex} {enemy} {key} {language} inline />
+			{/each}
+		</div>
+	</div>
+{/snippet}
+
+{#snippet runeModifier(mod: Mod)}
+	{#if mod.mode === 'mul' && mod.order === 'initial' && mod.contributions && mod.contributions.length > 1}
+		<span>&nbsp;× (1 +</span>
+		{#each mod.contributions as part, i}
+			{@render runeTerm(part.value, i === 0 ? '' : 'mul', part.sourceKeys)}
+		{/each}
+		<span>)</span>
+	{:else}
+		{@render runeTerm(
+			mod.order === 'initial' && mod.mode === 'mul' ? 1 + mod.value : mod.value,
+			mod.mode,
+			mod.sourceKeys ?? []
+		)}
+	{/if}
+{/snippet}
+
 <div class="grid grid-cols-[auto_1fr] mt-2.5">
 	<div class="border-r border-gray-500 pr-3 whitespace-nowrap">
 		{#each statsToShow as key, i}
@@ -194,7 +231,9 @@
 		{#if statKey !== 'aspd' && runeMods?.length > 0}
 			<DraggableContainer className="h-full py-3 pl-3">
 				<span class="text-xs md:text-base">{getTranslations(language).pre_combat_mods}</span>
-				<div class="flex items-center justify-center w-max mx-auto py-4 whitespace-nowrap text-xl">
+				<div
+					class="flex items-center justify-center w-max mx-auto pt-4 pb-12 whitespace-nowrap text-xl"
+				>
 					{#if statKey === 'aspd'}
 						{baseStat}
 						{#each runeAtkIntervalMods.add as { value }}
@@ -212,17 +251,8 @@
 							</div>
 							<span>{statKey === 'aspd' ? 100 : baseStat}</span>
 						</div>
-						{#each runeMods as { value, mode, order, groupKey }}
-							<div class="relative inline-flex">
-								{#if mode === 'add'}
-									<span>&nbsp;{value >= 0 ? '+' : ''}{value}</span>
-								{:else if mode === 'mul'}
-									<span>&nbsp;× {round(order === 'initial' ? 1 + value : value)}</span>
-								{/if}
-								<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
-									{getTranslations(language)[groupKey]}
-								</div>
-							</div>
+						{#each runeMods as mod}
+							{@render runeModifier(mod)}
 						{/each}
 					</div>
 					{#if statKey === 'aspd'}
@@ -283,15 +313,8 @@
 						100
 						{#if runeMods?.length > 0}
 							<div class="flex relative">
-								<div class="absolute top-[125%] left-1/2 -translate-x-1/2 text-xs">
-									{getTranslations(language).runes}
-								</div>
-								{#each runeMods as { value, mode }}
-									{#if mode === 'add'}
-										<span>&nbsp;{value >= 0 ? '+' : ''}{value}</span>
-									{:else}
-										<span>&nbsp;× {1 + value}</span>
-									{/if}
+								{#each runeMods as mod}
+									{@render runeModifier(mod)}
 								{/each}
 								<span>)</span>
 							</div>

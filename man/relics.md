@@ -42,6 +42,18 @@ effects replace the base effects completely, including when the stage's effects
 are empty. Stages are not accumulated or scaled by their index: different relics
 have different stacking rules encoded in their effect arrays.
 
+Individual stat modifiers can set `"type": "rune"` to join the stage-rune
+calculation, before secondary modifiers and at the existing rune rounding step.
+Their `mode`, `order`, and values retain their usual meaning within that phase.
+Untagged modifiers keep their ordinary behavior. Tag stat modifiers in both the
+base effects and every applicable stage; leave system effects untagged.
+Enemy and trap stat calculations share this routing, including rune targeting
+restrictions for traps. Selected effects still reach the special-modifier store
+unchanged, so hidden wave groups continue to work.
+Compiled modifiers retain their contributing group IDs in `sourceKeys` and
+original values in `contributions`, allowing the modifier table to show every
+rune modifier separately with its stage label or relic icon.
+
 Presence checks can read the compact selection store directly. Relic-linked wave
 options derive their selected state and hidden groups from resolved special
 effects, so changes made in the overlay also update the wave panel.

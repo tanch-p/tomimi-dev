@@ -1,7 +1,7 @@
 import type { Language, Trap, MapConfigTrap, TrapData, StatMods, SpecialMods } from '$lib/types';
 import trapLookup from '$lib/data/trap/traps.json';
 import trapSkills from '$lib/data/trap/traps_skills.json';
-import { compileMods, getDmgReductionVal, getModdedStat } from './statHelpers';
+import { compileMods, getModdedStat, routeRuneMods } from './statHelpers';
 import { getOverwrittenKeys } from './skillHelpers';
 import { isEquals } from './equalityHelpers';
 
@@ -206,6 +206,7 @@ export function getTrapSpecialSkill(
 }
 
 function parseStats(trap: Trap, statMods: StatMods) {
+	statMods = routeRuneMods(statMods);
 	let diffMods;
 	const type = trap.group === 'enemy' ? 'trap_enemy' : 'trap_rune';
 	const otherMods = statMods.others
