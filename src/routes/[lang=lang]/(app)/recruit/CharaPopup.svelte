@@ -202,6 +202,7 @@
 								<div class="module none"></div>
 							{:else}
 								<DraggableContainer
+									showArrows
 									className="overflow-y-visible no-scrollbar snap-proximity snap-x "
 								>
 									<div
