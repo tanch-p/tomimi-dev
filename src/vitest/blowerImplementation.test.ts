@@ -134,7 +134,7 @@ function createMovingEnemy(
 	return enemy;
 }
 
-async function createDlancerStageFixture() {
+async function createBlowerStageFixture() {
 	const stage = await loadStage('ISW-NO_排风口', 'zh', 'ro4');
 	const config = structuredClone(stage.mapConfig);
 	for (const trap of config.traps) trap.hidden = true;
@@ -151,6 +151,11 @@ async function createDlancerStageFixture() {
 	});
 	const manager = new GameSimManager(config, enemies, runtime, EMPTY_STAT_MODS);
 	new GameMap(manager as never);
+	return { config, enemies, manager };
+}
+
+async function createDlancerStageFixture() {
+	const { config, enemies, manager } = await createBlowerStageFixture();
 
 	const route = ((config.routes ?? []) as TestRoute[])
 		.map(
@@ -171,6 +176,52 @@ async function createDlancerStageFixture() {
 
 	return { manager, route, enemyDefinition };
 }
+
+test.each([
+	{ name: 'leftward blower', aliases: ['trap_013_blower#6'] },
+	{ name: 'upward blower', aliases: ['trap_013_blower#3'] },
+	{ name: 'leftward and upward blowers', aliases: ['trap_013_blower#6', 'trap_013_blower#3'] }
+])('ISW-NO_排风口 slows enemy_1327_cbrokt against $name', async ({ aliases }) => {
+	const { config, enemies, manager } = await createBlowerStageFixture();
+	const route = manager.convertMovementConfig(structuredClone(config.routes[4])) as TestRoute;
+	const enemyDefinition = enemies.find((enemy) => enemy.stageId === 'enemy_1327_cbrokt');
+	if (!enemyDefinition) throw new Error('Expected enemy_1327_cbrokt was not found');
+
+	for (const alias of aliases) {
+		expect(manager.addTrap(null, alias)).toMatchObject({
+			direction: alias === 'trap_013_blower#6' ? 'LEFT' : 'UP'
+		});
+	}
+	const enemy = createMovingEnemy(manager, route, enemyDefinition);
+	const baseSpeed = enemy.stats.get('ms');
+	const measurements = new Map<string, { statSpeed: number; actualSpeed: number }[]>();
+	for (let frame = 0; frame < 6_000 && !enemy.exit; frame++) {
+		const previousPosition = enemy.meshGroup.position.clone();
+		enemy.update(1 / 30);
+		for (const modifier of enemy.stats.activeModifiers) {
+			if (!modifier.source.endsWith(':upstream')) continue;
+			const samples = measurements.get(modifier.source) ?? [];
+			samples.push({
+				statSpeed: enemy.stats.get('ms'),
+				actualSpeed:
+					previousPosition.distanceTo(enemy.meshGroup.position) / GameConfig.gridSize / (1 / 30)
+			});
+			measurements.set(modifier.source, samples);
+		}
+	}
+
+	for (const alias of aliases) {
+		const samples = measurements.get(`trap:airflow:${alias}:upstream`) ?? [];
+		expect(samples.length, alias).toBeGreaterThan(30);
+		// Allow a second for steering to settle, then check actual displacement as well as stats.
+		const settled = samples.slice(30, -2);
+		expect(settled.length, alias).toBeGreaterThan(0);
+		for (const sample of settled) {
+			expect(sample.statSpeed, alias).toBeCloseTo(baseSpeed * 0.5, 2);
+			expect(sample.actualSpeed, alias).toBeCloseTo(baseSpeed * 0.5 * 0.5, 2);
+		}
+	}
+});
 
 test('ISW-NO_排风口 applies right-facing airflow throughout the row 5 col 4-to-7 segment', async () => {
 	const stage = await loadStage('ISW-NO_排风口', 'zh', 'ro4');

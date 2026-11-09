@@ -14,6 +14,7 @@ export interface GameConfigState {
 	FrustumSize: number;
 	showAllRange: boolean;
 	showAllTimers: boolean;
+	showMovementSpeedBuffIcon: boolean;
 	showTimeline: boolean;
 	scaledElapsedTime: number;
 	waveElapsedTime: number;
@@ -42,6 +43,7 @@ export const GameConfig = $state<GameConfigState>({
 	FrustumSize: 900,
 	showAllRange: true,
 	showAllTimers: true,
+	showMovementSpeedBuffIcon: false,
 	showTimeline: true,
 	scaledElapsedTime: 0,
 	waveElapsedTime: 0,

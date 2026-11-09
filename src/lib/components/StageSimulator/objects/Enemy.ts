@@ -783,10 +783,12 @@ export class Enemy {
 		this.syncMovementSpeedBuffIcon();
 	}
 
-	private syncMovementSpeedBuffIcon() {
+	syncMovementSpeedBuffIcon() {
 		if (!this.movementSpeedBuffIcon) return;
-		const hasMovementSpeedBuff = this.stats.hasRuntimeStatIncrease('ms');
-		const hasMovementSpeedDebuff = this.stats.hasRuntimeStatDecrease('ms');
+		const hasMovementSpeedBuff =
+			GameConfig.showMovementSpeedBuffIcon && this.stats.hasRuntimeStatIncrease('ms');
+		const hasMovementSpeedDebuff =
+			GameConfig.showMovementSpeedBuffIcon && this.stats.hasRuntimeStatDecrease('ms');
 		const accelerationStacks = this.stats.getRuntimeModifierStacks(ACCELERATION_MODIFIER_SOURCE);
 		const showBothIcons = hasMovementSpeedBuff && hasMovementSpeedDebuff;
 		this.movementSpeedBuffIcon.visible = hasMovementSpeedBuff;
@@ -927,7 +929,11 @@ export class Enemy {
 				? 100
 				: 10
 			: 100;
-		const maximumSpeed = Math.max(theoreticalSpeed, this.inertia.length());
+		// Active slows also limit carried momentum, otherwise upstream airflow can
+		// lower the movement stat without reducing the enemy's actual speed.
+		const maximumSpeed = this.stats?.hasRuntimeStatDecrease('ms')
+			? theoreticalSpeed
+			: Math.max(theoreticalSpeed, this.inertia.length());
 		const speedRatio = theoreticalSpeed > 0 ? this.inertia.length() / theoreticalSpeed : 0;
 		const actualAvoidance = this.getAvoidanceForce(direction).multiplyScalar(
 			Math.max(speedRatio, 0.5)
@@ -941,8 +947,7 @@ export class Enemy {
 		this.clampMagnitude(acceleration, maxSteeringForce);
 
 		const velocity = acceleration.multiplyScalar(movementFrameInterval).add(this.inertia);
-		// A removed speed buff changes the target speed, but existing momentum must
-		// decay through steering instead of being discarded in a single frame.
+		// Preserve momentum after a speed buff ends unless an active slow limits it.
 		this.clampMagnitude(velocity, maximumSpeed);
 		this.inertia.copy(velocity);
 		return velocity;

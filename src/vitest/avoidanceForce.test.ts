@@ -207,6 +207,23 @@ test('steering retains momentum when a temporary speed buff expires', () => {
 	expect(enemy.inertia.toArray()).toEqual(velocity.toArray());
 });
 
+test.each(['WALK', 'FLY'])('an active slow limits retained %s momentum', (motionMode) => {
+	const enemy = Object.create(Enemy.prototype) as any;
+	Object.assign(enemy, {
+		inertia: new THREE.Vector3(0, -0.4, 0),
+		motionMode,
+		stats: { hasRuntimeStatDecrease: () => true },
+		getAvoidanceForce: () => new THREE.Vector3()
+	});
+	GameConfig.steeringEnabled = true;
+
+	const velocity = enemy.calculateMovementVelocity(new THREE.Vector3(0, -1, 0), 0.2);
+
+	expect(velocity.length()).toBeCloseTo(0.2);
+	expect(velocity.y).toBeLessThan(0);
+	expect(enemy.inertia.toArray()).toEqual(velocity.toArray());
+});
+
 test('avoidance is scaled to at least half strength before steering acceleration', () => {
 	const enemy = Object.create(Enemy.prototype) as any;
 	Object.assign(enemy, {

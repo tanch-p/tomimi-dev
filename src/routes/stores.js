@@ -46,6 +46,8 @@ if (browser && cookiesEnabled) {
 	if (showAllRange == 0) GameConfig.showAllRange = false;
 	const showAllTimers = localStorage.getItem('showAllTimers');
 	if (showAllTimers == 0) GameConfig.showAllTimers = false;
+	const showMovementSpeedBuffIcon = localStorage.getItem('showMovementSpeedBuffIcon');
+	GameConfig.showMovementSpeedBuffIcon = showMovementSpeedBuffIcon === '1';
 	const showTimeline = localStorage.getItem('showTimeline');
 	if (showTimeline == 0) GameConfig.showTimeline = false;
 }

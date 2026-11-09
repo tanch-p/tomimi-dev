@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import * as THREE from 'three';
 import {
 	AIRFLOW_MODIFIERS,
@@ -8,9 +8,14 @@ import {
 	removeBlowerTileEffects
 } from '$lib/components/StageSimulator/functions/airflowHelpers';
 import { Enemy } from '$lib/components/StageSimulator/objects/Enemy';
+import { GameConfig } from '$lib/components/StageSimulator/objects/GameConfig.svelte';
 import type { Position } from '$lib/types';
 
 describe('trap_013_blower airflow', () => {
+	afterEach(() => {
+		GameConfig.showMovementSpeedBuffIcon = false;
+	});
+
 	it('affects only the three tiles in front of the blower', () => {
 		expect(getAirflowTilePositions({ row: 4, col: 4 }, 'RIGHT')).toEqual([
 			{ row: 4, col: 5 },
@@ -147,6 +152,7 @@ describe('trap_013_blower airflow', () => {
 	});
 
 	it('shows separate movement-speed buff and debuff icons and centers either alone', () => {
+		GameConfig.showMovementSpeedBuffIcon = true;
 		const buffIcon = new THREE.Sprite();
 		const debuffIcon = new THREE.Sprite();
 		const stackIcon = new THREE.Sprite();
@@ -191,5 +197,55 @@ describe('trap_013_blower airflow', () => {
 		enemy.syncMovementSpeedBuffIcon();
 		expect(buffIcon.visible).toBe(false);
 		expect(debuffIcon.visible).toBe(false);
+	});
+
+	it.each([
+		{ buffActive: true, debuffActive: true },
+		{ buffActive: true, debuffActive: false },
+		{ buffActive: false, debuffActive: true },
+		{ buffActive: false, debuffActive: false }
+	])('toggles speed icons with buff=$buffActive and debuff=$debuffActive', (effects) => {
+		const buffIcon = new THREE.Sprite();
+		const debuffIcon = new THREE.Sprite();
+		const stackIcon = new THREE.Sprite();
+		const enemy = Object.create(Enemy.prototype) as any;
+		Object.assign(enemy, {
+			movementSpeedBuffIcon: buffIcon,
+			movementSpeedDebuffIcon: debuffIcon,
+			movementSpeedBuffStackIcon: stackIcon,
+			movementSpeedBuffStackCanvas: null,
+			movementSpeedBuffStackTexture: null,
+			stats: {
+				hasRuntimeStatIncrease: () => effects.buffActive,
+				hasRuntimeStatDecrease: () => effects.debuffActive,
+				getRuntimeModifierStacks: () => (effects.buffActive ? 3 : 0)
+			}
+		});
+
+		GameConfig.showMovementSpeedBuffIcon = false;
+		enemy.syncMovementSpeedBuffIcon();
+		expect(buffIcon.visible).toBe(false);
+		expect(debuffIcon.visible).toBe(false);
+		expect(stackIcon.visible).toBe(false);
+
+		// Stat changes must keep respecting the preference while the icons are hidden.
+		effects.buffActive = !effects.buffActive;
+		effects.debuffActive = !effects.debuffActive;
+		enemy.syncMovementSpeedBuffIcon();
+		expect(buffIcon.visible).toBe(false);
+		expect(debuffIcon.visible).toBe(false);
+		expect(stackIcon.visible).toBe(false);
+
+		GameConfig.showMovementSpeedBuffIcon = true;
+		enemy.syncMovementSpeedBuffIcon();
+		expect(buffIcon.visible).toBe(effects.buffActive);
+		expect(debuffIcon.visible).toBe(effects.debuffActive);
+		expect(stackIcon.visible).toBe(effects.buffActive);
+
+		GameConfig.showMovementSpeedBuffIcon = false;
+		enemy.syncMovementSpeedBuffIcon();
+		expect(buffIcon.visible).toBe(false);
+		expect(debuffIcon.visible).toBe(false);
+		expect(stackIcon.visible).toBe(false);
 	});
 });

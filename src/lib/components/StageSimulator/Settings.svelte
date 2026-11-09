@@ -6,12 +6,13 @@
 	import { Game } from './objects/Game';
 	import { setLocalStorage } from '$lib/functions/storageHelpers';
 	import { getSelectableStagePhases } from './config/stageBehaviors';
+	import movementSpeedBuffIcon from '$lib/images/battlecommon/enemy_movespeed_buff.webp';
 
 	interface Props {
 		game?: Game;
 		mapConfig: MapConfig;
 	}
-	type ConfigKey = 'showAllRange' | 'showAllTimers' | 'cameraLock';
+	type ConfigKey = 'showAllRange' | 'showAllTimers' | 'showMovementSpeedBuffIcon' | 'cameraLock';
 
 	let { game, mapConfig }: Props = $props();
 	let language: Language = $derived(page.data.language);
@@ -59,6 +60,23 @@
 				GameConfig[configKey] = !GameConfig[configKey];
 				setLocalStorage('showAllTimers', GameConfig[configKey] ? 1 : 0);
 				game.gameManager.countdownManager.toggleAllCountdowns(GameConfig[configKey]);
+			}
+		},
+		{
+			key: 'showMovementSpeedBuffIcon',
+			type: 'key',
+			icon: movementSpeedBuffIcon,
+			texts: {
+				zh: '显示移速增减益图标',
+				ja: '移動速度バフ・デバフアイコン表示',
+				en: 'Show Movement Speed Buff/Debuff Icons'
+			},
+			fn: () => {
+				GameConfig.showMovementSpeedBuffIcon = !GameConfig.showMovementSpeedBuffIcon;
+				setLocalStorage('showMovementSpeedBuffIcon', GameConfig.showMovementSpeedBuffIcon ? 1 : 0);
+				game?.gameManager.enemiesOnMap
+					.filter((enemy) => enemy.alive)
+					.forEach((enemy) => enemy.syncMovementSpeedBuffIcon());
 			}
 		},
 		{
@@ -116,7 +134,14 @@
 			disabled={requiresGame && !game}
 			onclick={() => fn(key)}
 		>
-			<span>{icon} {texts[language]}: </span>
+			<span class="inline-flex items-center gap-1">
+				{#if key === 'showMovementSpeedBuffIcon'}
+					<img src={icon} alt="" class="h-4 w-auto" />
+				{:else}
+					{icon}
+				{/if}
+				<span>{texts[language]}: </span>
+			</span>
 			<span class="text-center">{value ? 'YES' : 'NO'}</span>
 		</button>
 	{/each}
