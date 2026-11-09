@@ -816,6 +816,38 @@
 				]
 			}
 		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 0.55,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 0.3025,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			}
+		],
 		"tooltip": {
 			"zh": "投出时，所有敌方单位的最大生命值-45%，我方单位的最大生命值-25%",
 			"ja": "振り出されると、全ての敵の最大HP-45%、味方の最大HP-25%",
@@ -837,6 +869,38 @@
 						"key": "atk",
 						"value": 1.25,
 						"mode": "mul"
+					}
+				]
+			}
+		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "atk",
+								"value": 1.25,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "atk",
+								"value": 1.5625,
+								"mode": "mul"
+							}
+						]
 					}
 				]
 			}
@@ -866,6 +930,38 @@
 				]
 			}
 		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "aspd",
+								"value": 25.0,
+								"mode": "add"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "aspd",
+								"value": 50.0,
+								"mode": "add"
+							}
+						]
+					}
+				]
+			}
+		],
 		"tooltip": {
 			"zh": "投出时，所有我方单位获得55%的物理法术闪避，所有敌人攻击速度+25",
 			"ja": "振り出されると、全ての味方の物理・術回避+55%、全ての敵の攻撃速度+25",
@@ -887,6 +983,38 @@
 						"key": "hp",
 						"value": 1.5,
 						"mode": "mul"
+					}
+				]
+			}
+		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 1.5,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 2.25,
+								"mode": "mul"
+							}
+						]
 					}
 				]
 			}
@@ -917,6 +1045,48 @@
 						"key": "ms",
 						"value": 1.3,
 						"mode": "mul"
+					}
+				]
+			}
+		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "atk",
+								"value": 1.3,
+								"mode": "mul"
+							},
+							{
+								"key": "ms",
+								"value": 1.3,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "atk",
+								"value": 1.69,
+								"mode": "mul"
+							},
+							{
+								"key": "ms",
+								"value": 1.69,
+								"mode": "mul"
+							}
+						]
 					}
 				]
 			}
@@ -1095,6 +1265,40 @@
 						"value": 2,
 						"mode": "mul",
 						"order": "initial"
+					}
+				]
+			}
+		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["trap_222_rgdysm"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 2,
+								"mode": "mul",
+								"order": "initial"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["trap_222_rgdysm"],
+						"mods": [
+							{
+								"key": "hp",
+								"value": 4,
+								"mode": "mul",
+								"order": "initial"
+							}
+						]
 					}
 				]
 			}
@@ -1327,6 +1531,38 @@
 						"key": "atk",
 						"value": 1.2,
 						"mode": "mul"
+					}
+				]
+			}
+		],
+		"stages": [
+			{
+				"suffix": "x1",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "atk",
+								"value": 1.2,
+								"mode": "mul"
+							}
+						]
+					}
+				]
+			},
+			{
+				"suffix": "x2",
+				"effects": [
+					{
+						"targets": ["ALL"],
+						"mods": [
+							{
+								"key": "atk",
+								"value": 1.44,
+								"mode": "mul"
+							}
+						]
 					}
 				]
 			}

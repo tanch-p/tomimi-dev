@@ -66776,7 +66776,7 @@
 				"ms": 0.4,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"atk_aerial_block_only"}],
 				"special": []
 			}
 		],
@@ -66813,7 +66813,7 @@
 				"ms": 0.4,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{"key":"atk_aerial_block_only"}],
 				"special": []
 			}
 		],
@@ -73002,7 +73002,7 @@
 				"epResistance": 0.0,
 				"traits": [
 					{
-						"key": "splash"
+						"key": "splash","tiles":4
 					},
 					{
 						"key": "muwiz_steal"
