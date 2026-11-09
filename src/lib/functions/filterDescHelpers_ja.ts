@@ -43,6 +43,7 @@ const DEBUFFS = [
 	'damage_scale',
 	'weightless',
 	'cancel_stealth',
+	'disable_evasion',
 	'crit_wound'
 ];
 const ALLY_STAT_BUFFS = [
@@ -80,6 +81,7 @@ const ALLY_BUFFS = [
 	'ally_camouflage',
 	'ally_taunt',
 	'ally_arts',
+	'ally_auto_skill',
 	'ally_apoptosis',
 	'ally_burning',
 	'ally_lower_target_priority',
@@ -318,10 +320,10 @@ export const generateSkillDesc = (
 					(category === 'blockCnt'
 						? key
 						: category === 'relic'
-						? relic[`name_${language}`] || relic['name_zh']
-						: getTranslations(language).table_headers[displayKey] ??
-						  getTranslations(language)[displayKey] ??
-						  getTranslations(language).types[displayKey]) +
+							? relic[`name_${language}`] || relic['name_zh']
+							: (getTranslations(language).table_headers[displayKey] ??
+								getTranslations(language)[displayKey] ??
+								getTranslations(language).types[displayKey])) +
 					'</>'
 				);
 			});

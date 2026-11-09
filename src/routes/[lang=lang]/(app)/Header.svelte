@@ -2,7 +2,6 @@
 	import type { Language } from '$lib/types';
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 	import favicon from '$lib/images/favicon.webp';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 	interface Props {
 		language: Language;
 	}
@@ -44,7 +43,6 @@
 			</ul>
 		</nav>
 		<div class="flex items-center justify-end gap-1 sm:gap-2 pr-2">
-			<ThemeSwitcher {language} />
 			<LanguageSwitcher />
 		</div>
 	</div>

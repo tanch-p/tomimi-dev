@@ -2,7 +2,7 @@
 	"rarity": ["TIER_1", "TIER_2", "TIER_3", "TIER_4", "TIER_5", "TIER_6"],
 	"deployable_tile": ["MELEE", "RANGED", "ALL"],
 	"damage_type": ["phys", "arts", "true", "ele_dmg"],
-	"ele_inj":["apoptosis","burning","neural"],
+	"ele_inj":["apoptosis","burning","neural","erosion","rampage"],
 	"blockCnt": [0, 1, 2, 3, 4, 5],
 	"profession": ["PIONEER", "WARRIOR", "SNIPER", "TANK", "MEDIC", "SUPPORT", "CASTER", "SPECIAL"],
 	"others": ["target_air", "max_target", "aoe"],
@@ -55,7 +55,7 @@
 			"chainhealer",
 			"watchman"
 		],
-		"SUPPORT": ["slower", "summoner", "underminer", "bard", "blessing", "craftsman", "ritualist"],
+		"SUPPORT": ["slower", "summoner", "underminer", "bard", "blessing", "craftsman", "ritualist","supportiveranger"],
 		"CASTER": [
 			"corecaster",
 			"splashcaster",
@@ -77,7 +77,8 @@
 			"dollkeeper",
 			"traper",
 			"skywalker",
-			"alchemist"
+			"alchemist",
+			"dispatcher"
 		]
 	},
 	"group": [
@@ -128,7 +129,7 @@
 	],
 	"status_ailment": ["stun", "sluggish", "sleep", "silence", "cold", "levitate", "root", "tremble","fear","attract","palsy"],
 	"enemy_stats": ["atk_down", "def_down", "res_down", "aspd_down", "ms_down", "hitrate_down","heal_scale_down"],
-	"debuff_special": ["damage_scale", "weightless", "cancel_stealth", "crit_wound"],
+	"debuff_special": ["damage_scale", "weightless", "cancel_stealth", "crit_wound","disable_evasion"],
 	"ally_stats": [
 		"ally_max_hp",
 		"ally_atk",
@@ -169,7 +170,8 @@
 		"add_sp_gain_option",
 		"ally_spareshot",
 		"add_bullet",
-		"ally_max_ammo"
+		"ally_max_ammo",
+		"ally_auto_skill"
 	],
 	"ally_others": ["squad_effect"],
 	"self_stats": ["def","res","fast_redeploy"],
@@ -275,7 +277,8 @@
 		"heal_on_damage",
 		"permanentatk",
 		"enemy_damage_share",
-		"bonus_lifepoint"
+		"bonus_lifepoint",
+		"ally_auto_skill"
 	],
 	"terrain": ["terrain_water"]
 }

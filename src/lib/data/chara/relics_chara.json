@@ -597,7 +597,7 @@
 			"desc_zh": "下一个招募或进阶的干员无法开启技能，但攻击力+100%，攻击速度+50",
 			"desc_ja": "",
 			"desc_en": "",
-			"tags": ["coin_skill"]
+			"tags": ["skill_init_on"]
 		},
 		{
 			"id": "rogue_6_relic_assign_12",

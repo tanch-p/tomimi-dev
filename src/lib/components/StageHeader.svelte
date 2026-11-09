@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Language } from '$lib/types';
 	import LanguageSwitcher from './LanguageSwitcher.svelte';
-	import ThemeSwitcher from './ThemeSwitcher.svelte';
 	import favicon from '$lib/images/favicon.webp';
 
 	interface Props {
@@ -29,7 +28,6 @@
 			{#if floorTitle}{@render floorTitle()}{/if}
 		</div>
 		<div class="row-start-1 col-start-3 flex items-center justify-end gap-1 sm:gap-2">
-			<ThemeSwitcher {language} />
 			<LanguageSwitcher />
 		</div>
 	</div>

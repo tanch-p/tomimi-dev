@@ -611,6 +611,15 @@
 		"desc_en": null,
 		"desc_ja": null
 	},
+	"ba.dt.rampage2": {
+        "termId": "ba.dt.rampage2",
+        "name_zh": "狂躁损伤·我方",
+        "name_en": null,
+        "name_ja": null,
+        "desc_zh": "累计满时爆发（普通、精英敌人1000点、领袖2000点累计值），敌人攻击速度+20，但每秒受到逐渐提升的元素伤害（最多2110）。15秒冷却",
+        "desc_en": null,
+        "desc_ja": null
+    },
 	"ba.groundbind": {
 		"termId": "ba.groundbind",
 		"name_zh": "缚地",

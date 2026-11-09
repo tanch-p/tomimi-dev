@@ -58,6 +58,8 @@ const SEARCH_IN_TAGS = new Set([
 	'apoptosis',
 	'burning',
 	'neural',
+	'erosion',
+	'rampage',
 	'apoptosis_scale',
 	'change_target_priority',
 	'remove_status',
@@ -136,7 +138,9 @@ const SEARCH_IN_TAGS = new Set([
 	'ally_arts',
 	'mujica',
 	'kjerag',
-	'not_moving'
+	'not_moving',
+	'disable_evasion',
+	'ally_auto_skill'
 ]);
 const SEARCH_IN_BLACKBOARD = new Set([
 	'max_target',
