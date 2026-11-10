@@ -20833,7 +20833,9 @@
 				"ms": 0.7,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{
+						"key": "lyengs_1"
+					}],
 				"special": []
 			}
 		],
@@ -21077,7 +21079,15 @@
 				"ms": 0.8,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [
+					{
+						"key": "lysyta",
+						"value": 100
+					},
+					{
+						"key": "no_block_dmg_red"
+					}
+				],
 				"special": []
 			}
 		],

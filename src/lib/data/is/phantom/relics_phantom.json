@@ -233,8 +233,8 @@
 		"id": "rogue_1_relic_c13",
 		"name": {
 			"zh": "剧作家手稿：维多利亚",
-			"ja": "",
-			"en": ""
+         "ja": "劇作家の原稿：ヴィクトリア",
+            "en": "Playwright's Manuscript: Victoria"
 		},
 		"effects": [
 			{
@@ -268,8 +268,8 @@
 		"id": "rogue_1_relic_c14",
 		"name": {
 			"zh": "剧作家手稿：乌萨斯",
-			"ja": "",
-			"en": ""
+	  "ja": "劇作家の原稿：ウルサス",
+            "en": "Playwright's Manuscript: Ursus"
 		},
 		"effects": [
 			{
@@ -303,8 +303,8 @@
 		"id": "rogue_1_relic_c15",
 		"name": {
 			"zh": "剧作家手稿：莱塔尼亚",
-			"ja": "",
-			"en": ""
+	            "ja": "劇作家の原稿：リターニア",
+            "en": "Playwright's Manuscript: Leithanien"
 		},
 		"effects": [
 			{
@@ -338,8 +338,8 @@
 		"id": "rogue_1_relic_c16",
 		"name": {
 			"zh": "剧作家手稿：高卢",
-			"ja": "",
-			"en": ""
+		       "ja": "劇作家の原稿：ガリア",
+            "en": "Playwright's Manuscript: Gaul"
 		},
 		"effects": [
 			{

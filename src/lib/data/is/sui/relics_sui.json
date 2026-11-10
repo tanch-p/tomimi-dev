@@ -3,8 +3,8 @@
 		"id": "rogue_5_relic_final_9",
 		"name": {
 			"zh": "不赦",
-			"ja": "",
-			"en": ""
+		 "ja": "不赦",
+            "en": "Merciless"
 		},
 		"effects": [
 			{
@@ -27,16 +27,16 @@
 		],
 		"tooltip": {
 			"zh": "所有敌方单位的生命值、防御力+50％，使“宿傲”和部分“身形”获得持续召唤敌人的能力",
-			"ja": "",
-			"en": ""
+		        "ja": "敵全員の最大HP・防御力+50%。<「宿傲」>に「追加の敵を召喚」、一部の<「身形」>に「敵を持続的に召喚」の能力を付与",
+            "en": "All enemies HP and DEF +50%; 'Olden Pride' and some 'Body' segments gain ability to continuously summon enemies"
 		}
 	},
 	{
 		"id": "rogue_5_relic_final_10",
 		"name": {
 			"zh": "不息",
-			"ja": "",
-			"en": ""
+		        "ja": "不息",
+            "en": "Ceaseless"
 		},
 		"effects": [
 			{
@@ -52,16 +52,16 @@
 		],
 		"tooltip": {
 			"zh": "所有敌方单位的攻击力+30％；【伺烛客】及其召唤物在非岁兽残识作战时攻击力、生命值-10％，每进入新的一层，额外-10％。进入“来去处”时，额外-50％",
-			"ja": "",
-			"en": ""
-		}
+		   "ja": "敵全員の攻撃力+30%。【伺燭客】とその召喚物は【歳獣の残識】外で戦闘する場合、攻撃力・最大HP-10%。新エリアに入るたび、さらに-10%。「来去処」に入ると、さらに-50%",
+            "en": "All enemies ATK +30%; [Candleguests] and their summons -10% ATK and HP when fighting outside Sui's Remnant Consciousness, plus extra -10% upon entering a new floor, and extra -50% when entering 'Laiqu Point'"
+        }
 	},
 	{
 		"id": "rogue_5_relic_final_5",
 		"name": {
 			"zh": "无封长盒",
-			"ja": "",
-			"en": ""
+		      "ja": "封のない長箱",
+            "en": "Unsealed Case"
 		},
 		"effects": [
 			{
@@ -82,9 +82,9 @@
 		],
 		"tooltip": {
 			"zh": "领袖与精英敌人防御力+30%，攻击速度+20，关卡结束时每有一个仍在场的雕伥，失去1目标生命值（不会低于1），在先行一步中有奇妙的作用",
-			"ja": "",
-			"en": ""
-		}
+		 "ja": "敵【ボス】と【エリート】の防御力+30%、攻撃速度+20、ステージクリア時に戦場に残っている<彫像器鬼>1体につき、耐久値-1（1未満にはならない）。【先ゆく者】で不思議な効果を発揮する",
+            "en": "Leader and Elite enemies gain +30% DEF and +20 ASPD; every Statuegeist remaining on the field when the stage ends will deplete 1 Life Point (min 1); wondrous effects in Scout nodes"
+        }
 	},
 	{
 		"id": "rogue_5_relic_legacy_88",
@@ -1538,8 +1538,8 @@
 		"id": "rogue_5_copper_E_07",
 		"name": {
 			"zh": "厉-南武盛景",
-			"ja": "",
-			"en": ""
+		            "ja": "厲-南武の盛景",
+            "en": "Risk-Nanwu Glory"
 		},
 		"effects": [
 			{
@@ -1587,8 +1587,8 @@
 		],
 		"tooltip": {
 			"zh": "投出时，敌方单位攻击力+20％。携带期间每经过一个战斗节点，失去时可获得一个收藏品（最多获得5个）",
-			"ja": "",
-			"en": ""
+        "ja": "振り出されると、敵の攻撃力+20%。この通宝を失った際、所持中に通過した戦闘スポット1箇所につき秘宝を1つ獲得（最大5つまで）",
+            "en": "On toss, enemies +20% ATK. When lost, gain a Collectible for each combat node passed while carrying it (max 5)"
 		}
 	},
 	{

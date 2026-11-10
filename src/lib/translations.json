@@ -562,7 +562,7 @@
 		"zh": "幽灵形态"
 	},
 	"dywqgs_conquer": {
-		"en": "征 State",
+		"en": "Ladder State",
 		"ja": "征形態",
 		"zh": "征形态"
 	},
@@ -2269,7 +2269,7 @@
 	},
 	"chainhealer": {
 		"en": "Chain Healer",
-		"ja": "链愈师",
+		"ja": "連鎖癒師",
 		"zh": "链愈师"
 	},
 	"slower": {
@@ -2304,7 +2304,7 @@
 	},
 	"ritualist": {
 		"en": "Ritualist",
-		"ja": "巫役",
+		"ja": "祭儀師",
 		"zh": "巫役"
 	},
 	"executor": {
@@ -2349,7 +2349,7 @@
 	},
 	"hammer": {
 		"en": "Earthshaker",
-		"ja": "撼地者",
+		"ja": "槌撃士",
 		"zh": "撼地者"
 	},
 	"loopshooter": {

@@ -76,10 +76,10 @@
 		"id": "variation_10",
 		"outerName_zh": "焦虑的",
 		"innerName_zh": "焦虑",
-		"outerName_ja": "焦虑的",
-		"innerName_ja": "焦虑",
-		"outerName_en": "焦虑",
-		"innerName_en": "焦虑",
+		"outerName_ja": "焦った",
+		"innerName_ja": "焦り",
+		"outerName_en": "Anxious",
+		"innerName_en": "Anxious",
 		"src": null,
 		"effects": [
 			{
@@ -97,10 +97,10 @@
 		"id": "variation_14",
 		"outerName_zh": "慎敏症",
 		"innerName_zh": "慎敏症",
-		"outerName_ja": "慎敏症",
-		"innerName_ja": "慎敏症",
-		"outerName_en": "慎敏症",
-		"innerName_en": "慎敏症",
+		"outerName_ja": "敏慎症",
+		"innerName_ja": "敏慎症",
+		"outerName_en": "Paranoia",
+		"innerName_en": "Paranoia",
 		"src": null,
 		"effects": [
 			{
