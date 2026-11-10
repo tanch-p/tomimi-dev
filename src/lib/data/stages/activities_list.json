@@ -1,0 +1,56 @@
+[
+	{
+		"id": "recalrune",
+		"type": "recalrune",
+		"name": {
+			"zh": "全息作战矩阵 #1",
+			"ja": "全息作战矩阵 #1",
+			"en": "全息作战矩阵 #1"
+		},
+		"zones": [
+			{
+				"label": null,
+				"zoneNameFirst": null,
+				"zoneNameSecond": null,
+				"stages": [
+					{
+						"stageId": "level_recalrune_01-01",
+						"code": "7-18",
+						"name": {
+							"zh": "#爱国者之死",
+							"ja": "#愛国者の死",
+							"en": "#Death of a Patriot"
+						}
+					},
+					{
+						"stageId": "level_recalrune_01-02",
+						"code": "LS-4",
+						"name": {
+							"zh": "#特种战演习",
+							"ja": "#特殊戦演習",
+							"en": "#Special Operations Drill"
+						}
+					},
+					{
+						"stageId": "level_recalrune_01-03",
+						"code": "H5-1",
+						"name": {
+							"zh": "#炼狱行动-1",
+							"ja": "#煉獄作戦-1",
+							"en": "#Operation Inferno-1"
+						}
+					},
+					{
+						"stageId": "level_recalrune_01-04",
+						"code": "H9-2",
+						"name": {
+							"zh": "#暴风行动-2",
+							"ja": "#暴風作戦-2",
+							"en": "#Operation Anemoi-2"
+						}
+					}
+				]
+			}
+		]
+	}
+]

@@ -65,7 +65,9 @@
 			/>
 		{:else}
 			<img
-				src="/images/stages/level_{getStageImg(mapConfig?.id, eliteMode)}.webp"
+				src={mapConfig?.id.startsWith('level_recalrune_')
+					? `/images/stages/${getStageImg(mapConfig.id, eliteMode)}.webp`
+					: `/images/stages/level_${getStageImg(mapConfig?.id, eliteMode)}.webp`}
 				width="600"
 				height="338px"
 				alt={mapConfig?.levelId}

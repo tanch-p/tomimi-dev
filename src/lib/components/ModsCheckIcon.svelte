@@ -40,6 +40,17 @@
 			width="30px"
 			decoding="async"
 		/>
+	{:else if key.startsWith('recalrune_')}
+		<img
+			src={key === 'recalrune_base'
+				? '/images/recalrune/fixed_rune_icon.webp'
+				: `/images/recalrune/r_${key.replace('recalrune_', '')}.webp`}
+			alt={key}
+			loading="lazy"
+			height="30px"
+			width="30px"
+			decoding="async"
+		/>
 	{:else if key.includes('relic') || key.includes('copper')}
 		<img
 			src={getRelicImagePath(key)}

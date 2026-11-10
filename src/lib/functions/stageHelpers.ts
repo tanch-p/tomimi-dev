@@ -29,7 +29,17 @@ const STAGES_WITH_ELITE_IMG = [
 	'ro4_e_5_8'
 ];
 
+const RECAL_RUNE_STAGE_IDS: Record<string, string> = {
+	'level_recalrune_01-01': 'main_07-16',
+	'level_recalrune_01-02': 'wk_kc_4',
+	'level_recalrune_01-03': 'hard_05-01',
+	'level_recalrune_01-04': 'hard_09-02'
+};
+
 export const getStageImg = (id: string, eliteMode: boolean) => {
+	if (RECAL_RUNE_STAGE_IDS[id]) {
+		return RECAL_RUNE_STAGE_IDS[id];
+	}
 	if (id.includes('_b_')) {
 		return id;
 	}

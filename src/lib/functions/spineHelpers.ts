@@ -215,6 +215,7 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 		case 'enemy_1087_ltwolf_2':
 		case 'enemy_1165_duhond':
 		case 'enemy_1165_duhond_2':
+		case 'enemy_1037_lunsbr':
 			return 'Run_Loop';
 
 		case 'enemy_1327_cbrokt':

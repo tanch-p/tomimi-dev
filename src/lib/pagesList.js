@@ -1,7 +1,17 @@
 import ISStages from './data/stages/stage_name_lookup_table.json' with { type: 'json' };
 
 const LANGUAGES = ['en', 'ja', 'zh'];
-const PAGES = ['about', 'donate', 'laoli', 'recruit', 'mizuki', 'phantom', 'sarkaz', 'sami'];
+const PAGES = [
+	'about',
+	'donate',
+	'laoli',
+	'recruit',
+	'recalrune',
+	'mizuki',
+	'phantom',
+	'sarkaz',
+	'sami'
+];
 
 const IS_STAGES_LIST = Object.entries(ISStages).reduce((acc, [name, value]) => {
 	const { lang } = value;
