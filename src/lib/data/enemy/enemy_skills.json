@@ -192,7 +192,7 @@
 			"zh": ["无法被阻挡数小于<v.value>的友方单位阻挡"]
 		}
 	},
-	"atk_aerial_block_only":{
+	"atk_aerial_block_only": {
 		"tooltip": {
 			"en": ["Only attacks allies with aerial block"],
 			"ja": ["通常攻撃は空中ブロックの味方ユニットに対して行う"],
@@ -307,8 +307,10 @@
 	"block_minus_aspd": {
 		"value": 80,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When blocked, reduces the blocking unit's ASPD by 80% (does not stack)"
+			],
+			"ja": ["ブロックされている時、ブロックしている味方の攻撃速度-80%（直接乗算、重複しない）"],
 			"zh": ["被阻挡时使阻挡单位攻击速度-80%（直接乘算，不可叠加）"]
 		}
 	},
@@ -3079,7 +3081,7 @@
 		}
 	},
 	"pompeii_aspd_inc": {
-		"value":40,
+		"value": 40,
 		"tooltip": {
 			"en": ["HP↓50% - ASPD +<v.value>"],
 			"ja": ["HP↓50% - 攻撃速度+<v.value>"],
@@ -3087,11 +3089,13 @@
 		}
 	},
 	"pompeii_burn": {
-		"value":20,
+		"value": 20,
 		"tooltip": {
 			"en": ["Attacks inflict Burn (20 {arts} dmg every 0.33s) for 10s"],
 			"ja": ["攻撃で10秒火傷・{arts}(20/0.33秒)付与される"],
-			"zh": ["普通攻击额外对目标施加10秒灼烧效果，每0.33秒受到<v.value>无来源无途径{arts}持续伤害（重复施加时仅刷新持续时间，不触发受击回复）"]
+			"zh": [
+				"普通攻击额外对目标施加10秒灼烧效果，每0.33秒受到<v.value>无来源无途径{arts}持续伤害（重复施加时仅刷新持续时间，不触发受击回复）"
+			]
 		}
 	},
 	"pompeii_explosion": {
@@ -7255,15 +7259,19 @@
 	},
 	"cjstel_active": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"While active, is treated as a flying unit and is immune to Unbalance; moves towards a Derelict Stove while carrying a collected item"
+			],
+			"ja": [
+				"起動中は飛行ユニットとして扱われ、失衡無効。拾得物を持っている場合、破棄された竈台に向かって移動する"
+			],
 			"zh": ["激活状态下，自身视为飞行单位，失衡免疫；若持有拾取物，则追踪废弃火灶移动"]
 		}
 	},
 	"cjfrog_init": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Spawns carrying 1 copper coin (can carry up to 1)"],
+			"ja": ["出現時、銅貨を1枚所持している（所持上限1枚）"],
 			"zh": ["出场时持有1个铜币(最多持有1个)"]
 		}
 	},
@@ -7273,15 +7281,19 @@
 		"suffix": { "en": "ranged", "ja": "遠", "zh": "远" },
 		"hits": 1,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"While carrying a copper coin, can consume it to perform a ranged attack dealing 200% of ATK as Physical damage (does not target Sapidity)"
+			],
+			"ja": [
+				"銅貨を所持している時、銅貨を消費して攻撃力の200%の物理ダメージを与える遠距離攻撃を行う（飲啄は攻撃しない）"
+			],
 			"zh": ["持有铜币时可消耗铜币进行远程攻击(不攻击饮啄)，造成攻击力200%的物理伤害"]
 		}
 	},
 	"cjfrog_no_coin": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Only performs melee attacks while not carrying a copper coin"],
+			"ja": ["銅貨を所持していない時、近距離攻撃のみ行う"],
 			"zh": ["未持有铜币时仅进行近战攻击"]
 		}
 	},
@@ -7289,10 +7301,14 @@
 		"type": "skill",
 		"initCooldown": 2,
 		"cooldown": 4,
-		"suffix": { "en": "财运来", "ja": "财运来", "zh": "财运来" },
+		"suffix": { "en": "Fortune Comes", "ja": "財運招来", "zh": "财运来" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When not carrying a copper coin and Vapidity/Sapidity is within a 1.5 tile radius, removes the target from the field and gains 1 copper coin"
+			],
+			"ja": [
+				"銅貨を所持しておらず、半径1.5以内に無謂/飲啄がいる時に発動可能。対象を退場させ、銅貨を1枚獲得する"
+			],
 			"zh": ["未持有铜币，且半径1.5范围内存在无谓/饮啄时可触发：令目标退场，随后自身获得1个铜币 "]
 		}
 	},
@@ -7801,15 +7817,21 @@
 	},
 	"cjgost_collect": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When Vapidity/Sapidity enters a 0.9 tile radius and the collection limit has not been reached, removes it from the field and increases collected items by 1"
+			],
+			"ja": ["拾得数が上限に達していない時、半径0.9以内に入った無謂/飲啄を退場させ、拾得数+1"],
 			"zh": ["无谓/饮啄进入自身0.9半径范围内时，若拾取数未到达上限，则令其退场，随后自身拾取数+1"]
 		}
 	},
 	"cjgost_deposit": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"At the collection limit, moves towards a Derelict Stove; on entering a 1.0 tile radius of the stove, clears collected items and grants it SP equal to the number of items deposited"
+			],
+			"ja": [
+				"拾得数が上限に達すると、破棄された竈台に向かって移動する。竈台の半径1.0以内に入ると拾得数を0にし、それまでの拾得数と同じSPを竈台に与える"
+			],
 			"zh": [
 				"拾取数到达上限时，追踪废弃火灶移动，进入废弃火灶半径1.0范围时，清空拾取数，并令其获得等同于先前拾取数的SP"
 			]
@@ -7817,8 +7839,12 @@
 	},
 	"cjgost_defeat": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When defeated, summons Vapidity equal to the number of collected items at random positions within a 0.6 tile square centered on itself; summoned units follow its route"
+			],
+			"ja": [
+				"倒されると、拾得数と同じ数の無謂を自身を中心とする一辺0.6の正方形内のランダムな位置に召喚する。召喚された無謂は自身の経路を引き継ぐ"
+			],
 			"zh": [
 				"被击倒时，根据自身拾取数，在自身所在位置0.6边长正方形范围内随机位置以自身路径召唤相应数量的无谓"
 			]
@@ -8030,8 +8056,12 @@
 	},
 	"mpgrou_seal": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"When defeated on a deployable tile, forcibly deploys 1 Sealed Floor on that tile{can_silence}"
+			],
+			"ja": [
+				"倒された時、所在マスが配置可能な地形なら、そのマスに封印された地面を1体強制配置する{can_silence}"
+			],
 			"zh": ["被击倒时若所在地块为可部署地形，则强制部署1个封印的地面{can_silence}"]
 		}
 	},
@@ -8041,8 +8071,8 @@
 		"cooldown": 5,
 		"suffix": { "en": "Summon", "ja": "配食", "zh": "配餐" },
 		"tooltip": {
-			"en": ["Spawns 1 迷茫的修理小助手 on the spot"],
-			"ja": ["自身のいるマスに迷茫的修理小助手を召喚する"],
+			"en": ["Summons 1 Confused Maintenance Helper on its tile, following its route"],
+			"ja": ["所在マスに自身の経路を引き継ぐ混乱する修理ロボットを1体召喚する"],
 			"zh": ["在自身所在格以自身路径召唤1个迷茫的修理小助手"]
 		}
 	},
@@ -8062,8 +8092,24 @@
 	},
 	"mpplai_init": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"【Initial Form】Does not attack; damage taken is reduced to 0",
+				"Immune to Unbalance, Stun, Sleep, Cold, Freeze, Levitate and Fear",
+				"Changes form, stats and talents under the following conditions:",
+				"On taking Physical damage for the 4th time: changes to Avenger Form",
+				"On taking Arts damage for the 4th time: changes to Spec Ops Caster Form",
+				"When blocked: changes to Wraith Form",
+				"※Can only change form once; transformation takes 2s"
+			],
+			"ja": [
+				"【初期形態】攻撃せず、受けるダメージが0になる",
+				"失衡・スタン・睡眠・寒冷・凍結・浮遊・恐怖無効",
+				"以下の条件で形態が変化し、ステータスと特性も変化する：",
+				"4回目の物理ダメージを受ける：リベンジャー形態に変化",
+				"4回目の術ダメージを受ける：特戦術師形態に変化",
+				"ブロックされる：ゴースト兵形態に変化",
+				"※形態変化は一度のみ。変化には2秒かかる"
+			],
 			"zh": [
 				"【原始形态】不进行攻击，受到的伤害变为0",
 				"失衡免疫，免疫晕眩/沉睡/寒冷/冻结/浮空/恐惧",
@@ -8080,8 +8126,12 @@
 		"v_atk": 500,
 		"v_def": 250,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Max HP +<v.v_hp>, ATK +<v.v_atk>, DEF +<v.v_def>, RES +20, Movespeed -0.55, attack interval +1.3s and Weight Level +1"
+			],
+			"ja": [
+				"最大HP+<v.v_hp>、攻撃力+<v.v_atk>、防御力+<v.v_def>、術耐性+20、移動速度-0.55、攻撃間隔+1.3秒、重量ランク+1"
+			],
 			"zh": [
 				"最大生命值+<v.v_hp>，攻击力+<v.v_atk>，防御力+<v.v_def>，法术抗性+20，移动速度-0.55，攻击间隔+1.3，重量等级+1"
 			]
@@ -8092,8 +8142,10 @@
 		"hits": null,
 		"atk": { "multiplier": 1, "order": "initial" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Only performs melee attacks dealing Physical damage; ATK +100% when HP falls below 50%"
+			],
+			"ja": ["物理ダメージを与える近距離攻撃のみ行う。HPが50%未満になると攻撃力+100%"],
 			"zh": ["仅进行近战攻击，造成物理伤害；生命值低于50%时，攻击力+100%"]
 		}
 	},
@@ -8101,8 +8153,12 @@
 		"v_def": "+200",
 		"v_atk": 300,
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Max HP +2000, ATK +<v.v_atk>, DEF <v.v_def>, RES +30, Movespeed -0.4, attack interval +3.0s and Weight Level +1"
+			],
+			"ja": [
+				"最大HP+2000、攻撃力+<v.v_atk>、防御力<v.v_def>、術耐性+30、移動速度-0.4、攻撃間隔+3.0秒、重量ランク+1"
+			],
 			"zh": [
 				"最大生命值+2000，攻击力+<v.v_atk>，防御力<v.v_def>，法术抗性+30，移动速度-0.4，攻击间隔+3.0，重量等级+1"
 			]
@@ -8110,8 +8166,8 @@
 	},
 	"mpplai_caster_mode": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": ["Only performs ranged attacks dealing Arts damage to 2 targets simultaneously"],
+			"ja": ["術ダメージを与える遠距離攻撃のみ行い、同時に2体を攻撃する"],
 			"zh": ["仅进行远程攻击，同时攻击2个目标，造成法术伤害"]
 		}
 	},
@@ -8602,7 +8658,7 @@
 		"atk": { "multiplier": 0.8 },
 		"dmg_element": "phys",
 		"hits": 1,
-		"suffix": { "en": "WindMove", "ja": "单刀赴会", "zh": "单刀赴会" },
+		"suffix": { "en": "WindMove", "ja": "単刀赴会", "zh": "单刀赴会" },
 		"tooltip": {
 			"en": [
 				"Only used when blocked",
@@ -9196,7 +9252,7 @@
 		"type": "skill",
 		"initCooldown": 5.0,
 		"cooldown": 10.0,
-		"suffix": { "en": "相合", "ja": "強撃", "zh": "强力击" },
+		"suffix": { "en": "Skill", "ja": "強撃", "zh": "强力击" },
 		"tooltip": {
 			"en": [
 				"Deals 100% of ATK as {arts} damage to target and friendly units in the adjacent 4 tiles"
@@ -9465,7 +9521,11 @@
 		"hits": null,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": [],
+			"en": [
+				"【Spin】Does not normal attack; deals 120% of ATK as {phys} damage every second to all friendly units within a 1.0 tile radius{ignore_camou}",
+				"Unable to deal damage while Stunned/Frozen",
+				"Returns to the initial form when forced movement from Unbalance ends or after 60s"
+			],
 			"ja": [
 				"【渦潮形態】通常攻撃しない、半径1.0以内にいる味方全員に、毎秒攻撃力の120%の{phys}ダメージを与える{ignore_camou}",
 				"スタン・睡眠・凍結・浮遊中はダメージが発生しない",
@@ -9671,7 +9731,7 @@
 		"type": "skill",
 		"initCooldown": 999.0,
 		"cooldown": 999.0,
-		"suffix": { "en": "不争", "ja": "不争", "zh": "不争" },
+		"suffix": { "en": "End", "ja": "不争", "zh": "不争" },
 		"tooltip": {
 			"en": ["Reduces Lifepoint by 50 and despawns"],
 			"ja": [" 耐久値を-50し、全オペレーターを強制撤退させ、自身も退場する"],
@@ -10438,8 +10498,12 @@
 	},
 	"trslim_run": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When HP falls below 50%, enters fleeing state for 3s: cannot be blocked and Movespeed +150%{can_silence}{once_only}"
+			],
+			"ja": [
+				"HPが50%未満になると、3秒間逃走状態になる：ブロック不可、移動速度+150%{can_silence}{once_only}"
+			],
 			"zh": [
 				"生命值首次低于50%时，切换至逃跑状态，无法被阻挡，移动速度+150%，持续3s{can_silence}{once_only}"
 			]
@@ -10448,8 +10512,14 @@
 	"shdopl_disguise": {
 		"enemy_key": "enemy_2133_shdopl",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Initially disguised as <v.enemy_key>; reveals itself on taking damage",
+				"Does not inherit any effects or damage from its disguised form when revealed"
+			],
+			"ja": [
+				"初期状態では<v.enemy_key>に擬態し、ダメージを受けると正体を現す",
+				"正体を現す際、擬態中に受けた効果やダメージを引き継がない"
+			],
 			"zh": ["初始伪装成一个<v.enemy_key>，受到伤害后现身", "现身时不会继承伪装时的任何效果与伤害"]
 		}
 	},
@@ -10461,8 +10531,16 @@
 		"v_range": 2.0,
 		"suffix": { "en": "Bite", "ja": "噛み", "zh": "持续撕咬" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Can activate when a non-aerial friendly unit is within a <v.v_range> tile radius: teleports to the center of the target's tile and locks onto it for 10s, dealing 100% of ATK as {arts} damage and 30% of ATK as {ba.dt.rampage} every second; also applies a 1.5s debuff that reduces final Physical/Arts hit rates to 20% (does not stack)",
+				"After the attack ends, teleports back to the center of the tile where the skill began",
+				"※During the skill, cannot move or be blocked and is immune to Unbalance, Stun, Freeze, Disarm, Cold, Fear, Attract, Teleport and Sleep"
+			],
+			"ja": [
+				"半径<v.v_range>以内に飛行状態でない味方がいる時に発動可能。対象のマス中央に転移し、10秒間対象を追尾して継続攻撃する。毎秒攻撃力の100%の{arts}ダメージと攻撃力の30%の{ba.dt.rampage}を与え、物理・術の最終命中率を20%にする効果を1.5秒間付与する（重複しない）",
+				"攻撃終了後、スキル開始時にいたマスに転移する",
+				"※スキル中は移動不可、ブロック不可、失衡・スタン・凍結・武装解除・寒冷・恐怖・誘導・転移・睡眠無効"
+			],
 			"zh": [
 				"半径<v.v_range>范围内存在非飞行我方单位时可触发：传送至目标所在地块中心，随后的10秒内锁定目标持续攻击，每秒对目标造成攻击力100%的{arts}普通伤害，附加攻击力30%的{ba.dt.rampage}以及持续1.5秒的物理命中率与法术命中率最终降低至20%的减益（该减益不叠加）",
 				"持续攻击结束后，自身传送回技能开始时自身所在地块的中心",
@@ -10476,8 +10554,12 @@
 		"hits": 1,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On entering a new tile, deals 50% of ATK as melee {phys} damage to friendly units within a 1.7 tile radius (checks unit centers; cannot hit aerial units){ignore_camou}"
+			],
+			"ja": [
+				"新たなマスに入るたび、半径1.7以内の味方に攻撃力の50%の近接{phys}ダメージを与える（中心位置で判定、対空不可）{ignore_camou}"
+			],
 			"zh": [
 				"每当进入新的地块时，对半径1.7范围内的我方单位造成攻击力50%的近战途径{phys}伤害（中点判定，不可对空){ignore_camou}"
 			]
@@ -10485,8 +10567,12 @@
 	},
 	"shcolo_bleed": {
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Every 10 instances of damage taken, gains 1 stack (up to 10); takes (stacks × 300) sourceless {true} damage every second"
+			],
+			"ja": [
+				"ダメージを10回受けるたびに効果を1層獲得する（最大10層）。毎秒（層数×300）の発生源なしの{true}ダメージを受ける"
+			],
 			"zh": ["每受到10次伤害，自身每秒受到(Buff层数×300)无来源{true}普通伤害（上限10层）"]
 		}
 	},
@@ -10496,8 +10582,12 @@
 		"cooldown": 10.0,
 		"suffix": { "en": "Backstep", "ja": "空蝉", "zh": "后撤" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"On taking damage, forcibly activates 【Backstep】 if the tile 2 tiles behind its current cardinal movement direction is traversable"
+			],
+			"ja": [
+				"ダメージを受けた時、現在の進行方向（上下左右のみ）の反対側2マス先が自身の到達可能な通行可能マスなら、そのマスを対象として【空蝉】を強制発動する"
+			],
 			"zh": [
 				"受到伤害时，若自身移动方向（仅限上下左右四个方向）的反方向距离2格的地块是一个自身可抵达的可通行地块，则以该地块为目标强制触发技能【后撤】 "
 			]
@@ -10509,8 +10599,14 @@
 		"cooldown": 10.0,
 		"suffix": { "en": "Blink", "ja": "追跡", "zh": "追猎" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Gains a 30s blink cooldown, then blinks to the target tile",
+				"On taking damage while unblocked and blink is not on cooldown, if the damage source can be identified and a traversable tile other than a Protection Objective exists around it, forcibly activates 【Blink】 on the nearest such tile by straight-line distance; does not activate if that tile is its current tile"
+			],
+			"ja": [
+				"30秒の転移クールタイムを獲得し、対象マスへ転移する",
+				"ブロックされておらず転移がクールタイム中でない時、ダメージ源を特定でき、その周囲に防衛ライン以外の通行可能マスがある場合、直線距離が最も近い該当マスを対象に【追跡】を強制発動する。対象が現在の所在マスなら発動しない"
+			],
 			"zh": [
 				"获得30秒闪现冷却，随后闪现至目标地块（提供闪现保护）",
 				"在未被阻挡、且不具有闪现冷却的情况下，受到伤害时，若可以找到伤害来源，且伤害来源周围存在非保护目标的可通行地块（多个地块间优先选择直线距离自身最近），则以该地块为目标强制触发技能【追猎】（若目标地块为自身目前所在地块则不会触发技能） "
@@ -10523,8 +10619,14 @@
 		"cooldown": 1.0,
 		"suffix": { "en": "Lost is Found", "ja": "回収", "zh": "物归原主" },
 		"tooltip": {
-			"en": [],
-			"ja": [],
+			"en": [
+				"Can only be used when a Cannot's Safe is within attack range",
+				"Instantly defeats that safe (skipping revival) and gains a permanent damage reduction stack, up to 5; {phys}/{arts} damage taken is reduced to (100% - stacks × 10%)"
+			],
+			"ja": [
+				"攻撃範囲内にキャノットの金庫がいる時のみ発動可能",
+				"その金庫を強制撃破し（再生を無視）、永続する被ダメージ軽減効果を1層獲得する（最大5層）。受ける{phys}/{arts}ダメージが（100%-層数×10%）になる"
+			],
 			"zh": [
 				"仅攻击范围内存在坎诺特保险柜时可触发：",
 				"强制击杀该坎诺特保险柜（跳过重生），并获得一层永久的减伤效果（最多叠加5层）使自身受到的{phys}/{arts}降低至(100% - 层数 × 10%)"
@@ -10533,8 +10635,10 @@
 	},
 	"shcan_defeat": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When defeated, sets the price of 1 shop slot to 0 for each safe recovered (up to 5 slots)"
+			],
+			"ja": ["倒されると、回収した金庫1個につきショップの商品1枠の価格が0になる（最大5枠）"],
 			"zh": ["被击倒后，每回收过一个保险柜，使商店中1个栏位的购买价格变为0（最多5个）"]
 		}
 	},
@@ -10547,8 +10651,12 @@
 	},
 	"ubba_shield": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"All enemies within a 1.7 tile radius have incoming {phys}/{arts} damage reduced to 75% (applies before damage resolution; stacks multiplicatively)"
+			],
+			"ja": [
+				"半径1.7以内の敵全員が受ける{phys}/{arts}ダメージを75%に軽減する（ダメージ判定時の効果ではない。乗算で重複する）"
+			],
 			"zh": [
 				"半径1.7范围内的所有敌方单位获得以下效果：即将受到的{phys}/{arts}伤害时，将该伤害降低至75%（不属于伤判效果；可乘算叠加）"
 			]
@@ -10560,15 +10668,19 @@
 		"cooldown": 10.0,
 		"suffix": { "en": "Skill", "ja": "煽り", "zh": "煽动" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Channels for up to 8s, increasing Blood Debt by 5 every second while channeling"],
+			"ja": ["最大8秒間詠唱し、詠唱中は毎秒「血債」を5増加させる"],
 			"zh": ["进行持续最多8秒的持续施法，施法期间每秒增加5点“血债账款” "]
 		}
 	},
 	"shchmr_change": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When defeated, revives over 3.6s, recovering 100% HP, then activates 【Breath】; enters the next phase when the skill ends"
+			],
+			"ja": [
+				"倒されると3.6秒かけてHPを100%回復し、【ブレス】を発動する。スキル終了後、次の段階に移行する"
+			],
 			"zh": [
 				"被击倒后，进行持续3.6s的重生（回复100%生命值），随后触发【灾厄之口】，技能结束后进入下个阶段"
 			]
@@ -10583,8 +10695,18 @@
 		"hits": 36,
 		"dmg_element": "true",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Does not activate automatically in the first or second form; on activation:",
+				"①Transforms all Fragile structures on the field into Crumbling structures, or destroys existing Crumbling structures (if this effect has been weakened, it does not occur on the first activation)",
+				"②Marks the friendly unit with the $highest HP$ (or its own tile if no valid target exists) and breathes fire for 20s: deals <v.atk.multiplier>% of ATK as {true} damage every 0.5s to the target and units in the surrounding 8 tiles, and 15% of ATK as {arts} damage every 0.5s to other units on the field (after the first hit on each unit, that unit has a minimum trigger interval of 2s); each marked unit leaving the field extends the skill by 11s",
+				"③During the skill, units entering the deployment queue are sealed for 90s"
+			],
+			"ja": [
+				"第一・第二形態では自動発動しない。発動時：",
+				"①場上の「朽ちかけの構造物」を「崩れかけの構造物」に変化させ、既存の「崩れかけの構造物」を破壊する（この効果が弱体化されている場合、初回発動時は無効）",
+				"②$HPが最も高い$味方をマークする（対象がいない場合は自身のマス）。20秒間炎を吐き、対象と周囲8マスのユニットに0.5秒ごとに攻撃力の<v.atk.multiplier>%の{true}ダメージ、場上の他のユニットに0.5秒ごとに攻撃力の15%の{arts}ダメージを与える（各ユニットへの初回ダメージ後、最短発動間隔2秒）。マークされた味方が退場するたびに持続時間+11秒",
+				"③スキル中、配置待機欄に戻ったユニットを90秒間封印する"
+			],
 			"zh": [
 				"于第一形态/第二形态下不会自然触发；触发时：",
 				"①将场上的“危朽”变为“崩解”，或摧毁场上的“崩解”（若此项被削弱过，首次释放技能时该效果失效）",
@@ -10602,22 +10724,22 @@
 	},
 	"shchmr_breath_3": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Activates 【Breath】 every 60s"],
+			"ja": ["60秒ごとに【ブレス】を発動する"],
 			"zh": ["每60s，触发技能灾厄之口"]
 		}
 	},
 	"shchmr_buff_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Max HP +50%, ATK +20%"],
+			"ja": ["最大HP+50%、攻撃力+20%"],
 			"zh": ["最大生命值+50%，攻击力+20%"]
 		}
 	},
 	"shchmr_buff_3": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Max HP +100%, ATK +40%"],
+			"ja": ["最大HP+100%、攻撃力+40%"],
 			"zh": ["最大生命值+100%，攻击力+40%"]
 		}
 	},
@@ -10630,8 +10752,14 @@
 		"dmg_element": "arts",
 		"suffix": { "en": "Napalm", "ja": "ナパーム", "zh": "未熄之地" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Deals <v.atk.multiplier>% of ATK as {arts} damage to the target and creates a burning area lasting 25s; units on the target tile and the surrounding 4 tiles take 15% of ATK as {arts} damage every second",
+				"※Prioritizes friendly units outside burning areas"
+			],
+			"ja": [
+				"対象に攻撃力の<v.atk.multiplier>%の{arts}ダメージを与え、25秒間持続する燃焼エリアを生成する。対象と周囲4マスのユニットに毎秒攻撃力の15%の{arts}ダメージを与える",
+				"※燃焼エリア内にいない味方を優先して狙う"
+			],
 			"zh": [
 				"对目标造成攻击力<v.atk.multiplier>%的{arts}伤害，并制造持续25s的燃烧区域：目标及其周围4格的单位每秒受到攻击力15%的{arts}伤害",
 				"※优先选择未处于燃烧区域内的我方单位为目标"
@@ -10644,15 +10772,23 @@
 		"cooldown": 4.0,
 		"suffix": { "en": "Napalm (Fly)", "ja": "ナパーム(飛行)", "zh": "未熄之地-飞行" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Can activate while flying; has the same effects as above"],
+			"ja": ["飛行中に発動可能。効果は上記と同じ"],
 			"zh": ["处于飞行状态时可触发，效果与上述相同"]
 		}
 	},
 	"shchmr_relic": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Shoot Down the \"God\"】Weakening: effect ① does not occur when entering Calamity Form (I)",
+				"【Extinguish the \"Light\"】Weakening: damage dealt in Calamity Form is reduced to 50%",
+				"【Burn Down \"Civilization\"】Weakening: effects ② and ③ do not occur when entering Calamity Form"
+			],
+			"ja": [
+				"【「神」を撃ち落とす】弱体化：災厄形態（一）への移行時、効果①が発動しない",
+				"【「光」を消し去る】弱体化：災厄形態で与えるダメージが50%になる",
+				"【「文明」を焼き払う】弱体化：災厄形態への移行時、効果②③が発動しない"
+			],
 			"zh": [
 				"【击坠“神明”】削弱：进入灾厄形态(一)时的效果①不会生效",
 				"【湮没“光明”】削弱：灾厄形态下，自身输出伤害时，将伤害降低至50%",
@@ -10680,8 +10816,12 @@
 	},
 	"shophm_enter": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On reaching the end of its route, defeats the 源阶方 on the field and deducts 30 Life Points; then creates a permanent magic circle on its tile, dealing 200 {true} damage every 0.5s to friendly units within a 99 tile radius"
+			],
+			"ja": [
+				"経路の終点に到達すると、場上の「源阶方」を撃破し、耐久値を30減らす。その後、所在マスに永続する法陣を展開し、半径99以内の味方に0.5秒ごとに200の{true}ダメージを与える"
+			],
 			"zh": [
 				"到达路径终点后，击杀场上的源阶方并扣除30点目标生命值；随后在所在地块释放持续时间无限的法阵：令半径99范围内的我方单位每0.5s受到200{true}伤害"
 			]
@@ -10689,8 +10829,12 @@
 	},
 	"shophm_revive": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Each time defeated, revives over 1s, recovering 100% HP; then stops acting, becomes Invincible and activates the 源阶方 on the field; resumes acting and loses these effects when the cube deactivates"
+			],
+			"ja": [
+				"倒されるたびに1秒かけてHPを100%回復する。その後行動を停止し、無敵になり、場上の「源阶方」を起動する。源阶方の起動終了後、これらの効果を失い行動を再開する"
+			],
 			"zh": [
 				"每次被击倒后进行持续1s的重生（回复100%生命值），重生结束后：停止行动，无敌，并令场上的源阶方激活（源阶方结束激活后上述效果失效，自身恢复行动）"
 			]
@@ -10698,15 +10842,15 @@
 	},
 	"shophm_end": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Immediately leaves the field when the 源阶方 leaves the field"],
+			"ja": ["場上の「源阶方」が退場すると、自身も即座に退場する"],
 			"zh": ["场上的源阶方退场时，自身立即退场"]
 		}
 	},
 	"shorbb_start": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Invincible"],
+			"ja": ["無敵"],
 			"zh": ["无敌"]
 		}
 	},
@@ -10720,15 +10864,19 @@
 			"maxCount": 1
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["All enemies on the field gain +100% Movespeed, regardless of targetability"],
+			"ja": ["場上の敵全員の移動速度+100%（対象にできるかどうかを無視）"],
 			"zh": ["使全场范围内的所有敌方单位移动速度+100%（无视目标可选性）"]
 		}
 	},
 	"shorbb_dmg_red": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Physical/Arts damage taken is reduced to 30% if the damage source is outside the columns it occupies, or to 70% if the source is in one of those columns"
+			],
+			"ja": [
+				"受ける物理・術ダメージを、ダメージ源が自身の占有する列の外にいる場合は30%、同じ列にいる場合は70%に軽減する"
+			],
 			"zh": [
 				"受到物理/法术伤害时，若自身占据列不包括伤害来源所在列则将该伤害降低至30%，否则将该伤害降低至70%"
 			]
@@ -10743,8 +10891,8 @@
 		"cooldown": 30,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Summons a group of enemies along preset routes"],
+			"ja": ["あらかじめ決められた経路で敵を召喚する"],
 			"zh": ["按预设路径召唤一批敌人"]
 		}
 	},
@@ -10754,8 +10902,14 @@
 		"cooldown": 30,
 		"suffix": { "en": "Spark", "ja": "全体攻撃", "zh": "失链裂变" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Deals 100% of ATK as {arts} damage to all friendly units on the field",
+				"※Can trigger once every 8s, or every 4s when HP is below 50%"
+			],
+			"ja": [
+				"場上の味方全員に攻撃力の100%の{arts}ダメージを与える",
+				"※8秒に1回発動可能。HPが50%未満の時は4秒に1回"
+			],
 			"zh": [
 				"对全场我方单位造成攻击力100%的{arts}伤害",
 				"※该技能每8秒可触发1次；生命值低于50%时，每4秒可触发1次"
@@ -10768,8 +10922,12 @@
 		"cooldown": 1,
 		"suffix": { "en": "Startup", "ja": "起動", "zh": "激活" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Triggers when Lorenz, Error of Perturbation starts reviving: loses Invincibility and summons a number of 源阶方 Modules at preset positions after 5s"
+			],
+			"ja": [
+				"「ローレンツ、摂動の謬」の再生開始時に発動。無敵を解除し、5秒後に指定位置へ一定数の「源阶方モジュール」を召喚する"
+			],
 			"zh": ["洛伦茨，扰动之谬进入重生时触发：解除自身无敌，5s后在预设位置召唤一定数量的源阶方模块"]
 		}
 	},
@@ -10779,8 +10937,14 @@
 		"cooldown": 5,
 		"suffix": { "en": "Summon Plasma", "ja": "プラズマ召喚", "zh": "召唤源阶粒素" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Summons Origin Plasma along preset routes",
+				"The preset routes change when HP is below 50%"
+			],
+			"ja": [
+				"あらかじめ決められた経路で「源階粒素」を召喚する",
+				"HPが50%未満の時、召喚する経路が変わる"
+			],
 			"zh": ["按预设路径召唤源阶粒素", "生命值低于50%时，召唤的预设路径变更"]
 		}
 	},
@@ -10790,8 +10954,12 @@
 		"cooldown": 1,
 		"suffix": { "en": "Hibernate", "ja": "休止", "zh": "激活中止" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can activate when no 源阶方 Modules remain on the field: becomes Invincible and allows Lorenz, Error of Perturbation to resume acting"
+			],
+			"ja": [
+				"場上に「源阶方モジュール」がいない時に発動可能。無敵になり、「ローレンツ、摂動の謬」が行動を再開する"
+			],
 			"zh": ["场上不存在源阶方模块时可触发：获得无敌，洛伦茨，扰动之谬恢复行动"]
 		}
 	},
@@ -10823,8 +10991,8 @@
 	},
 	"cadesd_invincible": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Gains 3s of Invincibility on appearing"],
+			"ja": ["出現時、3秒間無敵になる"],
 			"zh": ["出场时，获得3秒无敌"]
 		}
 	},
@@ -10839,8 +11007,12 @@
 			"maxCount": 2
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On leaving the field, grants $all enemies currently on the field$ +<v.value>% ATK (stackable) and forcibly activates 【Move】; then summons a group of enemies according to the stage configuration"
+			],
+			"ja": [
+				"退場時、$現在場上にいる敵全員$の攻撃力+<v.value>%（重複可能）、【移動】を強制発動させる。その後、ステージ設定に応じた敵を召喚する"
+			],
 			"zh": [
 				"退场时，令$当前全场所有敌方单位$的攻击力+<v.value>%（可叠加）并强制触发技能【行于荒原】，随后根据地图配置召唤一批敌人"
 			]
@@ -10855,8 +11027,14 @@
 		"global": 80,
 		"suffix": { "en": "Howl", "ja": "吠え", "zh": "痛吼" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"①If valid targets are within attack range, deals (<v.single>% ÷ number of targets) of ATK as {phys} damage to each",
+				"②If no valid targets are within attack range, deals <v.global>% of ATK as {phys} damage to all targetable friendly units on the field and Stuns them for <v.value>s"
+			],
+			"ja": [
+				"①攻撃範囲内に対象がいる場合、それぞれに攻撃力の（<v.single>%÷対象数）の{phys}ダメージを与える",
+				"②攻撃範囲内に対象がいない場合、場上の対象にできる味方全員に攻撃力の<v.global>%の{phys}ダメージを与え、<v.value>秒間スタンさせる"
+			],
 			"zh": [
 				"①若攻击范围半径内存在可选目标：对这些目标分别造成(<v.single>%÷目标数)倍率的{phys}伤害",
 				"②若攻击范围半径内不存在可选目标：对全场所有可选我方单位造成<v.global>%攻击力的{phys}伤害并晕眩<v.value>秒"
@@ -10877,8 +11055,20 @@
 		"duration": 10,
 		"hits": 1,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Move】",
+				"Leaves a temporary projectile at its position and blinks to the next route checkpoint",
+				"The projectile then flies towards its new position, dealing <v.atk.multiplier>% of ATK as {arts} damage to all friendly units it collides with and reducing their ASPD by 70 for <v.duration>s (effects from the same skill do not stack)",
+				"During the skill, is Invincible, immune to Stun/Freeze and regenerates 5% Max HP per second",
+				"※Projectile speed: 10; collision radius: 1.5"
+			],
+			"ja": [
+				"【移動】",
+				"その場に一時的な弾道を残し、次の経路チェックポイントへ転移する",
+				"その後、弾道が自身の現在位置に向かって飛び、接触した味方全員に攻撃力の<v.atk.multiplier>%の{arts}ダメージを与え、<v.duration>秒間攻撃速度-70（同名スキルの効果は重複しない）",
+				"スキル中は無敵、スタン・凍結無効、毎秒最大HPの5%を自然回復する",
+				"※弾速10、接触判定半径1.5"
+			],
 			"zh": [
 				"【行于荒原】",
 				"在原地留下一个临时弹道，闪现至下一路径点",
@@ -10895,22 +11085,26 @@
 		"timeout": 450,
 		"suffix": { "en": "End", "ja": "消滅", "zh": "湮灭" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Deducts 10 Life Points, then forcibly leaves the field"],
+			"ja": ["耐久値を10減らし、その後強制退場する"],
 			"zh": ["令关卡生命值-10，随后自身强制退场"]
 		}
 	},
 	"cadejo_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["On first defeat, enters resting form and releases the current wave"],
+			"ja": ["初めて倒されると休息形態に移行し、現在のウェーブを解放する"],
 			"zh": ["首次被击倒时进入休整形态并释放当前波次"]
 		}
 	},
 	"cadejo_summon": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Continually summons enemies according to the stage configuration; forcibly leaves the field once all enemies summoned this way have left the field"
+			],
+			"ja": [
+				"ステージ設定に応じて敵を召喚し続ける。この効果で召喚した敵が全員退場すると、自身も強制退場する"
+			],
 			"zh": ["根据地图配置持续召唤敌人，以此召唤的所有敌人全部退场后，自身强制退场"]
 		}
 	},
@@ -10926,8 +11120,18 @@
 		"dmg_element": "arts",
 		"hits": 1,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Leaves a temporary projectile at its position and blinks to the next route checkpoint",
+				"The projectile then flies towards its new position, dealing 80% of ATK as {arts} damage to all friendly units it collides with and reducing their ASPD by 70 for 20s (effects from the same skill do not stack)",
+				"During the skill, is Invincible and immune to Stun/Freeze",
+				"※Projectile speed: 10; collision radius: 1.5"
+			],
+			"ja": [
+				"その場に一時的な弾道を残し、次の経路チェックポイントへ転移する",
+				"その後、弾道が自身の現在位置に向かって飛び、接触した味方全員に攻撃力の80%の{arts}ダメージを与え、20秒間攻撃速度-70（同名スキルの効果は重複しない）",
+				"スキル中は無敵、スタン・凍結無効",
+				"※弾速10、接触判定半径1.5"
+			],
 			"zh": [
 				"在原地留下一个临时弹道，闪现至下一路径点",
 				"随后令弹道飞向自己所在位置，弹道对路径上碰撞到的所有我方单位造成攻击力80%的{arts}伤害，并令其20秒内攻击速度-70（同名技能效果不可叠加）",
@@ -10942,8 +11146,8 @@
 		"cooldown": 450,
 		"suffix": { "en": "End", "ja": "消滅", "zh": "湮灭" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Deducts 30 Life Points, enters resting form, then forcibly leaves the field"],
+			"ja": ["耐久値を30減らし、休息形態に移行した後、強制退場する"],
 			"zh": ["扣除30点关卡生命值，随后自身进入休整形态，然后强制退场"]
 		}
 	},
@@ -10957,8 +11161,12 @@
 			"maxCount": 1
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Normal attacks only target De Leon and deal no damage; instead, forcibly activates his 【Return Fully Laden】 skill, then leaves the field once the skill is successfully triggered"
+			],
+			"ja": [
+				"通常攻撃は「デ・レオン」のみを対象とし、ダメージを与えずに【満載の帰還】を強制発動させる。発動に成功すると自身は退場する"
+			],
 			"zh": [
 				"普通攻击仅攻击德莱昂，不造成伤害，而是使其强制触发技能【满载而归】，成功使其触发技能后自身退场"
 			]
@@ -10966,15 +11174,23 @@
 	},
 	"shsggd_enter": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On reaching the end of its route, enables De Leon's 【Gold Bar Buff】 and grants an additional natural item, Radiant Truffle, after the battle"
+			],
+			"ja": [
+				"経路の終点に到達すると「デ・レオン」の【純金インゴットのバフ】を有効にし、戦闘終了時に自然物「輝くトリュフ」を追加で獲得する"
+			],
 			"zh": ["到达路径终点时，使德莱昂启用【赤金条增益】，并在战斗结束额外获得自然物<光彩松露>"]
 		}
 	},
 	"shsgzd_buff": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Checks 0.1s after appearing; if no Gold Bars are on the field, enables 【Gold Bar Buff】: immune to Stun, Freeze and Fear; ATK +50% (can also be enabled by a Gold Bar's talent)"
+			],
+			"ja": [
+				"出現0.1秒後に一度判定し、場上に「純金インゴット」がいなければ【純金インゴットのバフ】を有効にする：スタン・凍結・恐怖無効、攻撃力+50%（純金インゴットの特性によっても有効になる）"
+			],
 			"zh": [
 				"登场后第0.1秒时进行一次检测，若场上不存在赤金条，启用【赤金条增益】：晕眩免疫、冻结免疫、恐惧免疫，攻击力+50%（此增益可受赤金条天赋影响而启用）"
 			]
@@ -10982,15 +11198,23 @@
 	},
 	"shsgzd_normal": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On taking damage while takeoff is not on cooldown, enters bombardment mode and gains Low-Altitude Hovering"
+			],
+			"ja": [
+				"離陸がクールタイム中でない時にダメージを受けると、爆撃モードに移行し低空浮揚状態になる"
+			],
 			"zh": ["受到伤害时，若未持有起飞冷却，进入轰炸模式并获得近地悬浮"]
 		}
 	},
 	"shsgzd_land": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When the skill ends, returns to the initial mode, loses Low-Altitude Hovering and gains a 25s takeoff cooldown (12.5s if 【Gold Bar Buff】 is active)"
+			],
+			"ja": [
+				"スキル終了時、初期モードに戻り、低空浮揚を解除する。離陸クールタイム25秒を獲得する（【純金インゴットのバフ】が有効な場合は12.5秒）"
+			],
 			"zh": [
 				"技能结束时，进入初始模式、解除近地悬浮、并获得25秒起飞冷却（在【赤金条增益】已启用的情况下，改为获得12.5秒起飞冷却）"
 			]
@@ -11003,8 +11227,8 @@
 	"shsgzd_fly": {
 		"value": 100,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Movespeed +<v.value>%; does not normal attack"],
+			"ja": ["移動速度+<v.value>%、通常攻撃しない"],
 			"zh": ["移动速度+<v.value>%，不进行普通攻击"]
 		}
 	},
@@ -11014,8 +11238,12 @@
 		"dmg_element": "phys",
 		"hits": 1,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Checks every 0.2s (unconfirmed); if it entered a new tile during that interval, fires a projectile at its current position, dealing 100% of ATK as {phys} damage to all friendly units within a 2.0 tile radius{ignore_camou}"
+			],
+			"ja": [
+				"0.2秒ごと（未確認）に判定し、その間に新たなマスへ入っていた場合、自身の位置へ弾道を発射する。半径2.0以内の味方全員に攻撃力の100%の{phys}ダメージを与える{ignore_camou}"
+			],
 			"zh": [
 				"每0.2秒（存疑）检测一次，若检测间隔内自身进入了新的地块，则向自身所在位置发射一枚弹道，对半径2.0范围内的所有我方单位造成攻击力100%的{phys}普通伤害{ignore_camou}"
 			]
@@ -11023,8 +11251,16 @@
 	},
 	"shsgzd_gold": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Return Fully Laden】Leaves the field when the skill ends (treated as leaving without a cause)",
+				"※During the skill, is Invincible, cannot move and is immune to Unbalance, Stun, Cold, Freeze and Sleep",
+				"※Can be forcibly triggered by a Gold Bar's normal attack"
+			],
+			"ja": [
+				"【満載の帰還】スキル終了時に退場する（原因なしの退場扱い）",
+				"※スキル中は無敵、移動不可、失衡・スタン・寒冷・凍結・睡眠無効",
+				"※「純金インゴット」の通常攻撃で強制発動する"
+			],
 			"zh": [
 				"【满载而归】技能结束时退场（视为无原因退场）",
 				"※技能期间持有无敌、自缚、失衡免疫、晕眩免疫、寒冷免疫、冻结免疫、沉睡免疫",
@@ -11039,8 +11275,14 @@
 		"suffix": { "en": "Illum Rounds", "ja": "照明弾", "zh": "发射照明弹" },
 		"can_silence": true,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can only activate when a friendly unit is within attack range{ignore_camou}{ignore_stealth}",
+				"Fires an illumination round at the target, dealing 100% of ATK as Physical damage with no attack type to the target and all friendly units in the surrounding 8 tiles (ignores Invisibility, Sleep and Camouflage); disables 【Smoke】 on Smoke Grenades in the same area for 15s, ignoring Isolation"
+			],
+			"ja": [
+				"攻撃範囲内に味方がいる時のみ発動可能{ignore_camou}{ignore_stealth}",
+				"対象に照明弾を発射し、対象と周囲8マスの味方全員に攻撃力の100%の攻撃経路なしの物理ダメージを与える（ステルス・睡眠・迷彩を無視）。同範囲の煙幕弾の【煙幕】を15秒間無効にする（孤立を無視）"
+			],
 			"zh": [
 				"仅攻击范围内存在我方单位时可触发{ignore_camou}{ignore_stealth}",
 				"向目标发射一枚照明弹弹道，照明弹对目标及周围8格内的所有我方单位造成攻击力100%的无途径物理伤害（无视隐匿、沉睡、迷彩），并令相同范围内的烟雾弹（无视孤立）的天赋【烟雾】失效15秒"
@@ -11049,8 +11291,12 @@
 	},
 	"shdbjg_atk": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When not blocked, normal attacks hit twice, each hit dealing 100% of ATK as ranged Physical damage{ignore_camou}{ignore_stealth}"
+			],
+			"ja": [
+				"ブロックされていない時、通常攻撃が2連撃になり、各攻撃で攻撃力の100%の遠距離物理ダメージを与える{ignore_camou}{ignore_stealth}"
+			],
 			"zh": [
 				"未被阻挡时触发的普通攻击为二连击，每击造成攻击力100%的远程途径物理伤害{ignore_camou}{ignore_stealth}"
 			]
@@ -11058,8 +11304,14 @@
 	},
 	"shdbjg_smoke": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On appearing, summons 1 Smoke Grenade at the center of each designated tile according to the stage configuration",
+				"On leaving the field, forcibly defeats all Smoke Grenades on the field (treated as kills without a cause)"
+			],
+			"ja": [
+				"出現時、ステージ設定で指定された各マスの中央に煙幕弾を1個ずつ召喚する",
+				"退場時、場上の煙幕弾をすべて強制撃破する（原因なしの撃破扱い）"
+			],
 			"zh": [
 				"登场时，根据地图配置在若干指定地块中心各召唤1枚烟雾弹",
 				"退场时，强制击倒场上所有烟雾弹（视为无原因击杀）"
@@ -11068,8 +11320,12 @@
 	},
 	"shwksc_atk": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can perform continuous attacks; each attack instead summons 1 \"Kindling\" at the center of its tile, following its route"
+			],
+			"ja": [
+				"継続攻撃が可能。各攻撃の代わりに、所在マスの中央に自身の経路を引き継ぐ「火種」を1体召喚する"
+			],
 			"zh": ["可以进行持续攻击，每次攻击改为在自身所在地块中心以自身路径召唤1个“火种”"]
 		}
 	},
@@ -11082,8 +11338,12 @@
 		"endAnimation": "Skill_End",
 		"suffix": { "en": "Teleport", "ja": "転移", "zh": "闪现" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Begins channeling; if not interrupted during the skill, blinks to the next route checkpoint when channeling ends"
+			],
+			"ja": [
+				"詠唱を開始する。スキル中に中断されなかった場合、終了時に次の経路チェックポイントへ転移する"
+			],
 			"zh": ["开始施法，若技能期间未被打断，结束时闪现至下个路径点"]
 		}
 	},
@@ -11100,8 +11360,12 @@
 			"maxCount": 1
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On leaving the field, leaves a staff projectile at its position; all enemies within a 20.0 tile radius gain 【Albert's Buff】 regardless of targetability: ASPD +50 and final Movespeed increased to 150%; does not stack with effects of the same name"
+			],
+			"ja": [
+				"退場時、その場に杖の弾道を残す。半径20.0以内の敵全員に、対象にできるかどうかを無視して【アルバートのバフ】を付与する：攻撃速度+50、最終移動速度が150%になる。同名効果は重複しない"
+			],
 			"zh": [
 				"退场后在自身所在位置留下一个法杖弹道，法杖令半径20.0范围内的所有敌方单位（无视其可选性）获得【埃尔伯特的增益】：攻击速度+50，移动速度最终提升至150%，同名效果不叠加"
 			]
@@ -11138,8 +11402,12 @@
 	},
 	"fyshp_can_combine": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Hitchhiking】Can combine with a Fashion Street 'Robust Heavy' that is not severely injured; pickup radius: 0.5 (cannot pick up aerial units); dropoff/summon delay: 1.0s"
+			],
+			"ja": [
+				"【ヒッチハイク】重傷状態でない商店街「マッスルフリスビー」と合体できる。搭乗半径0.5（対空不可）、降車/召喚の遅延1.0秒"
+			],
 			"zh": [
 				"【叠叠乐】可以与未受重伤影响的风情街“健美操盘手”进行“叠叠乐”：载客半径0.5（不可对空），卸客/召唤延迟1.0秒"
 			]
@@ -11147,8 +11415,14 @@
 	},
 	"fyshp_combined": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Immune to Unbalance; performs ranged attacks but cannot target flying units",
+				"When affected by Stun, inability to act, Sleep, Freeze or Groundbind, changes to grounded mode and is Stunned for 0.5s"
+			],
+			"ja": [
+				"失衡無効。遠距離攻撃を行うが、飛行ユニットは攻撃しない",
+				"スタン・行動不能・睡眠・凍結・縛地を受けると地上モードに移行し、0.5秒間スタンする"
+			],
 			"zh": [
 				"失衡免疫，进行远程攻击，不会攻击飞行单位",
 				"受晕眩/无法行动/沉睡/冻结/缚地影响后切换至地面模式并晕眩0.5秒"
@@ -11157,15 +11431,15 @@
 	},
 	"fyshp_grounded": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Cannot perform 【Hitchhiking】"],
+			"ja": ["【ヒッチハイク】できない"],
 			"zh": ["无法进行“叠叠乐”"]
 		}
 	},
 	"death_carminesteam": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Leaves <ba.carminesteam>Carmine Steam</> on its tile when defeated"],
+			"ja": ["倒されると、所在マスに<ba.carminesteam>ピンクスチーム</>を残す"],
 			"zh": ["被击败后在所处地块留下<ba.carminesteam>洋红蒸汽</>"]
 		}
 	},
@@ -11176,8 +11450,12 @@
 		"suffix": { "en": "Heal", "ja": "治癒", "zh": "治愈" },
 		"can_silence": true,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Targets the 'Twigs That Crave' within attack range with the lowest HP percentage that is not at full HP; channels for 8s, restoring 2% of the target's Max HP every second"
+			],
+			"ja": [
+				"攻撃範囲内にいるHPが減った渇欲の枯枝のうち、HP割合が最も低い対象に8秒間詠唱し、毎秒対象の最大HPの2%を回復する"
+			],
 			"zh": [
 				"选择攻击范围内生命比例最低且生命值未满的汲营枯枝，对目标持续施法，每秒恢复目标最大生命值2%的生命值，持续8s"
 			]
@@ -11185,8 +11463,16 @@
 	},
 	"mjcdog_carry": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Picks up an Operator if they die within 0.1s of the instant before its normal attack hits, or if a Stunned non-flying Operator is within a 0.25 tile radius; the target must not already be carried by a Sleep Companion Beast/Slumber Companion Beast",
+				"Can carry 1 passenger; when an enemy passenger is dropped off, replaces its route with this unit's remaining route",
+				"Enters carrying mode while carrying a passenger"
+			],
+			"ja": [
+				"通常攻撃の命中直前から0.1秒以内に対象のオペレーターが倒された場合、または半径0.25以内にスタン中の飛行状態でないオペレーターがいる場合、対象を搭乗させる。安眠の随伴獣/熟睡の随伴獣に搭乗中の対象は除く",
+				"搭乗上限1体。敵の乗客を降ろす時、乗客の経路を自身の残りの経路に変更する",
+				"乗客がいる間は輸送状態になる"
+			],
 			"zh": [
 				"在普通攻击击中角色类我方干员前一瞬间后的0.1秒内该目标死亡时，或半径0.25范围内存在晕眩的非飞行我方干员时，若目标未被其他安眠伴随兽/沉眠伴随兽“载客”，将其“载客”",
 				"载客上限1，卸客时将乘客的路径替换为自身的剩余路径",
@@ -11196,8 +11482,12 @@
 	},
 	"mjcdog_carrying_state": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Required Block Count increases by the passenger's required Block Count or Block Count; Movespeed +1.0; deducts 1 additional Life Point on reaching the end of its route"
+			],
+			"ja": [
+				"必要ブロック数が乗客の必要ブロック数またはブロック数分増加し、移動速度+1.0。経路の終点に到達した時、耐久値を追加で1減らす"
+			],
 			"zh": [
 				"自身占用阻挡数+(乘客的占用阻挡数或阻挡数)，移动速度+1.0，到达路径终点时额外扣除1关卡生命值"
 			]
@@ -11205,8 +11495,16 @@
 	},
 	"mjcdog_dropoff": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When carrying ①an enemy or ②a friendly unit, drops off the passenger after ①3.2s or ②3s in this mode, or on being Stunned/Frozen",
+				"①Enemy passengers are unloaded; ②friendly passengers are redeployed on its tile facing their original direction where possible and Stunned for 3s. Then returns to normal mode and cannot pick up passengers for 10s",
+				"When defeated, ①drops off enemy passengers or ②releases its lock on friendly passengers"
+			],
+			"ja": [
+				"①敵/②味方を輸送中、このモードに移行して①3.2秒/②3秒経過するか、スタン・凍結を受けると降車させる",
+				"①敵をその場に降ろす。②味方を可能な限り元の配置方向で自身のマスに再配置し、3秒間スタンさせる。その後通常モードに戻り、10秒間搭乗させられなくなる",
+				"自身が倒されると、①敵を降ろす/②味方へのロックを解除する"
+			],
 			"zh": [
 				"载有①敌方乘客/②我方乘客的情况下：进入该模式①3.2秒/②3秒后或受到晕眩/冻结影响时，①卸客/②尽可能将目标按原部署方向",
 				"部署在自身所在格内并使其晕眩3秒，随后切换为通常模式，10秒内无法进行载客",
@@ -11216,8 +11514,14 @@
 	},
 	"mntrjn_carry": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can carry up to 5 non-Boss, non-Machina ground enemies within a 0.5 tile radius; drops them off within a 0.4 tile square centered on the Iron Burdenbeast of Ilion, replacing their routes with its remaining route",
+				"Movespeed -20% per passenger (minimum Movespeed: 0.1)"
+			],
+			"ja": [
+				"半径0.5以内の、ボス・機械以外の地上の敵を最大5体搭乗させる。イリオスの鉄駄獣を中心とする一辺0.4の正方形内に降ろし、乗客の経路を自身の残りの経路に変更する",
+				"乗客1体につき移動速度-20%（移動速度の下限0.1）"
+			],
 			"zh": [
 				"载客上限5，载客半径0.5，载客条件为“非领袖且非机械类的地面敌人类敌方单位”，卸客区域为以伊利昂的铁驮兽为中心的0.4边长正方形范围；卸客时将乘客的路径替换为自身的剩余路径",
 				"自身每装载有1名乘客，移动速度-20%（移动速度存在0.1数值下限）"
@@ -11226,8 +11530,12 @@
 	},
 	"ynshp_combine": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can perform 【Hitchhiking】 with a Hot Spring 'Mischievous Rascal' that is not severely injured; pickup radius: 0.5 (cannot pick up aerial units); dropoff/summon delay: 1.3s"
+			],
+			"ja": [
+				"重傷状態でない温泉「ノーティボーイ」と【ヒッチハイク】で合体できる。搭乗半径0.5（対空不可）、降車/召喚の遅延1.3秒"
+			],
 			"zh": [
 				"可以与未持有重伤的温泉“淘气包”进行“叠叠乐”：载客半径0.5（不可对空），卸客/召唤延迟1.3秒"
 			]
@@ -11235,22 +11543,28 @@
 	},
 	"ynshp_combined_effect": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Creates Carmine Steam on tiles it passes through while combined"],
+			"ja": ["合体中、通過したマスにピンクスチームを生成する"],
 			"zh": ["组合模式下会使经过地块产生洋红蒸汽"]
 		}
 	},
 	"mgcshp": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Can attack 3 targets simultaneously while in Carmine Steam and not blocked"],
+			"ja": ["ピンクスチーム内にいてブロックされていない時、同時に3体を攻撃できる"],
 			"zh": ["位于洋红蒸汽中，且未被阻挡时，可同时攻击3个目标 "]
 		}
 	},
 	"shpkg_barrier": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Fluffy Shield】Has a maximum durability of 150 (displayed above it; each star represents 50 durability)",
+				"While 【Fluffy Shield】 is active, gains Low-Altitude Hovering and takes 70% less Physical/Arts damage"
+			],
+			"ja": [
+				"【もこもこシールド】耐久値の上限150（頭上に表示され、星1個が耐久値50を表す）",
+				"【もこもこシールド】がある間、低空浮揚状態になり、受ける物理・術ダメージ-70%"
+			],
 			"zh": [
 				"【绒毛屏障】：屏障值上限为150（屏障值于自身上方显示，每1颗星代表50点屏障值）",
 				"持有【绒毛屏障】时：近地悬浮，受到的物理/法术伤害降低70%"
@@ -11259,8 +11573,16 @@
 	},
 	"shpkg_barrier_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When 【Fluffy Shield】 durability reaches 0, loses the above effects and forcibly activates 【Fall】",
+				"①Each instance of direct normal attack/skill damage from Operators on the 4 tiles adjacent to a Landscape Fountain reduces shield durability by 2",
+				"②A Steam Soda Bottle explosion reduces shield durability by 50"
+			],
+			"ja": [
+				"【もこもこシールド】の耐久値が0になると上記の効果を失い、【落下】を強制発動する",
+				"①景観噴水の周囲4マスにいるオペレーターの通常攻撃・スキルによる直接ダメージ1回につき、耐久値-2",
+				"②スチームサイダーの爆発を受けると、耐久値-50"
+			],
 			"zh": [
 				"【绒毛屏障】的屏障值归0时，失去以上效果，并强制触发技能【坠落】",
 				"①每次受到景观喷泉周围四格干员的普通攻击/技能直接伤害时，【绒毛屏障】的屏障值-2",
@@ -11270,8 +11592,12 @@
 	},
 	"shpkg_initial_atk": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Normal attacks prioritize units deployed on ground tiles, deal {arts} damage and create <ba.carminesteam>Carmine Steam</> on the target tile after successfully dealing damage"
+			],
+			"ja": [
+				"通常攻撃は地上マスに配置された味方を優先し、{arts}ダメージを与える。ダメージを与えることに成功すると、対象マスに<ba.carminesteam>ピンクスチーム</>を生成する"
+			],
 			"zh": [
 				"普通攻击优先选择部署于地面的单位，造成{arts}伤害，并在成功造成伤害后在目标地块生成<ba.carminesteam>洋红蒸汽</>"
 			]
@@ -11279,8 +11605,12 @@
 	},
 	"shpkg_revive": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When HP first reaches 0, releases the current wave and revives over 20s, recovering 100% HP; then enters Hurried Dolly form and resets 【Fluffy Shield】"
+			],
+			"ja": [
+				"HPが初めて0になると、現在のウェーブを解放し、20秒かけてHPを100%回復する。その後あたふたドリー形態に移行し、【もこもこシールド】をリセットする"
+			],
 			"zh": [
 				"生命值首次变为0时，释放当前波次，进行20s重生，回复100%生命值，重生结束后进入急匆匆的多利形态并重置【绒毛屏障】"
 			]
@@ -11290,10 +11620,14 @@
 		"type": "skill",
 		"initCooldown": 20,
 		"cooldown": 20,
-		"suffix": { "en": "", "ja": "", "zh": "欢快地喷火" },
+		"suffix": { "en": "Happy Eruption", "ja": "ハッピーイラプション", "zh": "欢快地喷火" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Targets a unit on the field and breathes fire down its column from top to bottom at 0.25s intervals, dealing 100% of ATK as Arts damage and creating <ba.carminesteam>Carmine Steam</> on all affected tiles"
+			],
+			"ja": [
+				"場上の味方1体を選び、その縦列に上から下へ0.25秒間隔で火を噴く。攻撃力の100%の術ダメージを与え、影響を受けたすべてのマスに<ba.carminesteam>ピンクスチーム</>を生成する"
+			],
 			"zh": [
 				"选择场上一名单位，从上至下对其所在一列的地块喷火(间隔0.25s)，造成100%法术伤害，并使所有受影响的地块产生<ba.carminesteam>洋红蒸汽</>"
 			]
@@ -11303,10 +11637,16 @@
 		"type": "skill",
 		"initCooldown": 50,
 		"cooldown": 50,
-		"suffix": { "en": "", "ja": "", "zh": "不小心爆炸" },
+		"suffix": { "en": "Unexpected Explosion", "ja": "予期せぬ爆発", "zh": "不小心爆炸" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Stops attacking and charges for about 6s, then channels to detonate all Carmine Steam from right to left, column by column at 1.2s intervals; each steam tile explodes once, dealing 50% of ATK as {arts} damage and 250 <ba.dt.burning>Burn Damage</> to friendly units on that tile and the surrounding 4 tiles",
+				"Does not activate this skill automatically in Hurried Dolly form"
+			],
+			"ja": [
+				"攻撃を停止し、約6秒のチャージ後に詠唱する。場上のピンクスチームを右から左へ縦列ごとに1.2秒間隔で爆発させる。各マス1回ずつ爆発し、所在マスと周囲4マスの味方に攻撃力の50%の{arts}ダメージと250の<ba.dt.burning>灼熱損傷</>を与える",
+				"あたふたドリー形態では自動発動しない"
+			],
 			"zh": [
 				"停止攻击，进行约6秒的蓄力后持续施法，自右向左逐列引爆场上所有洋红蒸汽，每次引爆间隔1.2s，每格洋红蒸汽一次，对所在格及周围4格的我方单位造成50%{arts}伤害与250<ba.dt.burning>灼燃损伤</>",
 				"急匆匆的多利形态下，不再主动释放此技能 "
@@ -11317,10 +11657,14 @@
 		"type": "skill",
 		"initCooldown": 0,
 		"cooldown": 0,
-		"suffix": { "en": "", "ja": "", "zh": "坠落" },
+		"suffix": { "en": "Fall", "ja": "落下", "zh": "坠落" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Cannot move, attack or activate other skills for 12s; then resets 【Fluffy Shield】 and immediately activates 【Unexpected Explosion】 if in Hurried Dolly form"
+			],
+			"ja": [
+				"12秒間、移動・攻撃・他のスキル発動ができない。終了時に【もこもこシールド】をリセットし、あたふたドリー形態なら即座に【予期せぬ爆発】を発動する"
+			],
 			"zh": [
 				"12s内，无法移动/进行攻击/触发其它技能。技能结束时，重置自身【绒毛屏障】；若为急匆匆的多利形态，则立刻触发【不小心爆炸】"
 			]
@@ -11328,8 +11672,14 @@
 	},
 	"shpkg_grounded": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Does not normal attack, cannot be blocked and creates Carmine Steam on tiles it passes through",
+				"Deals 100% of ATK as {arts} damage and 250 <ba.dt.burning>Burn Damage</> to friendly units deployed on ground tiles that enter a 0.5 tile radius"
+			],
+			"ja": [
+				"通常攻撃せず、ブロック不可。通過したマスにピンクスチームを生成する",
+				"半径0.5以内に入った地上マス配置の味方に、攻撃力の100%の{arts}ダメージと250の<ba.dt.burning>灼熱損傷</>を与える"
+			],
 			"zh": [
 				"不进行普通攻击，无法被阻挡，在经过的地块生成洋红蒸汽",
 				"对进入自身半径0.5范围内的部署于地面的我方单位造成100%{arts}伤害与250<ba.dt.burning>灼燃损伤</>"
@@ -11338,15 +11688,23 @@
 	},
 	"wlfmster_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Performs melee attacks, is immune to Stun and takes 30% less Physical/Arts damage"],
+			"ja": ["近距離攻撃を行う。スタン無効、受ける物理・術ダメージ-30%"],
 			"zh": ["进行近战攻击，免疫晕眩，受到的物理/法术伤害-30%"]
 		}
 	},
 	"wlfmster_revive": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When defeated in the first form, revives over 40s, recovering 100% HP; 【Ancient Intimidation】 is active during revival",
+				"At the start of revival, releases the current wave and ends all 【Hemolytic Horror】 effects on the field",
+				"After revival, enters the second form and gains 10s of Invincibility"
+			],
+			"ja": [
+				"第一形態で倒されると、40秒かけてHPを100%回復する。再生中は【太古の威圧】が有効になる",
+				"再生開始時、現在のウェーブを解放し、場上の【溶血の恐怖】をすべて解除する",
+				"再生完了後、第二形態に移行し10秒間無敵になる"
+			],
 			"zh": [
 				"第一形态下被击倒后进行持续40s的重生，恢复100%生命值，重生期间【远古威慑】生效",
 				"重生开始时，释放当前波次，结束场上所有【溶血骇惧】技能效果",
@@ -11356,15 +11714,25 @@
 	},
 	"wlfmster_aoe_aspd_down": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Ancient Intimidation】Friendly units within a 1.5 tile radius have -50 ASPD (active under specified conditions)"
+			],
+			"ja": ["【太古の威圧】半径1.5以内の味方の攻撃速度-50（特定の状態で有効）"],
 			"zh": ["【远古威慑】：自身1.5半径范围内的我方单位攻击速度-50(指定状况下生效)"]
 		}
 	},
 	"wlfmster_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"ATK +50%, attack interval -1.5s",
+				"Performs ranged normal attacks that hit twice; attack radius: 1.25",
+				"【Ancient Intimidation】 is active"
+			],
+			"ja": [
+				"攻撃力+50%、攻撃間隔-1.5秒",
+				"遠距離攻撃を行い、通常攻撃が2連撃になる。攻撃半径1.25",
+				"【太古の威圧】が有効になる"
+			],
 			"zh": [
 				"攻击力+50%，攻击间隔-1.5",
 				"进行远程攻击，普通攻击为2连击，攻击范围半径1.25 ",
@@ -11377,10 +11745,18 @@
 		"initSp": 0,
 		"spCost": 55,
 		"skillType": "INCREASE_WITH_TIME",
-		"suffix": { "en": "", "ja": "", "zh": "溶血骇惧" },
+		"suffix": { "en": "Hemolytic Horror", "ja": "溶血の恐怖", "zh": "溶血骇惧" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Inflicts up to 3 friendly units with -70 ASPD, prevents manual retreat and gradually drains HP indefinitely; HP loss increases linearly from 0 per second to 30% Max HP per second after 40s",
+				"Zaaro cannot use skills while affected units remain on the field; gains 5 SP whenever an individual effect ends, and cannot use skills for 7s after all effects end",
+				"Records its current HP on activation; ends the effects on all friendly units after losing a cumulative 20% HP"
+			],
+			"ja": [
+				"場上の味方最大3体の攻撃速度-70、手動撤退不可にし、永続でHPを徐々に減少させる。減少量は毎秒0から線形に増加し、40秒後に毎秒最大HPの30%に達する",
+				"影響を受けた味方が場上にいる間、ザーロはスキル封印状態になる。効果が1つ終了するたびにSP+5、すべて終了すると7秒間スキル封印状態になる",
+				"発動時の自身のHPを記録し、累計20%分のHPを失うと味方全員への効果を解除する"
+			],
 			"zh": [
 				"使场上最多3名我方单位攻击速度-70，获得无法撤退，逐渐流失生命（从0/秒开始线性递增，在40秒后达到最大流失速度30%最大生命值/秒），持续时间无限",
 				"场上存在被此技能影响的单位时狼之主获得静默，每结束1个技能效果狼之主回复5SP，场上技能效果全部结束时狼之主获得7s静默",
@@ -11394,15 +11770,24 @@
 		"cooldown": 40,
 		"suffix": { "en": "Stun Attack", "ja": "スタン攻撃", "zh": "晕眩攻击" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Channels for 5.5s, increasing Blood Debt by 35 every second",
+				"※Only activates outside Payback Time"
+			],
+			"ja": ["5.5秒間詠唱し、毎秒「血債」を35増加させる", "※「粛清の時」以外でのみ発動"],
 			"zh": ["5.5s内持续施法，每秒增加35点“血债账款”", "※仅不处于“清算时刻”时触发"]
 		}
 	},
 	"rllamb_atk": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On its first attack, creates Carmine Steam on the target tile and the surrounding 4 tiles, deals 100% of ATK as {arts} damage to friendly units within them, then dies",
+				"On death, summons 1 Hot Spring 'Mischievous Rascal' and 1 Fashion Street 'Hearty Heavy' at 2 random positions within a 0.6 tile square centered on its tile; both follow its route"
+			],
+			"ja": [
+				"初回攻撃時、対象と周囲4マスにピンクスチームを生成し、その範囲の味方に攻撃力の100%の{arts}ダメージを与えた後、自身は死亡する",
+				"死亡時、所在マス中央を中心とする一辺0.6の正方形内のランダムな2地点に、温泉「ノーティボーイ」と商店街「フリスビー」を1体ずつ召喚する。両者は自身の経路を引き継ぐ"
+			],
 			"zh": [
 				"首次攻击时在目标及周围4格生成洋红蒸汽，并对位于其中的我方单位造成100%{arts}伤害，随后自身死亡",
 				"死亡后在自身所在地块中心0.6边长正方形范围内2个随机位置以自身路径召唤温泉“淘气包”与风情街“操盘手”各1只"
@@ -11413,11 +11798,19 @@
 		"type": "skill",
 		"initCooldown": 0,
 		"cooldown": 20,
-		"suffix": { "en": "", "ja": "", "zh": "角力对决" },
+		"suffix": { "en": "Contest of Strength", "ja": "力比べ", "zh": "角力对决" },
 		"can_silence": true,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can only activate while blocked",
+				"Charges for 6.6s, then deals 100% of ATK as {phys} damage to the target and triggers avalanche effect ② (see the stage's special terrain effects; does not trigger if the stage has no avalanche environment or the target is a special character unit; the avalanche's damage source is Blackhorn Rhuul)",
+				"※Skill duration: 8s"
+			],
+			"ja": [
+				"ブロックされている時のみ発動可能",
+				"6.6秒チャージした後、対象に攻撃力の100%の{phys}ダメージと雪崩効果②を与える（雪崩の詳細は該当ステージの特殊地形効果を参照。雪崩が設定されていないステージ、または特殊キャラクターユニットが対象の場合は発動しない。雪崩のダメージ源は黒き大角のルル）",
+				"※スキル持続時間8秒"
+			],
 			"zh": [
 				"仅被阻挡时可触发：",
 				"蓄力6.6秒后对目标造成攻击力100%的{phys}伤害和一次雪崩效果②（雪崩详见对应关卡的特殊地形效果一栏；若关卡未配置雪崩环境、或目标为特殊角色类单位，则无法触发雪崩效果②；雪崩的伤害来源为乌顶巨角卢鲁）",
@@ -11427,8 +11820,14 @@
 	},
 	"xdelk_fail": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When 【Contest of Strength】 ends without attempting to deal damage to the target, enters a dejected state for 5s, or 4s if still affected by Stun/Sleep",
+				"※Does not perform regular attacks while dejected"
+			],
+			"ja": [
+				"【力比べ】終了時、対象へのダメージ判定を行えなかった場合、5秒間の落胆状態になる。スタン・睡眠中なら4秒間になる",
+				"※落胆状態では通常の攻撃を行わない"
+			],
 			"zh": [
 				"技能【角力对决】结束时，若未能尝试对目标造成伤害则进入5秒的失落状态，若还受晕眩/沉睡影响则改为进入4秒的失落状态",
 				"※失落状态期间不进行常规的攻击"
@@ -11459,11 +11858,11 @@
 		"type": "skill",
 		"initCooldown": 0,
 		"cooldown": 10,
-		"suffix": { "en": "", "ja": "", "zh": "治疗" },
+		"suffix": { "en": "Heal", "ja": "回復", "zh": "治疗" },
 		"can_silence": true,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Heals all enemies on the field that are not at full HP; cannot heal itself"],
+			"ja": ["場上のHPが減った敵全員を回復する。自身は回復できない"],
 			"zh": ["治疗场上所有生命值未满的敌方单位，无法治疗自身"]
 		}
 	},
@@ -11471,8 +11870,14 @@
 		"stacks": 5,
 		"value": 50,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Toxicity】Has no effect on its own; stacks up to <v.stacks> times, with each stack's duration tracked separately",
+				"【Toxic Dust】Deals (own Toxicity stacks × <v.value>) sourceless, untyped {true} damage every second to all friendly units on the field, ignoring Invisibility/Camouflage"
+			],
+			"ja": [
+				"【毒性】単独では効果なし。最大<v.stacks>層まで重複し、各層の持続時間は独立して計算される",
+				"【猛毒】場上の味方全員に毎秒（自身の【毒性】層数×<v.value>）の発生源・種類なしの{true}ダメージを与える。ステルス・迷彩を無視する"
+			],
 			"zh": [
 				"【毒性】：无效果，最多可叠加<v.stacks>层，每层独立计算持续时间",
 				"【毒性粉尘】：每秒对场上所有我方单位造成自身【毒性】层数×<v.value>的无来源{true}无类型伤害，无视隐匿/迷彩"
@@ -11481,8 +11886,10 @@
 	},
 	"smephi_poison_release": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Dust Release】Becomes Invincible and forcibly Disarmed for the skill's 1s duration"
+			],
+			"ja": ["【粉塵放出】スキル中（1秒間）、無敵と強制武装解除を獲得する"],
 			"zh": ["【粉尘释放 】技能持续期间(1s)持有无敌+强制缴械效果"]
 		}
 	},
@@ -11500,8 +11907,8 @@
 			"maxCount": 1
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["While on the field, all 【Possessed】 enemies gain +10% ATK and +10 ASPD"],
+			"ja": ["場上にいる間、【寄生】敵全員の攻撃力+10%、攻撃速度+10"],
 			"zh": ["在场时，所有【宿主】敌人攻击力+10%，攻击速度+10"]
 		}
 	},
@@ -11520,23 +11927,29 @@
 			"maxCount": 1
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["While on the field, all 【Possessed】 enemies gain +20% ATK and +20 ASPD"],
+			"ja": ["場上にいる間、【寄生】敵全員の攻撃力+20%、攻撃速度+20"],
 			"zh": ["在场时，所有【宿主】敌人攻击力+20%，攻击速度+20"]
 		}
 	},
 	"smephi_hp": {
 		"value": 20,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"For every <v.value>% HP lost, gains 1 stack of 【Toxicity】 lasting 30s and forcibly activates 【Dust Release】"
+			],
+			"ja": [
+				"HPを<v.value>%失うたび、30秒間持続する【毒性】を1層獲得し、【粉塵放出】を強制発動する"
+			],
 			"zh": ["每损失<v.value>%生命值，自身获得1层持续30s的【毒性】，并强制触发技能【粉尘释放】"]
 		}
 	},
 	"smephi_revive_1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When defeated, releases the current wave and revives over 2.6s, recovering 100% HP; then enters dormant state"
+			],
+			"ja": ["倒されると現在のウェーブを解放し、2.6秒かけてHPを100%回復する。その後休眠状態になる"],
 			"zh": ["被击倒后释放当前波次，进行持续2.6s的重生，恢复100%生命值，重生结束后进入休眠状态"]
 		}
 	},
@@ -11544,8 +11957,14 @@
 		"v_def": 2200,
 		"v_heal": 200,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"DEF +<v.v_def>, RES +50; restores <v.v_heal> HP every second",
+				"※Forcibly Disarmed in this form; cannot attack or activate skills"
+			],
+			"ja": [
+				"防御力+<v.v_def>、術耐性+50、毎秒HPを<v.v_heal>回復する",
+				"※この形態では強制武装解除状態となり、攻撃・スキル発動ができない"
+			],
 			"zh": [
 				"防御力+<v.v_def>，法术抗性+50，每秒治疗自身<v.v_heal>生命值",
 				"※该形态下持有强制缴械，无法攻击和触发技能"
@@ -11555,8 +11974,14 @@
 	"smephi_rest_break": {
 		"value": 100,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Dormant state lasts up to <v.value>s",
+				"When defeated while dormant or the maximum duration expires, releases the current wave and revives over 2.6s; then enters berserk state at its current HP (minimum 50%)"
+			],
+			"ja": [
+				"休眠状態は最大<v.value>秒間持続する",
+				"休眠中に倒されるか最大持続時間に達すると、現在のウェーブを解放し、2.6秒間再生する。その後現在のHP（最低50%）で狂暴状態に移行する"
+			],
 			"zh": [
 				"休眠状态最多持续<v.value>s",
 				"休眠状态下被击倒或到达最大持续时间后释放当前波次，进行持续2.6s的重生，重生结束时以当前生命值(最低50%)进入狂暴状态"
@@ -11565,16 +11990,20 @@
 	},
 	"smephi_3": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Gains 2.6s of Invincibility on entering berserk state", "ATK +20%"],
+			"ja": ["狂暴状態への移行時、2.6秒間無敵になる", "攻撃力+20%"],
 			"zh": ["进入狂暴状态后获得2.6s无敌", "攻击力+20%"]
 		}
 	},
 	"muwiz_shield": {
 		"value": 1200,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Has 【War Shield】, blocking all instances of {phys}/{arts} damage below 1200; the shield breaks on taking a single hit of at least <v.value> {phys}/{arts} damage"
+			],
+			"ja": [
+				"【戦争シールド】を持ち、1回あたり1200未満の{phys}/{arts}ダメージをすべて防ぐ。1回で<v.value>以上の{phys}/{arts}ダメージを受けるとシールドが無効になる"
+			],
 			"zh": [
 				"拥有【战争护盾】：格挡自身受到所有“伤害量低于1200”的{phys}/{arts}伤害，单次受到伤害量大于等于<v.value>的{phys}/{arts}伤害时此护盾失效"
 			]
@@ -11582,8 +12011,10 @@
 	},
 	"muwiz_shield_regen": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Affected by a Leak Source】If 【War Shield】 is inactive, forcibly activates 【Gain Shield】"
+			],
+			"ja": ["【漏洩源の影響下】【戦争シールド】が有効でない場合、【シールド獲得】を強制発動する"],
 			"zh": ["【受<泄漏源>影响】：若自身的【战争护盾】未生效，则强制触发技能【获得护盾】"]
 		}
 	},
@@ -11594,8 +12025,8 @@
 		"hits": 7,
 		"dmg_element": "arts",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["While the shield is active, DEF +20% and RES -20"],
+			"ja": ["シールドが有効な間、防御力+20%、術耐性-20"],
 			"zh": ["护盾生效期间自身防御力+20%、法术抗性-20"]
 		}
 	},
@@ -11603,13 +12034,19 @@
 		"type": "skill",
 		"initCooldown": 15,
 		"cooldown": 15,
-		"suffix": { "en": "", "ja": "", "zh": "聚焦" },
+		"suffix": { "en": "Focus", "ja": "集束", "zh": "聚焦" },
 		"atk": { "multiplier": 0.4 },
 		"hits": 7,
 		"dmg_element": "arts",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Locks onto a target and channels for up to 7s, dealing 40% of ATK as {arts} damage over time every second; each successful damage instance steals up to 50 ATK from the target (up to 2050 ATK total, leaving the target at least 1 ATK)",
+				"※Target selection is unaffected by blocking"
+			],
+			"ja": [
+				"対象をロックして最大7秒間詠唱し、毎秒攻撃力の40%の{arts}持続ダメージを与える。ダメージを与えるたびに対象の攻撃力を最大50奪う（累計上限2050、対象の攻撃力は最低1残る）",
+				"※ブロックによる索敵への影響を受けない"
+			],
 			"zh": [
 				"锁定目标持续施法，最长持续7秒，每秒造成攻击力40%的{arts}持续伤害，成功造成伤害后偷取目标最多50攻击力（偷取量总上限为2050攻击力，会仁慈地为攻击目标保留1点攻击力）",
 				"※索敌不受阻挡影响"
@@ -11639,8 +12076,8 @@
 		"cooldown": 80,
 		"suffix": { "en": "Reset Barrier", "ja": "バリア再起動", "zh": "屏障重置指令" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Resets its barrier"],
+			"ja": ["自身のバリアをリセットする"],
 			"zh": ["重置自身屏障"]
 		}
 	},
@@ -11648,10 +12085,16 @@
 		"type": "skill",
 		"initCooldown": 20,
 		"cooldown": 31,
-		"suffix": { "en": "", "ja": "", "zh": "屏障重置指令" },
+		"suffix": { "en": "Bombardment", "ja": "爆撃", "zh": "屏障重置指令" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"After a 4.17s delay, targets the tile of the friendly unit with the most units in the surrounding 8 tiles; bombards that tile and the surrounding 8 tiles every 5s, dealing 100% of ATK as {arts} splash damage, until the next activation of this skill or defeat in this form",
+				"※Targets its own tile if no valid target exists"
+			],
+			"ja": [
+				"4.17秒後、周囲8マスにいるユニット数が最も多い味方のマスを選択する。次回発動時またはこの形態で倒されるまで、対象マスと周囲8マスの味方に5秒ごとに攻撃力の100%の{arts}範囲ダメージを与える",
+				"※対象がいない場合は自身のマスで発動する"
+			],
 			"zh": [
 				"延迟4.17s后选择场上周围8格单位数最多的我方单位所在地块进行轰炸，每5s对该地块和周围8格的我方单位造成攻击力100%的{arts}溅射伤害，持续至下一次施放此技能或该形态下死亡",
 				"※无可选对象时，在自身所在地块释放"
@@ -11662,10 +12105,16 @@
 		"type": "skill",
 		"initCooldown": 35,
 		"cooldown": 31,
-		"suffix": { "en": "", "ja": "", "zh": "屏障重置指令" },
+		"suffix": { "en": "Jamming", "ja": "ジャミング", "zh": "屏障重置指令" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"After a 4.17s delay, targets the tile of the friendly unit with the fewest units in the surrounding 8 tiles; inflicts 3s of <ba.stun>Stun</> on friendly units on that tile and the surrounding 8 tiles every 5s, until the next activation of this skill or defeat in this form",
+				"※Targets its own tile if no valid target exists"
+			],
+			"ja": [
+				"4.17秒後、周囲8マスにいるユニット数が最も少ない味方のマスを選択する。次回発動時またはこの形態で倒されるまで、対象マスと周囲8マスの味方に5秒ごとに3秒間の<ba.stun>スタン</>を付与する",
+				"※対象がいない場合は自身のマスで発動する"
+			],
 			"zh": [
 				"延迟4.17s后选择场上周围8格单位数最少的我方单位所在地块进行干扰，每5s对该地块和周围8格的我方单位造成3s<ba.stun>晕眩</>，持续至下一次施放此技能或该形态下死亡",
 				"※无可选对象时，在自身所在地块释放 "
@@ -11674,8 +12123,8 @@
 	},
 	"minima_buff": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["All 【Machina】 enemies on the field gain +20% ATK"],
+			"ja": ["場上の【機械】敵全員の攻撃力+20%"],
 			"zh": ["场上所有【机械】敌人攻击力+20%"]
 		}
 	},
@@ -11685,8 +12134,12 @@
 		"hits": 15,
 		"dmg_element": "arts",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Normal attacks additionally inflict 20% of ATK as {arts} damage over time every second for 15s; prioritizes targets not affected by this effect"
+			],
+			"ja": [
+				"通常攻撃で、15秒間毎秒攻撃力の20%の{arts}持続ダメージを与える効果を追加付与する。この効果を受けていない対象を優先して狙う"
+			],
 			"zh": [
 				"普通攻击额外使目标在15s内每秒受到攻击力20%的{arts}持续伤害，优先攻击未受此效果影响的目标"
 			]
@@ -11694,8 +12147,14 @@
 	},
 	"minima_revive": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When defeated in the initial form, revives over 1s, recovering 100% HP and ejecting Stitch; changes to a ground unit",
+				"If it has not passed the designated position, blinks there and releases the current wave"
+			],
+			"ja": [
+				"初期形態で倒されると、1秒かけてHPを100%回復し、スディチが脱出して地上ユニットに変化する",
+				"指定位置をまだ通過していない場合、その位置へ転移し、現在のウェーブを解放する"
+			],
 			"zh": [
 				"初始形态下被击倒后，进行持续1s的重生，恢复100%生命值并弹出斯第奇，切换为地面单位",
 				"如果未经过预定位置，则闪现至预定位置，并释放当前波次"
@@ -11705,15 +12164,15 @@
 	"minima_stun": {
 		"value": 30,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Is Stunned for <v.value>s on entering this form"],
+			"ja": ["この形態への移行時、<v.value>秒間スタンする"],
 			"zh": ["进入该形态时获得<v.value>s晕眩"]
 		}
 	},
 	"minima_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["DEF -400, RES -40; final Movespeed increased to 200%"],
+			"ja": ["防御力-400、術耐性-40、最終移動速度が200%になる"],
 			"zh": ["防御力-400，法术抗性-40，移动速度最终提升至200%"]
 		}
 	},
@@ -11723,8 +12182,12 @@
 		"hits": 1,
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Checks every 2.5s; if not blocked, fires a bread projectile from its model towards its current position, dealing 200% of ATK as {phys} splash damage to all friendly units within a 1.0 tile radius on impact (cannot hit aerial units){ignore_camou}"
+			],
+			"ja": [
+				"2.5秒ごとに判定し、ブロックされていない場合、自身のモデルから所在位置へパンの弾道を発射する。着弾時、半径1.0以内の味方全員に攻撃力の200%の{phys}範囲ダメージを与える（対空不可）{ignore_camou}"
+			],
 			"zh": [
 				"每2.5秒进行一次检测：若自身未被阻挡，则从自身模型向自身所在位置发射面包弹道，弹道命中时对半径1.0范围内的所有我方单位造成攻击力200%的{phys}溅射伤害（不可对空){ignore_camou}"
 			]
@@ -11732,8 +12195,12 @@
 	},
 	"nspace_revive": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"On first defeat, revives, recovering 100% HP and changing to ground movement without changing its pathfinding; cannot move during revival"
+			],
+			"ja": [
+				"初めて倒されるとHPを100%回復して再生し、移動方式を地上に変更する（経路探索方式は変わらない）。再生中は移動不可"
+			],
 			"zh": [
 				"首次被击倒后进行重生，回复100%生命值，并将自身行动方式切换为地面（不改变寻路方式），期间持有自缚"
 			]
@@ -11741,8 +12208,12 @@
 	},
 	"nspace_drop": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"At the start of revival, checks its tile; if traversable, becomes a Non-Key Target, counts as defeated (defeated target count +1) and switches to ground pathfinding; otherwise leaves the field after revival"
+			],
+			"ja": [
+				"再生開始時、所在マスを判定する。通行可能なら非重要目標になり、撃破済みとみなされ（撃破数+1）、地上の経路探索に変更する。それ以外の場合、再生終了後に退場する"
+			],
 			"zh": [
 				"重生开始时检测自身所在地块：若为可通行地块，将自身变为非首要目标，判定为已处理（待处理目标计数+1）并将寻路方式改为地面寻路；否则在重生结束后退场"
 			]
@@ -11750,8 +12221,12 @@
 	},
 	"nspace_2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"After revival, cannot move or be blocked, is forcibly Disarmed and gains +100% DEF; consumes 1 Buoyancy in its current Levitating Sector while on the field"
+			],
+			"ja": [
+				"再生後、移動不可・強制武装解除・ブロック不可になり、防御力+100%。場上にいる間、所在する浮遊可能区画の浮力を1消費する"
+			],
 			"zh": [
 				"重生后获得：自缚、强制缴械、不可阻挡，防御力+100%，在场期间占用自身所在“可浮空区块”1层浮力 "
 			]
@@ -11759,8 +12234,12 @@
 	},
 	"nsheat_aoe": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"All friendly and enemy units within a 2.0 tile radius, except Scorching Propeller/Scorched-Scent Propeller, gain 【Propeller Heatwave】 regardless of targetability: checks every second and, if the source is not Silenced, deals 10% of its ATK as <ba.dt.burning>Burn Damage</> to affected units (effects of the same name do not stack){can_silence}"
+			],
+			"ja": [
+				"半径2.0以内のロースト・プロペラ/バーンド・プロペラ以外の味方・敵全員に、対象にできるかどうかを無視して【プロペラの熱波】を付与する：毎秒判定し、効果の発生源が無効化されていなければ、対象に発生源の攻撃力の10%の<ba.dt.burning>灼熱損傷</>を与える（同名効果は重複しない）{can_silence}"
+			],
 			"zh": [
 				"使半径2.0范围内（除炙烤螺旋桨/焦香螺旋桨以外）的所有我方/敌方单位（无视目标可选性）获得【螺旋桨的热浪】：每秒检测一次，若效果来源未受沉默影响，对效果持有者造成攻击力10%的<ba.dt.burning>灼燃损伤</>（同名效果不叠加）{can_silence}"
 			]
@@ -11768,8 +12247,8 @@
 	},
 	"nsheat_float": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["While on the field, increases the Buoyancy of its current Levitating Sector by 1"],
+			"ja": ["場上にいる間、所在する浮遊可能区画の浮力+1"],
 			"zh": ["在场期间使所在的“可浮空区块”增加1层浮力"]
 		}
 	},
@@ -11793,8 +12272,12 @@
 	"tjgxb": {
 		"value": 3,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When a Normal or Elite ground enemy other than Wield Arms/Wield Arms - Oppress enters a 0.8 tile radius, ignoring Isolation, grants it 1 stack of 【Wield Arms Buff】 if it has fewer than <v.value> stacks; immediately leaves the field after successfully granting the buff"
+			],
+			"ja": [
+				"操戈/操戈・凌以外の通常・エリートの地上の敵が半径0.8以内に入った時、孤立を無視して判定する。対象の【操戈バフ】が<v.value>層未満なら1層付与し、付与成功後に自身は即座に退場する"
+			],
 			"zh": [
 				"除操戈/操戈·凌以外的普通或精英敌人类敌方单位（不可对空，无视孤立）进入自身半径0.8范围内时，若其持有的【操戈增益】低于<v.value>层，使其获得1层【操戈增益】，成功给予增益后自身立即退场"
 			]
@@ -11804,8 +12287,12 @@
 		"v_atk": 30,
 		"count": 3,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Wield Arms Buff】Grants ATK equal to <v.v_atk>% of Wield Arms' ATK, DEF equal to 100% of its DEF and RES equal to 100% of its RES; stacks up to <v.count> times. Values are based on Wield Arms' stats when the first stack is granted; additional stacks multiply those initial values, regardless of subsequent Wield Arms/Wield Arms - Oppress stats"
+			],
+			"ja": [
+				"【操戈バフ】攻撃力が操戈の攻撃力の<v.v_atk>%分、防御力が操戈の防御力の100%分、術耐性が操戈の術耐性の100%分上昇する。最大<v.count>層まで重複。上昇量は最初の1層を付与した時の操戈のステータスを基準とし、以降はその値を層数倍する。後続の操戈/操戈・凌のステータスは影響しない"
+			],
 			"zh": [
 				"【操戈增益】：攻击力+(操戈攻击力的<v.v_atk>%)，防御力+(操戈防御力的100%)，法术抗性+(操戈法术抗性的100%)，最多叠加<v.count>层（各数值均基于操戈给予增益时的数值；叠加时仅以第一层的数值为基础进行翻倍，与后续操戈/操戈·凌的数值无关） "
 			]
@@ -11813,8 +12300,8 @@
 	},
 	"creep_stealth": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Gains Invisibility while on Nethersea Brand"],
+			"ja": ["溟痕上でステルスを獲得する"],
 			"zh": ["位于溟痕时获得隐匿"]
 		}
 	},
@@ -11828,8 +12315,12 @@
 			"maxCount": 15
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Each successful damage instance grants +10% ATK, stacking up to 15 times; loses 2 stacks after 3.5s out of attack state and every second thereafter"
+			],
+			"ja": [
+				"ダメージを与えるたびに攻撃力+10%（最大15層）。攻撃状態でなくなって3.5秒後、それ以降は毎秒2層失う"
+			],
 			"zh": [
 				"每次成功造成伤害后，自身的攻击力+10%，最多叠加15层（脱离攻击状态3.5秒后及接下来每秒减少2层）"
 			]
@@ -11845,8 +12336,12 @@
 			"maxCount": 15
 		},
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Each successful damage instance grants +15% ATK, stacking up to 15 times; loses 2 stacks after 3.5s out of attack state and every second thereafter"
+			],
+			"ja": [
+				"ダメージを与えるたびに攻撃力+15%（最大15層）。攻撃状態でなくなって3.5秒後、それ以降は毎秒2層失う"
+			],
 			"zh": [
 				"每次成功造成伤害后，自身的攻击力+15%，最多叠加15层（脱离攻击状态3.5秒后及接下来每秒减少2层）"
 			]
@@ -11855,8 +12350,12 @@
 	"ymgsld_barrier": {
 		"value": 8000,
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Has a barrier that absorbs <v.value> {phys} or {arts} damage; after the barrier is lost, a 'Certain Fates' appears within a 0.4 tile radius, or forced movement from Unbalance ends, attempts to activate 【Lose Shield】 every 0.1s; the barrier becomes inactive when the skill successfully activates"
+			],
+			"ja": [
+				"<v.value>の{phys}または{arts}ダメージを吸収するバリアを持つ。バリア喪失後、半径0.4以内に「ある種の天命」が出現した後、または失衡による強制移動終了後、0.1秒ごとに【盾を失う】の発動を試みる。発動成功時、バリアが無効になる"
+			],
 			"zh": [
 				"拥有可吸收<v.value>{phys}或{arts}伤害的屏障，失去该屏障后/自身半径0.4范围内出现“某种天命”后/失衡移动结束后，每0.1秒尝试触发技能【失去盾牌】，成功触发技能时该屏障失效"
 			]
@@ -11864,8 +12363,8 @@
 	},
 	"ymgsld_no_shield": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["DEF -50%"],
+			"ja": ["防御力-50%"],
 			"zh": ["自身防御力-50% "]
 		}
 	},
@@ -12193,8 +12692,8 @@
 	},
 	"agpbus": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Cannot be carried as a passenger by a Joyful School Bus/Festival School Bus"],
+			"ja": ["「楽しいスクールバス」/「祝祭のスクールバス」に乗客として搭乗できない"],
 			"zh": ["自身无法被欢乐校车/庆典校车载为乘客"]
 		}
 	},
@@ -12285,8 +12784,12 @@
 	},
 	"agporc_crash": {
 		"tooltip": {
-			"en": ["Loses above buff when affected by Levitate, Unbalance or crashed by <美食的奴隶>"],
-			"ja": ["浮遊と強制移動を受けると上述の強化効果が永続的に解除される"],
+			"en": [
+				"Permanently loses the above buff when affected by Levitate/Unbalance or hit by 'Gourmet Temptation'/'Slave to Gourmet'"
+			],
+			"ja": [
+				"浮遊・失衡を受けるか、「美食の誘惑」/「美食の虜」が衝突すると、上記の強化効果が永続的に解除される"
+			],
 			"zh": ["受到浮空及失衡效果或被“美食的诱惑”或“美食的奴隶”砸中时，永久解除上述增益"]
 		}
 	},
@@ -12424,15 +12927,21 @@
 	},
 	"shadvr_sp": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Can accumulate up to 120 Sunlight Faith and 120 Eclipse Faith (gauges displayed at the top of the screen, on the left and right respectively)"
+			],
+			"ja": ["日照信仰・日食信仰の上限はそれぞれ120（画面上部の左側・右側に各ゲージを表示）"],
 			"zh": ["拥有120点日照信仰/日蚀信仰上限（信仰槽显示于画面顶部，分别位于左右两侧）"]
 		}
 	},
 	"shadvr_change": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Overflowing Faith】When Sunlight Faith or Eclipse Faith overflows, transforms over 0.5s, becoming Invincible, clearing Faith and preventing further accumulation during the transformation; changes to the normal form of Aymuray, Advent of the Sun or Toxcatl, Edict of the End. If both reach the limit simultaneously, prioritizes Toxcatl, Edict of the End"
+			],
+			"ja": [
+				"【信仰の溢出】日照信仰または日食信仰が上限を超えると、0.5秒かけて形態変化する。変化中は無敵となり、信仰をリセットして蓄積を停止する。「アイムライ、祝日の到来」または「トシュカトル、終末の勅令」の通常形態に変化する。同時に上限に達した場合、後者を優先する"
+			],
 			"zh": [
 				"【信仰满溢 】当日照信仰或日蚀信仰发生满溢时，进入持续0.5s的形态转化，期间持有无敌，且会清除并阻止信仰值继续积累，转化为艾穆拉伊，祝日降临或托斯卡特尔，末日敕令的普通形态。若同时到达上限，优先切换为托斯卡特尔，末日敕令"
 			]
@@ -12444,8 +12953,12 @@
 		"atk": { "multiplier": 3.5 },
 		"dmg_element": "phys",
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"After changing form, marks 2 friendly units, prioritizing the most recently deployed (4 in enhanced form); charges for 2s while Invincible, then deals 350% of ATK as {phys} damage to each primary target and friendly units in the surrounding 4 tiles. Creates an Altar that allows ranged unit deployment in that area, checking down > right > left > up; up to 5 Altars can exist"
+			],
+			"ja": [
+				"形態変化後、最後に配置された味方を優先して2体（強化形態では4体）をマークする。無敵状態で2秒チャージした後、主対象と周囲4マスの味方に攻撃力の350%の{phys}ダメージを与える。同範囲に下→右→左→上の優先順で高台ユニットを配置できる祭壇を生成する（最大5個）"
+			],
 			"zh": [
 				"形态转化后，优先选择我方最后部署的2名单位（强化形态下提升至4名单位）对其进行标记，蓄力2s后对主目标及其周围四格范围内的我方单位造成一次攻击力350%的{phys}普通伤害并在范围内以下＞右＞左＞上的顺序生成一个可以部署高台单位的祭台，最多存在5个。蓄力期间自身持有无敌"
 			]
@@ -12453,8 +12966,16 @@
 	},
 	"shadvr_sp_inc": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When Arts/Physical damage successfully reduces its HP, gains 2 Sunlight Faith (Arts) or 2 Eclipse Faith (Physical)",
+				"While neither Faith gauge is full, gains 5 Sunlight Faith and 5 Eclipse Faith every second",
+				"Checks every 0.1s; if not using a skill and either Faith gauge is full, clears both gauges and activates 【Overflowing Faith】"
+			],
+			"ja": [
+				"術/物理ダメージで実際にHPが減少すると、術なら日照信仰、物理なら日食信仰を2獲得する",
+				"両方のゲージが上限未満の場合、毎秒日照信仰・日食信仰を5ずつ獲得する",
+				"0.1秒ごとに判定し、スキル中でなく、いずれかのゲージが上限なら、両方をリセットして【信仰の溢出】を発動する"
+			],
 			"zh": [
 				"成功受到法术/物理伤害，并且生命值发生实际降低时，会增长2点日照信仰（法术）或日蚀信仰（物理）的进度",
 				"日照信仰与日蚀信仰均未满情况下，每秒增长5点日照信仰和5点日蚀信仰",
@@ -12464,8 +12985,14 @@
 	},
 	"shadvr_inti_sp_inc": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When Arts/Physical damage successfully reduces its HP, gains 1 Sunlight Faith/0.33 Eclipse Faith respectively",
+				"While neither Faith gauge is full, gains 2.5 Sunlight Faith and 0.825 Eclipse Faith every second"
+			],
+			"ja": [
+				"術/物理ダメージで実際にHPが減少すると、それぞれ日照信仰を1/日食信仰を0.33獲得する",
+				"両方のゲージが上限未満の場合、毎秒日照信仰を2.5、日食信仰を0.825獲得する"
+			],
 			"zh": [
 				"成功受到法术/物理伤害，并且生命值发生实际降低时，增长1点日照信仰/增长0.33点日蚀信仰",
 				"日照信仰与日蚀信仰均未满情况下，每秒增长2.5点日照信仰和0.825点日蚀信仰"
@@ -12474,8 +13001,14 @@
 	},
 	"shadvr_tes_sp_inc": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When Arts/Physical damage successfully reduces its HP, gains 0.33 Sunlight Faith/1 Eclipse Faith respectively",
+				"While neither Faith gauge is full, gains 0.825 Sunlight Faith and 2.5 Eclipse Faith every second"
+			],
+			"ja": [
+				"術/物理ダメージで実際にHPが減少すると、それぞれ日照信仰を0.33/日食信仰を1獲得する",
+				"両方のゲージが上限未満の場合、毎秒日照信仰を0.825、日食信仰を2.5獲得する"
+			],
 			"zh": [
 				"成功受到法术/物理伤害，并且生命值发生实际降低时，增长0.33点日照信仰/增长1点日蚀信仰",
 				"日照信仰与日蚀信仰均未满情况下，每秒增长0.825点日照信仰和2.5点日蚀信仰"
@@ -12484,15 +13017,21 @@
 	},
 	"shadvr_tes_heal": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": ["Restores 3% Max HP whenever a friendly Operator retreats or is defeated"],
+			"ja": ["味方オペレーターが撤退または撃破されるたび、自身の最大HPの3%を回復する"],
 			"zh": ["当我方干员撤退或被击倒时，恢复自身3%的最大生命值"]
 		}
 	},
 	"shadvr_inti_stat1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"DEF +500, RES +40, attack interval +1s; attacks deal Arts damage, Arts damage taken -95%, and can be blocked",
+				"Attacks additionally inflict 20% of ATK as Burn Damage, hit 2 targets simultaneously and have a 2.5 tile radius"
+			],
+			"ja": [
+				"防御力+500、術耐性+40、攻撃間隔+1秒、攻撃が術ダメージになり、受ける術ダメージ-95%、ブロック可能",
+				"攻撃時、攻撃力の20%の灼熱損傷を追加で与える。同時に2体を攻撃し、攻撃半径2.5"
+			],
 			"zh": [
 				"防御力+500，法术抗性+40，攻击间隔+1s，攻击造成法术伤害，自身受到的法术伤害-95%，可以被阻挡",
 				"攻击附加攻击力20%的灼燃损伤，同时攻击2个目标，拥有2.5的攻击半径"
@@ -12501,8 +13040,14 @@
 	},
 	"shadvr_tes_stat1": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"ATK +500, DEF +2000, Movespeed +0.2; Physical damage taken -95%, and can be blocked",
+				"Attacks hit 3 times at 0.1s intervals, simultaneously hitting friendly units within a 1.0 tile radius"
+			],
+			"ja": [
+				"攻撃力+500、防御力+2000、移動速度+0.2、受ける物理ダメージ-95%、ブロック可能",
+				"攻撃が0.1秒間隔の3連撃になり、半径1.0以内の味方を同時に攻撃する"
+			],
 			"zh": [
 				"攻击力+500，防御力+2000，移动速度+0.2，自身受到的物理伤害-95%，可以被阻挡",
 				"攻击变为3连击且同时攻击自身半径1.0范围内的我方单位，连击间隔0.1s"
@@ -12511,15 +13056,21 @@
 	},
 	"shadvr_buff": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Enhanced Form】DEF +2000, RES +40, Movespeed +0.6; Physical and Arts damage taken -90%"
+			],
+			"ja": ["【強化形態】防御力+2000、術耐性+40、移動速度+0.6、受ける物理・術ダメージ-90%"],
 			"zh": ["【强化形态】防御力+2000，法术抗性+40，移动速度+0.6，自身受到的的物理与法术伤害-90%"]
 		}
 	},
 	"shadvr_inti_buff": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Enhanced Form】ATK +1000, DEF +1500, RES +60, Movespeed +0.2, attack interval +1s; attacks deal Arts damage with global range, Arts damage taken -95%; immune to Slow and Bind, and cannot be blocked"
+			],
+			"ja": [
+				"【強化形態】攻撃力+1000、防御力+1500、術耐性+60、移動速度+0.2、攻撃間隔+1秒。攻撃範囲が全域になり、術ダメージを与える。受ける術ダメージ-95%、足止め・バインド無効、ブロック不可"
+			],
 			"zh": [
 				"【强化形态】攻击力+1000，防御力+1500，法术抗性+60，移动速度+0.2，攻击间隔+1s，攻击范围扩大至全场，攻击造成法术伤害，自身受到的法术伤害-95%，持有停顿免疫、束缚免疫、不可阻挡"
 			]
@@ -12527,8 +13078,16 @@
 	},
 	"shadvr_tes_buff": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Enhanced Form】ATK +2000, DEF +3000, RES +20, Movespeed +0.4; Physical damage taken -95%; immune to Slow and Bind, and cannot be blocked",
+				"Attacks hit 5 times at 0.1s intervals, simultaneously hitting friendly units within a 1.1 tile radius",
+				"Restores 3% Max HP whenever a friendly Operator retreats or is defeated"
+			],
+			"ja": [
+				"【強化形態】攻撃力+2000、防御力+3000、術耐性+20、移動速度+0.4、受ける物理ダメージ-95%、足止め・バインド無効、ブロック不可",
+				"攻撃が0.1秒間隔の5連撃になり、半径1.1以内の味方を同時に攻撃する",
+				"味方オペレーターが撤退または撃破されるたび、自身の最大HPの3%を回復する"
+			],
 			"zh": [
 				"【强化形态】攻击力+2000，防御力+3000，法术抗性+20，移动速度+0.4，自身受到的物理伤害-95%，持有停顿免疫、束缚免疫、不可阻挡",
 				"攻击变为5连击且同时攻击自身半径1.1范围内的我方单位，连击间隔0.1s",
@@ -12538,8 +13097,14 @@
 	},
 	"shadvr_revive": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"When defeated, revives over 10s, recovering 100% HP; enters phase 2 in the enhanced version of its current form",
+				"If it has changed form before, instead enters phase 2 in the enhanced version of its most recent transformed form"
+			],
+			"ja": [
+				"倒されると10秒かけてHPを100%回復し、現在の形態の強化形態で第二段階に移行する",
+				"形態変化したことがある場合、最後に変化した形態の強化形態で第二段階に移行する"
+			],
 			"zh": [
 				"被击倒后重生：在10s内回复100%生命值，以当前形态的强化形态进入二阶段",
 				"若自身切换过形态，改为以最后一次切换的对应形态的强化形态进入二阶段"
@@ -12548,15 +13113,21 @@
 	},
 	"shadvr_state2": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Stops accumulating Faith and permanently remains in the enhanced version of its current form"
+			],
+			"ja": ["信仰の蓄積を停止し、現在の形態の強化形態を維持する"],
 			"zh": ["停止积累信仰，始终保持该形态的强化形态"]
 		}
 	},
 	"shadvr_clear_map": {
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"【Rise of Utopia】Removes all other enemies from the field, then hides designated tiles, retaining only the tiles needed to reach the next route checkpoint from its current position and tiles occupied by Altars"
+			],
+			"ja": [
+				"【ユートピアの台頭】自身以外の敵をすべて除去し、指定されたマスを非表示にする。現在位置から次の経路チェックポイントまでに必要なマスと、祭壇のあるマスのみを残す"
+			],
 			"zh": [
 				"【乌托邦的崛起】清除场上除自身外的敌人。随后隐藏带有指定标记的地块，仅保留自身当前位置至下一个路径检查点之间路段需经过的地块，以及祭台所在地块"
 			]
@@ -12571,8 +13142,12 @@
 		"dmg_element": "arts",
 		"suffix": { "en": "Skill", "ja": "スキル", "zh": "耀日的恩宠" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Charges for 2.5s, then fires a projectile at 1 friendly unit or Altar within a 2.5 tile radius; on arrival, chains between friendly units up to 2 times, with a 1s interval and 1.8 tile jump distance. Hit targets take 35% of ATK as {arts} damage every second for 5s. Immune to Unbalance during the skill; in enhanced form, additionally inflicts 10% of ATK as {ba.dt.burning} and chains up to 4 times"
+			],
+			"ja": [
+				"2.5秒チャージした後、半径2.5以内の味方1体または祭壇1個に弾道を発射する。着弾後、1秒間隔・距離1.8で味方間を最大2回跳躍し、命中した対象に5秒間毎秒攻撃力の35%の{arts}ダメージを与える。スキル中は失衡無効。強化形態では攻撃力の10%の{ba.dt.burning}を追加で与え、最大跳躍回数が4回になる"
+			],
 			"zh": [
 				"蓄力2.5s后选择自身半径2.5范围内的1个我方单位或祭台对其发射弹道，并在弹道抵达后尝试在我方单位间跳跃，跳跃间隔1s，跳跃距离1.8，最多跳跃2次，对命中目标每秒造成相当于攻击力35%的{arts}普通伤害，持续5s，技能期间持有失衡免疫。若处于强化形态，还会额外造成相当于攻击力10%的{ba.dt.burning}，跳跃次数提升至4"
 			]
@@ -12587,8 +13162,12 @@
 		"dmg_element": "arts",
 		"suffix": { "en": "Skill", "ja": "剣気", "zh": "熄日的祭坛" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Targets a friendly unit or Altar in its row/column and charges for 4s, then fires a slash along that row/column at speed 5.0; stops on hitting the first friendly unit and, after 0.1s, deals 350% of ATK as {phys} damage to friendly units within a 1.1 tile radius of the impact point. Immune to Unbalance during the skill; charge time is reduced to 2s in enhanced form"
+			],
+			"ja": [
+				"自身と同じ行/列の味方または祭壇を選び、4秒チャージした後、その行/列に速度5.0の剣気を放つ。最初の味方に接触すると停止し、0.1秒後に停止位置から半径1.1以内の味方に攻撃力の350%の{phys}ダメージを与える。スキル中は失衡無効。強化形態ではチャージ時間が2秒になる"
+			],
 			"zh": [
 				"选择与自身所在行/列的我方单位或祭台，蓄力4s后对本行/本列单位发出一道剑气：剑气移动速度5.0，碰撞到路径上的首个我方单位后停止，并在0.1s后以停止位置为中心，对半径1.1内的我方单位造成攻击力350%的{phys}普通伤害，技能期间持有失衡免疫。若处于强化状态，此技能蓄力时间缩短至2s"
 			]
@@ -12603,8 +13182,10 @@
 		"cooldown": 28,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Summons a group of enemies along preset routes; changing form does not reset the timer"
+			],
+			"ja": ["あらかじめ決められた経路で敵を召喚する。形態変化でタイマーはリセットされない"],
 			"zh": ["按预设路径召唤一批敌人，切换形态不重置计时"]
 		}
 	},
@@ -12617,8 +13198,10 @@
 		"cooldown": 28,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Immediately summons a group of enemies along preset routes, then summons another group every 28s"
+			],
+			"ja": ["即座にあらかじめ決められた経路で敵を召喚し、その後28秒ごとに敵を召喚する"],
 			"zh": ["立刻以预设路径召唤一批敌人，随后每28s召唤一批敌人"]
 		}
 	},
@@ -12631,8 +13214,10 @@
 		"cooldown": 28,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Summons a group of enemies along preset routes; changing form does not reset the timer"
+			],
+			"ja": ["あらかじめ決められた経路で敵を召喚する。形態変化でタイマーはリセットされない"],
 			"zh": ["按预设路径召唤一批敌人，切换形态不重置计时"]
 		}
 	},
@@ -12645,8 +13230,10 @@
 		"cooldown": 28,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Immediately summons a group of enemies along preset routes, then summons another group every 28s"
+			],
+			"ja": ["即座にあらかじめ決められた経路で敵を召喚し、その後28秒ごとに敵を召喚する"],
 			"zh": ["立刻以预设路径召唤一批敌人，随后每28s召唤一批敌人"]
 		}
 	},
@@ -12659,8 +13246,10 @@
 		"cooldown": 28,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Summons a group of enemies along preset routes; changing form does not reset the timer"
+			],
+			"ja": ["あらかじめ決められた経路で敵を召喚する。形態変化でタイマーはリセットされない"],
 			"zh": ["按预设路径召唤一批敌人，切换形态不重置计时"]
 		}
 	},
@@ -12673,8 +13262,10 @@
 		"cooldown": 28,
 		"suffix": { "en": "Summon Enemy", "ja": "敵召喚", "zh": "召唤敌人" },
 		"tooltip": {
-			"en": [""],
-			"ja": [""],
+			"en": [
+				"Immediately summons a group of enemies along preset routes, then summons another group every 28s"
+			],
+			"ja": ["即座にあらかじめ決められた経路で敵を召喚し、その後28秒ごとに敵を召喚する"],
 			"zh": ["立刻以预设路径召唤一批敌人，随后每28s召唤一批敌人"]
 		}
 	},
@@ -12758,7 +13349,7 @@
 	},
 	"xbscp_linglong": {
 		"tooltip": {
-		"en": [
+			"en": [
 				"On entering this state and every 120s thereafter, gains 80 Shield stacks (max 80 stacks, lasts indefinitely)"
 			],
 			"ja": ["この状態に入る時および以降120秒ごとに、シールドを80層獲得する（最大80層、永続）"],
