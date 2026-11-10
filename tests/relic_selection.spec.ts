@@ -187,13 +187,13 @@ test('Duck Coin shows its icon with rune modifiers on Whack-A-Mus', async ({ pag
 	await card(page, id).locator('[data-stage-index="1"]').click();
 	await closeRelics(page);
 	await expect(icon).toBeVisible();
-	await expect(panel.getByText('× 5', { exact: true })).toBeVisible();
+	await expect(panel.getByText('× 4', { exact: true })).toBeVisible();
 	await page.getByRole('button', { name: 'elite ops', exact: true }).click();
 	await panel.getByRole('button', { name: 'hp', exact: true }).click();
 	await expect(icon).toBeVisible();
 	await expect(panel.getByText('× 1.2', { exact: true })).toBeVisible();
-	await expect(panel.getByText('× 5', { exact: true })).toBeVisible();
-	await expect(panel.getByText('× 6', { exact: true })).toHaveCount(0);
+	await expect(panel.getByText('× 4', { exact: true })).toBeVisible();
+	await expect(panel.getByText('× 4.8', { exact: true })).toHaveCount(0);
 	await openRelics(page);
 	await card(page, id).locator('[data-stage-index="0"]').click();
 	await closeRelics(page);

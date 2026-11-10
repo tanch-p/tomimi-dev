@@ -1408,14 +1408,16 @@
 						"mods": [
 							{
 								"key": "hp",
-								"value": 3.0,
+								"value": 2.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							},
 							{
 								"key": "ms",
-								"value": 2.5,
+								"value": 1.5,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							}
 						]
@@ -1425,14 +1427,16 @@
 						"mods": [
 							{
 								"key": "hp",
-								"value": 2.5,
+								"value": 1.5,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							},
 							{
 								"key": "ms",
-								"value": 2.5,
+								"value": 1.5,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							}
 						]
@@ -1442,14 +1446,16 @@
 						"mods": [
 							{
 								"key": "hp",
-								"value": 3.0,
+								"value": 2.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							},
 							{
 								"key": "atk",
-								"value": 2.5,
+								"value": 1.5,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							}
 						]
@@ -1479,14 +1485,16 @@
 						"mods": [
 							{
 								"key": "hp",
-								"value": 6.0,
+								"value": 4.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							},
 							{
 								"key": "ms",
-								"value": 5.0,
+								"value": 3.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							}
 						]
@@ -1496,14 +1504,16 @@
 						"mods": [
 							{
 								"key": "hp",
-								"value": 5.0,
+								"value": 3.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							},
 							{
 								"key": "ms",
-								"value": 5.0,
+								"value": 3.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							}
 						]
@@ -1513,14 +1523,16 @@
 						"mods": [
 							{
 								"key": "hp",
-								"value": 6.0,
+								"value": 4.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							},
 							{
 								"key": "atk",
-								"value": 5.0,
+								"value": 3.0,
 								"mode": "mul",
+								"order":"initial",
 								"type": "rune"
 							}
 						]

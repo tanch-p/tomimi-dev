@@ -217,7 +217,7 @@ describe('rune-type stat modifiers', () => {
 		expect(display.forms[0].stats.hp).toBe(278);
 	});
 
-	it('keeps Duck Coin as a displayed rune source on Whack-A-Mus, including merged elite mods', async () => {
+	it('keeps Duck Coin as a displayed rune source on Whack-A-Mus alongside elite mods', async () => {
 		const { stages } = await loadStageVariants('ISW-NO_Whack-A-Mus', 'en', 'ro5');
 		const { enemies, mapConfig } = stages[0];
 		expect(mapConfig.levelId).toBe('level_rogue5_1-1');
@@ -236,15 +236,27 @@ describe('rune-type stat modifiers', () => {
 					expect.arrayContaining([
 						expect.objectContaining({
 							key: 'hp',
-							sourceKeys: elite ? ['elite_ops', duckCoin.id] : [duckCoin.id],
-							contributions: [
-								...(elite ? [{ value: 1.2, sourceKeys: ['elite_ops'] }] : []),
-								{ value: stage.suffix === 'x1' ? 2.5 : 5, sourceKeys: [duckCoin.id] }
-							]
+							mode: 'mul',
+							order: 'initial',
+							value: stage.suffix === 'x1' ? 1.5 : 3,
+							sourceKeys: [duckCoin.id],
+							contributions: [{ value: stage.suffix === 'x1' ? 1.5 : 3, sourceKeys: [duckCoin.id] }]
 						}),
 						expect.objectContaining({ key: 'ms', sourceKeys: [duckCoin.id] })
 					])
 				);
+				if (elite) {
+					expect(runeMods.mods).toContainEqual(
+						expect.objectContaining({
+							key: 'hp',
+							mode: 'mul',
+							order: 'final',
+							value: 1.2,
+							sourceKeys: ['elite_ops'],
+							contributions: [{ value: 1.2, sourceKeys: ['elite_ops'] }]
+						})
+					);
+				}
 			}
 		}
 	});
@@ -295,7 +307,8 @@ describe('rune-type stat modifiers', () => {
 						expect(mod.type).toBe('rune');
 						const base = mod.key === 'ms' ? 1.23 : 101;
 						const precision = mod.key === 'ms' ? 100 : 1;
-						const expected = Math.round(base * 1.1 * mod.value * precision) / precision;
+						const multiplier = mod.order === 'initial' ? 1 + mod.value : mod.value;
+						const expected = Math.round(base * 1.1 * multiplier * precision) / precision;
 						expect(display.forms[0].stats[mod.key as keyof Stats]).toBeCloseTo(
 							expected + (mod.key === 'hp' ? 10 : 0)
 						);
