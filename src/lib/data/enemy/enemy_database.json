@@ -27043,7 +27043,8 @@
 							"key": "patrt_2_1"
 						},
 						{
-							"key": "patrt_2_2"
+							"key": "patrt_2_2",
+							"atk": { "multiplier": 0.05 }
 						}
 					]
 				],
