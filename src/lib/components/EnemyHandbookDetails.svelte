@@ -32,7 +32,7 @@
 	let formIndex = $state(0);
 
 	let statusImmuneList = $derived(
-		getStatusImmune(enemy, enemy.forms[formIndex].status_immune, $specialMods)
+		getStatusImmune(enemy, enemy.forms[formIndex].status_immune, $specialMods, formIndex)
 	);
 </script>
 

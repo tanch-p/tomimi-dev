@@ -178,12 +178,17 @@ export const getEnemySkills = (
 export const getStatusImmune = (
 	enemy: Enemy,
 	statusImmuneList: StatusImmune[],
-	mods: SpecialMods
+	mods: SpecialMods,
+	formIndex = 0
 ) => {
-	if (mods?.[enemy.id]?.status_immune) {
-		statusImmuneList = [...statusImmuneList, ...mods[enemy.id].status_immune];
-	}
-	return statusImmuneList;
+	const immunity = mods?.[enemy.key]?.status_immune as
+		StatusImmune[] | Record<number, StatusImmune[]> | undefined;
+	if (!immunity) return statusImmuneList;
+	const extra =
+		typeof immunity[0] === 'string'
+			? (immunity as StatusImmune[])
+			: ((immunity[formIndex] as StatusImmune[] | undefined) ?? []);
+	return [...statusImmuneList, ...extra];
 };
 
 export const parseValues = (

@@ -502,7 +502,13 @@ export function compileMods(entity: EnemyDBEntry | Trap, mod: ModGroup, type = '
 	return { key: modKey, mods: modsHolder };
 }
 
-export const compileSpecialMods = (...modsList: [[Effects]]) => {
+type SpecialModEffect = {
+	targets: string[];
+	mods?: unknown[];
+	special?: Record<string, any>;
+};
+
+export const compileSpecialMods = (...modsList: (SpecialModEffect[] | null | undefined)[][]) => {
 	const specialMods = {};
 	for (const effectsList of modsList) {
 		for (const effects of effectsList)
@@ -521,7 +527,7 @@ export const compileSpecialMods = (...modsList: [[Effects]]) => {
 						if (!specialMods['system']) {
 							specialMods['system'] = [];
 						}
-						for (const mod of effect.mods) {
+						for (const mod of effect.mods ?? []) {
 							specialMods['system'].push(mod);
 						}
 					}

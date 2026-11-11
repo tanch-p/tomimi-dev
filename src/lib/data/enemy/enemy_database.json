@@ -6504,6 +6504,9 @@
 				"epResistance": 0.0,
 				"traits": [
 					{
+						"key": "appear_nowhere"
+					},
+					{
 						"key": "guerilla_siegebreaker_buff"
 					}
 				],
@@ -6543,6 +6546,9 @@
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
 				"traits": [
+					{
+						"key": "appear_nowhere"
+					},
 					{
 						"key": "guerilla_siegebreaker_buff",
 						"atk": {
@@ -8741,7 +8747,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{ "key": "appear_nowhere" }],
 				"special": []
 			}
 		],
@@ -8777,7 +8783,7 @@
 				"ms": 1.0,
 				"epDamageResistance": 0.0,
 				"epResistance": 0.0,
-				"traits": [],
+				"traits": [{ "key": "appear_nowhere" }],
 				"special": []
 			}
 		],

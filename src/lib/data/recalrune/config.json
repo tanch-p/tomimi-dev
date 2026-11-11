@@ -1,0 +1,20 @@
+[
+	{
+		"season": 1,
+		"stages": [
+			"level_recalrune_01-01",
+			"level_recalrune_01-02",
+			"level_recalrune_01-03",
+			"level_recalrune_01-04"
+		]
+	},
+	{
+		"season": 2,
+		"stages": [
+			"level_recalrune_02-01",
+			"level_recalrune_02-02",
+			"level_recalrune_02-03",
+			"level_recalrune_02-04"
+		]
+	}
+]

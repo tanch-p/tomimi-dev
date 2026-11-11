@@ -21,7 +21,7 @@
 		getEnemySkills(enemy, enemy.forms[row].special, row, $specialMods, 'special')
 	);
 	let statusImmuneList = $derived(
-		getStatusImmune(enemy, enemy.forms[row].status_immune, $specialMods)
+		getStatusImmune(enemy, enemy.forms[row].status_immune, $specialMods, row)
 	);
 </script>
 

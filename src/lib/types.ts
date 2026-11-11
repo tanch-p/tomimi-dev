@@ -254,6 +254,7 @@ export interface MapConfig {
 	traps: MapConfigTrap[];
 	token_cards: MapConfigTokenCard[];
 	systems: {
+		crisis?: import('./functions/recalRune').Crisis;
 		level_predefine_tokens_random_spawn_on_tile?: NonNullable<unknown>;
 	};
 	enemies: MapConfigEnemy[];

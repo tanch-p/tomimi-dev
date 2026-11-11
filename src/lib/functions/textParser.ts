@@ -36,6 +36,8 @@ const textPatterns: Record<string, string> = {
 	'@ba.vdown': 'text-[#FF6237]',
 	'@ba.rem': 'text-[#F49800]',
 	'@ba.kw': 'text-[#00B0FF]',
+	'@recalrune.nag': 'text-[#ef403c]',
+	'@recalrune.pos': 'text-[#0098dc]',
 	'@bluehl': 'text-[#30c8FC]',
 	'@enemy': 'text-[#FFA5AF]',
 	'@ally': 'text-[#FFC89B]',
@@ -60,8 +62,8 @@ export function renderTextLine(input: string, language: Language): string {
 		const tag = key.includes('ba.dt')
 			? `<${key}>`
 			: tagPatterns.has(key)
-			? `<@skilltag ${key}>`
-			: `<@${key}>`;
+				? `<@skilltag ${key}>`
+				: `<@${key}>`;
 		return `${tag}${translations[key.replace('ba.dt.', '')]}</>`;
 	});
 	const rendered = renderTaggedMarkup(withTranslatedTags);

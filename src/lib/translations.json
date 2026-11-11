@@ -4330,5 +4330,30 @@
 		"en": "Mode",
 		"ja": "モード",
 		"zh": "模式"
+	},
+	"contract_list": {
+		"en": "Contracts List",
+		"ja": "契約一覧",
+		"zh": "合约一览"
+	},
+	"recalrune": {
+		"en": "Holographic Combat Matrix",
+		"ja": "投影作戦マトリクス",
+		"zh": "全息作战矩阵"
+	},
+	"recal_non_essential": {
+		"en": "Other Tags",
+		"ja": "追加条件",
+		"zh": "附加条件"
+	},
+	"recal_season": {
+		"en": "Season",
+		"ja": "シーズン",
+		"zh": "赛季"
+	},
+	"recal_score": {
+		"en": "Score",
+		"ja": "評価",
+		"zh": "当前评分"
 	}
 }
