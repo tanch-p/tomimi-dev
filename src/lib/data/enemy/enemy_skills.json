@@ -6714,13 +6714,13 @@
 		"dmg_element": "true",
 		"tooltip": {
 			"en": [
-				"Deals 5.21% of ATK as True damage every 0.8s to all allied units in range radius of 1.75 tiles{ignore_camou}"
+				"Deals <v.atk.multiplier>% of ATK as {true} damage every 0.8s to all allied units in range radius of 1.75 tiles{ignore_camou}"
 			],
 			"ja": [
-				"半径1.75マスの味方に、0.8秒ごとに攻撃力の5.21% (通常は100) に相当する確定ダメージが発生{ignore_camou}"
+				"半径1.75マスの味方に、0.8秒ごとに攻撃力の<v.atk.multiplier>%に相当する{true}ダメージが発生{ignore_camou}"
 			],
 			"zh": [
-				"每间隔0.8s触发一次【献祭】- 对自身半径1.75范围内的友方单位造成相当于攻击力5.21%{true}溅射伤害{ignore_camou}"
+				"每间隔0.8s触发一次【献祭】- 对自身半径1.75范围内的友方单位造成相当于攻击力<v.atk.multiplier>%{true}溅射伤害{ignore_camou}"
 			]
 		}
 	},
