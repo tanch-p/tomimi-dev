@@ -31,7 +31,13 @@
 		'爱发电用户_116dc',
 		'甘霖（官服助战挂了赫德雷）',
 		'DISTANCE若亭',
-		'sweetree'
+		'sweetree',
+		'无魂人士',
+		'天天快乐',
+		'几圠',
+		'蓝猫混合物',
+		'Anyar',
+		'Sethfire'
 	].sort();
 </script>
 
