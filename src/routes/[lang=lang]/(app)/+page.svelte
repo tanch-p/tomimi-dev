@@ -12,6 +12,7 @@
 	import ISLogo from '$lib/images/is_logo.webp';
 	import toolsLogo from '$lib/images/CRA-X.webp';
 	import FriendLinks from '$lib/components/FriendLinks.svelte';
+	import LatencyNotice from './LatencyNotice.svelte';
 
 	interface Props {
 		data: PageData;
@@ -37,6 +38,10 @@
 	<meta property="og:title" content={getTranslations(language).home} />
 	<meta property="og:url" content={`https://tomimi.dev/${language}`} />
 </svelte:head>
+
+{#if language === 'zh'}
+	<LatencyNotice />
+{/if}
 
 <section>
 	<div class="h-[10vh]"></div>
