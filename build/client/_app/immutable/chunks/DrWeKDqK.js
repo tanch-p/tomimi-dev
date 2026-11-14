@@ -1,0 +1,1 @@
+function e(e){return t=>{let n=n=>{t.contains(n.target)||e(n)};return document.addEventListener(`click`,n,!0),()=>document.removeEventListener(`click`,n,!0)}}export{e as t};

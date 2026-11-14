@@ -1,0 +1,1 @@
+import{$ as e,C as t,R as n,V as r,a as i,ot as a,v as o,w as s,x as c}from"./Dgfi8oaD.js";import"./xihTtKlq.js";var l=r(`<svg><use></use></svg>`);function u(r,u){let d=i(u,`className`,3,``),f=i(u,`size`,3,24);var p=l(),m=a(p);e(()=>{o(p,`width`,f()),o(p,`height`,f()),t(p,0,s(d())),c(m,`xlink:href`,`#${u.name??``}`)}),n(r,p)}export{u as t};

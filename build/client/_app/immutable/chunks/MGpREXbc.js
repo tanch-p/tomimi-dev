@@ -1,0 +1,1 @@
+var e=new URL(`../assets/icon_battle_normal.CB2wV37A.webp`,import.meta.url).href;export{e as t};

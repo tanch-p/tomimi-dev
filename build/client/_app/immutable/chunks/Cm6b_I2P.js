@@ -1,0 +1,1 @@
+var e=new URL(`../assets/banner_black.Uawj-3QF.webp`,import.meta.url).href;export{e as t};
