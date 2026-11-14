@@ -203,6 +203,7 @@ function getMoveAnimName(key: string, skelData: spine.SkeletonData) {
 			return 'Move_grey';
 
 		case 'enemy_1002_nsabr':
+		case 'enemy_1043_zomsbr':
 		case 'enemy_1000_gopro':
 		case 'enemy_1000_gopro_2':
 		case 'enemy_1000_gopro_3':
